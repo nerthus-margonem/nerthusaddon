@@ -1,2 +1,3 @@
 todo:
 * zmienić linki do skryptów na bitbucketowe
+* jenak nie bitbucket chociaz jest fajniejszy, jednak gih hub ..

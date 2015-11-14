@@ -29,5 +29,4 @@ nerthus.night = function()
 }
 nerthus.night();
 
-
 }catch(e){log('NerthusNight Error: '+e.description,1);}	

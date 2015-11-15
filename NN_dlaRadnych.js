@@ -57,10 +57,11 @@ nerthus.mapsArr=[
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'
 nerthus.additionaScripts=[
-  						  'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_Config_hax.js',
-                          'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_Wiosna.js',
-                          'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_chatCmd.js',
-                          'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_alko.js'
+  						  'NN_Config_hax.js',
+                          'NN_Wiosna.js',
+                          'NN_chatCmd.js',
+                          'NN_alko.js',
+                          'NN_NightLights.js'
                          ];				
  
 //lista grafik nie ruszać!

@@ -52,8 +52,7 @@ try{
             g.loadQueue.push({fun:NN_start,data:""});
             //ładowanie dodatkowych skryptów jeżeli jakieś są
             for( i in nerthus.additionaScripts)
-                $.getScript(nerthus.additionaScripts[i]);		
-            $.getScript(nerthusAddon.fileUrl('NN_NightLights.js'));
+                $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));		
             })});
         });
     }

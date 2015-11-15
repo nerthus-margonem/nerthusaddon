@@ -5,9 +5,20 @@
 try{
     nerthusAddon = {}
     nerthusAddon.version = "master";
+    nerthusAddon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
+    nerthusAddon.setVersion = function(version)
+    {
+        this.version = version
+        if(typeof NerthusAddonDebug != 'undefined')
+        {   //debug version for development
+            log("nerthus addon in debug mode")
+            this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
+            this.version = 'master'
+        } 
+    }
     nerthusAddon.fileUrl = function(filename)
     {
-        return 'http://rawgit.com/akrzyz/nerthusaddon/' + this.version + "/" + filename;
+        return this.filesPrefix + "/" + this.version + "/" + filename;
     }
     nerthusAddon.start = function()
     {

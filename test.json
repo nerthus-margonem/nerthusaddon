@@ -1,2 +1,1 @@
-//$.getJSON("https://raw.githubusercontent.com/akrzyz/nerthusaddon/master/test.json",function(data){message(data.version)})
 {"10"}

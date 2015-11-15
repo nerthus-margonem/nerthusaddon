@@ -12,16 +12,14 @@ try{
 	nerthus.date = new Date();
 	nerthus.dateGMT = new Date(nerthus.date*1 + nerthus.date.getTimezoneOffset()*60*1000);
 
-    nerthus.grafiki = function()
-	{
-	    nerthus.grafPath.loading='http://img826.imageshack.us/img826/4792/loadingnerthus.png';
-		nerthus.grafPath.dazed='http://i55.tinypic.com/2mds2so.png';
-		nerthus.grafPath.chat='http://img180.imageshack.us/img180/3678/okienko3.png';
-		nerthus.grafPath.weather='http://fs5.directupload.net/images/151113/38zszora.gif';
-		nerthus.grafPath.panelTop='http://img441.imageshack.us/img441/9302/nerthuspanel.png';
-		nerthus.grafPath.ithan='http://www.iv.pl/images/91715678912998391289.png';
-		nerthus.grafPath.musicButtons='http://img692.imageshack.us/img692/5538/iconsc.gif';
-	}
+    nerthus.grafPath = {}
+	nerthus.grafPath.loading='http://img826.imageshack.us/img826/4792/loadingnerthus.png';
+	nerthus.grafPath.dazed='http://i55.tinypic.com/2mds2so.png';
+	nerthus.grafPath.chat='http://img180.imageshack.us/img180/3678/okienko3.png';
+	nerthus.grafPath.weather='http://fs5.directupload.net/images/151113/38zszora.gif';
+	nerthus.grafPath.panelTop='http://img441.imageshack.us/img441/9302/nerthuspanel.png';
+	nerthus.grafPath.ithan='http://www.iv.pl/images/91715678912998391289.png';
+	nerthus.grafPath.musicButtons='http://img692.imageshack.us/img692/5538/iconsc.gif';
 	
 	//zwraca date zmian w GMT
 	nerthus.czasZmian = function()
@@ -219,7 +217,6 @@ try{
     }
 
     nerthus.loadSettings();
-    nerthus.grafiki();
 
 }catch(e){log('NerthusBase Error: '+e.description)}
 try{

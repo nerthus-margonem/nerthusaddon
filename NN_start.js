@@ -4,6 +4,21 @@
     http://addons2.margonem.pl/get/17/17447dev.js
 **/
 try{
+    nerthusAddon = {}
+    nerthusAddon.version = null;
+    nerthusAddon.fileUrl = function(filename)
+    {
+        return 'http://cdn.rawgit.com/akrzyz/nerthusaddon/' + this.version + "/" + filename;
+    }
+    nerthusAddon.start = function()
+    {
+        $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
+        {
+            this.version = data.version
+            log("nerthus addon version: " + this.version)
+        });
+    }
+    nerthusAddon.start()
 
 	NN_start = function(){ 
 		try{		

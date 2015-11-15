@@ -15,7 +15,7 @@ nerthus.godzinaZmian= '8:45';	 //hh:mm
 nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore"];
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
-nerthus.NerthusRad = ["Rothe","Materios Dragonius","Goik Tasartir"]
+nerthus.NerthusRad = ["Rothe","Materios Dragonius","Sanjuro Sadatake"]
  
 //Lista narratorów - możliwość używania *nar i ranga "bard"
 nerthus.NerthusNarr = ["Aevenien","Sihaya","Llorando","Vanielle","Snorri",'Materios Dragonius','Demetris','Rothe','Learodus','Saithan','Korano Ligatur','Navu Vruzael'];

@@ -71,9 +71,6 @@ nerthus.EnterMsg = '';
 //ustawienia opcji - nie ruszać!
 nerthus.Settings='111111';
 
-//czas ostatniej wizyty - nie ruszać!
-nerthus.LastVisitTime='';
-
 g.names.ranks[3] = "Strażnik Słowa"; //"Modelator Czasu"; //"Moderator czatu";
 g.names.ranks[4] = "Tkacz Słów"; //"Modelator czasoprzestrzeni"; //"Super moderator";
 g.names.ranks[5] = "Trubadur"; //"Męczystruna"; //"Bard";

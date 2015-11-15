@@ -136,7 +136,7 @@ try{
 	{
 		data = new Date();
 		data.setTime(data.getTime()+30758400000);
-		setCookie('nerthusCookie', nerthus.dateGMT*1+'|'+nerthus.Settings + '|' + nerthus.altPlaylistSrc.trim() , data);
+		setCookie('nerthusCookie', nerthus.dateGMT*1+'|'+nerthus.Settings, data);
 	}
 
 	//zapisywanie daty i ustawień - panel tak
@@ -145,7 +145,7 @@ try{
         nerthus.Settings = setings
 		data = new Date();
 		data.setTime(data.getTime()+30758400000);
-		setCookie('nerthusCookie', nerthus.dateGMT*1 + '|' + nerthus.Settings + '|' + nerthus.altPlaylistSrc.trim(), data);
+		setCookie('nerthusCookie', nerthus.dateGMT*1 + '|' + nerthus.Settings, data);
 		message('zapisano, wciśnij f5');
 	}
 

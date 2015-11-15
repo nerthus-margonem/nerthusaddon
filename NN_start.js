@@ -24,37 +24,40 @@ try{
     {
         $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
         {
+            log("starting nerthus addon in version: " + data.version)
             nerthusAddon.setVersion(data.version)
-            log("starting nerthus addon in version: " + nerthusAddon.version)
-
-            var NN_start = function()
-            { 
-                try
-                {		
-                    nerthus.loadSettings();
-                    nerthus.grafiki();
-                    nerthus.setChatInfo();
-                    nerthus.setEnterMsg();
-                    $.getScript(nerthusAddon.fileUrl('NN_panel.js'));
-                    $.getScript(nerthusAddon.fileUrl('NN_maps.js'),function(){
-                    if( nerthus.Settings[0]*1) {$.getScript(nerthusAddon.fileUrl('NN_night.js'));}
-                    nerthus.maps.seasonMaps();
-                    if( nerthus.Settings[3]*1) {$.getScript(nerthusAddon.fileUrl('NN_pogoda.js'));}
-                    })
-                    log('NerthusAddon start: ok');
-                }catch(e)
-                {
-                    log('NN_Start Error: '+e.message,1);
-                }
-            }
-            $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
-            $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
-            g.loadQueue.push({fun:NN_start,data:""});
-            //ładowanie dodatkowych skryptów jeżeli jakieś są
-            for( i in nerthus.additionaScripts)
-                $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));		
-            })});
+            nerthusAddon.loasScripts()
         });
+    }
+    nerthusAddon.loasScripts = function()
+    {
+        $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
+        $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
+        //ładowanie dodatkowych skryptów jeżeli jakieś są
+        for( i in nerthus.additionaScripts)
+            $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));		
+        g.loadQueue.push({fun:nerthusAddon.loasGameDependentScripts,data:""});
+        })});
+    }
+    nerthusAddon.loasGameDependentScripts = function()
+    {
+        try
+        {		
+            nerthus.loadSettings();
+            nerthus.grafiki();
+            nerthus.setChatInfo();
+            nerthus.setEnterMsg();
+            $.getScript(nerthusAddon.fileUrl('NN_panel.js'));
+            $.getScript(nerthusAddon.fileUrl('NN_maps.js'),function(){
+            if( nerthus.Settings[0]*1) {$.getScript(nerthusAddon.fileUrl('NN_night.js'));}
+            nerthus.maps.seasonMaps();
+            if( nerthus.Settings[3]*1) {$.getScript(nerthusAddon.fileUrl('NN_pogoda.js'));}
+            })
+            log('NerthusAddon start: ok');
+        }catch(e)
+        {
+            log('NN_Start Error: '+e.message,1);
+        }
     }
     nerthusAddon.start()
 }catch(e){log('NerthusStart Error: '+e.message,1)}	

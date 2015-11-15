@@ -1,6 +1,7 @@
 /**
-	Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera (hashem), potem resztę plików dodatku w tej wersji.
+	Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
     Wersia jest w pliku version.json
+    Jeżeli jest zdefiniowana zmienna NerthusAddonDebug odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
 **/
 try{
     nerthusAddon = {}
@@ -14,7 +15,7 @@ try{
             log("nerthus addon in debug mode")
             this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
             this.version = 'master'
-        } 
+        }
     }
     nerthusAddon.fileUrl = function(filename)
     {
@@ -26,10 +27,10 @@ try{
         {
             log("starting nerthus addon in version: " + data.version)
             nerthusAddon.setVersion(data.version)
-            nerthusAddon.loasScripts()
+            nerthusAddon.loadScripts()
         });
     }
-    nerthusAddon.loasScripts = function()
+    nerthusAddon.loadScripts = function()
     {
         $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
         $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
@@ -43,9 +44,7 @@ try{
     nerthusAddon.loasGameDependentScripts = function()
     {
         try
-        {		
-            nerthus.loadSettings();
-            nerthus.grafiki();
+        {
             nerthus.setChatInfo();
             nerthus.setEnterMsg();
             $.getScript(nerthusAddon.fileUrl('NN_panel.js'));
@@ -59,4 +58,4 @@ try{
         }
     }
     nerthusAddon.start()
-}catch(e){log('NerthusStart Error: '+e.message,1)}	
+}catch(e){log('NerthusStart Error: '+e.message,1)}

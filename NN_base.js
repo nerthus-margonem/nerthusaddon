@@ -3,7 +3,6 @@
 	Zawiera stworzenie obiktu nerthus i jego podstawowe funkcje
 	Zawiera stare opcja jak opisy zamiast lvli
 **/
-//	$("#loading").css('background-image','url(http://img826.imageshack.us/img826/4792/loadingnerthus.png)');
 try{
 
 	//stworzenie obiektu nerthus;
@@ -22,14 +21,6 @@ try{
 		nerthus.grafPath.panelTop='http://img441.imageshack.us/img441/9302/nerthuspanel.png';
 		nerthus.grafPath.ithan='http://www.iv.pl/images/91715678912998391289.png';
 		nerthus.grafPath.musicButtons='http://img692.imageshack.us/img692/5538/iconsc.gif';
-	
-		//Zmiana obrazku od ładowania gry
-		//$("#loading").css('background-image','url('+nerthus.grafPath.loading+')');
-		//zmiana obrazków do bycia martwym.
-		//$("#dazed div").css('position','absolute').css('bottom','100px').css('left','56px');
-		//$("#dazed div img").attr('src',nerthus.grafPath.dazed);
-		//http://img171.imageshack.us/img171/6310/ithannerth.png
-		//zmiana obrazku do chatu na ten od Feni
 	}
 	
 	//zwraca date zmian w GMT
@@ -226,6 +217,9 @@ try{
         }
         return ""
     }
+
+    nerthus.loadSettings();
+    nerthus.grafiki();
 
 }catch(e){log('NerthusBase Error: '+e.description)}
 try{

@@ -6,7 +6,7 @@
 try{
 
 	//stworzenie obiektu nerthus;
-	var nerthus = {};
+	nerthus = {};
 	
 	//daty zwykła i GMT
 	nerthus.date = new Date();

@@ -68,9 +68,6 @@ nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">
 nerthus.EnterMsg = '';
 
-//ustawienia opcji - nie ruszać!
-nerthus.Settings='111111';
-
 g.names.ranks[3] = "Strażnik Słowa"; //"Modelator Czasu"; //"Moderator czatu";
 g.names.ranks[4] = "Tkacz Słów"; //"Modelator czasoprzestrzeni"; //"Super moderator";
 g.names.ranks[5] = "Trubadur"; //"Męczystruna"; //"Bard";

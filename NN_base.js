@@ -120,6 +120,7 @@ try{
     }
 
 	//ładowanie ustawień z ciastek
+    nerthus.Settings='111111';
 	nerthus.loadSettings = function()
 	{
 		try{

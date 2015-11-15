@@ -140,17 +140,9 @@ try{
 	}
 
 	//zapisywanie daty i ustawień - panel tak
-	nerthus.saveDateAndSettings = function()
+	nerthus.saveDateAndSettings = function(setings)
 	{
-		try{
-		    nerthus.Settings='';
-		    if($('#panCbNoc').attr('checked')){nerthus.Settings+='1';}else{nerthus.Settings+='0'};
-		    nerthus.Settings+='0'; //nocnce mapy do wywalenia
-            nerthus.Settings+='0';	//muzyka do wywalenia	
-		    if($('#panCbPog').attr('checked')){nerthus.Settings+='1';}else{nerthus.Settings+='0'};
-		    nerthus.Settings+='0'; //z dysku do wywalenia
-		    nerthus.Settings+='0'; //większy chat do wywalenia
-		}catch(e){message('nie udało się zapisać')}
+        nerthus.Settings = setings
 		data = new Date();
 		data.setTime(data.getTime()+30758400000);
 		setCookie('nerthusCookie', nerthus.dateGMT*1 + '|' + nerthus.Settings + '|' + nerthus.altPlaylistSrc.trim(), data);

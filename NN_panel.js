@@ -18,7 +18,7 @@ nerthus.panel.display_icon = function()
 nerthus.panel.display_panel = function()
 {
     var panel_str = this.panel_string()
-    mAlert(panel_str, 2, [function(){nerthus.saveDateAndSettings()},function(){nerthus.saveDate()}]);
+    mAlert(panel_str, 2, [function(){nerthus.saveDateAndSettings(nerthus.panel.get_settings())},function(){nerthus.saveDate()}]);
     $('#n_pan_settings').click(function(){$('#n_pan_settings_str').toggle()})
 }
 
@@ -51,6 +51,26 @@ nerthus.panel.settings_as_str_array = function()
             options[i]=''
     }
     return options;
+}
+
+nerthus.panel.get_settings = function()
+{
+    var settings = ''
+    settings+= this.get_is_checker('#panCbNoc')
+    settings+='0'; //nocnce mapy do wywalenia
+    settings+='0';	//muzyka do wywalenia	
+    settings+= this.get_is_checker('#panCbPog')
+    settings+='0'; //z dysku do wywalenia
+    settings+='0'; //większy chat do wywalenia
+}
+
+nerthus.panel.get_is_checker = function(selector)
+{
+    if($(selector).attr('checked'))
+        return '1'
+    else 
+        return '0'
+
 }
 
 nerthus.panel.display_icon();

@@ -17,7 +17,7 @@ nerthus.panel.display_icon = function()
 
 nerthus.panel.display_panel = function()
 {
-    var panel_str = this.panel_string()
+    var panel_str = "test" //this.panel_string()
     mAlert(panel_str, 2, [function(){nerthus.saveDateAndSettings()},function(){nerthus.saveDate()}]);
     $('#n_pan_settings').click(function(){$('#n_pan_settings_str').toggle()})
 }
@@ -42,7 +42,7 @@ nerthus.panel.settings_str = function()
 
 nerthus.panel.settings_as_str_array = function()
 {
-    var options = [];
+    var options = new Array();
     for(i = 0; i < 6; i++)
     {
         if(nerthus.Settings[i]*1)

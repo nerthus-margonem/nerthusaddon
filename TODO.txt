@@ -1,3 +1,5 @@
-todo:
-* zmienić linki do skryptów na bitbucketowe
+todo: few
+* zmienić linki do skryptów na bitbucketowe few
 * jenak nie bitbucket chociaz jest fajniejszy, jednak gih hub ..
+
+fewfw

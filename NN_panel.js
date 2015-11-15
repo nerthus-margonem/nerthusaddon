@@ -42,11 +42,11 @@ nerthus.panel.settings_str = function()
 
 nerthus.panel.settings_as_str_array = function()
 {
-    var options = new Array();
+    var options = [];
     for(i = 0; i < 6; i++)
     {
         if(nerthus.Settings[i]*1)
-            optionsa[i]='checked'
+            options[i]='checked'
         else
             options[i]=''
     }

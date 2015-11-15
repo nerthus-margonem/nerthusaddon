@@ -45,9 +45,8 @@ try{
 
 		seasonMaps: function()
 		{
-		//mapy okresowe - pory roku	
-		var tmpSeason = nerthus.season();
-			
+            //mapy okresowe - pory roku	
+            var tmpSeason = nerthus.season();
 			for(i in nerthus.mapsArr)
 			{
 				if( nerthus.mapsArr[i][0] == tmpSeason && nerthus.mapsArr[i][1] == map.id )
@@ -78,14 +77,10 @@ try{
 			//zima
 			if(tmpSeason == 4 )
 			{
-                if(map.id == 1 || map.id == 11)
-                    setTimeout(function(){$("div.npc[style*='drzewko']").hide()}, 1000)
 			}
-		
 		},
-		
 	}	
-	
+	nerthus.maps.seasonMaps();
 }
 catch(e){log('NerthusMap Error: '+e.description,1)}
 

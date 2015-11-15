@@ -6,7 +6,7 @@ try{
 
 nerthus.night = function()
 {
-	var hour = nerthus.date.getHours();
+	var hour = new Date().getHours();
 	if( hour >= 4 && hour<18 ){ return; }
 	//czy mapa główna czy wnętrze
 	if(map.mainid==0)
@@ -29,4 +29,4 @@ nerthus.night = function()
 }
 nerthus.night();
 
-}catch(e){log('NerthusNight Error: '+e.description,1);}	
+}catch(e){log('NerthusNight Error: '+e.message,1);}	

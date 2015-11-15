@@ -35,7 +35,8 @@ try{
         $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
         //ładowanie dodatkowych skryptów jeżeli jakieś są
         for( i in nerthus.additionaScripts)
-            $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));		
+            $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));
+        //ładowanie rzeczy zależnych od gry
         g.loadQueue.push({fun:nerthusAddon.loasGameDependentScripts,data:""});
         })});
     }
@@ -48,11 +49,9 @@ try{
             nerthus.setChatInfo();
             nerthus.setEnterMsg();
             $.getScript(nerthusAddon.fileUrl('NN_panel.js'));
-            $.getScript(nerthusAddon.fileUrl('NN_maps.js'),function(){
+            $.getScript(nerthusAddon.fileUrl('NN_maps.js'));
             if( nerthus.Settings[0]*1) {$.getScript(nerthusAddon.fileUrl('NN_night.js'));}
-            nerthus.maps.seasonMaps();
             if( nerthus.Settings[3]*1) {$.getScript(nerthusAddon.fileUrl('NN_pogoda.js'));}
-            })
             log('NerthusAddon start: ok');
         }catch(e)
         {

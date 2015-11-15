@@ -55,13 +55,14 @@ nerthus.panel.settings_as_str_array = function()
 
 nerthus.panel.get_settings = function()
 {
-    var settings = ''
+    var settings = '000000'
     settings+= this.get_is_checker('#panCbNoc')
     settings+='0'; //nocnce mapy do wywalenia
     settings+='0';	//muzyka do wywalenia	
     settings+= this.get_is_checker('#panCbPog')
     settings+='0'; //z dysku do wywalenia
     settings+='0'; //większy chat do wywalenia
+    return settings
 }
 
 nerthus.panel.get_is_checker = function(selector)
@@ -70,7 +71,6 @@ nerthus.panel.get_is_checker = function(selector)
         return '1'
     else 
         return '0'
-
 }
 
 nerthus.panel.display_icon();

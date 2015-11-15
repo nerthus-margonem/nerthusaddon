@@ -1,5 +1,5 @@
 todo:
-  * sprawdzić czemu tarcza skacze
   * da faq jest NN_Config_hax.js i jak sie tego pozbyć
   * dorobić readme.txt
   * posprztać syf w plikach do któych nikt nie zagldal od dawna..
+    zwłaszcza NN_base

@@ -1,5 +1,5 @@
-todo: few
-* zmienić linki do skryptów na bitbucketowe few
-* jenak nie bitbucket chociaz jest fajniejszy, jednak gih hub ..
-
-fewfw
+todo:
+  * sprawdzić czemu tarcza skacze
+  * da faq jest NN_Config_hax.js i jak sie tego pozbyć
+  * dorobić readme.txt
+  * posprztać syf w plikach do któych nikt nie zagldal od dawna..

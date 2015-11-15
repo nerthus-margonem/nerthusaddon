@@ -66,10 +66,10 @@ nerthus.additionaScripts=[
 
 nerthus.graf = {}
 nerthus.graf['weather'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weatherIcons.gif';
-nerthus.graf['loading'] = 'http://img826.imageshack.us/img826/4792/loadingnerthus.png';
-nerthus.graf['dazed']   = 'http://i55.tinypic.com/2mds2so.png';
-nerthus.graf['chat']    = 'http://img180.imageshack.us/img180/3678/okienko3.png';
-nerthus.graf['panelTop']= 'http://img441.imageshack.us/img441/9302/nerthuspanel.png';
+nerthus.graf['panelTop']= 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/nerthusPanel.png';
+nerthus.graf['dazed']   = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/dazed.png';
+nerthus.graf['loading'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/loadingnerthus.png';
+nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/chatPanel2.png';
  
 //Wiadomość która pojawia się na środku ekranu po starcie gry
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">

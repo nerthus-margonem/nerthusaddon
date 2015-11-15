@@ -24,11 +24,11 @@ try{
                     nerthus.grafiki();
                     nerthus.setChatInfo();
                     nerthus.setEnterMsg();
-                    $.getScript(this.fileUrl('NN_panel.js'));
-                    $.getScript(this.fileUrl('NN_maps.js'),function(){
-                    if( nerthus.Settings[0]*1) {$.getScript(this.fileUrl('NN_night.js'));}
+                    $.getScript(nerthusAddon.fileUrl('NN_panel.js'));
+                    $.getScript(nerthusAddon.fileUrl('NN_maps.js'),function(){
+                    if( nerthus.Settings[0]*1) {$.getScript(nerthusAddon.fileUrl('NN_night.js'));}
                     nerthus.maps.seasonMaps();
-                    if( nerthus.Settings[3]*1) {$.getScript(this.fileUrl('NN_pogoda.js'));}
+                    if( nerthus.Settings[3]*1) {$.getScript(nerthusAddon.fileUrl('NN_pogoda.js'));}
                     })
                     log('NerthusAddon start: ok');
                 }catch(e)
@@ -36,13 +36,13 @@ try{
                     log('NN_Start Error: '+e.message,1);
                 }
             }
-            $.getScript(this.fileUrl('NN_base.js'),function(){
-            $.getScript(this.fileUrl('NN_dlaRadnych.js'),function(){
+            $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
+            $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
             g.loadQueue.push({fun:NN_start,data:""});
             //ładowanie dodatkowych skryptów jeżeli jakieś są
             for( i in nerthus.additionaScripts)
                 $.getScript(nerthus.additionaScripts[i]);		
-            $.getScript(this.fileUrl('NN_NightLights.js'));
+            $.getScript(nerthusAddon.fileUrl('NN_NightLights.js'));
             })});
         });
     }

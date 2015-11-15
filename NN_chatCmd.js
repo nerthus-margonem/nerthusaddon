@@ -164,5 +164,5 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 
 //start dodatku
 g.chat.parsers.push(function(ch){ return nerthus.chatCmd.run(ch);});
-map.loaded=true; //to be remov
+
 }catch(e){log('nerthus chatCmd: '+e.message,1);}

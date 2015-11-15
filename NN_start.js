@@ -24,11 +24,11 @@ try{
                     nerthus.grafiki();
                     nerthus.setChatInfo();
                     nerthus.setEnterMsg();
-                    $.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_panel.js');
-                    $.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_maps.js',function(){
-                    if( nerthus.Settings[0]*1) {$.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_night.js');}
+                    $.getScript(this.fileUrl('NN_panel.js'));
+                    $.getScript(this.fileUrl('NN_maps.js'),function(){
+                    if( nerthus.Settings[0]*1) {$.getScript(this.fileUrl('NN_night.js'));}
                     nerthus.maps.seasonMaps();
-                    if( nerthus.Settings[3]*1) {$.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_pogoda.js');}
+                    if( nerthus.Settings[3]*1) {$.getScript(this.fileUrl('NN_pogoda.js'));}
                     })
                     log('NerthusAddon start: ok');
                 }catch(e)
@@ -36,14 +36,13 @@ try{
                     log('NN_Start Error: '+e.message,1);
                 }
             }
-            $.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_base.js',function(){
-            $.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_dlaRadnych.js',function(){
+            $.getScript(this.fileUrl('NN_base.js'),function(){
+            $.getScript(this.fileUrl('NN_dlaRadnych.js'),function(){
             g.loadQueue.push({fun:NN_start,data:""});
             //ładowanie dodatkowych skryptów jeżeli jakieś są
             for( i in nerthus.additionaScripts)
                 $.getScript(nerthus.additionaScripts[i]);		
-            $.getScript('http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_NightLights.js');
-            
+            $.getScript(this.fileUrl('NN_NightLights.js'));
             })});
         });
     }

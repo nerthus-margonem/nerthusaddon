@@ -65,10 +65,10 @@ nerthus.additionaScripts=[
                          ];				
 
 nerthus.graf = {}
+nerthus.graf['weather'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weatherIcons.gif';
 nerthus.graf['loading'] = 'http://img826.imageshack.us/img826/4792/loadingnerthus.png';
 nerthus.graf['dazed']   = 'http://i55.tinypic.com/2mds2so.png';
 nerthus.graf['chat']    = 'http://img180.imageshack.us/img180/3678/okienko3.png';
-nerthus.graf['weather'] = 'http://fs5.directupload.net/images/151113/38zszora.gif';
 nerthus.graf['panelTop']= 'http://img441.imageshack.us/img441/9302/nerthuspanel.png';
  
 //Wiadomość która pojawia się na środku ekranu po starcie gry

@@ -6,7 +6,7 @@ try{
 
 //data i godzina zmian - jeśli były jakieś ważne zmiany na forum to tu ustawia się ich czas - odpowiada za skakanie tarczy
 nerthus.dataZmian = '2.11.2010'; //dd.mm.rrrr
-nerthus.godzinaZmian = '8:45';     //hh:mm
+nerthus.godzinaZmian = '8:45';   //hh:mm
 
 //Lista osób specjalnych - uprawnieni do używania specjalnych komend na chacie - taki bard bez etykietki
 nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore"];
@@ -52,7 +52,6 @@ nerthus.mapsArr =
 nerthus.additionaScripts =
 [
     'NN_Config_hax.js',
-    'NN_Wiosna.js',
     'NN_chatCmd.js',
     'NN_alko.js',
     'NN_NightLights.js'

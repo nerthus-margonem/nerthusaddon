@@ -13,8 +13,8 @@ try{
     {
         $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
         {
-            this.version = data.version
-            log("starting nerthus addon in version: " + this.version)
+            nerthusAddon.version = data.version
+            log("starting nerthus addon in version: " + nerthusAddon.version)
 
             var NN_start = function()
             { 

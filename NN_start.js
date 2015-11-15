@@ -24,7 +24,7 @@ try{
     {
         $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
         {
-            nerthusAddon.version = data.version
+            nerthusAddon.setVersion(data.version)
             log("starting nerthus addon in version: " + nerthusAddon.version)
 
             var NN_start = function()

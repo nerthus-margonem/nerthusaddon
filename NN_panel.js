@@ -55,7 +55,7 @@ nerthus.panel.settings_as_str_array = function()
 
 nerthus.panel.get_settings = function()
 {
-    var settings = '000000'
+    var settings = ''
     settings+= this.get_is_checker('#panCbNoc')
     settings+='0'; //nocnce mapy do wywalenia
     settings+='0';	//muzyka do wywalenia	

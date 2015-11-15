@@ -23,8 +23,7 @@ try
         nerthus.weather.effects.display()
         var x = Math.floor(id / 7)
         var y = id % 7
-		$('#nWeather').css('background','url('+nerthus.grafPath.weather+') -'+ x * 55 +'px -'+ y * 55 +'px');
-        log("nerthus.grafPath.weather: " + nerthus.grafPath.weather)
+		$('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ x * 55 +'px -'+ y * 55 +'px');
     }
 
     nerthus.weather.set_global_weather = function()

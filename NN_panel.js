@@ -18,8 +18,15 @@ nerthus.panel.display_icon = function()
 nerthus.panel.display_panel = function()
 {
     var panel_str = this.panel_string()
-    mAlert(panel_str, 2, [function(){nerthus.saveDateAndSettings(nerthus.panel.get_settings())},function(){nerthus.saveDate()}]);
+    mAlert(panel_str, 2, [function(){nerthus.panel.save()}])
     $('#n_pan_settings').click(function(){$('#n_pan_settings_str').toggle()})
+}
+
+nerthus.panel.save = function()
+{
+    var settings = nerthus.panel.get_settings()
+    nerthus.storeSettings(settings)
+	message('zapisano, wciśnij f5')
 }
 
 nerthus.panel.panel_string = function()

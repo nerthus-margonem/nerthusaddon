@@ -12,19 +12,6 @@ try{
 	nerthus.date = new Date();
 	nerthus.dateGMT = new Date(nerthus.date*1 + nerthus.date.getTimezoneOffset()*60*1000);
 
-	//zwraca date zmian w GMT
-	nerthus.czasZmian = function()
-	{
-	 var retVal = new Date();
-	 var a=nerthus.dataZmian.split('.');
-	 retVal.setFullYear(a[2],a[1]-1,a[0])
-	 var b=nerthus.godzinaZmian.split(':');
-	 retVal.setHours(b[0],b[1]);
-
-	 retVal=retVal*1+retVal.getTimezoneOffset()*60*1000;
-	 return new Date(retVal); 
-	}
-	
 	//zwraca sezon 1 - wiosna, 2 - lato, 3 - jesień, 4 - zima
 	nerthus.season = function()
 	{
@@ -64,19 +51,6 @@ try{
 		return retVal;
 	}
 	
-	//klejenie tablicy w string - do zapisu ciastek itp
-	nerthus.glue = function(pieces,glue)	
-	{
-		var retVal='';
-		var tGlue='';
-		for (i in pieces) 
-		{
-			  retVal += tGlue + pieces[i];   
-			  tGlue = glue;
-		}
-		return retValue;
-	}
-
 	//info wyświetlane na chacie po zalogowaniu
 	nerthus.setChatInfo = function()
 	{
@@ -126,27 +100,17 @@ try{
 		try{
 		    var cookie = getCookie('nerthusCookie');
 			cookie=cookie.split('|');
-			nerthus.LastVisitTime=new Date(cookie[0]*1);
 			nerthus.Settings=cookie[1];
 		}catch(e){}	
 	}
 
-	//zapisywanie samej daty - panel nie
-	nerthus.saveDate = function()
-	{
-		data = new Date();
-		data.setTime(data.getTime()+30758400000);
-		setCookie('nerthusCookie', nerthus.dateGMT*1+'|'+nerthus.Settings, data);
-	}
-
 	//zapisywanie daty i ustawień - panel tak
-	nerthus.saveDateAndSettings = function(setings)
+	nerthus.storeSettings = function(settings)
 	{
-        nerthus.Settings = setings
+        nerthus.Settings = settings
 		data = new Date();
 		data.setTime(data.getTime()+30758400000);
 		setCookie('nerthusCookie', nerthus.dateGMT*1 + '|' + nerthus.Settings, data);
-		message('zapisano, wciśnij f5');
 	}
 
     nerthus.rightsToRank = function (rights)
@@ -157,31 +121,22 @@ try{
         return 3 //mc
     }
 
-    nerthus.getPlayerRank = function (player)
+    nerthus.getPlayerRank = function(player)
     {
         var d = -1;
 		if (player.rights)
-        {
 			d = nerthus.rightsToRank(player.rights)
-        }
         if (nerthus.isNarr(player.nick))
         {
             if(d == 3)
-            {
                 d = 6 //bard + mc
-            } else
-            {
+            else
                 d = 5 //bard
-            }
         }
         if (nerthus.isRad(player.nick))
-        {
             d = 7 //radny
-        }
         if(d > -1)
-        {
             return "<i>" + g.names.ranks[d] + "</i>"
-        }
         return ""
     }
     
@@ -190,13 +145,9 @@ try{
     	//sprawdza czy vip, jeśli tak, to daje inny opis	
 		var vip;
 		if( vip= nerthus.isVip(player.id*1) )
-        {
             return "<center>" + nerthus.vipNames[vip-1] + "</center>"; 
-        }
 		else if (player.lvl) 
-        {
             return "<center>" + nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (player.lvl - 1) >> 3)] + "</center>"; 
-        }
         return ""
     }
 

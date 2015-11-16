@@ -58,12 +58,12 @@ nerthus.additionaScripts =
 
 nerthus.graf = {}
 nerthus.graf['weather'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weatherIcons.gif'
+nerthus.graf['rain']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_rain.gif'
+nerthus.graf['snow']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_snow.jpg'
 nerthus.graf['panelTop']= 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/nerthusPanel.png'
 nerthus.graf['dazed']   = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/dazed.png'
 nerthus.graf['loading'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/loadingnerthus.png'
 nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/chatPanel2.png'
-nerthus.graf['rain']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_rain.gif'
-nerthus.graf['snow']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_snow.jpg'
 
 //Wiadomość która pojawia się na środku ekranu po starcie gry
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">

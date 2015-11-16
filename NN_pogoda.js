@@ -259,12 +259,12 @@ try
 
     nerthus.weather.effects.display_rain = function() 
     {   
-       nerthus.weather.effects.display_url("http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_rain.gif")
+       nerthus.weather.effects.display_url(nerthus.graf.rain)
     }
     
     nerthus.weather.effects.display_snow = function()
     {
-        nerthus.weather.effects.display_url("http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_snow.jpg")
+        nerthus.weather.effects.display_url(nerthus.graf.snow)
     }
 
     nerthus.weather.effects.display_url = function(url)

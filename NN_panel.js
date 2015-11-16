@@ -19,7 +19,7 @@ nerthus.panel.display_panel = function()
 {
     var panel_str = this.panel_string()
     mAlert(panel_str, 2, [function(){nerthus.panel.save()}])
-    $('#n_pan_settings').click(function(){$('#n_pan_settings_str').toggle()})
+    $('#n_pan_settings').click(function(){$(this).toggle()})
 }
 
 nerthus.panel.save = function()
@@ -82,4 +82,4 @@ nerthus.panel.get_is_checker = function(selector)
 
 nerthus.panel.display_icon();
 
-}catch(e){log('NerthusPanel Error: '+e.description,1);}
+}catch(e){log('NerthusPanel Error: '+e.message,1);}

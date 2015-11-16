@@ -153,7 +153,7 @@ try{
 
     nerthus.loadSettings();
 
-}catch(e){log('NerthusBase Error: '+e.description)}
+}catch(e){log('NerthusBase Error: '+e.message)}
 try{
 	nerthus.NerthusRad=[];
 	nerthus.NerthusNarr=[];

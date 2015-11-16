@@ -68,20 +68,17 @@ try{
 		if(nerthus.EnterMsg != '')
 		    message(nerthus.EnterMsg)
 	}
-	//dwie funkcje do chatu i tipów other.
-	//sprawdzanie uprawnień do narracji
+
 	nerthus.isNarr = function(a)
 	{
 		return nerthus.NerthusNarr.indexOf(a) >= 0
 	}
 
-	//sprawdzanie czy radny
 	nerthus.isRad = function(a)
 	{
 		return nerthus.NerthusRad.indexOf(a) >= 0
    	}
 
-    //sprawdzanie czy special
 	nerthus.isSpec = function(a)
 	{
 		return nerthus.NerthusSpec.indexOf(a) >= 0
@@ -93,7 +90,6 @@ try{
         return nerthus.vipList.indexOf(a)+1
     }
 
-	//ładowanie ustawień z ciastek
     nerthus.Settings='111111';
 	nerthus.loadSettings = function()
 	{
@@ -104,7 +100,6 @@ try{
 		}catch(e){}	
 	}
 
-	//zapisywanie daty i ustawień - panel tak
 	nerthus.storeSettings = function(settings)
 	{
         nerthus.Settings = settings

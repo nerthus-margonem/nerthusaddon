@@ -264,7 +264,7 @@ try
     
     nerthus.weather.effects.display_snow = function()
     {
-        nerthus.weather.effects.display_url("http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_rain.jpg")
+        nerthus.weather.effects.display_url("http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/weather_snow.jpg")
     }
 
     nerthus.weather.effects.display_url = function(url)

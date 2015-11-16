@@ -19,7 +19,7 @@ nerthus.panel.display_panel = function()
 {
     var panel_str = this.panel_string()
     mAlert(panel_str, 2, [function(){nerthus.panel.save()}])
-    $('#n_pan_settings').click(function(){$(this).toggle()})
+    $('#n_pan_settings').click(function(){$("#n_pan_settings_str").toggle()})
 }
 
 nerthus.panel.save = function()

@@ -35,7 +35,7 @@ nerthus_alk.timer_handler = function()
 _nerthg = _g;
 _g = function (c,d)
 {
-    // jeĹ?li uĹźyemy towaru konsumpcyjnego o wymaganiach levelowych 18 to dodaje nam 10% upojenia alkoholowego
+    // jeżli użyjemy towaru konsumpcyjnego o wymaganiach levelowych 18 to dodaje nam 10% upojenia alkoholowego
     if (c.search("moveitem&st=1&id=") > -1) 
     {
         var it = g.item[c.slice(17)];

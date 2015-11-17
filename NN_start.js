@@ -32,8 +32,8 @@ try{
     }
     nerthusAddon.loadScripts = function()
     {
-        $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
         $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
+        $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
         //ładowanie dodatkowych skryptów jeżeli jakieś są
         for( i in nerthus.additionaScripts)
             $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));

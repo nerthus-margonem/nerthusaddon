@@ -3,6 +3,8 @@
     Drugi plik z dodatku Nerthusa. Zawiera podstawowe zmienne do modyfikacji.
 **/
 try{
+//stworzenie obiektu nerthus 
+nerthus = {}
 
 //data i godzina zmian - jeśli były jakieś ważne zmiany na forum to tu ustawia się ich czas - odpowiada za skakanie tarczy
 nerthus.dataZmian = '2.11.2010'; //dd.mm.rrrr

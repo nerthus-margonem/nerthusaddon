@@ -4,10 +4,6 @@
 	Zawiera stare opcja jak opisy zamiast lvli
 **/
 try{
-
-	//stworzenie obiektu nerthus;
-	nerthus = {};
-	
 	//daty zwykła i GMT
 	nerthus.date = new Date();
 	nerthus.dateGMT = new Date(nerthus.date*1 + nerthus.date.getTimezoneOffset()*60*1000);

@@ -8,7 +8,7 @@ nerthus.panel = {}
 
 nerthus.panel.display_icon = function()
 {
-    $('<img id="tarcza" src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif" tip="Nerthus">').appendTo('#panel')
+    $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus">').appendTo('#panel')
     .css({position:"absolute",top:"0px",left:"242px",cursor:"pointer"})
     .click(function(){nerthus.panel.display_panel()})
     .mouseover(function(){$(this).css('opacity','0.6')})

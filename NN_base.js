@@ -146,12 +146,6 @@ try{
 
 }catch(e){log('NerthusBase Error: '+e.message)}
 try{
-	nerthus.NerthusRad=[];
-	nerthus.NerthusNarr=[];
-	nerthus.lvlNames = ['Ciułacz','Łowca Wilków','Tropiciel Zulusów','Poganiacz Goblinów','Piętno Orków','Miłośnik Harpii','Rezun Olbrzymów','Hycel Gnolli','Koszmar Tolloków','Magazynier Pełną Gębą','Zguba Minotaurów','Niszczyciel Szkieletów','Treser Centaurów','Nieustraszony Pogromca Korsarzy','Tańczący z Mumiami','Szabrownik Wraków','Gobliński Kat','Postrach Berserkerów','Władca Kazamatów','Młot na Czarownice','Dręczyciel Praorków','Zguba Czarnej Gwardii','Poskramiacz Furboli','Egzekutor Myświórów','Wielki Inkwizytor','Zaklinacz Arachnidów','Kat Demonisa','Oprawca Maddoków','Potomek Najwyższych','Piekielny Jeźdźca', 'Ponury Żniwiarz','Gwardzista Piekieł','Tytan'];
-	nerthus.vipList=[];
-	nerthus.vipNames=[];	
-	
 	g.tips.npc = function (c) {
 		var e = "<b>" + c.nick + "</b>";
 		if (c.type != 4) {
@@ -201,10 +195,6 @@ try{
 		}
 		return e
 	};
-	g.names.ranks[3] = "Członek Rady";
-	g.names.ranks[4] = "Większy Członek Rady";
-	g.names.ranks[5] = "Bard";
-    g.names.ranks[6] = "Modelator struny";
 
 	g.tips.other = function (a) {   
 		var b = "<b>" + a.nick + "</b>";

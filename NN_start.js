@@ -35,6 +35,10 @@ try{
     {
         $.getScript(nerthus.addon.fileUrl('NN_dlaRadnych.js'),function(){
         $.getScript(nerthus.addon.fileUrl('NN_base.js'),function(){
+        nerthus.chatInfoStr = "test chat str"
+        nerthus.EnterMsg = "test entry msg"
+        nerthus.setChatInfo();
+        nerthus.setEnterMsg();
         //ładowanie dodatkowych skryptów jeżeli jakieś są
         for( i in nerthus.additionaScripts)
             $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
@@ -46,8 +50,6 @@ try{
     {
         try
         {
-            nerthus.setChatInfo();
-            nerthus.setEnterMsg();
             $.getScript(nerthus.addon.fileUrl('NN_panel.js'));
             $.getScript(nerthus.addon.fileUrl('NN_maps.js'));
             if( nerthus.Settings[0]*1) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}

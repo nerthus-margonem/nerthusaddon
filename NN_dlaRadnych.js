@@ -27,7 +27,7 @@ nerthus.vipList = [16,50,319,6749,7422,9565,6901,2720,3077,10430,10473,2230,513,
 nerthus.vipNames = ['Teźa','Mulher Má','Niecny drow','Przezacna','Mistrz pióra','Donna Amadonna','Zło wcielone','Fochnisia','Siewca Wiatru','Wschodzące Słońce','Wędrowny Rysownik','Mhroczniś','Zbieracz gumijagód','Gumitruskawka','Latorośle drowa','Głodny hobbit','Latorośle drowa','Boski Wiatr','Boski Wiatr','Zielarka'];
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
-nerthus.chatInfoStr = '';
+nerthus.chatInfoStr = 'test1';
 
 //Czerwone info w panelu - ustawiać tu tekst nowości na forum
 nerthus.panelMessage = 'Witaj na Nerthusie, zapraszamy na <a href="http://www.margonem.pl/?task=forum&show=topics&id=33" target="_blank">forum</a>';
@@ -68,7 +68,7 @@ nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/
 
 //Wiadomość która pojawia się na środku ekranu po starcie gry
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">
-nerthus.EnterMsg = '';
+nerthus.EnterMsg = 'test1';
 
 g.names.ranks[3] = "Strażnik Słowa"; //"Modelator Czasu"; //"Moderator czatu";
 g.names.ranks[4] = "Tkacz Słów"; //"Modelator czasoprzestrzeni"; //"Super moderator";

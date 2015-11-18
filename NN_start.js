@@ -50,7 +50,7 @@ try{
             $.getScript(nerthus.addon.fileUrl('NN_maps.js'));
             if( nerthus.Settings[0]*1) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}
             if( nerthus.Settings[3]*1) {$.getScript(nerthus.addon.fileUrl('NN_pogoda.js'));}
-            log('NerthusAddon start: ok');
+            log('Nerthus addon started');
         }catch(e)
         {
             log('NN_Start Error: '+e.message,1);

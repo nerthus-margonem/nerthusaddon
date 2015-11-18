@@ -39,7 +39,8 @@ try{
         for( i in nerthus.additionaScripts)
             $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
         //ładowanie rzeczy zależnych od gry
-        g.loadQueue.push({fun:nerthus.addon.loadGameDependentScripts,data:""});
+        var load = {fnc: this.loadGameDependentScripts, data: null}
+        g.loadQueue.push(load);
         })});
     }
     nerthus.addon.loadGameDependentScripts = function()

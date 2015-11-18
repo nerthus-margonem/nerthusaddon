@@ -6,7 +6,6 @@
 try{
     nerthus = {}
     nerthus.addon = {}
-    log("nerthus.addon b4: " + typeof nerthus.addon)
     nerthus.addon.version = "master";
     nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
     nerthus.addon.setVersion = function(version)

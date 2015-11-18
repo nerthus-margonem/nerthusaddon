@@ -143,6 +143,8 @@ try{
     }
 
     nerthus.loadSettings();
+    nerthus.setChatInfo();
+    nerthus.setEnterMsg();
 
 }catch(e){log('NerthusBase Error: '+e.message)}
 try{

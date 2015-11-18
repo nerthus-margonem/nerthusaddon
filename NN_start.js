@@ -37,21 +37,21 @@ try{
         $.getScript(nerthus.addon.fileUrl('NN_base.js'),function(){
         //ładowanie dodatkowych skryptów jeżeli jakieś są
         for( i in nerthus.additionaScripts)
-            $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
+            $.getScript(this.fileUrl(nerthus.additionaScripts[i]));
         //ładowanie rzeczy zależnych od gry
-        g.loadQueue.push({fun:nerthus.addon.loasGameDependentScripts,data:""});
+        g.loadQueue.push({fun:nerthus.addon.loadGameDependentScripts,data:""});
         })});
     }
-    nerthus.addon.loasGameDependentScripts = function()
+    nerthus.addon.loadGameDependentScripts = function()
     {
         try
         {
             nerthus.setChatInfo();
             nerthus.setEnterMsg();
-            $.getScript(nerthus.addon.fileUrl('NN_panel.js'));
-            $.getScript(nerthus.addon.fileUrl('NN_maps.js'));
-            if( nerthus.Settings[0]*1) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}
-            if( nerthus.Settings[3]*1) {$.getScript(nerthus.addon.fileUrl('NN_pogoda.js'));}
+            $.getScript(this.fileUrl('NN_panel.js'));
+            $.getScript(this.fileUrl('NN_maps.js'));
+            if( nerthus.Settings[0]*1) {$.getScript(this.fileUrl('NN_night.js'));}
+            if( nerthus.Settings[3]*1) {$.getScript(this.fileUrl('NN_pogoda.js'));}
             log('NerthusAddon start: ok');
         }catch(e)
         {

@@ -40,8 +40,8 @@ try{
         for( i in nerthus.additionaScripts)
             $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
         //ładowanie rzeczy zależnych od gry
-        var func = nerthus.addon.loadGameDependentScripts
-        log("func: " + typeof func)
+        //var func = nerthus.addon.loadGameDependentScripts;
+        //log("func: " + typeof func)
         log("nerthus: " + typeof nerthus)
         log("nerthus.addon: " + typeof nerthus.addon)
         log("nerthus.addon.loadGameDependentScripts: " + typeof nerthus.addon)

@@ -39,8 +39,9 @@ try{
         for( i in nerthus.additionaScripts)
             $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
         //ładowanie rzeczy zależnych od gry
-        var func = this.loadGameDependentScripts 
-        g.loadQueue.push({fun:func,data:null});
+        var func = this.loadGameDependentScripts
+        log(typeof func)
+        //g.loadQueue.push({fun:func,data:null});
         })});
     }
     nerthus.addon.loadGameDependentScripts = function()

@@ -4,10 +4,11 @@
     Jeżeli jest zdefiniowana zmienna NerthusAddonDebug odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
 **/
 try{
-    nerthusAddon = {}
-    nerthusAddon.version = "master";
-    nerthusAddon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
-    nerthusAddon.setVersion = function(version)
+    nerthus = {}
+    nerthus.addon = {}
+    nerthus.addon.version = "master";
+    nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
+    nerthus.addon.setVersion = function(version)
     {
         this.version = version
         if(typeof NerthusAddonDebug != 'undefined')
@@ -17,45 +18,45 @@ try{
             this.version = 'master'
         }
     }
-    nerthusAddon.fileUrl = function(filename)
+    nerthus.addon.fileUrl = function(filename)
     {
         return this.filesPrefix + "/" + this.version + "/" + filename;
     }
-    nerthusAddon.start = function()
+    nerthus.addon.start = function()
     {
         $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
         {
             log("starting nerthus addon in version: " + data.version)
-            nerthusAddon.setVersion(data.version)
-            nerthusAddon.loadScripts()
+            nerthus.addon.setVersion(data.version)
+            nerthus.addon.loadScripts()
         });
     }
-    nerthusAddon.loadScripts = function()
+    nerthus.addon.loadScripts = function()
     {
-        $.getScript(nerthusAddon.fileUrl('NN_dlaRadnych.js'),function(){
-        $.getScript(nerthusAddon.fileUrl('NN_base.js'),function(){
+        $.getScript(nerthus.addon.fileUrl('NN_dlaRadnych.js'),function(){
+        $.getScript(nerthus.addon.fileUrl('NN_base.js'),function(){
         //ładowanie dodatkowych skryptów jeżeli jakieś są
         for( i in nerthus.additionaScripts)
-            $.getScript(nerthusAddon.fileUrl(nerthus.additionaScripts[i]));
+            $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
         //ładowanie rzeczy zależnych od gry
-        g.loadQueue.push({fun:nerthusAddon.loasGameDependentScripts,data:""});
+        g.loadQueue.push({fun:nerthus.addon.loasGameDependentScripts,data:""});
         })});
     }
-    nerthusAddon.loasGameDependentScripts = function()
+    nerthus.addon.loasGameDependentScripts = function()
     {
         try
         {
             nerthus.setChatInfo();
             nerthus.setEnterMsg();
-            $.getScript(nerthusAddon.fileUrl('NN_panel.js'));
-            $.getScript(nerthusAddon.fileUrl('NN_maps.js'));
-            if( nerthus.Settings[0]*1) {$.getScript(nerthusAddon.fileUrl('NN_night.js'));}
-            if( nerthus.Settings[3]*1) {$.getScript(nerthusAddon.fileUrl('NN_pogoda.js'));}
+            $.getScript(nerthus.addon.fileUrl('NN_panel.js'));
+            $.getScript(nerthus.addon.fileUrl('NN_maps.js'));
+            if( nerthus.Settings[0]*1) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}
+            if( nerthus.Settings[3]*1) {$.getScript(nerthus.addon.fileUrl('NN_pogoda.js'));}
             log('NerthusAddon start: ok');
         }catch(e)
         {
             log('NN_Start Error: '+e.message,1);
         }
     }
-    nerthusAddon.start()
+    nerthus.addon.start()
 }catch(e){log('NerthusStart Error: '+e.message,1)}

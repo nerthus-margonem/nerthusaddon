@@ -19,7 +19,7 @@ nerthus.night_lights.add = function(lights)
 nerthus.night_lights.display = function(light)
 {
     var lt = this.types[light.type]
-    log(lt.width +","lt.height+","lt.url)
+    log(lt.width +","+ lt.height +","+ lt.url)
 
     return $('<div/>')
     .css({background:'url('+ lt.url +')',

@@ -5,7 +5,7 @@ nerthus.night_lights = {}
 nerthus.night_lights.types = {}
 nerthus.night_lights.types.add = function(type,size)
 {
-    this[type] = {url : nerthus.addon.fileUrl("/img/night_light_" + type + ".png"), x : size, y : size}
+    this[type] = {url : nerthus.addon.fileUrl("img/night_light_" + type + ".png"), x : size, y : size}
 }
 nerthus.night_lights.add = function(lights)
 {
@@ -16,6 +16,7 @@ nerthus.night_lights.add = function(lights)
 }
 nerthus.night_lights.display = function(light, x, y)
 {
+    log(light.type +" , "+ light.x +" , "+ light.y +" , "+ x +" , "+ y)
     return $('<div/>')
     .css({background:'url('+ light.url +')',
           width : light.x,

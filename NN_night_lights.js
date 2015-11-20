@@ -13,7 +13,9 @@ nerthus.night_lights.types.add = function(type,size)
 nerthus.night_lights.add = function(lights)
 {
     for(var i in lights)
+    {
         this.display(this.types[lights[i].type], lights[i].x, lights[i].y)
+    }
 }
 
 nerthus.night_lights.display = function(light, x, y)

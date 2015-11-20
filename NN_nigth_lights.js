@@ -23,8 +23,8 @@ nerthus.night_lights.display = function(light, x, y)
           height : light.y,
           zIndex : 280,
           position:'absolute',
-          left : x,
-          top : y,
+          left : parseInt(x),
+          top : parseInt(y),
           pointerEvents : "none"})
     .addClass("nightLight")
     .attr("type", light.type)

@@ -7,25 +7,26 @@ nerthus.night_lights.types = {}
 
 nerthus.night_lights.types.add = function(type,size)
 {
-    this[type] = {'url' : nerthus.addon.fileUrl("/img/night_light_" + type + ".png"), 'x' : size, 'y' : size, 'type' : type}
+    this[type] = {'url' : nerthus.addon.fileUrl("/img/night_light_" + type + ".png"), 'widthx' : size, 'height' : size}
 }
 
 nerthus.night_lights.add = function(lights)
 {
     for(var i in lights)
-        this.display(this.types[lights[i].type], lights[i].x, lights[i].y)
+        this.display(lights[i])
 }
 
-nerthus.night_lights.display = function(light, x, y)
+nerthus.night_lights.display = function(light)
 {
+    var lt = this.types[light.type]
     return $('<div/>')
-    .css({background:'url('+ light.url +')',
-          width : light.x,
-          height : light.y,
+    .css({background:'url('+ lt.url +')',
+          width : lt.width,
+          height : lt.width,
           zIndex : 280,
           position:'absolute',
-          left : parseInt(x),
-          top : parseInt(y),
+          left : parseInt(light.x),
+          top : parseInt(light.y),
           pointerEvents : "none"})
     .addClass("nightLight")
     .attr("type", light.type)

@@ -59,9 +59,9 @@ nerthus.night_lights.give_me_the_light = function()
     });
 }
 
-nerthus.night_lights.give_me_the_light()
+g.loadQueue.push({fun:nerthus.night_lights.give_me_the_light, data:""})
 
-}catch
+}catch(err)
 {
 log('night lights mgr error: '+ err.message ,1)
 }

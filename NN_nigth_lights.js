@@ -30,7 +30,7 @@ nerthus.night_lights.on = function()
         {
             for(var i in lights)
             {
-                this.add.(this.types[lights[i].type], lights[i].x, lights[i].y)
+                this.add(this.types[lights[i].type], lights[i].x, lights[i].y)
             }
         })
 }

@@ -39,14 +39,14 @@ nerthus.night_lights.get_lights = function()
 
 nerthus.night_lights.give_me_the_light = function()
 {
-    $("#base .nightLight").css({pointerEvents : "auto"}).each(function(){nightLights.makeLightTestable($(this))});
-    var dumpLight = $("<span>dump lights</span>").click(function(){nightLights.dumpLights()});
+    $("#base .nightLight").css({pointerEvents : "auto"}).each(function(){nerthus.night_lights.make_testable($(this))});
+    var dumpLight = $("<span>dump lights</span>").click(function(){nerthus.night_lights.dump()});
     var addBorder = $("<span>add border</span>").click(function(){$("#base .nightLight").css("border","1px solid yellow")});
     var delBorder = $("<span>del border</span>").click(function(){$("#base .nightLight").css("border","")});
     var togglemouseMove = $("<span>toggle move</span>").click(function(){hero.opt ^= 64; message("blocked: " + Boolean(hero.opt & 64))});
     $.getScript("http://addons2.margonem.pl/get/1/1689public.js",function()
     {
-        for(i in nightLights.nightLightsTypes)
+        for(i in nerthus.night_lights.types)
              aldiMenu.add($("<span>light "+i+"</span>").attr("type",i).click(function()
                  {
                      var light = {'type' : $(this).attr("type"), 'x' : hero.x*32, 'y' : hero.y*32}

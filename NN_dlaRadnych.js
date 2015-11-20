@@ -53,7 +53,7 @@ nerthus.additionaScripts =
 [
     'NN_chatCmd.js',
     'NN_alko.js',
-    'NN_NightLights.js'
+    'NN_night_lights.js'
 ];
 
 nerthus.graf = {}

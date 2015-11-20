@@ -28,7 +28,7 @@ nerthus.night_lights.on = function()
     if( hour < 4 || hour > 18 )
         $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),function(lights)
         {
-            for(var i in lights)        
+            for(var i in lights)
             {
                 this.add.(this.types[lights[i].type], lights[i].x, lights[i].y)
             }

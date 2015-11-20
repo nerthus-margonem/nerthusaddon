@@ -17,24 +17,23 @@ nerthus.night_lights.add_testable = function(light)
 
 nerthus.night_lights.dump = function()
 {
-    str = []
-    str.push("//"+map.name+" id: "+map.id)
-    str.push("[")
-    str.push(this.get_lights())
-    str.push("]")
-    log(str.join("\n"))
+    log("//"+map.name+" id: "+map.id)
+    log("[")
+    this.log_lights()
+    log("]")
     message("dumping done");
 }
 
-nerthus.night_lights.get_lights = function()
+nerthus.night_lights.log_lights = function()
 {
-    str = []
     $("#base .nightLight").each(function()
     {
             var pos = $(this).position()
-            str.push("{'x' : '" + parseInt(pos.left) + "', 'y' : '" + parseInt(pos.top) + "', 'type' : '" + $(this).attr("type") + "'}")
+            var x = parseInt(pos.left)
+            var y = parseInt(pos.top)
+            var type = $(this).attr("type")
+            log("{'x' : '" +x+ "', 'y' : '" +y+ "', 'type' : '" +type+ "'},")
     });
-    return str.join(",\n")
 }
 
 nerthus.night_lights.give_me_the_light = function()

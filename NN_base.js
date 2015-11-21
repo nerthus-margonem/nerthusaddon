@@ -153,7 +153,7 @@ try{
     {
         var c = "<b><font color='white'>" + hero.nick + "</font></b>";
         c += nerthus.getPlayerTitle(hero)
-        var player = {'nick':hero.nick, 'rights':hero.uprawnienia};
+        var hero_player = {'nick':hero.nick, 'rights':hero.uprawnienia};
         c += "<i><font color='red'>" + nerthus.getPlayerRank(hero_player) + "</font></i>"
         return c
     });

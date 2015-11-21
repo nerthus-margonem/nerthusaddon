@@ -12,7 +12,7 @@ nerthus.night_lights.make_testable = function(light)
 
 nerthus.night_lights.add_testable = function(light)
 {
-    this.make_testable(this.add([light]));          
+    this.make_testable(this.display(light));          
 }
 
 nerthus.night_lights.dump = function()

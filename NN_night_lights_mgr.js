@@ -17,7 +17,7 @@ nerthus.night_lights.add_testable = function(light)
 
 nerthus.night_lights.dump = function()
 {
-    log("//"+map.name+" id: "+map.id)
+    log("//"+map.name+" : map_"+map.id+".json")
     log("[")
     this.log_lights()
     log("]")
@@ -46,11 +46,12 @@ nerthus.night_lights.give_me_the_light = function()
     $.getScript("http://addons2.margonem.pl/get/1/1689public.js",function()
     {
         for(i in nerthus.night_lights.types)
-             aldiMenu.add($("<span>light "+i+"</span>").attr("type",i).click(function()
-                 {
-                     var light = {'type' : $(this).attr("type"), 'x' : hero.x*32, 'y' : hero.y*32}
-                     nerthus.night_lights.add_testable(light)
-                 }));                 
+            if(typeof nerthus.night_lights.types[i] === 'object')
+                aldiMenu.add($("<span>light "+i+"</span>").attr("type",i).click(function()
+                {
+                    var light = {'type' : $(this).attr("type"), 'x' : hero.x*32, 'y' : hero.y*32}
+                    nerthus.night_lights.add_testable(light)
+                }));                 
         aldiMenu.add(dumpLight);
         aldiMenu.add(addBorder);
         aldiMenu.add(delBorder);

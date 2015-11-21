@@ -148,6 +148,15 @@ try{
 
 }catch(e){log('NerthusBase Error: '+e.message)}
 try{
+
+    $("#hero").attr('tip',function()
+    {
+        var c = "<b><font color='white'>" + hero.nick + "</font></b>";
+        c += nerthus.getPlayerTitle(a)
+        c += "<i><font color='red'>" + nerthus.getPlayerRank(a) + "</font></i>"
+        return c
+    });
+
 	g.tips.npc = function (c) {
 		var e = "<b>" + c.nick + "</b>";
 		if (c.type != 4) {

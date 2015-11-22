@@ -210,7 +210,7 @@ try{
 	};
 
 	g.tips.other = function (other) {
-		var tip = "<tip>" + other.nick + "</tip>";
+		var tip = "<b>" + other.nick + "</b>";
 		if (other.clan != "") {
 			tip += "[" + other.clan + "]<br>"
 		}

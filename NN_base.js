@@ -65,25 +65,25 @@ try{
 		    message(nerthus.EnterMsg)
 	}
 
-	nerthus.isNarr = function(a)
+	nerthus.isNarr = function(nick)
 	{
-		return nerthus.NerthusNarr.indexOf(a) >= 0
+		return nerthus.NerthusNarr.indexOf(nick) >= 0
 	}
 
-	nerthus.isRad = function(a)
+	nerthus.isRad = function(nick)
 	{
-		return nerthus.NerthusRad.indexOf(a) >= 0
+		return nerthus.NerthusRad.indexOf(nick) >= 0
    	}
 
-	nerthus.isSpec = function(a)
+	nerthus.isSpec = function(nick)
 	{
-		return nerthus.NerthusSpec.indexOf(a) >= 0
+		return nerthus.NerthusSpec.indexOf(nick) >= 0
    	}
 
 	//sprawdza czy wip tak zwraca jego index+1 nie zwraca 0
-	nerthus.isVip = function(a)
+	nerthus.isVip = function(player_id)
     {
-        return nerthus.vipList.indexOf(a)+1
+        return nerthus.vipList.indexOf(player_id)+1
     }
 
     nerthus.Settings='111111';
@@ -104,7 +104,8 @@ try{
 		setCookie('nerthusCookie', nerthus.dateGMT*1 + '|' + nerthus.Settings, data);
 	}
 
-    nerthus.rightsToRank = function (rights)
+    nerthus.tips = {}
+    nerthus.tips.rights2rank = function (rights)
     {
     	if(rights & 1) return 0 //adm
         if(rights & 16) return 1 //smg
@@ -112,26 +113,26 @@ try{
         return 3 //mc
     }
 
-    nerthus.getPlayerRank = function(player)
+    nerthus.tips.rank = function(player)
     {
-        var d = -1;
+        var rank = -1;
 		if (player.rights)
-			d = nerthus.rightsToRank(player.rights)
+			rank = nerthus.tips.rights2rank(player.rights)
         if (nerthus.isNarr(player.nick))
         {
-            if(d == 3)
-                d = 6 //bard + mc
+            if(rank == 3)
+                rank = 6 //bard + mc
             else
-                d = 5 //bard
+                rank = 5 //bard
         }
         if (nerthus.isRad(player.nick))
-            d = 7 //radny
-        if(d > -1)
+            rank = 7 //radny
+        if(rank > -1)
             return g.names.ranks[d]
         return ""
     }
 
-    nerthus.getPlayerTitle = function (player)
+    nerthus.tips.title = function(player)
     {
     	//sprawdza czy vip, jeśli tak, to daje inny opis
 		var vip;
@@ -152,8 +153,8 @@ try{
     hero.tip = function()
     {
         var tip = "<b><font color='white'>" + this.nick + "</font></b>"
-        tip += "<center>" + nerthus.getPlayerTitle(this) + "</center>"
-        tip += "<i><font color='red'>" + nerthus.getPlayerRank(this) + "</font></i>"
+        tip += "<center>" + nerthus.tips.title(this) + "</center>"
+        tip += "<i><font color='red'>" + nerthus.tips.rank(this) + "</font></i>"
         return tip
     }
     g.loadQueue.push({fun:function()
@@ -217,8 +218,8 @@ try{
 		if (other.clan != "") {
 			tip += "[" + other.clan + "]<br>"
 		}
-        tip += nerthus.getPlayerTitle(other)
-        tip += "<i>" + nerthus.getPlayerRank(other) + "</i>"
+        tip += nerthus.tips.title(other)
+        tip += "<i>" + nerthus.tips.rank(other) + "</i>"
 		if (other.attr & 1) {
 			tip += "<img src=img/mute.gif>";
 		}

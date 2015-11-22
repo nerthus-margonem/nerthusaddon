@@ -128,7 +128,7 @@ try{
         if (nerthus.isRad(player.nick))
             rank = 7 //radny
         if(rank > -1)
-            return g.names.ranks[d]
+            return g.names.ranks[rank]
         return ""
     }
 

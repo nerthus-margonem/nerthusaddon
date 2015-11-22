@@ -160,7 +160,11 @@ try{
     {
         return {'nick':this.nick, 'rights':this.uprawnienia}
     }
-    g.loadQueue.push({fun:function(){$("#hero").attr('tip', function(){return hero.tip()})}, data:""})
+    g.loadQueue.push({fun:function()
+    {
+        hero.rights = hero.uprawnienia
+        $("#hero").attr('tip', function(){return g.tips.other(hero)})
+    }, data:""})
 
 	g.tips.npc = function (c) {
 		var e = "<b>" + c.nick + "</b>";

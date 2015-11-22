@@ -1,8 +1,32 @@
 try
 {
 
-nerthus.night_lights = {}
+nerthus.night = function()
+{
+	var hour = new Date().getHours();
+	if( hour >= 4 && hour<18 ){ return; }
+	//czy mapa główna czy wnętrze
+	if(map.mainid==0)
+	{
+        var nNightOpacity = 0;
+		if(hour>=18 && hour<21) nNightOpacity = 0.3;
+		if(hour>=21 && hour<24) nNightOpacity = 0.6;
+		if(hour>=0 && hour<4)   nNightOpacity = 0.8;
 
+        $("<div id=nNight />")
+        .css({height  : $("#ground").css("height"),
+              width   : $("#ground").css("width"),
+              zIndex  : map.y + 11,
+              opacity : nNightOpacity,
+              pointerEvents   : "none",
+              backgroundColor : "black"})
+        .appendTo("#ground")
+        .draggable()
+	}
+}
+nerthus.night();
+
+nerthus.night_lights = {}
 nerthus.night_lights.types = {}
 
 nerthus.night_lights.types.add = function(type,size)
@@ -48,5 +72,5 @@ g.loadQueue.push({fun:nerthus.night_lights.on,data:""})
 
 }catch(err)
 {
-log('night lights error: '+ err.message ,1)
+log('nerthus night error: '+ err.message ,1)
 }

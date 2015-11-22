@@ -149,15 +149,18 @@ try{
 }catch(e){log('NerthusBase Error: '+e.message)}
 try{
 
-    $("#hero").attr('tip',function()
+    g.loadQueue.push({fun:function()
     {
-        log("herom.nick=" + hero.nick + " lvl=" + hero.lvl + " id=" + hero.id + " rights=" + hero.uprawnienia)
-        var c = "<b><font color='white'>" + hero.nick + "</font></b>";
-        c += nerthus.getPlayerTitle(hero)
-        var hero_player = {'nick':hero.nick, 'rights':hero.uprawnienia};
-        c += "<i><font color='red'>" + nerthus.getPlayerRank(hero_player) + "</font></i>"
-        return c
-    });
+        $("#hero").attr('tip',function()
+        {
+            log("herom.nick=" + hero.nick + " lvl=" + hero.lvl + " id=" + hero.id + " rights=" + hero.uprawnienia)
+            var c = "<b><font color='white'>" + hero.nick + "</font></b>";
+            c += nerthus.getPlayerTitle(hero)
+            var hero_player = {'nick':hero.nick, 'rights':hero.uprawnienia};
+            c += "<i><font color='red'>" + nerthus.getPlayerRank(hero_player) + "</font></i>"
+            return c
+        })
+    },data:""})
 
 	g.tips.npc = function (c) {
 		var e = "<b>" + c.nick + "</b>";

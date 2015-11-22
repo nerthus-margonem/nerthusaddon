@@ -153,17 +153,13 @@ try{
     {
         var tip = "<b><font color='white'>" + this.nick + "</font></b>"
         tip += "<center>" + nerthus.getPlayerTitle(this) + "</center>"
-        tip += "<i><font color='red'>" + nerthus.getPlayerRank(this.to_player()) + "</font></i>"
+        tip += "<i><font color='red'>" + nerthus.getPlayerRank(this) + "</font></i>"
         return tip
-    }
-    hero.to_player = function()
-    {
-        return {'nick':this.nick, 'rights':this.uprawnienia}
     }
     g.loadQueue.push({fun:function()
     {
         hero.rights = hero.uprawnienia
-        $("#hero").attr('ctip','t_other').attr('tip', function(){return g.tips.other(hero)})
+        $("#hero").attr('ctip','t_other').attr('tip', function(){return hero.tip()})
     }, data:""})
 
 	g.tips.npc = function (c) {

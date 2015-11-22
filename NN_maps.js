@@ -10,20 +10,16 @@ nerthus.maps.seasonMaps = function()
 {
     var season = nerthus.season();
     for(i in nerthus.mapsArr)
-    {
         if( nerthus.mapsArr[i][0] == season && nerthus.mapsArr[i][1] == map.id )
-        {
-            this.change(nerthus.mapsArr[i][2]);
-        }
-    }
+            this.change(nerthus.mapsArr[i][2])
 }
 
 nerthus.maps.change = function(map_url)
 {
-    $("#ground").css("backgroundImage","url(" + map_url + ")");
+    $("#ground").css("backgroundImage","url(" + map_url + ")")
 }
 
-nerthus.maps.seasonMaps();
+nerthus.maps.seasonMaps()
 
 }
 catch(e){log('NerthusMap Error: '+e.message,1)}

@@ -151,7 +151,6 @@ try{
 
     hero.tip = function()
     {
-        log("herom.nick=" + hero.nick + " lvl=" + hero.lvl + " id=" + hero.id + " rights=" + hero.uprawnienia)
         var tip = "<b><font color='white'>" + hero.nick + "</font></b>";
         tip += nerthus.getPlayerTitle(hero)
         var hero_player = {'nick':hero.nick, 'rights':hero.uprawnienia};

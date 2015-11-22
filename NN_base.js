@@ -209,17 +209,17 @@ try{
 		return e
 	};
 
-	g.tips.other = function (a) {
-		var b = "<b>" + a.nick + "</b>";
-		if (a.clan != "") {
-			b += "[" + a.clan + "]<br>"
+	g.tips.other = function (other) {
+		var tip = "<tip>" + other.nick + "</tip>";
+		if (other.clan != "") {
+			tip += "[" + other.clan + "]<br>"
 		}
-        b += nerthus.getPlayerTitle(a)
-        b += nerthus.getPlayerRank(a)
-		if (a.attr & 1) {
-			b += "<img src=img/mute.gif>";
+        tip += nerthus.getPlayerTitle(other)
+        tip += nerthus.getPlayerRank(other)
+		if (other.attr & 1) {
+			tip += "<img src=img/mute.gif>";
 		}
-		return b
+		return tip
 	};
 
 }catch(e){log('NerthusOld Error: '+e.message,1)}

@@ -48,8 +48,8 @@ try{
         {
             $.getScript(nerthus.addon.fileUrl('NN_panel.js'));
             $.getScript(nerthus.addon.fileUrl('NN_maps.js'));
-            if( nerthus.Settings[0]*1) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}
-            if( nerthus.Settings[3]*1) {$.getScript(nerthus.addon.fileUrl('NN_pogoda.js'));}
+            if(parseInt(nerthus.Settings[0])) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}
+            if(parseInt(nerthus.Settings[3])) {$.getScript(nerthus.addon.fileUrl('NN_pogoda.js'));}
             log('Nerthus addon started');
         }catch(e)
         {

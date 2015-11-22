@@ -159,7 +159,7 @@ try{
     g.loadQueue.push({fun:function()
     {
         hero.rights = hero.uprawnienia
-        $("#hero").attr('ctip','t_other').attr('tip', function(){return hero.tip()})
+        $("#hero").attr('tip', function(){return hero.tip()})
     }, data:""})
 
 	g.tips.npc = function (c) {

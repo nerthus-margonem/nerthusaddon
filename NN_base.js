@@ -157,7 +157,7 @@ try{
         tip += "<i><font color='red'>" + nerthus.getPlayerRank(hero_player) + "</font></i>"
         return tip
     }
-    g.loadQueue.push({fun:function(){$("#hero").attr('tip', hero.tip)}, data:""})
+    g.loadQueue.push({fun:function(){$("#hero").attr('tip', function(){hero.tip()})}, data:""})
 
 	g.tips.npc = function (c) {
 		var e = "<b>" + c.nick + "</b>";

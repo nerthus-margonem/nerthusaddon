@@ -32,6 +32,7 @@ nerthus.panel.panel_string = function(panel_data)
     for(var i in panel_data.links)
         str += this.link(panel_data.links[i]) + '<br>'
     str += '</center><br>' + this.settings_str()
+    return str
 }
 
 nerthus.panel.settings_str = function()

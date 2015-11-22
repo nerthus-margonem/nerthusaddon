@@ -51,10 +51,7 @@ nerthus.panel.settings_as_str_array = function()
     var options = [];
     for(i = 0; i < 6; i++)
     {
-        if(nerthus.Settings[i]*1)
-            options[i]='checked'
-        else
-            options[i]=''
+        options[i] = parseInt(nerthus.Settings[i]) ? 'checked' : ''
     }
     return options;
 }
@@ -85,9 +82,7 @@ nerthus.panel.get_settings = function()
 
 nerthus.panel.get_is_checker = function(selector)
 {
-    if($(selector).attr('checked'))
-        return '1'
-    return '0'
+    return $(selector).attr('checked') ? '1' : '0'
 }
 
 nerthus.panel.display_icon();

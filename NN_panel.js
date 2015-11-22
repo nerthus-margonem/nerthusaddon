@@ -19,22 +19,10 @@ nerthus.panel.display_panel = function()
 {
     $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/panel_links.json", function(panel_data)
     {
-        var panel_str = this.panel_string(panel_data)
+        var panel_str = nerthus.panel.panel_string(panel_data)
         mAlert(panel_str, 2, [function(){nerthus.panel.save()}])
         $('#n_pan_settings').click(function(){$("#n_pan_settings_str").toggle()})
     })
-}
-
-nerthus.panel.link = function(link)
-{
-    return '<a href="' + link.url + '" target="blank">' + link.name + '</a>'
-}
-
-nerthus.panel.save = function()
-{
-    var settings = nerthus.panel.get_settings()
-    nerthus.storeSettings(settings)
-	message('zapisano, wciśnij f5')
 }
 
 nerthus.panel.panel_string = function(panel_data)
@@ -67,6 +55,18 @@ nerthus.panel.settings_as_str_array = function()
             options[i]=''
     }
     return options;
+}
+
+nerthus.panel.link = function(link)
+{
+    return '<a href="' + link.url + '" target="blank">' + link.name + '</a>'
+}
+
+nerthus.panel.save = function()
+{
+    var settings = nerthus.panel.get_settings()
+    nerthus.storeSettings(settings)
+	message('zapisano, wciśnij f5')
 }
 
 nerthus.panel.get_settings = function()

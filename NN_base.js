@@ -151,8 +151,8 @@ try{
 
     hero.tip = function()
     {
-        var tip = "<b><font color='white'>" + hero.nick + "</font></b>";
-        tip += nerthus.getPlayerTitle(hero)
+        var tip = "<b><font color='white'>" + hero.nick + "</font></b><br>";
+        tip += nerthus.getPlayerTitle(hero) + "<br>"
         var hero_player = {'nick':hero.nick, 'rights':hero.uprawnienia};
         tip += "<i><font color='red'>" + nerthus.getPlayerRank(hero_player) + "</font></i>"
         return tip

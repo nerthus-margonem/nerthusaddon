@@ -8,7 +8,7 @@ nerthus.maps = {}
 
 nerthus.maps.seasonMaps = function()
 {
-    var season = nerthus.season();
+    var season = nerthus.season()
     for(i in nerthus.mapsArr)
         if( nerthus.mapsArr[i][0] == season && nerthus.mapsArr[i][1] == map.id )
             this.change(nerthus.mapsArr[i][2])

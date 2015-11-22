@@ -28,9 +28,8 @@ nerthus.panel.display_panel = function()
 nerthus.panel.panel_string = function(panel_data)
 {
     var str = '<center><b>Witaj na Nerthusie, zapraszamy na ' +
-    this.link(panel_data.forum) + '</b><br><br>'
-    if (panel_data.panel_info)
-        str += panel_data.panel_info + "<br>"
+    this.link(panel_data.forum) + '</b><br>' +
+    panel_data.panel_info + '<br>'
     for(var i in panel_data.links)
         str += this.link(panel_data.links[i]) + '<br>'
     str += '</center><br>' + this.settings_str()

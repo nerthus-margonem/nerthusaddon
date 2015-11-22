@@ -127,7 +127,7 @@ try{
         if (nerthus.isRad(player.nick))
             d = 7 //radny
         if(d > -1)
-            return "<i>" + g.names.ranks[d] + "</i>"
+            return g.names.ranks[d]
         return ""
     }
 
@@ -136,9 +136,9 @@ try{
     	//sprawdza czy vip, jeśli tak, to daje inny opis
 		var vip;
 		if( vip= nerthus.isVip(player.id*1) )
-            return "<center>" + nerthus.vipNames[vip-1] + "</center>";
+            return nerthus.vipNames[vip-1]
 		else if (player.lvl)
-            return "<center>" + nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (player.lvl - 1) >> 3)] + "</center>";
+            return nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (player.lvl - 1) >> 3)]
         return ""
     }
 
@@ -215,7 +215,7 @@ try{
 			tip += "[" + other.clan + "]<br>"
 		}
         tip += nerthus.getPlayerTitle(other)
-        tip += nerthus.getPlayerRank(other)
+        tip += "<i>" + nerthus.getPlayerRank(other) + "</i>"
 		if (other.attr & 1) {
 			tip += "<img src=img/mute.gif>";
 		}

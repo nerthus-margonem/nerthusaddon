@@ -17,9 +17,17 @@ nerthus.panel.display_icon = function()
 
 nerthus.panel.display_panel = function()
 {
-    var panel_str = this.panel_string()
-    mAlert(panel_str, 2, [function(){nerthus.panel.save()}])
-    $('#n_pan_settings').click(function(){$("#n_pan_settings_str").toggle()})
+    $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/panel_links.json", function(panel_data)
+    {
+        var panel_str = this.panel_string(panel_data)
+        mAlert(panel_str, 2, [function(){nerthus.panel.save()}])
+        $('#n_pan_settings').click(function(){$("#n_pan_settings_str").toggle()})
+    })
+}
+
+nerthus.panel.link = function(link)
+{
+    return '<a href="' + link.url + '" target="blank">' + link.name + '</a>'
 }
 
 nerthus.panel.save = function()
@@ -29,12 +37,13 @@ nerthus.panel.save = function()
 	message('zapisano, wciśnij f5')
 }
 
-nerthus.panel.panel_string = function()
+nerthus.panel.panel_string = function(panel_data)
 {
-    return '<center><b style="color: red">' +
-        nerthus.panelMessage + '</b><br><br>' +
-        nerthus.panelStr + '</center><br>' +
-        this.settings_str()
+    var str = '<center><b>Witaj na Nerthusie, zapraszamy na' +
+    this.link(panel_data.forum) + '</b><br><br>'
+    for(var i in panel_data.links)
+        str += this.link(panel_data.links[i]) + '<br>'
+    str += '</center><br>' + this.settings_str()
 }
 
 nerthus.panel.settings_str = function()
@@ -44,7 +53,7 @@ nerthus.panel.settings_str = function()
 <div id="n_pan_settings_str" style="display:none;">\
 <input type="checkbox" id="panCbNoc" '+options[0]+'/>Noc<br>\
 <input type="checkbox" id="panCbPog" '+options[3]+'/>Pogoda<br>\
-<a href="http://www.margonem.pl/?task=forum&show=posts&id=264553" target="blank">pomoc</a></div>';
+</div>'
 }
 
 nerthus.panel.settings_as_str_array = function()

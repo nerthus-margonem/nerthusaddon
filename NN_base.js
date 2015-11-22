@@ -151,6 +151,7 @@ try{
 
     $("#hero").attr('tip',function()
     {
+        log("herom.nick=" + hero.nick + " lvl=" + hero.lvl + " id=" + hero.id + " rights=" + hero.uprawnienia)
         var c = "<b><font color='white'>" + hero.nick + "</font></b>";
         c += nerthus.getPlayerTitle(hero)
         var hero_player = {'nick':hero.nick, 'rights':hero.uprawnienia};

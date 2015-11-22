@@ -6,7 +6,7 @@
 try{
 	//daty zwykła i GMT
 	nerthus.date = new Date();
-	nerthus.dateGMT = new Date(nerthus.date*1 + nerthus.date.getTimezoneOffset()*60*1000);
+	nerthus.dateGMT = new Date(parseInt(nerthus.date) + nerthus.date.getTimezoneOffset()*60*1000);
 
 	//zwraca sezon 1 - wiosna, 2 - lato, 3 - jesień, 4 - zima
 	nerthus.season = function()
@@ -101,7 +101,7 @@ try{
         nerthus.Settings = settings
 		data = new Date();
 		data.setTime(data.getTime()+30758400000);
-		setCookie('nerthusCookie', nerthus.dateGMT*1 + '|' + nerthus.Settings, data);
+		setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.Settings, data);
 	}
 
     nerthus.tips = {}
@@ -136,7 +136,7 @@ try{
     {
     	//sprawdza czy vip, jeśli tak, to daje inny opis
 		var vip;
-		if( vip= nerthus.isVip(player.id*1) )
+		if( vip= nerthus.isVip(parseInt(player.id)))
             return nerthus.vipNames[vip-1]
 		else if (player.lvl)
             return nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (player.lvl - 1) >> 3)]

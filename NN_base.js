@@ -14,7 +14,7 @@ try{
 		var retVal=1;
 		var a=new Date();
 		var b=new Date();
-		
+
 		//wiosna 21.3 - 22.6
 		a.setUTCDate(21); a.setUTCMonth(2);
 		b.setUTCDate(22); b.setUTCMonth(5);
@@ -33,7 +33,7 @@ try{
 		a.setUTCDate(23); a.setUTCMonth(8);
 		b.setUTCDate(22); b.setUTCMonth(10);
 		if( nerthus.dateGMT>=a && nerthus.dateGMT<b )
-		{	
+		{
 			retVal = 3;
 		}
 		//zima 22.12 - 21.3
@@ -43,10 +43,10 @@ try{
 		{
 			retVal = 4;
 		}
-		
+
 		return retVal;
 	}
-	
+
 	//info wyświetlane na chacie po zalogowaniu
 	nerthus.setChatInfo = function()
 	{
@@ -55,7 +55,7 @@ try{
 			g.chat.txt[0]='<div class="sys_red">'+nerthus.chatInfoStr+'</div>'+g.chat.txt[0];
 			if ($("#chb0").hasClass("choosen")) {$("#chattxt").html(g.chat.txt[0]);}
 			chatScroll(-1);
-		}	
+		}
 	}
 
 	//wiadomość na start
@@ -79,10 +79,10 @@ try{
 	{
 		return nerthus.NerthusSpec.indexOf(a) >= 0
    	}
-	
+
 	//sprawdza czy wip tak zwraca jego index+1 nie zwraca 0
 	nerthus.isVip = function(a)
-    { 
+    {
         return nerthus.vipList.indexOf(a)+1
     }
 
@@ -93,7 +93,7 @@ try{
 		    var cookie = getCookie('nerthusCookie');
 			cookie=cookie.split('|');
 			nerthus.Settings=cookie[1];
-		}catch(e){}	
+		}catch(e){}
 	}
 
 	nerthus.storeSettings = function(settings)
@@ -130,15 +130,15 @@ try{
             return "<i>" + g.names.ranks[d] + "</i>"
         return ""
     }
-    
+
     nerthus.getPlayerTitle = function (player)
     {
-    	//sprawdza czy vip, jeśli tak, to daje inny opis	
+    	//sprawdza czy vip, jeśli tak, to daje inny opis
 		var vip;
 		if( vip= nerthus.isVip(player.id*1) )
-            return "<center>" + nerthus.vipNames[vip-1] + "</center>"; 
-		else if (player.lvl) 
-            return "<center>" + nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (player.lvl - 1) >> 3)] + "</center>"; 
+            return "<center>" + nerthus.vipNames[vip-1] + "</center>";
+		else if (player.lvl)
+            return "<center>" + nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (player.lvl - 1) >> 3)] + "</center>";
         return ""
     }
 
@@ -208,7 +208,7 @@ try{
 		return e
 	};
 
-	g.tips.other = function (a) {   
+	g.tips.other = function (a) {
 		var b = "<b>" + a.nick + "</b>";
 		if (a.clan != "") {
 			b += "[" + a.clan + "]<br>"
@@ -220,5 +220,5 @@ try{
 		}
 		return b
 	};
-	
+
 }catch(e){log('NerthusOld Error: '+e.message,1)}

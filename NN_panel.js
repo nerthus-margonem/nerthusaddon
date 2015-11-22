@@ -76,8 +76,7 @@ nerthus.panel.get_is_checker = function(selector)
 {
     if($(selector).attr('checked'))
         return '1'
-    else 
-        return '0'
+    return '0'
 }
 
 nerthus.panel.display_icon();

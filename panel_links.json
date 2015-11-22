@@ -1,6 +1,6 @@
 {
 "forum":{"name":"forum", "url":"http://www.margonem.pl/?task=forum&show=topics&id=33"},
-"panel_info":"bla bla bla",
+"panel_info":"",
 "links":[
 {"name":"Zbiór zasad", "url":"http://www.margonem.pl/?task=forum&show=posts&id=424036"},
 {"name":"Informacje dla nowych graczy", "url":"http://www.margonem.pl/?task=forum&show=posts&id=456867"},

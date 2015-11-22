@@ -29,18 +29,9 @@ nerthus.vipNames = ['Teźa','Mulher Má','Niecny drow','Przezacna','Mistrz piór
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
 nerthus.chatInfoStr = '';
 
-//Czerwone info w panelu - ustawiać tu tekst nowości na forum
-nerthus.panelMessage = 'Witaj na Nerthusie, zapraszamy na <a href="http://www.margonem.pl/?task=forum&show=topics&id=33" target="_blank">forum</a>';
-
-//Reszta tekstu w panelu, ta pod czerwonym info - powinny tu być linki do forum itp
-nerthus.panelStr = '<b>Ważne tematy i informacje:</b>\
-<br><a href="http://www.margonem.pl/?task=forum&show=posts&id=424036" target="_blank">Zbiór zasad</a>\
-<br><a href="http://www.margonem.pl/?task=forum&show=posts&id=456867" target="_blank">Informacje dla nowych graczy</a>\
-<br><a href="http://www.margonem.pl/?task=forum&show=posts&id=205200#bottom" target="_blank">Pytania i Odpowiedzi</a>\
-<br><a href="http://www.margonem.pl/?task=forum&show=posts&id=422927#bottom" target="_blank">Pogawędki</a>\
-<br><a href="http://www.margonem.pl/?task=forum&show=posts&id=280825#bottom" target="_blank">Biuletyn </a>\
-<br><a href="http://www.margonem.pl/?task=forum&show=posts&id=424674#bottom" target="_blank">Zgłoszenia forumowe</a>\
-'
+//Wiadomość która pojawia się na środku ekranu po starcie gry
+//<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">
+nerthus.EnterMsg = '';
 
 //mapy do ustawienia sezon,id mapy,link do grafiki
 nerthus.mapsArr =
@@ -65,10 +56,6 @@ nerthus.graf['panelTop']= 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/
 nerthus.graf['dazed']   = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/dazed.png'
 nerthus.graf['loading'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/loadingnerthus.png'
 nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/chatPanel2.png'
-
-//Wiadomość która pojawia się na środku ekranu po starcie gry
-//<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">
-nerthus.EnterMsg = '';
 
 g.names.ranks[3] = "Strażnik Słowa"; //"Modelator Czasu"; //"Moderator czatu";
 g.names.ranks[4] = "Tkacz Słów"; //"Modelator czasoprzestrzeni"; //"Super moderator";

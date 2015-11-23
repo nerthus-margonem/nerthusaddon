@@ -53,12 +53,11 @@ try
 
     nerthus.weather.start_change_timer = function()
     {
-		var hour = Math.floor((new Date().getUTCHours())/4) + 1;
-		var date = new Date();
-		var t = hour *4;
-		date.setUTCHours(t);
-		date.setUTCMinutes(0);
-		date.setUTCSeconds(0);
+		var hour = (Math.floor((new Date().getUTCHours())/4) + 1) * 4
+		var date = new Date()
+		date.setUTCHours(hour)
+		date.setUTCMinutes(0)
+		date.setUTCSeconds(0)
         var interval = date - new Date()
         log("start_change_timer: " + interval)
 		this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  5000);

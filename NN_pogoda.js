@@ -6,21 +6,21 @@ try
    
     nerthus.weather.is_raining = function()
     {
-        return [3,4,5,8,9,10,11,17,18,19].indexOf(nerthus.weather.id) > -1
+        return [3,4,5,8,9,10,11,17,18,19].indexOf(this.id) > -1
     }
 
     nerthus.weather.is_snowing = function()
     {
-        return [5,6,11,12,13,19,20].indexOf(nerthus.weather.id) > -1
+        return [5,6,11,12,13,19,20].indexOf(this.id) > -1
     }
 
     nerthus.weather.set_weather = function(id)
     {
       	id = parseInt(id)
       	if( 0 > id || id > 20)
-          id = nerthus.weather.calculate()
-        nerthus.weather.id = id
-        nerthus.weather.effects.display()
+          id = this.calculate()
+        this.id = id
+        this.effects.display()
         var x = Math.floor(id / 7)
         var y = id % 7
 		$('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ x * 55 +'px -'+ y * 55 +'px');
@@ -28,9 +28,9 @@ try
 
     nerthus.weather.set_global_weather = function()
     {
-        var weatherId = nerthus.weather.calculate()
-        nerthus.weather.set_weather(weatherId)
-        nerthus.weather.start_change_timer()
+        var weatherId = this.calculate()
+        this.set_weather(weatherId)
+        this.start_change_timer()
     }
     
 	nerthus.weather.start = function()
@@ -42,10 +42,10 @@ try
 		//pole opisowe
 		$('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
         
-      	if(! nerthus.weather.id)
-        	nerthus.weather.set_global_weather()
+      	if(! this.id)
+        	this.set_global_weather()
         else
-			nerthus.weather.set_weather(nerthus.weather.id)
+			this.set_weather(this.id)
     }
 
     nerthus.weather.start_change_timer = function()
@@ -57,7 +57,7 @@ try
 		date.setUTCHours(t);
 		date.setUTCMinutes(0);
 		date.setUTCSeconds(0);
-		nerthus.weather.change_timer = setTimeout('nerthus.weather.set_global_weather' ,  date - new Date() );
+		this.change_timer = setTimeout(function(){nerthus.weather.set_global_weather()} ,  date - new Date() );
     }
 		
     nerthus.weather.calculate = function()
@@ -242,13 +242,13 @@ try
     nerthus.weather.effects = {}
     nerthus.weather.effects.display = function()
     {
-        nerthus.weather.effects.clear()
+        this.clear()
         if (map.mainid==0) //are we outside?
         {
             if(nerthus.weather.is_raining())
-                nerthus.weather.effects.display_rain()
+                this.display_rain()
             if(nerthus.weather.is_snowing())
-                nerthus.weather.effects.display_snow()
+                this.display_snow()
         }
     }
 
@@ -259,12 +259,12 @@ try
 
     nerthus.weather.effects.display_rain = function() 
     {   
-       nerthus.weather.effects.display_url(nerthus.graf.rain)
+       this.display_url(nerthus.graf.rain)
     }
     
     nerthus.weather.effects.display_snow = function()
     {
-        nerthus.weather.effects.display_url(nerthus.graf.snow)
+        this.display_url(nerthus.graf.snow)
     }
 
     nerthus.weather.effects.display_url = function(url)
@@ -282,7 +282,7 @@ try
     }
 
     if(parseInt(nerthus.settings[3]))
-        g.loadQueue.push({fun:nerthus.weather.start, data:""});
+        g.loadQueue.push({fun:function(){nerthus.weather.start()}, data:""});
 
 }catch(e){log('NerthusWeather Error: '+e.message,1)}
 	

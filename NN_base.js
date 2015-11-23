@@ -135,7 +135,7 @@ try{
     nerthus.tips.title = function(player)
     {
     	//sprawdza czy vip, jeśli tak, to daje inny opis
-		var title = nerthus.vipNames[nerthus.vipList.indeOf(parseInt(player.id))]
+		var title = nerthus.vipNames[nerthus.vipList.indexOf(parseInt(player.id))]
         if(title)
             return title
 		if (player.lvl)

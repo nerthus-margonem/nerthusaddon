@@ -56,7 +56,6 @@ try
 		var hour = Math.floor((new Date().getUTCHours())/4) + 1;
 		var date = new Date();
 		var t = hour *4;
-		if (t==24){t=0;}
 		date.setUTCHours(t);
 		date.setUTCMinutes(0);
 		date.setUTCSeconds(0);

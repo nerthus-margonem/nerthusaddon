@@ -29,6 +29,7 @@ try
 
     nerthus.weather.set_global_weather = function()
     {
+        log("set glpbal weather")
         var weatherId = this.calculate()
         this.set_weather(weatherId)
         this.start_change_timer()
@@ -52,6 +53,7 @@ try
 
     nerthus.weather.start_change_timer = function()
     {
+        log("start_change_timer")
 		var hour = Math.floor((new Date().getUTCHours())/4) + 1;
 		var date = new Date();
 		var t = hour *4;

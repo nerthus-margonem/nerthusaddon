@@ -52,7 +52,7 @@ nerthus.chatCmd.map["dial1"] = function(ch)
     ch.n = "";
     ch.t = makeDialogTextWithSpeaker(ch.t);
 }
- 
+
 nerthus.chatCmd.map["dial2"] = function(ch)
 {
     ch.s = "dial2";
@@ -122,7 +122,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
 }
 
 extractUrlFromDecorator = function(text)
-{   
+{
     if(text[0]=='<') //is text wrapped by html tag
     {
         var url = RegExp(/goToUrl\(\"(\S+)\"\)/).exec(text);
@@ -146,7 +146,7 @@ nerthus.chatCmd.map["weather"] = function(ch)
 {
     var weather_id = parseInt(ch.t.split(" ")[1])
     try
-    {  
+    {
         nerthus.weather.set_weather(weather_id)
     }catch(e)
     {

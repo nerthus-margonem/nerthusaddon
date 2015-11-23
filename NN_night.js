@@ -24,7 +24,6 @@ nerthus.night = function()
         .draggable()
 	}
 }
-g.loadQueue.push({fun:nerthus.night, data:""});
 
 nerthus.night_lights = {}
 nerthus.night_lights.types = {}
@@ -70,6 +69,9 @@ nerthus.night_lights.types.add("L","160px")
 nerthus.night_lights.types.add("XL","192px")
 
 if(parseInt(nerthus.settings[0]))
+{
     g.loadQueue.push({fun:nerthus.night_lights.on, data:""})
+    g.loadQueue.push({fun:nerthus.night, data:""});
+}
 
 }catch(err){log('nerthus night error: '+ err.message ,1)}

@@ -42,7 +42,7 @@ try
         //pole opisowe
         $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
 
-          if(! this.id)
+        if(! this.id)
             this.set_global_weather()
         else
             this.set_weather(this.id)

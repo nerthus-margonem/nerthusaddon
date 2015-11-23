@@ -281,6 +281,7 @@ try
         .appendTo("#ground")
     }
 		
-	nerthus.weather.start()
+    g.loadQueue.push({fun:nerthus.weather.start, data:""});
+
 }catch(e){log('NerthusWeather Error: '+e.message,1)}
 	

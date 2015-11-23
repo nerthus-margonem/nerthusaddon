@@ -85,6 +85,6 @@ nerthus.panel.get_is_checker = function(selector)
     return $(selector).attr('checked') ? '1' : '0'
 }
 
-nerthus.panel.display_icon();
+g.loadQueue.push({fun:nerthus.panel.display_icon, data:""});
 
 }catch(e){log('NerthusPanel Error: '+e.message,1);}

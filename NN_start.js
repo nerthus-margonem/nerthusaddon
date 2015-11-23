@@ -38,8 +38,6 @@ try{
         //ładowanie dodatkowych skryptów jeżeli jakieś są
         for( i in nerthus.additionaScripts)
             $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
-        //ładowanie rzeczy zależnych od gry
-        g.loadQueue.push({fun:nerthus.addon.loadGameDependentScripts, data:""});
         })});
     }
     nerthus.addon.loadGameDependentScripts = function()

@@ -53,7 +53,6 @@ try
 
     nerthus.weather.start_change_timer = function()
     {
-        log("start_change_timer")
 		var hour = Math.floor((new Date().getUTCHours())/4) + 1;
 		var date = new Date();
 		var t = hour *4;
@@ -61,7 +60,9 @@ try
 		date.setUTCHours(t);
 		date.setUTCMinutes(0);
 		date.setUTCSeconds(0);
-		this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  date - new Date() );
+        var interval = date - new Date()
+        log("start_change_timer: " + interval)
+		this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  5000);
     }
 		
     nerthus.weather.calculate = function()

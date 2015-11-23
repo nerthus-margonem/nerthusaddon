@@ -61,7 +61,7 @@ try
 		date.setUTCHours(t);
 		date.setUTCMinutes(0);
 		date.setUTCSeconds(0);
-		this.change_timer = setTimeout('nerthus.weather.set_global_weather',  date - new Date() );
+		this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  date - new Date() );
     }
 		
     nerthus.weather.calculate = function()

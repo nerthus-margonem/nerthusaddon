@@ -68,6 +68,8 @@ nerthus.night_lights.types.add("S","64px")
 nerthus.night_lights.types.add("M","96px")
 nerthus.night_lights.types.add("L","160px")
 nerthus.night_lights.types.add("XL","192px")
-g.loadQueue.push({fun:nerthus.night_lights.on, data:""})
+
+if(parseInt(nerthus.settings[0]))
+    g.loadQueue.push({fun:nerthus.night_lights.on, data:""})
 
 }catch(err){log('nerthus night error: '+ err.message ,1)}

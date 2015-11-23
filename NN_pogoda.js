@@ -280,8 +280,9 @@ try
               pointerEvents: 'none'})
         .appendTo("#ground")
     }
-		
-    g.loadQueue.push({fun:nerthus.weather.start, data:""});
+
+    if(parseInt(nerthus.settings[3]))
+        g.loadQueue.push({fun:nerthus.weather.start, data:""});
 
 }catch(e){log('NerthusWeather Error: '+e.message,1)}
 	

@@ -36,23 +36,10 @@ try{
         $.getScript(nerthus.addon.fileUrl('NN_dlaRadnych.js'),function(){
         $.getScript(nerthus.addon.fileUrl('NN_base.js'),function(){
         //ładowanie dodatkowych skryptów jeżeli jakieś są
-        for( i in nerthus.additionaScripts)
-            $.getScript(nerthus.addon.fileUrl(nerthus.additionaScripts[i]));
+        for(var i in nerthus.scripts)
+            $.getScript(nerthus.addon.fileUrl(nerthus.scripts[i]))
+        log('Nerthus addon started');
         })});
-    }
-    nerthus.addon.loadGameDependentScripts = function()
-    {
-        try
-        {
-            $.getScript(nerthus.addon.fileUrl('NN_panel.js'));
-            $.getScript(nerthus.addon.fileUrl('NN_maps.js'));
-            if(parseInt(nerthus.Settings[0])) {$.getScript(nerthus.addon.fileUrl('NN_night.js'));}
-            if(parseInt(nerthus.Settings[3])) {$.getScript(nerthus.addon.fileUrl('NN_pogoda.js'));}
-            log('Nerthus addon started');
-        }catch(e)
-        {
-            log('NN_Start Error: '+e.message,1);
-        }
     }
     nerthus.addon.start()
 }catch(e){log('NerthusStart Error: '+e.message,1)}

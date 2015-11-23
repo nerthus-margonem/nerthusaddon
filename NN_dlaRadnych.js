@@ -36,7 +36,7 @@ nerthus.mapsArr =
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'
-nerthus.additionaScripts =
+nerthus.scripts =
 [
     'NN_chatCmd.js',
     'NN_alko.js',

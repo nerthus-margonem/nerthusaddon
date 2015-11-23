@@ -16,6 +16,7 @@ try
 
     nerthus.weather.set_weather = function(id)
     {
+        log("weather change to: " + id)
       	id = parseInt(id)
       	if( 0 > id || id > 20)
           id = this.calculate()
@@ -42,6 +43,7 @@ try
 		//pole opisowe
 		$('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
         
+        log("weather start: " + this.id)
       	if(! this.id)
         	this.set_global_weather()
         else

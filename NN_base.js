@@ -86,22 +86,22 @@ try{
         return nerthus.vipList.indexOf(player_id)+1
     }
 
-    nerthus.Settings='111111';
+    nerthus.settings='111111';
 	nerthus.loadSettings = function()
 	{
 		try{
 		    var cookie = getCookie('nerthusCookie');
 			cookie=cookie.split('|');
-			nerthus.Settings=cookie[1];
+			nerthus.settings=cookie[1];
 		}catch(e){}
 	}
 
 	nerthus.storeSettings = function(settings)
 	{
-        nerthus.Settings = settings
+        nerthus.settings = settings
 		data = new Date();
 		data.setTime(data.getTime()+30758400000);
-		setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.Settings, data);
+		setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.settings, data);
 	}
 
     nerthus.tips = {}

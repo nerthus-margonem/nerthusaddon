@@ -51,7 +51,7 @@ nerthus.panel.settings_as_str_array = function()
     var options = [];
     for(i = 0; i < 6; i++)
     {
-        options[i] = parseInt(nerthus.Settings[i]) ? 'checked' : ''
+        options[i] = parseInt(nerthus.settings[i]) ? 'checked' : ''
     }
     return options;
 }

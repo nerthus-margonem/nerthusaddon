@@ -65,7 +65,7 @@ nerthus.panel.save = function()
 {
     var settings = nerthus.panel.get_settings()
     nerthus.storeSettings(settings)
-	message('zapisano, wciśnij f5')
+    message('zapisano, wciśnij f5')
 }
 
 nerthus.panel.get_settings = function()
@@ -73,7 +73,7 @@ nerthus.panel.get_settings = function()
     var settings = ''
     settings+= this.get_is_checker('#panCbNoc')
     settings+='0'; //nocnce mapy do wywalenia
-    settings+='0';	//muzyka do wywalenia	
+    settings+='0'; //muzyka do wywalenia
     settings+= this.get_is_checker('#panCbPog')
     settings+='0'; //z dysku do wywalenia
     settings+='0'; //większy chat do wywalenia

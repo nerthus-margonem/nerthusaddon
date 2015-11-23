@@ -16,7 +16,6 @@ try
 
     nerthus.weather.set_weather = function(id)
     {
-        log("weather change to: " + id)
       	id = parseInt(id)
       	if( 0 > id || id > 20)
           id = this.calculate()
@@ -29,7 +28,6 @@ try
 
     nerthus.weather.set_global_weather = function()
     {
-        log("set glpbal weather")
         var weatherId = this.calculate()
         this.set_weather(weatherId)
         this.start_change_timer()
@@ -44,7 +42,6 @@ try
 		//pole opisowe
 		$('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
         
-        log("weather start: " + this.id)
       	if(! this.id)
         	this.set_global_weather()
         else
@@ -59,8 +56,7 @@ try
 		date.setUTCMinutes(0)
 		date.setUTCSeconds(0)
         var interval = date - new Date()
-        log("start_change_timer: " + interval)
-		this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  5000);
+		this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  interval);
     }
 		
     nerthus.weather.calculate = function()

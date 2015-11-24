@@ -16,11 +16,29 @@ nerthus.NerthusNarr = ["Aevenien","Sihaya","Llorando","Vanielle","Snorri",'Mater
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = ['Ciułacz','Łowca Wilków','Tropiciel Zulusów','Poganiacz Goblinów','Piętno Orków','Miłośnik Harpii','Rezun Olbrzymów','Hycel Gnolli','Koszmar Tolloków','Magazynier Pełną Gębą','Zguba Minotaurów','Niszczyciel Szkieletów','Treser Centaurów','Nieustraszony Pogromca Korsarzy','Tańczący z Mumiami','Szabrownik Wraków','Gobliński Kat','Postrach Berserkerów','Władca Kazamatów','Młot na Czarownice','Dręczyciel Praorków','Zguba Czarnej Gwardii','Poskramiacz Furboli','Egzekutor Myświórów','Wielki Inkwizytor','Zaklinacz Arachnidów','Kat Demonisa','Oprawca Maddoków','Potomek Najwyższych','Piekielny Jeźdźca', 'Ponury Żniwiarz','Gwardzista Piekieł','Tytan']
 
-//Lista vipów - ci z innymi opisami zamiast lvlów lista to ich id!
-nerthus.vipList = [16,50,319,6749,7422,9565,6901,2720,3077,10430,10473,2230,513,4146,10406,12002,12932,10372,10880,1558]
-
-//Lista specialnych opisów dla wipów
-nerthus.vipNames = ['Teźa','Mulher Má','Niecny drow','Przezacna','Mistrz pióra','Donna Amadonna','Zło wcielone','Fochnisia','Siewca Wiatru','Wschodzące Słońce','Wędrowny Rysownik','Mhroczniś','Zbieracz gumijagód','Gumitruskawka','Latorośle drowa','Głodny hobbit','Latorośle drowa','Boski Wiatr','Boski Wiatr','Zielarka']
+//vips {player_id : title}
+nerthus.vips = {
+16    : 'Teźa',
+50    : 'Mulher Má',
+319   : 'Niecny drow',
+6749  : 'Przezacna',
+7422  : 'Mistrz pióra',
+9565  : 'Donna Amadonna',
+6901  : 'Zło wcielone',
+2720  : 'Fochnisia',
+3077  : 'Siewca Wiatru',
+10430 : 'Wschodzące Słońce',
+10473 : 'Wędrowny Rysownik',
+2230  : 'Mhroczniś',
+513   : 'Zbieracz gumijagód',
+4146  : 'Gumitruskawka',
+10406 : 'Latorośle drowa',
+12002 : 'Głodny hobbit',
+12932 : 'Latorośle drowa',
+10372 : 'Boski Wiatr',
+10880 : 'Boski Wiatr',
+1558  : 'Zielarka'
+}
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
 nerthus.chatInfoStr = ''

@@ -80,12 +80,6 @@ try{
         return nerthus.NerthusSpec.indexOf(nick) >= 0
     }
 
-    //sprawdza czy wip tak zwraca jego index+1 nie zwraca 0
-    nerthus.isVip = function(player_id)
-    {
-        return nerthus.vipList.indexOf(player_id)+1
-    }
-
     nerthus.settings='111111';
     nerthus.loadSettings = function()
     {
@@ -135,7 +129,7 @@ try{
     nerthus.tips.title = function(player)
     {
         //sprawdza czy vip, jeśli tak, to daje inny opis
-        var title = nerthus.vipNames[nerthus.vipList.indexOf(parseInt(player.id))]
+        var title = nerthus.vips[parseInt(player.id)]
         if(title)
             return title
         if (player.lvl)

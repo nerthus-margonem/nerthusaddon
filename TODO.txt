@@ -1,5 +1,4 @@
 todo:
-  * zrobić coś z isVip żeby wyglądało po ludzku
   * poprawić Settings, najlepiej żeby było w local storage a nie ciastkach
   * dorobić readme.txt
   * posprztać syf w plikach do któych nikt nie zagldal od dawna..

@@ -38,11 +38,12 @@ nerthus.panel.panel_string = function(panel_data)
 
 nerthus.panel.settings_str = function()
 {
-    return '<u id="n_pan_settings" style="cursor:pointer">ustawienia</u>\
-<div id="n_pan_settings_str" style="display:none;">\
-<input type="checkbox" id="panCbNoc" '+ (nerthus.options['night']   ? "checked" : "") +'/>Noc<br>\
-<input type="checkbox" id="panCbPog" '+ (nerthus.options['weather'] ? "checked" : "") +'/>Pogoda<br>\
-</div>'
+    var str = '<u id="n_pan_settings" style="cursor:pointer">ustawienia</u>' +
+    '<div id="n_pan_settings_str" style="display:none;">'
+    for(var option in nerthus.options)
+        str += '<input type="checkbox" id="panCb' + option + ' ' + (nerthus.options[i] ? "checked" : "") + '/>' + option + '<br>'
+    str += '</div>'
+    return str
 }
 
 nerthus.panel.link = function(link)
@@ -60,8 +61,8 @@ nerthus.panel.save = function()
 nerthus.panel.get_settings = function()
 {
     var options = {}
-    options['night'] = $('#panCbNoc').attr('checked')
-    options['weather'] = $('#panCbPog').attr('checked')
+    for(var option in nerthus.options)
+        options[option] = $('#panCb'+option).attr('checked')
     return options
 }
 

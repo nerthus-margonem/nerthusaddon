@@ -48,7 +48,7 @@ nerthus.panel.settings_str = function()
 
 nerthus.panel.link = function(link)
 {
-    return $('<div/>').append($'<a href="' + link.url + '" target="blank">' + link.name + '</a>')
+    return $('<div/>').append($('<a href="' + link.url + '" target="blank">' + link.name + '</a>'))
 }
 
 nerthus.panel.save = function()

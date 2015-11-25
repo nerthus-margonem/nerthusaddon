@@ -40,14 +40,16 @@ nerthus.panel.panel_string = function(panel_data)
 
 nerthus.panel.settings_str = function()
 {
-    var $settings = $('<u style="cursor:pointer">')
+    var $settings = $("<div>")
+    var $text = $('<u style="cursor:pointer">')
     .text("ustawienia")
     .click(function(){$(this).nextAll().toggle()})
+    $settings.append($text)
     for(var option in nerthus.options)
     {
         var $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
         var $cb_name = $("<b>").text(option)
-        $settings.add($("<div>").append($cb).append($cb_name))
+        $settings.append($("<div>").append($cb).append($cb_name))
     }
     return $settings
 }

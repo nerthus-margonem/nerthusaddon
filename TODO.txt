@@ -1,5 +1,7 @@
 todo:
-  * poprawić Settings, najlepiej żeby było w local storage a nie ciastkach
+  * dorobić zapisywanie danych z NN_dlaRady w localStorage + wersja
+    - ładować je odrazu, jak wersja się nie zgadza to pobrać nowe dane i nadpisać
+    - przyspieszy ładowanie NN_base i reszty o : ładowanie version.json i NN_dlaRadnych.js
   * dorobić readme.txt
   * posprztać syf w plikach do któych nikt nie zagldal od dawna..
     zwłaszcza NN_base

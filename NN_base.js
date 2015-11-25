@@ -104,17 +104,16 @@ try{
         }
     }
 
-    nerthus.storeSettings = function(settings)
+    nerthus.storeSettings = function(options)
     {
-        nerthus.settings = settings
+        nerthus.options = options
         if(typeof Storage)
         {
-            nerthus.options['night']   = Boolean(parseInt(nerthus.settings[0]))
-            nerthus.options['weather'] = Boolean(parseInt(nerthus.settings[3]))
             localStorage.nerthus_options = JSON.stringify(nerthus.options)
         }
         else
         {
+            nerthus.settings = (options['night'] ? '1' : '0') + '11' + (options['weather'] ? '1' : '0') + '111'
             data = new Date();
             data.setTime(data.getTime()+30758400000);
             setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.settings, data);

@@ -38,22 +38,11 @@ nerthus.panel.panel_string = function(panel_data)
 
 nerthus.panel.settings_str = function()
 {
-    var options = this.settings_as_str_array()
     return '<u id="n_pan_settings" style="cursor:pointer">ustawienia</u>\
 <div id="n_pan_settings_str" style="display:none;">\
-<input type="checkbox" id="panCbNoc" '+options[0]+'/>Noc<br>\
-<input type="checkbox" id="panCbPog" '+options[3]+'/>Pogoda<br>\
+<input type="checkbox" id="panCbNoc" '+ nerthus.options['night'] ? "checked" : "" +'/>Noc<br>\
+<input type="checkbox" id="panCbPog" '+ nerthus.options['weather'] ? "checked" : "" +'/>Pogoda<br>\
 </div>'
-}
-
-nerthus.panel.settings_as_str_array = function()
-{
-    var options = [];
-    for(i = 0; i < 6; i++)
-    {
-        options[i] = parseInt(nerthus.settings[i]) ? 'checked' : ''
-    }
-    return options;
 }
 
 nerthus.panel.link = function(link)
@@ -70,19 +59,10 @@ nerthus.panel.save = function()
 
 nerthus.panel.get_settings = function()
 {
-    var settings = ''
-    settings+= this.get_is_checker('#panCbNoc')
-    settings+='0'; //nocnce mapy do wywalenia
-    settings+='0'; //muzyka do wywalenia
-    settings+= this.get_is_checker('#panCbPog')
-    settings+='0'; //z dysku do wywalenia
-    settings+='0'; //większy chat do wywalenia
-    return settings
-}
-
-nerthus.panel.get_is_checker = function(selector)
-{
-    return $(selector).attr('checked') ? '1' : '0'
+    var options = {}
+    options['night'] = $('#panCbNoc').attr('checked')
+    options['weather'] = $('#panCbPog').attr('checked')
+    return options
 }
 
 g.loadQueue.push({fun:nerthus.panel.display_icon, data:""});

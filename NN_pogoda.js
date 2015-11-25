@@ -280,7 +280,7 @@ try
         .appendTo("#ground")
     }
 
-    if(parseInt(nerthus.settings[3]))
+    if(nerthus.options['weather'])
         g.loadQueue.push({fun:function(){nerthus.weather.start()}, data:""});
 
 }catch(e){log('NerthusWeather Error: '+e.message,1)}

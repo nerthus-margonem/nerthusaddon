@@ -68,7 +68,7 @@ nerthus.night_lights.types.add("M","96px")
 nerthus.night_lights.types.add("L","160px")
 nerthus.night_lights.types.add("XL","192px")
 
-if(parseInt(nerthus.settings[0]))
+if(nerthus.options['night'])
 {
     g.loadQueue.push({fun:nerthus.night_lights.on, data:""})
     g.loadQueue.push({fun:nerthus.night, data:""});

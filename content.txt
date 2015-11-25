@@ -50,12 +50,3 @@ NN_pogoda.js
     http://bitbucket.org/nerthus/nerthusaddon/raw/master/NN_pogoda.js
     http://addons2.margonem.pl/get/17/17452dev.js
 
-NN_NightLights.js
-    http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_NightLights.js
-    http://bitbucket.org/nerthus/nerthusaddon/raw/master/NN_NightLights.js
-    http://addons2.margonem.pl/get/18/18090dev.js
-
-NN_Config_hax.js
-    http://cdn.rawgit.com/akrzyz/nerthusaddon/master/NN_Config_hax.js
-    http://bitbucket.org/nerthus/nerthusaddon/raw/master/NN_Config_hax.js
-    http://addons2.margonem.pl/get/17/17454dev.js

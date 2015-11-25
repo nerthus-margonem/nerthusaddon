@@ -81,21 +81,44 @@ try{
     }
 
     nerthus.settings='111111';
+    nerthus.options = {'night':true, 'weather':true};
     nerthus.loadSettings = function()
     {
-        try{
-            var cookie = getCookie('nerthusCookie');
-            cookie=cookie.split('|');
-            nerthus.settings=cookie[1];
-        }catch(e){}
+        if(typeof Storage)
+        {
+            var options = localStorage.nerthus_options
+            if(options)
+                nerthus.options = options
+            else
+                localStorage.nerthus_options = nerthus.options
+        }
+        else
+        {
+            try{
+                var cookie = getCookie('nerthusCookie');
+                cookie=cookie.split('|');
+                nerthus.settings=cookie[1];
+                nerthus.options.night   = Boolean(parseInt(nerthus.settings[0]))
+                nerthus.options.weather = Boolean(parseInt(nerthus.settings[3]))
+            }catch(e){}
+        }
     }
 
     nerthus.storeSettings = function(settings)
     {
         nerthus.settings = settings
-        data = new Date();
-        data.setTime(data.getTime()+30758400000);
-        setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.settings, data);
+        if(typeof Storage)
+        {
+            nerthus.options.night   = Boolean(parseInt(nerthus.settings[0]))
+            nerthus.options.weather = Boolean(parseInt(nerthus.settings[3]))
+            localStorage.nerthus_options = nerthus.options
+        }
+        else
+        {
+            data = new Date();
+            data.setTime(data.getTime()+30758400000);
+            setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.settings, data);
+        }
     }
 
     nerthus.tips = {}

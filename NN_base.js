@@ -88,9 +88,11 @@ try{
         {
             var options = localStorage.nerthus_options
             if(options)
-                nerthus.options = options
+                nerthus.options = JSON.parse(options)
+                for(i in nerthus.options)
+                    nerthus.options[i] = Boolean(nerthus.options[i])
             else
-                localStorage.nerthus_options = nerthus.options
+                localStorage.nerthus_options = JSON.stringify(nerthus.options)
         }
         else
         {
@@ -109,9 +111,9 @@ try{
         nerthus.settings = settings
         if(typeof Storage)
         {
-            nerthus.options.night   = Boolean(parseInt(nerthus.settings[0]))
-            nerthus.options.weather = Boolean(parseInt(nerthus.settings[3]))
-            localStorage.nerthus_options = nerthus.options
+            nerthus.options['night']   = Boolean(parseInt(nerthus.settings[0]))
+            nerthus.options['weather'] = Boolean(parseInt(nerthus.settings[3]))
+            localStorage.nerthus_options = JSON.stringify(nerthus.options)
         }
         else
         {

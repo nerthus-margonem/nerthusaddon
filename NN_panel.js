@@ -40,8 +40,8 @@ nerthus.panel.settings_str = function()
 {
     return '<u id="n_pan_settings" style="cursor:pointer">ustawienia</u>\
 <div id="n_pan_settings_str" style="display:none;">\
-<input type="checkbox" id="panCbNoc" '+ nerthus.options['night'] ? "checked" : "" +'/>Noc<br>\
-<input type="checkbox" id="panCbPog" '+ nerthus.options['weather'] ? "checked" : "" +'/>Pogoda<br>\
+<input type="checkbox" id="panCbNoc" '+ (nerthus.options['night']   ? "checked" : "") +'/>Noc<br>\
+<input type="checkbox" id="panCbPog" '+ (nerthus.options['weather'] ? "checked" : "") +'/>Pogoda<br>\
 </div>'
 }
 

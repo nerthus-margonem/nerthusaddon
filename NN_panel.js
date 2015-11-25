@@ -41,7 +41,7 @@ nerthus.panel.settings_str = function()
     var str = '<u id="n_pan_settings" style="cursor:pointer">ustawienia</u>' +
     '<div id="n_pan_settings_str" style="display:none;">'
     for(var option in nerthus.options)
-        str += '<input type="checkbox" id="panCb' + option + ' ' + (nerthus.options[i] ? "checked" : "") + '/>' + option + '<br>'
+        str += '<input type="checkbox" id="panCb' + option + '" ' + (nerthus.options[i] ? "checked" : "") + '/>' + option + '<br>'
     str += '</div>'
     return str
 }

@@ -26,23 +26,25 @@ nerthus.panel.display_panel = function()
 
 nerthus.panel.panel_string = function(panel_data)
 {
-    var str = $("<center>")
+    var panel = $("<div>")
+    var center = $("<center>")
     .append($("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ").append(this.link(panel_data.forum))))
     .append($("<div>").text(panel_data.panel_info))
     for(var i in panel_data.links)
-        str.append($('<div>').append(this.link(panel_data.links[i])))
-    str.add(this.settings_str())
-    return str
+        center.append($('<div>').append(this.link(panel_data.links[i])))
+    panel.append(center)
+    panel.append(this.settings_str())
+    return panel
 }
 
 nerthus.panel.settings_str = function()
 {
     var settings = $("<div>")
     .append($('<u id="n_pan_settings" style="cursor:pointer">').text("ustawienia"))
-    .click(function(){$(this).children().toggle("div")})
+//    .click(function(){$(this).children().toggle("div")})
     for(var option in nerthus.options)
     {
-        var cb = $('<input>',{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
+        var cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
         var cb_name = $("<b>").text(option)
         settings.append($("<div>").append(cb).append(cb_name))
     }

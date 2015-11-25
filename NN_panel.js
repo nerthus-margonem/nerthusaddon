@@ -50,7 +50,7 @@ nerthus.panel.settings_str = function()
         var cb_name = $("<b>").text(option)
         settings.add($("<div>").append(cb).append(cb_name))
     }
-    return wrapper
+    return settings
 }
 
 nerthus.panel.link = function(link)

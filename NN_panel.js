@@ -51,7 +51,7 @@ nerthus.panel.settings_str = function()
     {
         var $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
         var $cb_name = $("<b>").text(option)
-        $settings.append($("<div>").append($cb).append($cb_name))
+        $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
     return $settings
 }

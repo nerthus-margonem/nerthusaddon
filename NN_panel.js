@@ -31,7 +31,7 @@ nerthus.panel.panel_string = function(panel_data)
     .append($("<div/>").append($("<b/>").text("Witaj na Nerthusie, zapraszamy na ").append(this.link(panel_data.forum))))
     .append($("<div/>").text(panel_data.panel_info))
     for(var i in panel_data.links)
-        str.append(this.link(panel_data.links[i]))
+        str.append($('<div/>').append(this.link(panel_data.links[i])))
 //    str += '</center><br>' + this.settings_str()
     return str
 }
@@ -48,7 +48,7 @@ nerthus.panel.settings_str = function()
 
 nerthus.panel.link = function(link)
 {
-    return $('<div/>').append($('<a href="' + link.url + '" target="blank">' + link.name + '</a>'))
+    return $('<a href="' + link.url + '" target="blank">' + link.name + '</a>')
 }
 
 nerthus.panel.save = function()

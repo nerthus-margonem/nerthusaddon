@@ -27,12 +27,12 @@ nerthus.panel.display_panel = function()
 
 nerthus.panel.panel_string = function(panel_data)
 {
-    var str = '<center><b>Witaj na Nerthusie, zapraszamy na ' +
-    this.link(panel_data.forum) + '</b><br>' +
-    panel_data.panel_info + '<br>'
+    var str = $("<center/>")
+    .append($("<div><b>Witaj na Nerthusie, zapraszamy na " + this.link(panel_data.forum) + "</b></div>"))
+    .append($("<div>" + panel_data.panel_info + "</div>"))
     for(var i in panel_data.links)
-        str += this.link(panel_data.links[i]) + '<br>'
-    str += '</center><br>' + this.settings_str()
+        str.append(this.link(panel_data.links[i]))
+//    str += '</center><br>' + this.settings_str()
     return str
 }
 
@@ -48,7 +48,7 @@ nerthus.panel.settings_str = function()
 
 nerthus.panel.link = function(link)
 {
-    return '<a href="' + link.url + '" target="blank">' + link.name + '</a>'
+    return $('<div/>').append($'<a href="' + link.url + '" target="blank">' + link.name + '</a>')
 }
 
 nerthus.panel.save = function()

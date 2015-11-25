@@ -80,8 +80,8 @@ try{
         return nerthus.NerthusSpec.indexOf(nick) >= 0
     }
 
-    nerthus.settings='111111';
-    nerthus.options = {'night':true, 'weather':true};
+    nerthus.settings='111111'
+    nerthus.options = {'night':true, 'weather':true}
     nerthus.loadSettings = function()
     {
         if(typeof Storage)
@@ -89,8 +89,6 @@ try{
             var options = localStorage.nerthus_options
             if(options)
                 nerthus.options = JSON.parse(options)
-                for(i in nerthus.options)
-                    nerthus.options[i] = Boolean(nerthus.options[i])
             else
                 localStorage.nerthus_options = JSON.stringify(nerthus.options)
         }

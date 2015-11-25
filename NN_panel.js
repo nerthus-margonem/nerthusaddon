@@ -37,7 +37,7 @@ nerthus.panel.panel_string = function(panel_data)
 
 nerthus.panel.settings_str = function()
 {
-    var settings = $("div")
+    var settings = $("<div>")
     .append($('<u id="n_pan_settings" style="cursor:pointer">').text("ustawienia"))
     .click(function(){$(this).children().toggle("div")})
     for(var option in nerthus.options)

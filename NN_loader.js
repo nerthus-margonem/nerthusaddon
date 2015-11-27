@@ -9,7 +9,7 @@ PARSER.stringify = function(obj)
 PARSER.stringifyFunction = function(key,val)
 {
     if(typeof val === "function")
-        return val.toSource()
+        return "("+ val.toString() +")"
     return val
 }
 

@@ -77,6 +77,6 @@ nerthus.night.start = function()
     }
 }
 
-nerthus.light.start()
+nerthus.night.start()
 
 }catch(err){log('nerthus night error: '+ err.message ,1)}

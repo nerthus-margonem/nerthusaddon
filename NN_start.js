@@ -22,7 +22,7 @@ try{
     {
         return this.filesPrefix + "/" + this.version + "/" + filename;
     }
-    nerthus.addon.start = function()
+    nerthus.addon.run = function()
     {
         $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
         {
@@ -41,5 +41,5 @@ try{
         log('Nerthus addon started');
         })});
     }
-    nerthus.addon.start()
+    nerthus.addon.run()
 }catch(e){log('NerthusStart Error: '+e.message,1)}

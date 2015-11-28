@@ -33,17 +33,19 @@ LOADER.store = function(key,obj)
 
 LOADER.load = function(key)
 {
-    var obj = PARSER.parse(localStorage[key])
-    this.run(obj)
-    return obj
+    return PARSER.parse(localStorage[key])
 }
 
 LOADER.run = function(obj)
 {
     for(i in obj)
     {
-        if(typeof obj[i] === 'object' && typeof obj[i].start === 'function')
-            obj[i].start()
+        try
+        {
+            if(typeof obj[i] === 'object' && typeof obj[i].start === 'function')
+                obj[i].start()
+        }
+        catch(e){console.log("error:" + i + " : " + e.message)}
     }
     return obj
 }

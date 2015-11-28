@@ -12,47 +12,43 @@ nerthus.defer = function(fun,data)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 
-//daty zwykła i GMT
-nerthus.date = new Date();
-nerthus.dateGMT = new Date(parseInt(nerthus.date) + nerthus.date.getTimezoneOffset()*60*1000);
-
 //zwraca sezon 1 - wiosna, 2 - lato, 3 - jesień, 4 - zima
 nerthus.season = function()
 {
-    var retVal=1;
-    var a=new Date();
-    var b=new Date();
+    var season=1;
+    var date = new Date();
+    var seasonBegin = new Date();
+    var seasonEnd = new Date();
 
     //wiosna 21.3 - 22.6
-    a.setUTCDate(21); a.setUTCMonth(2);
-    b.setUTCDate(22); b.setUTCMonth(5);
-    if( nerthus.dateGMT>=a && nerthus.dateGMT<b )
+    seasonBegin.setUTCDate(21); seasonBegin.setUTCMonth(2);
+    seasonEnd.setUTCDate(22); seasonEnd.setUTCMonth(5);
+    if(date>=seasonBegin && date<seasonEnd)
     {
-        retVal = 1;
+        season = 1;
     }
     //lato 22.6 - 23.9
-    a.setUTCDate(21); a.setUTCMonth(5);
-    b.setUTCDate(23); b.setUTCMonth(8);
-    if( nerthus.dateGMT>=a && nerthus.dateGMT<b )
+    seasonBegin.setUTCDate(21); seasonBegin.setUTCMonth(5);
+    seasonEnd.setUTCDate(23); seasonEnd.setUTCMonth(8);
+    if(date>=seasonBegin && date<seasonEnd)
     {
-        retVal = 2;
+        season = 2;
     }
     //lato 23.9 - 22.12
-    a.setUTCDate(23); a.setUTCMonth(8);
-    b.setUTCDate(22); b.setUTCMonth(10);
-    if( nerthus.dateGMT>=a && nerthus.dateGMT<b )
+    seasonBegin.setUTCDate(23); seasonBegin.setUTCMonth(8);
+    seasonEnd.setUTCDate(22); seasonEnd.setUTCMonth(10);
+    if(date>=seasonBegin && date<seasonEnd)
     {
-        retVal = 3;
+        season = 3;
     }
     //zima 22.12 - 21.3
-    a.setUTCDate(22); a.setUTCMonth(10);
-    b.setUTCDate(21); b.setUTCMonth(2);
-    if( nerthus.dateGMT>=a || nerthus.dateGMT<b )
+    seasonBegin.setUTCDate(22); seasonBegin.setUTCMonth(10);
+    seasonEnd.setUTCDate(21); seasonEnd.setUTCMonth(2);
+    if(date>=seasonBegin || date<seasonEnd)
     {
-        retVal = 4;
+        season = 4;
     }
-
-    return retVal;
+    return season;
 }
 
 //info wyświetlane na chacie po zalogowaniu
@@ -124,7 +120,7 @@ nerthus.storeSettings = function(options)
         nerthus.settings = (options['night'] ? '1' : '0') + '11' + (options['weather'] ? '1' : '0') + '111'
         data = new Date();
         data.setTime(data.getTime()+30758400000);
-        setCookie('nerthusCookie', parseInt(nerthus.dateGMT) + '|' + nerthus.settings, data);
+        setCookie('nerthusCookie', data + '|' + nerthus.settings, data);
     }
 }
 

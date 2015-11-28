@@ -8,7 +8,7 @@ try{
 nerthus.defer = function(fun,data)
 {
     if(typeof fun !== 'function')
-        throw {'name' : 'deffering error','message': 'fun must be function when it is ' + typeof fun + ' fun= ' + fun.toString()}
+        throw new TypeError('fun must be function when it is ' + typeof fun)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 

@@ -1,7 +1,8 @@
 try
 {
 
-nerthus.night = function()
+nerthus.night = {}
+nerthus.night.dim = function()
 {
     var hour = new Date().getHours();
     if( hour >= 4 && hour<18 ){ return; }
@@ -25,21 +26,21 @@ nerthus.night = function()
     }
 }
 
-nerthus.night_lights = {}
-nerthus.night_lights.types = {}
+nerthus.night.lights = {}
+nerthus.night.lights.types = {}
 
-nerthus.night_lights.types.add = function(type,size)
+nerthus.night.lights.types.add = function(type,size)
 {
     this[type] = {'url' : nerthus.addon.fileUrl("/img/night_light_" + type + ".png"), 'width' : size, 'height' : size}
 }
 
-nerthus.night_lights.add = function(lights)
+nerthus.night.lights.add = function(lights)
 {
     for(var i in lights)
         this.display(lights[i])
 }
 
-nerthus.night_lights.display = function(light)
+nerthus.night.lights.display = function(light)
 {
     var lt = this.types[light.type]
     return $('<div/>')
@@ -56,22 +57,26 @@ nerthus.night_lights.display = function(light)
     .appendTo("#ground")
 }
 
-nerthus.night_lights.on = function()
+nerthus.night.lights.on = function()
 {
     var hour = new Date().getHours();
     if( hour < 4 || hour > 18 )
-        $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),function(lights){nerthus.night_lights.add(lights)})
+        $.getJSON(nerthus.addon.fileUrl("/night.lights/map_" + map.id + ".json"),function(lights){nerthus.night.lights.add(lights)})
 }
 
-nerthus.night_lights.types.add("S","64px")
-nerthus.night_lights.types.add("M","96px")
-nerthus.night_lights.types.add("L","160px")
-nerthus.night_lights.types.add("XL","192px")
-
-if(nerthus.options['night'])
+nerthus.night.start = function()
 {
-    g.loadQueue.push({fun:nerthus.night_lights.on, data:""})
-    g.loadQueue.push({fun:nerthus.night, data:""});
+    this.lights.types.add("S","64px")
+    this.lights.types.add("M","96px")
+    this.lights.types.add("L","160px")
+    this.lights.types.add("XL","192px")
+    if(nerthus.options['night'])
+    {
+        g.loadQueue.push({fun:nerthus.night.lights.on, data:""})
+        g.loadQueue.push({fun:nerthus.night.dim(), data:""});
+    }
 }
+
+nerthus.light.start()
 
 }catch(err){log('nerthus night error: '+ err.message ,1)}

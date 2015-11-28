@@ -76,6 +76,11 @@ nerthus.panel.get_settings = function()
     return options
 }
 
-g.loadQueue.push({fun:nerthus.panel.display_icon, data:""});
+nerthus.panel.start = function()
+{
+    g.loadQueue.push({fun:nerthus.panel.display_icon, data:""});
+}
+
+nerthus.panel.start()
 
 }catch(e){log('NerthusPanel Error: '+e.message,1);}

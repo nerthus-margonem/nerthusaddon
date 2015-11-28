@@ -19,7 +19,12 @@ nerthus.maps.change = function(map_url)
     $("#ground").css("backgroundImage","url(" + map_url + ")")
 }
 
-g.loadQueue.push({fun:nerthus.maps.seasonMaps, data:""});
+nerthus.maps.start = function()
+{
+    g.loadQueue.push({fun:nerthus.maps.seasonMaps, data:""});
+}
+
+nerthus.maps.start()
 
 }
 catch(e){log('NerthusMap Error: '+e.message,1)}

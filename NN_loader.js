@@ -42,7 +42,7 @@ LOADER.run = function(obj)
 {
     for(i in obj)
     {
-        if(typeof obj[i] === "object" && obj[i].start)
+        if(typeof obj[i] === 'object' && typeof obj[i].start === 'function')
             obj[i].start()
     }
     return obj

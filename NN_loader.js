@@ -33,7 +33,9 @@ LOADER.store = function(key,obj)
 
 LOADER.load = function(key)
 {
-    return this.run(PARSER.parse(localStorage[key]))
+    var obj = PARSER.parse(localStorage[key])
+    this.run(obj)
+    return obj
 }
 
 LOADER.run = function(obj)

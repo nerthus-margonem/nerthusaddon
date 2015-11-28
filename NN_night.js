@@ -73,7 +73,7 @@ nerthus.night.start = function()
     if(nerthus.options['night'])
     {
         nerthus.defer(nerthus.night.lights.on)
-        nerthus.defer(nerthus.night.dim())
+        nerthus.defer(nerthus.night.dim)
     }
 }
 

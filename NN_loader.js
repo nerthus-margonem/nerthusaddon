@@ -25,3 +25,24 @@ PARSER.parseFunction = function(key,val)
     return val
 }
 
+var LOADER = {}
+LOADER.store = function(key,obj)
+{
+    localStorage[key] = PARSER.stringify(obj)
+}
+
+LOADER.load = function(key)
+{
+    return this.run(PARSER.parse(localStorage[key]))
+}
+
+LOADER.run = function(obj)
+{
+    for(i in obj)
+    {
+        if(typeof obj[i] === "object" && obj[i].start)
+            obj[i].start()
+    }
+    return obj
+}
+

@@ -284,7 +284,7 @@ nerthus.weather.effects.display_url = function(url)
 nerthus.weather.start = function()
 {
     if(nerthus.options['weather'])
-        g.loadQueue.push({fun:function(){nerthus.weather.run()}, data:""});
+        nerthus.defer(function(){nerthus.weather.run()});
 }
 
 nerthus.weather.start()

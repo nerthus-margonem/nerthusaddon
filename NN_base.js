@@ -5,6 +5,13 @@
 **/
 try{
 
+nerthus.defer = function(fun,data)
+{
+    if(typeof fun !== 'function')
+        throw {'name' : 'deffering error','message': 'fun must be function when it is ' + typeof fun + ' fun= ' + fun.toString()}
+    g.loadQueue.push({'fun':fun, 'data':data})
+}
+
 //daty zwykła i GMT
 nerthus.date = new Date();
 nerthus.dateGMT = new Date(parseInt(nerthus.date) + nerthus.date.getTimezoneOffset()*60*1000);
@@ -173,11 +180,11 @@ nerthus.base.start = function()
         tip += "<i><font color='red'>" + nerthus.tips.rank(this) + "</font></i>"
         return tip
     }
-    g.loadQueue.push({fun:function()
+    nerthus.defer(function()
     {
         hero.rights = hero.uprawnienia
         $("#hero").attr('tip', function(){return hero.tip()})
-    }, data:""})
+    })
 
     g.tips.npc = function (c) {
         var e = "<b>" + c.nick + "</b>";

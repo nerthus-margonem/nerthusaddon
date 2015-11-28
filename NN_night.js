@@ -72,8 +72,8 @@ nerthus.night.start = function()
     this.lights.types.add("XL","192px")
     if(nerthus.options['night'])
     {
-        g.loadQueue.push({fun:nerthus.night.lights.on, data:""})
-        g.loadQueue.push({fun:nerthus.night.dim(), data:""});
+        nerthus.defer(nerthus.night.lights.on)
+        nerthus.defer(nerthus.night.dim())
     }
 }
 

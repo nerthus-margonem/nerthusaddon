@@ -21,7 +21,7 @@ nerthus.maps.change = function(map_url)
 
 nerthus.maps.start = function()
 {
-    g.loadQueue.push({fun:nerthus.maps.seasonMaps, data:""});
+    nerthus.defer(nerthus.maps.seasonMaps)
 }
 
 nerthus.maps.start()

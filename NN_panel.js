@@ -78,7 +78,7 @@ nerthus.panel.get_settings = function()
 
 nerthus.panel.start = function()
 {
-    g.loadQueue.push({fun:nerthus.panel.display_icon, data:""});
+    nerthus.defer(nerthus.panel.display_icon);
 }
 
 nerthus.panel.start()

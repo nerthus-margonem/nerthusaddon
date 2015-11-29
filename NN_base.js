@@ -263,7 +263,7 @@ nerthus.code.load_file = function(file,callback)
 }
 nerthus.code.loaded = function(file,callback)
 {
-    log(file + " has been loaded, awaiting: " + (this.files.length - this.loaded_files.length))
+    log(file + " has been loaded, awaiting: " + String(this.files.length - this.loaded_files.length))
     this.loaded_files.push(file)
     if(typeof callback === 'function')
         callback()

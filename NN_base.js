@@ -246,6 +246,35 @@ nerthus.base.start = function()
     }
 }
 
+nerthus.code = {}
+nerthus.code.files = []
+nerthus.code.loaded_files = []
+nerthus.code.all_loaded = null
+nerthus.code.load = function (files,callback)
+{
+    this.all_loaded = callback
+    for(var i in file)
+        this.load_file(file[i])
+}
+nerthus.code.load_file = function(file,callback)
+{
+    this.file.push(file)
+    $.getScript(nerthus.addon.fileUrl(file), function(){nerthus.code.loaded(file,callback)})
+}
+nerthus.code.loaded(file,callback)
+{
+    log(file + " has been loaded, awaiting: " + this.files.length - this.loaded_files.length)
+    this.loaded_files.push(file)
+    if(typeof callback === 'function')
+        callback()
+    if(this.files.length === this.loaded_files.length)
+    {
+        log("all files has been loaded")
+        if(typeof this.all_loaded === 'function')
+            this.all_loaded()
+    }
+}
+
 nerthus.loadSettings();
 nerthus.base.start()
 

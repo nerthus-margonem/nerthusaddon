@@ -253,20 +253,14 @@ nerthus.code.all_loaded = null
 nerthus.code.load = function (files,callback)
 {
     this.all_loaded = callback
+    this.files = this.files.concat(files)
     for(var i in files)
-        this.load_file(files[i])
+        $.getScript(nerthus.addon.fileUrl(files[i]), function(){nerthus.code.loaded(files[i])})
 }
-nerthus.code.load_file = function(file,callback)
-{
-    this.files.push(file)
-    $.getScript(nerthus.addon.fileUrl(file), function(){nerthus.code.loaded(file,callback)})
-}
-nerthus.code.loaded = function(file,callback)
+nerthus.code.loaded = function(file)
 {
     this.loaded_files.push(file)
     log(file + " loaded [" + String(this.loaded_files.length) + "/" + String(this.files.length) + "]")
-    if(typeof callback === 'function')
-        callback()
     if(this.files.length === this.loaded_files.length && typeof this.all_loaded === 'function')
         this.all_loaded()
 }

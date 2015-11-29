@@ -261,7 +261,7 @@ nerthus.code.load_file = function(file,callback)
     this.files.push(file)
     $.getScript(nerthus.addon.fileUrl(file), function(){nerthus.code.loaded(file,callback)})
 }
-nerthus.code.loaded(file,callback)
+nerthus.code.loaded = function(file,callback)
 {
     log(file + " has been loaded, awaiting: " + this.files.length - this.loaded_files.length)
     this.loaded_files.push(file)

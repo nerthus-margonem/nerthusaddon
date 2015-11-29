@@ -28,7 +28,7 @@ try{
         {
             nerthus.addon.setVersion(data.version)
             nerthus.addon.loadScripts()
-            log("starting nerthus addon in version: " + this.version)
+            log("starting nerthus addon in version: " + nerthus.addon.version)
         });
     }
     nerthus.addon.loadScripts = function()

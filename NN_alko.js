@@ -32,20 +32,6 @@ nerthus.alko.timer_handler = function()
     };
 }
 
-function shuffleArray(array,cc) 
-{ // funkcja z netu tasujÄ?ca  tablicÄ? pozostawiajÄ?c 
-    var przestanek = 0;
-    if (typeof cc == 'undefined' ) cc = 0;
-    if ([".",",","?","!"].lastIndexOf(array[array.length-1]) > -1) przestanek = 1;
-    for (var i = array.length - 1 - cc - przestanek; i > (0+cc); i--) 
-    {
-        var j = Math.floor(Math.random() * (i + 1 - cc) + cc);
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
 
 nerthus.alko.start = function()
 {
@@ -69,6 +55,21 @@ nerthus.alko.start = function()
             }
         }
         _nerthg(c,d);
+    }
+
+    var shuffleArray = function (array,cc) 
+    { // funkcja z netu tasujÄ?ca  tablicÄ? pozostawiajÄ?c 
+        var przestanek = 0;
+        if (typeof cc == 'undefined' ) cc = 0;
+        if ([".",",","?","!"].lastIndexOf(array[array.length-1]) > -1) przestanek = 1;
+        for (var i = array.length - 1 - cc - przestanek; i > (0+cc); i--) 
+        {
+            var j = Math.floor(Math.random() * (i + 1 - cc) + cc);
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
     }
 
     var nerth_chatSendMsg = chatSendMsg;

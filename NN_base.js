@@ -264,15 +264,11 @@ nerthus.code.load_file = function(file,callback)
 nerthus.code.loaded = function(file,callback)
 {
     this.loaded_files.push(file)
-    log(file + " has been loaded, awaiting: " + String(this.files.length - this.loaded_files.length))
+    log(file + " loaded, awaiting: " + String(this.files.length - this.loaded_files.length))
     if(typeof callback === 'function')
         callback()
-    if(this.files.length === this.loaded_files.length)
-    {
-        log("all files has been loaded")
-        if(typeof this.all_loaded === 'function')
-            this.all_loaded()
-    }
+    if(this.files.length === this.loaded_files.length && typeof this.all_loaded === 'function')
+        this.all_loaded()
 }
 
 nerthus.loadSettings();

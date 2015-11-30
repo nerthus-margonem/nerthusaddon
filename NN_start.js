@@ -18,15 +18,19 @@ try{
             this.version = 'master'
         }
     }
+    nerthus.addon.getVersion = function(callback)
+    {
+        $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data){callback(data.version)})
+    }
     nerthus.addon.fileUrl = function(filename)
     {
         return this.filesPrefix + "/" + this.version + "/" + filename;
     }
     nerthus.addon.run = function()
     {
-        $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data)
+        this.getVersion(function(version)
         {
-            nerthus.addon.setVersion(data.version)
+            nerthus.addon.setVersion(version)
             nerthus.addon.loadScripts()
             log("starting nerthus addon in version: " + nerthus.addon.version)
         });

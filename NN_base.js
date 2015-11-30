@@ -249,23 +249,22 @@ nerthus.base.start = function()
 ScriptsLoader = function()
 {
     var loader = {}
-    loader.files_to_load = 0
-    loader.files_loaded = 0
-    loader.all_loaded = null
+    loader.to_load = 0
+    loader.callback = null
     loader.load = function (files,callback)
     {
-        this.all_loaded = callback
-        this.files_to_load += files.length
+        this.callback = callback
+        this.to_load += files.length
         var $this = this
         for(var i in files)
             $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.loaded(files[i])})
     }
     loader.loaded = function(file)
     {
-        this.files_loaded++
-        log(file + " loaded [" + String(this.files_loaded) + "/" + String(this.files_to_load) + "]")
-        if(this.files_loaded === this.files_loaded && typeof this.all_loaded === 'function')
-            this.all_loaded()
+        this.to_load--
+        log(file + " loaded, [" + this.to_load  + "]")
+        if(this.to_load === 0 && typeof this.callback === 'function')
+            this.callback()
     }
     return loader
 }

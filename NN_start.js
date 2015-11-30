@@ -38,5 +38,28 @@ try{
                 nerthus.code.load(nerthus.scripts, function(){log('Nerthus addon started')})
         })});
     }
+
+    ScriptsLoader = function()
+    {
+        var loader = {}
+        loader.to_load = 0
+        loader.callback = null
+        loader.load = function (files,callback)
+        {
+            this.callback = callback
+            this.to_load += files.length
+            var $this = this
+            for(var i in files)
+                $.getScript(nerthus.addon.fileUrl(files[i]), $this.loaded)
+        }
+        loader.loaded = function()
+        {
+            this.to_load--
+            if(this.to_load === 0 && typeof this.callback === 'function')
+                this.callback()
+        }
+        return loader
+    }
+    nerthus.code = ScriptsLoader()
     nerthus.addon.run()
 }catch(e){log('NerthusStart Error: '+e.message,1)}

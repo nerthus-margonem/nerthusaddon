@@ -269,6 +269,7 @@ ScriptsLoader = function()
     }
     return loader
 }
+nerthus.code = ScriptsLoader()
 nerthus.loadSettings();
 nerthus.base.start()
 

@@ -246,25 +246,29 @@ nerthus.base.start = function()
     }
 }
 
-nerthus.code = {}
-nerthus.code.files = []
-nerthus.code.loaded_files = []
-nerthus.code.all_loaded = null
-nerthus.code.load = function (files,callback)
+ScriptsLoader = function()
 {
-    this.all_loaded = callback
-    this.files = this.files.concat(files)
-    for(var i in files)
-        $.getScript(nerthus.addon.fileUrl(files[i]), function(){nerthus.code.loaded(files[i])})
+    var loader = {}
+    loader.files_to_load = 0
+    loader.files_loaded = 0
+    loader.all_loaded = null
+    loader.load = function (files,callback)
+    {
+        this.all_loaded = callback
+        this.files_to_load += files.length
+        var $this = this
+        for(var i in files)
+            $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.loaded(files[i])})
+    }
+    loader.loaded = function(file)
+    {
+        this.files_loaded++
+        log(file + " loaded [" + String(this.files_loaded) + "/" + String(this.files_to_load) + "]")
+        if(this.files_loaded === this.files_loaded && typeof this.all_loaded === 'function')
+            this.all_loaded()
+    }
+    return loader
 }
-nerthus.code.loaded = function(file)
-{
-    this.loaded_files.push(file)
-    log(file + " loaded [" + String(this.loaded_files.length) + "/" + String(this.files.length) + "]")
-    if(this.files.length === this.loaded_files.length && typeof this.all_loaded === 'function')
-        this.all_loaded()
-}
-
 nerthus.loadSettings();
 nerthus.base.start()
 

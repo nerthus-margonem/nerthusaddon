@@ -60,6 +60,33 @@ try{
         }
         return loader
     }
+
+    Parser = function()
+    {
+        var parser = {}
+        parser.stringify = function(obj)
+        {
+            return JSON.stringify(obj, this.stringifyFunction)
+        }
+        parser.stringifyFunction = function(key,val)
+        {
+            if(typeof val === "function")
+                return "("+ val.toString() +")"
+            return val
+        }
+        parser.parse = function(obj)
+        {
+            return JSON.parse(obj, this.parseFunction)
+        }
+        parser.parseFunction = function(key,val)
+        {
+            if(typeof val === "string" && val.indexOf("function") === 1)
+                return eval(val)
+            return val
+        }
+        return parser
+    }
+
     nerthus.code = ScriptsLoader()
     nerthus.addon.run()
 }catch(e){log('NerthusStart Error: '+e.message,1)}

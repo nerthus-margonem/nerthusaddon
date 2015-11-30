@@ -50,7 +50,7 @@ try{
             this.to_load += files.length
             var $this = this
             for(var i in files)
-                $.getScript(nerthus.addon.fileUrl(files[i]), $this.loaded)
+                $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.loaded})
         }
         loader.loaded = function()
         {

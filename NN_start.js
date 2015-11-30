@@ -46,7 +46,9 @@ try{
     nerthus.addon.load = function()
     {
         if(typeof localStorage !== 'undefined')
+        {
             if(localStorage.nerthus)
+            {
                 log("load nerthus addon from local storage")
                 nerthus = Parser().parse(localStorage.nerthus)
                 for(var i in nerthus)
@@ -61,7 +63,9 @@ try{
                     }
                     log("Nerthus addon started")
                 })
+            }
             else
+            {
                 log("load nerthus addon from github and store")
                 this.getVersion(function(version)
                 {
@@ -73,9 +77,13 @@ try{
                         localStorage.nerthus = Parser().stringify(nerthus)
                     })
                 })
+            }
+        }
         else
+        {
             log("load nerthus addon from github")
             this.run()
+        }
     }
 
     ScriptsLoader = function()

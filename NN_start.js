@@ -33,8 +33,8 @@ try{
     }
     nerthus.addon.loadScripts = function()
     {
-        $.getScript(nerthus.addon.fileUrl('NN_dlaRadnych.js'),function(){
-            $.getScript(nerthus.addon.fileUrl('NN_base.js'),function(){
+        nerthus.code.load(['NN_dlaRadnych.js'],function(){
+            nerthus.code.load(['NN_base.js'],function(){
                 nerthus.code.load(nerthus.scripts, function(){log('Nerthus addon started')})
         })});
     }

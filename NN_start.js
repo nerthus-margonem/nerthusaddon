@@ -86,24 +86,80 @@ try{
         }
     }
 
+    GitHubLoader = function()
+    {
+        var loader = {}
+        loader.load = function()
+        {
+            nerthus.addon.getVersion(function(version)
+            {
+                nerthus.addon.setVersion(version)
+                this.loadScripts(function(){log('Nerthus addon started')})
+                log("starting nerthus addon in version: " + nerthus.addon.version)
+            });
+        }
+        loader.scripts = ScriptsLoader()
+        loader.loadScripts = function(callback)
+        {
+            scripts.load(['NN_dlaRadnych.js'],function(){
+                scripts.load(['NN_base.js'],function(){
+                    scripts.load(nerthus.scripts, callback)
+            })});
+        }
+    }
+
+    StorageLoader = function()
+    {
+        var loader = {}
+        loader.load = function() 
+        {
+            nerthus = Parser().parse(localStorage.nerthus)
+            this.__checkVersion()
+            this.__run()
+
+        }
+        loader.__run = function() 
+        {
+            for(var i in nerthus)
+                if(typeof nerthus[i] === 'object' && typeof nerthus[i].start === 'function')
+                    nerthus[i].start()
+        }
+        loader.__checkVersion = function()
+        {
+            nerthus.addon.getVersion(function(version)
+            {
+                if(version != nerthus.addon.version)
+                {
+                    log("nerthus addon has not actual version")
+                    delete localStorage.nerthus
+                }
+                log("Nerthus addon started")
+            })
+        }
+        loader.store = function()
+        {
+            localStorage.nerthus = Parser().stringify(nerthus)
+        }
+    }
+
     ScriptsLoader = function()
     {
         var loader = {}
-        loader.to_load = 0
-        loader.callback = null
+        loader.__to_load = 0
+        loader.__callback = null
         loader.load = function (files,callback)
         {
-            this.callback = callback
-            this.to_load += files.length
+            this.__callback = callback
+            this.__to_load += files.length
             var $this = this
             for(var i in files)
-                $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.loaded()})
+                $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.__loaded()})
         }
-        loader.loaded = function()
+        loader.__loaded = function()
         {
-            this.to_load--
-            if(this.to_load === 0 && typeof this.callback === 'function')
-                this.callback()
+            this.__to_load--
+            if(this.__to_load === 0 && typeof this.__callback === 'function')
+                this.__callback()
         }
         return loader
     }
@@ -113,9 +169,9 @@ try{
         var parser = {}
         parser.stringify = function(obj)
         {
-            return JSON.stringify(obj, this.stringifyFunction)
+            return JSON.stringify(obj, this.__stringifyFunction)
         }
-        parser.stringifyFunction = function(key,val)
+        parser.__stringifyFunction = function(key,val)
         {
             if(typeof val === "function")
                 return "("+ val.toString() +")"
@@ -123,9 +179,9 @@ try{
         }
         parser.parse = function(obj)
         {
-            return JSON.parse(obj, this.parseFunction)
+            return JSON.parse(obj, this.__parseFunction)
         }
-        parser.parseFunction = function(key,val)
+        parser.__parseFunction = function(key,val)
         {
             if(typeof val === "string" && val.indexOf("function") === 1)
                 return eval(val)

@@ -8,29 +8,28 @@ try{
     nerthus.addon = {}
     nerthus.addon.version = "master";
     nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
-    nerthus.addon.setVersion = function(version)
+    nerthus.addon.fileUrl = function(filename)
     {
-        this.version = version
-        if(typeof NerthusAddonDebug != 'undefined')
-        {   //debug version for development
-            log("nerthus addon in debug mode")
-            this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
-            this.version = 'master'
-        }
+        return this.filesPrefix + "/" + this.version + "/" + filename;
+    }
+    nerthus.addon.runInDebugMode = function()
+    {
+        log("nerthus addon in debug mode")
+        this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
+        this.version = "master"
+        this.loadScripts(function(){log('Nerthus addon started')})
     }
     nerthus.addon.getVersion = function(callback)
     {
         $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data){callback(data.version)})
     }
-    nerthus.addon.fileUrl = function(filename)
-    {
-        return this.filesPrefix + "/" + this.version + "/" + filename;
-    }
     nerthus.addon.run = function()
     {
+        if(typeof NerthusAddonDebug != 'undefined')
+            return this.runInDebugMode()
         this.getVersion(function(version)
         {
-            nerthus.addon.setVersion(version)
+            nerthus.addon.version = version
             nerthus.addon.loadScripts(function(){log('Nerthus addon started')})
             log("starting nerthus addon in version: " + nerthus.addon.version)
         });

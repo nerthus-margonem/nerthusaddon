@@ -44,7 +44,7 @@ try{
     }
     nerthus.addon.loadScripts = function(callback)
     {
-        var loader ScriptsLoader()
+        var loader = ScriptsLoader()
         loader.load(['NN_dlaRadnych.js'],function(){
             loader.load(['NN_base.js'],function(){
                 loader.load(nerthus.scripts, callback)

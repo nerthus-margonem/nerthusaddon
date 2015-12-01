@@ -6,11 +6,24 @@
 try{
     nerthus = {}
     nerthus.addon = {}
-    nerthus.addon.version = "master";
+    nerthus.addon.version = "master"
+    nerthus.addon.version_url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
     nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
     nerthus.addon.fileUrl = function(filename)
     {
         return this.filesPrefix + "/" + this.version + "/" + filename;
+    }
+
+    nerthus.addon.run = function()
+    {
+        if(typeof NerthusAddonDebug != 'undefined')
+            return this.runInDebugMode()
+        var $this = this
+        this.getVersion(function()
+        {
+            log("starting nerthus addon in version: " + $this.version)
+            $this.loadScripts(function(){log('Nerthus addon started')})
+        });
     }
     nerthus.addon.runInDebugMode = function()
     {
@@ -21,24 +34,20 @@ try{
     }
     nerthus.addon.getVersion = function(callback)
     {
-        $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json", function(data){callback(data.version)})
-    }
-    nerthus.addon.run = function()
-    {
-        if(typeof NerthusAddonDebug != 'undefined')
-            return this.runInDebugMode()
-        this.getVersion(function(version)
+        var $this = this
+        $.getJSON(this.version_url, function(data)
         {
-            nerthus.addon.version = version
-            nerthus.addon.loadScripts(function(){log('Nerthus addon started')})
-            log("starting nerthus addon in version: " + nerthus.addon.version)
-        });
+            $this.version = data.version
+            if(typeof callback === 'function')
+                callback()
+        })
     }
     nerthus.addon.loadScripts = function(callback)
     {
-        nerthus.code.load(['NN_dlaRadnych.js'],function(){
-            nerthus.code.load(['NN_base.js'],function(){
-                nerthus.code.load(nerthus.scripts, callback)
+        var loader ScriptsLoader()
+        loader.load(['NN_dlaRadnych.js'],function(){
+            loader.load(['NN_base.js'],function(){
+                loader.load(nerthus.scripts, callback)
         })});
     }
 
@@ -188,7 +197,5 @@ try{
         }
         return parser
     }
-
-    nerthus.code = ScriptsLoader()
     nerthus.addon.run()
 }catch(e){log('NerthusStart Error: '+e.message,1)}

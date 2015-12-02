@@ -7,7 +7,6 @@ try{
     nerthus = {}
     nerthus.addon = {}
     nerthus.addon.version = "master"
-    nerthus.addon.version_url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
     nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
     nerthus.addon.fileUrl = function(filename)
     {
@@ -19,9 +18,11 @@ try{
         if(typeof NerthusAddonDebug != 'undefined')
             return this.runInDebugMode()
         var $this = this
-        this.getVersion(function()
+        VersionLoader().load(function(version)
         {
-            log("starting nerthus addon in version: " + $this.version)
+            //$this.version = version
+            this.version = version
+            log("starting nerthus addon in version: " + version)
             var addonLoaded = function(){log('Nerthus addon started')}
             GitHubLoader().load(addonLoaded)
         });
@@ -32,24 +33,6 @@ try{
         this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
         this.version = "master"
         GitHubLoader().load(function(){log('Nerthus addon started')})
-    }
-    nerthus.addon.getVersion = function(callback)
-    {
-        var $this = this
-        $.getJSON(this.version_url, function(data)
-        {
-            $this.version = data.version
-            if(typeof callback === 'function')
-                callback()
-        })
-    }
-    nerthus.addon.loadScripts = function(callback)
-    {
-        var loader = ScriptsLoader()
-        loader.load(['NN_dlaRadnych.js'],function(){
-            loader.load(['NN_base.js'],function(){
-                loader.load(nerthus.scripts, callback)
-        })});
     }
 
     nerthus.addon.load = function()
@@ -93,6 +76,21 @@ try{
             log("load nerthus addon from github")
             this.run()
         }
+    }
+
+    VersionLoader = function()
+    {
+        var loader = {}
+        loader.__url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
+        loader.load = function(onLoaded)
+        {
+            $.getJSON(this.__url, function(data)
+            {
+                if(typeof onLoaded === 'function')
+                    onLoaded(data.version)
+            })
+        }
+        return loader;
     }
 
     GitHubLoader = function()

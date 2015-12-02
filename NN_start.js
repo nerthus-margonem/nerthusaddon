@@ -167,6 +167,7 @@ StorageLoader = function()
     {
         localStorage.nerthus = Parser().stringify(nerthus)
     }
+    return loader
 }
 
 Parser = function()

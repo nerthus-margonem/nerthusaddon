@@ -24,7 +24,6 @@ nerthus.addon.run = function()
         //$this.version = version
         this.version = version
         log("starting nerthus addon in version: " + version)
-        var addonLoaded = function(){log('Nerthus addon started')}
         GitHubLoader().load(addonLoaded)
     });
 }
@@ -36,6 +35,7 @@ nerthus.addon.runInDebugMode = function()
     var addonLoaded = function(){log('Nerthus addon started')}
     GitHubLoader().load(addonLoaded)
 }
+var addonLoaded = function(){log('Nerthus addon started')}
 
 nerthus.addon.load = function()
 {

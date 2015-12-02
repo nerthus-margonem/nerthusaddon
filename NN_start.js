@@ -16,7 +16,7 @@ nerthus.addon.fileUrl = function(filename)
 
 nerthus.addon.run = function()
 {
-    NerthusAddonRunner.run()
+    NerthusAddonRunner().run()
 }
 
 NerthusAddonRunner = function()

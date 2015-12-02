@@ -61,7 +61,7 @@ nerthus.night.lights.on = function()
 {
     var hour = new Date().getHours();
     if( hour < 4 || hour > 18 )
-        $.getJSON(nerthus.addon.fileUrl("/night.lights/map_" + map.id + ".json"),function(lights){nerthus.night.lights.add(lights)})
+        $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),function(lights){nerthus.night.lights.add(lights)})
 }
 
 nerthus.night.start = function()

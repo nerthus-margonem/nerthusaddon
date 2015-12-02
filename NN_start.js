@@ -48,13 +48,6 @@ NerthusAddonRunner = function()
     {
         var $this = this
         log("Load nerthus addon from github")
-        VersionLoader().load(function(version){$this.__version_loaded(version)})
-    }
-    runner.__version_loaded = function(version)
-    {
-        var $this = this
-        nerthus.addon.version = version
-        log("Starting nerthus addon in version: " + version)
         GitHubLoader().load(function(){$this.__loaded()})
     }
     runner.__loaded = function()
@@ -93,7 +86,13 @@ GitHubLoader = function()
     var loader = {}
     loader.load = function(onLoaded)
     {
-        this.__loadScripts(onLoaded)
+        var $this = this
+        VersionLoader().load(function(version)
+        {
+            log("Starting nerthus addon in version: " + version)
+            nerthus.addon.version = version
+            $this.__loadScripts(onLoaded)
+        })
     }
     loader.__loadScripts = function(onLoaded)
     {

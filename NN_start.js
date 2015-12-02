@@ -132,8 +132,12 @@ StorageLoader = function()
     loader.__run = function()
     {
         for(var i in nerthus)
-            if(typeof nerthus[i] === 'object' && typeof nerthus[i].start === 'function')
-                nerthus[i].start()
+        {
+            try{
+                if(typeof nerthus[i] === 'object' && typeof nerthus[i].start === 'function')
+                    nerthus[i].start()
+            }catch(error){log(error.message)}
+        }
     }
     loader.__checkVersion = function(version)
     {

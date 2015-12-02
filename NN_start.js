@@ -31,7 +31,7 @@ try{
         log("Nerthus addon in debug mode")
         this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
         this.version = "master"
-        this.loadScripts(function(){log('Nerthus addon started')})
+        GitHubLoader().load(function(){log('Nerthus addon started')})
     }
     nerthus.addon.getVersion = function(callback)
     {

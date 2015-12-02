@@ -21,8 +21,7 @@ nerthus.addon.run = function()
     var $this = this
     VersionLoader().load(function(version)
     {
-        //$this.version = version
-        this.version = version
+        $this.version = version
         log("starting nerthus addon in version: " + version)
         GitHubLoader().load(addonLoaded)
     });

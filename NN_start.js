@@ -35,32 +35,50 @@ nerthus.addon.runInDebugMode = function()
 }
 var addonLoaded = function(){log('Nerthus addon started')}
 
-nerthus.addon.load = function()
+NerthusAddonRunner = function()
 {
-    if(typeof localStorage !== 'undefined' && localStorage.nerthus)
+    var runner = {}
+    runner.run = function()
+    {
+        if(typeof localStorage !== 'undefined' && localStorage.nerthus)
+            this.__loadFromLocalStorage()
+        else
+            this.__loadFromGitHub()
+    }
+    runner.__loadFromLocalStorage = function()
     {
         log("load nerthus addon from local storage")
         StorageLoader().load(addonLoaded)
     }
-    else
+    runner.__loadFromGitHub = function()
     {
+        var $this = this
         log("load nerthus addon from github")
-        VersionLoader().load(function(version)
-        {
-            nerthus.addon.version = version
-            log("starting nerthus addon in version: " + version)
-            GitHubLoader().load(function()
-            {
-                addonLoaded()
-                if(typeof localStorage !== 'undefined')
-                {
-                    localStorage.nerthus = Parser().stringify(nerthus)
-                    log("Nerthus addon stored")
-                }
-            })
-        });
+        VersionLoader().load(function(version){$this.__version_loaded(version)})
     }
+    runner.__version_loaded = function(version)
+    {
+        var $this = this
+        nerthus.addon.version = version
+        log("starting nerthus addon in version: " + version)
+        GitHubLoader().load(function(){$this.__loaded()})
+    }
+    runner.__loaded = function()
+    {
+        this.__store()
+        addonLoaded()
+    }
+    runner.__store = function()
+    {
+        if(typeof localStorage !== 'undefined')
+        {
+            localStorage.nerthus = Parser().stringify(nerthus)
+            log("Nerthus addon stored")
+        }
+    }
+    return runner
 }
+
 
 VersionLoader = function()
 {

@@ -22,12 +22,13 @@ try{
         this.getVersion(function()
         {
             log("starting nerthus addon in version: " + $this.version)
-            $this.loadScripts(function(){log('Nerthus addon started')})
+            var addonLoaded = function(){log('Nerthus addon started')}
+            GitHubLoader().load(addonLoaded)
         });
     }
     nerthus.addon.runInDebugMode = function()
     {
-        log("nerthus addon in debug mode")
+        log("Nerthus addon in debug mode")
         this.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
         this.version = "master"
         this.loadScripts(function(){log('Nerthus addon started')})
@@ -97,23 +98,40 @@ try{
     GitHubLoader = function()
     {
         var loader = {}
-        loader.load = function()
+        loader.load = function(onLoaded)
         {
-            nerthus.addon.getVersion(function(version)
-            {
-                nerthus.addon.setVersion(version)
-                this.loadScripts(function(){log('Nerthus addon started')})
-                log("starting nerthus addon in version: " + nerthus.addon.version)
-            });
+            this.__loadScripts(onLoaded)
         }
-        loader.scripts = ScriptsLoader()
-        loader.loadScripts = function(callback)
+        loader.__loadScripts = function(onLoaded)
         {
-            scripts.load(['NN_dlaRadnych.js'],function(){
-                scripts.load(['NN_base.js'],function(){
-                    scripts.load(nerthus.scripts, callback)
+            var scriptLoader = ScriptsLoader()
+            scriptLoader.load(['NN_dlaRadnych.js'],function(){
+                scriptLoader.load(['NN_base.js'],function(){
+                    scriptLoader.load(nerthus.scripts, onLoaded)
             })});
         }
+    }
+
+    ScriptsLoader = function()
+    {
+        var loader = {}
+        loader.__to_load = 0
+        loader.__callback = null
+        loader.load = function (files,callback)
+        {
+            this.__callback = callback
+            this.__to_load += files.length
+            var $this = this
+            for(var i in files)
+                $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.__loaded()})
+        }
+        loader.__loaded = function()
+        {
+            this.__to_load--
+            if(this.__to_load === 0 && typeof this.__callback === 'function')
+                this.__callback()
+        }
+        return loader
     }
 
     StorageLoader = function()
@@ -150,28 +168,6 @@ try{
         }
     }
 
-    ScriptsLoader = function()
-    {
-        var loader = {}
-        loader.__to_load = 0
-        loader.__callback = null
-        loader.load = function (files,callback)
-        {
-            this.__callback = callback
-            this.__to_load += files.length
-            var $this = this
-            for(var i in files)
-                $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.__loaded()})
-        }
-        loader.__loaded = function()
-        {
-            this.__to_load--
-            if(this.__to_load === 0 && typeof this.__callback === 'function')
-                this.__callback()
-        }
-        return loader
-    }
-
     Parser = function()
     {
         var parser = {}
@@ -197,5 +193,7 @@ try{
         }
         return parser
     }
+
     nerthus.addon.run()
+
 }catch(e){log('NerthusStart Error: '+e.message,1)}

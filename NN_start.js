@@ -59,7 +59,6 @@ nerthus.addon.load = function()
                 }
             })
         });
-        nerthus.addon.run()
     }
 }
 
@@ -136,7 +135,7 @@ StorageLoader = function()
             if(typeof nerthus[i] === 'object' && typeof nerthus[i].start === 'function')
                 nerthus[i].start()
         }
-        catch(error){log("nertus." + i + " : " + error.message)}
+        catch(error){log("nerthus." + i + " : " + error.message)}
     }
     loader.__checkVersion = function(version)
     {

@@ -91,7 +91,7 @@ try{
                     onLoaded(data.version)
             })
         }
-        return loader;
+        return loader
     }
 
     GitHubLoader = function()
@@ -109,6 +109,7 @@ try{
                     scriptLoader.load(nerthus.scripts, onLoaded)
             })});
         }
+        return loader
     }
 
     ScriptsLoader = function()

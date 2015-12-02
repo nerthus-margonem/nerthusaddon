@@ -136,7 +136,7 @@ StorageLoader = function()
             if(typeof nerthus[i] === 'object' && typeof nerthus[i].start === 'function')
                 nerthus[i].start()
         }
-        catch(error){log(error.message)}
+        catch(error){log("nertus." + i + " : " + error.message)}
     }
     loader.__checkVersion = function(version)
     {

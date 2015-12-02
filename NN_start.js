@@ -66,21 +66,6 @@ NerthusAddonRunner = function()
     return runner
 }
 
-VersionLoader = function()
-{
-    var loader = {}
-    loader.__url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
-    loader.load = function(onLoaded)
-    {
-        $.getJSON(this.__url, function(data)
-        {
-            if(typeof onLoaded === 'function')
-                onLoaded(data.version)
-        })
-    }
-    return loader
-}
-
 GitHubLoader = function()
 {
     var loader = {}
@@ -101,28 +86,6 @@ GitHubLoader = function()
             scriptLoader.load(['NN_base.js'],function(){
                 scriptLoader.load(nerthus.scripts, onLoaded)
         })});
-    }
-    return loader
-}
-
-ScriptsLoader = function()
-{
-    var loader = {}
-    loader.__to_load = 0
-    loader.__callback = null
-    loader.load = function (files,callback)
-    {
-        this.__callback = callback
-        this.__to_load += files.length
-        var $this = this
-        for(var i in files)
-            $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.__loaded()})
-    }
-    loader.__loaded = function()
-    {
-        this.__to_load--
-        if(this.__to_load === 0 && typeof this.__callback === 'function')
-            this.__callback()
     }
     return loader
 }
@@ -154,6 +117,43 @@ StorageLoader = function()
             log("Nerthus addon has not actual version")
             delete localStorage.nerthus
         }
+    }
+    return loader
+}
+
+VersionLoader = function()
+{
+    var loader = {}
+    loader.__url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
+    loader.load = function(onLoaded)
+    {
+        $.getJSON(this.__url, function(data)
+        {
+            if(typeof onLoaded === 'function')
+                onLoaded(data.version)
+        })
+    }
+    return loader
+}
+
+ScriptsLoader = function()
+{
+    var loader = {}
+    loader.__to_load = 0
+    loader.__callback = null
+    loader.load = function (files,callback)
+    {
+        this.__callback = callback
+        this.__to_load += files.length
+        var $this = this
+        for(var i in files)
+            $.getScript(nerthus.addon.fileUrl(files[i]), function(){$this.__loaded()})
+    }
+    loader.__loaded = function()
+    {
+        this.__to_load--
+        if(this.__to_load === 0 && typeof this.__callback === 'function')
+            this.__callback()
     }
     return loader
 }

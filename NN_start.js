@@ -14,12 +14,9 @@ nerthus.addon.fileUrl = function(filename)
     return this.filesPrefix + "/" + this.version + "/" + filename;
 }
 
-nerthus.addon.run = function()
-{
-    NerthusAddonRunner().run()
-}
-
-NerthusAddonRunner = function()
+//utilities for addon start up
+NerthusAddonUtils = {}
+NerthusAddonUtils.Runner = function()
 {
     var addonLoaded = function(){log('Nerthus addon started')}
     var runner = {}
@@ -37,18 +34,18 @@ NerthusAddonRunner = function()
         log("Nerthus addon in debug mode")
         nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
         nerthus.addon.version = "master"
-        GitHubLoader().__loadScripts(addonLoaded)
+        NerthusAddonUtils.GitHubLoader().__loadScripts(addonLoaded)
     }
     runner.__loadFromLocalStorage = function()
     {
         log("Load nerthus addon from local storage")
-        StorageLoader().load(addonLoaded)
+        NerthusAddonUtils.StorageLoader().load(addonLoaded)
     }
     runner.__loadFromGitHub = function()
     {
         var $this = this
         log("Load nerthus addon from github")
-        GitHubLoader().load(function(){$this.__loaded()})
+        NerthusAddonUtils.GitHubLoader().load(function(){$this.__loaded()})
     }
     runner.__loaded = function()
     {
@@ -59,20 +56,20 @@ NerthusAddonRunner = function()
     {
         if(typeof localStorage !== 'undefined')
         {
-            localStorage.nerthus = Parser().stringify(nerthus)
+            localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
             log("Nerthus addon stored")
         }
     }
     return runner
 }
 
-GitHubLoader = function()
+NerthusAddonUtils.GitHubLoader = function()
 {
     var loader = {}
     loader.load = function(onLoaded)
     {
         var $this = this
-        VersionLoader().load(function(version)
+        NerthusAddonUtils.VersionLoader().load(function(version)
         {
             log("Starting nerthus addon in version: " + version)
             nerthus.addon.version = version
@@ -81,7 +78,7 @@ GitHubLoader = function()
     }
     loader.__loadScripts = function(onLoaded)
     {
-        var scriptLoader = ScriptsLoader()
+        var scriptLoader = NerthusAddonUtils.ScriptsLoader()
         scriptLoader.load(['NN_dlaRadnych.js'],function(){
             scriptLoader.load(['NN_base.js'],function(){
                 scriptLoader.load(nerthus.scripts, onLoaded)
@@ -90,16 +87,16 @@ GitHubLoader = function()
     return loader
 }
 
-StorageLoader = function()
+NerthusAddonUtils.StorageLoader = function()
 {
     var loader = {}
     loader.load = function(onLoaded)
     {
-        nerthus = Parser().parse(localStorage.nerthus)
+        nerthus = NerthusAddonUtils.Parser().parse(localStorage.nerthus)
         this.__run()
         if(typeof onLoaded === 'function')
             onLoaded()
-        VersionLoader().load(this.__checkVersion)
+        NerthusAddonUtils.VersionLoader().load(this.__checkVersion)
     }
     loader.__run = function()
     {
@@ -121,7 +118,7 @@ StorageLoader = function()
     return loader
 }
 
-VersionLoader = function()
+NerthusAddonUtils.VersionLoader = function()
 {
     var loader = {}
     loader.__url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
@@ -136,7 +133,7 @@ VersionLoader = function()
     return loader
 }
 
-ScriptsLoader = function()
+NerthusAddonUtils.ScriptsLoader = function()
 {
     var loader = {}
     loader.__to_load = 0
@@ -158,7 +155,7 @@ ScriptsLoader = function()
     return loader
 }
 
-Parser = function()
+NerthusAddonUtils.Parser = function()
 {
     var parser = {}
     parser.stringify = function(obj)
@@ -184,6 +181,6 @@ Parser = function()
     return parser
 }
 
-nerthus.addon.run()
+NerthusAddonUtils.Runner().run()
 
 }catch(e){log('NerthusStart Error: '+e.message,1)}

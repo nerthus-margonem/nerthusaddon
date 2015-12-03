@@ -16,7 +16,7 @@ nerthus.addon.fileUrl = function(filename)
 }
 nerthus.addon.store = function()
 {
-    if(typeof localStorage !== 'undefined')
+    if(typeof localStorage !== 'undefined' && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
         localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
 }
 

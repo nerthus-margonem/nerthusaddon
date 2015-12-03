@@ -114,6 +114,7 @@ nerthus.storeSettings = function(options)
     if(typeof Storage)
     {
         localStorage.nerthus_options = JSON.stringify(nerthus.options)
+        nerthus.addon.store()
     }
     else
     {

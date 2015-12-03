@@ -44,28 +44,28 @@ nerthus.chatCmd.map["dial1"] = function(ch)
 {
     ch.s = "dial1";
     ch.n = "";
-    ch.t = this.makeDialogTextWithSpeaker(ch.t);
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.map["dial2"] = function(ch)
 {
     ch.s = "dial2";
     ch.n = "";
-    ch.t = this.makeDialogTextWithSpeaker(ch.t);
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.map["dial3"] = function(ch)
 {
     ch.s ="dial3";
     ch.n ="";
-    ch.t = this.makeDialogTextWithSpeaker(ch.t);
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.map["dial666"] = function(ch)
 {
     ch.s ="dial666";
     ch.n ="";
-    ch.t = this.makeDialogTextWithSpeaker(ch.t);
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.makeDialogTextWithSpeaker = function(str)
@@ -84,7 +84,7 @@ nerthus.chatCmd.map["sys"] = function(ch)
 nerthus.chatCmd.map["map"] = function(ch)
 {
     var map_url = ch.t.split(" ").slice(1).join(" ");
-    map_url = this.extractUrlFromDecorator(map_url);
+    map_url = nerthus.chatCmd.extractUrlFromDecorator(map_url);
     $("#ground").css("backgroundImage","url(" + map_url + ")")
     return true;
 }
@@ -101,7 +101,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     var cmd = ch.t.split(" ").slice(1).join(" ").split(",");
     var x = parseInt(cmd[0]);
     var y = parseInt(cmd[1]);
-    var _url = this.extractUrlFromDecorator(cmd[2]);
+    var _url = nerthus.chatCmd.extractUrlFromDecorator(cmd[2]);
     var _tip = cmd[3] ? ' tip="<b>'+cmd[3]+'</b>" ctip="t_npc"' : "";
     var isCol = parseInt(cmd[4]);
     $('<img id="_ng-' + cmd[0] + '-' + cmd[1] + '" src="'+ _url +'"'+_tip+'>').css("position","absolute").appendTo('#base')

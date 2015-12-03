@@ -40,41 +40,35 @@ nerthus.chatCmd.map["nar"] = function(ch)
     ch.t = ch.t.replace(/^\*nar/,"");
 }
 
-//style do dialogow
-$("<style type='text/css'> #chattxt .dial1{ color:#33CC66 ; } </style>").appendTo("head");
-$("<style type='text/css'> #chattxt .dial2{ color:#CC9966 ; } </style>").appendTo("head");
-$("<style type='text/css'> #chattxt .dial3{ color:#336666 ; } </style>").appendTo("head");
-$("<style type='text/css'> #chattxt .dial666{ color:#ff66ff ; } </style>").appendTo("head");
-
 nerthus.chatCmd.map["dial1"] = function(ch)
 {
     ch.s = "dial1";
     ch.n = "";
-    ch.t = makeDialogTextWithSpeaker(ch.t);
+    ch.t = this.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.map["dial2"] = function(ch)
 {
     ch.s = "dial2";
     ch.n = "";
-    ch.t = makeDialogTextWithSpeaker(ch.t);
+    ch.t = this.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.map["dial3"] = function(ch)
 {
     ch.s ="dial3";
     ch.n ="";
-    ch.t = makeDialogTextWithSpeaker(ch.t);
+    ch.t = this.makeDialogTextWithSpeaker(ch.t);
 }
 
 nerthus.chatCmd.map["dial666"] = function(ch)
 {
     ch.s ="dial666";
     ch.n ="";
-    ch.t = makeDialogTextWithSpeaker(ch.t);
+    ch.t = this.makeDialogTextWithSpeaker(ch.t);
 }
 
-makeDialogTextWithSpeaker = function(str)
+nerthus.chatCmd.makeDialogTextWithSpeaker = function(str)
 {
    str = str.split(" ").slice(1).join(" ").split(",");
    return "&laquo;"+str[0]+"&raquo; " + str.slice(1).join(",");
@@ -90,7 +84,7 @@ nerthus.chatCmd.map["sys"] = function(ch)
 nerthus.chatCmd.map["map"] = function(ch)
 {
     var map_url = ch.t.split(" ").slice(1).join(" ");
-    map_url = extractUrlFromDecorator(map_url);
+    map_url = this.extractUrlFromDecorator(map_url);
     $("#ground").css("backgroundImage","url(" + map_url + ")")
     return true;
 }
@@ -107,7 +101,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     var cmd = ch.t.split(" ").slice(1).join(" ").split(",");
     var x = parseInt(cmd[0]);
     var y = parseInt(cmd[1]);
-    var _url = extractUrlFromDecorator(cmd[2]);
+    var _url = this.extractUrlFromDecorator(cmd[2]);
     var _tip = cmd[3] ? ' tip="<b>'+cmd[3]+'</b>" ctip="t_npc"' : "";
     var isCol = parseInt(cmd[4]);
     $('<img id="_ng-' + cmd[0] + '-' + cmd[1] + '" src="'+ _url +'"'+_tip+'>').css("position","absolute").appendTo('#base')
@@ -121,7 +115,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     return true;
 }
 
-extractUrlFromDecorator = function(text)
+nerthus.chatCmd.extractUrlFromDecorator = function(text)
 {
     if(text[0]=='<') //is text wrapped by html tag
     {
@@ -164,9 +158,15 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 
 nerthus.chatCmd.start = function()
 {
+    //style do dialogow
+    $("<style type='text/css'> #chattxt .dial1{ color:#33CC66 ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .dial2{ color:#CC9966 ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .dial3{ color:#336666 ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .dial666{ color:#ff66ff ; } </style>").appendTo("head");
     g.chat.parsers.push(function(ch){return nerthus.chatCmd.run(ch);});
 }
 
 nerthus.chatCmd.start()
 
 }catch(e){log('nerthus chatCmd: '+e.message,1);}
+

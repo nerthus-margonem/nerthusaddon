@@ -2,6 +2,7 @@
     Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
     Wersia jest w pliku version.json
     Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
+    Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
 **/
 try{
 
@@ -12,6 +13,11 @@ nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
 nerthus.addon.fileUrl = function(filename)
 {
     return this.filesPrefix + "/" + this.version + "/" + filename;
+}
+nerthus.addon.store = function()
+{
+    if(typeof localStorage !== 'undefined')
+        localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
 }
 
 //utilities for addon start up
@@ -24,7 +30,7 @@ NerthusAddonUtils.Runner = function()
     {
         if(typeof localStorage !== 'undefined' && Boolean(eval(localStorage.NerthusAddonDebug)))
             this.__runInDebugMode()
-        else if(typeof localStorage !== 'undefined' && localStorage.nerthus)
+        else if(typeof localStorage !== 'undefined' && localStorage.nerthus && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
             this.__loadFromLocalStorage()
         else
             this.__loadFromGitHub()
@@ -56,7 +62,7 @@ NerthusAddonUtils.Runner = function()
     {
         if(typeof localStorage !== 'undefined')
         {
-            localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
+            nerthus.addon.store()
             log("Nerthus addon stored")
         }
     }

@@ -74,11 +74,16 @@ nerthus.graf['dazed']   = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/
 nerthus.graf['loading'] = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/loadingnerthus.png'
 nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/chatPanel2.png'
 
-g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu"; //"Moderator czatu";
-g.names.ranks[4] = "Tkacz Słów" //"Modelator czasoprzestrzeni"; //"Super moderator";
-g.names.ranks[5] = "Trubadur" //"Męczystruna"; //"Bard";
-g.names.ranks[6] = "Piewca Słowa" //"Modelator struny"; //"Bard + MC";
-g.names.ranks[7] = "Radny" //Radny;
+nerthus.ranks = {}
+nerthus.ranks.start = function()
+{
+    g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu"; //"Moderator czatu";
+    g.names.ranks[4] = "Tkacz Słów" //"Modelator czasoprzestrzeni"; //"Super moderator";
+    g.names.ranks[5] = "Trubadur" //"Męczystruna"; //"Bard";
+    g.names.ranks[6] = "Piewca Słowa" //"Modelator struny"; //"Bard + MC";
+    g.names.ranks[7] = "Radny" //Radny;
+}
+nerthus.ranks.start()
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}
 

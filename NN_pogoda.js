@@ -284,7 +284,7 @@ nerthus.weather.effects.display_url = function(url)
 nerthus.weather.start = function()
 {
     if(nerthus.options['weather'])
-        nerthus.defer(this.weather.run.bind(this))
+        nerthus.defer(this.run.bind(this))
 }
 
 nerthus.weather.start()

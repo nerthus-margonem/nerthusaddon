@@ -21,7 +21,7 @@ nerthus.weather.set_weather = function(id)
     if( 0 > id || id > 20)
         id = this.calculate()
     this.id = id
-    this.effects.display()
+    this.display()
     var x = Math.floor(id / 7)
     var y = id % 7
     $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ x * 55 +'px -'+ y * 55 +'px');
@@ -38,7 +38,7 @@ nerthus.weather.run = function()
 {
     //ikonka #1E90FF
     $('<div id="nWeather" style="z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 0px; left: 0px";></div>').appendTo('#centerbox')
-    .mouseenter(function(){ $("#nWeatherDesc").fadeIn(500).html('<font style="font: bold 14px Georgia; color:#F0F8FF"><b>'+nerthus.weather.descriptions[nerthus.weather.id][Math.floor(Math.random()*nerthus.weather.descriptions[nerthus.weather.id].length)] + '</b><font>'); })
+    .mouseenter(function(){ $("#nWeatherDesc").fadeIn(500).html('<font style="font: bold 14px Georgia; color:#F0F8FF"><b>'+this.descriptions[this.id][Math.floor(Math.random()*this.descriptions[this.id].length)] + '</b><font>')}.bind(this))
     .mouseleave(function(){$("#nWeatherDesc").fadeOut(500); });
     //pole opisowe
     $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
@@ -57,7 +57,7 @@ nerthus.weather.start_change_timer = function()
     date.setUTCMinutes(0)
     date.setUTCSeconds(0)
     var interval = date - new Date()
-    this.change_timer = setTimeout('nerthus.weather.set_global_weather()',  interval);
+    this.change_timer = setTimeout(this.set_global_weather.bind(this),  interval);
 }
 
 nerthus.weather.calculate = function()
@@ -239,19 +239,19 @@ nerthus.weather.descriptions =
 
     ];
 
-nerthus.weather.effects = {}
-nerthus.weather.effects.display = function()
+nerthus.weather.display = function()
 {
-    this.clear()
+    this.effects.clear()
     if (map.mainid==0) //are we outside?
     {
-        if(nerthus.weather.is_raining())
-            this.display_rain()
-        if(nerthus.weather.is_snowing())
-            this.display_snow()
+        if(this.weather.is_raining())
+            this.effects.display_rain()
+        if(this.weather.is_snowing())
+            this.effects.display_snow()
     }
 }
 
+nerthus.weather.effects = {}
 nerthus.weather.effects.clear = function()
 {
     $(".nWeather").remove()
@@ -284,7 +284,7 @@ nerthus.weather.effects.display_url = function(url)
 nerthus.weather.start = function()
 {
     if(nerthus.options['weather'])
-        nerthus.defer(function(){nerthus.weather.run()});
+        nerthus.defer(this.weather.run.bind(this))
 }
 
 nerthus.weather.start()

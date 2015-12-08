@@ -244,9 +244,9 @@ nerthus.weather.display = function()
     this.effects.clear()
     if (map.mainid==0) //are we outside?
     {
-        if(this.weather.is_raining())
+        if(this.is_raining())
             this.effects.display_rain()
-        if(this.weather.is_snowing())
+        if(this.is_snowing())
             this.effects.display_snow()
     }
 }

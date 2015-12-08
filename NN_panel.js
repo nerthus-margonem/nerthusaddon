@@ -10,7 +10,7 @@ nerthus.panel.display_icon = function()
 {
     $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus">').appendTo('#panel')
     .css({position:"absolute",top:"0px",left:"242px",cursor:"pointer"})
-    .click(function(){nerthus.panel.display_panel()})
+    .click(this.display_panel.bind(this))
     .mouseover(function(){$(this).css('opacity','0.6')})
     .mouseout(function(){$(this).css('opacity','1')});
 }
@@ -19,9 +19,9 @@ nerthus.panel.display_panel = function()
 {
     $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/panel_links.json", function(panel_data)
     {
-        var $panel = nerthus.panel.panel_string(panel_data)
-        mAlert($panel, 2, [function(){nerthus.panel.save()}])
-    })
+        var $panel = this.panel_string(panel_data)
+        mAlert($panel, 2, [this.save.bind(this)])
+    }.bind(this))
 }
 
 nerthus.panel.panel_string = function(panel_data)
@@ -63,7 +63,7 @@ nerthus.panel.link = function(link)
 
 nerthus.panel.save = function()
 {
-    var settings = nerthus.panel.get_settings()
+    var settings = this.get_settings()
     nerthus.storeSettings(settings)
     message('zapisano, wciśnij f5')
 }
@@ -78,7 +78,7 @@ nerthus.panel.get_settings = function()
 
 nerthus.panel.start = function()
 {
-    nerthus.defer(nerthus.panel.display_icon);
+    nerthus.defer(this.display_icon.bind(this));
 }
 
 nerthus.panel.start()

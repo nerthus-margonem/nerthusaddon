@@ -12,23 +12,23 @@ nerthus.alko.timer = 0;
 nerthus.alko.run = function()
 {
     if (getCookie('nerthus.alko') != null) 
-        nerthus.alko.lvl = getCookie('nerthus.alko')
+        this.lvl = getCookie('nerthus.alko')
     else
-        nerthus.alko.lvl = 0;
-    if (nerthus.alko.lvl)
-        nerthus.alko.timer = setInterval(nerthus.alko.timer_handler, 5000);
+        this.lvl = 0;
+    if (this.lvl)
+        this.timer = setInterval(this.timer_handler.bind(this), 5000);
 }
 
 nerthus.alko.timer_handler = function()
 {
-    nerthus.alko.lvl--;
+    this.lvl--;
     expiry = new Date(parseInt(new Date().getTime()) * 2);
-    setCookie("nerthus.alko", nerthus.alko.lvl, expiry)
-    if (nerthus.alko.lvl<1) 
+    setCookie("nerthus.alko", this.lvl, expiry)
+    if (this.lvl<1) 
     {
-        nerthus.alko.lvl=0;
-        clearInterval(nerthus.alko.timer);
-        nerthus.alko.timer=0
+        this.lvl=0;
+        clearInterval(this.timer);
+        this.timer=0
     };
 }
 
@@ -47,15 +47,15 @@ nerthus.alko.start = function()
             if (it.stat.search("lvl=")>-1)
             if (parseInt(it.stat.match(/lvl=([0-9]+)/)[1]) == 18)
             {
-                nerthus.alko.lvl+= 10;
-                if (nerthus.alko.lvl > 100)
+                this.lvl+= 10;
+                if (this.lvl > 100)
                     nerthus.alko.lvl = 100
-                if (!nerthus.alko.timer)
-                    nerthus.alko.timer = setInterval(nerthus.alko.timer_handler,5000);
+                if (!this.timer)
+                    this.timer = setInterval(this.timer_handler.bind(this),5000);
             }
         }
         _nerthg(c,d);
-    }
+    }.bind(this)
 
     var shuffleArray = function (array,cc) 
     { // funkcja z netu tasujÄ?ca  tablicÄ? pozostawiajÄ?c 
@@ -116,7 +116,7 @@ nerthus.alko.start = function()
         nerth_chatSendMsg(a)
     };
 
-    nerthus.defer(nerthus.alko.run)
+    nerthus.defer(this.run.bind(this))
 }
 
 nerthus.alko.start()

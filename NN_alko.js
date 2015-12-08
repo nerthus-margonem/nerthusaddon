@@ -49,7 +49,7 @@ nerthus.alko.start = function()
             {
                 this.lvl+= 10;
                 if (this.lvl > 100)
-                    nerthus.alko.lvl = 100
+                    this.lvl = 100
                 if (!this.timer)
                     this.timer = setInterval(this.timer_handler.bind(this),5000);
             }
@@ -75,9 +75,9 @@ nerthus.alko.start = function()
     var nerth_chatSendMsg = chatSendMsg;
     chatSendMsg = function (a)
     {
-        if ((a[0]!="*") && (a[0]!="/")&& (a[0]!="@") && (nerthus.alko.lvl>0))
+        if ((a[0]!="*") && (a[0]!="/")&& (a[0]!="@") && (this.lvl>0))
         {
-            switch (Math.floor(nerthus.alko.lvl/10))
+            switch (Math.floor(this.lvl/10))
             {
             case 9: a = "/me bełkota coś niezrozumiale.";
                 break;
@@ -114,7 +114,7 @@ nerthus.alko.start = function()
             }  
         }    
         nerth_chatSendMsg(a)
-    };
+    }.bind(this)
 
     nerthus.defer(this.run.bind(this))
 }

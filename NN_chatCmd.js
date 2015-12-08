@@ -6,10 +6,10 @@ nerthus.chatCmd.public_map = {};
 
 nerthus.chatCmd.run = function(ch)
 {
-    var cmd = nerthus.chatCmd.fetch_cmd(ch)
+    var cmd = this.fetch_cmd(ch)
     if(cmd)
     {
-        var callback = nerthus.chatCmd.fetch_callback(cmd,ch)
+        var callback = this.fetch_callback(cmd,ch)
         if(callback)
         {
             log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdze kto co
@@ -27,9 +27,9 @@ nerthus.chatCmd.fetch_cmd = function(ch)
 
 nerthus.chatCmd.fetch_callback = function(cmd,ch)
 {
-    var callback = nerthus.chatCmd.public_map[cmd[1]]
+    var callback = this.public_map[cmd[1]]
     if(!callback && (nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)))
-        callback = nerthus.chatCmd.map[cmd[1]]
+        callback = this.map[cmd[1]]
     return callback
 }
 
@@ -163,7 +163,7 @@ nerthus.chatCmd.start = function()
     $("<style type='text/css'> #chattxt .dial2{ color:#CC9966 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial3{ color:#336666 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial666{ color:#ff66ff ; } </style>").appendTo("head");
-    g.chat.parsers.push(function(ch){return nerthus.chatCmd.run(ch);});
+    g.chat.parsers.push(nerthus.chatCmd.run.bind(this));
 }
 
 nerthus.chatCmd.start()

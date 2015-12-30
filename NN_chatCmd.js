@@ -144,7 +144,7 @@ nerthus.chatCmd.map["weather"] = function(ch)
         nerthus.weather.set_weather(weather_id)
     }catch(e)
     {
-        nerthus.weather = {id:weather_id}
+        nerthus_weather_bard_id = weather_id
     }
     return true;
 }

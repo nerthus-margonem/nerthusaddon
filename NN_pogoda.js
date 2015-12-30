@@ -43,10 +43,11 @@ nerthus.weather.run = function()
     //pole opisowe
     $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
 
-    if(! this.id)
-        this.set_global_weather()
+    //workaround na pogode ustawianą przez bardów i zapisywanie nerthusa w pamięci
+    if(typeof nerthus_weather_bard_id !== 'undefined')
+        this.set_weather(nerthus_weather_bard_id)
     else
-        this.set_weather(this.id)
+        this.set_global_weather()
 }
 
 nerthus.weather.start_change_timer = function()

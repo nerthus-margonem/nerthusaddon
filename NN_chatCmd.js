@@ -139,13 +139,15 @@ nerthus.chatCmd.map["delGraf"] = function(ch)
 nerthus.chatCmd.map["weather"] = function(ch)
 {
     var weather_id = parseInt(ch.t.split(" ")[1])
+    nerthus_weather_bard_id = weather_id
     try
     {
         nerthus.weather.set_weather(weather_id)
     }catch(e)
     {
-        nerthus_weather_bard_id = weather_id
+        //nothing to do now
     }
+
     return true;
 }
 

@@ -147,7 +147,6 @@ nerthus.chatCmd.map["weather"] = function(ch)
     {
         //nothing to do now
     }
-
     return true;
 }
 

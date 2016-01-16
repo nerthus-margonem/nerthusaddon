@@ -37,6 +37,7 @@ nerthus.vips = {
 12932 : 'Latorośle drowa',
 10372 : 'Boski Wiatr',
 10880 : 'Boski Wiatr',
+13931 : 'Wilcza Zamieć',
 1558  : 'Zielarka'
 }
 

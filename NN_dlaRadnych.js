@@ -5,7 +5,7 @@
 try{
 
 //Lista osób specjalnych - uprawnieni do używania specjalnych komend na chacie - taki bard bez etykietki
-nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore"]
+nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore","Mateusz z Rocevaux"]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
 nerthus.NerthusRad = ['Rothe','Materios Dragonius','Sanjuro Sadatake']

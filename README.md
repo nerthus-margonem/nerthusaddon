@@ -3,7 +3,7 @@
 
 
 ### How to test changes?
-  * In console set variable `localStorage.NerthusAddonDebug = true` 
+  * In order to run addon in version from master branch set in console variable `localStorage.NerthusAddonDebug = true` 
   * In order to back to normal version `del localStorage.NerthusAddonDebug`
   
 
@@ -11,3 +11,7 @@
   * Put desired revision hash to file [version.json](version.json)
   * It usually takes couple minutes before changes are visible in game
   * Only exception are changes in [NN_start.js](NN_start.js), changes there require addon link update on [server command site](http://serwery.margonem.pl/)
+  
+  
+### How to deliver changes? 
+  * Feel free to make pull requests

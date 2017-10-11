@@ -15,3 +15,8 @@
   
 ### How to deliver changes? 
   * Feel free to make pull requests
+
+
+### How to run light manager in game?
+  * run in console `nerthus.night.lights.give_me_the_light()`
+  * dumping light configuration `nerthus.night.lights.dump()`

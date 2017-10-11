@@ -4,7 +4,7 @@
 
 ### How to test changes?
   * In order to run addon in version from master branch set in console variable `localStorage.NerthusAddonDebug = true` 
-  * In order to back to normal version `del localStorage.NerthusAddonDebug`
+  * In order to back to normal version `localStorage.NerthusAddonDebug = false` or `delete localStorage.NerthusAddonDebug`
   
 
 ### How to introduce changes to game

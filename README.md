@@ -1,2 +1,12 @@
 # nerthusaddon
-Addon for nerthus server in game [margonem](http://www.margonem.pl/)
+  Addon for nerthus server in game [margonem](http://www.margonem.pl/)
+
+
+### How to test changes?
+  * In console set variable `localStorage.NerthusAddonDebug = true` 
+  * In order to back to normal version `del localStorage.NerthusAddonDebug`
+  
+
+### How to introduce changes to game
+  * Put desired revision hash to file `version.json`
+  * It usually takes couple minutes before changes are visible in game

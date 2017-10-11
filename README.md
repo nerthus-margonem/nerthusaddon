@@ -10,3 +10,4 @@
 ### How to introduce changes to game
   * Put desired revision hash to file `version.json`
   * It usually takes couple minutes before changes are visible in game
+  * Only exception are changes in `NN_Start.js`, changes there require addon link update on [server command site](http://serwery.margonem.pl/)

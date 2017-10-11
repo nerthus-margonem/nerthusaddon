@@ -59,7 +59,7 @@ nerthus.night.lights.give_me_the_light = function()
     });
 }
 
-nerthus.defer(nerthus.night.lights.give_me_the_light)
+//nerthus.defer(nerthus.night.lights.give_me_the_light)
 
 }catch(err)
 {

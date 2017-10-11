@@ -1,4 +1,0 @@
-todo:
-  * dorobić readme.txt
-  * posprztać syf w plikach do któych nikt nie zagldal od dawna..
-    zwłaszcza NN_base

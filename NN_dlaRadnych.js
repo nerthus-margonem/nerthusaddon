@@ -11,7 +11,7 @@ nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa
 nerthus.NerthusRad = ['Rothe','Umbrael Regis','Falthan']
 
 //Lista narratorów - możliwość używania *nar i ranga "bard"
-nerthus.NerthusNarr = ['Materios Dragonius','Rothe','Korano Ligatur','Umbrael Regis','Anward','Visk']
+nerthus.NerthusNarr = ['Materios Dragonius','Rothe','Korano Ligatur','Umbrael Regis','Anward','Visk','Zireath']
 
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = ['Ciułacz','Łowca Wilków','Tropiciel Zulusów','Poganiacz Goblinów','Piętno Orków','Miłośnik Harpii','Rezun Olbrzymów','Hycel Gnolli','Koszmar Tolloków','Magazynier Pełną Gębą','Zguba Minotaurów','Niszczyciel Szkieletów','Treser Centaurów','Nieustraszony Pogromca Korsarzy','Tańczący z Mumiami','Szabrownik Wraków','Gobliński Kat','Postrach Berserkerów','Władca Kazamatów','Młot na Czarownice','Dręczyciel Praorków','Zguba Czarnej Gwardii','Poskramiacz Furboli','Egzekutor Myświórów','Wielki Inkwizytor','Zaklinacz Arachnidów','Kat Demonisa','Oprawca Maddoków','Potomek Najwyższych','Piekielny Jeźdźca', 'Ponury Żniwiarz','Gwardzista Piekieł','Tytan']

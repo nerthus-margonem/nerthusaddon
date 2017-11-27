@@ -38,10 +38,11 @@ nerthus.vips = {
 10372 : 'Boski Wiatr',
 10880 : 'Boski Wiatr',
 13931 : 'Wilcza Zamieć',
-9226 : 'Zadumany',
+9226  : 'Zadumany',
 1558  : 'Zielarka',
 15098 : 'Poszukiwaczka Voltarenu',
-13438 : 'Zakuty łeb'
+13438 : 'Zakuty łeb',
+16089 : 'Chochlica-ponczlica'
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic

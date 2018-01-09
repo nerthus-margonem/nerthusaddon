@@ -40,6 +40,13 @@ nerthus.chatCmd.map["nar"] = function(ch)
     ch.t = ch.t.replace(/^\*nar/,"");
 }
 
+nerthus.chatCmd.map["nar1"] = function(ch)
+{
+    ch.s = "nar1";
+    ch.n = "";
+    ch.t = ch.t.replace(/^\*nar1/,"");
+}
+
 nerthus.chatCmd.map["dial1"] = function(ch)
 {
     ch.s = "dial1";

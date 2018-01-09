@@ -47,6 +47,13 @@ nerthus.chatCmd.map["nar1"] = function(ch)
     ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
 }
 
+nerthus.chatCmd.map["nar2"] = function(ch)
+{
+    ch.s = "nar2";
+    ch.n = "";
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+}
+
 nerthus.chatCmd.map["dial1"] = function(ch)
 {
     ch.s = "dial1";
@@ -167,7 +174,8 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 nerthus.chatCmd.start = function()
 {
     //style do dialogow
-    $("<style type='text/css'> #chattxt .nar1{ color:#33CC66 ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .nar1{ color:#6bc6ff ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .nar2{ color:#00e4ff ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial1{ color:#33CC66 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial2{ color:#CC9966 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial3{ color:#336666 ; } </style>").appendTo("head");

@@ -44,14 +44,14 @@ nerthus.chatCmd.map["nar1"] = function(ch)
 {
     ch.s = "nar1";
     ch.n = "";
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+    ch.t = ch.t.replace(/^\*nar1/,"");
 }
 
 nerthus.chatCmd.map["nar2"] = function(ch)
 {
     ch.s = "nar2";
     ch.n = "";
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+    ch.t = ch.t.replace(/^\*nar2/,"");
 }
 
 nerthus.chatCmd.map["dial1"] = function(ch)

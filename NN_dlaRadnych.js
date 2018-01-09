@@ -8,7 +8,7 @@ try{
 nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore","Mateusz z Rocevaux"]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
-nerthus.NerthusRad = ['Rothe','Umbrael Regis','Falthan']
+nerthus.NerthusRad = ['Rothe','Umbrael Regis','Kris Aphalon']
 
 //Lista narratorów - możliwość używania *nar i ranga "bard"
 nerthus.NerthusNarr = ['Materios Dragonius','Rothe','Korano Ligatur','Umbrael Regis','Anward','Visk','Zireath']

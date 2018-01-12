@@ -40,18 +40,18 @@ nerthus.chatCmd.map["nar"] = function(ch)
     ch.t = ch.t.replace(/^\*nar/,"");
 }
 
-nerthus.chatCmd.map["nar1"] = function(ch)
-{
-    ch.s = "nar1";
-    ch.n = "";
-    ch.t = ch.t.replace(/^\*nar1/,"");
-}
-
 nerthus.chatCmd.map["nar2"] = function(ch)
 {
     ch.s = "nar2";
     ch.n = "";
     ch.t = ch.t.replace(/^\*nar2/,"");
+}
+
+nerthus.chatCmd.map["nar3"] = function(ch)
+{
+    ch.s = "nar3";
+    ch.n = "";
+    ch.t = ch.t.replace(/^\*nar3/,"");
 }
 
 nerthus.chatCmd.map["dial1"] = function(ch)
@@ -174,12 +174,12 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 nerthus.chatCmd.start = function()
 {
     //style do dialogow
-    $("<style type='text/css'> #chattxt .nar1{ color:#6bc6ff ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .nar2{ color:#00e4ff ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .nar2{ color:#D6A2FF ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .nar3{ color:#00CED1 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial1{ color:#33CC66 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial2{ color:#CC9966 ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .dial3{ color:#336666 ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .dial666{ color:#ff66ff ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .dial3{ color:#D3D3D3 ; } </style>").appendTo("head");
+    $("<style type='text/css'> #chattxt .dial666{ color:#FF66FF ; } </style>").appendTo("head");
     g.chat.parsers.push(nerthus.chatCmd.run.bind(this));
 }
 

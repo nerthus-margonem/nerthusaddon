@@ -243,7 +243,7 @@ nerthus.weather.descriptions =
 nerthus.weather.display = function()
 {
     this.effects.clear()
-    if (map.mainid==0 || map.id!=3459) //are we outside? + Mirvenis
+    if (map.mainid==0 && map.id!=3459) //are we outside? + Mirvenis
     {
         if(this.is_raining())
             this.effects.display_rain()

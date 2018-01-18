@@ -56,7 +56,7 @@ nerthus.EnterMsg = ''
 //mapy do ustawienia sezon,id mapy,link do grafiki
 nerthus.mapsArr =
 [
-    [4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
+    //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'

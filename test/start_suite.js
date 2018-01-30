@@ -4,7 +4,8 @@ before(function(){
     require("../NN_start.js")
     expect = require("./expect.js")
 
-    LOADED_VERSION = "LOADED_VERSION"
+    CURRENT_VERSION = "CURRENT_VERSION"
+    OLD_VERSION = "OLD_VERSION"
     ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
 
 })
@@ -15,7 +16,7 @@ beforeEach(function(){
     $.loaded_scripts = []
     $.loaded_jsons = []
     $.getScript = function(url, callback){this.loaded_scripts.push(url); callback()}
-    $.getJSON = function(url, callback){this.loaded_jsons.push(url); callback({version:LOADED_VERSION})}
+    $.getJSON = function(url, callback){this.loaded_jsons.push(url); callback({version:CURRENT_VERSION})}
 
     localStorage = {}
 
@@ -23,6 +24,10 @@ beforeEach(function(){
     LOAD_HELPER.loaded = false;
     LOAD_HELPER.on_load = function(){this.loaded = true}.bind(LOAD_HELPER)
 
+
+    nerthus.RUNABLE_MODULE = {}
+    nerthus.RUNABLE_MODULE.running = false
+    nerthus.RUNABLE_MODULE.start = function(){this.running = true}
 })
 
 suite("start")
@@ -86,7 +91,7 @@ test("VersionLoader ", function(){
     loader.load(version_loaded)
 
     expect($.loaded_jsons).to.have.length(1)
-    expect(version.ver).to.be.equal(LOADED_VERSION)
+    expect(version.ver).to.be.equal(CURRENT_VERSION)
 })
 
 test("GitHubLoader", function(){
@@ -104,6 +109,8 @@ test("GitHubLoader", function(){
 })
 
 test("StorageLoader : load addon in current version, nerthus remain in storage", function(){
+    nerthus.addon.version = CURRENT_VERSION
+
     localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
 
     loader = NerthusAddonUtils.StorageLoader()
@@ -111,16 +118,17 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE.running).to.be.ok()
 })
 
 test("StorageLoader : load addon in old version, nerthus is removed from storage", function(){
-    var parser = NerthusAddonUtils.Parser()
-    nerthus.addon.version = "OLD"
+    nerthus.addon.version = OLD_VERSION
     localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
 
     loader = NerthusAddonUtils.StorageLoader()
     loader.load(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE.running).to.be.ok()
     expect(localStorage.nerthus).to.not.be.ok()
 })

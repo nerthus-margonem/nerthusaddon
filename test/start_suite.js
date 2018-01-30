@@ -102,3 +102,25 @@ test("GitHubLoader", function(){
     expect($.loaded_scripts[2]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
     expect($.loaded_scripts[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
 })
+
+test("StorageLoader : load addon in current version, nerthus remain in storage", function(){
+    localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
+
+    loader = NerthusAddonUtils.StorageLoader()
+    loader.load(LOAD_HELPER.on_load)
+
+    expect(LOAD_HELPER.loaded).to.be.ok()
+    expect(localStorage.nerthus).to.be.ok()
+})
+
+test("StorageLoader : load addon in old version, nerthus is removed from storage", function(){
+    var parser = NerthusAddonUtils.Parser()
+    nerthus.addon.version = "OLD"
+    localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
+
+    loader = NerthusAddonUtils.StorageLoader()
+    loader.load(LOAD_HELPER.on_load)
+
+    expect(LOAD_HELPER.loaded).to.be.ok()
+    expect(localStorage.nerthus).to.not.be.ok()
+})

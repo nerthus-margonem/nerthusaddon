@@ -74,13 +74,12 @@ NerthusAddonUtils.GitHubLoader = function()
     var loader = {}
     loader.load = function(onLoaded)
     {
-        var $this = this
         NerthusAddonUtils.VersionLoader().load(function(version)
         {
             log("Starting nerthus addon in version: " + version)
             nerthus.addon.version = version
-            $this.__loadScripts(onLoaded)
-        })
+            this.__loadScripts(onLoaded)
+        }.bind(this))
     }
     loader.__loadScripts = function(onLoaded)
     {

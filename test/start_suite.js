@@ -87,7 +87,7 @@ test("VersionLoader ", function(){
     var version = { ver : null}
     var version_loaded = function(v){this.ver = v}.bind(version)
 
-    loader = NerthusAddonUtils.VersionLoader()
+    var loader = NerthusAddonUtils.VersionLoader()
     loader.load(version_loaded)
 
     expect($.loaded_jsons).to.have.length(1)
@@ -113,7 +113,7 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
 
     localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
 
-    loader = NerthusAddonUtils.StorageLoader()
+    var loader = NerthusAddonUtils.StorageLoader()
     loader.load(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
@@ -125,10 +125,55 @@ test("StorageLoader : load addon in old version, nerthus is removed from storage
     nerthus.addon.version = VERSION_OLD
     localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
 
-    loader = NerthusAddonUtils.StorageLoader()
+    var loader = NerthusAddonUtils.StorageLoader()
     loader.load(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(nerthus.RUNABLE_MODULE.running).to.be.ok()
     expect(localStorage.nerthus).to.not.be.ok()
+})
+
+test("Runner : run in debug mode", function(){
+    localStorage.NerthusAddonDebug = true
+
+    var runner = NerthusAddonUtils.Runner()
+    runner.run()
+
+    expect(nerthus.addon.version).to.be.equal(VERSION_MASTER)
+    expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_MASTER)
+})
+
+test("Runner : run from github", function(){
+
+    var runner = NerthusAddonUtils.Runner()
+    runner.run()
+
+    expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
+    expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+})
+
+test("Runner : run from localStorage in actual version", function(){
+    nerthus.addon.version = VERSION_CURRENT
+    localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
+    nerthus = null
+
+    var runner = NerthusAddonUtils.Runner()
+    runner.run()
+
+    expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
+    expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+    expect(localStorage.nerthus).to.be.ok() //remain in storage
+})
+
+test("Runner : run from localStorage in old version", function(){
+    nerthus.addon.version = VERSION_OLD
+    localStorage.nerthus = NerthusAddonUtils.Parser().stringify(nerthus)
+    nerthus = null
+
+    var runner = NerthusAddonUtils.Runner()
+    runner.run()
+
+    expect(nerthus.addon.version).to.be.equal(VERSION_OLD)
+    expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+    expect(localStorage.nerthus).to.not.be.ok() //removed from storege
 })

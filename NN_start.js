@@ -24,7 +24,7 @@ nerthus.addon.store = function()
 NerthusAddonUtils = {}
 NerthusAddonUtils.Runner = function()
 {
-    var addonLoaded = function(){log('Nerthus addon started')}
+    var addonLoaded = function(){log('Nerthus addon started in version ' + nerthus.addon.version)}
     var runner = {}
     runner.run = function()
     {

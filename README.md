@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/akrzyz/nerthusaddon.svg?branch=master)](https://travis-ci.org/akrzyz/nerthusaddon)
 # nerthusaddon
   Addon for nerthus server in game [margonem](http://www.margonem.pl/)
 

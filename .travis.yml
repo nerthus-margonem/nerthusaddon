@@ -3,4 +3,4 @@ node_js:
   - "node"
  
 before_install:
-  - npm install —-save-dev mocha
+  - npm install --save-dev mocha

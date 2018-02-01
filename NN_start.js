@@ -26,38 +26,35 @@ NerthusAddonUtils = (function()
     var utils = {}
     utils.runner = (function()
     {
-        var addonLoaded = function(){log('Nerthus addon started in version ' + nerthus.addon.version)}
         var runner = {}
         runner.run = function()
         {
-            if(typeof localStorage !== 'undefined' && Boolean(eval(localStorage.NerthusAddonDebug)))
-                this.__runInDebugMode()
-            else if(typeof localStorage !== 'undefined' && localStorage.nerthus && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
-                this.__loadFromLocalStorage()
-            else
-                this.__loadFromGitHub()
+            utils.versionLoader.load(function()
+            {
+                if(typeof localStorage !== 'undefined' && Boolean(eval(localStorage.NerthusAddonDebug)))
+                    this.__runInDebugMode()
+                else if(typeof localStorage !== 'undefined' && localStorage.nerthus && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
+                    this.__loadFromLocalStorage()
+                else
+                    this.__loadFromGitHub()
+            }.bind(this))
         }
         runner.__runInDebugMode = function()
         {
-            log("Nerthus addon in debug mode")
             nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
             nerthus.addon.version = "master"
-            utils.gitHubLoader.__loadScripts(addonLoaded)
+            log("Load nerthus addon in debug mode, version = " + nerthus.addon.version)
+            utils.gitHubLoader.load()
         }
         runner.__loadFromLocalStorage = function()
         {
-            log("Load nerthus addon from local storage")
-            utils.storageLoader.load(addonLoaded)
+            log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
+            utils.storageLoader.load()
         }
         runner.__loadFromGitHub = function()
         {
-            log("Load nerthus addon from github")
-            utils.gitHubLoader.load(this.__loaded.bind(this))
-        }
-        runner.__loaded = function()
-        {
-            addonLoaded()
-            this.__store()
+            log("Load nerthus addon from github, version = " + nerthus.addon.version)
+            utils.gitHubLoader.load(this.__store.bind(this))
         }
         runner.__store = function()
         {
@@ -75,18 +72,10 @@ NerthusAddonUtils = (function()
         var loader = {}
         loader.load = function(onLoaded)
         {
-            utils.versionLoader.load(function(version)
-            {
-                nerthus.addon.version = version
-                this.__loadScripts(onLoaded)
-            }.bind(this))
-        }
-        loader.__loadScripts = function(onLoaded)
-        {
             utils.scriptsLoader.load(['NN_dlaRadnych.js'], function(){
                 utils.scriptsLoader.load(['NN_base.js'], function(){
                     utils.scriptsLoader.load(nerthus.scripts, onLoaded)
-            })});
+            })})
         }
         return loader
     })()
@@ -96,11 +85,12 @@ NerthusAddonUtils = (function()
         var loader = {}
         loader.load = function(onLoaded)
         {
+            var version = nerthus.addon.version
             nerthus = utils.parser.parse(localStorage.nerthus)
             this.__run()
+            this.__checkVersion(version)
             if(typeof onLoaded === 'function')
                 onLoaded()
-            utils.versionLoader.load(this.__checkVersion)
         }
         loader.__run = function()
         {
@@ -130,8 +120,9 @@ NerthusAddonUtils = (function()
         {
             $.getJSON(this.__url, function(data)
             {
+                nerthus.addon.version = data.version
                 if(typeof onLoaded === 'function')
-                    onLoaded(data.version)
+                    onLoaded()
             })
         }
         return loader

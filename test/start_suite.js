@@ -81,13 +81,11 @@ test("ScriptsLoader : load multiple scripts", function(){
 })
 
 test("VersionLoader ", function(){
-    var version = { ver : null}
-    var version_loaded = function(v){this.ver = v}.bind(version)
-
-    NerthusAddonUtils.versionLoader.load(version_loaded)
-
-    expect($.loaded_jsons).to.have.length(1)
-    expect(version.ver).to.be.equal(VERSION_CURRENT)
+    nerthus.addon.version = null
+    NerthusAddonUtils.versionLoader.load(function(){
+        expect($.loaded_jsons).to.have.length(1)
+        expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
+    })
 })
 
 test("GitHubLoader", function(){
@@ -119,6 +117,7 @@ test("StorageLoader : load addon in old version, nerthus is removed from storage
     nerthus.addon.version = VERSION_OLD
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
+    nerthus.addon.version = VERSION_CURRENT
     NerthusAddonUtils.storageLoader.load(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
@@ -146,7 +145,7 @@ test("Runner : run from github", function(){
 test("Runner : run from localStorage in actual version", function(){
     nerthus.addon.version = VERSION_CURRENT
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
-    nerthus = null
+    nerthus.addon = {}
 
     NerthusAddonUtils.runner.run()
 
@@ -158,7 +157,7 @@ test("Runner : run from localStorage in actual version", function(){
 test("Runner : run from localStorage in old version", function(){
     nerthus.addon.version = VERSION_OLD
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
-    nerthus = null
+    nerthus.addon = {}
 
     NerthusAddonUtils.runner.run()
 

@@ -32,37 +32,23 @@ NerthusAddonUtils = (function()
             utils.versionLoader.load(function()
             {
                 if(typeof localStorage !== 'undefined' && Boolean(eval(localStorage.NerthusAddonDebug)))
-                    this.__runInDebugMode()
+                {
+                    nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
+                    nerthus.addon.version = "master"
+                    log("Load nerthus addon in debug mode, version = " + nerthus.addon.version)
+                    utils.gitHubLoader.load()
+                }
                 else if(typeof localStorage !== 'undefined' && localStorage.nerthus && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
-                    this.__loadFromLocalStorage()
+                {
+                    log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
+                    utils.storageLoader.load()
+                }
                 else
-                    this.__loadFromGitHub()
-            }.bind(this))
-        }
-        runner.__runInDebugMode = function()
-        {
-            nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
-            nerthus.addon.version = "master"
-            log("Load nerthus addon in debug mode, version = " + nerthus.addon.version)
-            utils.gitHubLoader.load()
-        }
-        runner.__loadFromLocalStorage = function()
-        {
-            log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
-            utils.storageLoader.load()
-        }
-        runner.__loadFromGitHub = function()
-        {
-            log("Load nerthus addon from github, version = " + nerthus.addon.version)
-            utils.gitHubLoader.load(this.__store.bind(this))
-        }
-        runner.__store = function()
-        {
-            if(typeof localStorage !== 'undefined')
-            {
-                nerthus.addon.store()
-                log("Nerthus addon stored")
-            }
+                {
+                    log("Load nerthus addon from github, version = " + nerthus.addon.version)
+                    utils.gitHubLoader.load(nerthus.addon.store)
+                }
+            })
         }
         return runner
     })()

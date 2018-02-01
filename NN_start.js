@@ -77,7 +77,6 @@ NerthusAddonUtils = (function()
         {
             utils.versionLoader.load(function(version)
             {
-                log("Starting nerthus addon in version: " + version)
                 nerthus.addon.version = version
                 this.__loadScripts(onLoaded)
             }.bind(this))

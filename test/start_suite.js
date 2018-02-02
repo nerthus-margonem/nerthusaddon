@@ -82,8 +82,9 @@ test("ScriptsLoader : load multiple scripts", function(){
 
 test("VersionLoader ", function(){
     nerthus.addon.version = null
-    NerthusAddonUtils.versionLoader.load(function(){
+    NerthusAddonUtils.loadVersion(function(){
         expect($.loaded_jsons).to.have.length(1)
+        expect($.loaded_jsons[0]).to.be.ok()
         expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
     })
 })
@@ -91,7 +92,7 @@ test("VersionLoader ", function(){
 test("GitHubLoader", function(){
     nerthus.scripts = ADDITIONAL_SCRIPTS
 
-    NerthusAddonUtils.gitHubLoader.load(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect($.loaded_scripts).to.have.length(2 + ADDITIONAL_SCRIPTS.length)
@@ -106,7 +107,7 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
 
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
-    NerthusAddonUtils.storageLoader.load(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
@@ -118,7 +119,7 @@ test("StorageLoader : load addon in old version, nerthus is removed from storage
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
     nerthus.addon.version = VERSION_CURRENT
-    NerthusAddonUtils.storageLoader.load(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(nerthus.RUNABLE_MODULE.running).to.be.ok()

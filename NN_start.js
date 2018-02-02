@@ -23,96 +23,77 @@ nerthus.addon.store = function()
 //utilities for addon start up
 NerthusAddonUtils = (function()
 {
+    var call = function(func)
+    {
+        if(typeof func === 'function')
+            func()
+    }
+
     var utils = {}
     utils.runner = (function()
     {
         var runner = {}
         runner.run = function()
         {
-            utils.versionLoader.load(function()
+            utils.loadVersion(function()
             {
                 if(typeof localStorage !== 'undefined' && Boolean(eval(localStorage.NerthusAddonDebug)))
                 {
                     nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
                     nerthus.addon.version = "master"
                     log("Load nerthus addon in debug mode, version = " + nerthus.addon.version)
-                    utils.gitHubLoader.load()
+                    utils.loadFromGitHub()
                 }
                 else if(typeof localStorage !== 'undefined' && localStorage.nerthus && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
                 {
                     log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
-                    utils.storageLoader.load()
+                    utils.loadFromStorage()
                 }
                 else
                 {
                     log("Load nerthus addon from github, version = " + nerthus.addon.version)
-                    utils.gitHubLoader.load(nerthus.addon.store)
+                    utils.loadFromGitHub(nerthus.addon.store)
                 }
             })
         }
         return runner
     })()
 
-    utils.gitHubLoader = (function()
+    utils.loadFromGitHub = function(onLoaded)
     {
-        var loader = {}
-        loader.load = function(onLoaded)
-        {
-            utils.scriptsLoader.load(['NN_dlaRadnych.js'], function(){
-                utils.scriptsLoader.load(['NN_base.js'], function(){
-                    utils.scriptsLoader.load(nerthus.scripts, onLoaded)
-            })})
-        }
-        return loader
-    })()
+        utils.scriptsLoader.load(['NN_dlaRadnych.js'], function(){
+            utils.scriptsLoader.load(['NN_base.js'], function(){
+                utils.scriptsLoader.load(nerthus.scripts, onLoaded)
+        })})
+    }
 
-    utils.storageLoader = (function()
+    utils.loadFromStorage = function(onLoaded)
     {
-        var loader = {}
-        loader.load = function(onLoaded)
-        {
-            var version = nerthus.addon.version
-            nerthus = utils.parser.parse(localStorage.nerthus)
-            this.__run()
-            this.__checkVersion(version)
-            if(typeof onLoaded === 'function')
-                onLoaded()
-        }
-        loader.__run = function()
-        {
-            for(var i in nerthus) try
-            {
-                if(typeof nerthus[i] === 'object' && typeof nerthus[i].start === 'function')
-                    nerthus[i].start()
-            }
-            catch(error){log("nerthus." + i + " : " + error.message)}
-        }
-        loader.__checkVersion = function(version)
-        {
-            if(version != nerthus.addon.version)
-            {
-                log("Nerthus addon has not actual version")
-                delete localStorage.nerthus
-            }
-        }
-        return loader
-    })()
+        var version = nerthus.addon.version
+        nerthus = utils.parser.parse(localStorage.nerthus)
 
-    utils.versionLoader = (function()
-    {
-        var loader = {}
-        loader.__url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
-        loader.load = function(onLoaded)
+        if(version != nerthus.addon.version)
         {
-            $.getJSON(this.__url, function(data)
-            {
-                nerthus.addon.version = data.version
-                if(typeof onLoaded === 'function')
-                    onLoaded()
-            })
+            log("Nerthus addon has not actual version")
+            delete localStorage.nerthus
         }
-        return loader
-    })()
+
+        for(var i in nerthus)
+            if(nerthus[i] && nerthus[i].start)
+                call(nerthus[i].start.bind(nerthus[i]))
+
+        call(onLoaded)
+    }
+
+    utils.version_url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
+    utils.loadVersion = function(onLoaded)
+    {
+        $.getJSON(this.version_url, function(data)
+        {
+            nerthus.addon.version = data.version
+            call(onLoaded)
+        })
+    }
 
     utils.scriptsLoader = (function()
     {
@@ -133,8 +114,8 @@ NerthusAddonUtils = (function()
         loader.__loaded = function()
         {
             this.__to_load--
-            if(this.__to_load === 0 && typeof this.__callback === 'function')
-                this.__callback()
+            if(this.__to_load === 0 )
+                call(this.__callback)
         }
         return loader
     })()

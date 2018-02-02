@@ -49,7 +49,7 @@ test("fileUrl concat filesPrefix, version and file_name into url", function(){
 })
 
 test("ScriptsLoader : load empty script list", function(){
-    NerthusAddonUtils.scriptsLoader.load([], LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadScripts([], LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect($.loaded_scripts).to.have.length(0)
@@ -59,7 +59,7 @@ test("ScriptsLoader : load single script", function(){
     var FILE = "SCRIPT.JS"
     var FILE_URL = nerthus.addon.fileUrl(FILE)
 
-    NerthusAddonUtils.scriptsLoader.load([FILE], LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadScripts([FILE], LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect($.loaded_scripts).to.have.length(1)
@@ -72,7 +72,7 @@ test("ScriptsLoader : load multiple scripts", function(){
     var FILE_URL_1 = nerthus.addon.fileUrl(FILE_1)
     var FILE_URL_2 = nerthus.addon.fileUrl(FILE_2)
 
-    NerthusAddonUtils.scriptsLoader.load([FILE_1, FILE_2], LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadScripts([FILE_1, FILE_2], LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect($.loaded_scripts).to.have.length(2)

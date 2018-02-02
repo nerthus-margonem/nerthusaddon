@@ -61,9 +61,9 @@ NerthusAddonUtils = (function()
 
     utils.loadFromGitHub = function(onLoaded)
     {
-        utils.scriptsLoader.load(['NN_dlaRadnych.js'], function(){
-            utils.scriptsLoader.load(['NN_base.js'], function(){
-                utils.scriptsLoader.load(nerthus.scripts, onLoaded)
+        utils.loadScripts(['NN_dlaRadnych.js'], function(){
+            utils.loadScripts(['NN_base.js'], function(){
+                utils.loadScripts(nerthus.scripts, onLoaded)
         })})
     }
 
@@ -95,30 +95,20 @@ NerthusAddonUtils = (function()
         })
     }
 
-    utils.scriptsLoader = (function()
+    utils.loadScripts = function(scripts, callback)
     {
-        var loader = {}
-        loader.__to_load = 0
-        loader.__callback = null
-        loader.load = function (files, callback)
-        {
-            this.__callback = callback
-            this.__to_load += files.length
-
-            if(this.__to_load === 0)
-                this.__callback()
-
-            for(var i in files)
-                $.getScript(nerthus.addon.fileUrl(files[i]), this.__loaded.bind(this))
+        var to_load = scripts.length
+        var loaded = function() {
+            if(--to_load === 0)
+                call(callback)
         }
-        loader.__loaded = function()
-        {
-            this.__to_load--
-            if(this.__to_load === 0 )
-                call(this.__callback)
-        }
-        return loader
-    })()
+
+        if(!scripts.length)
+            call(callback)
+
+        for(var i in scripts)
+            $.getScript(nerthus.addon.fileUrl(scripts[i]), loaded)
+    }
 
     utils.parser = (function()
     {

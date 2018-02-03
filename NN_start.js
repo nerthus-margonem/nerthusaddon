@@ -8,11 +8,16 @@ try{
 
 nerthus = {}
 nerthus.addon = {}
-nerthus.addon.version = "master"
-nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
+nerthus.addon.consts = {}
+nerthus.addon.consts.MASERT = "master"
+nerthus.addon.consts.RAW_PREFIX = 'http://rawgit.com/akrzyz/nerthusaddon'
+nerthus.addon.consts.CDN_PREFIX = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
+nerthus.addon.consts.VERSION_URL = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
+nerthus.addon.version = nerthus.addon.consts.MASERT
+nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
 nerthus.addon.fileUrl = function(filename)
 {
-    return this.filesPrefix + "/" + this.version + "/" + filename
+    return [this.filesPrefix, this.version, filename].join('/')
 }
 nerthus.addon.store = function()
 {
@@ -20,7 +25,6 @@ nerthus.addon.store = function()
         NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 }
 
-//utilities for addon start up
 NerthusAddonUtils = (function()
 {
     var call = function(func)
@@ -39,7 +43,7 @@ NerthusAddonUtils = (function()
     {
         if(this.storage() && this.storage().NerthusAddonDebug)
         {
-            nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
+            nerthus.addon.filesPrefix = nerthus.addon.consts.RAW_PREFIX
             nerthus.addon.version = "master"
             this.loadFromGitHub()
         }
@@ -64,10 +68,10 @@ NerthusAddonUtils = (function()
     utils.loadFromGitHub = function(onLoaded)
     {
         log("Load nerthus addon from github, version = " + nerthus.addon.version)
-        utils.loadScripts(['NN_dlaRadnych.js'], function(){
-            utils.loadScripts(['NN_base.js'], function(){
-                utils.loadScripts(nerthus.scripts, onLoaded)
-        })})
+        this.loadScripts(['NN_dlaRadnych.js'], function(){
+            this.loadScripts(['NN_base.js'], function(){
+                this.loadScripts(nerthus.scripts, onLoaded)
+        }.bind(this))}.bind(this))
     }
 
     utils.loadFromStorage = function(onLoaded)
@@ -82,10 +86,9 @@ NerthusAddonUtils = (function()
         call(onLoaded)
     }
 
-    utils.version_url = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
     utils.loadVersion = function(onLoaded)
     {
-        $.getJSON(this.version_url, function(data)
+        $.getJSON(nerthus.addon.consts.VERSION_URL, function(data)
         {
             nerthus.addon.version = data.version
             call(onLoaded)

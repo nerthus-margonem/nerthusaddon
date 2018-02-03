@@ -1,3 +1,5 @@
+suite("start")
+
 before(function()
 {
     log = function(msg){console.log(msg)}
@@ -35,8 +37,6 @@ beforeEach(function()
     nerthus.addon.version = VERSION_MASTER
     nerthus.addon.filesPrefix = PREFIX_CDN
 })
-
-suite("start")
 
 test("fileUrl concat filesPrefix, version and file_name into url", function()
 {

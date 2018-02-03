@@ -4,8 +4,13 @@
 
 ### How to test changes in game?
   * In order to run addon in version from master branch set in console variable `localStorage.NerthusAddonDebug = true` 
-  * In order to back to normal version `localStorage.NerthusAddonDebug = false` or `delete localStorage.NerthusAddonDebug`
-
+  * In order to back to normal version `delete localStorage.NerthusAddonDebug`
+ 
+### How to run tests
+  * runing tests require nodejs and some node modules
+  * run `make test_deps` to install dependencies
+  * to run tests type `make test` in project root directory
+ 
 ### How to introduce changes to game
   * Put desired revision hash to file [version.json](version.json)
   * It usually takes couple minutes before changes are visible in game
@@ -17,8 +22,3 @@
 ### How to run light manager in game?
   * run in console `nerthus.night.lights.give_me_the_light()`
   * dumping light configuration `nerthus.night.lights.dump()`
-
-### How to run tests
-  * runing tests require node.js and mocha
-  * projest use [expect.js](https://github.com/Automattic/expect.js) as submodule, remember to init it after clone
-  * to run tests type `make test` in project root directory

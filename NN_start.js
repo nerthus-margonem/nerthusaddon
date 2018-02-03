@@ -44,7 +44,7 @@ NerthusAddonUtils = (function()
         if(this.storage() && this.storage().NerthusAddonDebug)
         {
             nerthus.addon.filesPrefix = nerthus.addon.consts.RAW_PREFIX
-            nerthus.addon.version = "master"
+            nerthus.addon.version = nerthus.addon.consts.MASERT
             this.loadFromGitHub()
         }
         else if(this.storage() && this.storage().nerthus)

@@ -5,6 +5,8 @@ before(function()
     log = function(msg){console.log(msg)}
 
     nerthus = {}
+    nerthus.addon = {}
+    nerthus.addon.store = function(){}
 
     g = {}
     g.chat = {}
@@ -14,7 +16,8 @@ before(function()
     g.tips.npc = function(){}
     hero = {}
     chatScroll = function(){}
-    message = function(){}
+    _message = null
+    message = function(m){_message = m}
 
     jqObjMock = {}
     jqObjMock.hasClass = function(){}
@@ -116,4 +119,49 @@ test("season", function()
     Date = _date
 })
 
+test("setChatInfo : info not present", function()
+{
+    nerthus.chatInfoStr = ""
+    nerthus.setChatInfo()
+    expect(g.chat.txt).to.be.empty()
+})
 
+test("setChatInfo : info present", function()
+{
+    nerthus.chatInfoStr = "INFO"
+    nerthus.setChatInfo()
+    expect(g.chat.txt).to.have.length(1)
+    expect(g.chat.txt[0]).to.contain(nerthus.chatInfoStr)
+})
+
+test("setEnterMsg : msg not present", function()
+{
+    nerthus.EnterMsg = ""
+    nerthus.setEnterMsg()
+    expect(_message).to.not.be.ok()
+})
+
+test("setEnterMsg : msg present", function()
+{
+    nerthus.EnterMsg = "MSG"
+    nerthus.setEnterMsg()
+    expect(_message).to.be.equal(nerthus.EnterMsg)
+})
+
+test("stor and load settions", function()
+{
+    var opt = {op1:true, op2:false, op3:"Hmm"}
+    nerthus.storeSettings(opt)
+
+    expect(nerthus.options.op1).to.be.equal(opt.op1)
+    expect(nerthus.options.op2).to.be.equal(opt.op2)
+    expect(nerthus.options.op3).to.be.equal(opt.op3)
+
+    nerthus.options = {}
+
+    nerthus.loadSettings()
+
+    expect(nerthus.options.op1).to.be.equal(opt.op1)
+    expect(nerthus.options.op2).to.be.equal(opt.op2)
+    expect(nerthus.options.op3).to.be.equal(opt.op3)
+})

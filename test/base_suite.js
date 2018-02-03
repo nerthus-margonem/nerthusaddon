@@ -7,6 +7,8 @@ before(function()
     nerthus = {}
     nerthus.addon = {}
     nerthus.addon.store = function(){}
+    nerthus.lvlNames = ["lvl1-8","lvl9-16"]
+    nerthus.vips = []
 
     g = {}
     g.chat = {}
@@ -27,6 +29,22 @@ before(function()
 
     expect = require("expect.js")
     require("../NN_base.js")
+
+
+    g.names = {}
+    g.names.ranks =
+    {
+        0 : "ADMIN",
+        1 : "SMG",
+        2 : "MG",
+        3 : "MC",
+        4 : "SMC",
+        5 : "BARD",
+        6 : "BARD_MC",
+        7 : "RADNY"
+    }
+    rights = {ADMIN : 1, SMG : 16, MG : 2, MC : 4}
+
 })
 
 beforeEach(function()
@@ -34,6 +52,8 @@ beforeEach(function()
     g.loadQueue = []
     g.chat.txt = []
     nerthus.NerthusRad = []
+
+    player = {rights:0, nick:"NAME", id:42, lvl:1}
 })
 
 test("defer a functio", function()
@@ -164,4 +184,86 @@ test("stor and load settions", function()
     expect(nerthus.options.op1).to.be.equal(opt.op1)
     expect(nerthus.options.op2).to.be.equal(opt.op2)
     expect(nerthus.options.op3).to.be.equal(opt.op3)
+})
+
+test("tips.rank : player without any privilages", function()
+{
+    expect(nerthus.tips.rank(player)).to.be.equal("")
+})
+
+test("tips.rank : admin", function()
+{
+    player.rights = rights.ADMIN
+    expect(nerthus.tips.rank(player)).to.be.equal("ADMIN")
+})
+
+test("tips.rank : smg", function()
+{
+    player.rights = rights.SMG
+    expect(nerthus.tips.rank(player)).to.be.equal("SMG")
+})
+
+test("tips.rank : mg", function()
+{
+    player.rights = rights.MG
+    expect(nerthus.tips.rank(player)).to.be.equal("MG")
+})
+
+test("tips.rank : radny", function()
+{
+    nerthus.NerthusRad = [player.nick]
+    expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
+})
+
+test("tips.rank : radny", function()
+{
+    nerthus.NerthusRad = [player.nick]
+    expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
+})
+
+test("tips.rank : bard", function()
+{
+    nerthus.NerthusNarr = [player.nick]
+    expect(nerthus.tips.rank(player)).to.be.equal("BARD")
+})
+
+test("tips.rank : bard + mc", function()
+{
+    nerthus.NerthusNarr = [player.nick]
+    player.rights = rights.MC
+    expect(nerthus.tips.rank(player)).to.be.equal("BARD_MC")
+})
+
+test("tips.title : non lvl", function()
+{
+    player.lvl = 0
+    expect(nerthus.tips.title(player)).to.be.equal("")
+})
+
+test("tips.title : lvl 1-8", function()
+{
+    player.lvl = 1
+    expect(nerthus.tips.title(player)).to.be.equal("lvl1-8")
+    player.lvl = 8
+    expect(nerthus.tips.title(player)).to.be.equal("lvl1-8")
+})
+
+test("tips.title : lvl 9-16", function()
+{
+    player.lvl = 9
+    expect(nerthus.tips.title(player)).to.be.equal("lvl9-16")
+    player.lvl = 16
+    expect(nerthus.tips.title(player)).to.be.equal("lvl9-16")
+})
+
+test("tips.title : lvl*8 above lvl names lenght", function()
+{
+    player.lvl = nerthus.lvlNames.length * 8 + 10
+    expect(nerthus.tips.title(player)).to.be.equal(nerthus.lvlNames[nerthus.lvlNames.length - 1])
+})
+
+test("tips.title : vip, special names for vips", function()
+{
+    nerthus.vips[player.id] = "VIP"
+    expect(nerthus.tips.title(player)).to.be.equal("VIP")
 })

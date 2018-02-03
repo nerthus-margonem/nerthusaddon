@@ -37,30 +37,34 @@ NerthusAddonUtils = (function()
     }
     utils.runAddon = function()
     {
-        this.loadVersion(function()
+        if(this.storage() && this.storage().NerthusAddonDebug)
         {
-            if(this.storage() && this.storage().NerthusAddonDebug)
+            nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
+            nerthus.addon.version = "master"
+            this.loadFromGitHub()
+        }
+        else if(this.storage() && this.storage().nerthus)
+        {
+            this.loadFromStorage()
+            return this.loadVersion(function(version)
             {
-                nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
-                nerthus.addon.version = "master"
-                log("Load nerthus addon in debug mode, version = " + nerthus.addon.version)
-                this.loadFromGitHub()
-            }
-            else if(this.storage() && this.storage().nerthus)
-            {
-                log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
-                this.loadFromStorage()
-            }
-            else
-            {
-                log("Load nerthus addon from github, version = " + nerthus.addon.version)
+                if(version != nerthus.addon.version)
+                {
+                    log("Nerthus addon has not actual version " + version + " actual is " +  nerthus.addon.version)
+                    delete this.storage().nerthus
+                }
+            }.bind(this, nerthus.addon.version))
+        }
+        else
+        {
+            this.loadVersion(function() {
                 this.loadFromGitHub(nerthus.addon.store)
-            }
-        }.bind(this))
+            }.bind(this))
+        }
     }
-
     utils.loadFromGitHub = function(onLoaded)
     {
+        log("Load nerthus addon from github, version = " + nerthus.addon.version)
         utils.loadScripts(['NN_dlaRadnych.js'], function(){
             utils.loadScripts(['NN_base.js'], function(){
                 utils.loadScripts(nerthus.scripts, onLoaded)
@@ -69,14 +73,8 @@ NerthusAddonUtils = (function()
 
     utils.loadFromStorage = function(onLoaded)
     {
-        var version = nerthus.addon.version
         nerthus = this.parser.parse(this.storage().nerthus)
-
-        if(version != nerthus.addon.version)
-        {
-            log("Nerthus addon has not actual version")
-            delete this.storage().nerthus
-        }
+        log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
 
         for(var i in nerthus)
             if(nerthus[i] && nerthus[i].start)

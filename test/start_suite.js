@@ -1,4 +1,5 @@
-before(function(){
+before(function()
+{
     log = function(msg){console.log(msg)}
 
     require("../NN_start.js")
@@ -13,8 +14,8 @@ before(function(){
 
 })
 
-beforeEach(function(){
-
+beforeEach(function()
+{
     $ = {}
     $.loaded_scripts = []
     $.loaded_jsons = []
@@ -37,7 +38,8 @@ beforeEach(function(){
 
 suite("start")
 
-test("fileUrl concat filesPrefix, version and file_name into url", function(){
+test("fileUrl concat filesPrefix, version and file_name into url", function()
+{
     var FILE = 'SCRIPT.JS'
     var PREFIX = 'PREFIX'
     var VERSION = 'VERSION'
@@ -48,14 +50,33 @@ test("fileUrl concat filesPrefix, version and file_name into url", function(){
     expect(nerthus.addon.fileUrl(FILE)).to.be.equal(FILE_URL)
 })
 
-test("ScriptsLoader : load empty script list", function(){
+test("storage : localStorage exist", function()
+{
+    expect(NerthusAddonUtils.storage()).to.be.ok()
+})
+
+test("storage : localStorage not exist", function()
+{
+    delete localStorage
+    expect(NerthusAddonUtils.storage()).to.not.be.ok()
+})
+
+test("storage : localStorage exist but flag NerthusAddonNoStorage prevent it", function()
+{
+    localStorage.NerthusAddonNoStorage = true
+    expect(NerthusAddonUtils.storage()).to.not.be.ok()
+})
+
+test("ScriptsLoader : load empty script list", function()
+{
     NerthusAddonUtils.loadScripts([], LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect($.loaded_scripts).to.have.length(0)
 })
 
-test("ScriptsLoader : load single script", function(){
+test("ScriptsLoader : load single script", function()
+{
     var FILE = "SCRIPT.JS"
     var FILE_URL = nerthus.addon.fileUrl(FILE)
 
@@ -66,7 +87,8 @@ test("ScriptsLoader : load single script", function(){
     expect($.loaded_scripts[0]).to.be.equal(FILE_URL)
 })
 
-test("ScriptsLoader : load multiple scripts", function(){
+test("ScriptsLoader : load multiple scripts", function()
+{
     var FILE_1 = "SCRIPT_1.JS"
     var FILE_2 = "SCRIPT_2.JS"
     var FILE_URL_1 = nerthus.addon.fileUrl(FILE_1)
@@ -80,7 +102,8 @@ test("ScriptsLoader : load multiple scripts", function(){
     expect($.loaded_scripts[1]).to.be.equal(FILE_URL_2)
 })
 
-test("VersionLoader ", function(){
+test("VersionLoader ", function()
+{
     nerthus.addon.version = null
     NerthusAddonUtils.loadVersion(function(){
         expect($.loaded_jsons).to.have.length(1)
@@ -89,7 +112,8 @@ test("VersionLoader ", function(){
     })
 })
 
-test("GitHubLoader", function(){
+test("GitHubLoader", function()
+{
     nerthus.scripts = ADDITIONAL_SCRIPTS
 
     NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load)
@@ -102,9 +126,8 @@ test("GitHubLoader", function(){
     expect($.loaded_scripts[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
 })
 
-test("StorageLoader : load addon in current version, nerthus remain in storage", function(){
-    nerthus.addon.version = VERSION_CURRENT
-
+test("StorageLoader : load addon in current version, nerthus remain in storage", function()
+{
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
     NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
@@ -114,19 +137,8 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
     expect(nerthus.RUNABLE_MODULE.running).to.be.ok()
 })
 
-test("StorageLoader : load addon in old version, nerthus is removed from storage", function(){
-    nerthus.addon.version = VERSION_OLD
-    localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
-
-    nerthus.addon.version = VERSION_CURRENT
-    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
-
-    expect(LOAD_HELPER.loaded).to.be.ok()
-    expect(nerthus.RUNABLE_MODULE.running).to.be.ok()
-    expect(localStorage.nerthus).to.not.be.ok()
-})
-
-test("Runner : run in debug mode", function(){
+test("Runner : run in debug mode", function()
+{
     localStorage.NerthusAddonDebug = true
 
     NerthusAddonUtils.runAddon()
@@ -135,15 +147,17 @@ test("Runner : run in debug mode", function(){
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_MASTER)
 })
 
-test("Runner : run from github", function(){
-
+test("Runner : run from github", function()
+{
     NerthusAddonUtils.runAddon()
 
     expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+    expect(localStorage.nerthus).to.be.ok()
 })
 
-test("Runner : run from localStorage in actual version", function(){
+test("Runner : run from localStorage in actual version", function()
+{
     nerthus.addon.version = VERSION_CURRENT
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
     nerthus.addon = {}
@@ -155,14 +169,15 @@ test("Runner : run from localStorage in actual version", function(){
     expect(localStorage.nerthus).to.be.ok() //remain in storage
 })
 
-test("Runner : run from localStorage in old version", function(){
+test("Runner : run from localStorage in old version", function()
+{
     nerthus.addon.version = VERSION_OLD
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
     nerthus.addon = {}
 
     NerthusAddonUtils.runAddon()
 
-    expect(nerthus.addon.version).to.be.equal(VERSION_OLD)
+//    expect(nerthus.addon.version).to.be.equal(VERSION_OLD)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
     expect(localStorage.nerthus).to.not.be.ok() //removed from storege
 })

@@ -12,12 +12,12 @@ nerthus.addon.version = "master"
 nerthus.addon.filesPrefix = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
 nerthus.addon.fileUrl = function(filename)
 {
-    return this.filesPrefix + "/" + this.version + "/" + filename;
+    return this.filesPrefix + "/" + this.version + "/" + filename
 }
 nerthus.addon.store = function()
 {
-    if(typeof localStorage !== 'undefined' && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
-        localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
+    if(NerthusAddonUtils.storage())
+        NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 }
 
 //utilities for addon start up
@@ -30,18 +30,23 @@ NerthusAddonUtils = (function()
     }
 
     var utils = {}
+    utils.storage = function()
+    {
+        if(typeof localStorage !== 'undefined' && !localStorage.NerthusAddonNoStorage)
+            return localStorage
+    }
     utils.runAddon = function()
     {
         this.loadVersion(function()
         {
-            if(typeof localStorage !== 'undefined' && Boolean(eval(localStorage.NerthusAddonDebug)))
+            if(this.storage() && this.storage().NerthusAddonDebug)
             {
                 nerthus.addon.filesPrefix = 'http://rawgit.com/akrzyz/nerthusaddon'
                 nerthus.addon.version = "master"
                 log("Load nerthus addon in debug mode, version = " + nerthus.addon.version)
                 this.loadFromGitHub()
             }
-            else if(typeof localStorage !== 'undefined' && localStorage.nerthus && !Boolean(eval(localStorage.NerthusAddonNoStorage)))
+            else if(this.storage() && this.storage().nerthus)
             {
                 log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
                 this.loadFromStorage()

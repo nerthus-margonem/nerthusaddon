@@ -15,7 +15,7 @@ before(function()
     g.chat = {}
     g.chat.parsers = []
 
-    expect = require("./expect.js")
+    expect = require("expect.js")
     require("../NN_chatCmd.js")
 
 })

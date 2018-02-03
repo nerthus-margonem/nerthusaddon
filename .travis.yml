@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - "node"
- 
+
 before_install:
-  - npm install --save-dev mocha
+  - make test_deps
 
 script:
   - make test

@@ -6,7 +6,7 @@ before(function()
     nerthus.defer = function(){}
     nerthus.options = {}
 
-    expect = require("./expect.js")
+    expect = require("expect.js")
     require("../NN_pogoda.js")
 
 })

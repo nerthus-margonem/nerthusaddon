@@ -22,7 +22,7 @@ before(function()
     jqObjMock.attr = function(){}
     $ = function (){return jqObjMock}
 
-    expect = require("./expect.js")
+    expect = require("expect.js")
     require("../NN_base.js")
 
 })

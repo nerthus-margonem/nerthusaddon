@@ -10,7 +10,7 @@ before(function()
     chatSendMsg = function(){}
     _g = {}
 
-    expect = require("./expect.js")
+    expect = require("expect.js")
     require("../NN_alko.js")
 
 })

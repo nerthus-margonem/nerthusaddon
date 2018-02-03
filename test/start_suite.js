@@ -5,7 +5,7 @@ before(function()
     log = function(msg){console.log(msg)}
 
     require("../NN_start.js")
-    expect = require("./expect.js")
+    expect = require("expect.js")
 
     VERSION_CURRENT = "CURRENT_VERSION"
     VERSION_OLD = "OLD_VERSION"

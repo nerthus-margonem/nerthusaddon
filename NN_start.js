@@ -46,20 +46,19 @@ NerthusAddonUtils = (function()
         else if(this.storage() && this.storage().nerthus)
         {
             this.loadFromStorage()
-            return this.loadVersion(function(version)
+            var checkVersion = function(version)
             {
                 if(version != nerthus.addon.version)
                 {
                     log("Nerthus addon has not actual version " + version + " actual is " +  nerthus.addon.version)
                     delete this.storage().nerthus
                 }
-            }.bind(this, nerthus.addon.version))
+            }.bind(this, nerthus.addon.version)
+            this.loadVersion(checkVersion)
         }
         else
         {
-            this.loadVersion(function() {
-                this.loadFromGitHub(nerthus.addon.store)
-            }.bind(this))
+            this.loadVersion(this.loadFromGitHub.bind(this, nerthus.addon.store))
         }
     }
     utils.loadFromGitHub = function(onLoaded)

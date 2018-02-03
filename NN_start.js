@@ -12,7 +12,6 @@ nerthus.addon.consts = {}
 nerthus.addon.consts.MASERT = "master"
 nerthus.addon.consts.RAW_PREFIX = 'http://rawgit.com/akrzyz/nerthusaddon'
 nerthus.addon.consts.CDN_PREFIX = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
-nerthus.addon.consts.VERSION_URL = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
 nerthus.addon.version = nerthus.addon.consts.MASERT
 nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
 nerthus.addon.fileUrl = function(filename)
@@ -88,7 +87,8 @@ NerthusAddonUtils = (function()
 
     utils.loadVersion = function(onLoaded)
     {
-        $.getJSON(nerthus.addon.consts.VERSION_URL, function(data)
+        const VERSION_URL = "http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/version.json"
+        $.getJSON(VERSION_URL, function(data)
         {
             nerthus.addon.version = data.version
             call(onLoaded)

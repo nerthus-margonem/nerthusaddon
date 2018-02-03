@@ -70,12 +70,12 @@ NerthusAddonUtils = (function()
     utils.loadFromStorage = function(onLoaded)
     {
         var version = nerthus.addon.version
-        nerthus = this.parser.parse(localStorage.nerthus)
+        nerthus = this.parser.parse(this.storage().nerthus)
 
         if(version != nerthus.addon.version)
         {
             log("Nerthus addon has not actual version")
-            delete localStorage.nerthus
+            delete this.storage().nerthus
         }
 
         for(var i in nerthus)

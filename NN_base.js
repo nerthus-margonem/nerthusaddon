@@ -126,7 +126,7 @@ nerthus.tips.rank = function(player)
 {
     var rank = -1;
     if (player.rights)
-        rank = nerthus.tips.rights2rank(player.rights)
+        rank = this.rights2rank(player.rights)
     if (nerthus.isNarr(player.nick))
     {
         if(rank == 3)
@@ -156,72 +156,70 @@ nerthus.tips.other = function(other)
 {
     var tip = "<b>" + other.nick + "</b>"
     tip += other.clan ? "[" + other.clan + "]<br>" : ""
-    tip += nerthus.tips.title(other)
-    var rank = nerthus.tips.rank(other)
+    tip += this.title(other)
+    var rank = this.rank(other)
     tip += rank ? "<i>" + rank + "</i>" : ""
     tip += (other.attr & 1) ? "<img src=img/mute.gif>" : ""
     return tip
 }
 
-nerthus.tips.hero = function()
+nerthus.tips.hero = function(hero)
 {
-    var title = nerthus.tips.title(this)
-    var rank =  nerthus.tips.rank(this)
-    var tip = "<b><font color='white'>" + this.nick + "</font></b>"
+    var title = this.title(hero)
+    var rank =  this.rank(hero)
+    var tip = "<b><font color='white'>" + hero.nick + "</font></b>"
     tip += title ? "<center>" + title + "</center>" : ""
     tip += rank ? "<i><font color='red'>" + rank + "</font></i>" : ""
     return tip
 }
 
-nerthus.tips.npc = function (c)
+nerthus.tips.npcType = function(npc)
 {
-    var e = "<b>" + c.nick + "</b>";
-    if (c.type != 4) {
-        if (c.wt > 99) {
-            e += "<i>tytan</i>"
-        } else {
-            if (c.wt > 79) {
-                e += "<i>heros</i>"
-            } else {
-                if (c.wt > 29) {
-                    e += "<i>elita III</i>"
-                } else {
-                    if (c.wt > 19) {
-                        e += "<i>elita II</i>"
-                    } else {
-                        if (c.wt > 9) {
-                            e += "<i>elita</i>"
-                        }
-                    }
-                }
-            }
-        }
-        var d = "",
-            b = "";
-        if (c.type == 2 || c.type == 3) {
-            var a = c.lvl - hero.lvl;
-            if (a < -13) {
-                d = 'style="color:#888"';
-                b = "Niewarty uwagi"
-            } else {
-                if (a > 19) {
-                    d = 'style="color:#f50"';
-                    b = "Potężny przeciwnik"
-                } else {
-                    if (a > 9) {
-                        d = 'style="color:#ff0"';
-                        b = "Poważny rywal"
-                    } else {
-                        b = "Zwykły przeciwnik"
-                    }
-                }
-            }
-        }
-        if (c.type > 0) {
-            e += "<span " + d + ">" + b + (c.grp ? ", w grupie" : "") + "</span>"
-        }
+    if(npc.wt > 99)
+        return "tytan"
+    if(npc.wt > 79)
+        return "heros"
+    if(npc.wt > 29)
+        return "elita III"
+    if(npc.wt > 19)
+        return "elita II"
+    if(npc.wt > 9)
+        return "elita"
+    return ""
+}
+
+nerthus.tips.npcDanger = function(npc)
+{
+    if (npc.type == 2 || npc.type == 3)
+    {
+        var lvlDiff = npc.lvl - hero.lvl;
+        if(lvlDiff < -13)
+            return {style:'style="color:#888"', str:"Niewarty uwagi"}
+        if(lvlDiff > 19)
+           return {style:'style="color:#f50"', str:"Potężny przeciwnik"}
+        if(lvlDiff > 9)
+            return {style:'style="color:#ff0"', str:"Poważny rywal"}
+        return {style:"", str:"Zwykły przeciwnik"}
     }
-    return e
+    return {style:"", str:""}
+}
+
+nerthus.tips.npc = function (npc)
+{
+    var tip = "<b>" + npc.nick + "</b>"
+    if (npc.type == 4)
+        return tip
+
+    var type =  this.npcType(npc)
+    tip += type ? "<i>" + type + "</i>" : ""
+
+    if (npc.type <= 0)
+        return tip
+
+    var danger = this.npcDanger(npc)
+    var grp = npc.grp ? ", w grupie" : ""
+    tip += "<span " + danger.style + ">" + danger.str + grp + "</span>"
+    return tip
 }
 
 nerthus.base = {}
@@ -233,11 +231,11 @@ nerthus.base.start = function()
     nerthus.defer(function()
     {
         hero.rights = hero.uprawnienia
-        $("#hero").attr('tip', nerthus.tips.hero.bind(hero))
+        $("#hero").attr('tip', nerthus.tips.hero.bind(nerthus.tips, hero))
     })
 
-    g.tips.other = nerthus.tips.other
-    g.tips.npc = nerthus.tips.npc
+    g.tips.other = nerthus.tips.other.bind(nerthus.tips)
+    g.tips.npc = nerthus.tips.npc.bind(nerthus.tips)
 }
 
 nerthus.loadSettings();

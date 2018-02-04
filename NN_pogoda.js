@@ -22,9 +22,8 @@ nerthus.weather.set_weather = function(id)
         id = this.calculate()
     this.id = id
     this.display()
-    var x = Math.floor(id / 7)
-    var y = id % 7
-    $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ x * 55 +'px -'+ y * 55 +'px')
+    var spot = this.spot.fromId(id)
+    $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ spot.x * 55 +'px -'+ spot.y * 55 +'px')
 }
 
 nerthus.weather.set_global_weather = function()
@@ -66,7 +65,7 @@ nerthus.weather.spot.x = {SUN : 0, CLOUD : 1, MOON : 2}
 nerthus.weather.spot.y = {CLEAR : 0, CLOUD : 1, HEAVY_CLOUD : 2, RAIN : 3, HEAVY_RAIN : 4, SNOW : 5, HEAVY_SNOW : 6}
 nerthus.weather.spot.rain2snow = function(spot)
 {
-    if(spot.y == this.y.RAIN) //RAIN -> SNOW
+    if(spot.y == this.y.RAIN)
         spot.y = this.y.SNOW
     if(spot.y == this.y.HEAVY_RAIN)
         spot.y = this.y.HEAVY_SNOW
@@ -78,6 +77,14 @@ nerthus.weather.spot.sun2moonBetweenHours = function(spot, nightBegin, nightEnd)
     if(spot.x == this.x.SUN && (hour < nightEnd || hour >= nightBegin))
         spot.x = this.x.MOON
     return spot
+}
+nerthus.weather.spot.toId = function(spot)
+{
+    return (spot.x * 7 + spot.y) % 21
+}
+nerthus.weather.spot.fromId = function(id)
+{
+    return {x : Math.floor(id / 7), y : id % 7}
 }
 
 nerthus.weather.some_blask_magic = function() //WTF is that??
@@ -108,23 +115,23 @@ nerthus.weather.calculate = function()
 
     if(season == nerthus.seasons.SPRING)
     {
-        spot = this.spot.sun2moonBetweenHours(spot,22,4)
+        return this.spot.toId(this.spot.sun2moonBetweenHours(spot,22,4))
     }
     if(season == nerthus.seasons.SUMMER)
     {
-        spot = this.spot.sun2moonBetweenHours(spot,22,4)
         if(spot.y >= 1) //nicer weather at summer
             spot.y--
+        return this.spot.toId(this.spot.sun2moonBetweenHours(spot,22,4))
     }
     if(season == nerthus.seasons.AUTUMN)
     {
-        spot = this.spot.sun2moonBetweenHours(spot,21,4)
+        return this.spot.toId(this.spot.sun2moonBetweenHours(spot,21,4))
     }
     if(season == nerthus.seasons.WINTER)
     {
-        spot = this.spot.rain2snow(this.spot.sun2moonBetweenHours(spot,20,4))
+        return this.spot.toId(this.spot.rain2snow(this.spot.sun2moonBetweenHours(spot,20,4)))
     }
-    return (spot.x * 7 + spot.y) % 21
+    return this.spot.toId(spot)
 }
 
 nerthus.weather.descriptions =

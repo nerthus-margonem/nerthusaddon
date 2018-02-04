@@ -61,15 +61,16 @@ nerthus.weather.start_change_timer = function()
     this.change_timer = setTimeout(this.set_global_weather.bind(this),  interval)
 }
 
-nerthus.weather.calculate = function()
+nerthus.weather.some_blask_magic = function() //WTF is that??
 {
     //zmienne do maszynki obliczającej
-    var aHour = Math.floor((new Date().getUTCHours())/4) + 1
-    var aDay = new Date().getUTCDate()
-    var aMonth = new Date().getUTCMonth() + 1
+    const date = new Date()
+    const hour = Math.floor((date.getUTCHours()) / 4) + 1
+    const day = date.getUTCDate()
+    const month = date.getUTCMonth() + 1
 
     //liczenie pogody i typu, aPogVal to offset aPogType to zachmurzenie;
-    var aValStr = ( ( aDay * aHour ) * 349.99 / (aHour + aDay )*('1.'+ aMonth )).toString()
+    var aValStr = ( ( day * hour ) * 349.99 / (hour + day )*('1.'+ month )).toString()
     var aPogVal = aValStr[aValStr.indexOf('.')+1] % 5
     var aPogType = 0;
 
@@ -79,39 +80,46 @@ nerthus.weather.calculate = function()
     else
         aPogType = 1
 
-    if(aPogType == 0 && (new Date().getHours()<4 || new Date().getHours()>21))
-        aPogType = 2
+    return {x : aPogType , y : aPogVal}
+}
 
+nerthus.weather.calculate = function()
+{
+    var spot = this.some_blask_magic()
     //wartość kratek do przesunięcia;
-    var aX=aPogType
-    var aY=aPogVal
+    var aX = spot.x
+    var aY = spot.y
+    const season = nerthus.season()
+    const hour = new Date().getHours()
 
-    var aSeason = nerthus.season()
     //pogoda wiosna
-    if(aSeason == 1)
+    if(season == nerthus.seasons.SPRING)
     {
-
+        if(aPogType == 0 && (hour < 4 || hour >= 22))
+            aPogType = 2
     }
     //pogoda lato
-    if(aSeason == 2)
+    if(season == nerthus.seasons.SUMMER)
     {
+        if(aPogType == 0 && (hour < 4 || hour >= 22))
+            aPogType = 2
         //ładniejsza pogoda latem
-        if(aY>=1)
+        if(aY >= 1)
             aY--
     }
     //pogoda jesień
-    if(aSeason == 3)
+    if(season == nerthus.seasons.AUTUMN)
     {
-        if( aX==0 && (new Date().getHours()<4 || new Date().getHours()>=21))
+        if(aX == 0 && (hour < 4 || hour >= 21))
             aX = 2
     }
     //pogoda zima
-    if(aSeason == 4)
+    if(season == nerthus.seasons.WINTER)
     {
         //zmiana deszczu na śnieg
         if(aY >= 3)
             aY += 2
-        if( aX==0 && (new Date().getHours()<4 || new Date().getHours()>=20) )
+        if(aX == 0 && (hour < 4 || hour >= 20))
             aX = 2
     }
     return (aX*7 + aY) % 21

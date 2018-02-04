@@ -163,23 +163,26 @@ nerthus.tips.other = function(other)
     return tip
 }
 
+nerthus.tips.hero = function()
+{
+    var title = nerthus.tips.title(this)
+    var rank =  nerthus.tips.rank(this)
+    var tip = "<b><font color='white'>" + this.nick + "</font></b>"
+    tip += title ? "<center>" + title + "</center>" : ""
+    tip += rank ? "<i><font color='red'>" + rank + "</font></i>" : ""
+    return tip
+}
+
 nerthus.base = {}
 nerthus.base.start = function()
 {
     nerthus.setChatInfo();
     nerthus.setEnterMsg();
 
-    hero.tip = function()
-    {
-        var tip = "<b><font color='white'>" + this.nick + "</font></b>"
-        tip += "<center>" + nerthus.tips.title(this) + "</center>"
-        tip += "<i><font color='red'>" + nerthus.tips.rank(this) + "</font></i>"
-        return tip
-    }
     nerthus.defer(function()
     {
         hero.rights = hero.uprawnienia
-        $("#hero").attr('tip', function(){return hero.tip()})
+        $("#hero").attr('tip', nerthus.tips.hero.bind(hero))
     })
 
     g.tips.other = nerthus.tips.other

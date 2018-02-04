@@ -327,4 +327,54 @@ test("tips.other : nick + clan + title + rank + mute", function()
     nerthus.tips.title = _title
 })
 
+test("tips.hero : nick", function()
+{
+    var hero = {nick:"NICK"}
+    expect(nerthus.tips.hero.bind(hero)()).equal(
+         "<b><font color='white'>" + hero.nick + "</font></b>")
+})
+
+test("tips.hero : nick + title", function()
+{
+    var _title = nerthus.tips.title
+    nerthus.tips.title = function(){return "VIP"}
+
+    var hero = {nick:"NICK"}
+    expect(nerthus.tips.hero.bind(hero)()).equal(
+         "<b><font color='white'>" + hero.nick + "</font></b>" +
+         "<center>" + "VIP" + "</center>")
+
+    nerthus.tips.title = _title
+})
+
+test("tips.hero : nick + rank", function()
+{
+    var _rank = nerthus.tips.rank
+    nerthus.tips.rank = function(){return "RANK"}
+
+    var hero = {nick:"NICK"}
+    expect(nerthus.tips.hero.bind(hero)()).equal(
+         "<b><font color='white'>" + hero.nick + "</font></b>" +
+         "<i><font color='red'>" + "RANK" + "</font></i>")
+
+    nerthus.tips.rank = _rank
+})
+
+
+test("tips.hero : nick + title + rank", function()
+{
+    var _rank = nerthus.tips.rank
+    var _title = nerthus.tips.title
+    nerthus.tips.title = function(){return "VIP"}
+    nerthus.tips.rank = function(){return "RANK"}
+
+    var hero = {nick:"NICK"}
+    expect(nerthus.tips.hero.bind(hero)()).equal(
+         "<b><font color='white'>" + hero.nick + "</font></b>" +
+         "<center>" + "VIP" + "</center>" +
+         "<i><font color='red'>" + "RANK" + "</font></i>")
+
+    nerthus.tips.rank = _rank
+    nerthus.tips.title = _title
+})
 

@@ -61,6 +61,25 @@ nerthus.weather.start_change_timer = function()
     this.change_timer = setTimeout(this.set_global_weather.bind(this),  interval)
 }
 
+nerthus.weather.spot = {}
+nerthus.weather.spot.x = {SUN : 0, CLOUD : 1, MOON : 2}
+nerthus.weather.spot.y = {CLEAR : 0, CLOUD : 1, HEAVY_CLOUD : 2, RAIN : 3, HEAVY_RAIN : 4, SNOW : 5, HEAVY_SNOW : 6}
+nerthus.weather.spot.rain2snow = function(spot)
+{
+    if(spot.y == this.y.RAIN) //RAIN -> SNOW
+        spot.y = this.y.SNOW
+    if(spot.y == this.y.HEAVY_RAIN)
+        spot.y = this.y.HEAVY_SNOW
+    return spot
+}
+nerthus.weather.spot.sun2moonBetweenHours = function(spot, nightBegin, nightEnd)
+{
+    const hour = new Date().getHours()
+    if(spot.x == this.x.SUN && (hour < nightEnd || hour >= nightBegin))
+        spot.x = this.x.MOON
+    return spot
+}
+
 nerthus.weather.some_blask_magic = function() //WTF is that??
 {
     //zmienne do maszynki obliczającej
@@ -71,14 +90,13 @@ nerthus.weather.some_blask_magic = function() //WTF is that??
 
     //liczenie pogody i typu, aPogVal to offset aPogType to zachmurzenie;
     var aValStr = ( ( day * hour ) * 349.99 / (hour + day )*('1.'+ month )).toString()
-    var aPogVal = aValStr[aValStr.indexOf('.')+1] % 5
+    var aPogVal = aValStr[aValStr.indexOf('.')+1] % this.spot.y.SNOW
     var aPogType = 0;
 
-    //ustawianie typu 0 - dzień, 1 - pełne zachmurzenie, 2 - noc
     if(aValStr[aValStr.indexOf('.')+2] > 2)
-        aPogType = 0
+        aPogType = this.spot.x.SUN
     else
-        aPogType = 1
+        aPogType = this.spot.x.CLOUD
 
     return {x : aPogType , y : aPogVal}
 }
@@ -86,43 +104,27 @@ nerthus.weather.some_blask_magic = function() //WTF is that??
 nerthus.weather.calculate = function()
 {
     var spot = this.some_blask_magic()
-    //wartość kratek do przesunięcia;
-    var aX = spot.x
-    var aY = spot.y
     const season = nerthus.season()
-    const hour = new Date().getHours()
 
-    //pogoda wiosna
     if(season == nerthus.seasons.SPRING)
     {
-        if(aPogType == 0 && (hour < 4 || hour >= 22))
-            aPogType = 2
+        spot = this.spot.sun2moonBetweenHours(spot,22,4)
     }
-    //pogoda lato
     if(season == nerthus.seasons.SUMMER)
     {
-        if(aPogType == 0 && (hour < 4 || hour >= 22))
-            aPogType = 2
-        //ładniejsza pogoda latem
-        if(aY >= 1)
-            aY--
+        spot = this.spot.sun2moonBetweenHours(spot,22,4)
+        if(spot.y >= 1) //nicer weather at summer
+            spot.y--
     }
-    //pogoda jesień
     if(season == nerthus.seasons.AUTUMN)
     {
-        if(aX == 0 && (hour < 4 || hour >= 21))
-            aX = 2
+        spot = this.spot.sun2moonBetweenHours(spot,21,4)
     }
-    //pogoda zima
     if(season == nerthus.seasons.WINTER)
     {
-        //zmiana deszczu na śnieg
-        if(aY >= 3)
-            aY += 2
-        if(aX == 0 && (hour < 4 || hour >= 20))
-            aX = 2
+        spot = this.spot.rain2snow(this.spot.sun2moonBetweenHours(spot,20,4))
     }
-    return (aX*7 + aY) % 21
+    return (spot.x * 7 + spot.y) % 21
 }
 
 nerthus.weather.descriptions =

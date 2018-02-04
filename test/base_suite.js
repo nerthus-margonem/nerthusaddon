@@ -378,3 +378,90 @@ test("tips.hero : nick + title + rank", function()
     nerthus.tips.title = _title
 })
 
+test("nerthus.tips.npc : nick", function()
+{
+    var npc = {nick : "NICK"}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>")
+})
+
+test("nerthus.tips.npc : nick + type=-1 + wt>99 (tytan)", function()
+{
+    var npc = {nick : "NICK", type : -1, wt:100}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<i>" + "tytan" + "</i>")
+})
+
+test("nerthus.tips.npc : nick + type=-1 + wt>79 (heros)", function()
+{
+    var npc = {nick : "NICK", type : -1, wt:80}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<i>" + "heros" + "</i>")
+})
+
+test("nerthus.tips.npc : nick + type=-1 + wt>29 (elita III)", function()
+{
+    var npc = {nick : "NICK", type : -1, wt:30}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<i>" + "elita III" + "</i>")
+})
+
+test("nerthus.tips.npc : nick + type=-1 + wt>19 (elita II)", function()
+{
+    var npc = {nick : "NICK", type : -1, wt:20}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<i>" + "elita II" + "</i>")
+})
+
+test("nerthus.tips.npc : nick + type=-1 + wt>9 (elita)", function()
+{
+    var npc = {nick : "NICK", type : -1, wt:10}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<i>" + "elita" + "</i>")
+})
+
+test("nerthus.tips.npc : nick + type=-1 + wt<=9 ()", function()
+{
+    var npc = {nick : "NICK", type : -1, wt:9}
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>")
+})
+
+test("nerthus.tips.npc : nick + type=2|3 + lvl diff <= 9 (Zwykły przeciwnik)", function()
+{
+    var npc = {nick : "NICK", type : 2, lvl:9 }
+    hero.lvl = 0
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<span >" + 'Zwykły przeciwnik' + "</span>")
+})
+
+test("nerthus.tips.npc : nick + type=2|3 + lvl diff > 9 (Poważny rywal)", function()
+{
+    var npc = {nick : "NICK", type : 2, lvl:10 }
+    hero.lvl = 0
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        '<span style="color:#ff0">' + 'Poważny rywal' + '</span>')
+})
+
+test("nerthus.tips.npc : nick + type=2|3 + lvl diff > 19 (Potężny przeciwnik)", function()
+{
+    var npc = {nick : "NICK", type : 2, lvl:20 }
+    hero.lvl = 0
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        '<span style="color:#f50">' + 'Potężny przeciwnik' + '</span>')
+})
+
+test("nerthus.tips.npc : nick + type=2|3 + lvl diff < -13 (Niewarty uwagi)", function()
+{
+    var npc = {nick : "NICK", type : 2, lvl:0 }
+    hero.lvl = 14
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        '<span style="color:#888">' + 'Niewarty uwagi' + '</span>')
+})
+
+test("nerthus.tips.npc : nick + type=2|3 + lvl diff > 19 (Potężny przeciwnik) +  wt>9 (elita) ", function()
+{
+    var npc = {nick : "NICK", type : 2, lvl:20, wt:10 }
+    hero.lvl = 0
+    expect(nerthus.tips.npc(npc)).equal("<b>" + npc.nick + "</b>" +
+                                        "<i>" + "elita" + "</i>" +
+                                        '<span style="color:#f50">' + 'Potężny przeciwnik' + '</span>')
+})

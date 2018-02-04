@@ -267,3 +267,64 @@ test("tips.title : vip, special names for vips", function()
     nerthus.vips[player.id] = "VIP"
     expect(nerthus.tips.title(player)).to.be.equal("VIP")
 })
+
+test("tips.other : nick only", function()
+{
+    var other = {nick:"NICK"}
+    expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>")
+})
+
+test("tips.other : nick + clan", function()
+{
+    var other = {nick:"NICK", clan : "CLAN"}
+    expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
+                                            "[" + other.clan +"]<br>")
+})
+
+test("tips.other : nick + mute", function()
+{
+    var other = {nick:"NICK", attr : 1}
+    expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
+                                            "<img src=img/mute.gif>")
+})
+
+test("tips.other : nick + title", function()
+{
+    var _title = nerthus.tips.title
+    nerthus.tips.title = function(){return "VIP"}
+
+    var other = {nick:"NICK"}
+    expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
+                                            "VIP")
+    nerthus.tips.title = _title
+})
+
+test("tips.other : nick + rank", function()
+{
+    var _rank = nerthus.tips.rank
+    nerthus.tips.rank = function(){return "RANK"}
+
+    var other = {nick:"NICK"}
+    expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
+                                            "<i>RANK</i>")
+    nerthus.tips.rank = _rank
+})
+
+test("tips.other : nick + clan + title + rank + mute", function()
+{
+    var _rank = nerthus.tips.rank
+    var _title = nerthus.tips.title
+    nerthus.tips.title = function(){return "VIP"}
+    nerthus.tips.rank = function(){return "RANK"}
+
+    var other = {nick:"NICK", clan:"CLAN", attr:1}
+    expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
+                                            "[" + other.clan + "]<br>" +
+                                            "VIP" +
+                                            "<i>RANK</i>" +
+                                            "<img src=img/mute.gif>")
+    nerthus.tips.rank = _rank
+    nerthus.tips.title = _title
+})
+
+

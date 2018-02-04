@@ -152,6 +152,17 @@ nerthus.tips.title = function(player)
     return ""
 }
 
+nerthus.tips.other = function(other)
+{
+    var tip = "<b>" + other.nick + "</b>"
+    tip += other.clan ? "[" + other.clan + "]<br>" : ""
+    tip += nerthus.tips.title(other)
+    var rank = nerthus.tips.rank(other)
+    tip += rank ? "<i>" + rank + "</i>" : ""
+    tip += (other.attr & 1) ? "<img src=img/mute.gif>" : ""
+    return tip
+}
+
 nerthus.base = {}
 nerthus.base.start = function()
 {
@@ -170,6 +181,8 @@ nerthus.base.start = function()
         hero.rights = hero.uprawnienia
         $("#hero").attr('tip', function(){return hero.tip()})
     })
+
+    g.tips.other = nerthus.tips.other
 
     g.tips.npc = function (c) {
         var e = "<b>" + c.nick + "</b>";
@@ -221,18 +234,6 @@ nerthus.base.start = function()
         return e
     }
 
-    g.tips.other = function (other) {
-        var tip = "<b>" + other.nick + "</b>";
-        if (other.clan != "") {
-            tip += "[" + other.clan + "]<br>"
-        }
-        tip += nerthus.tips.title(other)
-        tip += "<i>" + nerthus.tips.rank(other) + "</i>"
-        if (other.attr & 1) {
-            tip += "<img src=img/mute.gif>";
-        }
-        return tip
-    }
 }
 
 nerthus.loadSettings();

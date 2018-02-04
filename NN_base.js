@@ -12,43 +12,31 @@ nerthus.defer = function(fun,data)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 
-//zwraca sezon 1 - wiosna, 2 - lato, 3 - jesień, 4 - zima
+nerthus.seasons = {SPRING : 1, SUMMER : 2, AUTUMN : 3, WINTER : 4}
 nerthus.season = function()
 {
-    var season=1;
-    var date = new Date();
-    var seasonBegin = new Date();
-    var seasonEnd = new Date();
+    var makeStartDate = function(day,month)
+    {
+        var date = new Date()
+        date.setUTCDate(day)
+        date.setUTCMonth(month - 1)
+        return date
+    }
+    const date = new Date()
+    const SPRING_BEGIN = makeStartDate(21,3)
+    const SUMMER_BEGIN = makeStartDate(22,6)
+    const AUTUMN_BEGIN = makeStartDate(23,9)
+    const WINTER_BEGIN = makeStartDate(22,11) //long winter
 
-    //wiosna 21.3 - 22.6
-    seasonBegin.setUTCDate(21); seasonBegin.setUTCMonth(2);
-    seasonEnd.setUTCDate(22); seasonEnd.setUTCMonth(5);
-    if(date>=seasonBegin && date<seasonEnd)
-    {
-        season = 1;
-    }
-    //lato 22.6 - 23.9
-    seasonBegin.setUTCDate(21); seasonBegin.setUTCMonth(5);
-    seasonEnd.setUTCDate(23); seasonEnd.setUTCMonth(8);
-    if(date>=seasonBegin && date<seasonEnd)
-    {
-        season = 2;
-    }
-    //lato 23.9 - 22.12
-    seasonBegin.setUTCDate(23); seasonBegin.setUTCMonth(8);
-    seasonEnd.setUTCDate(22); seasonEnd.setUTCMonth(10);
-    if(date>=seasonBegin && date<seasonEnd)
-    {
-        season = 3;
-    }
-    //zima 22.12 - 21.3
-    seasonBegin.setUTCDate(22); seasonBegin.setUTCMonth(10);
-    seasonEnd.setUTCDate(21); seasonEnd.setUTCMonth(2);
-    if(date>=seasonBegin || date<seasonEnd)
-    {
-        season = 4;
-    }
-    return season;
+    if(date >= WINTER_BEGIN)
+        return this.seasons.WINTER
+    if(date >= AUTUMN_BEGIN)
+        return this.seasons.AUTUMN
+    if(date >= SUMMER_BEGIN)
+        return this.seasons.SUMMER
+    if(date >= SPRING_BEGIN)
+        return this.seasons.SPRING
+    return this.seasons.WINTER
 }
 
 //info wyświetlane na chacie po zalogowaniu

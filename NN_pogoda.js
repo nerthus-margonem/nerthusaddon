@@ -24,7 +24,7 @@ nerthus.weather.set_weather = function(id)
     this.display()
     var x = Math.floor(id / 7)
     var y = id % 7
-    $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ x * 55 +'px -'+ y * 55 +'px');
+    $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ x * 55 +'px -'+ y * 55 +'px')
 }
 
 nerthus.weather.set_global_weather = function()
@@ -41,7 +41,7 @@ nerthus.weather.run = function()
     .mouseenter(function(){ $("#nWeatherDesc").fadeIn(500).html('<font style="font: bold 14px Georgia; color:#F0F8FF"><b>'+this.descriptions[this.id][Math.floor(Math.random()*this.descriptions[this.id].length)] + '</b><font>')}.bind(this))
     .mouseleave(function(){$("#nWeatherDesc").fadeOut(500); });
     //pole opisowe
-    $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox');
+    $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox')
 
     //workaround na pogode ustawianą przez bardów i zapisywanie nerthusa w pamięci
     if(typeof nerthus_weather_bard_id !== 'undefined')
@@ -58,32 +58,35 @@ nerthus.weather.start_change_timer = function()
     date.setUTCMinutes(0)
     date.setUTCSeconds(0)
     var interval = date - new Date()
-    this.change_timer = setTimeout(this.set_global_weather.bind(this),  interval);
+    this.change_timer = setTimeout(this.set_global_weather.bind(this),  interval)
 }
 
 nerthus.weather.calculate = function()
 {
     //zmienne do maszynki obliczającej
-    var aHour = Math.floor((new Date().getUTCHours())/4) + 1;
-    var aDay = new Date().getUTCDate();
-    var aMonth = new Date().getUTCMonth() +1;
+    var aHour = Math.floor((new Date().getUTCHours())/4) + 1
+    var aDay = new Date().getUTCDate()
+    var aMonth = new Date().getUTCMonth() + 1
 
     //liczenie pogody i typu, aPogVal to offset aPogType to zachmurzenie;
-    var aValStr = ( ( aDay * aHour ) * 349.99 / (aHour + aDay )*('1.'+ aMonth )).toString();
-    var aPogVal = aValStr[aValStr.indexOf('.')+1] % 5;
+    var aValStr = ( ( aDay * aHour ) * 349.99 / (aHour + aDay )*('1.'+ aMonth )).toString()
+    var aPogVal = aValStr[aValStr.indexOf('.')+1] % 5
     var aPogType = 0;
 
     //ustawianie typu 0 - dzień, 1 - pełne zachmurzenie, 2 - noc
-    if( aValStr[aValStr.indexOf('.')+2] > 2 ) { aPogType = 0 ;}
-    else{ aPogType = 1 ;}
+    if(aValStr[aValStr.indexOf('.')+2] > 2)
+        aPogType = 0
+    else
+        aPogType = 1
 
-    if( aPogType==0 && (new Date().getHours()<4 || new Date().getHours()>21) ){ aPogType = 2 }
+    if(aPogType == 0 && (new Date().getHours()<4 || new Date().getHours()>21))
+        aPogType = 2
 
     //wartość kratek do przesunięcia;
-    var aX=aPogType;
-    var aY=aPogVal;
+    var aX=aPogType
+    var aY=aPogVal
 
-    var aSeason = nerthus.season();
+    var aSeason = nerthus.season()
     //pogoda wiosna
     if(aSeason == 1)
     {
@@ -93,19 +96,23 @@ nerthus.weather.calculate = function()
     if(aSeason == 2)
     {
         //ładniejsza pogoda latem
-        if( aY>=1 ){ aY--; }
+        if(aY>=1)
+            aY--
     }
     //pogoda jesień
     if(aSeason == 3)
     {
-        if( aX==0 && (new Date().getHours()<4 || new Date().getHours()>=21) ){ aX = 2 }
+        if( aX==0 && (new Date().getHours()<4 || new Date().getHours()>=21))
+            aX = 2
     }
     //pogoda zima
     if(aSeason == 4)
     {
         //zmiana deszczu na śnieg
-        if( aY >= 3 ){aY+=2}
-        if( aX==0 && (new Date().getHours()<4 || new Date().getHours()>=20) ){ aX = 2 }
+        if(aY >= 3)
+            aY += 2
+        if( aX==0 && (new Date().getHours()<4 || new Date().getHours()>=20) )
+            aX = 2
     }
     return (aX*7 + aY) % 21
 }

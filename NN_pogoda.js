@@ -91,7 +91,7 @@ nerthus.weather.some_blask_magic = function() //WTF is that??
     //liczenie pogody i typu, aPogVal to offset aPogType to zachmurzenie;
     var aValStr = ( ( day * hour ) * 349.99 / (hour + day )*('1.'+ month )).toString()
     var aPogVal = aValStr[aValStr.indexOf('.')+1] % this.spot.y.SNOW
-    var aPogType = 0;
+    var aPogType = this.spot.x.SUN
 
     if(aValStr[aValStr.indexOf('.')+2] > 2)
         aPogType = this.spot.x.SUN

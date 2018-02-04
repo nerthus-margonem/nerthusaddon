@@ -39,37 +39,36 @@ nerthus.season = function()
     return this.seasons.WINTER
 }
 
-//info wyświetlane na chacie po zalogowaniu
 nerthus.setChatInfo = function()
 {
-    if( nerthus.chatInfoStr != '')
+    if(this.chatInfoStr)
     {
-        g.chat.txt[0]='<div class="sys_red">'+nerthus.chatInfoStr+'</div>'+g.chat.txt[0];
-        if ($("#chb0").hasClass("choosen")) {$("#chattxt").html(g.chat.txt[0]);}
-        chatScroll(-1);
+        g.chat.txt[0] = '<div class="sys_red">' + this.chatInfoStr + '</div>' + g.chat.txt[0];
+        if($("#chb0").hasClass("choosen"))
+            $("#chattxt").html(g.chat.txt[0])
+        chatScroll(-1)
     }
 }
 
-//wiadomość na start
 nerthus.setEnterMsg = function()
 {
-    if(nerthus.EnterMsg != '')
-        message(nerthus.EnterMsg)
+    if(this.EnterMsg)
+        message(this.EnterMsg)
 }
 
 nerthus.isNarr = function(nick)
 {
-    return nerthus.NerthusNarr.indexOf(nick) >= 0
+    return this.NerthusNarr.indexOf(nick) >= 0
 }
 
 nerthus.isRad = function(nick)
 {
-    return nerthus.NerthusRad.indexOf(nick) >= 0
+    return this.NerthusRad.indexOf(nick) >= 0
 }
 
 nerthus.isSpec = function(nick)
 {
-    return nerthus.NerthusSpec.indexOf(nick) >= 0
+    return this.NerthusSpec.indexOf(nick) >= 0
 }
 
 nerthus.settings='111111'
@@ -80,36 +79,36 @@ nerthus.loadSettings = function()
     {
         var options = localStorage.nerthus_options
         if(options)
-            nerthus.options = JSON.parse(options)
+            this.options = JSON.parse(options)
         else
-            localStorage.nerthus_options = JSON.stringify(nerthus.options)
+            localStorage.nerthus_options = JSON.stringify(this.options)
     }
     else
     {
         try{
             var cookie = getCookie('nerthusCookie');
             cookie=cookie.split('|');
-            nerthus.settings=cookie[1];
-            nerthus.options.night   = Boolean(parseInt(nerthus.settings[0]))
-            nerthus.options.weather = Boolean(parseInt(nerthus.settings[3]))
+            this.settings=cookie[1];
+            this.options.night   = Boolean(parseInt(this.settings[0]))
+            this.options.weather = Boolean(parseInt(this.settings[3]))
         }catch(e){}
     }
 }
 
 nerthus.storeSettings = function(options)
 {
-    nerthus.options = options
+    this.options = options
     if(typeof Storage)
     {
-        localStorage.nerthus_options = JSON.stringify(nerthus.options)
-        nerthus.addon.store()
+        localStorage.nerthus_options = JSON.stringify(this.options)
+        this.addon.store()
     }
     else
     {
-        nerthus.settings = (options['night'] ? '1' : '0') + '11' + (options['weather'] ? '1' : '0') + '111'
+        this.settings = (options['night'] ? '1' : '0') + '11' + (options['weather'] ? '1' : '0') + '111'
         data = new Date();
         data.setTime(data.getTime()+30758400000);
-        setCookie('nerthusCookie', data + '|' + nerthus.settings, data);
+        setCookie('nerthusCookie', data + '|' + this.settings, data);
     }
 }
 
@@ -222,23 +221,27 @@ nerthus.tips.npc = function (npc)
     return tip
 }
 
-nerthus.base = {}
-nerthus.base.start = function()
+nerthus.tips.start = function()
 {
-    nerthus.setChatInfo();
-    nerthus.setEnterMsg();
-
     nerthus.defer(function()
     {
         hero.rights = hero.uprawnienia
-        $("#hero").attr('tip', nerthus.tips.hero.bind(nerthus.tips, hero))
-    })
+        $("#hero").attr('tip', this.hero.bind(this, hero))
+    }.bind(this))
 
-    g.tips.other = nerthus.tips.other.bind(nerthus.tips)
-    g.tips.npc = nerthus.tips.npc.bind(nerthus.tips)
+    g.tips.other = this.other.bind(this)
+    g.tips.npc = this.npc.bind(this)
+}
+
+nerthus.base = {}
+nerthus.base.start = function()
+{
+    nerthus.setChatInfo()
+    nerthus.setEnterMsg()
 }
 
 nerthus.loadSettings();
 nerthus.base.start()
+nerthus.tips.start()
 
 }catch(e){log('NerthusBase Error: '+e.message)}

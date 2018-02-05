@@ -15,7 +15,7 @@ nerthus.alko.run = function()
     if (nerthus.addon.store() && nerthus.addon.store().nerthus_alko)
         this.lvl = parseInt(nerthus.addon.store().nerthus_alko)
     if (this.lvl)
-        this.timer = setInterval(this.timer_handler.bind(this), 5000)
+        this.timer = setInterval(this.timer_handler.bind(this), 10000)
 }
 
 nerthus.alko.timer_handler = function()
@@ -105,7 +105,7 @@ nerthus.alko.drink = function(c,d)
             if (this.lvl > 100)
                 this.lvl = 100
             if (!this.timer)
-                this.timer = setInterval(this.timer_handler.bind(this), 5000)
+                this.timer = setInterval(this.timer_handler.bind(this), 10000)
         }
     }
 }

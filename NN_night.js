@@ -2,28 +2,28 @@ try
 {
 
 nerthus.night = {}
+nerthus.night.opacity = function()
+{
+    const hour = new Date().getHours()
+    if(hour <= 4)  return 0.8
+    if(hour >= 21) return 0.6
+    if(hour >= 18) return 0.3
+    return 0
+}
 nerthus.night.dim = function()
 {
-    var hour = new Date().getHours();
-    if( hour >= 4 && hour<18 ){ return; }
-    //czy mapa główna czy wnętrze
-    if(map.mainid==0)
-    {
-        var nNightOpacity = 0;
-        if(hour>=18 && hour<21) nNightOpacity = 0.3;
-        if(hour>=21 && hour<24) nNightOpacity = 0.6;
-        if(hour>=0 && hour<4)   nNightOpacity = 0.8;
+    if(map.mainid != 0)
+        return
 
-        $("<div id=nNight />")
-        .css({height  : $("#ground").css("height"),
-              width   : $("#ground").css("width"),
-              zIndex  : map.y + 11,
-              opacity : nNightOpacity,
-              pointerEvents   : "none",
-              backgroundColor : "black"})
-        .appendTo("#ground")
-        .draggable()
-    }
+    $("<div id=nNight />")
+    .css({height  : $("#ground").css("height"),
+          width   : $("#ground").css("width"),
+          zIndex  : map.y + 11,
+          opacity : this.opacity(),
+          pointerEvents   : "none",
+          backgroundColor : "black"})
+    .appendTo("#ground")
+    .draggable()
 }
 
 nerthus.night.lights = {}
@@ -60,7 +60,7 @@ nerthus.night.lights.display = function(light)
 nerthus.night.lights.on = function()
 {
     var hour = new Date().getHours();
-    if( hour < 4 || hour > 18 )
+    if( hour <= 4 || hour > 18 )
         $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),this.add.bind(this))
 }
 

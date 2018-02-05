@@ -57,30 +57,30 @@ nerthus.alko.shuffleMessage = function(msg)
         case 9: msg = "/me bełkota coś niezrozumiale."
             break
         case 8:
-            msg = shuffleArray(msg.split(" ")).join(" ")
+            msg = this.shuffleArray(msg.split(" ")).join(" ")
         case 7:
             t = msg.split(", ")
-            for (tt in t) t[tt]=shuffleArray(t[tt].split(" ")).join(" ")
+            for (tt in t) t[tt]=this.shuffleArray(t[tt].split(" ")).join(" ")
             msg = t.join(", ")
         case 6:
             t = msg.split(", ")
-            for (tt in t) t[tt]=shuffleArray(t[tt].split(" "),1).join(" ")
+            for (tt in t) t[tt]=this.shuffleArray(t[tt].split(" "),1).join(" ")
             msg = t.join(", ");
         case 5:
             t = msg.split(" ")
-            for (tt in t) if (t[tt].length > 4) t[tt]=shuffleArray(t[tt].split("")).join("")
+            for (tt in t) if (t[tt].length > 4) t[tt]=this.shuffleArray(t[tt].split("")).join("")
             msg = t.join(" ")
         case 4:
             t = msg.split(" ")
-            for (tt in t) if (t[tt].length > 5) t[tt]=shuffleArray(t[tt].split("")).join("")
+            for (tt in t) if (t[tt].length > 5) t[tt]=this.shuffleArray(t[tt].split("")).join("")
             msg = t.join(" ")
         case 3:
             t = msg.split(" ")
-            for (tt in t) if (t[tt].length > 4) t[tt]=shuffleArray(t[tt].split(""),1).join("")
+            for (tt in t) if (t[tt].length > 4) t[tt]=this.shuffleArray(t[tt].split(""),1).join("")
             msg = t.join(" ")
         case 2:
             t = msg.split(" ");
-            for (tt in t) if (t[tt].length > 5) t[tt]=shuffleArray(t[tt].split(""),1).join("")
+            for (tt in t) if (t[tt].length > 5) t[tt]=this.shuffleArray(t[tt].split(""),1).join("")
             msg = t.join(" ");
         case 1:
             msg = msg.replace(/\.|\,|\:|\?|\!|\-/g," *hik*")
@@ -93,9 +93,10 @@ nerthus.alko.shuffleMessage = function(msg)
 nerthus.alko.drink = function(c,d)
 {
     // jeżli użyjemy towaru konsumpcyjnego o wymaganiach levelowych 18 to dodaje nam 10% upojenia alkoholowego
-    if (c.search("moveitem&st=1&id=") > -1)
+    var match = c.match(/moveitem.*id=(\d+)/)
+    if (match)
     {
-        var it = g.item[c.slice(17)]
+        var it = g.item[match[1]]
         if (it.cl == 16 || it.cl == 23)
         if (it.stat.search("lvl=") > -1)
         if (parseInt(it.stat.match(/lvl=([0-9]+)/)[1]) == 18)

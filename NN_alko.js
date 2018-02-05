@@ -93,7 +93,7 @@ nerthus.alko.shuffleMessage = function(msg)
 nerthus.alko.drink = function(c,d)
 {
     // jeżli użyjemy towaru konsumpcyjnego o wymaganiach levelowych 18 to dodaje nam 10% upojenia alkoholowego
-    var match = c.match(/moveitem.*id=(\d+)/)
+    var match = c.match(/^moveitem.*id=(\d+)/)
     if (match)
     {
         var it = g.item[match[1]]

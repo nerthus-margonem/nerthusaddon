@@ -113,31 +113,32 @@ nerthus.storeSettings = function(options)
 }
 
 nerthus.tips = {}
-nerthus.tips.rights2rank = function (rights)
+nerthus.tips.ranks = {NONE : -1, ADM : 0, SMG : 1, MG : 2, MC : 3, SMC : 4, BARD : 5, BARD_MC : 6, RADNY : 7}
+nerthus.tips.rights = {ADM : 1, MG : 2, SMG : 16}
+nerthus.tips.rights2rank = function(rights)
 {
-    if(rights & 1) return 0 //adm
-    if(rights & 16) return 1 //smg
-    if(rights & 2) return 2 //mg
-    return 3 //mc
+    if(rights & this.rights.ADM) return this.ranks.ADM
+    if(rights & this.rights.SMG) return this.ranks.SMG
+    if(rights & this.rights.MG)  return this.ranks.MG
+    if(rights) return this.ranks.MC
+    return this.ranks.NONE
 }
 
 nerthus.tips.rank = function(player)
 {
-    var rank = -1;
-    if (player.rights)
+    var rank = this.ranks.NONE
+    if(player.rights)
         rank = this.rights2rank(player.rights)
-    if (nerthus.isNarr(player.nick))
+    if(nerthus.isRad(player.nick))
+        rank = this.ranks.RADNY
+    if(nerthus.isNarr(player.nick))
     {
-        if(rank == 3)
-            rank = 6 //bard + mc
+        if(rank == this.ranks.MC)
+            rank = this.ranks.BARD_MC
         else
-            rank = 5 //bard
+            rank = this.ranks.BARD
     }
-    if (nerthus.isRad(player.nick))
-        rank = 7 //radny
-    if(rank > -1)
-        return g.names.ranks[rank]
-    return ""
+    return rank != this.ranks.NONE ? g.names.ranks[rank] : ""
 }
 
 nerthus.tips.title = function(player)

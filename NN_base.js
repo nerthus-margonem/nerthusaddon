@@ -58,17 +58,17 @@ nerthus.setEnterMsg = function()
 
 nerthus.isNarr = function(nick)
 {
-    return this.NerthusNarr.indexOf(nick) >= 0
+    return this.NerthusNarr.includes(nick)
 }
 
 nerthus.isRad = function(nick)
 {
-    return this.NerthusRad.indexOf(nick) >= 0
+    return this.NerthusRad.includes(nick)
 }
 
 nerthus.isSpec = function(nick)
 {
-    return this.NerthusSpec.indexOf(nick) >= 0
+    return this.NerthusSpec.includes(nick)
 }
 
 nerthus.settings='111111'

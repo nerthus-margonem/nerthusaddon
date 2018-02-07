@@ -129,8 +129,6 @@ nerthus.tips.rank = function(player)
     var rank = this.ranks.NONE
     if(player.rights)
         rank = this.rights2rank(player.rights)
-    if(nerthus.isRad(player.nick))
-        rank = this.ranks.RADNY
     if(nerthus.isNarr(player.nick))
     {
         if(rank == this.ranks.MC)
@@ -138,6 +136,8 @@ nerthus.tips.rank = function(player)
         else
             rank = this.ranks.BARD
     }
+    if(nerthus.isRad(player.nick))
+        rank = this.ranks.RADNY
     return rank != this.ranks.NONE ? g.names.ranks[rank] : ""
 }
 

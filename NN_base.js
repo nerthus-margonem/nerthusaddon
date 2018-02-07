@@ -3,6 +3,7 @@
     Zawiera stworzenie obiktu nerthus i jego podstawowe funkcje
     Zawiera stare opcja jak opisy zamiast lvli
 **/
+
 try{
 
 nerthus.defer = function(fun,data)
@@ -58,17 +59,17 @@ nerthus.setEnterMsg = function()
 
 nerthus.isNarr = function(nick)
 {
-    return this.NerthusNarr.includes(nick)
+    return this.NerthusNarr.indexOf(nick) >= 0
 }
 
 nerthus.isRad = function(nick)
 {
-    return this.NerthusRad.includes(nick)
+    return this.NerthusRad.indexOf(nick) >= 0
 }
 
 nerthus.isSpec = function(nick)
 {
-    return this.NerthusSpec.includes(nick)
+    return this.NerthusSpec.indexOf(nick) >= 0
 }
 
 nerthus.settings='111111'

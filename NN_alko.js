@@ -49,7 +49,7 @@ nerthus.alko.shuffleArray = function(array, cc)
 nerthus.alko.shuffleMessage = function(msg)
 {
 
-    if(["*/@"].includes(msg[0]) || (this.lvl <= 0))
+    if(["*/@"].indexOf(msg[0]) >= 0 || (this.lvl <= 0))
         return msg
 
     switch (Math.floor(this.lvl/10))

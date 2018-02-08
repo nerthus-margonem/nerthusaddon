@@ -215,12 +215,6 @@ test("tips.rank : radny", function()
     expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
 })
 
-test("tips.rank : radny", function()
-{
-    nerthus.NerthusRad = [player.nick]
-    expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
-})
-
 test("tips.rank : bard", function()
 {
     nerthus.NerthusNarr = [player.nick]
@@ -232,6 +226,13 @@ test("tips.rank : bard + mc", function()
     nerthus.NerthusNarr = [player.nick]
     player.rights = rights.MC
     expect(nerthus.tips.rank(player)).to.be.equal("BARD_MC")
+})
+
+test("tips.rank : bard is overrided by radny", function()
+{
+    nerthus.NerthusNarr = [player.nick]
+    nerthus.NerthusRad = [player.nick]
+    expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
 })
 
 test("tips.title : non lvl", function()

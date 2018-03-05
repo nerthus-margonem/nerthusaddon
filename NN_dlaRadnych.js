@@ -8,10 +8,10 @@ try{
 nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore","Mateusz z Rocevaux"]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
-nerthus.NerthusRad = ['Rothe','Umbrael Regis','Kris Aphalon']
+nerthus.NerthusRad = ['Umbrael Regis','Kris Aphalon']
 
-//Lista narratorów - możliwość używania *nar i ranga "bard"
-nerthus.NerthusNarr = ['Materios Dragonius','Rothe','Korano Ligatur','Umbrael Regis','Anward','Visk','Zireath']
+//Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
+nerthus.NerthusNarr = ['Materios Dragonius','Rothe','Korano Ligatur','Anward','Visk','Zireath']
 
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = ['Ciułacz','Łowca Wilków','Tropiciel Zulusów','Poganiacz Goblinów','Piętno Orków','Miłośnik Harpii','Rezun Olbrzymów','Hycel Gnolli','Koszmar Tolloków','Magazynier Pełną Gębą','Zguba Minotaurów','Niszczyciel Szkieletów','Treser Centaurów','Nieustraszony Pogromca Korsarzy','Tańczący z Mumiami','Szabrownik Wraków','Gobliński Kat','Postrach Berserkerów','Władca Kazamatów','Młot na Czarownice','Dręczyciel Praorków','Zguba Czarnej Gwardii','Poskramiacz Furboli','Egzekutor Myświórów','Wielki Inkwizytor','Zaklinacz Arachnidów','Kat Demonisa','Oprawca Maddoków','Potomek Najwyższych','Piekielny Jeźdźca', 'Ponury Żniwiarz','Gwardzista Piekieł','Tytan']

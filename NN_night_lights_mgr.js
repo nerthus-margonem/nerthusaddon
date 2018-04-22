@@ -32,7 +32,7 @@ nerthus.night.lights.log_lights = function()
             var x = parseInt(pos.left)
             var y = parseInt(pos.top)
             var type = $(this).attr("type")
-            log("{'x' : '" +x+ "', 'y' : '" +y+ "', 'type' : '" +type+ "'},")
+            log('{"x" : "' +x+ '", "y" : "' +y+ '", "type" : "' +type+ '"},')
     });
 }
 

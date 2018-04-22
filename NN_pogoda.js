@@ -5,14 +5,14 @@ try
 if(typeof nerthus.weather === 'undefined')
     nerthus.weather = {id:null, change_timer:null}
 
-nerthus.weather.is_raining = function()
+nerthus.weather.is_raining = function(id)
 {
-    return [3,4,5,8,9,10,11,17,18,19].indexOf(this.id) > -1
+    return [3,4,5,8,9,10,11,17,18,19].indexOf(id) > -1
 }
 
-nerthus.weather.is_snowing = function()
+nerthus.weather.is_snowing = function(id)
 {
-    return [5,6,11,12,13,19,20].indexOf(this.id) > -1
+    return [5,6,11,12,13,19,20].indexOf(id) > -1
 }
 
 nerthus.weather.set_weather = function(id)
@@ -96,7 +96,7 @@ nerthus.weather.some_blask_magic = function() //WTF is that??
     const month = date.getUTCMonth() + 1
 
     //liczenie pogody i typu, aPogVal to offset aPogType to zachmurzenie;
-    var aValStr = ( ( day * hour ) * 349.99 / (hour + day )*('1.'+ month )).toString()
+    var aValStr = ( ( day * hour ) * /*349.99*/ 7.85 / (hour + day )*('1.'+ month )).toString()
     var aPogVal = aValStr[aValStr.indexOf('.')+1] % this.spot.y.SNOW
     var aPogType = this.spot.x.SUN
 
@@ -269,9 +269,9 @@ nerthus.weather.display = function()
     this.effects.clear()
     if (map.mainid==0 && map.id!=3459) //are we outside? + Mirvenis
     {
-        if(this.is_raining())
+        if(this.is_raining(this.id))
             this.effects.display_rain()
-        if(this.is_snowing())
+        if(this.is_snowing(this.id))
             this.effects.display_snow()
     }
 }

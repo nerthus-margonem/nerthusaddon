@@ -85,7 +85,7 @@ nerthus.ranks.start = function()
 {
     g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu"; //"Moderator czatu";
     g.names.ranks[4] = "Tkacz Słów" //"Modelator czasoprzestrzeni"; //"Super moderator";
-    g.names.ranks[5] = "Janusz Gryla" //"Trubadur" //"Męczystruna"; //"Bard";
+    g.names.ranks[5] = "Trubadur" //"Męczystruna"; //"Bard";
     g.names.ranks[6] = "Piewca Słowa" //"Modelator struny"; //"Bard + MC";
     g.names.ranks[7] = "Radny" //Radny;
 }

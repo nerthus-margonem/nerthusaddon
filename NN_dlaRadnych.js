@@ -43,7 +43,7 @@ nerthus.vips = {
 15098 : 'Poszukiwaczka Voltarenu',
 13438 : 'Zakuty łeb',
 16089 : 'Chochlica-ponczlica',
-16372 : 'Wredny drow'
+16372 : 'Chluba Lolth'
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic

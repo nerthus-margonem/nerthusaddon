@@ -40,7 +40,7 @@ nerthus.vips = {
 13931 : 'Wilcza Zamieć',
 9226  : 'Zadumany',
 1558  : 'Zielarka',
-15098 : 'Poszukiwaczka Voltarenu',
+15098 : 'Przyjaciółka płomieni',
 13438 : 'Zakuty łeb',
 16089 : 'Chochlica-ponczlica',
 16372 : 'Chluba Lolth'

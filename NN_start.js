@@ -21,7 +21,10 @@ nerthus.addon.fileUrl = function(filename)
 nerthus.addon.store = function()
 {
     if(NerthusAddonUtils.storage())
+    {
+        log("save nerthis in storage, version: " + this.version())
         NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
+    }
 }
 
 NerthusAddonUtils = (function()
@@ -40,8 +43,8 @@ NerthusAddonUtils = (function()
     }
     utils.purgeStorage = function()
     {
-        log("deleting nerthus from storage")
-        delete localStorage.nerthus
+        log("deleting nerthus from storage, hasNerthus: " + localStorage.hasOwnProperty("nerthus"))
+        localStorage.removeItem("nerthus")
     }
     utils.runAddon = function()
     {

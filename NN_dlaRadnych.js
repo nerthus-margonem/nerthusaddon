@@ -8,10 +8,10 @@ try{
 nerthus.NerthusSpec = ["Leira Elamshin","Sihaya","Lechi Chucherko","Ath`Lar Draa`Ilythiiri","Ihoold","Aktibro","Shiraya","Minstrella","Noys Hollyhook-Rumore","Mateusz z Rocevaux"]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
-nerthus.NerthusRad = ['Umbrael Regis','Kris Aphalon']
+nerthus.NerthusRad = ['Umbrael Regis','Rothe']
 
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
-nerthus.NerthusNarr = ['Materios Dragonius','Rothe','Korano Ligatur','Anward','Visk','Zireath','Laliemm']
+nerthus.NerthusNarr = ['Materios Dragonius','Friedrich von Rommel','Laliemm']
 
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = ['Ciułacz','Łowca Wilków','Tropiciel Zulusów','Poganiacz Goblinów','Piętno Orków','Miłośnik Harpii','Rezun Olbrzymów','Hycel Gnolli','Koszmar Tolloków','Magazynier Pełną Gębą','Zguba Minotaurów','Niszczyciel Szkieletów','Treser Centaurów','Nieustraszony Pogromca Korsarzy','Tańczący z Mumiami','Szabrownik Wraków','Gobliński Kat','Postrach Berserkerów','Władca Kazamatów','Młot na Czarownice','Dręczyciel Praorków','Zguba Czarnej Gwardii','Poskramiacz Furboli','Egzekutor Myświórów','Wielki Inkwizytor','Zaklinacz Arachnidów','Kat Demonisa','Oprawca Maddoków','Potomek Najwyższych','Piekielny Jeźdźca', 'Ponury Żniwiarz','Gwardzista Piekieł','Tytan']
@@ -40,10 +40,10 @@ nerthus.vips = {
 13931 : 'Wilcza Zamieć',
 9226  : 'Zadumany',
 1558  : 'Zielarka',
-15098 : 'Poszukiwaczka Voltarenu',
+15098 : 'Przyjaciółka płomieni',
 13438 : 'Zakuty łeb',
 16089 : 'Chochlica-ponczlica',
-16372 : 'Wredny drow'
+16372 : 'Chluba Lolth'
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
@@ -83,6 +83,9 @@ nerthus.graf['chat']    = 'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/img/
 nerthus.ranks = {}
 nerthus.ranks.start = function()
 {
+    g.names.ranks[0] = "Kreator"
+    g.names.ranks[1] = "Uber Miszcz Gry"
+    g.names.ranks[2] = "Miszcz Gry"
     g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu"; //"Moderator czatu";
     g.names.ranks[4] = "Tkacz Słów" //"Modelator czasoprzestrzeni"; //"Super moderator";
     g.names.ranks[5] = "Trubadur" //"Męczystruna"; //"Bard";

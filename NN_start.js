@@ -38,6 +38,11 @@ NerthusAddonUtils = (function()
         if(typeof localStorage !== 'undefined' && !localStorage.NerthusAddonNoStorage)
             return localStorage
     }
+    utils.purgeStorage() = function()
+    {
+        log("deleting nerthus from storage")
+        delete this.storage().nerthus
+    }
     utils.runAddon = function()
     {
         if(this.storage() && this.storage().NerthusAddonDebug)
@@ -54,7 +59,7 @@ NerthusAddonUtils = (function()
                 if(version != nerthus.addon.version)
                 {
                     log("Nerthus addon has not actual version " + version + " actual is " +  nerthus.addon.version)
-                    delete this.storage().nerthus
+                    this.purgeStorage()
                 }
             }.bind(this, nerthus.addon.version)
             this.loadVersion(checkVersion)

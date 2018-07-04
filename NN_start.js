@@ -21,10 +21,7 @@ nerthus.addon.fileUrl = function(filename)
 nerthus.addon.store = function()
 {
     if(NerthusAddonUtils.storage())
-    {
-        log("save nerthis in storage, version: " + this.version)
         NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
-    }
 }
 
 NerthusAddonUtils = (function()

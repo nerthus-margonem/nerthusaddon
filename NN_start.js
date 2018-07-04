@@ -41,7 +41,7 @@ NerthusAddonUtils = (function()
     utils.purgeStorage = function()
     {
         log("deleting nerthus from storage")
-        delete this.storage().nerthus
+        delete localStorage.nerthus
     }
     utils.runAddon = function()
     {

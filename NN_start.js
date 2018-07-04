@@ -61,8 +61,8 @@ NerthusAddonUtils = (function()
                     log("Nerthus addon has not actual version " + version + " actual is " +  nerthus.addon.version)
                     this.purgeStorage()
                 }
-            }.bind(this, nerthus.addon.version)
-            this.loadVersion(checkVersion)
+            }
+            this.loadVersion(checkVersion.bind(this, nerthus.addon.version))
         }
         else
         {

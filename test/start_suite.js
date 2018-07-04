@@ -25,6 +25,7 @@ beforeEach(function()
     $.getJSON = function(url, callback){this.loaded_jsons.push(url); callback({version:VERSION_CURRENT})}
 
     localStorage = {}
+    localStorage.removeItem = function(item){delete this[item]}
 
     LOAD_HELPER = {}
     LOAD_HELPER.loaded = false;

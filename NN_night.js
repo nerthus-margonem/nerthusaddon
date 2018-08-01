@@ -19,7 +19,7 @@ nerthus.night.dim = function()
     $("<div id=nNight />")
     .css({height  : $("#ground").css("height"),
           width   : $("#ground").css("width"),
-          zIndex  : map.y * 2,
+          zIndex  : map.y * 2 + 11,
           opacity : this.opacity(),
           pointerEvents   : "none",
           backgroundColor : "black"})
@@ -48,7 +48,7 @@ nerthus.night.lights.display = function(light)
     .css({background:'url('+ lt.url +')',
           width : lt.width,
           height : lt.height,
-          zIndex : map.y * 2 + 1,
+          zIndex : map.y * 2 + 12,
           position:'absolute',
           left : parseInt(light.x),
           top : parseInt(light.y),

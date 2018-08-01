@@ -10,6 +10,7 @@ nerthus.night.opacity = function()
     if(hour >= 18) return 0.3
     return 0
 }
+
 nerthus.night.dim = function()
 {
     if(map.mainid != 0)
@@ -18,7 +19,7 @@ nerthus.night.dim = function()
     $("<div id=nNight />")
     .css({height  : $("#ground").css("height"),
           width   : $("#ground").css("width"),
-          zIndex  : map.y + 11,
+          zIndex  : map.y * 2,
           opacity : this.opacity(),
           pointerEvents   : "none",
           backgroundColor : "black"})
@@ -47,7 +48,7 @@ nerthus.night.lights.display = function(light)
     .css({background:'url('+ lt.url +')',
           width : lt.width,
           height : lt.height,
-          zIndex : 280,
+          zIndex : map.y * 2 + 1,
           position:'absolute',
           left : parseInt(light.x),
           top : parseInt(light.y),

@@ -2,6 +2,9 @@
 # nerthusaddon
   Addon for nerthus server in game [margonem](http://www.margonem.pl/)
 
+### How to update addon to newest version?
+  * put in console `remove localStorage.nerthus` and refresh game 
+
 ### How to test changes in game?
   * In order to run addon in version from master branch set in console variable `localStorage.NerthusAddonDebug = true` 
   * In order to back to normal version `delete localStorage.NerthusAddonDebug`

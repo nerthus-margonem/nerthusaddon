@@ -9,6 +9,6 @@ test_deps:
 	npm install expect.js
 
 check:
-	bash ./test_syntax.sh
+	bash ./test_js_syntax.sh
 
 .PHONY: test test_simpe check

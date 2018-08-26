@@ -8,4 +8,7 @@ test_deps:
 	npm install mocha
 	npm install expect.js
 
-.PHONY: test test_simpe
+check:
+	bash ./test_syntax.sh
+
+.PHONY: test test_simpe check

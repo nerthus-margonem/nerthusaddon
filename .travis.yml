@@ -6,4 +6,5 @@ before_install:
   - make test_deps
 
 script:
+  - make check
   - make test

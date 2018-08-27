@@ -1,6 +1,6 @@
 /**
     Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
-    Wersia jest w pliku version.json
+    Wersja jest w pliku version.json
     Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
     Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
 **/

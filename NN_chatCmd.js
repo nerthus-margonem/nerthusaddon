@@ -85,7 +85,7 @@ nerthus.chatCmd.map["dial666"] = function(ch)
 nerthus.chatCmd.makeDialogTextWithSpeaker = function(str)
 {
    str = str.split(" ").slice(1).join(" ").split(",");
-   return "&laquo;"+str[0]+"&raquo; " + str.slice(1).join(",");
+   return "«"+str[0]+"» " + str.slice(1).join(",");
 }
 
 nerthus.chatCmd.map["sys"] = function(ch)
@@ -123,7 +123,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
         var _x = 32 * x + 16 - Math.floor($(this).width() / 2);
         var _y = 32 * y + 32 - $(this).height();
-        $(this).css({top:"" + _y + "px", left: "" + _x + "px"}).css("z-index", map.y+1);
+        $(this).css({top:"" + _y + "px", left: "" + _x + "px"}).css("z-index", y * 2 + 9);
     })
     if(isCol) g.npccol[ x + 256 * y] = true;
     return true;

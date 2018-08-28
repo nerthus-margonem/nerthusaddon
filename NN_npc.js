@@ -40,7 +40,7 @@ nerthus.npc.dialog = function()
     dialog.replies = function(npc, index)
     {
         var replies = ""
-        for(i in npc.dialo[index])
+        for(var i = 1; i < npc.dialog[index].length; i++)
             replies += this.reply(npc.dialog[index][i])
         return replies
     }

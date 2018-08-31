@@ -7,6 +7,8 @@ test_simple:
 test_deps:
 	npm install mocha
 	npm install expect.js
+	npm install jsdom
+	npm install jquery
 
 check:
 	bash ./test_js_syntax.sh

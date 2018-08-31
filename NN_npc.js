@@ -1,32 +1,31 @@
-/* FORMAT DIALOGU
-{
-    name : "Roan",
-    graf : "url.gif",
-    x : 8,
-    y : 6,
-    dialog :
-    {
-        0 :
-        [
-            "Hej wam!",
-            "co tam? ->1",
-            "cześć ci ->END"
-        ],
-        1 :
-        [
-            "A jakoś leci",
-            "a to ok ->END"
-        ]
-    }
-}
-*/
 try
 {
 
 nerthus.npc = {}
 nerthus.npc.dialog = function()
 {
+    var UNPACK_QUERY = function(query)
+    {
+        return query[0].outerHTML
+    }
     var dialog = {}
+    dialog.decorator = {}
+    dialog.decorator.classes = {}
+    dialog.decorator.classes.LINE = "LINE_OPTION"
+    dialog.decorator.classes.EXIT = "LINE_EXIT"
+    dialog.decorator.classes.ICON = "icon"
+    dialog.decorator.icon = function(type)
+    {
+        return $("<div>").addClass(type)
+    }
+    dialog.decorator.header = function(text)
+    {
+        return $("<h4>").html(text)[0].outerHTML
+    }
+    dialog.decorator.point = function(text)
+    {
+        return $("<li>").html(text)
+    }
     dialog.open = function(npc, index)
     {
         var message = this.message(npc, index)
@@ -35,18 +34,32 @@ nerthus.npc.dialog = function()
     }
     dialog.message = function(npc, index)
     {
-        return "<h4>" + npc.name + "</h4>" + npc.dialog[index][0]
+        return this.decorator.header(npc.name) + npc.dialog[index][0]
     }
     dialog.replies = function(npc, index)
     {
-        var replies = ""
+        var replies = []
         for(var i = 1; i < npc.dialog[index].length; i++)
-            replies += this.reply(npc.dialog[index][i])
+            replies.push(UNPACK_QUERY(this.reply(npc.dialog[index][i])))
         return replies
     }
     dialog.reply = function(reply)
     {
-        return "<li>" + reply + "</li>"
+        var parsed = this.parse_reply(reply)
+        var $replay = this.decorator.point(parsed[0])
+        if(parsed.length === 2)
+        {
+            $replay.addClass(this.decorator.classes.ICON)
+            if(parsed[1] == "END")
+                $replay.addClass(this.decorator.classes.EXIT)
+            else
+                $replay.addClass(this.decorator.classes.LINE)
+        }
+        return $replay
+    }
+    dialog.parse_reply = function(replay)
+    {
+        return replay.split('->')
     }
     dialog.display = function(message, replies)
     {

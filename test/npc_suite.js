@@ -21,19 +21,19 @@ before(function()
     NPC.url = "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif"
     NPC.dialog =
     {
-        0 : //Simple dialog
+        "0" : //Simple dialog
         [
             "Hej wam!",
             "A no Hej",
             "Elo"
         ],
-        1 : //normal dialog
+        "1" : //normal dialog
         [
             "A jakoś leci",
             "a tak sobie... ->2",
             "dobrze ->END"
         ],
-        2 : //normal dialog
+        "2" : //normal dialog
         [
             "To już koniec",
             "a no konie ->END"

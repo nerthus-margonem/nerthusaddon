@@ -44,7 +44,6 @@ nerthus.npc.dialog = function()
 
     }.bind(dialog)
 
-
     dialog.open = function(npc, index)
     {
         var message = this.parse.message(npc, index)
@@ -81,5 +80,39 @@ nerthus.npc.dialog = function()
     }
     return dialog
 }()
+
+nerthus.npc.deploy = function(npc)
+{
+    var tip = npc.tip ? npc.tip : "<b>" + npc.name + "</b>"
+    var click = this.dialog.open.bind(this.dialog, npc, 0)
+    var $npc = $("<img>")
+    .attr("tip", tip)
+    .attr("ctip", "t_npc")
+    .attr("src", npc.url)
+    .css("position", "absolute")
+    .css("z-index", npc.y * 2 + 9)
+    .addClass("nerthus_npc")
+    .click(click)
+    .appendTo('#base')
+    .load(function()
+    {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
+        var x = 32 * npc.x + 16 - Math.floor($(this).width() / 2)
+        var y = 32 * npc.y + 32 - $(this).height()
+        $(this).css({top:"" + y + "px", left: "" + x + "px"})
+    })
+}
+
+nerthus.npc.load_npcs = function()
+{
+    $.getJSON(nerthus.addon.fileUrl("/npcs/map_" + map.id + ".json"),
+              function(npcs){npcs.forEach(nerthus.npc.deploy.bind(nerthus.npc))})
+}
+
+nerthus.npc.start = function()
+{
+    nerthus.defer(this.load_npcs.bind(this))
+}
+
+nerthus.npc.start()
 
 }catch(e) {log('nerthus npc: ' + e.message, 1);}

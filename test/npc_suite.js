@@ -15,9 +15,10 @@ before(function()
     $ = require("jquery")(window)
 
     NPC = {}
-    NPC.name = "Roan"
+    NPC.name = "Kicia"
     NPC.x = 8
     NPC.y = 4
+    NPC.url = "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif"
     NPC.dialog =
     {
         0 : //Simple dialog

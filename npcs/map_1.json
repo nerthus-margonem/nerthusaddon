@@ -9,13 +9,19 @@
         "0" :
         [
             "Miau miau miau",
-            "o jaka fajna kicia, pogłąszcze cię ->1",
+            "o jaka fajna kicia, pogłaszcze cię ->1",
+            "skąd się tu kiciu wzięłaś? ->2",
             "lepiej nie podchodzić.. ->END"
         ],
         "1" :
         [
             "Mrrr",
             "dobry kociak ->END"
+        ],
+        "2" :
+        [
+            "Witaj #NAME jestem <a href='https://www.margonem.pl/?task=forum&show=posts&id=264553&ps=5#post41810772' target='_blank'>testową kicią</a>",
+            "aaa, to ok ... ->END"
         ]
     }
 }

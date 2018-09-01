@@ -25,18 +25,15 @@ nerthus.npc.dialog = function()
     dialog.parse.reply = function(row_reply, npc)
     {
         var reply = this.parse.row_reply(row_reply)
-        if(reply.to)
+        if(reply.to == "END")
         {
-            if(reply.to == "END")
-            {
-                reply.click = this.close.bind(this)
-                reply.icon = this.decorator.classes.EXIT
-            }
-            else
-            {
-                reply.click = this.open.bind(this, npc, parseInt(reply.to))
-                reply.icon = this.decorator.classes.LINE
-            }
+            reply.click = this.close.bind(this)
+            reply.icon = this.decorator.classes.EXIT
+        }
+        else if(reply.to)
+        {
+            reply.click = this.open.bind(this, npc, parseInt(reply.to))
+            reply.icon = this.decorator.classes.LINE
         }
         return reply
     }.bind(dialog)

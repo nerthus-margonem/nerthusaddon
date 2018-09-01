@@ -7,57 +7,55 @@ nerthus.npc.dialog.decorator = {}
 nerthus.npc.dialog.decorator.classes = {}
 nerthus.npc.dialog.decorator.classes.LINE = "icon LINE_OPTION"
 nerthus.npc.dialog.decorator.classes.EXIT = "icon LINE_EXIT"
-
-nerthus.npc.dialog.parse = {}
-nerthus.npc.dialog.parse.message = function(npc, index)
+nerthus.npc.dialog.parse_message = function(npc, index)
 {
-    return nerthus.npc.dialog.parse.placeholders(npc.dialog[index][0])
+    return this.parse_placeholders(npc.dialog[index][0])
 }
-nerthus.npc.dialog.parse.replies = function(npc, index)
+nerthus.npc.dialog.parse_replies = function(npc, index)
 {
     var replies = []
     for(var i = 1; i < npc.dialog[index].length; i++)
-        replies.push(nerthus.npc.dialog.parse.reply(npc.dialog[index][i], npc))
+        replies.push(this.parse_reply(npc.dialog[index][i], npc))
     return replies
 }
-nerthus.npc.dialog.parse.reply = function(row_reply, npc)
+nerthus.npc.dialog.parse_reply = function(row_reply, npc)
 {
-    var reply = nerthus.npc.dialog.parse.row_reply(row_reply)
-    reply.text = nerthus.npc.dialog.parse.placeholders(reply.text)
+    var reply = this.parse_row_reply(row_reply)
+    reply.text = this.parse_placeholders(reply.text)
     if(reply.to == "END")
     {
-        reply.click = nerthus.npc.dialog.close.bind(nerthus.npc.dialog)
-        reply.icon = nerthus.npc.dialog.decorator.classes.EXIT
+        reply.click = this.close.bind(this)
+        reply.icon = this.decorator.classes.EXIT
     }
     else if(reply.to)
     {
-        reply.click = nerthus.npc.dialog.open.bind(nerthus.npc.dialog, npc, parseInt(reply.to))
-        reply.icon = nerthus.npc.dialog.decorator.classes.LINE
+        reply.click = this.open.bind(this, npc, reply.to)
+        reply.icon = this.decorator.classes.LINE
     }
     return reply
 }
-nerthus.npc.dialog.parse.row_reply = function(reply)
+nerthus.npc.dialog.parse_row_reply = function(reply)
 {
     var reply = reply.split('->')
     return {text : reply[0], to : reply[1]}
 
 }
-nerthus.npc.dialog.parse.placeholders = function(text)
+nerthus.npc.dialog.parse_placeholders = function(text)
 {
     return text.replace("#NAME", hero.nick)
 }
 
 nerthus.npc.dialog.open = function(npc, index)
 {
-    var message = nerthus.npc.dialog.parse.message(npc, index)
-    var replies = nerthus.npc.dialog.parse.replies(npc, index)
+    var message = this.parse_message(npc, index)
+    var replies = this.parse_replies(npc, index)
     this.display(message, replies, npc)
 }
 nerthus.npc.dialog.display = function(message, replies, npc)
 {
-    $("#dlgin .message").empty().append(nerthus.npc.dialog.compose.message(message, npc))
+    $("#dlgin .message").empty().append(this.compose.message(message, npc))
     var $replies = $("#dlgin .replies").empty()
-    $replies.append.apply($replies, replies.map(nerthus.npc.dialog.compose.reply))
+    $replies.append.apply($replies, replies.map(this.compose.reply.bind(this.compose)))
     $("#dialog").show()
 }
 nerthus.npc.dialog.close = function()
@@ -72,7 +70,7 @@ nerthus.npc.dialog.compose.icon = function(type)
 }
 nerthus.npc.dialog.compose.reply = function(reply)
 {
-    var icon = nerthus.npc.dialog.compose.icon(reply.icon)
+    var icon = this.icon(reply.icon)
     return $("<li>").addClass(reply.icon)
                     .append(icon)
                     .append(reply.text)

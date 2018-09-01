@@ -3,6 +3,7 @@ before(function()
 {
     log = function(msg){console.log(msg)}
     nerthus = {}
+    nerthus.defer = function(){}
 
     expect = require("expect.js")
     require("../NN_npc.js")
@@ -61,7 +62,7 @@ suite("npc dialog parse message")
 test("message shall includes first dialog from given index", function()
 {
     const INDEX = 0
-    const message = dialog.parse.message(NPC,INDEX)
+    const message = dialog.parse_message(NPC,INDEX)
     expect(message).to.contain(NPC.dialog[INDEX][0])
 })
 
@@ -70,7 +71,7 @@ suite("npc dialog parse replies")
 test("replies shall includes dialogs from given index expect first one, first is message", function()
 {
     const INDEX = 0
-    const replies = dialog.parse.replies(NPC,INDEX)
+    const replies = dialog.parse_replies(NPC,INDEX)
 
     expect(replies).to.have.length(2)
 
@@ -86,7 +87,7 @@ test("replies shall includes dialogs from given index expect first one, first is
 test("replies shall not contains arrows (->)", function()
 {
     const INDEX = 1
-    const replies = dialog.parse.replies(NPC,INDEX)
+    const replies = dialog.parse_replies(NPC,INDEX)
     const ARROW = "->"
 
     expect(NPC.dialog[INDEX][1]).to.contain(ARROW)
@@ -100,7 +101,7 @@ test("replies shall not contains arrows (->)", function()
 test("replies with ->END shall has LINE_EXIT class and click handler", function()
 {
     const INDEX = 1
-    const replies = dialog.parse.replies(NPC,INDEX)
+    const replies = dialog.parse_replies(NPC,INDEX)
     const END_MARKER = "->END"
 
     expect(NPC.dialog[INDEX][2]).to.contain(END_MARKER)
@@ -112,7 +113,7 @@ test("replies with ->END shall has LINE_EXIT class and click handler", function(
 test("replies with ->$LINE shall has LINE_OPTION class and click handler", function()
 {
     const INDEX = 1
-    const replies = dialog.parse.replies(NPC,INDEX)
+    const replies = dialog.parse_replies(NPC,INDEX)
     const GO_TO_LINE_MARKER = /->\d+/
 
     expect(NPC.dialog[INDEX][1]).to.match(GO_TO_LINE_MARKER)
@@ -129,8 +130,8 @@ test("placeholder #NAME is replace by hero.nick", function()
     const NICK = "Karyna"
     hero = {nick : NICK}
 
-    const replies = dialog.parse.replies(NPC,INDEX)
-    const message = dialog.parse.message(NPC,INDEX)
+    const replies = dialog.parse_replies(NPC,INDEX)
+    const message = dialog.parse_message(NPC,INDEX)
 
     expect(NPC.dialog[INDEX][0]).to.contain("#NAME")
     expect(NPC.dialog[INDEX][1]).to.contain("#NAME")

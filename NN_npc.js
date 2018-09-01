@@ -11,7 +11,7 @@ nerthus.npc.dialog.decorator.classes.EXIT = "icon LINE_EXIT"
 nerthus.npc.dialog.parse = {}
 nerthus.npc.dialog.parse.message = function(npc, index)
 {
-    return npc.dialog[index][0]
+    return nerthus.npc.dialog.parse.placeholders(npc.dialog[index][0])
 }
 nerthus.npc.dialog.parse.replies = function(npc, index)
 {
@@ -23,6 +23,7 @@ nerthus.npc.dialog.parse.replies = function(npc, index)
 nerthus.npc.dialog.parse.reply = function(row_reply, npc)
 {
     var reply = nerthus.npc.dialog.parse.row_reply(row_reply)
+    reply.text = nerthus.npc.dialog.parse.placeholders(reply.text)
     if(reply.to == "END")
     {
         reply.click = nerthus.npc.dialog.close.bind(nerthus.npc.dialog)
@@ -40,6 +41,10 @@ nerthus.npc.dialog.parse.row_reply = function(reply)
     var reply = reply.split('->')
     return {text : reply[0], to : reply[1]}
 
+}
+nerthus.npc.dialog.parse.placeholders = function(text)
+{
+    return text.replace("#NAME", hero.nick)
 }
 
 nerthus.npc.dialog.open = function(npc, index)

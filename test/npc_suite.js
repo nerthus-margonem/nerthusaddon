@@ -37,7 +37,13 @@ before(function()
         [
             "To już koniec",
             "a no konie ->END"
+        ],
+        "3" : //placeholder #NAME
+        [
+            "Witaj #NAME dawno cie nie widaiłem",
+            "Ja #NAME mam wiele obowiązków"
         ]
+
     }
 
     dialog = nerthus.npc.dialog
@@ -113,6 +119,27 @@ test("replies with ->$LINE shall has LINE_OPTION class and click handler", funct
 
     expect(replies[0].icon).to.be(dialog.decorator.classes.LINE)
     expect(replies[0].click).to.be.ok()
+})
+
+suite("npc dialog placeholders")
+
+test("placeholder #NAME is replace by hero.nick", function()
+{
+    const INDEX = 3
+    const NICK = "Karyna"
+    hero = {nick : NICK}
+
+    const replies = dialog.parse.replies(NPC,INDEX)
+    const message = dialog.parse.message(NPC,INDEX)
+
+    expect(NPC.dialog[INDEX][0]).to.contain("#NAME")
+    expect(NPC.dialog[INDEX][1]).to.contain("#NAME")
+
+    expect(message).to.not.contain("#NAME")
+    expect(message).to.contain(NICK)
+
+    expect(replies[0].text).to.not.contain("#NAME")
+    expect(replies[0].text).to.contain(NICK)
 })
 
 suite("npc dialog API")

@@ -1,0 +1,22 @@
+[
+{
+    "name" : "Kicia",
+    "x" : "37",
+    "y" : "52",
+    "url" : "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "Miau miau miau",
+            "o jaka fajna kicia, pogłąszcze cię ->1",
+            "lepiej nie podchodzić.. ->END"
+        ],
+        "1" :
+        [
+            "Mrrr",
+            "dobry kociak ->END"
+        ]
+    }
+}
+]

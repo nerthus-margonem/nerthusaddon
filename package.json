@@ -1,0 +1,30 @@
+{
+  "name": "nerthusaddon",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/akrzyz/nerthusaddon.svg?branch=master)](https://travis-ci.org/akrzyz/nerthusaddon) # nerthusaddon   Addon for nerthus server in game [margonem](http://www.margonem.pl/)",
+  "main": "NN_start.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "expect.js": "^0.3.1",
+    "jquery": "^3.3.1",
+    "jsdom": "^12.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrzyz/nerthusaddon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrzyz/nerthusaddon/issues"
+  },
+  "homepage": "https://github.com/akrzyz/nerthusaddon#readme"
+}

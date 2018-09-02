@@ -96,8 +96,8 @@ nerthus.npc.compose = function(npc)
     .appendTo('#base')
     .load(function()
     {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-        var x = 32 * npc.x + 16 - Math.floor($(this).width() / 2)
-        var y = 32 * npc.y + 32 - $(this).height()
+        var x = 32 * parseInt(npc.x) + 16 - Math.floor($(this).width() / 2)
+        var y = 32 * parseInt(npc.y) + 32 - $(this).height()
         $(this).css({top:"" + y + "px", left: "" + x + "px"})
     })
     return $npc
@@ -112,7 +112,7 @@ nerthus.npc.deploy = function(npc)
 nerthus.npc.set_collision = function(npc)
 {
     if(npc.collision)
-        g.npccol[npc.x + npc.y * 256] = true
+        g.npccol[parseInt(npc.x) + 256 * parseInt(npc.y)] = true
 }
 
 nerthus.npc.load_npcs = function()

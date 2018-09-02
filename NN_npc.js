@@ -81,10 +81,10 @@ nerthus.npc.dialog.compose.message = function(message, npc)
     return "<h4><b>" + npc.name + "</b></h4>" + message
 }
 
-nerthus.npc.deploy = function(npc)
+nerthus.npc.compose = function(npc)
 {
     var tip = npc.tip ? npc.tip : "<b>" + npc.name + "</b>"
-    var click = this.dialog.open.bind(this.dialog, npc, 0)
+    var click = npc.dialog ? this.dialog.open.bind(this.dialog, npc, 0) : null
     var $npc = $("<img>")
     .attr("tip", tip)
     .attr("ctip", "t_npc")
@@ -100,6 +100,19 @@ nerthus.npc.deploy = function(npc)
         var y = 32 * npc.y + 32 - $(this).height()
         $(this).css({top:"" + y + "px", left: "" + x + "px"})
     })
+    return $npc
+}
+
+nerthus.npc.deploy = function(npc)
+{
+    this.compose(npc)
+    this.set_collision(npc)
+}
+
+nerthus.npc.set_collision = function(npc)
+{
+    if(npc.collision)
+        g.npccol[npc.x + npc.y * 256] = true
 }
 
 nerthus.npc.load_npcs = function()

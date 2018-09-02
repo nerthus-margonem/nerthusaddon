@@ -1,4 +1,9 @@
 
+minimal_npc = function(name="Stefan", x=8, y=42)
+{
+    return { "name" : name, "x" : x, "y" : y}
+}
+
 before(function()
 {
     log = function(msg){console.log(msg)}
@@ -14,9 +19,12 @@ before(function()
     const { document } = (new JSDOM('')).window;
     global.document = document;
     $ = require("jquery")(window)
+    $.fn.load = function(){} //load stub
 
-    NPC = {}
-    NPC.name = "Kicia"
+    g = {}
+    g.npccol = {} //npc colision set
+
+    NPC = minimal_npc("Kici")
     NPC.x = 8
     NPC.y = 4
     NPC.url = "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif"
@@ -49,11 +57,15 @@ before(function()
 
     dialog = nerthus.npc.dialog
 
-    $dialog = $("<div>").attr("id","dialog")
+    //dialog object
+    $("<div>").attr("id","dialog")
     .append($("<div>").attr("id","dlgin")
             .append($("<div>").attr("id","message").addClass("message"))
             .append($("<div>").attr("id","replies").addClass("replies")))
     .appendTo("body")
+
+    //base object
+    $("<div>").attr("id","base").appendTo("body")
 
 })
 
@@ -185,3 +197,41 @@ test("reply with ->END close dialog", function()
 
     expect($("#dialog").css("display")).to.be("none")
 })
+
+suite("npc deployment")
+
+test("deployed npc is added to #base", function()
+{
+    expect($("#base").children()).empty()
+
+    nerthus.npc.deploy(NPC)
+
+    expect($("#base").children()).not.empty()
+    expect($("#base").children().hasClass("nerthus_npc")).ok()
+})
+
+test("npc has tip same as name", function()
+{
+    nerthus.npc.deploy(NPC)
+    expect($("#base").children().attr("tip")).to.contain(NPC.name)
+})
+
+test("simple npc has no collision", function()
+{
+    var npc = minimal_npc()
+    nerthus.npc.deploy(npc)
+
+    expect(npc.collision).not.ok()
+    expect(g.npccol).empty()
+})
+
+test("npc with collision", function()
+{
+    var npc = minimal_npc()
+    npc.collision = true
+    nerthus.npc.deploy(npc)
+
+    expect(npc.collision).ok()
+    expect(g.npccol[npc.x + 256 * npc.y]).ok()
+})
+

@@ -4,6 +4,7 @@
     "x" : "37",
     "y" : "52",
     "url" : "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif",
+    "collision" : true,
     "dialog" :
     {
         "0" :

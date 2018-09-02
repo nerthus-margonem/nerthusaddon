@@ -4,6 +4,7 @@
     "x" : "4",
     "y" : "16",
     "url" : "http://i.imgur.com/KsfLQ71.gif",
+    "collision" : true,
     "dialog" :
     {
         "0" :

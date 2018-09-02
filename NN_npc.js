@@ -92,7 +92,7 @@ nerthus.npc.compose = function(npc)
     .css("position", "absolute")
     .css("z-index", npc.y * 2 + 9)
     .addClass("nerthus_npc")
-    .click(click)
+    .click(this.click_wrapper(npc, click))
     .appendTo('#base')
     .load(function()
     {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
@@ -101,6 +101,19 @@ nerthus.npc.compose = function(npc)
         $(this).css({top:"" + y + "px", left: "" + x + "px"})
     })
     return $npc
+}
+
+nerthus.npc.click_wrapper = function(npc, click_handler)
+{
+    if(!click_handler)
+        return
+    return function(event)
+    {
+        if (Math.abs(npc.x - hero.x) > 1 || Math.abs(npc.y - hero.y) > 1)
+            hero.mClick(event);
+        else
+            click_handler()
+    }
 }
 
 nerthus.npc.deploy = function(npc)

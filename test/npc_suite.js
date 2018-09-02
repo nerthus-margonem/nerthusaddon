@@ -23,6 +23,11 @@ before(function()
 
     g = {}
     g.npccol = {} //npc colision set
+    g.lock = { //lock mock
+        lock : null,
+        add : function(lock){this.lock = lock},
+        remove : function(){this.lock = null}
+    }
 
     NPC = minimal_npc("Kici")
     NPC.x = 8
@@ -196,6 +201,17 @@ test("reply with ->END close dialog", function()
     $("#dialog #dlgin .replies li")[1].click() //dialog[1][2] go to END
 
     expect($("#dialog").css("display")).to.be("none")
+})
+
+test("dialog.open lock game, dialog.close unlock game", function()
+{
+    expect(g.lock.lock).not.ok()
+
+    dialog.open(NPC,0)
+    expect(g.lock.lock).ok()
+
+    dialog.close()
+    expect(g.lock.lock).not.ok()
 })
 
 suite("npc deployment")

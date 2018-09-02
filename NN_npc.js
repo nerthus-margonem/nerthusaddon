@@ -50,6 +50,7 @@ nerthus.npc.dialog.open = function(npc, index)
     var message = this.parse_message(npc, index)
     var replies = this.parse_replies(npc, index)
     this.display(message, replies, npc)
+    g.lock.add("nerthus_dialog")
 }
 nerthus.npc.dialog.display = function(message, replies, npc)
 {
@@ -61,6 +62,7 @@ nerthus.npc.dialog.display = function(message, replies, npc)
 nerthus.npc.dialog.close = function()
 {
     $("#dialog").hide()
+    g.lock.remove("nerthus_dialog")
 }
 
 nerthus.npc.dialog.compose = {}

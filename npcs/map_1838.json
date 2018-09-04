@@ -3,7 +3,7 @@
     "name" : "Mair",
     "x" : "4",
     "y" : "16",
-    "url" : "http://i.imgur.com/KsfLQ71.gif",
+    "url" : "#img/npc/korano_mair.gif",
     "collision" : true,
     "dialog" :
     {

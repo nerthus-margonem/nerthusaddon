@@ -90,7 +90,7 @@ nerthus.npc.compose = function(npc)
     var $npc = $("<img>")
     .attr("tip", tip)
     .attr("ctip", "t_npc")
-    .attr("src", npc.url)
+    .attr("src", this.resolve_url(npc.url))
     .css("position", "absolute")
     .css("z-index", npc.y * 2 + 9)
     .addClass("nerthus_npc")
@@ -103,6 +103,13 @@ nerthus.npc.compose = function(npc)
         $(this).css({top:"" + y + "px", left: "" + x + "px"})
     })
     return $npc
+}
+
+nerthus.npc.resolve_url = function(url)
+{
+    if(url.startsWith("#"))
+        return nerthus.addon.fileUrl(url.slice(1))
+    return url
 }
 
 nerthus.npc.click_wrapper = function(npc, click_handler)

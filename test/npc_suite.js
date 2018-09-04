@@ -1,7 +1,7 @@
 
-minimal_npc = function(name="Stefan", x=8, y=42)
+minimal_npc = function(name="Stefan", x=8, y=42, url="")
 {
-    return { "name" : name, "x" : x, "y" : y}
+    return { "name" : name, "x" : x, "y" : y, "url" : url}
 }
 
 before(function()
@@ -9,6 +9,9 @@ before(function()
     log = function(msg){console.log(msg)}
     nerthus = {}
     nerthus.defer = function(){}
+    nerthus.addon = {}
+    nerthus.addon.PREFIX = "NERTH_PREFIX:"
+    nerthus.addon.fileUrl = function(url){return this.PREFIX + url}
 
     expect = require("expect.js")
     require("../NN_npc.js")
@@ -162,6 +165,14 @@ test("placeholder #NAME is replace by hero.nick", function()
 
 suite("npc dialog API")
 
+beforeEach(function()
+{
+    $("#body").empty()
+    $("#base").empty()
+    $(".message").empty()
+    $(".replies").empty()
+})
+
 test("open dialog display dialog from given index", function()
 {
     const INDEX = 0
@@ -216,6 +227,14 @@ test("dialog.open lock game, dialog.close unlock game", function()
 
 suite("npc deployment")
 
+beforeEach(function()
+{
+    $("#body").empty()
+    $("#base").empty()
+    $(".message").empty()
+    $(".replies").empty()
+})
+
 test("deployed npc is added to #base", function()
 {
     expect($("#base").children()).empty()
@@ -249,5 +268,24 @@ test("npc with collision", function()
 
     expect(npc.collision).ok()
     expect(g.npccol[npc.x + 256 * npc.y]).ok()
+})
+
+test("npc with normal url", function()
+{
+    var npc = minimal_npc()
+    npc.url = "http://img.gif"
+    nerthus.npc.deploy(npc)
+
+    expect($("#base").children().attr("src")).to.be.equal(npc.url)
+})
+
+test("npc with url starting with # should be resolved as url pointing to local addon path", function()
+{
+    const URL = "/img/npc/sir.gif"
+    var npc = minimal_npc()
+    npc.url = "#" + URL
+    nerthus.npc.deploy(npc)
+
+    expect($("#base").children().attr("src")).to.be(nerthus.addon.PREFIX + URL)
 })
 

@@ -23,7 +23,7 @@ nerthus.NerthusSpec = [
 nerthus.NerthusRad = ['Umbrael Regis','Rothe']
 
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
-nerthus.NerthusNarr = ['Friedrich von Rommel','Laliemm','Kostryn']
+nerthus.NerthusNarr = ['Friedrich von Rommel','Laliemm','Kostryn','Materios Dragonius']
 
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = [

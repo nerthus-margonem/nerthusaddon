@@ -90,7 +90,7 @@ nerthus.vips = {
 13438 : 'Zakuty łeb',
 16089 : 'Chochlica-ponczlica',
 16372 : 'Chluba Lolth',
-10523 : 'Tytanica'
+10523 : 'Lux Aeterna'
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic

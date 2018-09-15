@@ -5,16 +5,6 @@ try
 if(typeof nerthus.weather === 'undefined')
     nerthus.weather = {id:null, change_timer:null}
 
-nerthus.weather.is_raining = function(id)
-{
-    return [3,4,5,8,9,10,11,17,18,19].indexOf(id) > -1
-}
-
-nerthus.weather.is_snowing = function(id)
-{
-    return [5,6,11,12,13,19,20].indexOf(id) > -1
-}
-
 nerthus.weather.set_weather = function(id)
 {
     id = parseInt(id)
@@ -268,15 +258,41 @@ nerthus.weather.display = function()
 {
     this.effects.clear()
     if (map.mainid==0 && map.id!=3459) //are we outside? + Mirvenis
-    {
-        if(this.is_raining(this.id))
-            this.effects.display_rain()
-        if(this.is_snowing(this.id))
-            this.effects.display_snow()
-    }
+        this.effects.display(this.id)
 }
 
 nerthus.weather.effects = {}
+
+nerthus.weather.effects.display = function(id)
+{
+    if(this.is_raining(id))
+        this.display_rain()
+    if(this.is_heavy_raining(id))
+        this.display_heavy_rain()
+    if(this.is_snowing(id))
+        this.display_snow()
+}
+
+nerthus.weather.effects.is_raining = function(id)
+{
+    return [3,8,17].indexOf(id) > -1
+}
+
+nerthus.weather.effects.is_heavy_raining = function(id)
+{
+    return [4,5,9,10,11,18,19].indexOf(id) > -1
+}
+
+nerthus.weather.effects.is_raining = function(id)
+{
+    return [3,4,5,8,9,10,11,17,18,19].indexOf(id) > -1
+}
+
+nerthus.weather.effects.is_snowing = function(id)
+{
+    return [5,6,11,12,13,19,20].indexOf(id) > -1
+}
+
 nerthus.weather.effects.clear = function()
 {
     $(".nWeather").remove()
@@ -284,7 +300,12 @@ nerthus.weather.effects.clear = function()
 
 nerthus.weather.effects.display_rain = function()
 {
-   this.display_url(nerthus.graf.rain)
+   this.display_url(nerthus.graf.rain, 0.7)
+}
+
+nerthus.weather.effects.display_heavy_rain = function()
+{
+   this.display_url(nerthus.graf.rain, 1)
 }
 
 nerthus.weather.effects.display_snow = function()
@@ -292,7 +313,7 @@ nerthus.weather.effects.display_snow = function()
     this.display_url(nerthus.graf.snow)
 }
 
-nerthus.weather.effects.display_url = function(url)
+nerthus.weather.effects.display_url = function(url, opacity)
 {
     $("<div class='nWeather'/>")
     .css({width : $('#ground').width(),
@@ -302,7 +323,8 @@ nerthus.weather.effects.display_url = function(url)
           position : "absolute",
           top : "0px",
           left : "0px",
-          pointerEvents: 'none'})
+          pointerEvents: 'none',
+          opacity : opacity ? opacity : 1})
     .appendTo("#ground")
 }
 

@@ -267,7 +267,7 @@ nerthus.weather.effects.display = function(id)
 {
     if(this.is_raining(id))
         this.display_rain()
-    if(this.is_heavy_raining(id))
+    else if(this.is_heavy_raining(id))
         this.display_heavy_rain()
     if(this.is_snowing(id))
         this.display_snow()
@@ -281,11 +281,6 @@ nerthus.weather.effects.is_raining = function(id)
 nerthus.weather.effects.is_heavy_raining = function(id)
 {
     return [4,5,9,10,11,18,19].indexOf(id) > -1
-}
-
-nerthus.weather.effects.is_raining = function(id)
-{
-    return [3,4,5,8,9,10,11,17,18,19].indexOf(id) > -1
 }
 
 nerthus.weather.effects.is_snowing = function(id)

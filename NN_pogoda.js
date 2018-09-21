@@ -319,7 +319,7 @@ nerthus.weather.effects.display_url = function(url, opacity)
     .css({width : $('#ground').width(),
           height : $('#ground').height(),
           backgroundImage : 'url(' + url + ')',
-          zIndex : map.y+10,
+          zIndex : map.y * 2 + 9,
           position : "absolute",
           top : "0px",
           left : "0px",

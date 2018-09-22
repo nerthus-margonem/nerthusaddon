@@ -267,7 +267,7 @@ nerthus.weather.effects.display = function(id)
 {
     if(this.is_raining(id))
         this.display_rain()
-    else if(this.is_heavy_raining(id))
+    if(this.is_heavy_raining(id))
         this.display_heavy_rain()
     if(this.is_snowing(id))
         this.display_snow()

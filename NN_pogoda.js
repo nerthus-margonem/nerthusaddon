@@ -283,11 +283,6 @@ nerthus.weather.effects.is_heavy_raining = function(id)
     return [4,5,9,10,11,18,19].indexOf(id) > -1
 }
 
-nerthus.weather.effects.is_raining = function(id)
-{
-    return [3,4,5,8,9,10,11,17,18,19].indexOf(id) > -1
-}
-
 nerthus.weather.effects.is_snowing = function(id)
 {
     return [5,6,11,12,13,19,20].indexOf(id) > -1

@@ -257,7 +257,7 @@ nerthus.weather.descriptions =
 nerthus.weather.display = function()
 {
     this.effects.clear()
-    if (map.mainid==0 && map.id!=3459) //are we outside? + Mirvenis
+    if (map.mainid==0 && map.id!=3459 && map.id!=3969) //are we outside? + Mirvenis + Szkoła w Ithan
         this.effects.display(this.id)
 }
 

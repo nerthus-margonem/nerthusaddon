@@ -1,0 +1,733 @@
+[
+{
+    "name" : "Dadoss",
+    "x" : "68",
+    "y" : "51",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/bur/hallo15-10w.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "Hej, chcesz zagrać w Kościanego Głupca?",
+            "Pewnie, jeśli tylko wyjaśnisz zasady. ->1",
+            "Będzie jakiś turniej? ->2",
+            "Nie, dziękuję. Nie lubię hazardu. ->END"
+        ],
+        "1" :
+        [
+            "Pewnie. Każdy z graczy ma do dyspozycji cztery kostki sześciościenne i kubek. Na początku rundy rzuca nimi sprawdzając ile oczek wypadnie na poszczególnej kostce. Gra polega na oszacowaniu ile oczek znajduje się na stole, na przykład mówisz 'Myślę, że na stole znajdują się cztery kości z wartością dwa'. Następna osoba podbija wynik lub sprawdza czy masz racje. Jeżeli na stole faktycznie znajdują się cztery lub więcej kości z taką liczbą oczek - sprawdzający odrzuca jedną ze swoich i zostaje z trzema. Jeżeli się pomyliłeś to ty oddajesz kość.",
+            "Jakie są zasady przebijania wartości? ->3",
+            "Zbyt skomplikowane jak dla mnie. ->END"
+        ],
+        "2" :
+        [
+            "Tak, główna nagroda to dwa srebrniki, zaś wpisowe to dziesięć miedziaków. Nic tylko próbować swoich sił. A, widzę że nie masz swojego kompletu. Kości dostaniesz <a href='http://www.alea.cba.pl/' target='_blank'>o tutaj.</a>",
+            "Dziękuję! Życz mi szczęścia. ->END"
+        ],
+        "3" :
+        [
+            "Wynik zawsze musi być wyższy od poprzedniego obstawianego. Albo ilość kości, która jest ważniejsza, albo wartość musi zostać podniesiona przynajmniej o jeden. Jeżeli osoba przed tobą powie 'Na stole są trzy jedynki' to twoją odpowiedzią może być albo 'Na stole są cztery jedynki' albo 'Na stole są trzy dwójki'. Nie możesz w tym wypadku obstawiać dwóch jedynek.",
+            "A jeżeli powiem 'Są tu cztery czwórki', a ktoś odpowie 'Myślę, że to raczej pięć jedynek' to będzie dobrze?. ->4",
+            "Chyba jednak zrezygnuję. ->END"
+        ],
+        "4" :
+        [
+            "Tak, ale 'jedna piątka' już nie. Liczba kości jest ważniejsza od liczby oczek.",
+            "No dobrze, spróbuję więc szczęścia. ->5",
+            "Chyba nie czuję się na siłach. ->END"
+        ],
+        "5" :
+        [
+            "Może od razu zaczniesz od turnieju? Dużo osób będzie początkujących.",
+            "Turnieju? ->2",
+            "Chyba wolę na początek coś prostszego. ->END"
+        ]
+    }
+},
+{
+
+    "name" : "Dalassa",
+    "x" : "63",
+    "y" : "33",
+    "url" : "https://www.margonem.pl/obrazki/npc/kob/doryda.gif",
+    "collision" : true,
+    "dialog" :
+    {
+       "0" :
+        [
+            "[ Widzisz dość młodą, rudowłosą kobietę z zapałem wygrywającą na lutni skoczną melodię. Przy każdym refrenie przytupuje w rytm piosenki obserwując tańczących ludzi. Co jakiś czas jej wzrok zatrzymywał się na jednym z siedzacych przy stole mężczyzn. Szybko zauważyła, że na nią patrzysz, uśmiechnęła się i puściła ci oko. ]",
+            "Dalej ->1"
+        ],
+        "1" :
+        [
+            "Jakże nie mam smutną być? Za starego każą iść. Czasu tak niewiele, jeszcze dwie niedziele mogę miły z Tobą być.",
+            "[ Podchodzisz bliżej. ] ->2",
+            "[ Słuchasz dalej czekając aż skończy. ] ->8",
+            "[ Odchodzisz. ] ->END"
+        ],
+        "2" :
+        [
+            "[ Dziewczyna spojrzała porozumiewawczo na barda. Kevan chwycił swój instrument momentalnie podejmując rytm i kontynuując piosenkę. Dalassa odeszła na bok, gestem zapraszając cię byś poszedł za nią. Po drodze zagarnęła ze stołu butelkę miodu. ]",
+            "[ Idziesz za nią. ] ->3",
+            "[ Odwracasz się na pięcie i odchodzisz. ] ->END"
+        ],
+        "3" :
+        [
+            "Masz szczęście, że musiałam odpocząć, inaczej czekałbyś aż skończę występ, a potem dostał konkretną burę. Słucham, co cię do mnie przywiodło?",
+            "Ciekawość, rzadko widuje się kobiety-bardów. ->4",
+            "Yyyy... Co to za piosenka, którą grałaś? -> 16",
+            "Kim jest ten mężczyzna na którego ciągle zerkasz? ->11",
+            "Po prostu chciałem popatrzeć. Nie przeszkadzam, odpoczywaj. ->END"
+        ],
+        "4" :
+        [
+            "I co, może jestem gorsza od Kevana czy Felkissiana? Kobiety już dawno przestały tylko siedzieć w domu i wychowywać dzieci. Skoro mogą być magiem, łowcą potworów i dowódcą wojsk to dlaczego nie bardem?",
+            "Spokojnie, spokojnie. Nie to miałem na myśli. Po prostu nadal to nieczęsty widok. ->5",
+            "Co tak agresywnie, jejku. Już sobie idę. ->END"
+        ],
+        "5" :
+        [
+            "Jestem bardzo wrażliwa na tym punkcie. Nie dość, że pochodzę z wioski na bagnach to jeszcze nie jestem mężczyzną. Niektórzy myślą, że bardka to tylko pozory i można bez ogródek zabrać mnie do łóżka. Phi.",
+            "Pochodzisz z Mythar? Nie widzę na twoim ciele łusek. ->6",
+            "No tak, niektórzy są niewychowanymi bucami. ->END"
+        ],
+        "6" :
+        [
+            "Los łaskawie się ze mną obszedł, widzisz? Łuski mam na plecach i karku. Tu jestem wśród swoich więc nie muszę ukrywać mojego pochodzenia, a wśród obcych wystarczy unikać sukienek z wyciętymi plecami i rozpuścić włosy.",
+            "Pewnie Felkissian musi ci bardzo zazdrościć. ->7",
+            "Masz ładną szyję... ->16",
+            "Faktycznie, szczęście. ->END"
+        ],
+        "7" :
+        [
+            "Trochę, ale już to sobie wyjaśniliśmy dawno temu. Oho, powinnam wracać, tę piosenkę wykonuje się w duecie. Złap mnie później to jeszcze porozmawiamy",
+            "Nie zatrzymuję! ->END"
+        ],
+        "8" :
+        [
+            "Z tamtej strony jeziora stoi lipka zielona. A na tej lipce, na tej zieloniutkiej trzej ptaszkowie śpiewają",
+            "[ Słuchasz dalej. ] ->9",
+            "[ Odchodzisz. ] ->END"
+        ],
+       "9": 
+        [
+            "[ Dziewczyna zerknęła porozumiewawczo na Kevana. Ten dopił szybko wino, które miał w kielichu i gdy tylko piosenka dotarła do końca podjął inny utwór. Dalassa gestem dała ci znać byś poszedł za nią, po drodze zgarniając ze stołu butelkę nalewki i drożdżową bułkę. ]",
+            "[ Idziesz za nią. ] ->10",
+            "[ Odchodzisz. ] ->END"
+	  
+            ],
+        "10" :
+        [
+            "Dziękuję, że zaczekałeś. To miłe gdy widz szanuje występ artysty. Co cię do mnie sprowadza?",
+            "Dobrego artysty zawsze miło posłuchać. Przywiodła mnie ciekawość, kim jest ten jasnowłosy mężczyzna? ->11",
+            "Chciałem tylko pogratulować dobrego występu. A teraz wybacz, ale chciałbym kogoś prosić do tańca. ->END"
+        ],
+        "11" :
+        [
+            "To Tanon. Wagabunda tak jak i ja, podróżujemy razem od granic z Hironią. A co?",
+            "Hirończyk. Bo wygląda dość... Nietypowo. ->12",
+            "Uważam, że Hironia powinna zostać zniszczona. ->END"
+        ],
+        "12" :
+        [
+            "To prawda, urodę ma nietypową nawet jak na hirończyka. I powiem Ci, że z całą pewnością nie jest człowiekiem. Aczkolwiek chociaż podróżujemy razem już dość długo to nie chciał mi wyjawić kim byli jego rodzice.",
+            "Dlaczego? ->13",
+            "Skoro to tajemnica lepiej zostawić ten temat. ->END"
+        ],
+        "13" :
+        [
+            "Dlaczego tak uważam czy dlaczego nie chce mi powiedzieć?",
+            "Dlaczego tak myślisz? ->14",
+            "A zresztą. Co mnie to obchodzi? ->END"
+        ],
+        "14" :
+        [
+            "Jak spędzasz z kimś dużo czasu to zaczynasz zauważać różne nawyki czy zwyczaje. Tanon nigdy nie je mięsa, czasami zachowuje się też jakby nigdy w życiu nie widział niektórych rzeczy czy pierwszy raz słyszał o rzeczach oczywistych. Rzadko, ale się zdarza. Poza tym potrafię go przyłapać jak mówi do wiatru. Co prawda jest magiem, a magowie mają swoje dziwactwa, ale to i tak nietypowe. Przyjrzyj się też jego zębom jak będziesz miał okazję.",
+            "Nie wypiłaś przypadkiem za dużo? Zrobiłaś się bardzo rumiana na twarzy. ->15",
+            "Idę sprawdzić, zaczekaj tutaj. ->END"
+        ],
+        "15" :
+        [
+            "Może troszeczkę. Hihi, a teraz wracam grać. Zabwa trwa!",
+            "Oho, to będzie ciekawe słuchowisko. ->END"
+        ],
+        "16" :
+        [
+            "Lipka, jedna z ciekawszych piosenek jakie usłyszałam w trakcie podróży. Będziemy ją jeszcze grali więc usłyszysz całość.",
+            "Nie mogę się doczekać. ->END"
+        ],
+        "17" :
+        [
+            "SŁUCHAM!? Masz czelność coś takiego sugerować?",
+            "Nie, nie, nie. Po prostu... Chciałem być uprzejmy... ->17",
+            "Powiedzieć komplement to jak obrazić. Idę szukać kogoś, kto je doceni. ->END"
+        ],
+        "18" :
+        [
+            "To zachowaj te uprzejmości dla siebie.",
+            "Przepraszam ->END"
+        ]
+    }
+},
+{
+
+    "name" : "Drewniana rzeźba",
+    "x" : "52",
+    "y" : "21",
+    "url" : "http://i.imgur.com/QFB9sNl.png",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Widzisz ogromną, drewnianą figurę otoczoną pochodniami i zapalonymi świeczkami. Pieczołowicie wyrzeźbione detale ukazują twarze ludzi, potworów, zwierząt w różnych stadiach życia. Część z nich uśmiecha się, niektóre są wyraźnie przerażone, wyglądają jakby widziały piekło na ziemi. Pomiędzy tym wszystkim widzisz ukryte głowy węży wijące się pomiędzy poszczególnymi postaciami, niekiedy wychodzące pomiędzy kosmykami włosów. ]",
+            "[ Przyglądasz się bliżej ] ->1",
+            "[ Odchodzisz. Nie chcesz mieć z tym nic wspólnego. ] ->END"
+        ],
+        "1" :
+        [
+            "[ Aura posągu jest złowroga, zimna i nieco oślizgła. Czujesz, że coś jest nie tak, ale nie masz w tej chwili jak dokładniej tego sprawdzić. Co chwila ktoś tu przychodzi, a nawet gdy przez moment jesteś sam to czujesz na sobie baczne spojrzenie Felkissiana. ] ",
+            "Wrócę tu później. ->END"
+        ]
+    }
+},
+{
+    "name" : "Kalante",
+    "x" : "79",
+    "y" : "28",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/kob/jadwiga.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "Płoną góry.. ",
+            "Smocze Góry? ->1",
+            "Coś ci się przewidziało ->END"
+        ],
+        "1" :
+        [
+            "Płoną lasy...",
+            "Las Dziwów? Głuchy Las!? ->2",
+            "Niech płonie. ->END"
+        ],
+        "2" :
+        [
+            "W przedwieczornej mgle.",
+            "... ->3",
+            "Niech płonie. ->END"
+        ],
+        "3" :
+        [
+            "Idzie jesień, ech, jak mi źle!",
+            "Dalej ->4"
+        ],
+        "4" :
+        [
+            "[ Twarz kobiety wygląda na przygnębioną. ]",
+            "Coś się stało? Wszyscy wokół się bawią. Dlaczego do nich nie dołączysz? ->5",
+            "[ Odchodzę. ] ->END"
+        ],
+        "5" :
+        [
+            "Zabawa zabawą. Już niedługo ostatnie pomruki ciepła zmienią się w pluchę, zielona trawa zbutwieje, wszędzie błocko i szarość! Jak tu się cieszyć? Dzieci do wykarmienia, a ziemia tego roku nie obrodziła, im zaś tylko ubaw w głowie.",
+            "Rozumiem, aczkol... ->6",
+            "Wydaje ci się. Plony nie są najgorze, ale zawsze ktoś musi narzekać. ->END"
+        ],
+         "6" :
+        [
+            "Miły panie, nie pochylaj się nad losem biednej matki, wszak to tylko zaszkodzi twemu nastrojowi! Może zajrzysz w me siaty? Przeróżne mazidła, talizmany: do wyboru, do kolor-.. to znaczy... Czy kupisz coś ode mnie wędrowcze? Wspomożesz tym mnie i moją rodzinę. Ach, moje biedactwa, przeżyły dziś cały dzień na jednym buraku!",
+            "Współ... ->7",
+            "Nie ładnie przerywać. ->END"
+        ], 
+        "7" :
+        [
+            "Co przyniesie jutro? Co przyniesie pojutrze? Czy pojutrze będzie w ogóle nam dane? A może już jutro obudzę się wtulona w chłodne truchła moich dzieci? Albo one wtulone w truchło swej styranej życiem matki próbującej zarobić dla nich na chleb?!Sakiewka twa widzę ciężka, pewnie żyjesz w luksusach.. Takim to tylko pozazdrościć życia.",
+            "To straszne! Nie zdawałem sobie sprawy jak ciężkie może być twoje życie, jakie to brzemię niesiesz ze sobą dzień w dzień. Pokaż mi te mazidła, kupię wszystko co masz! ->8",
+            "[ Odchodzisz z grymasem na twarzy. Opowieść kobiety nie wydaje Ci się wiarygodna. ->END"
+        ], 
+        "8" :
+        [
+            "[ Zawartość siatek kobiety opróżnia się proporcjonalnie do zawartości twojej sakiewki. Odchodzisz spoglądając ze łzą w oku na handlarkę. Zza pleców słyszysz nagle głośne 'Ale go urob-...' co jednak zagłusza gwar harców przy jesiennym ognisku. Pora dołączyć do zabawy! ]",
+            "Chyba się przesłyszałem. ->END"
+            ]
+      }
+},
+{
+
+    "name" : "Kevan",
+    "x" : "53",
+    "y" : "28",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/bur/npc232.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "O, #NAME! Nie spodziewałem się tu ciebie. Festyn czy jakieś interesy? Czy może trafiłeś zupełnie przypadkiem?",
+            "Sprawy... osobiste. Przyjechałeś z Dalassą? ->1",
+            "No nie, znowu ty. ->END"
+        ],
+        "1" :
+        [
+            "Tak i nie. Co roku zaglądam tu na święto jesieni. Moja siostra bardzo to lubiła.",
+            "Udało ci się znaleźć jakiś trop? ->2",
+            "Masz może jakieś nowe opowieści? ->4",
+            "Powinieneś wreszcie zostawić przeszłość za sobą. ->END"
+        ],
+        "2" :
+        [
+            "Nic, bez skutku. Nadal żadnego śladu Drzewa, żadnego śladu jej... Ale się nie poddam!",
+            "Jeśli na coś natrafię spróbuję od razu cię o tym poinformować. ->3",
+            "Naprawdę powinieneś odpuścić. ->END"
+        ],
+        "3" :
+        [
+            "Dziękuję, to wiele dla mnie znaczy",
+            "Koniec ->END"
+        ],
+        "4" :
+        [
+            "Mam kilka historii o duchach, idealne na zbliżające się długie, jesienne noce. Uzurpator, zjawa na murach czy może o szwaczce, którą spotkał ciężki los?",
+            "Chcę poznać historię Uzurpatora. ->5",
+            "Ciekawi mnie tajemnicza zjawa. ->7",
+            "Chętnie posłucham o tej szwaczce. ->9",
+            "Nie lubię opowieści o duchach. ->END"
+        ],
+        "5" :
+        [
+            "Gregorius Emperor ongiś władał podziemnym światem i do tej pory nie wiadomo, na skutek jakiej klątwy ten straszliwy monarcha porzucił materialną, wampiryczną postać, by nawiedzać powierzchnię Ziemi w formie widmowej. Teraz również pojawia się nieczęsto i nadal unika słonecznego światła...",
+            "[ Słucham dalej. ]->6",
+            "[ Odchodzę. ] ->END"
+        ],
+        "6" :
+        [
+            "Spotkać go można zazwyczaj w miejscach starożytnych bitew i grobowcach. Widywany był w Opuszczonej Twierdzy i Nawiedzonym Jarze. Wiele jego projekcji spotykano w Tristam, lecz szczególnie upodobał sobie pustynne tereny wokół Tuzmer, a najbardziej Przybytek Bogini Wojny, Sechmi. Tam, w dymie kadzideł i oparach krwi składanych ofiar zbiera siły, by poprowadzić hordy nieumarłych przeciw ludziom.",
+            "Chcę usłyszeć jeszcze inną opowieść. ->4",
+            "Dzięki, to było niepokojące. ->END"
+        ],
+        "7" :
+        [
+            "Widmo kobiety ukazujące się najczęściej na blankach murów w Ithan gdzie snuje się bez celu, napadając tylko niekiedy znienacka na przechodniów i skrzecząc im prosto do ucha: 'Cisza!'. Niekiedy nawiedza Mythar, wówczas nad całą okolicą zapada groza, bagna pokrywają się szronem, milkną ptasie śpiewy, a zmiennocieplne gady i płazy zastygają w bezruchu.",
+            "[ Słucham dalej. ]->8",
+            "[ Odchodzę. ] ->END"
+        ],
+        "8" :
+        [
+            "Uzurpatorka, usiłowała przejąć władzę nad Margonem. Z całego serca nienawidziła trubadurów, poetów i wieszczy, którzy na znak protestu rzucali w ogień pergaminy ze swoimi wierszami i odchodzili do bezimiennych krain, wiodąc tam pustelniczy żywot. Na skutek jej knowań rzeszom niewinnych obywateli Ithan wyrwano języki. Ich niemy krzyk prześladuje ją i szarpie jej sumienie, przez co nie może zaznać spokoju. ",
+            "Lubię takie historie. Chcę usłyszeć jeszcze jedną ->4",
+            "Oby nie przyszła tutaj ->END"
+        ],
+        "9" :
+        [
+            "Vena była niezwykle zdolną szwaczką i znalazła zatrudnienie na książęcym dworze. Wpierw szyła suknie dla małych księżniczek, później nakazano jej stworzyć kolekcję strojów dla stu lalek mieszkających w dziecięcym pokoju.",
+            "[ Słucham dalej. ]->10",
+            "[ Odchodzę. ] ->END"
+        ],
+        "10" :
+        [
+            "Dniami i nocami Vena dobierała koronki i jedwabie, szkicowała wykroje, szyła, pruła, szyła od nowa... Włożyła w pracę całą duszę, aż wreszcie wszystkie lalki otrzymały nowe szaty. Czegóż tam nie było? Miniaturowe królewny, strojni książęta, pazie, wojownicy i nawet czarodzieje w małych, szpiczastych kapeluszach. Wszystkie laleczki wyglądały jak żywe.",
+            "[ Słucham dalej. ]->11",
+            "[ Odchodzę. ] ->END"
+        ],
+        "11" :
+        [
+            "I były żywe, gdyż posiadły duszę Veny! Zawładnęły nią i zmusiły do zamieszkania razem z nimi w dziecięcej sypialni. Gdy jakieś dziecko budzi się ze szlochem i nie pamięta, co mu się śniło, na pewno była to nieszczęsna, marionetkowa królowa Vena na widmowym balu kukiełek.",
+            "Ta była wyjątkowo niepokojąca. Opowiedz jeszcze jakąś. ->4",
+            "Nigdy więcej lalek. ->END"     
+        ]
+    }
+},
+{
+
+    "name" : "Ognisko",
+    "x" : "28",
+    "y" : "27",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/stoss.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Ogromne ognisko aż huczy. Płomienie migoczą pochwycając, wydawałoby się, czułym gestem kolejne gałęzie. Wszystko migocze, drży, porusza się jakby było żywe. Ciekawe czy to zasługa atmosfery wieczoru i zbyt dużej ilości wypitego wina? A może odpowiedzią jest obecność magii, którą wręcz namacalnie czuć w powietrzu. ] ",
+            "[ Nadziewasz na patyk bagienną cebulę i powoli ją pieczesz. ] ->1",
+            "[ Podnosisz z ziemi jabłko, nadziewasz je na patyk i opiekasz nad płomieniem. ] ->2",
+            "[ Siadasz na jednym z pobliskich pniów i rozkoszujesz ciepłem ognia. ] ->END"
+        ],
+        "1" :
+        [
+            "[ Mimo, że upieczona to jednak sama cebula nie nadaje się do jedzenia. Ciągle też uroczo pachnie, niczym skórzane buty noszone cały dzień przez krasnoluda. ]",
+            "Blee... To chyba nie był dobry pomysł. ->END"
+        ],
+        "2" :
+        [
+            "[ Apetyczny zapach unosi się dookoła. Gdy tylko wydaje się gotowe wyciągasz je z ogniska i z niecierpliwością czekasz aż trochę ostygnie. Gorący miąższ jest przepyszny. ]",
+            "Koniec. ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "53",
+    "y" : "21",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "48",
+    "y" : "25",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "68",
+    "y" : "43",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "59",
+    "y" : "36",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "51",
+    "y" : "21",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "70",
+    "y" : "37",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "50",
+    "y" : "40",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "40",
+    "y" : "24",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Lampion",
+    "x" : "55",
+    "y" : "30",
+    "url" : "http://emargo.pl/margonem/obrazki/itemy/kon/ark-lamp-zlo.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Lampion lekko kołysze się na wietrze. ]",
+            "Koniec. ->END"
+            ]
+    }
+},
+{
+    "name" : "Lampion",
+    "x" : "69",
+    "y" : "46",
+    "url" : "http://emargo.pl/margonem/obrazki/itemy/kon/ark-lamp-zlo.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Lampion lekko kołysze się na wietrze. ]",
+            "Koniec. ->END"
+            ]
+
+    }
+},
+{
+    "name" : "Lampion",
+    "x" : "71",
+    "y" : "34",
+    "url" : "http://emargo.pl/margonem/obrazki/itemy/kon/ark-lamp-zlo.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Lampion lekko kołysze się na wietrze. ]",
+            "Koniec. ->END"
+            ]
+    }
+},
+{
+    "name" : "Stół z jedzeniem",
+    "x" : "76",
+    "y" : "33",
+    "url" : "http://i.imgur.com/vjyZRTO.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Stół zastawiony był różnymi lokalnymi potrawami. Poza pachnącym mięsem były też warzywa, owoce, świeżo wypieczony chleb z masłem. Kufle czekały tylko żeby znalazło się tam piwo, a w czajniczku studził się napar z owoców leśnych. Co chwila ktoś podchodził żeby nałożyć sobie porcję. ]",
+            "Koniec. ->END"
+        ]
+    }
+},
+{
+    "name" : "Stół z napojami",
+    "x" : "64",
+    "y" : "39",
+    "url" : "http://i.imgur.com/zWMK4HB.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[Pomiędzy butelkami z piwem, winem i miejscowymi, ziołowymi nalewkami przygotowanymi przez Nessę znalazło się miejsce na pieczywo czy słodkie, ciepłe jeszcze bułeczki. ]",
+            "Koniec. ->END"
+        ]
+    }
+},
+{
+    "name" : "Stół do gry",
+    "x" : "67",
+    "y" : "53",
+    "url" : "http://i.imgur.com/g6BbarL.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Przygotowany do rozgrywek w Kościanego Głupca. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Tancerka",
+    "x" : "58",
+    "y" : "32",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/kob/cyganka3.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Ciemnowłosa dziewczyna tańczyła furkocząc zamaszyście kolorową spódnicą. Nie wyglądała na miejscową, miała ciemniejszą karnację i inny kształt oczu. Poruszała się wyjątkowo zgrabnie i energicznie podzwaniając przy każdym kroku bransoletką z dzwoneczkami zawieszoną przy kostce.",
+            "[ Obserwujesz ją dalej. ] ->1",
+            "Masz ochotę zatańczyć ze mną? ->2",
+            "Obcy nie są tu milie widziani... ->END"
+        ],
+        "1" :
+        [
+            "[ Zauważyła to. Uśmiechnęła się i stanęła przodem do ciebie nie przestając poruszać się w rytm muzyki. ]",
+            "[ Podchodzisz bliżej również wczuwając się w muzykę. Wyciągam do niej dłoń. ] ->2",
+            "[ Patrzysz nadal, nie wykonując żadnej innej czynności. ] ->3",
+            "[ Odchodzisz. ] ->END"
+        ],
+        "2" :
+        [
+            "[ Tancerka chwyta twoją rękę i pociąga cię w skaczący tłum. Wirując, kręcąc się i śmiejąc spędzacie razem pół wieczoru. W końcu wyraźnie zmęczona kłania ci się i odwraca. Tracisz ją z oczu na ułamek sekundy, a ona momentalnie znika. Na ziemi leży tylko mała bransoletka ze srebrnymi dzwoneczkami. ]",
+            "[ Podnosisz ją i zabierasz ze sobą. ] ->END",
+            "[ Zostawiasz ją. Kto wie kim była ta dziewczyna. ] ->END"
+        ],
+        "3" :
+        [
+            "[ Wykonuje kilka zachęcających gestów. Mruga zalotnie, przywołuje Cię gestem dłoni. W końcu jednak odwraca się ignorując cię zupełnie. Inny mężczyzna podchodzi do niej i razem idą w tan.",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Tanon",
+    "x" : "65",
+    "y" : "40",
+    "url" : "http://i.imgur.com/PBE0SMA.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "O, #NAME. Też chcesz spróbować nalewki z Hironii?",
+            "Jesteś Hirończykiem? ->1",
+            "Wolę nie, jeszcze się czymś zarażę. ->END"
+        ],
+        "1" :
+        [
+            "I tak, i nie. Urodziłem się tam, ale nie jestem spokrewniony z nikim w tamtejszych stronach.",
+            "A co cię przywiało w te strony? ->2",
+            "Jak tam jest? To prawda, że są tam dziewczynki od małego wychowywane na trucicielki? Podobno podaje im się mleko z toksynami od urodzenia, by nawet pocałunek mógł zabić. ->6",
+            "Twoje szczęście. ->END"
+        ],
+         "2" :
+        [
+            "Nuda, chęć zobaczenia świata i poszukiwania.",
+            "Poszukiwania czego? ->3",
+            "Czyli nie dzieli nas tak wiele. Daj tej nalewki. ->9",
+            "Wagabunda. Porozmawiamy później, ktoś mnie woła. ->END"
+        ],
+         "3" :
+        [
+            "Szukam kogoś, pewnej osoby. Wiem tylko, że jest ze mną spokrewniona i ma bardzo charakterystyczną aurę. Musisz niestety przyznać, że to skromny opis przez co zadanie nie należy do najprostszych. Na szczęście po drodze spotkałem Dalassę, we dwójkę zawsze raźniej.",
+            "Kim właściwie jesteś? ->4",
+            "Coś was łączy? ->11",
+            "Powodzenia w dalszej drodze. ->END"
+        ],
+         "4" :
+        [
+            "Magiem, a konkretniej aeromantą. Specjalizuję się w Odrzuceniu.",
+            "Nie do końca o to mi chodziło. Widzę, że masz dość nietypowe zęby jak na człowieka. ->5",
+            "O, to może lepiej nie będę cię denerwował. ->END"
+        ],
+         "5" :
+        [
+            "Jestem półelfem. I na tym zakończmy temat.",
+            "Wszyscy są dziś strasznie drażliwi. ->END"
+        ],
+         "6" :
+        [
+            "Tak, a elanckie wiedźmy porywają dzieci. Nie wierz w każdą bajeczkę jaką usłyszysz, bo większość z nich to stek bzdur.",
+            "A co z oszalałymi alchemikami? Podobno wymordowali całą wioskę żeby przeprowadzać eksperymenty. ->7",
+            "Tylko, że wiedźmy porywają dzieci... ->END"
+        ],
+         "7" :
+        [
+            "[ Wyraz twarzy mężczyzny zmienił się, nagle spoważniał. Sięgnął po butelkę nalewki, jakby chcąc sobie kupić trochę czasu. ]",
+            "Dalej ->8"
+        ],
+        "8" :
+        [
+            "To akurat prawda. Nie licz jednak, że ktoś będzie chciał na ten temat z tobą rozmawiać. Każdy kraj ma swoje ciemne epizody w historii.",
+            "Tak... Wojna nigdy się nie zmienia. ->END"
+        ],
+        "9" :
+        [
+            "Czyli intuicja mnie nie myliła i też jesteś poszukiwaczem przygód. Ha, na coś przydały się te kości.",
+            "Jakie kości? ->10",
+            "Polej i opowiadaj co widziałeś na szlaku. ->END"
+        ],
+        "10" :
+        [
+            "Znalezione przy drodze. Ktoś zrobił z tego amulet, ale mniejsza z tym. Chodź, pijemy.",
+            "Tak, mniejsza... ->END"
+        ],
+        "11" :
+        [
+            "To moja przyjaciółka. Ona pilnuje mnie, ja jej, czasami odpędzając niechcianych adoratorów.",
+            "Nie jesteś zazdrosny? Albo skąd wiesz, że ona nie jest zazdrosna o ciebie? ->12",
+            "Taki przyjaciel to skarb. ->END"
+        ],
+         "12" :
+        [
+            "Zdradzę Ci małą tajemnicę, ale obiecaj że nikomu nie powiesz.",
+            "Oczywiście, słowo podróżnika. ->13",
+            "Może lepiej nie, alkohol za bardzo rozwiązał ci język. ->END"
+        ],
+         "13" :
+        [
+            "Dalassa nie lubi mężczyzn, woli się umawiać z kobietami. To też jeden z powodów dla których Felkissian udaje, że jest jedynym mytharskim bardem i jedna z przyczyn dla których ruszyła w drogę.",
+            "No tak, w małym miasteczku to może być poważny problem. ->14",
+            "Przykra sprawa. ->END"
+        ],
+         "14" :
+        [
+            "No, skończmy temat. Twoje zdrowie! Za podróże i przygody!",
+            "Za przygody! ->END"
+        ]
+    }
+},
+{
+    "name" : "Tańcząca para",
+    "x" : "56",
+    "y" : "35",
+    "url" : "http://i.imgur.com/q4Bw9y0.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Widzisz jak mężczyzna obraca kobietę w tańcu. Jej spódnica furkocze owijając się dookoła kostek i zamiatając ziemię. Oboje wydają się szczęśliwi. ]",
+            "Nie będę przeszkadzać ->END"
+        ]
+    }
+},
+{
+    "name" : "Tańcząca para",
+    "x" : "61",
+    "y" : "34",
+    "url" : "http://i.imgur.com/IwUKPrF.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Tańczący ludzie nie wydają się zbyt zadowoleni. Wymieniają co chwilę między sobą jakieś, wydaje się że niezbyt przyjemne, uwagi. Mężczyzna nadepnął kobiecie na stopę co ona skwitowała głośnym prychnięciem. ]",
+           "Nie chcę się mieszać w małżeńskie kłótnie. ->END"
+        ]
+    }
+}
+]

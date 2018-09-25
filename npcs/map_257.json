@@ -1,8 +1,8 @@
 [
 {
     "name" : "Dadoss",
-    "x" : "37",
-    "y" : "52",
+    "x" : "68",
+    "y" : "51",
     "url" : "http://emargo.pl/margonem/obrazki/npc/bur/hallo15-10w.gif",
     "collision" : true,
     "dialog" :
@@ -62,9 +62,9 @@
         "1" :
         [
             "Jakże nie mam smutną być? Za starego każą iść. Czasu tak niewiele, jeszcze dwie niedziele mogę miły z Tobą być.",
-            "[ Podchodzę bliżej. ] ->2",
-            "[ Słucham dalej czekając aż skończy. ] ->8",
-            "[ Odchodzę. ] ->END"
+            "[ Podchodzisz bliżej. ] ->2",
+            "[ Słuchasz dalej czekając aż skończy. ] ->8",
+            "[ Odchodzisz. ] ->END"
         ],
         "2" :
         [
@@ -107,14 +107,15 @@
         "8" :
         [
             "Z tamtej strony jeziora stoi lipka zielona. A na tej lipce, na tej zieloniutkiej trzej ptaszkowie śpiewają",
-            "[ Słucham dalej. ] ->9",
-            "[ Odchodzę. ] ->END"
+            "[ Słuchasz dalej. ] ->9",
+            "[ Odchodzisz. ] ->END"
         ],
        "9": 
         [
-			"[ Widzisz dość młodą, rudowłosą kobietę z zapałem wygrywającą na lutni skoczną melodię. Przy każdym refrenie przytupuje w rytm piosenki obserwując tańczących ludzi. Co jakiś czas jej wzrok zatrzymywał się na jednym z siedzacych przy stole mężczyzn. Szybko zauważyła, że na nią patrzysz, uśmiechnęła się i puściła ci oko. ]",
-			"[ Podchodzę bliżej. ] ->10",
-			"[ Kręcę przecząco głową i idę w swoją stronę. ] ->END"
+            "[ Dziewczyna zerknęła porozumiewawczo na Kevana. Ten dopił szybko wino, które miał w kielichu i gdy tylko piosenka dotarła do końca podjął inny utwór. Dalassa gestem dała ci znać byś poszedł za nią, po drodze zgarniając ze stołu butelkę nalewki i drożdżową bułkę. ]",
+            "[ Idziesz za nią. ] ->10",
+            "[ Odchodzisz. ] ->END"
+	  
             ],
         "10" :
         [
@@ -130,7 +131,7 @@
         ],
         "12" :
         [
-            "To prawda, urodę ma nietypową nawet jak na Hirończyka. I powiem Ci, że z całą pewnością nie jest człowiekiem. Aczkolwiek chociaż podróżujemy razem już dość długo to nie chciał mi wyjawić kim byli jego rodzice.",
+            "To prawda, urodę ma nietypową nawet jak na hirończyka. I powiem Ci, że z całą pewnością nie jest człowiekiem. Aczkolwiek chociaż podróżujemy razem już dość długo to nie chciał mi wyjawić kim byli jego rodzice.",
             "Dlaczego? ->13",
             "Skoro to tajemnica lepiej zostawić ten temat. ->END"
         ],
@@ -138,7 +139,7 @@
         [
             "Dlaczego tak uważam czy dlaczego nie chce mi powiedzieć?",
             "Dlaczego tak myślisz? ->14",
-            "Ta druga opcja. ->END"
+            "A zresztą. Co mnie to obchodzi? ->END"
         ],
         "14" :
         [
@@ -173,7 +174,7 @@
 
     "name" : "Drewniana rzeźba",
     "x" : "52",
-    "y" : "20",
+    "y" : "21",
     "url" : "http://i.imgur.com/QFB9sNl.png",
     "collision" : true,
     "dialog" :
@@ -256,8 +257,8 @@
 {
 
     "name" : "Kevan",
-    "x" : "37",
-    "y" : "52",
+    "x" : "53",
+    "y" : "28",
     "url" : "http://emargo.pl/margonem/obrazki/npc/bur/npc232.gif",
     "collision" : true,
     "dialog" :
@@ -327,7 +328,7 @@
         "10" :
         [
             "Dniami i nocami Vena dobierała koronki i jedwabie, szkicowała wykroje, szyła, pruła, szyła od nowa... Włożyła w pracę całą duszę, aż wreszcie wszystkie lalki otrzymały nowe szaty. Czegóż tam nie było? Miniaturowe królewny, strojni książęta, pazie, wojownicy i nawet czarodzieje w małych, szpiczastych kapeluszach. Wszystkie laleczki wyglądały jak żywe.",
-            "[ Słucham dalej. ]->10",
+            "[ Słucham dalej. ]->11",
             "[ Odchodzę. ] ->END"
         ],
         "11" :
@@ -375,7 +376,49 @@
     {
         "0" :
         [
-            "Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask.",
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "48",
+    "y" : "25",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "68",
+    "y" : "43",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnie",
+    "x" : "59",
+    "y" : "36",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
             "Koniec ->END"
         ]
     }
@@ -389,7 +432,49 @@
     {
         "0" :
         [
-            "Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask.",
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "70",
+    "y" : "37",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "50",
+    "y" : "40",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+            "Koniec ->END"
+        ]
+    }
+},
+{
+    "name" : "Pochodnia",
+    "x" : "40",
+    "y" : "24",
+    "url" : "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
             "Koniec ->END"
         ]
     }
@@ -403,7 +488,7 @@
     {
         "0" :
         [
-            "Lampion lekko kołysze się na wietrze.",
+            "[ Lampion lekko kołysze się na wietrze. ]",
             "Koniec. ->END"
             ]
     }
@@ -417,7 +502,7 @@
     {
         "0" :
         [
-            "Lampion lekko kołysze się na wietrze.",
+            "[ Lampion lekko kołysze się na wietrze. ]",
             "Koniec. ->END"
             ]
 
@@ -432,7 +517,7 @@
     {
         "0" :
         [
-            "Lampion lekko kołysze się na wietrze.",
+            "[ Lampion lekko kołysze się na wietrze. ]",
             "Koniec. ->END"
             ]
     }
@@ -441,7 +526,7 @@
     "name" : "Stół z jedzeniem",
     "x" : "76",
     "y" : "33",
-    "url" : "http://i.imgur.com/zWMK4HB.gif",
+    "url" : "http://i.imgur.com/vjyZRTO.gif",
     "collision" : true,
     "dialog" :
     {
@@ -456,7 +541,7 @@
     "name" : "Stół z napojami",
     "x" : "64",
     "y" : "39",
-    "url" : "http://i.imgur.com/vjyZRTO.gif",
+    "url" : "http://i.imgur.com/zWMK4HB.gif",
     "collision" : true,
     "dialog" :
     {
@@ -506,9 +591,9 @@
         ],
         "2" :
         [
-            "[ Tancerka chwyta twoją rękę i pociąga cię w skaczący tłum. Wirując, kręcąc się i śmiejąc spędzacie razem pół wieczoru. W końcu wyraźnie zmęczona kłania ci się i odwraca. Tracisz ją z oczu na ułamek sekundy, a ona momentalnie znika. Na ziemi leży tylko mała bransoletka ze srebrnymi dzwoneczkami.",
-            "[ Podnoszę ją i zabieram ze sobą. ] ... ->END",
-            "[ Zostawiam ją. Kto wie kim była ta dziewczyna. ] ->END"
+            "[ Tancerka chwyta twoją rękę i pociąga cię w skaczący tłum. Wirując, kręcąc się i śmiejąc spędzacie razem pół wieczoru. W końcu wyraźnie zmęczona kłania ci się i odwraca. Tracisz ją z oczu na ułamek sekundy, a ona momentalnie znika. Na ziemi leży tylko mała bransoletka ze srebrnymi dzwoneczkami. ]",
+            "[ Podnosisz ją i zabierasz ze sobą. ] ->END",
+            "[ Zostawiasz ją. Kto wie kim była ta dziewczyna. ] ->END"
         ],
         "3" :
         [
@@ -521,7 +606,7 @@
     "name" : "Tanon",
     "x" : "65",
     "y" : "40",
-    "url" : "http://i.imgur.com/g7OZ69Y.gif",
+    "url" : "http://i.imgur.com/PBE0SMA.gif",
     "collision" : true,
     "dialog" :
     {
@@ -571,7 +656,7 @@
         ],
          "7" :
         [
-            "[ Wyraz twarzy mężczyzny zmienił się, nagle spoważniał. Sięgnął po butelkę nalewki, jakby chcąc sobie kupić trochę czasu. ",
+            "[ Wyraz twarzy mężczyzny zmienił się, nagle spoważniał. Sięgnął po butelkę nalewki, jakby chcąc sobie kupić trochę czasu. ]",
             "Dalej ->8"
         ],
         "8" :
@@ -606,7 +691,7 @@
         [
             "Dalassa nie lubi mężczyzn, woli się umawiać z kobietami. To też jeden z powodów dla których Felkissian udaje, że jest jedynym mytharskim bardem i jedna z przyczyn dla których ruszyła w drogę.",
             "No tak, w małym miasteczku to może być poważny problem. ->14",
-            "Przykra sprawa. ->13"
+            "Przykra sprawa. ->END"
         ],
          "14" :
         [
@@ -632,8 +717,8 @@
 },
 {
     "name" : "Tańcząca para",
-    "x" : "64",
-    "y" : "34",
+    "x" : "61",
+    "y" : "343",
     "url" : "http://i.imgur.com/IwUKPrF.gif",
     "collision" : true,
     "dialog" :

@@ -139,8 +139,13 @@ nerthus.npc.set_collision = function(npc)
 
 nerthus.npc.load_npcs = function()
 {
-    $.getJSON(nerthus.addon.fileUrl("/npcs/map_" + map.id + ".json"),
-              function(npcs){npcs.forEach(nerthus.npc.deploy.bind(nerthus.npc))})
+    var file_with_npc = nerthus.addon.fileUrl("/npcs/map_" + map.id + ".json")
+    this.load_npcs_from_file(file_with_npc)
+}
+
+nerthus.npc.load_npcs_from_file = function(url)
+{
+    $.getJSON(url, function(npcs){npcs.forEach(nerthus.npc.deploy.bind(nerthus.npc))})
 }
 
 nerthus.npc.start = function()

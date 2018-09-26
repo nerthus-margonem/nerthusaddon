@@ -85,11 +85,8 @@ nerthus.npc.dialog.compose.message = function(message, npc)
 
 nerthus.npc.compose = function(npc)
 {
-    var tip = npc.tip ? npc.tip : "<b>" + npc.name + "</b>"
     var click = npc.dialog ? this.dialog.open.bind(this.dialog, npc, 0) : null
     var $npc = $("<img>")
-    .attr("tip", tip)
-    .attr("ctip", "t_npc")
     .attr("src", this.resolve_url(npc.url))
     .css("position", "absolute")
     .css("z-index", npc.y * 2 + 9)
@@ -102,6 +99,11 @@ nerthus.npc.compose = function(npc)
         var y = 32 * parseInt(npc.y) + 32 - $(this).height()
         $(this).css({top:"" + y + "px", left: "" + x + "px"})
     })
+
+    var tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+    if(tip)
+        $npc.attr("ctip", "t_npc").attr("tip", tip)
+
     return $npc
 }
 

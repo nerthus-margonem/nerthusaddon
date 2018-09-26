@@ -22,7 +22,7 @@ before(function()
     const { document } = (new JSDOM('')).window;
     global.document = document;
     $ = require("jquery")(window)
-    $.fn.load = function(){} //load stub
+    $.fn.load = function(){return this} //load stub
 
     g = {}
     g.npccol = {} //npc colision set
@@ -223,6 +223,26 @@ test("dialog.open lock game, dialog.close unlock game", function()
 
     dialog.close()
     expect(g.lock.lock).not.ok()
+})
+
+suite("npc compose")
+
+test("create npc with tip equal to name", function()
+{
+    var npc = minimal_npc()
+    var $npc = nerthus.npc.compose(npc)
+
+    expect($npc.attr("tip")).to.be.ok()
+    expect($npc.attr("tip")).to.contain(npc.name)
+})
+
+test("create tipless npc", function()
+{
+    var npc = minimal_npc()
+    npc.tip = null
+    var $npc = nerthus.npc.compose(npc)
+
+    expect($npc.attr("tip")).not.ok()
 })
 
 suite("npc deployment")

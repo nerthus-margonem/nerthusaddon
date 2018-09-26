@@ -11,7 +11,7 @@ nerthus.night.opacity = function()
     return 0
 }
 
-nerthus.night.dim = function()
+nerthus.night.dim = function(opacity)
 {
     if(map.mainid != 0)
         return
@@ -20,7 +20,7 @@ nerthus.night.dim = function()
     .css({height  : $("#ground").css("height"),
           width   : $("#ground").css("width"),
           zIndex  : map.y * 2 + 11,
-          opacity : this.opacity(),
+          opacity : opacity,
           pointerEvents   : "none",
           backgroundColor : "black"})
     .appendTo("#ground")
@@ -74,7 +74,7 @@ nerthus.night.start = function()
     if(nerthus.options['night'])
     {
         nerthus.defer(this.lights.on.bind(this.lights))
-        nerthus.defer(this.dim.bind(this))
+        nerthus.defer(this.dim.bind(this, this.opacity()))
     }
 }
 

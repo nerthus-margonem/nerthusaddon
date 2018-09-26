@@ -526,7 +526,7 @@
     "name" : "Stół z jedzeniem",
     "x" : "76",
     "y" : "33",
-    "url" : "#stół1.gif,
+    "url" : "#table1.gif",
     "collision" : true,
     "dialog" :
     {
@@ -541,7 +541,7 @@
     "name" : "Stół z napojami",
     "x" : "64",
     "y" : "39",
-    "url" : "#stół2.gif",
+    "url" : "#table3.gif",
     "collision" : true,
     "dialog" :
     {
@@ -556,7 +556,7 @@
     "name" : "Stół do gry",
     "x" : "67",
     "y" : "53",
-    "url" : "#stół3.gif",
+    "url" : "#table2.gif",
     "collision" : true,
     "dialog" :
     {

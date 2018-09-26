@@ -3,7 +3,7 @@
     "name" : "Dadoss",
     "x" : "68",
     "y" : "51",
-    "url" : "http://emargo.pl/margonem/obrazki/npc/bur/hallo15-10w.gif",
+    "url" : "http://margonem.pl/obrazki/npc/bur/hallo15-10w.gif",
     "collision" : true,
     "dialog" :
     {
@@ -110,12 +110,12 @@
             "[ Słuchasz dalej. ] ->9",
             "[ Odchodzisz. ] ->END"
         ],
-       "9": 
+       "9":
         [
             "[ Dziewczyna zerknęła porozumiewawczo na Kevana. Ten dopił szybko wino, które miał w kielichu i gdy tylko piosenka dotarła do końca podjął inny utwór. Dalassa gestem dała ci znać byś poszedł za nią, po drodze zgarniając ze stołu butelkę nalewki i drożdżową bułkę. ]",
             "[ Idziesz za nią. ] ->10",
             "[ Odchodzisz. ] ->END"
-	  
+
             ],
         "10" :
         [
@@ -175,7 +175,7 @@
     "name" : "Drewniana rzeźba",
     "x" : "52",
     "y" : "21",
-    "url" : "http://i.imgur.com/QFB9sNl.png",
+    "url" : "#img/npc/rzezba.png",
     "collision" : true,
     "dialog" :
     {
@@ -240,13 +240,13 @@
             "Miły panie, nie pochylaj się nad losem biednej matki, wszak to tylko zaszkodzi twemu nastrojowi! Może zajrzysz w me siaty? Przeróżne mazidła, talizmany: do wyboru, do kolor-.. to znaczy... Czy kupisz coś ode mnie wędrowcze? Wspomożesz tym mnie i moją rodzinę. Ach, moje biedactwa, przeżyły dziś cały dzień na jednym buraku!",
             "Współ... ->7",
             "Nie ładnie przerywać. ->END"
-        ], 
+        ],
         "7" :
         [
             "Co przyniesie jutro? Co przyniesie pojutrze? Czy pojutrze będzie w ogóle nam dane? A może już jutro obudzę się wtulona w chłodne truchła moich dzieci? Albo one wtulone w truchło swej styranej życiem matki próbującej zarobić dla nich na chleb?!Sakiewka twa widzę ciężka, pewnie żyjesz w luksusach.. Takim to tylko pozazdrościć życia.",
             "To straszne! Nie zdawałem sobie sprawy jak ciężkie może być twoje życie, jakie to brzemię niesiesz ze sobą dzień w dzień. Pokaż mi te mazidła, kupię wszystko co masz! ->8",
             "[ Odchodzisz z grymasem na twarzy. Opowieść kobiety nie wydaje Ci się wiarygodna. ->END"
-        ], 
+        ],
         "8" :
         [
             "[ Zawartość siatek kobiety opróżnia się proporcjonalnie do zawartości twojej sakiewki. Odchodzisz spoglądając ze łzą w oku na handlarkę. Zza pleców słyszysz nagle głośne 'Ale go urob-...' co jednak zagłusza gwar harców przy jesiennym ognisku. Pora dołączyć do zabawy! ]",
@@ -259,7 +259,7 @@
     "name" : "Kevan",
     "x" : "53",
     "y" : "28",
-    "url" : "http://emargo.pl/margonem/obrazki/npc/bur/npc232.gif",
+    "url" : "http://margonem.pl/obrazki/npc/bur/npc232.gif",
     "collision" : true,
     "dialog" :
     {
@@ -335,7 +335,7 @@
         [
             "I były żywe, gdyż posiadły duszę Veny! Zawładnęły nią i zmusiły do zamieszkania razem z nimi w dziecięcej sypialni. Gdy jakieś dziecko budzi się ze szlochem i nie pamięta, co mu się śniło, na pewno była to nieszczęsna, marionetkowa królowa Vena na widmowym balu kukiełek.",
             "Ta była wyjątkowo niepokojąca. Opowiedz jeszcze jakąś. ->4",
-            "Nigdy więcej lalek. ->END"     
+            "Nigdy więcej lalek. ->END"
         ]
     }
 },
@@ -526,7 +526,7 @@
     "name" : "Stół z jedzeniem",
     "x" : "76",
     "y" : "33",
-    "url" : "http://i.imgur.com/vjyZRTO.gif",
+    "url" : "#img/npc/table1.gif",
     "collision" : true,
     "dialog" :
     {
@@ -541,7 +541,7 @@
     "name" : "Stół z napojami",
     "x" : "64",
     "y" : "39",
-    "url" : "http://i.imgur.com/zWMK4HB.gif",
+    "url" : "#img/npc/table3.gif",
     "collision" : true,
     "dialog" :
     {
@@ -556,7 +556,7 @@
     "name" : "Stół do gry",
     "x" : "67",
     "y" : "53",
-    "url" : "http://i.imgur.com/g6BbarL.gif",
+    "url" : "#img/npc/table2.gif",
     "collision" : true,
     "dialog" :
     {
@@ -606,7 +606,7 @@
     "name" : "Tanon",
     "x" : "65",
     "y" : "40",
-    "url" : "http://i.imgur.com/PBE0SMA.gif",
+    "url" : "#img/npc/Tanon.gif",
     "collision" : true,
     "dialog" :
     {
@@ -704,7 +704,7 @@
     "name" : "Tańcząca para",
     "x" : "56",
     "y" : "35",
-    "url" : "http://i.imgur.com/q4Bw9y0.gif",
+    "url" : "#img/npc/para1.gif",
     "collision" : true,
     "dialog" :
     {
@@ -719,7 +719,7 @@
     "name" : "Tańcząca para",
     "x" : "61",
     "y" : "34",
-    "url" : "http://i.imgur.com/IwUKPrF.gif",
+    "url" : "#img/npc/para2.gif",
     "collision" : true,
     "dialog" :
     {

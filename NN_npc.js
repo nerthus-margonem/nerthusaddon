@@ -129,8 +129,37 @@ nerthus.npc.click_wrapper = function(npc, click_handler)
 
 nerthus.npc.deploy = function(npc)
 {
+    if(!this.is_deployable(npc))
+        return
     this.compose(npc)
     this.set_collision(npc)
+}
+
+nerthus.npc.is_deployable = function(npc)
+{
+    return this.time.validate(npc)
+}
+
+nerthus.npc.time = {}
+nerthus.npc.time.validate = function(npc)
+{
+    if(!npc.time)
+        return true
+
+    var start = this.parse_to_date(npc.time.split("-")[0])
+    var end = this.parse_to_date(npc.time.split("-")[1])
+    var now = new Date()
+    if(start > end)
+        return now > start || now < end
+    return now > start && now < end
+}
+
+nerthus.npc.time.parse_to_date = function(time_str)
+{
+    time_str = time_str.split(":")
+    var date = new Date()
+    date.setHours(time_str[0], time_str[1] || 0)
+    return date
 }
 
 nerthus.npc.set_collision = function(npc)

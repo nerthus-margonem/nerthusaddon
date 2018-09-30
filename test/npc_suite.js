@@ -309,3 +309,91 @@ test("npc with url starting with # should be resolved as url pointing to local a
     expect($("#base").children().attr("src")).to.be(nerthus.addon.PREFIX + URL)
 })
 
+setTime = function(hour, minutes)
+{
+    var _date = Date
+    Date = function()
+    {
+        var date = new _date(0)
+        date.setHours(hour, minutes)
+        return date
+    }
+    return _date
+}
+
+test("npc with time shell not be deployed before expected time 5:00 vs 7:00-18:00", function()
+{
+   var _date = setTime(5,0)
+
+    var npc = minimal_npc()
+    npc.time = "7-18"
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+    expect($("#base").children()).empty()
+
+    Date = _date
+})
+
+test("npc with time shell not be deployed after expected time 20:00 vs 7:00-18:00", function()
+{
+    var _date = setTime(20,0)
+
+    var npc = minimal_npc()
+    npc.time = "7-18"
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+    expect($("#base").children()).empty()
+
+    Date = _date
+})
+
+test("npc with time shell be deployed in expected time 10:00 vs 7:00-18:00", function()
+{
+   var _date = Date
+
+    setTime(10,0)
+
+    var npc = minimal_npc()
+    npc.time = "7-18"
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+})
+
+test("npc with time shell not be deployed in unexpected time 10:00 vs 20:00-6:00", function()
+{
+   var _date = Date
+
+    setTime(10,0)
+
+    var npc = minimal_npc()
+    npc.time = "20-6"
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+    expect($("#base").children()).empty()
+
+    Date = _date
+})
+
+test("npc with time shell be deployed in expected time 22:00 vs 20:00-6:00", function()
+{
+   var _date = Date
+
+    setTime(22,0)
+
+    var npc = minimal_npc()
+    npc.time = "20-6"
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+})
+

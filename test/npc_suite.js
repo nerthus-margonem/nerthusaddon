@@ -77,6 +77,14 @@ before(function()
 
 })
 
+clear_html = function()
+{
+    $("#body").empty()
+    $("#base").empty()
+    $(".message").empty()
+    $(".replies").empty()
+}
+
 suite("npc dialog parse message")
 
 test("message shall includes first dialog from given index", function()
@@ -165,13 +173,7 @@ test("placeholder #NAME is replace by hero.nick", function()
 
 suite("npc dialog API")
 
-beforeEach(function()
-{
-    $("#body").empty()
-    $("#base").empty()
-    $(".message").empty()
-    $(".replies").empty()
-})
+beforeEach(clear_html)
 
 test("open dialog display dialog from given index", function()
 {
@@ -247,13 +249,7 @@ test("create tipless npc", function()
 
 suite("npc deployment")
 
-beforeEach(function()
-{
-    $("#body").empty()
-    $("#base").empty()
-    $(".message").empty()
-    $(".replies").empty()
-})
+beforeEach(clear_html)
 
 test("deployed npc is added to #base", function()
 {
@@ -309,6 +305,10 @@ test("npc with url starting with # should be resolved as url pointing to local a
     expect($("#base").children().attr("src")).to.be(nerthus.addon.PREFIX + URL)
 })
 
+suite("npc time")
+
+beforeEach(clear_html)
+
 setTime = function(hour, minutes)
 {
     var _date = Date
@@ -321,79 +321,80 @@ setTime = function(hour, minutes)
     return _date
 }
 
-test("npc with time shell not be deployed before expected time 5:00 vs 7:00-18:00", function()
+npc_expected_in_time = function(npc_time, current_time)
 {
-   var _date = setTime(5,0)
+    var _date = setTime(current_time.split(":")[0], current_time.split(":")[1])
 
     var npc = minimal_npc()
-    npc.time = "7-18"
+    npc.time = npc_time
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+}
+
+npc_not_expected_in_time = function(npc_time, current_time)
+{
+    var _date = setTime(current_time.split(":")[0], current_time.split(":")[1])
+
+    var npc = minimal_npc()
+    npc.time = npc_time
     nerthus.npc.deploy(npc)
 
     expect(nerthus.npc.is_deployable(npc)).not.ok()
     expect($("#base").children()).empty()
 
     Date = _date
+}
+
+test("npc with time shell not be deployed before expected time 5:00 vs 7:00-18:00", function()
+{
+    npc_not_expected_in_time("7-18", "5:00")
 })
 
 test("npc with time shell not be deployed after expected time 20:00 vs 7:00-18:00", function()
 {
-    var _date = setTime(20,0)
-
-    var npc = minimal_npc()
-    npc.time = "7-18"
-    nerthus.npc.deploy(npc)
-
-    expect(nerthus.npc.is_deployable(npc)).not.ok()
-    expect($("#base").children()).empty()
-
-    Date = _date
+    npc_not_expected_in_time("7-18", "20:00")
 })
 
 test("npc with time shell be deployed in expected time 10:00 vs 7:00-18:00", function()
 {
-   var _date = Date
-
-    setTime(10,0)
-
-    var npc = minimal_npc()
-    npc.time = "7-18"
-    nerthus.npc.deploy(npc)
-
-    expect(nerthus.npc.is_deployable(npc)).ok()
-    expect($("#base").children()).not.empty()
-
-    Date = _date
+    npc_expected_in_time("7-18", "10:00")
 })
 
 test("npc with time shell not be deployed in unexpected time 10:00 vs 20:00-6:00", function()
 {
-   var _date = Date
-
-    setTime(10,0)
-
-    var npc = minimal_npc()
-    npc.time = "20-6"
-    nerthus.npc.deploy(npc)
-
-    expect(nerthus.npc.is_deployable(npc)).not.ok()
-    expect($("#base").children()).empty()
-
-    Date = _date
+    npc_not_expected_in_time("20-6", "10:00")
 })
 
 test("npc with time shell be deployed in expected time 22:00 vs 20:00-6:00", function()
 {
-   var _date = Date
+    npc_expected_in_time("20-6", "22:00")
+})
 
-    setTime(22,0)
+test("npc with time shell be deployed in expected time 04:00 vs 20:00-6:00", function()
+{
+    npc_expected_in_time("20-6", "4:00")
+})
 
-    var npc = minimal_npc()
-    npc.time = "20-6"
-    nerthus.npc.deploy(npc)
+suite("npc time with minutes")
 
-    expect(nerthus.npc.is_deployable(npc)).ok()
-    expect($("#base").children()).not.empty()
+beforeEach(clear_html)
 
-    Date = _date
+test("npc with time shell be deployed in expected time 10:20 vs 10:10-10:30", function()
+{
+    npc_expected_in_time("10:10-10:30", "10:20")
+})
+
+test("npc with time shell not be deployed before expected time 10:05 vs 10:10-10:30", function()
+{
+    npc_not_expected_in_time("10:10-10:30", "10:05")
+})
+
+test("npc with time shell not be deployed after expected time 10:35 vs 10:10-10:30", function()
+{
+    npc_not_expected_in_time("10:10-10:30", "10:35")
 })
 

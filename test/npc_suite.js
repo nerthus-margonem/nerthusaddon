@@ -77,6 +77,14 @@ before(function()
 
 })
 
+clear_html = function()
+{
+    $("#body").empty()
+    $("#base").empty()
+    $(".message").empty()
+    $(".replies").empty()
+}
+
 suite("npc dialog parse message")
 
 test("message shall includes first dialog from given index", function()
@@ -164,14 +172,7 @@ test("placeholder #NAME is replace by hero.nick", function()
 })
 
 suite("npc dialog API")
-
-beforeEach(function()
-{
-    $("#body").empty()
-    $("#base").empty()
-    $(".message").empty()
-    $(".replies").empty()
-})
+beforeEach(clear_html)
 
 test("open dialog display dialog from given index", function()
 {
@@ -246,14 +247,7 @@ test("create tipless npc", function()
 })
 
 suite("npc deployment")
-
-beforeEach(function()
-{
-    $("#body").empty()
-    $("#base").empty()
-    $(".message").empty()
-    $(".replies").empty()
-})
+beforeEach(clear_html)
 
 test("deployed npc is added to #base", function()
 {
@@ -309,3 +303,363 @@ test("npc with url starting with # should be resolved as url pointing to local a
     expect($("#base").children().attr("src")).to.be(nerthus.addon.PREFIX + URL)
 })
 
+suite("npc time")
+beforeEach(clear_html)
+
+setTime = function(hour, minutes)
+{
+    var _date = Date
+    Date = function()
+    {
+        var date = new _date(0)
+        date.setHours(hour, minutes)
+        return date
+    }
+    return _date
+}
+
+npc_expected_in_time = function(npc_time, current_time)
+{
+    var _date = setTime(current_time.split(":")[0], current_time.split(":")[1])
+
+    var npc = minimal_npc()
+    npc.time = npc_time
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+}
+
+npc_not_expected_in_time = function(npc_time, current_time)
+{
+    var _date = setTime(current_time.split(":")[0], current_time.split(":")[1])
+
+    var npc = minimal_npc()
+    npc.time = npc_time
+    nerthus.npc.deploy(npc)
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+    expect($("#base").children()).empty()
+
+    Date = _date
+}
+
+test("npc with time shell not be deployed before expected time 5:00 vs 7:00-18:00", function()
+{
+    npc_not_expected_in_time("7-18", "5:00")
+})
+
+test("npc with time shell not be deployed after expected time 20:00 vs 7-18", function()
+{
+    npc_not_expected_in_time("7-18", "20:00")
+})
+
+test("npc with time shell be deployed in expected time 10:00 vs 7-18", function()
+{
+    npc_expected_in_time("7-18", "10:00")
+})
+
+test("npc with time shell not be deployed in unexpected time 10:00 vs 20-6", function()
+{
+    npc_not_expected_in_time("20-6", "10:00")
+})
+
+test("npc with time shell be deployed in expected time 22:00 vs 20-6", function()
+{
+    npc_expected_in_time("20-6", "22:00")
+})
+
+test("npc with time shell be deployed in expected time 04:00 vs 20-6", function()
+{
+    npc_expected_in_time("20-6", "4:00")
+})
+
+test("npc with time shell be deployed in time range begin time 07:00 vs 7-18", function()
+{
+    npc_expected_in_time("7-18", "7:00")
+})
+
+test("npc with time shell be deployed in time range end time 18:00 vs 7-18", function()
+{
+    npc_expected_in_time("7-18", "18:00")
+})
+
+suite("npc time with minutes")
+beforeEach(clear_html)
+
+test("npc with time shell be deployed in expected time 10:20 vs 10:10-10:30", function()
+{
+    npc_expected_in_time("10:10-10:30", "10:20")
+})
+
+test("npc with time shell not be deployed before expected time 10:05 vs 10:10-10:30", function()
+{
+    npc_not_expected_in_time("10:10-10:30", "10:05")
+})
+
+test("npc with time shell not be deployed after expected time 10:35 vs 10:10-10:30", function()
+{
+    npc_not_expected_in_time("10:10-10:30", "10:35")
+})
+
+test("npc with time shell be deployed in time range begin time 07:05 vs 7:05-18:15", function()
+{
+    npc_expected_in_time("7:05-18:15", "7:05")
+})
+
+test("npc with time shell be deployed in time range end time 18:15 vs 7:05-18:15", function()
+{
+    npc_expected_in_time("7:05-18:15", "18:15")
+})
+
+suite("npc days")
+beforeEach(clear_html)
+
+test("npc with empty days should not be present", function()
+{
+    var npc = minimal_npc()
+    npc.days = []
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).empty()
+})
+
+test("npc should be present only in days defined in npc.days, weekend only npc [5,6]", function()
+{
+    var setWeekDay = function(dayOfWeek)
+    {
+        var _date = Date
+        Date = function()
+        {
+            var date = new _date(0)
+            date.setDate(date.getDate() - date.getDay() + dayOfWeek);
+            return date
+        }
+        return _date
+    }
+
+    var npc = minimal_npc()
+    npc.days = [5,6]
+
+    _date = setWeekDay(0)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    _date = setWeekDay(1)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    _date = setWeekDay(2)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    _date = setWeekDay(3)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    _date = setWeekDay(4)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    _date = setWeekDay(5)
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    _date = setWeekDay(6)
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+})
+
+suite("npc date DD.MM.YYYY-DD.MM.YYYY")
+beforeEach(clear_html)
+
+setDate = function(day, month, year)
+{
+    var _date = Date
+    Date = function()
+    {
+        var date = new _date(0)
+        date.setFullYear(year, month - 1, day)
+        return date
+    }
+    return _date
+}
+
+npc_expected_in_date = function(npc_date, current_date)
+{
+    var _date = setDate(current_date[0], current_date[1], current_date[2])
+
+    var npc = minimal_npc()
+    npc.date = npc_date
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+}
+
+npc_not_expected_in_date = function(npc_date, current_date)
+{
+    var _date = setDate(current_date[0], current_date[1], current_date[2])
+
+    var npc = minimal_npc()
+    npc.date = npc_date
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).empty()
+
+    Date = _date
+}
+
+test("npc with date should not be present before date 1.1.2020 vs 2.2.2020-4.4.2020", function()
+{
+    npc_not_expected_in_date("2.2.2020-4.4.2020",[1,1,2020])
+})
+
+test("npc with date should not be present after date 5.5.2020 vs 2.2.2020-4.4.2020", function()
+{
+    npc_not_expected_in_date("2.2.2020-4.4.2020",[5,5,2020])
+})
+
+test("npc with date should be present when date fit in range 3.3.2020 vs 2.2.2020-4.4.2020", function()
+{
+    npc_expected_in_date("2.2.2020-4.4.2020",[3,3,2020])
+})
+
+test("npc with date should be present in first day of range 2.2.2020 vs 2.2.2020-4.4.2020", function()
+{
+    npc_expected_in_date("2.2.2020-4.4.2020",[2,2,2020])
+})
+
+test("npc with date should be present in last day of range 4.4.2020 vs 2.2.2020-4.4.2020", function()
+{
+    npc_expected_in_date("2.2.2020-4.4.2020",[4,4,2020])
+})
+
+suite("npc date DD.MM-DD.MM")
+beforeEach(clear_html)
+
+test("npc with date should not be present before date 1.1.2020 vs 15.1-15.5", function()
+{
+    npc_not_expected_in_date("15.1-15.5",[1,1,2020])
+})
+
+test("npc with date should not be present after date 25.5.2020 vs 15.1-15.5", function()
+{
+    npc_not_expected_in_date("15.1-15.5",[25,5,2020])
+})
+
+test("npc with date should be present when date fit in range 3.3.2020 vs 15.1-15.5", function()
+{
+    npc_expected_in_date("15.1-15.5",[3,3,2020])
+})
+
+test("npc with date should be present in first day of range 15.1.2020 vs 15.1-15.5", function()
+{
+    npc_expected_in_date("15.1-15.5",[15,1,2020])
+})
+
+test("npc with date should be present in last day of range 15.5.2020 vs 15.1-15.5", function()
+{
+    npc_expected_in_date("15.1-15.5",[15,5,2020])
+})
+
+suite("npc date DD-DD")
+beforeEach(clear_html)
+
+test("npc with date should not be present before date 1.1.2020 vs 5-15", function()
+{
+    npc_not_expected_in_date("5-15",[1,1,2020])
+})
+
+test("npc with date should not be present after date 25.5.2020 vs 5-15", function()
+{
+    npc_not_expected_in_date("5-15",[25,5,2020])
+})
+
+test("npc with date should be present when date fit in range 8.8.2020 vs 5-15", function()
+{
+    npc_expected_in_date("5-15",[8,8,2020])
+})
+
+test("npc with date should be present in first day of range 5.8.2020 vs 5-15", function()
+{
+    npc_expected_in_date("5-15",[5,8,2020])
+})
+
+test("npc with date should be present in last day of range 15.8.2020 vs 5-15", function()
+{
+    npc_expected_in_date("5-15",[15,8,2020])
+})
+
+suite("npc date DD-DD.MM")
+beforeEach(clear_html)
+
+test("npc with date should not be present before date 1.1.2020 vs 5-15.5", function()
+{
+    npc_not_expected_in_date("5-15.5",[1,1,2020])
+})
+
+test("npc with date should not be present after date 25.5.2020 vs 5-15.5", function()
+{
+    npc_not_expected_in_date("5-15.5",[25,5,2020])
+})
+
+test("npc with date should not be present after date 10.6.2020 vs 5-15.5", function()
+{
+    npc_not_expected_in_date("5-15.5",[10,6,2020])
+})
+
+test("npc with date should be present when date fit in range 10.5.2020 vs 5-15.5", function()
+{
+    npc_expected_in_date("5-15.5",[10,5,2020])
+})
+
+test("npc with date should be present in first day of range 5.1.2020 vs 5-15.5", function()
+{
+    npc_expected_in_date("5-15.5",[5,1,2020])
+})
+
+test("npc with date should be present in last day of range 15.5.2020 vs 5-15.5", function()
+{
+    npc_expected_in_date("5-15.5",[15,5,2020])
+})
+
+suite("npc date DD.MM-DD")
+beforeEach(clear_html)
+
+test("npc with date should not be present before date 1.1.2020 vs 5.5-15", function()
+{
+    npc_not_expected_in_date("5.5-15",[1,1,2020])
+})
+
+test("npc with date should not be present after date 25.5.2020 vs 5.5-15", function()
+{
+    npc_not_expected_in_date("5.5-15",[25,5,2020])
+})
+
+test("npc with date should not be present before date 10.4.2020 vs 5.5-15", function()
+{
+    npc_not_expected_in_date("5.5-15",[10,4,2020])
+})
+
+test("npc with date should be present when date fit in range 10.5.2020 vs 5.5-15", function()
+{
+    npc_expected_in_date("5.5-15",[10,5,2020])
+})
+
+test("npc with date should be present in first day of range 5.5.2020 vs 5.5-15", function()
+{
+    npc_expected_in_date("5.5-15",[5,5,2020])
+})
+
+test("npc with date should be present in last day of range 15.12.2020 vs 5.5-15", function()
+{
+    npc_expected_in_date("5.5-15",[15,12,2020])
+})

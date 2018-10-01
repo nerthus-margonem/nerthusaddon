@@ -351,29 +351,39 @@ test("npc with time shell not be deployed before expected time 5:00 vs 7:00-18:0
     npc_not_expected_in_time("7-18", "5:00")
 })
 
-test("npc with time shell not be deployed after expected time 20:00 vs 7:00-18:00", function()
+test("npc with time shell not be deployed after expected time 20:00 vs 7-18", function()
 {
     npc_not_expected_in_time("7-18", "20:00")
 })
 
-test("npc with time shell be deployed in expected time 10:00 vs 7:00-18:00", function()
+test("npc with time shell be deployed in expected time 10:00 vs 7-18", function()
 {
     npc_expected_in_time("7-18", "10:00")
 })
 
-test("npc with time shell not be deployed in unexpected time 10:00 vs 20:00-6:00", function()
+test("npc with time shell not be deployed in unexpected time 10:00 vs 20-6", function()
 {
     npc_not_expected_in_time("20-6", "10:00")
 })
 
-test("npc with time shell be deployed in expected time 22:00 vs 20:00-6:00", function()
+test("npc with time shell be deployed in expected time 22:00 vs 20-6", function()
 {
     npc_expected_in_time("20-6", "22:00")
 })
 
-test("npc with time shell be deployed in expected time 04:00 vs 20:00-6:00", function()
+test("npc with time shell be deployed in expected time 04:00 vs 20-6", function()
 {
     npc_expected_in_time("20-6", "4:00")
+})
+
+test("npc with time shell be deployed in time range begin time 07:00 vs 7-18", function()
+{
+    npc_expected_in_time("7-18", "7:00")
+})
+
+test("npc with time shell be deployed in time range end time 18:00 vs 7-18", function()
+{
+    npc_expected_in_time("7-18", "18:00")
 })
 
 suite("npc time with minutes")
@@ -392,6 +402,16 @@ test("npc with time shell not be deployed before expected time 10:05 vs 10:10-10
 test("npc with time shell not be deployed after expected time 10:35 vs 10:10-10:30", function()
 {
     npc_not_expected_in_time("10:10-10:30", "10:35")
+})
+
+test("npc with time shell be deployed in time range begin time 07:05 vs 7:05-18:15", function()
+{
+    npc_expected_in_time("7:05-18:15", "7:05")
+})
+
+test("npc with time shell be deployed in time range end time 18:15 vs 7:05-18:15", function()
+{
+    npc_expected_in_time("7:05-18:15", "18:15")
 })
 
 suite("npc days")

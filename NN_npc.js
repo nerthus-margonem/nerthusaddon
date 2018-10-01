@@ -152,8 +152,8 @@ nerthus.npc.time.validate = function(npc)
     const end = this.parse_to_date(npc.time.split("-")[1])
     const now = new Date()
     if(start > end)
-        return start < now || now < end
-    return start < now && now < end
+        return start <= now || now <= end
+    return start <= now && now <= end
 }
 nerthus.npc.time.parse_to_date = function(time_str)
 {

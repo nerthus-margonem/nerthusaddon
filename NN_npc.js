@@ -139,6 +139,7 @@ nerthus.npc.is_deployable = function(npc)
 {
     return this.time.validate(npc)
         && this.days.validate(npc)
+        && this.date.validate(npc)
 }
 
 nerthus.npc.time = {}
@@ -151,10 +152,9 @@ nerthus.npc.time.validate = function(npc)
     const end = this.parse_to_date(npc.time.split("-")[1])
     const now = new Date()
     if(start > end)
-        return now > start || now < end
-    return now > start && now < end
+        return start < now || now < end
+    return start < now && now < end
 }
-
 nerthus.npc.time.parse_to_date = function(time_str)
 {
     time_str = time_str.split(":")
@@ -168,8 +168,31 @@ nerthus.npc.days.validate = function(npc)
 {
     if(!npc.days)
         return true
+
     const day_of_week = new Date().getDay()
     return npc.days.indexOf(day_of_week) > -1
+}
+
+nerthus.npc.date = {}
+nerthus.npc.date.parse_to_date = function(date_str) //DD.MM.YYYY
+{
+    date_str = date_str.split(".")
+    var date = new Date()
+    const day = date_str[0] || date.getDay()
+    const month = date_str[1] ? parseInt(date_str[1]) - 1 : date.getMonth() //month 0-11
+    const year = date_str[2] || date.getYear()
+    date.setFullYear(year, month, day)
+    return date
+}
+nerthus.npc.date.validate = function(npc)
+{
+    if(!npc.date)
+        return true
+
+    const begin = this.parse_to_date(npc.date.split("-")[0])
+    const end = this.parse_to_date(npc.date.split("-")[1])
+    const now = new Date()
+    return begin <= now && now <= end
 }
 
 nerthus.npc.set_collision = function(npc)

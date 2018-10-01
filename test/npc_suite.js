@@ -410,7 +410,7 @@ test("npc with empty days should not be present", function()
 
 test("npc should be present only in days defined in npc.days, weekend only npc [5,6]", function()
 {
-    var _date = setWeekDay = function(dayOfWeek)
+    var setWeekDay = function(dayOfWeek)
     {
         var _date = Date
         Date = function()
@@ -425,25 +425,25 @@ test("npc should be present only in days defined in npc.days, weekend only npc [
     var npc = minimal_npc()
     npc.days = [5,6]
 
-    setWeekDay(0)
+    _date = setWeekDay(0)
     expect(nerthus.npc.is_deployable(npc)).not.ok()
 
-    setWeekDay(1)
+    _date = setWeekDay(1)
     expect(nerthus.npc.is_deployable(npc)).not.ok()
 
-    setWeekDay(2)
+    _date = setWeekDay(2)
     expect(nerthus.npc.is_deployable(npc)).not.ok()
 
-    setWeekDay(3)
+    _date = setWeekDay(3)
     expect(nerthus.npc.is_deployable(npc)).not.ok()
 
-    setWeekDay(4)
+    _date = setWeekDay(4)
     expect(nerthus.npc.is_deployable(npc)).not.ok()
 
-    setWeekDay(5)
+    _date = setWeekDay(5)
     expect(nerthus.npc.is_deployable(npc)).ok()
 
-    setWeekDay(6)
+    _date = setWeekDay(6)
     expect(nerthus.npc.is_deployable(npc)).ok()
 
     nerthus.npc.deploy(npc)
@@ -452,3 +452,92 @@ test("npc should be present only in days defined in npc.days, weekend only npc [
     Date = _date
 })
 
+suite("npc date")
+beforeEach(clear_html)
+
+setDate = function(day, month, year)
+{
+    var _date = Date
+    Date = function()
+    {
+        var date = new _date(0)
+        date.setFullYear(year, month - 1, day)
+        return date
+    }
+    return _date
+}
+
+test("npc with date should not be present before date 1.1.2020 vs 2.2.2020-4.4.2020", function()
+{
+    var npc = minimal_npc()
+    npc.date = "2.2.2020-4.4.2020"
+
+    var _date = setDate(1,1,2020)
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).empty()
+
+    Date = _date
+})
+
+test("npc with date should not be present after date 5.5.2020 vs 2.2.2020-4.4.2020", function()
+{
+    var npc = minimal_npc()
+    npc.date = "2.2.2020-4.4.2020"
+
+    var _date = setDate(5,5,2020)
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).empty()
+
+    Date = _date
+})
+
+test("npc with date should be present when date fit in range 3.3.2020 vs 2.2.2020-4.4.2020", function()
+{
+    var npc = minimal_npc()
+    npc.date = "2.2.2020-4.4.2020"
+
+    var _date = setDate(3,3,2020)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+})
+
+test("npc with date should be present in first day of range 2.2.2020 vs 2.2.2020-4.4.2020", function()
+{
+    var npc = minimal_npc()
+    npc.date = "2.2.2020-4.4.2020"
+
+    var _date = setDate(2,2,2020)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+})
+
+test("npc with date should be present in last day of range 4.4.2020 vs 2.2.2020-4.4.2020", function()
+{
+    var npc = minimal_npc()
+    npc.date = "2.2.2020-4.4.2020"
+
+    var _date = setDate(4,4,2020)
+
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).not.empty()
+
+    Date = _date
+})

@@ -172,7 +172,6 @@ test("placeholder #NAME is replace by hero.nick", function()
 })
 
 suite("npc dialog API")
-
 beforeEach(clear_html)
 
 test("open dialog display dialog from given index", function()
@@ -248,7 +247,6 @@ test("create tipless npc", function()
 })
 
 suite("npc deployment")
-
 beforeEach(clear_html)
 
 test("deployed npc is added to #base", function()
@@ -306,7 +304,6 @@ test("npc with url starting with # should be resolved as url pointing to local a
 })
 
 suite("npc time")
-
 beforeEach(clear_html)
 
 setTime = function(hour, minutes)
@@ -380,7 +377,6 @@ test("npc with time shell be deployed in expected time 04:00 vs 20:00-6:00", fun
 })
 
 suite("npc time with minutes")
-
 beforeEach(clear_html)
 
 test("npc with time shell be deployed in expected time 10:20 vs 10:10-10:30", function()
@@ -396,5 +392,63 @@ test("npc with time shell not be deployed before expected time 10:05 vs 10:10-10
 test("npc with time shell not be deployed after expected time 10:35 vs 10:10-10:30", function()
 {
     npc_not_expected_in_time("10:10-10:30", "10:35")
+})
+
+suite("npc days")
+beforeEach(clear_html)
+
+test("npc with empty days should not be present", function()
+{
+    var npc = minimal_npc()
+    npc.days = []
+
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).empty()
+})
+
+test("npc should be present only in days defined in npc.days, weekend only npc [5,6]", function()
+{
+    var _date = setWeekDay = function(dayOfWeek)
+    {
+        var _date = Date
+        Date = function()
+        {
+            var date = new _date(0)
+            date.setDate(date.getDate() - date.getDay() + dayOfWeek);
+            return date
+        }
+        return _date
+    }
+
+    var npc = minimal_npc()
+    npc.days = [5,6]
+
+    setWeekDay(0)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    setWeekDay(1)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    setWeekDay(2)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    setWeekDay(3)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    setWeekDay(4)
+    expect(nerthus.npc.is_deployable(npc)).not.ok()
+
+    setWeekDay(5)
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    setWeekDay(6)
+    expect(nerthus.npc.is_deployable(npc)).ok()
+
+    nerthus.npc.deploy(npc)
+    expect($("#base").children()).not.empty()
+
+    Date = _date
 })
 

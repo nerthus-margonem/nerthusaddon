@@ -138,6 +138,7 @@ nerthus.npc.deploy = function(npc)
 nerthus.npc.is_deployable = function(npc)
 {
     return this.time.validate(npc)
+        && this.days.validate(npc)
 }
 
 nerthus.npc.time = {}
@@ -160,6 +161,15 @@ nerthus.npc.time.parse_to_date = function(time_str)
     var date = new Date()
     date.setHours(time_str[0], time_str[1] || 0)
     return date
+}
+
+nerthus.npc.days = {}
+nerthus.npc.days.validate = function(npc)
+{
+    if(!npc.days)
+        return true
+    const day_of_week = new Date().getDay()
+    return npc.days.indexOf(day_of_week) > -1
 }
 
 nerthus.npc.set_collision = function(npc)

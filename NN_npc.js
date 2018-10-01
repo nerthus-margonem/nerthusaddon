@@ -47,8 +47,8 @@ nerthus.npc.dialog.parse_placeholders = function(text)
 
 nerthus.npc.dialog.open = function(npc, index)
 {
-    var message = this.parse_message(npc, index)
-    var replies = this.parse_replies(npc, index)
+    const message = this.parse_message(npc, index)
+    const replies = this.parse_replies(npc, index)
     this.display(message, replies, npc)
     g.lock.add("nerthus_dialog")
 }
@@ -72,7 +72,7 @@ nerthus.npc.dialog.compose.icon = function(type)
 }
 nerthus.npc.dialog.compose.reply = function(reply)
 {
-    var icon = this.icon(reply.icon)
+    const icon = this.icon(reply.icon)
     return $("<li>").addClass(reply.icon)
                     .append(icon)
                     .append(reply.text)
@@ -95,12 +95,12 @@ nerthus.npc.compose = function(npc)
     .appendTo('#base')
     .load(function()
     {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-        var x = 32 * parseInt(npc.x) + 16 - Math.floor($(this).width() / 2)
-        var y = 32 * parseInt(npc.y) + 32 - $(this).height()
+        const x = 32 * parseInt(npc.x) + 16 - Math.floor($(this).width() / 2)
+        const y = 32 * parseInt(npc.y) + 32 - $(this).height()
         $(this).css({top:"" + y + "px", left: "" + x + "px"})
     })
 
-    var tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+    const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
     if(tip)
         $npc.attr("ctip", "t_npc").attr("tip", tip)
 
@@ -147,9 +147,9 @@ nerthus.npc.time.validate = function(npc)
     if(!npc.time)
         return true
 
-    var start = this.parse_to_date(npc.time.split("-")[0])
-    var end = this.parse_to_date(npc.time.split("-")[1])
-    var now = new Date()
+    const start = this.parse_to_date(npc.time.split("-")[0])
+    const end = this.parse_to_date(npc.time.split("-")[1])
+    const now = new Date()
     if(start > end)
         return now > start || now < end
     return now > start && now < end

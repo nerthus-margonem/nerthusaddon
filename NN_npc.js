@@ -180,7 +180,7 @@ nerthus.npc.date.parse_to_date = function(date_str) //DD.MM.YYYY
     var date = new Date()
     const day = date_str[0] || date.getDay()
     const month = date_str[1] ? parseInt(date_str[1]) - 1 : date.getMonth() //month 0-11
-    const year = date_str[2] || date.getYear()
+    const year = date_str[2] || date.getFullYear()
     date.setFullYear(year, month, day)
     return date
 }

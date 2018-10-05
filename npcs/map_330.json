@@ -1,0 +1,43 @@
+[
+{
+    "name" : "Zarośnięta mogiła",
+    "x" : "89",
+    "y" : "51",
+    "url" : "#img/npc/grob.png",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Wśród kęp trawy twoją uwagę zwraca rosnący samotnie fioletowy kwiatek. Nie przypominasz sobie, by podobne rosły w okolicy. ]",
+            "[ Podchodzę bliżej. ] ->1",
+            "[ Odchodzę. ] ->END"
+        ],
+        "1" :
+        [
+            "[ Dopiero stojąc tuż obok zdajesz sobie sprawę, że to na co patrzysz jest częściowo zarośniętym grobem. Czujesz na plecach nieprzyjemny, zimny dreszcz, jak zawsze gdy czujesz się obserwowany. ]",
+            "[ Odwracam się gwałtownie. ] ->2",
+            "Ej, ty! Wyłaź stamtąd! ->3",
+            "[ Ignoruję odczucie i skupiam się na zbadaniu grobu. ] ->4",
+            "[ Odchodzę. ] ->END"
+        ],
+        "2" :
+        [
+            "[ Za tobą nikogo nie ma. Lustrujesz wzrokiem pobliskie zarośla, ale nie ma w nich nic, poza żabami. Centaury kręcą się w dalszej części boru. ]",
+            "[ Kucam, aby obejrzeć mogiłę. ] ->4",
+            "Chyba lepiej się stąd wynieść. ->END"
+        ],
+        "3" :
+        [
+            "[ Odpowiada ci cisza. ]",
+            "[ Nachylam się, żeby obejrzeć grób. ] ->4",
+            "[ Odchodzę. ] ->END"
+        ],
+        "4" :
+        [
+            "[ Ktokolwiek został tutaj pochowany, miało to miejsce wiele, wiele lat temu. Co ciekawe, ktoś jednak dba o to miejsce, część trawy była wyrwana nie tak dawno temu. Przegrzebując lekko palcami wierzchnią warstwę ziemi czujesz ulotne echo magii. Coś ci mówi, żebyś zostawił to miejsce w spokoju. ]",
+            "Nie bez powodu ktoś został pogrzebany tak daleko od miejscowego cmentarza. Może ktoś w wiosce będzie wiedział więcej. ->END"
+            "[ Odchodzę w ciszy. ] ->END"
+        ]
+    }
+}
+]

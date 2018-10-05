@@ -35,7 +35,7 @@
         "4" :
         [
             "[ Ktokolwiek został tutaj pochowany, miało to miejsce wiele, wiele lat temu. Co ciekawe, ktoś jednak dba o to miejsce, część trawy była wyrwana nie tak dawno temu. Przegrzebując lekko palcami wierzchnią warstwę ziemi czujesz ulotne echo magii. Coś ci mówi, żebyś zostawił to miejsce w spokoju. ]",
-            "Nie bez powodu ktoś został pogrzebany tak daleko od miejscowego cmentarza. Może ktoś w wiosce będzie wiedział więcej. ->END"
+            "Nie bez powodu ktoś został pogrzebany tak daleko od miejscowego cmentarza. Może ktoś w wiosce będzie wiedział więcej. ->END",
             "[ Odchodzę w ciszy. ] ->END"
         ]
     }

@@ -1,0 +1,25 @@
+[
+{
+		"name": "Duch",
+		"x": "53",
+		"y": "17",
+		"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost6.gif",
+		"date": "30.10-4.11"
+	},
+	{
+		"name": "Duch",
+		"x": "63",
+		"y": "53",
+		"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost5.gif",
+		"date": "30.10-4.11"
+	},
+    {
+		"name": "Duch",
+		"x": "53",
+		"y": "75",
+		"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
+		"date": "30.10-4.11"
+	}
+]
+
+ 

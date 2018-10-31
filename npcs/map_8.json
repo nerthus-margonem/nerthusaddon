@@ -1,0 +1,86 @@
+[
+{
+    "name" : "Wisielec",
+    "x" : "38",
+    "y" : "25",
+    "url" : "https://www.margonem.pl/obrazki/npc/kob/tri2_witch_1a.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Niematerialna zjawa kołysze się na gałęzi. Ciało poruszane jest przez wiatr, którego nie widzisz, ani nie czujesz. ]",
+            "[ Podchodzę. ] ->1",
+            "[ Zostawiam zmarłą w spokoju. ] ->END"
+        ],
+        "1" :
+        [
+            "Zastraszona, wzgardzona, w Noc Duchów powieszona",
+            "Dalej ->2"
+        ],
+        "2" :
+        [
+            "Zastraszona, wzgardzona, na wieki uwięziona",
+            "[ Słucham dalej. ] ->3",
+            "[ Odchodzę. ] ->END"
+        ],
+         "3" :
+        [
+            "Zastraszona, wzgardzona, w Noc Duchów powieszona",
+            "Dalej ->4"
+        ],
+        "4" :
+        [
+            "Zastraszony, wzgardzony, w Noc Duchów powieszony?",
+            "Nie, nie. Ja nie jestem duchem! ->3",
+            "[ Odchodzę. ] ->END"
+        ],
+         "5" :
+        [
+            "Zastraszona, wzgardzona, w Noc Duchów powieszona",
+            "Biedna, mogę Ci jakoś pomóc? ->6"
+        ],
+        "6" :
+        [
+            "Zastraszona, wzgardzona, na wieki uwięziona",
+            "Spoczywaj w pokoju... ->END",
+            "[ Odchodzę. ] ->END"
+        ]
+        
+    }
+},
+{
+    "name" : "Duch wiedźmy",
+    "x" : "4",
+    "y" : "45",
+    "url" : "https://www.margonem.pl/obrazki/npc/tru/tri_ghost5.gif",
+    "collision" : true,
+    "date" : "30.10-4.11",
+    "dialog" :
+    {
+        "0" :
+        [
+            "TY! Ty też jesteś winny",
+            "Winny? Ja nic nie zrobiłem! ->1",
+            "Odejdź, zjawo nieczysta. ->END"
+        ],
+        "1" :
+        [
+            "Zastraszona, wzgardzona, w Noc Duchów spopielona. Trzynaście z nas zginęło. Wróciłyśmy w objęcia żywiołów, w ciepłe dłonie płomieni, chłodne uściski wody, w silne ramiona ziemi. Doznałyśmy łagodnych pieszczot powietrza. Ci głupi ludzie nie pomyśleli, żeby oddać każdą z nas jej domenie. Głupcy spalili mnie żywcem.",
+            "Byłaś magiem wody? ->2",
+            "Zdecydowanie nie umiem ci pomóc. ->END"
+        ],
+        "2" :
+        [
+            "Tak! Mogłam się śmiać przy próbie rzeki, mogłam z rozkoszą przyjąć dotyk mojej przyjaciółki. Ale nie! Nie pozwolili mi!",
+            "Czemu tu jesteś? ->3",
+            "Dobrze wiedzieli jak się tobą zająć. ->END"
+        ],
+        "3" :
+        [
+            "Śmierć nadeszła o północy, tak niewiele brakowało, a byłabym wolna. Tak latami błądzę tu, gdy granica światów jest cienka. Złakniona tego co przez katów już nigdy nie będzie mi dane.",
+            "Tu non vis manducare, et bibere, derelinquas nos in pace. ->END"
+        ]
+    }
+}
+]

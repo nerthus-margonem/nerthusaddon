@@ -88,32 +88,15 @@ nerthus.loadSettings = function()
         else
             localStorage.nerthus_options = JSON.stringify(this.options)
     }
-    else
-    {
-        try{
-            var cookie = getCookie('nerthusCookie');
-            cookie=cookie.split('|');
-            this.settings=cookie[1];
-            this.options.night   = Boolean(parseInt(this.settings[0]))
-            this.options.weather = Boolean(parseInt(this.settings[3]))
-        }catch(e){}
-    }
 }
 
 nerthus.storeSettings = function(options)
 {
     this.options = options
-    if(typeof Storage)
+    if(typeof localStorage !== 'undefined')
     {
         localStorage.nerthus_options = JSON.stringify(this.options)
         this.addon.store()
-    }
-    else
-    {
-        this.settings = (options['night'] ? '1' : '0') + '11' + (options['weather'] ? '1' : '0') + '111'
-        data = new Date();
-        data.setTime(data.getTime()+30758400000);
-        setCookie('nerthusCookie', data + '|' + this.settings, data);
     }
 }
 

@@ -9,9 +9,11 @@ before(function()
 
     VERSION_CURRENT = "CURRENT_VERSION"
     VERSION_OLD = "OLD_VERSION"
-    VERSION_MASTER = "master"
-    PREFIX_CDN = 'http://cdn.rawgit.com/akrzyz/nerthusaddon'
-    PREFIX_MASTER = 'http://rawgit.com/akrzyz/nerthusaddon'
+    VERSION_MASTER = ""
+    PREFIX_CDN = 'http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon'
+    VERSION_SEPARATOR_CDN = "@"
+    PREFIX_MASTER = 'http://akrzyz.github.io/nerthusaddon'
+    VERSION_SEPARATOR_MASTER = ""
     ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
 
 })
@@ -36,15 +38,16 @@ beforeEach(function()
     nerthus.RUNABLE_MODULE.start = function(){this.running = true}
 
     nerthus.addon.version = VERSION_MASTER
+    nerthus.addon.version_separator = VERSION_SEPARATOR_CDN
     nerthus.addon.filesPrefix = PREFIX_CDN
 })
 
-test("fileUrl concat filesPrefix, version and file_name into url", function()
+test("fileUrl concat filesPrefix and file_name into url", function()
 {
     var FILE = 'SCRIPT.JS'
     var PREFIX = 'PREFIX'
     var VERSION = 'VERSION'
-    var FILE_URL = 'PREFIX/VERSION/SCRIPT.JS'
+    var FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
 
     nerthus.addon.filesPrefix = PREFIX
     nerthus.addon.version = VERSION
@@ -146,6 +149,7 @@ test("Runner : run in debug mode", function()
 
     expect(nerthus.addon.version).to.be.equal(VERSION_MASTER)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_MASTER)
+    expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_MASTER)
 })
 
 test("Runner : run from github", function()
@@ -154,6 +158,7 @@ test("Runner : run from github", function()
 
     expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+    expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_CDN)
     expect(localStorage.nerthus).to.be.ok()
 })
 
@@ -167,6 +172,7 @@ test("Runner : run from localStorage in actual version", function()
 
     expect(nerthus.addon.version).to.be.equal(VERSION_CURRENT)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+    expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_CDN)
     expect(localStorage.nerthus).to.be.ok() //remain in storage
 })
 
@@ -180,5 +186,6 @@ test("Runner : run from localStorage in old version", function()
 
 //    expect(nerthus.addon.version).to.be.equal(VERSION_OLD)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
+    expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_CDN)
     expect(localStorage.nerthus).to.not.be.ok() //removed from storege
 })

@@ -17,7 +17,7 @@ nerthus.panel.display_icon = function()
 
 nerthus.panel.display_panel = function()
 {
-    $.getJSON("http://raw.githubusercontent.com/akrzyz/nerthusaddon/master/panel_links.json", function(panel_data)
+    $.getJSON(nerthus.addon.fileMasterUrl('panel_links.json'), function(panel_data)
     {
         var $panel = this.panel_string(panel_data)
         mAlert($panel, 2, [this.save.bind(this)])

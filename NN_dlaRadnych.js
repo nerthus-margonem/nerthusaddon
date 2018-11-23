@@ -90,7 +90,8 @@ nerthus.vips = {
 13438 : 'Zakuty łeb',
 16089 : 'Chochlica-ponczlica',
 16372 : 'Chluba Lolth',
-10523 : 'Lux Aeterna'
+10523 : 'Lux Aeterna',
+14615 : 'Iluzjonista'
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
@@ -115,7 +116,8 @@ nerthus.scripts =
     'NN_maps.js',
     'NN_night.js',
     'NN_pogoda.js',
-    'NN_npc.js'
+    'NN_npc.js',
+    'NN_zodiak.js'
 ]
 
 nerthus.graf = {}
@@ -127,6 +129,7 @@ nerthus.graf['panelTop']= nerthus.addon.fileUrl("img/nerthusPanel.png")
 nerthus.graf['dazed']   = nerthus.addon.fileUrl("img/dazed.png")
 nerthus.graf['loading'] = nerthus.addon.fileUrl("img/loadingnerthus.png")
 nerthus.graf['chat']    = nerthus.addon.fileUrl("img/chatPanel2.png")
+
 
 nerthus.ranks = {}
 nerthus.ranks.start = function()

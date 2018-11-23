@@ -73,7 +73,7 @@ nerthus.isSpec = function(nick)
 }
 
 nerthus.settings='111111'
-nerthus.options = {'night':true, 'weather':true}
+nerthus.options = {'night':true, 'weather':true, 'zodiac':true}
 nerthus.loadSettings = function()
 {
     if(typeof Storage)

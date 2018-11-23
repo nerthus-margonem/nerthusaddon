@@ -26,11 +26,11 @@ nerthus.weather.set_global_weather = function()
 nerthus.weather.run = function()
 {
     //ikonka #1E90FF
-    $('<div id="nWeather" style="z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 0px; left: 0px";></div>').appendTo('#centerbox')
-    .mouseenter(function(){ $("#nWeatherDesc").fadeIn(500).html('<font style="font: bold 14px Georgia; color:#F0F8FF"><b>'+this.descriptions[this.id][Math.floor(Math.random()*this.descriptions[this.id].length)] + '</b><font>')}.bind(this))
+    $('<div id="nWeather" style="z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 0px; left: 0px;"></div>').appendTo('#centerbox2')
+    .mouseenter(function(){ $("#nWeatherDesc").fadeIn(500).html(this.descriptions[this.id][Math.floor(Math.random()*this.descriptions[this.id].length)])}.bind(this))
     .mouseleave(function(){$("#nWeatherDesc").fadeOut(500); });
     //pole opisowe
-    $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px";></div>').appendTo('#centerbox')
+    $('<div id="nWeatherDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px; font: bold 14px Georgia; color:#F0F8FF"></div>').appendTo('#centerbox2')
 
     //workaround na pogode ustawianą przez bardów i zapisywanie nerthusa w pamięci
     if(typeof nerthus_weather_bard_id !== 'undefined')
@@ -43,9 +43,7 @@ nerthus.weather.start_change_timer = function()
 {
     var hour = (Math.floor((new Date().getUTCHours())/4) + 1) * 4
     var date = new Date()
-    date.setUTCHours(hour)
-    date.setUTCMinutes(0)
-    date.setUTCSeconds(0)
+    date.setUTCHours(hour, 0, 0)
     var interval = date - new Date()
     this.change_timer = setTimeout(this.set_global_weather.bind(this),  interval)
 }

@@ -72,7 +72,6 @@ nerthus.isSpec = function(nick)
     return this.NerthusSpec.indexOf(nick) >= 0
 }
 
-nerthus.settings='111111'
 nerthus.options = {'night':true, 'weather':true, 'zodiac':true}
 nerthus.loadSettings = function()
 {

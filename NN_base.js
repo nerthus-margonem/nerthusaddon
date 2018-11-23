@@ -76,11 +76,15 @@ nerthus.settings='111111'
 nerthus.options = {'night':true, 'weather':true, 'zodiac':true}
 nerthus.loadSettings = function()
 {
-    if(typeof Storage)
+    if(typeof localStorage !== 'undefined')
     {
-        var options = localStorage.nerthus_options
-        if(options)
-            this.options = JSON.parse(options)
+        if(localStorage.nerthus_options)
+        {
+            var options = JSON.parse(localStorage.nerthus_options)
+            for(opt in options)
+                if(this.options.hasOwnProperty(opt))
+                    this.options[opt] = options[opt]
+        }
         else
             localStorage.nerthus_options = JSON.stringify(this.options)
     }

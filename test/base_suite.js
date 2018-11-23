@@ -56,6 +56,7 @@ beforeEach(function()
     player = {rights:0, nick:"NAME", id:42, lvl:1}
 })
 
+
 test("defer a functio", function()
 {
     var foo = function(){}
@@ -170,20 +171,68 @@ test("setEnterMsg : msg present", function()
 
 test("stor and load settions", function()
 {
-    var opt = {op1:true, op2:false, op3:"Hmm"}
-    nerthus.storeSettings(opt)
+    const DEFAULT_OPTIONS = {op1:"val1", op2:"val2", op3:true}
+    nerthus.options = DEFAULT_OPTIONS
 
-    expect(nerthus.options.op1).to.be.equal(opt.op1)
-    expect(nerthus.options.op2).to.be.equal(opt.op2)
-    expect(nerthus.options.op3).to.be.equal(opt.op3)
+    const NEW_OPTIONS = {op1:true, op2:false, op3:"Hmm"}
+    nerthus.storeSettings(NEW_OPTIONS)
 
-    nerthus.options = {}
+    expect(Object.keys(nerthus.options)).to.have.length(3)
+    expect(nerthus.options.op1).to.be.equal(NEW_OPTIONS.op1)
+    expect(nerthus.options.op2).to.be.equal(NEW_OPTIONS.op2)
+    expect(nerthus.options.op3).to.be.equal(NEW_OPTIONS.op3)
+
+    nerthus.options = DEFAULT_OPTIONS
 
     nerthus.loadSettings()
 
-    expect(nerthus.options.op1).to.be.equal(opt.op1)
-    expect(nerthus.options.op2).to.be.equal(opt.op2)
-    expect(nerthus.options.op3).to.be.equal(opt.op3)
+    expect(Object.keys(nerthus.options)).to.have.length(3)
+    expect(nerthus.options.op1).to.be.equal(NEW_OPTIONS.op1)
+    expect(nerthus.options.op2).to.be.equal(NEW_OPTIONS.op2)
+    expect(nerthus.options.op3).to.be.equal(NEW_OPTIONS.op3)
+})
+
+test("stor and load settions, new option added - not present in stored, old are overrided new has default value", function()
+{
+
+    const OLD_OPT = {op1:'old_val1', op2:'old_val2'}
+    nerthus.options = OLD_OPT
+    nerthus.storeSettings(OLD_OPT)
+
+    expect(Object.keys(nerthus.options)).to.have.length(2)
+    expect(nerthus.options.op1).to.be.equal(OLD_OPT.op1)
+    expect(nerthus.options.op2).to.be.equal(OLD_OPT.op2)
+
+    const DEFAULT_OPTIONS = {op1:"def_val1", op2:"def_val2", opNew : 'def_val_new'}
+    nerthus.options = DEFAULT_OPTIONS
+
+    nerthus.loadSettings()
+
+    expect(Object.keys(nerthus.options)).to.have.length(3)
+    expect(nerthus.options.op1).to.be.equal(OLD_OPT.op1)
+    expect(nerthus.options.op2).to.be.equal(OLD_OPT.op2)
+    expect(nerthus.options.opNew).to.be.equal(DEFAULT_OPTIONS.opNew)
+})
+
+test("stor and load settions, option removed - present in stored but not loaded", function()
+{
+    const OLD_OPT = {op1:'old_val1', op2:'old_val2', optRemoved:'removed_val'}
+    nerthus.options = OLD_OPT
+    nerthus.storeSettings(OLD_OPT)
+
+    expect(Object.keys(nerthus.options)).to.have.length(3)
+    expect(nerthus.options.op1).to.be.equal(OLD_OPT.op1)
+    expect(nerthus.options.op2).to.be.equal(OLD_OPT.op2)
+    expect(nerthus.options.optRemoved).to.be.equal(OLD_OPT.optRemoved)
+
+    const DEFAULT_OPTIONS = {op1:"def_val1", op2:"def_val2"}
+    nerthus.options = DEFAULT_OPTIONS
+
+    nerthus.loadSettings()
+
+    expect(Object.keys(nerthus.options)).to.have.length(2)
+    expect(nerthus.options.op1).to.be.equal(OLD_OPT.op1)
+    expect(nerthus.options.op2).to.be.equal(OLD_OPT.op2)
 })
 
 test("tips.rank : player without any privilages", function()

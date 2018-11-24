@@ -18,8 +18,10 @@ nerthus.zodiac.SIGNS = {
     CAPRICORN   : 11
 }
 nerthus.zodiac.sign = nerthus.zodiac.SIGNS.CAPRICORN
-nerthus.zodiac.calculate = function()
+nerthus.zodiac.calculate = function(date)
 {
+    if (date === undefined)
+        date = new Date();
     let makeStartDate = function(day,month)
     {
         let date = new Date()
@@ -27,18 +29,17 @@ nerthus.zodiac.calculate = function()
         date.setUTCHours(0, 0, 0)
         return date
     }
-    const date = new Date()
     const SIGNS =
     [
         {date : makeStartDate(22, 12), sign: this.SIGNS.CAPRICORN},  // Koziorożec (22 grudnia – 19 stycznia)
         {date : makeStartDate(22, 11), sign: this.SIGNS.SAGITTARIUS},// Strzelec (22 listopada – 21 grudnia)
         {date : makeStartDate(23, 10), sign: this.SIGNS.SCORPIO},    // Skorpion (23 października – 21 listopada)
         {date : makeStartDate(23, 9),  sign: this.SIGNS.LIBRA},      // Waga (23 września – 22 października)
-        {date : makeStartDate(24, 8),  sign: this.SIGNS.VIRGO},      // Panna (23 sierpnia – 22 września)
-        {date : makeStartDate(23, 7),  sign: this.SIGNS.LEO},        // Lew (23 lipca – 22 sierpnia)
-        {date : makeStartDate(22, 6),  sign: this.SIGNS.CANCER},     // Rak (21 czerwca – 22 lipca)
-        {date : makeStartDate(23, 5),  sign: this.SIGNS.GEMINI},     // Bliźnięta (21 maja – 20 czerwca)
-        {date : makeStartDate(20, 4),  sign: this.SIGNS.TAURUS},     // Byk (20 kwietnia – 20 maja)
+        {date : makeStartDate(24, 8),  sign: this.SIGNS.VIRGO},      // Panna (24 sierpnia – 22 września)
+        {date : makeStartDate(23, 7),  sign: this.SIGNS.LEO},        // Lew (23 lipca – 23 sierpnia)
+        {date : makeStartDate(22, 6),  sign: this.SIGNS.CANCER},     // Rak (22 czerwca – 22 lipca)
+        {date : makeStartDate(23, 5),  sign: this.SIGNS.GEMINI},     // Bliźnięta (23 maja – 21 czerwca)
+        {date : makeStartDate(20, 4),  sign: this.SIGNS.TAURUS},     // Byk (20 kwietnia – 22 maja)
         {date : makeStartDate(21, 3),  sign: this.SIGNS.ARIES},      // Baran (21 marca – 19 kwietnia)
         {date : makeStartDate(19, 2),  sign: this.SIGNS.PISCES},     // Ryby (19 lutego – 20 marca)
         {date : makeStartDate(20, 1),  sign: this.SIGNS.AQUARIUS},   // Wodnik (20 stycznia – 18 lutego)

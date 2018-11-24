@@ -13,6 +13,7 @@
   * runing tests require nodejs and some node modules
   * run `make test_deps` to install dependencies
   * to run tests type `make test` in project root directory
+  * tests are written in QUnit framework
  
 ### How to introduce changes to game
   * Put desired revision hash to file [version.json](version.json)

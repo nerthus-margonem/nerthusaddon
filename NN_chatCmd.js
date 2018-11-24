@@ -84,8 +84,8 @@ nerthus.chatCmd.map["dial666"] = function(ch)
 
 nerthus.chatCmd.makeDialogTextWithSpeaker = function(str)
 {
-   str = str.split(" ").slice(1).join(" ").split(",");
-   return "«"+str[0]+"» " + str.slice(1).join(",");
+    str = str.split(" ").slice(1).join(" ").split(",");
+    return "«"+str[0]+"» " + str.slice(1).join(",");
 }
 
 nerthus.chatCmd.map["sys"] = function(ch)
@@ -119,12 +119,12 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     var _tip = cmd[3] ? ' tip="<b>'+cmd[3]+'</b>" ctip="t_npc"' : "";
     var isCol = parseInt(cmd[4]);
     $('<img id="_ng-' + cmd[0] + '-' + cmd[1] + '" src="'+ _url +'"'+_tip+'>').css("position","absolute").appendTo('#base')
-    .load(function()
-    {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-        var _x = 32 * x + 16 - Math.floor($(this).width() / 2);
-        var _y = 32 * y + 32 - $(this).height();
-        $(this).css({top:"" + _y + "px", left: "" + _x + "px"}).css("z-index", y * 2 + 9);
-    })
+        .load(function()
+        {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
+            var _x = 32 * x + 16 - Math.floor($(this).width() / 2);
+            var _y = 32 * y + 32 - $(this).height();
+            $(this).css({top:"" + _y + "px", left: "" + _x + "px"}).css("z-index", y * 2 + 9);
+        })
     if(isCol) g.npccol[ x + 256 * y] = true;
     return true;
 }
@@ -173,7 +173,7 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 
 nerthus.chatCmd.start = function()
 {
-    //style do dialogow
+    //style do dialogów
     $("<style type='text/css'> #chattxt .nar2{ color:#D6A2FF ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .nar3{ color:#00CED1 ; } </style>").appendTo("head");
     $("<style type='text/css'> #chattxt .dial1{ color:#33CC66 ; } </style>").appendTo("head");

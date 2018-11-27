@@ -95,7 +95,7 @@ nerthus.vips = {
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
-nerthus.chatInfoStr = '<a href="https://www.margonem.pl/?task=forum&show=posts&id=501914"> Ważny temat i debata o dalszym prowadzeniu świata</a>'
+nerthus.chatInfoStr = '<a href="https://www.margonem.pl/?task=forum&show=posts&id=501914" target="blank"> Ważny temat i debata o dalszym prowadzeniu świata</a>'
 
 //Wiadomość która pojawia się na środku ekranu po starcie gry
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">

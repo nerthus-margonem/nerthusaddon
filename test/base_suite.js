@@ -333,9 +333,9 @@ test("other : nick only", function()
 
 test("other : nick + clan", function()
 {
-    var other = {nick:"NICK", clan : "CLAN"}
+    var other = {nick:"NICK", clan : {name: "CLAN"}}
     expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
-                                            "[" + other.clan +"]<br>")
+                                            "[" + other.clan.name +"]<br>")
 })
 
 test("other : nick + mute", function()
@@ -374,9 +374,9 @@ test("other : nick + clan + title + rank + mute", function()
     nerthus.tips.title = function(){return "VIP"}
     nerthus.tips.rank = function(){return "RANK"}
 
-    var other = {nick:"NICK", clan:"CLAN", attr:1}
+    var other = {nick:"NICK", clan : {name: "CLAN"}, attr:1}
     expect(nerthus.tips.other(other)).equal("<b>" + other.nick + "</b>" +
-                                            "[" + other.clan + "]<br>" +
+                                            "[" + other.clan.name + "]<br>" +
                                             "VIP" +
                                             "<i>RANK</i>" +
                                             "<img src=img/mute.gif>")

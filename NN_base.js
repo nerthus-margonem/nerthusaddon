@@ -141,7 +141,7 @@ nerthus.tips.title = function(player)
 nerthus.tips.other = function(other)
 {
     var tip = "<b>" + other.nick + "</b>"
-    tip += other.clan ? "[" + other.clan + "]<br>" : ""
+    tip += other.clan ? "[" + other.clan.name + "]<br>" : ""
     tip += this.title(other)
     var rank = this.rank(other)
     tip += rank ? "<i>" + rank + "</i>" : ""

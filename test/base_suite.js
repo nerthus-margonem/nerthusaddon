@@ -391,6 +391,14 @@ test("hero : nick", function()
          "<b><font color='white'>" + hero.nick + "</font></b>")
 })
 
+test("hero : nick + clan", function()
+{
+    var hero = {nick:"NICK", clan:{name:"KLAN", id:42}}
+    expect(nerthus.tips.hero(hero)).equal(
+         "<b><font color='white'>" + hero.nick + "</font></b>"+
+         "<center>[" + hero.clan.name + "]</center>")
+})
+
 test("hero : nick + title", function()
 {
     var _title = nerthus.tips.title
@@ -418,16 +426,17 @@ test("hero : nick + rank", function()
 })
 
 
-test("hero : nick + title + rank", function()
+test("hero : nick + clan + title + rank", function()
 {
     var _rank = nerthus.tips.rank
     var _title = nerthus.tips.title
     nerthus.tips.title = function(){return "VIP"}
     nerthus.tips.rank = function(){return "RANK"}
 
-    var hero = {nick:"NICK"}
+    var hero = {nick:"NICK", clan:{name:"KLAN", id:42}}
     expect(nerthus.tips.hero(hero)).equal(
          "<b><font color='white'>" + hero.nick + "</font></b>" +
+         "<center>[" + hero.clan.name + "]</center>" +
          "<center>" + "VIP" + "</center>" +
          "<i><font color='red'>" + "RANK" + "</font></i>")
 

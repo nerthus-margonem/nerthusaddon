@@ -154,6 +154,7 @@ nerthus.tips.hero = function(hero)
     var title = this.title(hero)
     var rank =  this.rank(hero)
     var tip = "<b><font color='white'>" + hero.nick + "</font></b>"
+    tip += hero.clan ? "<center>[" + hero.clan.name + "]</center>" : ""
     tip += title ? "<center>" + title + "</center>" : ""
     tip += rank ? "<i><font color='red'>" + rank + "</font></i>" : ""
     return tip

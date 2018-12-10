@@ -135,7 +135,7 @@ nerthus.chatCmd.extractUrlFromDecorator = function(text)
     if(url)
         return "https:/" + url[1]
     else {
-        let url = RegExp(/http\*Krzywi się\.\*(\S+)/).exec(text)
+        url = RegExp(/http\*Krzywi się\.\*(\S+)/).exec(text)
         if(url)
             return "http:/" + url[1]
         return text

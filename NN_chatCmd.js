@@ -131,11 +131,9 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
 
 nerthus.chatCmd.extractUrlFromDecorator = function(text)
 {
-    if(text[0]=='<') //is text wrapped by html tag
-    {
-        var url = RegExp(/goToUrl\(\"(\S+)\"\)/).exec(text);
-        if(url) return "http://" + url[1];
-    }
+    let url = RegExp(/https\*Krzywi się\.\*(\S+)/).exec(text);
+    if(url)
+        return "https:/" + url[1];
     return text;
 }
 

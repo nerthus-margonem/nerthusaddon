@@ -12,7 +12,7 @@ nerthus.chatCmd.run = function(ch)
         var callback = this.fetch_callback(cmd,ch)
         if(callback)
         {
-            log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdze kto co
+            log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
             return callback(ch)
         }
     }
@@ -131,12 +131,10 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
 
 nerthus.chatCmd.extractUrlFromDecorator = function(text)
 {
-    if(text[0]=='<') //is text wrapped by html tag
-    {
-        var url = RegExp(/goToUrl\(\"(\S+)\"\)/).exec(text);
-        if(url) return "http://" + url[1];
-    }
-    return text;
+    let url = RegExp(/(https?)\*Krzywi się\.\*(\S+)/).exec(text)
+    if(url)
+        return url[1] + ":/" + url[2]
+    return text
 }
 
 

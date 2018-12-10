@@ -131,10 +131,15 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
 
 nerthus.chatCmd.extractUrlFromDecorator = function(text)
 {
-    let url = RegExp(/https\*Krzywi się\.\*(\S+)/).exec(text);
+    let url = RegExp(/https\*Krzywi się\.\*(\S+)/).exec(text)
     if(url)
-        return "https:/" + url[1];
-    return text;
+        return "https:/" + url[1]
+    else {
+        let url = RegExp(/http\*Krzywi się\.\*(\S+)/).exec(text)
+        if(url)
+            return "http:/" + url[1]
+        return text
+    }
 }
 
 

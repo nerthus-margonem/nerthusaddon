@@ -12,6 +12,7 @@ nerthus.chatCmd.run = function(ch)
         var callback = this.fetch_callback(cmd,ch)
         if(callback)
         {
+            ch.t = fixUrl(ch.t)
             log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
             return callback(ch)
         }
@@ -98,7 +99,6 @@ nerthus.chatCmd.map["sys"] = function(ch)
 nerthus.chatCmd.map["map"] = function(ch)
 {
     var map_url = ch.t.split(" ").slice(1).join(" ");
-    map_url = nerthus.chatCmd.extractUrlFromDecorator(map_url);
     $("#ground").css("backgroundImage","url(" + map_url + ")")
     return true;
 }
@@ -115,7 +115,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     var cmd = ch.t.split(" ").slice(1).join(" ").split(",");
     var x = parseInt(cmd[0]);
     var y = parseInt(cmd[1]);
-    var _url = nerthus.chatCmd.extractUrlFromDecorator(cmd[2]);
+    var _url = cmd[2];
     var _tip = cmd[3] ? ' tip="<b>'+cmd[3]+'</b>" ctip="t_npc"' : "";
     var isCol = parseInt(cmd[4]);
     $('<img id="_ng-' + cmd[0] + '-' + cmd[1] + '" src="'+ _url +'"'+_tip+'>').css("position","absolute").appendTo('#base')
@@ -129,12 +129,10 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     return true;
 }
 
-nerthus.chatCmd.extractUrlFromDecorator = function(text)
+nerthus.chatCmd.fixUrl = function(text)
 {
-    let url = RegExp(/(https?)\*Krzywi się\.\*(\S+)/).exec(text)
-    if(url)
-        return url[1] + ":/" + url[2]
-    return text
+    let url = RegExp(/(https?)\*Krzywi się\.\*(\S+)/)
+    return text.replace(url, "$1:/$2")
 }
 
 

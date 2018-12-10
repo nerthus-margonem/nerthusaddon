@@ -25,7 +25,7 @@ test("dummy", function()
 })
 
 test("change https*Krzywi się.*/ to normal link", function() {
-    let buggedText = "https*Krzywi się.*/www.link.pl/images/image.gif",
-        fixedText = "https://www.link.pl/images/image.gif"
-    expect(nerthus.chatCmd.extractUrlFromDecorator(buggedText)).to.be(fixedText)
+    const buggedLink = "https*Krzywi się.*/www.link.pl/images/image.gif"
+    const fixedLink = "https://www.link.pl/images/image.gif"
+    expect(nerthus.chatCmd.extractUrlFromDecorator(buggedLink)).to.be(fixedLink)
 })

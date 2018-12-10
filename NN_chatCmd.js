@@ -12,7 +12,7 @@ nerthus.chatCmd.run = function(ch)
         var callback = this.fetch_callback(cmd,ch)
         if(callback)
         {
-            ch.t = fixUrl(ch.t)
+            ch.t = this.fixUrl(ch.t)
             log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
             return callback(ch)
         }

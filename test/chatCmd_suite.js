@@ -27,11 +27,11 @@ test("dummy", function()
 test("change https*Krzywi się.*/ to normal link", function() {
     const buggedLink = "https*Krzywi się.*/www.link.pl/images/image.gif"
     const fixedLink = "https://www.link.pl/images/image.gif"
-    expect(nerthus.chatCmd.extractUrlFromDecorator(buggedLink)).to.be(fixedLink)
+    expect(nerthus.chatCmd.fixUrl(buggedLink)).to.be(fixedLink)
 })
 
 test("change http*Krzywi się.*/ to normal link", function() {
     const buggedLink = "http*Krzywi się.*/www.link.pl/images/image.gif"
     const fixedLink = "http://www.link.pl/images/image.gif"
-    expect(nerthus.chatCmd.extractUrlFromDecorator(buggedLink)).to.be(fixedLink)
+    expect(nerthus.chatCmd.fixUrl(buggedLink)).to.be(fixedLink)
 })

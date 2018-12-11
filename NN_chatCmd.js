@@ -23,12 +23,13 @@ nerthus.chatCmd.run = function(ch)
 nerthus.chatCmd.run_ni = function(e)
 {
     if (e[1].s !== "abs" && e[1].s !== "") return;
-    let ch = nerthus.chatCmd.run(e[1])
+    let clone = JSON.parse(JSON.stringify(e[1]))
+    let ch = nerthus.chatCmd.run(clone)
     if(ch) {
-        e[0].addClass(ch.s);
-        e[0].children().eq(2).contents().eq(0).replaceWith(ch.t);
-        e[0].children(2).addClass(ch.s);
-        e[0].children().eq(0).contents().eq(0).replaceWith(ch.n);
+        e[0].addClass(ch.s)
+        e[0].children().eq(2).contents().eq(0).replaceWith(ch.t)
+        e[0].children(2).addClass(ch.s)
+        e[0].children().eq(0).contents().eq(0).replaceWith(ch.n)
     }
 }
 
@@ -195,20 +196,20 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 nerthus.chatCmd.start = function()
 {
     //style do dialogów
-    $("<style type='text/css'>.sys_comm{ color: #f33 !important }</style>").appendTo("head");
-    $("<style type='text/css'>.nar{ color: lightblue !important }</style>").appendTo("head");
-    $("<style type='text/css'>.nar2{ color: #D6A2FF !important }</style>").appendTo("head");
-    $("<style type='text/css'>.nar3{ color: #00CED1 !important }</style>").appendTo("head");
-    $("<style type='text/css'>.dial1{ color: #33CC66 !important }</style>").appendTo("head");
-    $("<style type='text/css'>.dial2{ color: #CC9966 !important }</style>").appendTo("head");
-    $("<style type='text/css'>.dial3{ color: #D3D3D3 !important }</style>").appendTo("head");
-    $("<style type='text/css'>.dial666{ color: #FF66FF !important }</style>").appendTo("head");
+    $("<style type='text/css'>.sys_comm{ color: #f33 !important }</style>").appendTo("head")
+    $("<style type='text/css'>.nar{ color: lightblue !important }</style>").appendTo("head")
+    $("<style type='text/css'>.nar2{ color: #D6A2FF !important }</style>").appendTo("head")
+    $("<style type='text/css'>.nar3{ color: #00CED1 !important }</style>").appendTo("head")
+    $("<style type='text/css'>.dial1{ color: #33CC66 !important }</style>").appendTo("head")
+    $("<style type='text/css'>.dial2{ color: #CC9966 !important }</style>").appendTo("head")
+    $("<style type='text/css'>.dial3{ color: #D3D3D3 !important }</style>").appendTo("head")
+    $("<style type='text/css'>.dial666{ color: #FF66FF !important }</style>").appendTo("head")
     if(nerthus.interface === "ni") {
-        API.addCallbackToEvent('newMsg', this.run_ni);
-        API.addCallbackToEvent('updateMsg', this.run_ni);
+        API.addCallbackToEvent('newMsg', this.run_ni)
+        API.addCallbackToEvent('updateMsg', this.run_ni)
     }
     else
-        g.chat.parsers.push(nerthus.chatCmd.run.bind(this));
+        g.chat.parsers.push(nerthus.chatCmd.run.bind(this))
 }
 
 nerthus.chatCmd.start()

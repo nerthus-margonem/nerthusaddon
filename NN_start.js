@@ -31,6 +31,10 @@ nerthus.addon.store = function()
     if(NerthusAddonUtils.storage())
         NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 }
+nerthus.API = (function() {
+    let match = document.cookie.match(new RegExp('(^| )interface=([^;]+)'));
+    if (match) return match[2];
+})();
 
 NerthusAddonUtils = (function()
 {

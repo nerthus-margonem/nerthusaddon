@@ -6,7 +6,7 @@ nerthus.chatCmd.public_map = {};
 
 nerthus.chatCmd.run = function(ch)
 {
-    var cmd = this.fetch_cmd(ch)
+    let cmd = this.fetch_cmd(ch)
     if(cmd)
     {
         var callback = this.fetch_callback(cmd,ch)
@@ -15,6 +15,20 @@ nerthus.chatCmd.run = function(ch)
             log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
             return callback(ch)
         }
+        return false
+    }
+    return false
+}
+
+nerthus.chatCmd.run_ni = function(e)
+{
+    if (e[1].s !== "abs" && e[1].s !== "") return;
+    let ch = nerthus.chatCmd.run(e[1])
+    if(ch) {
+        e[0].addClass(ch.s);
+        e[0].children().eq(2).contents().eq(0).replaceWith(ch.t);
+        e[0].children(2).addClass(ch.s);
+        e[0].children().eq(0).contents().eq(0).replaceWith(ch.n);
     }
 }
 
@@ -27,7 +41,7 @@ nerthus.chatCmd.fetch_cmd = function(ch)
 
 nerthus.chatCmd.fetch_callback = function(cmd,ch)
 {
-    var callback = this.public_map[cmd[1]]
+    let callback = this.public_map[cmd[1]]
     if(!callback && (nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)))
         callback = this.map[cmd[1]]
     return callback
@@ -35,64 +49,72 @@ nerthus.chatCmd.fetch_callback = function(cmd,ch)
 
 nerthus.chatCmd.map["nar"] = function(ch)
 {
-    ch.s = "nar";
-    ch.n = "";
-    ch.t = ch.t.replace(/^\*nar/,"");
+    ch.s = "nar"
+    ch.n = ""
+    ch.t = ch.t.replace(/^\*nar/,"")
+    return ch
 }
 
 nerthus.chatCmd.map["nar2"] = function(ch)
 {
-    ch.s = "nar2";
-    ch.n = "";
-    ch.t = ch.t.replace(/^\*nar2/,"");
+    ch.s = "nar2"
+    ch.n = ""
+    ch.t = ch.t.replace(/^\*nar2/,"")
+    return ch
 }
 
 nerthus.chatCmd.map["nar3"] = function(ch)
 {
-    ch.s = "nar3";
-    ch.n = "";
-    ch.t = ch.t.replace(/^\*nar3/,"");
+    ch.s = "nar3"
+    ch.n = ""
+    ch.t = ch.t.replace(/^\*nar3/,"")
+    return ch
 }
 
 nerthus.chatCmd.map["dial1"] = function(ch)
 {
-    ch.s = "dial1";
-    ch.n = "";
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+    ch.s = "dial1"
+    ch.n = ""
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t)
+    return ch
 }
 
 nerthus.chatCmd.map["dial2"] = function(ch)
 {
-    ch.s = "dial2";
-    ch.n = "";
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+    ch.s = "dial2"
+    ch.n = ""
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t)
+    return ch
 }
 
 nerthus.chatCmd.map["dial3"] = function(ch)
 {
-    ch.s ="dial3";
-    ch.n ="";
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+    ch.s ="dial3"
+    ch.n =""
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t)
+    return ch
 }
 
 nerthus.chatCmd.map["dial666"] = function(ch)
 {
-    ch.s ="dial666";
-    ch.n ="";
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t);
+    ch.s ="dial666"
+    ch.n =""
+    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t)
+    return ch
 }
 
 nerthus.chatCmd.makeDialogTextWithSpeaker = function(str)
 {
-    str = str.split(" ").slice(1).join(" ").split(",");
-    return "«"+str[0]+"» " + str.slice(1).join(",");
+    str = str.split(" ").slice(1).join(" ").split(",")
+    return "«"+str[0]+"» " + str.slice(1).join(",")
 }
 
 nerthus.chatCmd.map["sys"] = function(ch)
 {
-    ch.s="sys_comm";
-    ch.n="";
-    ch.t=ch.t.replace(/^\*sys/,"");
+    ch.s="sys_comm"
+    ch.n=""
+    ch.t=ch.t.replace(/^\*sys/,"")
+    return ch
 }
 
 nerthus.chatCmd.map["map"] = function(ch)
@@ -164,21 +186,29 @@ nerthus.chatCmd.map["weather"] = function(ch)
 
 nerthus.chatCmd.public_map["me"] = function(ch)
 {
-    ch.s="me";
-    ch.n="";
-    ch.t=ch.t.replace(/^\*me/,"");
+    ch.s="me"
+    ch.n=""
+    ch.t=ch.t.replace(/^\*me/,"")
+    return ch
 }
 
 nerthus.chatCmd.start = function()
 {
     //style do dialogów
-    $("<style type='text/css'> #chattxt .nar2{ color:#D6A2FF ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .nar3{ color:#00CED1 ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .dial1{ color:#33CC66 ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .dial2{ color:#CC9966 ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .dial3{ color:#D3D3D3 ; } </style>").appendTo("head");
-    $("<style type='text/css'> #chattxt .dial666{ color:#FF66FF ; } </style>").appendTo("head");
-    g.chat.parsers.push(nerthus.chatCmd.run.bind(this));
+    $("<style type='text/css'>.sys_comm{ color: #f33 !important }</style>").appendTo("head");
+    $("<style type='text/css'>.nar{ color: lightblue !important }</style>").appendTo("head");
+    $("<style type='text/css'>.nar2{ color: #D6A2FF !important }</style>").appendTo("head");
+    $("<style type='text/css'>.nar3{ color: #00CED1 !important }</style>").appendTo("head");
+    $("<style type='text/css'>.dial1{ color: #33CC66 !important }</style>").appendTo("head");
+    $("<style type='text/css'>.dial2{ color: #CC9966 !important }</style>").appendTo("head");
+    $("<style type='text/css'>.dial3{ color: #D3D3D3 !important }</style>").appendTo("head");
+    $("<style type='text/css'>.dial666{ color: #FF66FF !important }</style>").appendTo("head");
+    if(nerthus.interface === "ni") {
+        API.addCallbackToEvent('newMsg', this.run_ni);
+        API.addCallbackToEvent('updateMsg', this.run_ni);
+    }
+    else
+        g.chat.parsers.push(nerthus.chatCmd.run.bind(this));
 }
 
 nerthus.chatCmd.start()

@@ -16,6 +16,8 @@ before(function()
     VERSION_SEPARATOR_MASTER = ""
     ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
 
+    Date.now = function(){}
+
 })
 
 beforeEach(function()

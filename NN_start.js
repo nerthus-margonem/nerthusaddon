@@ -31,10 +31,7 @@ nerthus.addon.store = function()
     if(NerthusAddonUtils.storage())
         NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 }
-nerthus.API = (function() {
-    let match = document.cookie.match(new RegExp('(^| )interface=([^;]+)'));
-    if (match) return match[2];
-})();
+
 
 NerthusAddonUtils = (function()
 {
@@ -57,6 +54,33 @@ NerthusAddonUtils = (function()
     }
     utils.runAddon = function()
     {
+        nerthus.interface = (function()
+        {
+            let match = document.cookie.match(new RegExp('(^| )interface=([^;]+)'));
+            if (match) return match[2];
+        })();
+
+        if(nerthus.interface === "ni") //define other API as empty object
+        {
+            g = {
+                names: {
+                    ranks: []
+                },
+                chat: {
+                    parsers: [],
+                    txt: []
+                },
+                loadQueue: [],
+                tips: {},
+                npccol: []
+            }
+            chatScroll = function(){}
+        }
+        else {
+            API = {
+                addCallbackToEvent: function(){}
+            }
+        }
         if(this.storage() && this.storage().NerthusAddonDebug)
         {
             nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION

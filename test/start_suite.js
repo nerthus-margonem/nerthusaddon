@@ -35,11 +35,15 @@ beforeEach(function()
 
     nerthus.RUNABLE_MODULE = {}
     nerthus.RUNABLE_MODULE.running = false
+    nerthus.RUNABLE_MODULE.running_ni = false
     nerthus.RUNABLE_MODULE.start = function(){this.running = true}
+    nerthus.RUNABLE_MODULE.start_ni = function(){this.running_ni = true}
 
     nerthus.addon.version = VERSION_MASTER
     nerthus.addon.version_separator = VERSION_SEPARATOR_CDN
     nerthus.addon.filesPrefix = PREFIX_CDN
+
+    getCookie = function(){}
 })
 
 test("fileUrl concat filesPrefix and file_name into url", function()
@@ -139,6 +143,7 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
     expect(nerthus.RUNABLE_MODULE.running).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE.running_ni).to.not.be.ok()
 })
 
 test("Runner : run in debug mode", function()
@@ -188,4 +193,18 @@ test("Runner : run from localStorage in old version", function()
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
     expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_CDN)
     expect(localStorage.nerthus).to.not.be.ok() //removed from storege
+})
+
+test("run addon in new interface", function()
+{
+    getCookie = function(){return "ni"}
+
+    localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
+
+    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
+
+    expect(LOAD_HELPER.loaded).to.be.ok()
+    expect(localStorage.nerthus).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE.running).to.not.be.ok()
+    expect(nerthus.RUNABLE_MODULE.running_ni).to.be.ok()
 })

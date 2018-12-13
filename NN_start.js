@@ -95,9 +95,13 @@ NerthusAddonUtils = (function()
 
     utils.startPlugins = function(callback)
     {
+        const postfix = getCookie("interface") === "ni" ? "_ni" : ""
+        const start_method = "start" + postfix
+
+        log("starting method: " + start_method)
         for(var i in nerthus)
-            if(nerthus[i] && nerthus[i].start)
-                call(nerthus[i].start.bind(nerthus[i]))
+            if(nerthus[i] && nerthus[i][start_method])
+                call(nerthus[i][start_method].bind(nerthus[i]))
         call(callback)
     }
 

@@ -228,8 +228,6 @@ nerthus.base.start = function()
     nerthus.setEnterMsg()
 }
 
-nerthus.loadSettings();
-nerthus.base.start()
-nerthus.tips.start()
+nerthus.loadSettings()
 
 }catch(e){log('NerthusBase Error: '+e.message)}

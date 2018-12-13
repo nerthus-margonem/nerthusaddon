@@ -82,7 +82,7 @@ NerthusAddonUtils = (function()
     {
         log("Load nerthus addon from github, version = " + nerthus.addon.version)
         this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'], function(){
-                this.loadScripts(nerthus.scripts, this.startPlugins(onLoaded))
+                this.loadScripts(nerthus.scripts, this.startPlugins.bind(this,onLoaded))
         }.bind(this))
     }
 

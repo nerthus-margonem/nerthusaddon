@@ -126,6 +126,4 @@ nerthus.alko.start = function()
     nerthus.defer(this.run.bind(this))
 }
 
-nerthus.alko.start()
-
 }catch(e){log('NerthusAlk Error: '+e.message,1)}

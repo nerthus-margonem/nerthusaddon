@@ -140,7 +140,5 @@ nerthus.zodiac.start = function ()
         nerthus.defer(this.run.bind(this))
 }
 
-nerthus.zodiac.start()
-
 } catch (e) {log('NerthusZodiac Error: ' + e.message, 1)}
 

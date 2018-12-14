@@ -327,7 +327,5 @@ nerthus.weather.start = function()
         nerthus.defer(this.run.bind(this))
 }
 
-nerthus.weather.start()
-
 }catch(e){log('NerthusWeather Error: '+e.message,1)}
 

@@ -24,8 +24,6 @@ nerthus.maps.start = function()
     nerthus.defer(nerthus.maps.seasonMaps)
 }
 
-nerthus.maps.start()
-
 }
 catch(e){log('NerthusMap Error: '+e.message,1)}
 

@@ -109,22 +109,24 @@ NerthusAddonUtils = (function()
     utils.loadFromGitHub = function(onLoaded)
     {
         log("Load nerthus addon from github, version = " + nerthus.addon.version)
-        this.loadScripts(['NN_dlaRadnych.js'], function(){
-            this.loadScripts(['NN_base.js'], function(){
-                this.loadScripts(nerthus.scripts, onLoaded)
-        }.bind(this))}.bind(this))
+        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'], function(){
+                this.loadScripts(nerthus.scripts, this.startPlugins.bind(this,onLoaded))
+        }.bind(this))
     }
 
     utils.loadFromStorage = function(onLoaded)
     {
         nerthus = this.parser.parse(this.storage().nerthus)
         log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
+        this.startPlugins(onLoaded)
+    }
 
+    utils.startPlugins = function(callback)
+    {
         for(var i in nerthus)
             if(nerthus[i] && nerthus[i].start)
                 call(nerthus[i].start.bind(nerthus[i]))
-
-        call(onLoaded)
+        call(callback)
     }
 
     utils.loadVersion = function(onLoaded)

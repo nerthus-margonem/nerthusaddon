@@ -81,6 +81,4 @@ nerthus.panel.start = function()
     nerthus.defer(this.display_icon.bind(this));
 }
 
-nerthus.panel.start()
-
 }catch(e){log('NerthusPanel Error: '+e.message,1);}

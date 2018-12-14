@@ -210,7 +210,5 @@ nerthus.chatCmd.start = function()
         g.chat.parsers.push(nerthus.chatCmd.run.bind(this))
 }
 
-nerthus.chatCmd.start()
-
 }catch(e){log('nerthus chatCmd: '+e.message,1);}
 

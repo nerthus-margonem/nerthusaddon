@@ -6,26 +6,23 @@ try{
 
 nerthus.panel = {}
 
-nerthus.panel.display_icon = function(icon_data)
+nerthus.panel.create_icon = function()
 {
-    $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus" data-tip="Nerthus">')
-    .css(icon_data.css)
-    .click(icon_data.callback)
+    return $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus" data-tip="Nerthus">')
     .mouseover(function(){$(this).css('opacity','0.6')})
     .mouseout(function(){$(this).css('opacity','1')})
-    .appendTo(icon_data.parent)
 }
 
 nerthus.panel.mAlert = null
 
-nerthus.panel.mAlert_si = function(text, button_handlers)
+nerthus.panel.mAlert_si = function(text, buttons)
 {
-    mAlert(text, button_handlers.length, button_handlers.map(handler => handler.callback))
+    mAlert(text, buttons.length, buttons.map(button => button.callback))
 }
 
-nerthus.panel.mAlert_ni = function(text, handlers)
+nerthus.panel.mAlert_ni = function(text, buttons)
 {
-    mAlert(text, handlers)
+    mAlert(text, buttons)
 }
 
 nerthus.panel.display_panel = function()
@@ -95,25 +92,31 @@ nerthus.panel.get_settings = function()
 nerthus.panel.start = function()
 {
     this.mAlert = this.mAlert_si
-    let icon_data = { parent: "#panel",
-                      css: { position:"absolute",
-                             top:"0px",
-                             left:"242px",
-                             cursor:"pointer" },
-                      callback : this.display_panel.bind(this) }
-    nerthus.defer(this.display_icon.bind(this, icon_data))
+
+    nerthus.defer(function()
+    {
+        this.create_icon()
+        .css({ position:"absolute", top:"0px", left:"242px", cursor:"pointer" })
+        .click(this.display_panel.bind(this))
+        .appendTo("#panel")
+    }.bind(this))
 }
 
 nerthus.panel.start_ni = function()
 {
     this.mAlert = this.mAlert_ni
-    let icon_data = { parent: "#character_wrapper",
-                      css: { position:"absolute",
-                             top:"17px",
-                             left:"17px",
-                             cursor:"pointer" },
-                      callback : this.display_panel.bind(this) }
-    this.display_icon(icon_data)
+
+    let $icon = this.create_icon()
+    .css({top:"5px",left:"6px", position:"absolute"})
+
+    let $button = $("<div>")
+    .addClass("widget-button")
+    .addClass("green")
+    .css({position:"absolute", right:"220px"})
+    .appendTo(".main-buttons-container.top-right")
+    .click(this.display_panel.bind(this))
+    .append($icon)
+
 }
 
 }catch(e){log('NerthusPanel Error: '+e.message,1);}

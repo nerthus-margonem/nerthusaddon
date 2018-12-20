@@ -75,12 +75,6 @@ nerthus.night.start = function()
     {
         nerthus.defer(this.lights.on.bind(this.lights))
         nerthus.defer(this.dim.bind(this, this.opacity()))
-
-        nerthus.defer(function()
-        {
-            if(map.id==257) //if mythar TODO hack to be removed
-                $("#nNight").css("opacity",0.7)
-        })
     }
 }
 

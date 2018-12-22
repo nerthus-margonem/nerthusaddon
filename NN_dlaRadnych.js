@@ -2,6 +2,11 @@
     Name: Nerthus dla Rady
     Drugi plik z dodatku Nerthusa. Zawiera podstawowe zmienne do modyfikacji.
 **/
+
+if(typeof require !== 'undefined') {
+    nerthus = require("./NN_start.js")["nerthus"]
+}
+
 try{
 
 //Lista osób specjalnych - uprawnieni do używania specjalnych komend na chacie - taki bard bez etykietki
@@ -146,3 +151,6 @@ nerthus.ranks.start = function()
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}
 
+if(typeof exports !== 'undefined') {
+    exports.nerthus = nerthus;
+}

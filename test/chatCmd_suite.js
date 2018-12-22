@@ -15,13 +15,8 @@ before(function()
     g.chat = {}
     g.chat.parsers = []
 
-    function Image() {
-        this.src = ""
-    }
-
     expect = require("expect.js")
-    require("../NN_chatCmd.js")
-
+    nerthus = require("../NN_chatCmd.js")["nerthus"]
 })
 
 test("dummy", function()

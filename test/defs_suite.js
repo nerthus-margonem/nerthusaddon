@@ -10,7 +10,7 @@ before(function()
     g.names = {}
     g.names.ranks = []
     expect = require("expect.js")
-    NN_dlaRadnych = require("../NN_dlaRadnych.js")
+    require("../NN_dlaRadnych.js")
 
 })
 

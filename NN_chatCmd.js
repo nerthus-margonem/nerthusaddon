@@ -1,14 +1,10 @@
-if(typeof require !== 'undefined') {
-    nerthus = require("./NN_start.js")["nerthus"]
-    Image = Object.prototype.constructor
-}
-
 try{
 
 nerthus.chatCmd = {};
 nerthus.chatCmd.map = {};
 nerthus.chatCmd.map_ni = {};
 nerthus.chatCmd.public_map = {};
+nerthus.chatCmd.mapImage = new Image();
 nerthus.chatCmd.mapChangingOn = false;
 
 nerthus.chatCmd.run = function(ch)
@@ -280,7 +276,7 @@ nerthus.chatCmd.start = function()
 
 nerthus.chatCmd.start_ni = function()
 {
-    nerthus.chatCmd.mapImage = new Image()
+    nerthus.mapImage = new Image()
     this.appendStyles()
 
     this.map["map"] = this.map_ni["map"]
@@ -292,6 +288,3 @@ nerthus.chatCmd.start_ni = function()
 
 }catch(e){log('nerthus chatCmd: '+e.message,1);}
 
-if(typeof exports !== 'undefined') {
-    exports.nerthus = nerthus;
-}

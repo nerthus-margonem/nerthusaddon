@@ -4,18 +4,6 @@
     Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
     Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
 **/
-if(typeof require !== 'undefined') {
-    document = {}
-    document.cookie = {}
-    document.cookie.match = Function.prototype;
-
-    var jsdom = require("jsdom");
-    const { JSDOM } = jsdom;
-    const { window } = new JSDOM();
-    var $ = jQuery = require('jquery')(window);
-}
-
-
 try{
 
 nerthus = {}
@@ -200,8 +188,3 @@ NerthusAddonUtils = (function()
 NerthusAddonUtils.runAddon()
 
 }catch(e){log('NerthusStart Error: '+e.message,1)}
-
-if(typeof exports !== 'undefined') {
-    exports.nerthus = nerthus;
-    exports.NerthusAddonUtils = NerthusAddonUtils;
-}

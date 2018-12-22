@@ -3,9 +3,8 @@ suite("start")
 before(function()
 {
     log = function(msg){console.log(msg)}
-    let NN_start = require("../NN_start.js")
-    nerthus = NN_start["nerthus"]
-    NerthusAddonUtils = NN_start["NerthusAddonUtils"]
+
+    require("../NN_start.js")
     expect = require("expect.js")
 
     VERSION_CURRENT = "CURRENT_VERSION"
@@ -17,12 +16,13 @@ before(function()
     VERSION_SEPARATOR_MASTER = ""
     ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
 
-    Date.now = Function.prototype
+    Date.now = function(){}
 
 })
 
 beforeEach(function()
 {
+    $ = {}
     $.loaded_scripts = []
     $.loaded_jsons = []
     $.getScript = function(url, callback){this.loaded_scripts.push(url); callback()}
@@ -45,7 +45,7 @@ beforeEach(function()
     nerthus.addon.version_separator = VERSION_SEPARATOR_CDN
     nerthus.addon.filesPrefix = PREFIX_CDN
 
-    getCookie = Function.prototype
+    getCookie = function(){}
 })
 
 test("fileUrl concat filesPrefix and file_name into url", function()

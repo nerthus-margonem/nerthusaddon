@@ -52,6 +52,12 @@ nerthus.chatCmd.run_ni = function(e)
     }
 }
 
+nerthus.chatCmd.fixUrl = function(text)
+{
+    let url = RegExp(/(https?)\*Krzywi się\.\*(\S+)/)
+    return text.replace(url, "$1:/$2")
+}
+
 nerthus.chatCmd.fetch_cmd = function(ch)
 {
     if(ch.t[0]=='*')
@@ -213,13 +219,6 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     return true;
 }
 
-nerthus.chatCmd.fixUrl = function(text)
-{
-    let url = RegExp(/(https?)\*Krzywi się\.\*(\S+)/)
-    return text.replace(url, "$1:/$2")
-}
-
-
 nerthus.chatCmd.map["delGraf"] = function(ch)
 {
     var cmd = ch.t.split(" ")[1].split(",");
@@ -285,6 +284,7 @@ nerthus.chatCmd.start_ni = function()
     API.addCallbackToEvent('newMsg', this.run_ni)
     API.addCallbackToEvent('updateMsg', this.run_ni)
 }
+
 
 }catch(e){log('nerthus chatCmd: '+e.message,1);}
 

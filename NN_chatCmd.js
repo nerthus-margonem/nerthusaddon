@@ -2,7 +2,10 @@ try{
 
 nerthus.chatCmd = {};
 nerthus.chatCmd.map = {};
+nerthus.chatCmd.map_ni = {};
 nerthus.chatCmd.public_map = {};
+nerthus.chatCmd.mapImage = new Image();
+nerthus.chatCmd.mapChangingOn = false;
 
 nerthus.chatCmd.run = function(ch)
 {
@@ -27,10 +30,25 @@ nerthus.chatCmd.run_ni = function(e)
     let clone = JSON.parse(JSON.stringify(e[1]))
     let ch = nerthus.chatCmd.run(clone)
     if(ch) {
-        e[0].addClass(ch.s)
-        e[0].children().eq(2).contents().eq(0).replaceWith(ch.t)
-        e[0].children(2).addClass(ch.s)
-        e[0].children().eq(0).contents().eq(0).replaceWith(ch.n)
+        if (ch.t === "")
+        {
+            e[0].remove()
+        }
+        else
+        {
+            e[0].addClass(ch.s)
+            let content = e[0].children().eq(2).contents()
+            e[0].children(2).addClass(ch.s)
+            for (let i = 0; i < content.length; i++)
+            {
+                let text = content.eq(i);
+                if (i === 0)
+                    text.replaceWith(ch.t);
+                else
+                    text.replaceWith("");	//delete?
+            }
+            e[0].children().eq(0).contents().eq(0).replaceWith(ch.n)
+        }
     }
 }
 
@@ -47,6 +65,31 @@ nerthus.chatCmd.fetch_callback = function(cmd,ch)
     if(!callback && (nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)))
         callback = this.map[cmd[1]]
     return callback
+}
+
+nerthus.chatCmd.mapChanging = function (is_on)
+{
+    nerthus.chatCmd.mapChangingOn = is_on
+    !function () {
+        let EngineMap = this;
+        !function (n)
+        {
+            window.Engine.map.draw = function (Canvas_rendering_context)
+            {
+                let t = n.call(this, Canvas_rendering_context)
+                if(nerthus.chatCmd.mapChangingOn)
+                {
+                    EngineMap.draw(this, Canvas_rendering_context)
+                    return t
+                }
+                else return false
+            }
+        }(window.Engine.map.draw)
+        this.draw = function (EngineMap, Canvas_rendering_context)
+        {
+            Canvas_rendering_context.drawImage(nerthus.chatCmd.mapImage, 0 - EngineMap.offset[0], 0 - EngineMap.offset[1])
+        }
+    }()
 }
 
 nerthus.chatCmd.map["nar"] = function(ch)
@@ -121,9 +164,27 @@ nerthus.chatCmd.map["sys"] = function(ch)
 
 nerthus.chatCmd.map["map"] = function(ch)
 {
-    var map_url = ch.t.split(" ").slice(1).join(" ");
-    $("#ground").css("backgroundImage","url(" + map_url + ")")
+    let map_url = ch.t.split(" ").slice(1).join(" ")
+    $("#ground").css("backgroundImage", "url(" + map_url + ")")
     return true;
+}
+
+nerthus.chatCmd.map_ni["map"] = function(ch)
+{
+    let map_url = ch.t.split(" ").slice(1).join(" ")
+    ch.n = ""
+    ch.t = ""
+    if(map_url)
+    {
+        nerthus.chatCmd.mapImage.src = map_url
+        nerthus.chatCmd.mapChanging(true)
+    }
+    else
+    {
+        nerthus.chatCmd.mapImage.src = ""
+        nerthus.chatCmd.mapChanging(false)
+    }
+    return ch
 }
 
 nerthus.chatCmd.map["light"] = function(ch)
@@ -191,23 +252,38 @@ nerthus.chatCmd.public_map["me"] = function(ch)
     return ch
 }
 
+nerthus.chatCmd.appendStyles = function()
+{
+    let style = document.createElement('style')
+    style.type = "text/css"
+    style.innerHTML =  ".me{ color: #e7d798 !important }"
+        + ".sys_comm{ color: #f33 !important }"
+        + ".nar{ color: lightblue !important }"
+        + ".nar2{ color: #D6A2FF !important }"
+        + ".nar3{ color: #00CED1 !important }"
+        + ".dial1{ color: #33CC66 !important }"
+        + ".dial2{ color: #CC9966 !important }"
+        + ".dial3{ color: #D3D3D3 !important }"
+        + ".dial666{ color: #FF66FF !important }"
+    document.head.appendChild(style)
+}
+
 nerthus.chatCmd.start = function()
 {
-    //style do dialogów
-    $("<style type='text/css'>.sys_comm{ color: #f33 !important }</style>").appendTo("head")
-    $("<style type='text/css'>.nar{ color: lightblue !important }</style>").appendTo("head")
-    $("<style type='text/css'>.nar2{ color: #D6A2FF !important }</style>").appendTo("head")
-    $("<style type='text/css'>.nar3{ color: #00CED1 !important }</style>").appendTo("head")
-    $("<style type='text/css'>.dial1{ color: #33CC66 !important }</style>").appendTo("head")
-    $("<style type='text/css'>.dial2{ color: #CC9966 !important }</style>").appendTo("head")
-    $("<style type='text/css'>.dial3{ color: #D3D3D3 !important }</style>").appendTo("head")
-    $("<style type='text/css'>.dial666{ color: #FF66FF !important }</style>").appendTo("head")
-    if(nerthus.interface === "ni") {
-        API.addCallbackToEvent('newMsg', this.run_ni)
-        API.addCallbackToEvent('updateMsg', this.run_ni)
-    }
-    else
-        g.chat.parsers.push(nerthus.chatCmd.run.bind(this))
+    this.appendStyles()
+
+    g.chat.parsers.push(nerthus.chatCmd.run.bind(this))
+}
+
+nerthus.chatCmd.start_ni = function()
+{
+    nerthus.mapImage = new Image()
+    this.appendStyles()
+
+    this.map["map"] = this.map_ni["map"]
+
+    API.addCallbackToEvent('newMsg', this.run_ni)
+    API.addCallbackToEvent('updateMsg', this.run_ni)
 }
 
 nerthus.chatCmd.start()

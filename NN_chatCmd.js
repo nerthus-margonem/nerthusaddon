@@ -41,11 +41,11 @@ nerthus.chatCmd.run_ni = function(e)
             e[0].children(2).addClass(ch.s)
             for (let i = 0; i < content.length; i++)
             {
-                let text = content.eq(i);
+                let text = content.eq(i)
                 if (i === 0)
-                    text.replaceWith(ch.t);
+                    text.replaceWith(ch.t)
                 else
-                    text.replaceWith("");	//delete?
+                    text.replaceWith("")	//delete?
             }
             e[0].children().eq(0).contents().eq(0).replaceWith(ch.n)
         }

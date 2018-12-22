@@ -143,7 +143,6 @@ nerthus.ranks.start = function()
     g.names.ranks[6] = "Piewca Słowa" //"Modelator struny"; //"Bard + MC";
     g.names.ranks[7] = "Radny" //Radny;
 }
-nerthus.ranks.start()
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}
 

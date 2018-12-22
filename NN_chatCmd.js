@@ -286,7 +286,5 @@ nerthus.chatCmd.start_ni = function()
     API.addCallbackToEvent('updateMsg', this.run_ni)
 }
 
-nerthus.chatCmd.start()
-
 }catch(e){log('nerthus chatCmd: '+e.message,1);}
 

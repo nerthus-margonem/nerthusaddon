@@ -6,9 +6,11 @@ before(function()
     nerthus.addon = {}
     nerthus.addon.fileUrl = function () {}
 
-    expect = require("expect.js")
-    require("../NN_zodiak.js")
 
+    expect = require("expect.js")
+    let fs = require('fs')
+
+    eval(fs.readFileSync('./NN_zodiak.js')+'')
 })
 
 

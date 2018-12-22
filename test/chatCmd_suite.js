@@ -20,8 +20,9 @@ before(function()
     }
 
     expect = require("expect.js")
-    let fs = require('fs');
-    eval(fs.readFileSync('NN_chatCmd.js')+'');
+    let fs = require('fs')
+
+    eval(fs.readFileSync('./NN_chatCmd.js')+'')
 
 })
 

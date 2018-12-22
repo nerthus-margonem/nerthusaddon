@@ -7,7 +7,9 @@ before(function()
     nerthus.options = {}
 
     expect = require("expect.js")
-    require("../NN_pogoda.js")
+    let fs = require('fs')
+
+    eval(fs.readFileSync('./NN_pogoda.js')+'')
 })
 
 test("dummy", function()

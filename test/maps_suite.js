@@ -6,7 +6,9 @@ before(function()
     nerthus.defer = function(){}
 
     expect = require("expect.js")
-    require("../NN_maps.js")
+    let fs = require('fs')
+
+    eval(fs.readFileSync('./NN_maps.js')+'')
 
 })
 

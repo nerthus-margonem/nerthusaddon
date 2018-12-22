@@ -11,8 +11,9 @@ before(function()
     _g = {}
 
     expect = require("expect.js")
-    require("../NN_alko.js")
+    let fs = require('fs')
 
+    eval(fs.readFileSync('./NN_alko.js')+'')
 })
 
 test("dummy", function()

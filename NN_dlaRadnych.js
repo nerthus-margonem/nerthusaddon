@@ -16,14 +16,23 @@ nerthus.NerthusSpec = [
     "Minstrella",
     "Noys Hollyhook-Rumore",
     "Mateusz z Rocevaux",
-    "Korano Ligatur"
+    "Korano Ligatur",
+    "Kris Aphalon"
 ]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
-nerthus.NerthusRad = ['Umbrael Regis','Rothe']
+nerthus.NerthusRad = ['Umbrael Regis']
 
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
-nerthus.NerthusNarr = ['Friedrich von Rommel','Laliemm','Kostryn','Materios Dragonius']
+nerthus.NerthusNarr = [
+    'Friedrich von Rommel',
+    'Laliemm',
+    'Kostryn',
+    'Materios Dragonius',
+    'Rothe',
+    'Argetus',
+    'Kamivis'
+]
 
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = [

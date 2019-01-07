@@ -17,13 +17,21 @@ nerthus.addon.consts.CDN_VERSION_SEPARATOR = '@'
 nerthus.addon.version = nerthus.addon.consts.MASTER
 nerthus.addon.version_separator = nerthus.addon.consts.CDN_VERSION_SEPARATOR
 nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
-nerthus.addon.fileUrl = function(filename)
+nerthus.addon.fileUrl = function(path, filename)
 {
-    return [[this.filesPrefix, this.version].join(this.version_separator), filename].join('/')
+    if (filename === undefined)
+        return [[this.filesPrefix, this.version].join(this.version_separator), path].join('/')
+    if (path === "")
+        return [[this.filesPrefix, this.version].join(this.version_separator), encodeURIComponent(filename)].join("/")
+    return [[this.filesPrefix, this.version].join(this.version_separator), path, encodeURIComponent(filename)].join("/")
 }
-nerthus.addon.fileMasterUrl = function(filename)
+nerthus.addon.fileMasterUrl = function(path, filename)
 {
-    return [[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), filename].join('/')
+    if (filename === undefined)
+        return [[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), path].join('/')
+    if (path === "")
+        return [[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), encodeURIComponent(filename)].join('/')
+    return [[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), path, encodeURIComponent(filename)].join('/')
 }
 nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
 nerthus.addon.store = function()

@@ -32,7 +32,7 @@ nerthus.night.lights.types = {}
 
 nerthus.night.lights.types.add = function(type,size)
 {
-    this[type] = {'url' : nerthus.addon.fileUrl("/img/night_light_" + type + ".png"), 'width' : size, 'height' : size}
+    this[type] = {'url' : nerthus.addon.fileUrl("img", "night_light_" + type + ".png"), 'width' : size, 'height' : size}
 }
 
 nerthus.night.lights.add = function(lights)
@@ -62,7 +62,7 @@ nerthus.night.lights.on = function()
 {
     var hour = new Date().getHours();
     if( hour <= 4 || hour > 18 )
-        $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),this.add.bind(this))
+        $.getJSON(nerthus.addon.fileUrl("night_lights", "map_" + map.id + ".json"),this.add.bind(this))
 }
 
 nerthus.night.start = function()
@@ -81,7 +81,7 @@ nerthus.night.start = function()
 
 nerthus.night.lights.give_me_the_light = function()
 {
-    $.getScript(nerthus.addon.fileUrl("/NN_night_lights_mgr.js"))
+    $.getScript(nerthus.addon.fileUrl("NN_night_lights_mgr.js"))
 }
 
 }catch(err){log('nerthus night error: '+ err.message ,1)}

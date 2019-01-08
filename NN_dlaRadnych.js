@@ -203,11 +203,11 @@ nerthus.ranks.start = function()
     g.names.ranks[0] = "Kreator"
     g.names.ranks[1] = "Uber Miszcz Gry"
     g.names.ranks[2] = "Miszcz Gry"
-    g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu"; //"Moderator czatu";
-    g.names.ranks[4] = "Tkacz Słów" //"Modelator czasoprzestrzeni"; //"Super moderator";
-    g.names.ranks[5] = "Trubadur" //"Męczystruna"; //"Bard";
-    g.names.ranks[6] = "Piewca Słowa" //"Modelator struny"; //"Bard + MC";
-    g.names.ranks[7] = "Radny" //Radny;
+    g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
+    g.names.ranks[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
+    g.names.ranks[5] = "Trubadur"       //"Męczystruna";                //"Bard";
+    g.names.ranks[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
+    g.names.ranks[7] = "Radny"                                          //"Radny";
 }
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}

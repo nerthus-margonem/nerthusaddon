@@ -19,11 +19,11 @@ nerthus.addon.version_separator = nerthus.addon.consts.CDN_VERSION_SEPARATOR
 nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
 nerthus.addon.fileUrl = function(filename)
 {
-    return [[this.filesPrefix, this.version].join(this.version_separator), filename].join('/')
+    return encodeURI([[this.filesPrefix, this.version].join(this.version_separator), filename].join('/'))
 }
 nerthus.addon.fileMasterUrl = function(filename)
 {
-    return [[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), filename].join('/')
+    return encodeURI([[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), filename].join('/'))
 }
 nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
 nerthus.addon.store = function()

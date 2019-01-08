@@ -48,10 +48,22 @@ beforeEach(function()
 
 test("fileUrl concat filesPrefix and file_name into url", function()
 {
-    var FILE = 'SCRIPT.JS'
-    var PREFIX = 'PREFIX'
-    var VERSION = 'VERSION'
-    var FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
+    let FILE = 'SCRIPT.JS'
+    let PREFIX = 'PREFIX'
+    let VERSION = 'VERSION'
+    let FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
+
+    nerthus.addon.filesPrefix = PREFIX
+    nerthus.addon.version = VERSION
+    expect(nerthus.addon.fileUrl(FILE)).to.be.equal(FILE_URL)
+})
+
+test("fileUrl concat filesPrefix and file_name into url with special characters", function()
+{
+    let FILE = 'SCRIPTS/SCRIPT ĄŹĆ.JS'
+    let PREFIX = 'PREFIX'
+    let VERSION = 'VERSION'
+    let FILE_URL = 'PREFIX@VERSION/SCRIPTS/SCRIPT%20%C4%84%C5%B9%C4%86.JS'
 
     nerthus.addon.filesPrefix = PREFIX
     nerthus.addon.version = VERSION

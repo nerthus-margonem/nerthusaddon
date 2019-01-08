@@ -1,15 +1,45 @@
 {
-"forum":{"name":"forum", "url":"https://www.margonem.pl/?task=forum&show=topics&id=33"},
-"panel_info":"",
-"links":[
-{"name":"Zbiór zasad", "url":"https://www.margonem.pl/?task=forum&show=posts&id=424036"},
-{"name":"Biuletyn", "url":"https://www.margonem.pl/?task=forum&show=posts&id=280825#bottom"},
-{"name":"Karty Postaci", "url":"https://www.margonem.pl/?task=forum&show=posts&id=87510"},
-{"name":"Wieści z krainy", "url":"https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!379&ithint=file%2cdocx&app=Word&authkey=!ACPJmB0G1S8y9tU"},
-{"name":"Cennik Nerthusa", "url":"https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!343&ithint=file%2cxlsx&app=Excel&authkey=!AAL9d-j3fr_9aag"},
-{"name":"Informacje o dodatku", "url":"https://www.margonem.pl/?task=forum&show=posts&id=264553"},
-{"name":"System magii", "url":"https://drive.google.com/file/d/1Z3FRqyWToXw0jNFm-7YqkM5eJX35eOGN/view"},
-{"name":"System umiejętności", "url":"https://1drv.ms/w/s!Agjaf7jYdI6AglC8nPXxId1Rgmxh"},
-{"name":"Podstawy mechaniki rdzenia kosmosu", "url":"https://drive.google.com/file/d/19a_8at2OGe5sN6R7eHU_pPz8uFFHKxVF/view"}
-]
+  "forum": {
+    "name": "forum",
+    "url": "https://www.margonem.pl/?task=forum&show=topics&id=33"
+  },
+  "panel_info": "",
+  "links": [
+    {
+      "name": "Zbiór zasad",
+      "url": "https://www.margonem.pl/?task=forum&show=posts&id=424036"
+    },
+    {
+      "name": "Biuletyn",
+      "url": "https://www.margonem.pl/?task=forum&show=posts&id=280825#bottom"
+    },
+    {
+      "name": "Karty Postaci",
+      "url": "https://www.margonem.pl/?task=forum&show=posts&id=87510"
+    },
+    {
+      "name": "Wieści z krainy",
+      "url": "https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!379&ithint=file%2cdocx&app=Word&authkey=!ACPJmB0G1S8y9tU"
+    },
+    {
+      "name": "Cennik Nerthusa",
+      "url": "https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!343&ithint=file%2cxlsx&app=Excel&authkey=!AAL9d-j3fr_9aag"
+    },
+    {
+      "name": "Informacje o dodatku",
+      "url": "https://www.margonem.pl/?task=forum&show=posts&id=264553"
+    },
+    {
+      "name": "System magii",
+      "url": "https://drive.google.com/file/d/1Kso0Wser_XLUkP8ctQlde1BHmjET_8wT/view"
+    },
+    {
+      "name": "System umiejętności",
+      "url": "https://1drv.ms/w/s!Agjaf7jYdI6AglC8nPXxId1Rgmxh"
+    },
+    {
+      "name": "Podstawy mechaniki rdzenia kosmosu",
+      "url": "https://drive.google.com/file/d/19a_8at2OGe5sN6R7eHU_pPz8uFFHKxVF/view"
+    }
+  ]
 }

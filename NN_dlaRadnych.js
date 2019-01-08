@@ -114,6 +114,61 @@ nerthus.EnterMsg = ''
 nerthus.mapsArr =
 [
     //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
+
+    [1, 12, nerthus.addon.fileUrl("maps", "Stare Ruiny.png")],
+    [2, 12, nerthus.addon.fileUrl("maps", "Stare Ruiny.png")],
+    [3, 12, nerthus.addon.fileUrl("maps", "Stare Ruiny.png")],
+    [4, 12, nerthus.addon.fileUrl("maps", "Stare Ruiny.png")],
+
+    [1, 169, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście wschodnie.png")],
+    [2, 169, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście wschodnie.png")],
+    [3, 169, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście wschodnie.png")],
+    [4, 169, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście wschodnie.png")],
+
+    [1, 174, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - sala zgromadzeń.png")],
+    [2, 174, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - sala zgromadzeń.png")],
+    [3, 174, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - sala zgromadzeń.png")],
+    [4, 174, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - sala zgromadzeń.png")],
+
+    [1, 175, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p1.png")],
+    [2, 175, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p1.png")],
+    [3, 175, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p1.png")],
+    [4, 175, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p1.png")],
+
+    [1, 3741, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p2.png")],
+    [2, 3741, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p2.png")],
+    [3, 3741, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p2.png")],
+    [4, 3741, nerthus.addon.fileUrl("maps", "Przeklęty Zamek p2.png")],
+
+    [1, 3742, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - komnata.png")],
+    [2, 3742, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - komnata.png")],
+    [3, 3742, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - komnata.png")],
+    [4, 3742, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - komnata.png")],
+
+    [1, 172, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - zbrojownia.png")],
+    [2, 172, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - zbrojownia.png")],
+    [3, 172, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - zbrojownia.png")],
+    [4, 172, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - zbrojownia.png")],
+
+    [1, 170, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia północne.png")],
+    [2, 170, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia północne.png")],
+    [3, 170, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia północne.png")],
+    [4, 170, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia północne.png")],
+
+    [1, 168, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście północne.png")],
+    [2, 168, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście północne.png")],
+    [3, 168, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście północne.png")],
+    [4, 168, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście północne.png")],
+
+    [1, 171, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia południowe.png")],
+    [2, 171, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia południowe.png")],
+    [3, 171, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia południowe.png")],
+    [4, 171, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - podziemia południowe.png")],
+
+    [1, 167, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście południowe.png")],
+    [2, 167, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście południowe.png")],
+    [3, 167, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście południowe.png")],
+    [4, 167, nerthus.addon.fileUrl("maps", "Przeklęty Zamek - wejście południowe.png")]
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'

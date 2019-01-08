@@ -203,7 +203,7 @@ nerthus.npc.set_collision = function(npc)
 
 nerthus.npc.load_npcs = function()
 {
-    var file_with_npc = nerthus.addon.fileUrl("npcs", "map_" + map.id + ".json")
+    var file_with_npc = nerthus.addon.fileUrl("/npcs/map_" + map.id + ".json")
     this.load_npcs_from_file(file_with_npc)
 }
 

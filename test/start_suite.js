@@ -46,42 +46,16 @@ beforeEach(function()
     getCookie = function(){}
 })
 
-test("fileUrl concat filesPrefix and file_name into url (1 argument)", function()
+test("fileUrl concat filesPrefix and file_name into url", function()
 {
-    let FILE = 'SCRIPT.JS'
-    let PREFIX = 'PREFIX'
-    let VERSION = 'VERSION'
-    let FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
+    var FILE = 'SCRIPT.JS'
+    var PREFIX = 'PREFIX'
+    var VERSION = 'VERSION'
+    var FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
 
     nerthus.addon.filesPrefix = PREFIX
     nerthus.addon.version = VERSION
     expect(nerthus.addon.fileUrl(FILE)).to.be.equal(FILE_URL)
-})
-
-test("fileUrl concat filesPrefix and file_name into url (2 arguments)", function()
-{
-    let PATH = 'PATH'
-    let FILE = 'SCRIPT ONE.JS'
-    let PREFIX = 'PREFIX'
-    let VERSION = 'VERSION'
-    let FILE_URL = 'PREFIX@VERSION/PATH/SCRIPT%20ONE.JS'
-
-    nerthus.addon.filesPrefix = PREFIX
-    nerthus.addon.version = VERSION
-    expect(nerthus.addon.fileUrl(PATH, FILE)).to.be.equal(FILE_URL)
-})
-
-test("fileUrl concat filesPrefix and file_name into url (2 arguments, first one empty)", function()
-{
-    let PATH = ''
-    let FILE = 'SCRIPT ONE.JS'
-    let PREFIX = 'PREFIX'
-    let VERSION = 'VERSION'
-    let FILE_URL = 'PREFIX@VERSION/SCRIPT%20ONE.JS'
-
-    nerthus.addon.filesPrefix = PREFIX
-    nerthus.addon.version = VERSION
-    expect(nerthus.addon.fileUrl(PATH, FILE)).to.be.equal(FILE_URL)
 })
 
 test("storage : localStorage exist", function()

@@ -2,7 +2,7 @@ try
 {
 
 nerthus.zodiac = {}
-nerthus.zodiac.icon = nerthus.addon.fileUrl("img", "zodiacIcons.gif")
+nerthus.zodiac.icon = nerthus.addon.fileUrl("img/zodiacIcons.gif")
 nerthus.zodiac.SIGNS = {
     AQUARIUS    : 0,
     PISCES      : 1,

@@ -132,15 +132,15 @@ nerthus.mapsArr =
     [3, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
     [4, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
 
-    [1, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p1.png")],
-    [2, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p1.png")],
-    [3, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p1.png")],
-    [4, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p1.png")],
+    [1, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+    [2, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+    [3, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+    [4, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
 
-    [1, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p2.png")],
-    [2, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p2.png")],
-    [3, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p2.png")],
-    [4, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p2.png")],
+    [1, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+    [2, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+    [3, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+    [4, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
 
     [1, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],
     [2, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],

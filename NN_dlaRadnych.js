@@ -170,7 +170,13 @@ nerthus.mapsArr =
     [1, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
     [2, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
     [3, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
-    [4, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")]
+    [4, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
+
+
+    [1, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    [2, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    [3, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    [4, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")]
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'

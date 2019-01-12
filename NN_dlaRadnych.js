@@ -177,7 +177,23 @@ nerthus.mapsArr =
     [1, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
     [2, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
     [3, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
-    [4, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")]
+    [4, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+
+    //Siedziba Leśnego Bractwa
+    [1,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+    [2,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+    [3,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+    [4,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+
+    [1,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+    [2,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+    [3,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+    [4,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+
+    [1,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+    [2,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+    [3,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+    [4,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")]
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'

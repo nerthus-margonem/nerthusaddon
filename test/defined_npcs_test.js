@@ -21,46 +21,4 @@ test("read npcs from files", function()
             expect().fail(filename + " is invalid: " + e)
         }
     })
-/*
-    var readFiles = function(dirname, onFileContent, onError, done)
-    {
-        fs.readdir(dirname, function(err, filenames)
-        {
-            if (err)
-                return onError(err, dirname);
-            filenames.forEach(function(filename)
-            {
-                var file = path.join(dirname, filename)
-                fs.readFile(file, 'utf-8', function(err, content)
-                {
-                    if (err)
-                      return onError(err, file);
-                    onFileContent(filename, content);
-                });
-            });
-            done()
-        });
-    }
-
-    var onError = function(err, where)
-    {
-        done("An error occured during reading: " + where + ", error: " + err)
-    }
-    var onFile = function(filename, content)
-    {
-        try
-        {
-            console.log("checking file: " + filename)
-            var npcs = JSON.parse(content)
-            for(i in npcs)
-                console.log(npcs[i].name)
-        }
-        catch(e)
-        {
-            done("An error occured during reading: " + filename + ", error: " + err)
-        }
-    }
-
-    var dupa = readFiles("./npcs", onFile, onError, done)
-*/
 })

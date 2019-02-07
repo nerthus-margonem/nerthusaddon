@@ -39,5 +39,32 @@
 		"y": "75",
 		"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
 		"date": "30.10-4.11"
-	}
+	},
+{
+    "name" : "Kartka porwana przez wiatr",
+    "x" : "49",
+    "y" : "79",
+    "url" : "https://margonem.pl/obrazki/itemy/pap/pap40.gif",
+    "collision" : true,
+    "time" : "18-6",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Postrzępiony kawałek kartki zaplątał się u stóp drzewa. Łopotał, gdy wiatr próbował nieść go dalej, ale jak dotąd nie dał się porwać. ]",
+            "[ Podnoszę go. ] ->1",
+            "[ Odchodzę. ]->END"
+        ],
+        "1" :
+        [
+            "[ Atrament częściowo się rozpłynął, jednak tekst nadal jest możliwy do odczytania. Drobne, pozawijane literki wymagają dłuższej chwili skupienia. ]",
+            " Dalej ->2"
+        ],
+        "2" :
+        [
+            "...dlaczego wśród nocy dziewczyna odeszła? Dlaczego wśród nocy, pomimo przestrogi, za mury wyszła idąc nad brzeg wody?",
+            "Dziwne ->END"
+        ]
+    }
+}
 ]

@@ -1,0 +1,30 @@
+[
+{
+    "name" : "Skrawek kartki",
+    "x" : "89",
+    "y" : "51",
+    "url" : "https://margonem.pl/obrazki/itemy/pap/wydarta.gif",
+    "collision" : true,
+    "time": "18-6",
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Wśród kęp trawy twoją uwagę zwraca niewielki, biały skrawek. Zmoczony wieczorną rosą przykleił się do ścianki namiotu. ]",
+            "[ Ostrożnie odklejam go by się nie zniszczył. ] ->1",
+            "[ Odchodzę. ] ->END"
+        ],
+        "1" :
+        [
+            "[ Zapisane okrągłymi literami zdania od razu napawają cię dziwnym uczuciem... nieuchronności. Jakby były wróżbą czy przepowiednią. ]",
+            "[ Czytam. ] ->2",
+            "[ Odchodzę. ] ->END"
+        ],
+        "2" :
+        [
+            "Nie mogłam przyszłości zobaczyć. Tak trudzisz się, w ciemności stawiasz kroki, nie masz nikogo, gwiazdy wróżą śmierć tej nocy. Bez celu błąkasz się, nie znajdziesz tu pomocy, gwiazdy wróżą dzisiaj śmierć i grób wśród odmętów wody.",
+            "Chyba lepiej się stąd wynieść. ->END"
+        ]
+    }
+}
+]

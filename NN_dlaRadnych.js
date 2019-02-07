@@ -66,10 +66,14 @@ nerthus.lvlNames = [
     'Kat Demonisa',
     'Oprawca Maddoków',
     'Potomek Najwyższych',
+    'Władca Puszczy',
+    'Konkwistador',
+    'Ewokator Duchów',
+    'Odkrywca Reliktów',
+    'Smocza Krew',
     'Piekielny Jeźdźca',
     'Ponury Żniwiarz',
-    'Gwardzista Piekieł',
-    'Tytan'
+    'Gwardzista Piekieł'
 ]
 
 //vips {player_id : title}

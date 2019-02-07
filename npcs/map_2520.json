@@ -1,0 +1,35 @@
+[
+{
+    "name" : "Sukienka",
+    "x" : "43",
+    "y" : "7",
+    "url" : "https://margonem.pl/obrazki/npc/mas/teatr05.gif",
+    "collision" : true,
+    "dialog" :
+    {
+        "0" :
+        [
+            "[ Na ziemi leży kobieca sukienka. Ślady błota i deszczu wskazują, że rzucono ją tutaj przynajmniej kilka dni temu. Właścicielki nigdzie nie widać. ]",
+            "Hej, hej! Jest tu kto!? ->1",
+            "[ W milczeniu przetrząsam kieszenie. ] ->2",
+            "[Odchodzę ] ->END"
+        ],
+        "1" :
+        [
+            "[ Nikt nie odpowiedział. Za to pojawiło się wrażenie bycia obserwowanym. ]",
+            "Lepiej stąd pójdę. ->END"
+        ],
+        "2" :
+        [
+            "[ Znajdujesz kilka miedziaków i gładki, wytarty miedziany krążek z dziurką. Znasz ten przedmiot, niektórzy wkładają go do ust zmarłym, by mogli przekupić przewoźnika do świata zmarłych. ]",
+            "Dalej ->3"
+        ],
+        "3" :
+        [
+            "[ Wśród gałęzi coś zaszumiało, trzasnęła pęknięta gałązka. ]",
+            "[ Chowam pieniądze i oddalam się pospiesznie. ] ->END",
+            "[ Szybko odkładam rzeczy na miejsce i wycofuję się w stronę Doliny Yss. ] -> END"
+        ]
+    }
+}
+]

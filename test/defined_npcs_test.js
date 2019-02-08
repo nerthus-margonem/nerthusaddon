@@ -9,6 +9,8 @@ let checkNpc = function(npc)
 {
     try
     {
+        expect(npc).to.be.an(typeof({}))
+
         expect(npc).to.have.property("name")
         expect(npc.name).to.be.a(typeof("string"))
 
@@ -69,6 +71,7 @@ let checkFileWithNpcs = function(filename)
 {
     let file = fs.readFileSync(path.join(NPC_DIR, filename))
     let npcs = JSON.parse(file)
+    expect(npcs).to.be.an(typeof([]))
     npcs.forEach(npc => checkNpc(npc))
 }
 

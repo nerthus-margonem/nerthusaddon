@@ -60,9 +60,7 @@ nerthus.night.lights.display = function(light)
 
 nerthus.night.lights.on = function()
 {
-    var hour = new Date().getHours();
-    if( hour <= 4 || hour > 18 )
-        $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),this.add.bind(this))
+    $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),this.add.bind(this))
 }
 
 nerthus.night.start = function()
@@ -73,8 +71,12 @@ nerthus.night.start = function()
     this.lights.types.add("XL","192px")
     if(nerthus.options['night'])
     {
-        nerthus.defer(this.lights.on.bind(this.lights))
-        nerthus.defer(this.dim.bind(this, this.opacity()))
+        var hour = new Date().getHours()
+        if( hour <= 4 || hour > 18 )
+        {
+            nerthus.defer(this.lights.on.bind(this.lights))
+            nerthus.defer(this.dim.bind(this, this.opacity()))
+        }
     }
 }
 

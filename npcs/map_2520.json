@@ -28,7 +28,7 @@
         [
             "[ Wśród gałęzi coś zaszumiało, trzasnęła pęknięta gałązka. ]",
             "[ Chowam pieniądze i oddalam się pospiesznie. ] ->END",
-            "[ Szybko odkładam rzeczy na miejsce i wycofuję się w stronę Doliny Yss. ] -> END"
+            "[ Szybko odkładam rzeczy na miejsce i wycofuję się w stronę Doliny Yss. ] ->END"
         ]
     }
 }

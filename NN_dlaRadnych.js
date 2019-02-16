@@ -17,8 +17,8 @@ nerthus.NerthusSpec = [
     "Noys Hollyhook-Rumore",
     "Mateusz z Rocevaux",
     "Korano Ligatur",
-    "Kris Aphalon"
-   
+    "Kris Aphalon",
+    "Zireath"
 ]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"

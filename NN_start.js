@@ -6,18 +6,35 @@
  **/
 try{
 
-    nerthus = {}
-    nerthus.addon = {}
-    nerthus.addon.consts = {}
-    nerthus.addon.consts.MASTER_VERSION = ""
-    nerthus.addon.consts.MASTER_PREFIX = 'http://akrzyz.github.io/nerthusaddon'
-    nerthus.addon.consts.MASTER_VERSION_SEPARATOR = ''
-    nerthus.addon.consts.CDN_PREFIX = 'http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon'
-    nerthus.addon.consts.CDN_VERSION_SEPARATOR = '@'
-    nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
-    nerthus.addon.version_separator = nerthus.addon.consts.CDN_VERSION_SEPARATOR
-    nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
-    nerthus.addon.fileUrl = function(filename)
+nerthus = {}
+nerthus.addon = {}
+nerthus.addon.consts = {}
+nerthus.addon.consts.MASTER_VERSION = ""
+nerthus.addon.consts.MASTER_PREFIX = 'http://akrzyz.github.io/nerthusaddon'
+nerthus.addon.consts.MASTER_VERSION_SEPARATOR = ''
+nerthus.addon.consts.CDN_PREFIX = 'http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon'
+nerthus.addon.consts.CDN_VERSION_SEPARATOR = '@'
+nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
+nerthus.addon.version_separator = nerthus.addon.consts.CDN_VERSION_SEPARATOR
+nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
+nerthus.addon.fileUrl = function(filename)
+{
+    return encodeURI([[this.filesPrefix, this.version].join(this.version_separator), filename].join('/'))
+}
+nerthus.addon.fileMasterUrl = function(filename)
+{
+    return encodeURI([[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), filename].join('/'))
+}
+nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
+nerthus.addon.store = function()
+{
+    if(NerthusAddonUtils.storage())
+        NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
+}
+
+NerthusAddonUtils = (function()
+{
+    var call = function(func)
     {
         return encodeURI([[this.filesPrefix, this.version].join(this.version_separator), filename].join('/'))
     }

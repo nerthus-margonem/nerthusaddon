@@ -49,6 +49,7 @@
             "Ewokacji. ->8",
             "Poznania. ->9",
             "Przywrócenia. ->10",
+            "Przemiany. ->16",
             "Zniszczenia. ->11",
             "Mam już wszystko, dziękuję. ->END"
         ],
@@ -64,18 +65,47 @@
         ],
         "9" :
         [
-            "Poznanie... Udało mi się wejść w posiadanie kartek z dziennika Korano Ligatur. To niesamowicie cenna praca, pierwsze zapiski dotyczące magii o poziomie arcymistrzowskim jakie udało mi się dorwać. Nie przejmuj się postrzępionymi brzegami i rysunkami na marginesach, <a href='https://drive.google.com/file/d/1JIqxOEmsRZG4x7OF-BSLol-XR3Tpbhwz/view' target='_blank'>są nadal czytelne</a>.",
-            "Będę na nie uważał. ->END"
+            "Poznanie... Jaki stopień zaawansowania jest Ci potrzebny?",
+            "Szukam notatek Mistrzowskich. ->14",
+            "Szukam czegoś dla Arcymistrzów. ->15"
         ],
         "10" :
         [
-            "O Przywróceniu, tak? Hmm... Pamiętam, że paru magów praktykuje tę dziedzinę. Na razie mam tylko zapiski Readrera i przyznam, że chciałabym wiedzieć w jakich okolicznościach powstały. Są <a href='https://drive.google.com/file/d/1oE47IwksiW74CjjJ7APc5STAuN9bM2sS/view' target=_blank'>tutaj</a>.",
-            "Hmmm... Ciekawe. ->END"
+            "O Przywróceniu, tak? Hmm... Interesują Cię prace na poziomie Mistrzowskim czy Arcymistrzowskim?",
+            "Mistrzowskim. ->12",
+            "Arcymistrzowskim. ->13",
+            "Interesuje mnie jednak coś innego. ->6"
         ],
+        
         "11" :
         [
-            "Na temat Zniszczenia o dziwo nie napisano zbyt wiele, widocznie praktykujący ją wolą działać bojowo niż naukowo. A szkoda, wielka szkoda. Mam tutaj zachowane <a href='https://drive.google.com/file/d/1yHUjcIS8xRyYOrqH495q36lTt_fPODQP/view' target='_blank'>zapiski</a> niejakiego Astratasa, może pomogą ci w twoich poszukiwaniach.",
+            "Na temat Zniszczenia o dziwo nie napisano zbyt wiele, widocznie praktykujący ją wolą działać bojowo niż naukowo. A szkoda, wielka szkoda. Mam tutaj zachowane <a href='https://drive.google.com/file/d/1yHUjcIS8xRyYOrqH495q36lTt_fPODQP/view' target='_blank'>zapiski</a> niejakiego Astratasa, może pomogą ci w twoich poszukiwaniach. Ostatnio dostałam też trochę rzeczy od Kostryna, to ta <a href='https://drive.google.com/file/d/1EuiTQvnqF6hptbdKJOy3T966huVapFlj/view?usp=sharing' target=_blank'>teczka</a>. Powodzenia",
             "Z całą pewnością je wykorzystam. ->END"
+        ],
+        "12" :
+        [
+            "O Przywróceniu, tak? Hmm... Pamiętam, że paru magów praktykuje tę dziedzinę. Na razie mam tylko zapiski Readrera i przyznam, że chciałabym wiedzieć w jakich okolicznościach powstały. Są <a href='https://drive.google.com/file/d/1oE47IwksiW74CjjJ7APc5STAuN9bM2sS/view' target=_blank'>tutaj</a>. Wiem też, że <a href='https://www.margonem.pl/?task=profile&id=5596571' target=_blank'>Lorrie</a> napisała pracę pod tytułem 'Magia Życia - Studium na temat szkoły Przywrócenia' może uda Ci się z nią porozmawiać. Zapewne odpowie na Twoje pytania.",
+            "To mnie satysfakcjonuje, dziękuję. ->END"
+        ],
+         "13" :
+        [
+            "Podobno <a href='https://www.margonem.pl/?task=profile&id=653201' target=_blank'>Readrer</a> ukończył swoje badania tworząc kolejną pracę. Nie udało mi się jednak do niej dotrzeć. Jeszcze.",
+            "Szkoda. ->END"
+        ],
+         "14" :
+        [
+            "To powinno Ci się spodobać. Ten tekst stworzył Emryh Reius, <a href='https://drive.google.com/file/d/1Fpo-r7GQHsruwlKmQC6Ak_4zFETPrCt4/view?usp=sharing' target=_blank'>zerknij</a> proszę.",
+            "Dziękuję, Mair. ->END"
+        ],
+         "15" :
+        [
+            "Poznanie... Udało mi się wejść w posiadanie kartek z dziennika Korano Ligatur. To niesamowicie cenna praca, pierwsze zapiski dotyczące magii o poziomie arcymistrzowskim jakie udało mi się dorwać. Nie przejmuj się postrzępionymi brzegami i rysunkami na marginesach, <a href='https://drive.google.com/file/d/1JIqxOEmsRZG4x7OF-BSLol-XR3Tpbhwz/view' target='_blank'>są nadal czytelne</a>.",
+            "Będę na nie uważał. ->END"
+        ],
+         "16" :
+        [
+            "Przemiana to dziedzina, w której magowie bardzo zawzięcie strzegą swoich sekretów. Co ciekawe, jedyna praca jaką mogę Ci pokazać jest autorstwa drowa i nie dotyczy ściśle Magii, a Psioniki. Trochę trudno je <a href='https://drive.google.com/file/d/1AqeMR8GPA6yrqHLCXYGMbVHzUHWiRqbP/view' target='_blank'>rozczytać</a>, ale z całą pewnością są warte tego trudu.",
+            "Duh, to pismo przypomina pajęczynę. ->END"
         ]
     }
 }

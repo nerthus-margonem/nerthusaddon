@@ -16,14 +16,24 @@ nerthus.NerthusSpec = [
     "Minstrella",
     "Noys Hollyhook-Rumore",
     "Mateusz z Rocevaux",
-    "Korano Ligatur"
+    "Korano Ligatur",
+    "Kris Aphalon",
+    "Zireath"
 ]
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
-nerthus.NerthusRad = ['Umbrael Regis','Rothe']
+nerthus.NerthusRad = ['Umbrael Regis']
 
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
-nerthus.NerthusNarr = ['Friedrich von Rommel','Laliemm','Kostryn','Materios Dragonius']
+nerthus.NerthusNarr = [
+    'Friedrich von Rommel',
+    'Laliemm',
+    'Kostryn',
+    'Materios Dragonius',
+    'Rothe',
+    'Argetus',
+    'Kamivis'
+]
 
 //Nazwy rang tych zamiast lvla
 nerthus.lvlNames = [
@@ -56,46 +66,52 @@ nerthus.lvlNames = [
     'Kat Demonisa',
     'Oprawca Maddoków',
     'Potomek Najwyższych',
+    'Władca Puszczy',
+    'Konkwistador',
+    'Ewokator Duchów',
+    'Odkrywca Reliktów',
+    'Smocza Krew',
     'Piekielny Jeźdźca',
     'Ponury Żniwiarz',
-    'Gwardzista Piekieł',
-    'Tytan'
+    'Gwardzista Piekieł'
 ]
 
 //vips {player_id : title}
 nerthus.vips = {
-16    : 'Teźa',
-50    : 'Mulher Má',
-319   : 'Niecny drow',
-6749  : 'Przezacna',
-7422  : 'Mistrz pióra',
-9565  : 'Donna Amadonna',
-6901  : 'Zło wcielone',
-2720  : 'Fochnisia',
-3077  : 'Siewca Wiatru',
-10430 : 'Wschodzące Słońce',
-10473 : 'Wędrowny Rysownik',
-2230  : 'Mhroczniś',
-513   : 'Zbieracz gumijagód',
-4146  : 'Gumitruskawka',
-10406 : 'Latorośle drowa',
-12002 : 'Głodny hobbit',
-12932 : 'Latorośle drowa',
-10372 : 'Boski Wiatr',
-10880 : 'Boski Wiatr',
-13931 : 'Wilcza Zamieć',
-9226  : 'Zadumany',
-1558  : 'Zielarka',
-15098 : 'Siostra Płomieni',
-13438 : 'Zakuty łeb',
-16089 : 'Chochlica-ponczlica',
-16372 : 'Chluba Lolth',
-10523 : 'Lux Aeterna',
-14615 : 'Iluzjonista'
+    16    : 'Teźa',
+    50    : 'Mulher Má',
+    319   : 'Niecny drow',
+    6749  : 'Przezacna',
+    7422  : 'Mistrz pióra',
+    9565  : 'Donna Amadonna',
+    6901  : 'Zło wcielone',
+    2720  : 'Fochnisia',
+    3077  : 'Siewca Wiatru',
+    10430 : 'Wschodzące Słońce',
+    10473 : 'Wędrowny Rysownik',
+    2230  : 'Mhroczniś',
+    513   : 'Zbieracz gumijagód',
+    4146  : 'Gumitruskawka',
+    10406 : 'Latorośle drowa',
+    12002 : 'Głodny hobbit',
+    12932 : 'Latorośle drowa',
+    10372 : 'Boski Wiatr',
+    10880 : 'Boski Wiatr',
+    13931 : 'Wilcza Zamieć',
+    9226  : 'Zadumany',
+    1558  : 'Zielarka',
+    15098 : 'Siostra Płomieni',
+    13438 : 'Zakuty łeb',
+    16089 : 'Chochlica-ponczlica',
+    16372 : 'Chluba Lolth',
+    10523 : 'Lux Aeterna',
+    14615 : 'Iluzjonista',
+    10222 : 'Władca Ciemności',
+    15746 : 'Miłośniczka kocimiętki'
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
-nerthus.chatInfoStr = '<a href="https://www.margonem.pl/?task=forum&show=posts&id=501914" target="blank"> Ważny temat i debata o dalszym prowadzeniu świata</a>'
+nerthus.chatInfoStr = ''
 
 //Wiadomość która pojawia się na środku ekranu po starcie gry
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">
@@ -105,6 +121,83 @@ nerthus.EnterMsg = ''
 nerthus.mapsArr =
 [
     //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
+
+    [1, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
+    [2, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
+    [3, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
+    [4, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
+
+    [1, 169, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście wschodnie.png")],
+    [2, 169, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście wschodnie.png")],
+    [3, 169, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście wschodnie.png")],
+    [4, 169, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście wschodnie.png")],
+
+    [1, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
+    [2, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
+    [3, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
+    [4, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
+
+    [1, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+    [2, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+    [3, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+    [4, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
+
+    [1, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+    [2, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+    [3, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+    [4, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
+
+    [1, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],
+    [2, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],
+    [3, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],
+    [4, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],
+
+    [1, 172, nerthus.addon.fileUrl("maps/Przeklęty Zamek - zbrojownia.png")],
+    [2, 172, nerthus.addon.fileUrl("maps/Przeklęty Zamek - zbrojownia.png")],
+    [3, 172, nerthus.addon.fileUrl("maps/Przeklęty Zamek - zbrojownia.png")],
+    [4, 172, nerthus.addon.fileUrl("maps/Przeklęty Zamek - zbrojownia.png")],
+
+    [1, 170, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia północne.png")],
+    [2, 170, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia północne.png")],
+    [3, 170, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia północne.png")],
+    [4, 170, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia północne.png")],
+
+    [1, 168, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście północne.png")],
+    [2, 168, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście północne.png")],
+    [3, 168, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście północne.png")],
+    [4, 168, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście północne.png")],
+
+    [1, 171, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia południowe.png")],
+    [2, 171, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia południowe.png")],
+    [3, 171, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia południowe.png")],
+    [4, 171, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia południowe.png")],
+
+    [1, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
+    [2, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
+    [3, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
+    [4, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
+
+
+    [1, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    [2, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    [3, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    [4, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+
+    //Siedziba Leśnego Bractwa
+    [1,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+    [2,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+    [3,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+    [4,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
+
+    [1,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+    [2,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+    [3,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+    [4,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
+
+    [1,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+    [2,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+    [3,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+    [4,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")]
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'
@@ -137,11 +230,11 @@ nerthus.ranks.start = function()
     g.names.ranks[0] = "Kreator"
     g.names.ranks[1] = "Uber Miszcz Gry"
     g.names.ranks[2] = "Miszcz Gry"
-    g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu"; //"Moderator czatu";
-    g.names.ranks[4] = "Tkacz Słów" //"Modelator czasoprzestrzeni"; //"Super moderator";
-    g.names.ranks[5] = "Trubadur" //"Męczystruna"; //"Bard";
-    g.names.ranks[6] = "Piewca Słowa" //"Modelator struny"; //"Bard + MC";
-    g.names.ranks[7] = "Radny" //Radny;
+    g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
+    g.names.ranks[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
+    g.names.ranks[5] = "Trubadur"       //"Męczystruna";                //"Bard";
+    g.names.ranks[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
+    g.names.ranks[7] = "Radny"                                          //"Radny";
 }
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}

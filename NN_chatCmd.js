@@ -219,6 +219,43 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     return true;
 }
 
+nerthus.chatCmd.map_ni["addGraf"] = function(ch)
+{
+    //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
+    let cmd = ch.t.split(" ").slice(1).join(" ").split(",")
+    let x = parseInt(cmd[0])
+    let y = parseInt(cmd[1])
+
+    let _url = cmd[2]
+    let exp = /(.*\/)(?!.*\/)(.*)/
+    let match = exp.exec(_url)
+
+    let name = cmd[3]
+    let isCol = parseInt(cmd[4])
+
+    let id = 10000000+x+(y*1000) //id that no other game npc will have
+    let data = {}
+    data[id] = {
+        actions: 0,
+        grp: 0,
+        icon: match[2],
+        nick: name,
+        wt: 0,
+        x: x,
+        y: y
+    }
+    let npath = CFG.npath
+    CFG.npath = match[1]
+    Engine.npcs.updateData(data)
+    CFG.npath = npath
+
+    //if(isCol) g.npccol[ x + 256 * y] = true; //TODO find a way to add collision
+    ch.n = ""
+    ch.t = ""
+    return ch
+}
+
+
 nerthus.chatCmd.map["delGraf"] = function(ch)
 {
     var cmd = ch.t.split(" ")[1].split(",");
@@ -227,6 +264,24 @@ nerthus.chatCmd.map["delGraf"] = function(ch)
     $('#_ng-' + x + '-' + y).remove();
     delete g.npccol[x + 256 * y];
     return true;
+}
+
+nerthus.chatCmd.map_ni["delGraf"] = function(ch)
+{
+    let cmd = ch.t.split(" ")[1].split(",")
+    let x = parseInt(cmd[0])
+    let y = parseInt(cmd[1])
+    let id = 10000000+x+(y*1000) //id that no other game npc will have
+    let data = {}
+    data[id] = {
+        del: 1,
+        id: id.toString()
+    }
+    Engine.npcs.updateData(data)
+    //delete g.npccol[x + 256 * y]; //TODO find a way to add collision
+    ch.n = ""
+    ch.t = ""
+    return ch
 }
 
 nerthus.chatCmd.map["weather"] = function(ch)
@@ -280,6 +335,8 @@ nerthus.chatCmd.start_ni = function()
     this.appendStyles()
 
     this.map["map"] = this.map_ni["map"]
+    this.map["addGraf"] = this.map_ni["addGraf"]
+    this.map["delGraf"] = this.map_ni["delGraf"]
 
     API.addCallbackToEvent('newMsg', this.run_ni)
     API.addCallbackToEvent('updateMsg', this.run_ni)

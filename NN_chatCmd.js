@@ -219,7 +219,7 @@ nerthus.chatCmd.map["addGraf"] = function(ch)
     return true;
 }
 
-nerthus.chatCmd.map_ni["addGraf"] = function(ch)
+nerthus.chatCmd.map_ni["addGraf"] = function (ch)
 {
     //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
     let cmd = ch.t.split(" ").slice(1).join(" ").split(",")
@@ -233,7 +233,7 @@ nerthus.chatCmd.map_ni["addGraf"] = function(ch)
     let name = cmd[3]
     let isCol = parseInt(cmd[4])
 
-    let id = 10000000+x+(y*1000) //id that no other game npc will have
+    let id = 10000000 + (x * 1000) + y //id that no other game npc will have
     let data = {}
     data[id] = {
         actions: 0,
@@ -249,7 +249,7 @@ nerthus.chatCmd.map_ni["addGraf"] = function(ch)
     Engine.npcs.updateData(data)
     CFG.npath = npath
 
-    //if(isCol) g.npccol[ x + 256 * y] = true; //TODO find a way to add collision
+    if (isCol) Engine.map.col.set(x, y, 2)
     ch.n = ""
     ch.t = ""
     return ch
@@ -266,19 +266,19 @@ nerthus.chatCmd.map["delGraf"] = function(ch)
     return true;
 }
 
-nerthus.chatCmd.map_ni["delGraf"] = function(ch)
+nerthus.chatCmd.map_ni["delGraf"] = function (ch)
 {
     let cmd = ch.t.split(" ")[1].split(",")
     let x = parseInt(cmd[0])
     let y = parseInt(cmd[1])
-    let id = 10000000+x+(y*1000) //id that no other game npc will have
+    let id = 10000000 + (x * 1000) + y //id that no other game npc will have
     let data = {}
     data[id] = {
         del: 1,
         id: id.toString()
     }
     Engine.npcs.updateData(data)
-    //delete g.npccol[x + 256 * y]; //TODO find a way to add collision
+    Engine.map.col.unset(x, y, 2)
     ch.n = ""
     ch.t = ""
     return ch

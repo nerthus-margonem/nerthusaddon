@@ -1,8 +1,8 @@
 /**
- Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
- Wersja jest w pliku version.json
- Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
- Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
+     Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
+     Wersja jest w pliku version.json
+     Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
+     Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
  **/
 try{
 
@@ -36,144 +36,127 @@ NerthusAddonUtils = (function()
 {
     var call = function(func)
     {
-        return encodeURI([[this.filesPrefix, this.version].join(this.version_separator), filename].join('/'))
-    }
-    nerthus.addon.fileMasterUrl = function(filename)
-    {
-        return encodeURI([[this.consts.MASTER_PREFIX, this.consts.MASTER_VERSION].join(this.consts.MASTER_VERSION_SEPARATOR), filename].join('/'))
-    }
-    nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
-    nerthus.addon.store = function()
-    {
-        if(NerthusAddonUtils.storage())
-            NerthusAddonUtils.storage().nerthus = NerthusAddonUtils.parser.stringify(nerthus)
+        if(typeof func === 'function')
+            func()
     }
 
-    NerthusAddonUtils = (function()
+    var utils = {}
+    utils.storage = function()
     {
-        var call = function(func)
+        if(typeof localStorage !== 'undefined' && !localStorage.NerthusAddonNoStorage)
+            return localStorage
+    }
+    utils.purgeStorage = function()
+    {
+        log("deleting nerthus from storage, hasNerthus: " + localStorage.hasOwnProperty("nerthus"))
+        localStorage.removeItem("nerthus")
+    }
+    utils.runAddon = function()
+    {
+        if(this.storage() && this.storage().NerthusAddonDebug)
         {
-            if(typeof func === 'function')
-                func()
+            nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
+            nerthus.addon.filesPrefix = nerthus.addon.consts.MASTER_PREFIX
+            nerthus.addon.version_separator = nerthus.addon.consts.MASTER_VERSION_SEPARATOR
+            this.loadFromGitHub()
         }
-
-        var utils = {}
-        utils.storage = function()
+        else if(this.storage() && this.storage().nerthus)
         {
-            if(typeof localStorage !== 'undefined' && !localStorage.NerthusAddonNoStorage)
-                return localStorage
-        }
-        utils.purgeStorage = function()
-        {
-            log("deleting nerthus from storage, hasNerthus: " + localStorage.hasOwnProperty("nerthus"))
-            localStorage.removeItem("nerthus")
-        }
-        utils.runAddon = function()
-        {
-            if(this.storage() && this.storage().NerthusAddonDebug)
+            this.loadFromStorage()
+            var checkVersion = function(version)
             {
-                nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
-                nerthus.addon.filesPrefix = nerthus.addon.consts.MASTER_PREFIX
-                nerthus.addon.version_separator = nerthus.addon.consts.MASTER_VERSION_SEPARATOR
-                this.loadFromGitHub()
-            }
-            else if(this.storage() && this.storage().nerthus)
-            {
-                this.loadFromStorage()
-                var checkVersion = function(version)
+                if(version != nerthus.addon.version)
                 {
-                    if(version != nerthus.addon.version)
-                    {
-                        log("Nerthus addon has not actual version " + version + " actual is " +  nerthus.addon.version)
-                        this.purgeStorage()
-                    }
-                }.bind(this, nerthus.addon.version)
-                this.loadVersion(checkVersion)
-            }
-            else
-            {
-                this.loadVersion(this.loadFromGitHub.bind(this, nerthus.addon.store))
-            }
+                    log("Nerthus addon has not actual version " + version + " actual is " +  nerthus.addon.version)
+                    this.purgeStorage()
+                }
+            }.bind(this, nerthus.addon.version)
+            this.loadVersion(checkVersion)
         }
-        utils.loadFromGitHub = function(onLoaded)
+        else
         {
-            log("Load nerthus addon from github, version = " + nerthus.addon.version)
-            this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'], function(){
-                this.loadScripts(nerthus.scripts, this.startPlugins.bind(this,onLoaded))
-            }.bind(this))
+            this.loadVersion(this.loadFromGitHub.bind(this, nerthus.addon.store))
         }
+    }
+    utils.loadFromGitHub = function(onLoaded)
+    {
+        log("Load nerthus addon from github, version = " + nerthus.addon.version)
+        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'], function(){
+            this.loadScripts(nerthus.scripts, this.startPlugins.bind(this,onLoaded))
+        }.bind(this))
+    }
 
-        utils.loadFromStorage = function(onLoaded)
+    utils.loadFromStorage = function(onLoaded)
+    {
+        nerthus = this.parser.parse(this.storage().nerthus)
+        log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
+        this.startPlugins(onLoaded)
+    }
+
+    utils.startPlugins = function(callback)
+    {
+        const postfix = getCookie("interface") === "ni" ? "_ni" : ""
+        const start_method = "start" + postfix
+
+        log("starting method: " + start_method)
+        for(var i in nerthus)
+            if(nerthus[i] && nerthus[i][start_method])
+                call(nerthus[i][start_method].bind(nerthus[i]))
+        call(callback)
+    }
+
+    utils.loadVersion = function(onLoaded)
+    {
+        $.getJSON(nerthus.addon.consts.VERSION_URL, function(data)
         {
-            nerthus = this.parser.parse(this.storage().nerthus)
-            log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
-            this.startPlugins(onLoaded)
-        }
+            nerthus.addon.version = data.version
+            call(onLoaded)
+        })
+    }
 
-        utils.startPlugins = function(callback)
-        {
-            const postfix = getCookie("interface") === "ni" ? "_ni" : ""
-            const start_method = "start" + postfix
-
-            log("starting method: " + start_method)
-            for(var i in nerthus)
-                if(nerthus[i] && nerthus[i][start_method])
-                    call(nerthus[i][start_method].bind(nerthus[i]))
-            call(callback)
-        }
-
-        utils.loadVersion = function(onLoaded)
-        {
-            $.getJSON(nerthus.addon.consts.VERSION_URL, function(data)
-            {
-                nerthus.addon.version = data.version
-                call(onLoaded)
-            })
-        }
-
-        utils.loadScripts = function(scripts, callback)
-        {
-            var to_load = scripts.length
-            var loaded = function() {
-                if(--to_load === 0)
-                    call(callback)
-            }
-
-            if(!scripts.length)
+    utils.loadScripts = function(scripts, callback)
+    {
+        var to_load = scripts.length
+        var loaded = function() {
+            if(--to_load === 0)
                 call(callback)
-
-            for(var i in scripts)
-                $.getScript(nerthus.addon.fileUrl(scripts[i]), loaded)
         }
 
-        utils.parser = (function()
-        {
-            var parser = {}
-            parser.stringify = function(obj)
-            {
-                return JSON.stringify(obj, this.__stringifyFunction)
-            }
-            parser.__stringifyFunction = function(key,val)
-            {
-                if(typeof val === "function")
-                    return "("+ val.toString() +")"
-                return val
-            }
-            parser.parse = function(obj)
-            {
-                return JSON.parse(obj, this.__parseFunction)
-            }
-            parser.__parseFunction = function(key,val)
-            {
-                if(typeof val === "string" && val.indexOf("function") === 1)
-                    return eval(val)
-                return val
-            }
-            return parser
-        })()
-        return utils
-    })()
+        if(!scripts.length)
+            call(callback)
 
-    NerthusAddonUtils.runAddon()
+        for(var i in scripts)
+            $.getScript(nerthus.addon.fileUrl(scripts[i]), loaded)
+    }
+
+    utils.parser = (function()
+    {
+        var parser = {}
+        parser.stringify = function(obj)
+        {
+            return JSON.stringify(obj, this.__stringifyFunction)
+        }
+        parser.__stringifyFunction = function(key,val)
+        {
+            if(typeof val === "function")
+                return "("+ val.toString() +")"
+            return val
+        }
+        parser.parse = function(obj)
+        {
+            return JSON.parse(obj, this.__parseFunction)
+        }
+        parser.__parseFunction = function(key,val)
+        {
+            if(typeof val === "string" && val.indexOf("function") === 1)
+                return eval(val)
+            return val
+        }
+        return parser
+    })()
+    return utils
+})()
+
+NerthusAddonUtils.runAddon()
 
 }catch(e){log('NerthusStart Error: '+e.message,1)}

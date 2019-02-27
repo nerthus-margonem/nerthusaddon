@@ -4,6 +4,11 @@ before(function()
 {
     log = function(msg){console.log(msg)}
 
+    expect = require("expect.js")
+    let fs = require('fs')
+
+    eval(fs.readFileSync('./NN_start.js')+'')
+
     VERSION_CURRENT = "CURRENT_VERSION"
     VERSION_OLD = "OLD_VERSION"
     VERSION_MASTER = ""
@@ -14,11 +19,6 @@ before(function()
     ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
 
     Date.now = function(){}
-
-    expect = require("expect.js")
-    let fs = require('fs')
-
-    eval(fs.readFileSync('./NN_start.js')+'')
 })
 
 beforeEach(function()

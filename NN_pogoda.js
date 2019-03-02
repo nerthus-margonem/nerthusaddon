@@ -29,9 +29,9 @@ nerthus.weather.set_weather_ni = function (id)
 
 nerthus.weather.set_global_weather = function()
 {
-    var weatherId = this.calculate()
-    this.set_weather(weatherId)
-    this.start_change_timer()
+    let weatherId = nerthus.weather.calculate()
+    nerthus.weather.set_weather(weatherId)
+    nerthus.weather.start_change_timer()
 }
 
 nerthus.weather.run = function()
@@ -298,9 +298,9 @@ nerthus.weather.display = function()
 
 nerthus.weather.display_ni = function()
 {
-    this.effects.clear()
+    nerthus.weather.effects.clear()
     if (Engine.map.d.mainid === 0 && Engine.map.d.id !== 3459 && Engine.map.d.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
-        this.effects.display(this.id)
+        nerthus.weather.effects.display(nerthus.weather.id)
 }
 
 nerthus.weather.effects = {}
@@ -389,14 +389,22 @@ nerthus.weather.start = function()
 }
 
 //TODO movement of weather like on SI
-nerthus.weather.start_ni = function()
+nerthus.weather.start_ni = function ()
 {
     nerthus.weather.run = nerthus.weather.run_ni
     nerthus.weather.display = nerthus.weather.display_ni
     nerthus.weather.effects.display_url = nerthus.weather.effects.display_url_ni
     nerthus.weather.set_weather = nerthus.weather.set_weather_ni
-    if(nerthus.options['weather'])
+    if (nerthus.options["weather"])
         nerthus.defer_ni(this.run_ni.bind(this))
+    API.addCallbackToEvent("clear_map_npcs",
+        function ()
+        {
+            setTimeout(function ()
+            {
+                nerthus.weather.set_global_weather()
+            }, 500)
+        })
 }
 
 }catch(e){log('NerthusWeather Error: '+e.message,1)}

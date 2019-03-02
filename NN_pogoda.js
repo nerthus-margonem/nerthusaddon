@@ -402,7 +402,10 @@ nerthus.weather.start_ni = function ()
         {
             setTimeout(function ()
             {
-                nerthus.weather.set_global_weather()
+                if (typeof nerthus_weather_bard_id === "undefined")
+                {
+                    nerthus.weather.set_global_weather()
+                } else nerthus.weather.set_weather(nerthus_weather_bard_id)
             }, 500)
         })
 }

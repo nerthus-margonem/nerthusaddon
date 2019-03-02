@@ -16,15 +16,15 @@ nerthus.weather.set_weather = function(id)
     $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ spot.x * 55 +'px -'+ spot.y * 55 +'px')
 }
 
-nerthus.weather.set_weather_ni = function(id)
+nerthus.weather.set_weather_ni = function (id)
 {
     id = parseInt(id)
-    if( 0 > id || id > 20)
+    if (0 > id || id > 20)
         id = this.calculate()
     this.id = id
     this.display_ni()
     let spot = this.spot.fromId(id)
-    $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ spot.x * 55 +'px -'+ spot.y * 55 +'px')
+    $("#nWeatherStyle").text("#nWeather{background: url(" + nerthus.graf.weather + ") -" + spot.x * 55 + "px -" + spot.y * 55 + "px !important; background-color: transparent !important;}")
 }
 
 nerthus.weather.set_global_weather = function()
@@ -52,7 +52,7 @@ nerthus.weather.run = function()
 
 nerthus.weather.run_ni = function ()
 {
-    //ikonka #1E90FF
+    //ikonka
     let left = $(".game-layer.layer.ui-droppable")[0].style.left
     $("<div id=\"nWeather\" class=\"game-layer\" style=\"z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 55px; left:" + left + "; margin: 5px\"></div>").appendTo(".game-window-positioner")
         .mouseover(function ()
@@ -65,6 +65,9 @@ nerthus.weather.run_ni = function ()
         })
     //pole opisowe
     $("<div id=\"nWeatherDesc\" style=\"z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px; font: bold 14px Georgia; color:#F0F8FF\"></div>").prependTo(".game-layer.layer.ui-droppable")
+
+    //style for background which is overwritten by Engine
+    $("head").append("<style id=\"nWeatherStyle\"></style>")
 
     //workaround na pogode ustawianą przez bardów i zapisywanie nerthusa w pamięci
     if (typeof nerthus_weather_bard_id === "undefined")
@@ -391,9 +394,9 @@ nerthus.weather.start_ni = function()
     nerthus.weather.run = nerthus.weather.run_ni
     nerthus.weather.display = nerthus.weather.display_ni
     nerthus.weather.effects.display_url = nerthus.weather.effects.display_url_ni
+    nerthus.weather.set_weather = nerthus.weather.set_weather_ni
     if(nerthus.options['weather'])
         nerthus.defer_ni(this.run_ni.bind(this))
 }
 
 }catch(e){log('NerthusWeather Error: '+e.message,1)}
-

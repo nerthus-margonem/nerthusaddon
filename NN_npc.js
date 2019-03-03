@@ -107,6 +107,34 @@ nerthus.npc.compose = function(npc)
     return $npc
 }
 
+nerthus.npc.compose_ni = function(npc)
+{
+    let x = parseInt(npc.x)
+    let y = parseInt(npc.y)
+
+    let _url = this.resolve_url(npc.url)
+    let exp = /(.*\/)(?!.*\/)(.*)/
+    let match = exp.exec(_url)
+    let id = 50000000 + (x * 1000) + y //id that no other game npc will have
+    let data = {}
+    data[id] = {
+        actions: 0,
+        grp: 0,
+        icon: match[2],
+        nick: npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>",
+        wt: 0,
+        x: x,
+        y: y
+    }
+
+    let npath = CFG.npath
+    CFG.npath = match[1]
+    Engine.npcs.updateData(data)
+    CFG.npath = npath
+
+    return data
+}
+
 nerthus.npc.resolve_url = function(url)
 {
     if(url.startsWith("#"))
@@ -201,9 +229,22 @@ nerthus.npc.set_collision = function(npc)
         g.npccol[parseInt(npc.x) + 256 * parseInt(npc.y)] = true
 }
 
+nerthus.npc.set_collision_ni = function(npc)
+{
+    if(npc.collision)
+        Engine.map.col.set(parseInt(npc.x), parseInt(npc.y), 2)
+}
+
+
 nerthus.npc.load_npcs = function()
 {
     var file_with_npc = nerthus.addon.fileUrl("/npcs/map_" + map.id + ".json")
+    this.load_npcs_from_file(file_with_npc)
+}
+
+nerthus.npc.load_npcs_ni = function()
+{
+    let file_with_npc = nerthus.addon.fileUrl("/npcs/map_" + Engine.map.d.id + ".json")
     this.load_npcs_from_file(file_with_npc)
 }
 
@@ -215,6 +256,22 @@ nerthus.npc.load_npcs_from_file = function(url)
 nerthus.npc.start = function()
 {
     nerthus.defer(this.load_npcs.bind(this))
+}
+
+nerthus.npc.start_ni = function()
+{
+    nerthus.npc.set_collision = nerthus.npc.set_collision_ni
+    nerthus.npc.compose = nerthus.npc.compose_ni
+    nerthus.npc.load_npcs = nerthus.npc.load_npcs_ni
+    this.load_npcs()
+    API.addCallbackToEvent("clear_map_npcs",
+        function ()
+        {
+            setTimeout(function ()
+            {
+                nerthus.npc.load_npcs()
+            }, 500)
+        })
 }
 
 }catch(e) {log('nerthus npc: ' + e.message, 1);}

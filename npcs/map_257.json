@@ -176,7 +176,7 @@
     "name" : "Drewniana rzeźba",
     "x" : "52",
     "y" : "21",
-    "url" : "#img/npc/rzezba.png",
+    "url" : "#img/npc/rzezba.gif",
     "collision" : true,
     "dialog" :
     {

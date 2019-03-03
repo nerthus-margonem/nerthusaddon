@@ -27,6 +27,32 @@ nerthus.night.dim = function(opacity)
     .draggable()
 }
 
+nerthus.night.dim_ni = function (opacity)
+{
+    if (Engine.map.d.mainid !== 0)
+        opacity = 0
+
+    let $nNight = $("#nNight")
+    if($nNight.length > 0) {
+        $nNight.css({
+            opacity: opacity
+        })
+    }
+    else {
+        $("<div id=nNight />")
+            .css({
+                height: "100%",
+                width: "100%",
+                zIndex: "250",
+                opacity: opacity,
+                pointerEvents: "none",
+                backgroundColor: "black",
+                position: "absolute"
+            })
+            .appendTo(".game-layer.layer.ui-droppable")
+    }
+}
+
 nerthus.night.lights = {}
 nerthus.night.lights.types = {}
 
@@ -78,6 +104,31 @@ nerthus.night.start = function()
             nerthus.defer(this.dim.bind(this, this.opacity()))
         }
     }
+}
+
+nerthus.night.start_ni = function ()
+{
+    this.lights.types.add("S", "64px")
+    this.lights.types.add("M", "96px")
+    this.lights.types.add("L", "160px")
+    this.lights.types.add("XL", "192px")
+    if (nerthus.options["night"])
+    {
+        let hour = new Date().getHours()
+        if (hour <= 4 || hour > 18)
+        {
+           // this.lights.on.bind(this.lights))
+            this.dim_ni(this.opacity())
+        }
+    }
+    API.addCallbackToEvent("clear_map_npcs",
+        function ()
+        {
+            setTimeout(function ()
+            {
+                nerthus.night.dim_ni(nerthus.night.opacity())
+            }, 500)
+        })
 }
 
 

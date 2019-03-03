@@ -155,6 +155,8 @@ nerthus.alko.start_ni = function()
         nerthus.alko.drink_ni(c,d)
         _nerthg(c,d)
     }
+    let initSendButton = $._data(document.querySelector(".section.chat-tpl .send-btn.right"), "events").click[0].handler;
+    let initKeypress = $._data(document.querySelector(".section.chat-tpl .input-wrapper input"), "events").keypress[0].handler;
 }
 
 }catch(e){log('NerthusAlk Error: '+e.message,1)}

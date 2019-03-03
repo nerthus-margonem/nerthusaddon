@@ -57,6 +57,14 @@ nerthus.maps.start = function()
 nerthus.maps.start_ni = function()
 {
     nerthus.maps.seasonMaps_ni()
+    API.addCallbackToEvent("clear_map_npcs",
+        function ()
+        {
+            setTimeout(function ()
+            {
+                nerthus.maps.seasonMaps_ni()
+            }, 500)
+        })
 }
 
 }

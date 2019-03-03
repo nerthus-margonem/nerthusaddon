@@ -76,26 +76,22 @@ nerthus.chatCmd.fetch_callback = function(cmd,ch)
 nerthus.chatCmd.mapChanging = function (is_on)
 {
     nerthus.chatCmd.mapChangingOn = is_on
-    !function () {
-        let EngineMap = this;
-        !function (n)
+    if (is_on)
+    {
+        let tmpMapDraw = nerthus.mapDraw //so that it is after permament custom maps
+        Engine.map.draw = function (Canvas_rendering_context)
         {
-            window.Engine.map.draw = function (Canvas_rendering_context)
+            tmpMapDraw(Canvas_rendering_context)
+            Canvas_rendering_context.drawImage(nerthus.chatCmd.mapImage, 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+            if (Engine.map.goMark)
             {
-                let t = n.call(this, Canvas_rendering_context)
-                if(nerthus.chatCmd.mapChangingOn)
-                {
-                    EngineMap.draw(this, Canvas_rendering_context)
-                    return t
-                }
-                else return false
+                Engine.map.drawGoMark(Canvas_rendering_context)
             }
-        }(window.Engine.map.draw)
-        this.draw = function (EngineMap, Canvas_rendering_context)
-        {
-            Canvas_rendering_context.drawImage(nerthus.chatCmd.mapImage, 0 - EngineMap.offset[0], 0 - EngineMap.offset[1])
         }
-    }()
+    } else
+    {
+        Engine.map.draw = nerthus.mapDraw
+    }
 }
 
 nerthus.chatCmd.map["nar"] = function(ch)
@@ -331,6 +327,10 @@ nerthus.chatCmd.start = function()
 
 nerthus.chatCmd.start_ni = function()
 {
+    if (typeof nerthus.mapDraw !== "function")
+    {
+        nerthus.mapDraw = Engine.map.draw
+    }
     nerthus.mapImage = new Image()
     this.appendStyles()
 

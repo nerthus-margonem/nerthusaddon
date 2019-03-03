@@ -206,6 +206,8 @@ nerthus.chatCmd.map_ni["light"] = function (ch)
         if (hour >= 18) opacity = "0.3"
         if (hour >= 21) opacity = "0.6"
         if (hour <= 4) opacity = "0.8"
+        if (Engine.map.d.mainid !== 0)
+            opacity = "0"
     } else opacity = 1 - opacity
 
     let $nNight = $("#nNight")

@@ -82,7 +82,7 @@ nerthus.zodiac.run_ni = function ()
 {
     //ikonka
     let left = $(".game-layer.layer.ui-droppable")[0].style.left
-    $("<div id=\"nZodiac\" class=\"game-layer\" style=\"z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 110px; left:" + left + "; margin: 5px\"></div>").appendTo(".game-window-positioner")
+    $("<div id=\"nZodiac\" class=\"mini-map\" style=\"z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 110px; left:" + left + "; margin: 5px;pointer-events: auto;display:block\"></div>").appendTo(".layer.interface-layer")
         .mouseenter(function ()
         {
             $("#nZodiacDesc").fadeIn(500).html(this.descriptions[this.sign][0])

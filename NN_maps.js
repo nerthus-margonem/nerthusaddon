@@ -36,7 +36,8 @@ nerthus.maps.change_ni = function (map_url)
 {
     let mapImage = new Image()
     mapImage.src = map_url
-    let tmpMapDraw = Engine.map.draw
+
+    let tmpMapDraw = nerthus.defaultMapDraw
     nerthus.mapDraw = function (Canvas_rendering_context)
     {
         tmpMapDraw(Canvas_rendering_context)
@@ -56,6 +57,7 @@ nerthus.maps.start = function()
 
 nerthus.maps.start_ni = function()
 {
+    nerthus.defaultMapDraw = Engine.map.draw
     nerthus.maps.seasonMaps_ni()
     API.addCallbackToEvent("clear_map_npcs",
         function ()

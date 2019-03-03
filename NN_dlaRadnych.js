@@ -137,6 +137,9 @@ nerthus.mapsArr =
     [0, 291, nerthus.addon.fileUrl("maps/Opactwo p.1.png")],
     [0, 292, nerthus.addon.fileUrl("maps/Opactwo - piwnica.png")],
 
+    //Dolina Yss
+    [0, 11, nerthus.addon.fileUrl("maps/Dolina Yss.png")],
+
     //Stare Ruiny
     [0, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
     [0, 169, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście wschodnie.png")],

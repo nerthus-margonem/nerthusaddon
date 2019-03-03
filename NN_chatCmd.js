@@ -196,6 +196,41 @@ nerthus.chatCmd.map["light"] = function(ch)
     return true;
 }
 
+nerthus.chatCmd.map_ni["light"] = function (ch)
+{
+    let opacity = ch.t.split(" ")[1]
+    if (opacity === undefined)
+    {
+        const hour = new Date().getHours()
+        opacity = "0"
+        if (hour >= 18) opacity = "0.3"
+        if (hour >= 21) opacity = "0.6"
+        if (hour <= 4) opacity = "0.8"
+    } else opacity = 1 - opacity
+
+    let $nNight = $("#nNight")
+    if ($nNight.length > 0)
+    {
+        $nNight.css({
+            opacity: opacity
+        })
+    } else
+    {
+        $("<div id=nNight />")
+            .css({
+                height: "100%",
+                width: "100%",
+                zIndex: "250",
+                opacity: opacity,
+                pointerEvents: "none",
+                backgroundColor: "black",
+                position: "absolute"
+            })
+            .appendTo(".game-layer.layer.ui-droppable")
+    }
+    return true
+}
+
 nerthus.chatCmd.map["addGraf"] = function(ch)
 {  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
     var cmd = ch.t.split(" ").slice(1).join(" ").split(",");
@@ -337,6 +372,7 @@ nerthus.chatCmd.start_ni = function()
     this.map["map"] = this.map_ni["map"]
     this.map["addGraf"] = this.map_ni["addGraf"]
     this.map["delGraf"] = this.map_ni["delGraf"]
+    this.map["light"] = this.map_ni["light"]
 
     API.addCallbackToEvent('newMsg', this.run_ni)
     API.addCallbackToEvent('updateMsg', this.run_ni)

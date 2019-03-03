@@ -33,12 +33,13 @@ nerthus.night.dim_ni = function (opacity)
         opacity = 0
 
     let $nNight = $("#nNight")
-    if($nNight.length > 0) {
+    if ($nNight.length > 0)
+    {
         $nNight.css({
             opacity: opacity
         })
-    }
-    else {
+    } else
+    {
         $("<div id=nNight />")
             .css({
                 height: "100%",

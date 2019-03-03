@@ -121,7 +121,31 @@ nerthus.EnterMsg = ''
 nerthus.mapsArr =
 [
     //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
+    [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
+    [4, 37, nerthus.addon.fileUrl("maps/Mythar - zima.png")],
 
+    //Zniszczone Opactwo
+    [1, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],
+    [2, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],
+    [3, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],
+    [4, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],
+
+    [1, 290, nerthus.addon.fileUrl("maps/Opactwo.png")],
+    [2, 290, nerthus.addon.fileUrl("maps/Opactwo.png")],
+    [3, 290, nerthus.addon.fileUrl("maps/Opactwo.png")],
+    [4, 290, nerthus.addon.fileUrl("maps/Opactwo.png")],
+
+    [1, 291, nerthus.addon.fileUrl("maps/Opactwo p.1.png")],
+    [2, 291, nerthus.addon.fileUrl("maps/Opactwo p.1.png")],
+    [3, 291, nerthus.addon.fileUrl("maps/Opactwo p.1.png")],
+    [4, 291, nerthus.addon.fileUrl("maps/Opactwo p.1.png")],
+
+    [1, 292, nerthus.addon.fileUrl("maps/Opactwo - piwnica.png")],
+    [2, 292, nerthus.addon.fileUrl("maps/Opactwo - piwnica.png")],
+    [3, 292, nerthus.addon.fileUrl("maps/Opactwo - piwnica.png")],
+    [4, 292, nerthus.addon.fileUrl("maps/Opactwo - piwnica.png")],
+
+    //Stare Ruiny
     [1, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
     [2, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
     [3, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
@@ -197,7 +221,13 @@ nerthus.mapsArr =
     [1,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
     [2,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
     [3,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
-    [4,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")]
+    [4,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+
+    [1, 37, nerthus.addon.fileUrl("maps/Brama Północy.png")],
+    [2, 37, nerthus.addon.fileUrl("maps/Brama Północy.png")],
+    [3, 37, nerthus.addon.fileUrl("maps/Brama Północy.png")],
+    [4, 37, nerthus.addon.fileUrl("maps/Brama Północy.png")]
+
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'

@@ -132,6 +132,27 @@ nerthus.alko.drink_ni = function (command)
     }
 }
 
+nerthus.alko.initiateHandlers_ni = function ()
+{
+    let initSendButton = $._data(document.querySelector(".section.chat-tpl .send-btn.right"), "events").click[0].handler
+    $._data(document.querySelector(".section.chat-tpl .send-btn.right"), "events").click[0].handler = function ()
+    {
+        let $input = $(".section.chat-tpl .input-wrapper input")
+        $input.val(nerthus.alko.shuffleMessage($input.val()))
+        initSendButton()
+    }
+    $._data(document.querySelector(".section.chat-tpl .input-wrapper input"), "events").keypress[0].handler = function (e)
+    {
+        if (e.key === "Enter")
+        {
+            let $input = $(".section.chat-tpl .input-wrapper input")
+            $input.val(nerthus.alko.shuffleMessage($input.val()))
+            initSendButton()
+        }
+    }
+}
+
+
 nerthus.alko.start = function()
 {
     var _nerthg = _g
@@ -155,8 +176,7 @@ nerthus.alko.start_ni = function()
         nerthus.alko.drink_ni(c,d)
         _nerthg(c,d)
     }
-    let initSendButton = $._data(document.querySelector(".section.chat-tpl .send-btn.right"), "events").click[0].handler;
-    let initKeypress = $._data(document.querySelector(".section.chat-tpl .input-wrapper input"), "events").keypress[0].handler;
+    nerthus.alko.initiateHandlers_ni()
 }
 
 }catch(e){log('NerthusAlk Error: '+e.message,1)}

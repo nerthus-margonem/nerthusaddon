@@ -225,6 +225,8 @@ nerthus.graf['chat']    = nerthus.addon.fileUrl("img/chatPanel2.png")
 
 
 nerthus.ranks = {}
+nerthus.ranks.rankName = {}
+
 nerthus.ranks.start = function()
 {
     g.names.ranks[0] = "Kreator"
@@ -235,6 +237,18 @@ nerthus.ranks.start = function()
     g.names.ranks[5] = "Trubadur"       //"Męczystruna";                //"Bard";
     g.names.ranks[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
     g.names.ranks[7] = "Radny"                                          //"Radny";
+}
+
+nerthus.ranks.start_ni = function()
+{
+    nerthus.ranks.rankName[0] = "Kreator"
+    nerthus.ranks.rankName[1] = "Uber Miszcz Gry"
+    nerthus.ranks.rankName[2] = "Miszcz Gry"
+    nerthus.ranks.rankName[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
+    nerthus.ranks.rankName[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
+    nerthus.ranks.rankName[5] = "Trubadur"       //"Męczystruna";                //"Bard";
+    nerthus.ranks.rankName[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
+    nerthus.ranks.rankName[7] = "Radny"                                          //"Radny";
 }
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}

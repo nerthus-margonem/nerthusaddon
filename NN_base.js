@@ -211,7 +211,7 @@ nerthus.tips.hero_ni = function()
     {
         return nerthus.tips.parseNiTip(Engine.hero, true)
     }
-    Engine.hero.createStrTip()
+    Engine.hero.tip[0] = Engine.hero.createStrTip()
     return Engine.hero.createStrTip
 }
 

@@ -22,4 +22,4 @@ test_coverage:
 coverage:
 	npm run coverage
 
-.PHONY: test test_simpe check
+.PHONY: test test_simpe check test_coverage coverage

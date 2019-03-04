@@ -273,6 +273,7 @@ nerthus.chatCmd.map_ni["addGraf"] = function (ch)
         grp: 0,
         icon: match[2],
         nick: name,
+        type: name === "" ? 4 : 0,
         wt: 0,
         x: x,
         y: y

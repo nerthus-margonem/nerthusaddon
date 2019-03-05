@@ -242,28 +242,53 @@ nerthus.chatCmd.map_ni["addGraf"] = function (ch)
     let y = parseInt(cmd[1])
 
     let _url = cmd[2]
-    let exp = /(.*\/)(?!.*\/)(.*)/
+    let exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
     let match = exp.exec(_url)
+
 
     let name = cmd[3]
     let isCol = parseInt(cmd[4])
 
     let id = 10000000 + (x * 1000) + y //id that no other game npc will have
     let data = {}
+
     data[id] = {
         actions: 0,
         grp: 0,
-        icon: match[2],
         nick: name,
         type: name === "" ? 4 : 0,
         wt: 0,
         x: x,
         y: y
     }
-    let npath = CFG.npath
-    CFG.npath = match[1]
-    Engine.npcs.updateData(data)
-    CFG.npath = npath
+    if(match[4] === "gif")
+    {
+        data[id].icon = match[2]
+        let npath = CFG.npath
+        CFG.npath = match[1]
+        Engine.npcs.updateData(data)
+        CFG.npath = npath
+    }
+    else
+    {
+        data[id].icon = "obj/cos.gif"
+        Engine.npcs.updateData(data)
+        let image = new Image()
+        image.src = _url
+
+        let _x = 32 * x + 16 - Math.floor(image.width / 2)
+        let _y = 32 * y + 32 - image.height
+        let obj = {
+            image: image,
+            x: _x,
+            y: _y,
+            id: id
+        }
+        if(!nerthus.additionalDrawList)
+            nerthus.additionalDrawList = []
+        nerthus.additionalDrawList.push(obj)
+    }
+
 
     if (isCol) Engine.map.col.set(x, y, 2)
     ch.n = ""
@@ -294,6 +319,11 @@ nerthus.chatCmd.map_ni["delGraf"] = function (ch)
         id: id.toString()
     }
     Engine.npcs.updateData(data)
+    for(const i in nerthus.additionalDrawList)
+    {
+        if(nerthus.additionalDrawList[i].id === id)
+            delete nerthus.additionalDrawList[i]
+    }
     Engine.map.col.unset(x, y, 2)
     ch.n = ""
     ch.t = ""

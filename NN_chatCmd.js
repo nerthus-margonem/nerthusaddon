@@ -202,36 +202,16 @@ nerthus.chatCmd.map_ni["light"] = function (ch)
     if (opacity === undefined)
     {
         const hour = new Date().getHours()
-        opacity = "0"
-        if (hour >= 18) opacity = "0.3"
-        if (hour >= 21) opacity = "0.6"
-        if (hour <= 4) opacity = "0.8"
+        opacity = 0
+        if (hour >= 18) opacity = 0.3
+        if (hour >= 21) opacity = 0.6
+        if (hour <= 4) opacity = 0.8
         if (Engine.map.d.mainid !== 0)
-            opacity = "0"
+            opacity = 0
     }
     else opacity = 1 - opacity
 
-    let $nNight = $("#nNight")
-    if ($nNight.length > 0)
-    {
-        $nNight.css({
-            opacity: opacity
-        })
-    }
-    else
-    {
-        $("<div id=nNight />")
-            .css({
-                height: "100%",
-                width: "100%",
-                zIndex: "250",
-                opacity: opacity,
-                pointerEvents: "none",
-                backgroundColor: "black",
-                position: "absolute"
-            })
-            .appendTo(".game-layer.layer.ui-droppable")
-    }
+    nerthus.night.dimValue = opacity
     return true
 }
 

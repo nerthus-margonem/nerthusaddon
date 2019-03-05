@@ -136,19 +136,19 @@ nerthus.tips.rank = function(player)
     return rank != this.ranks.NONE ? g.names.ranks[rank] : ""
 }
 
-nerthus.tips.rank_ni = function(player)
+nerthus.tips.rank_ni = function (player)
 {
     let rank = this.ranks.NONE
-    if(player.rights)
+    if (player.rights)
         rank = this.rights2rank(player.rights)
-    if(nerthus.isNarr(player.nick))
+    if (nerthus.isNarr(player.nick))
     {
-        if(rank === this.ranks.MC)
+        if (rank === this.ranks.MC)
             rank = this.ranks.BARD_MC
         else
             rank = this.ranks.BARD
     }
-    if(nerthus.isRad(player.nick))
+    if (nerthus.isRad(player.nick))
         rank = this.ranks.RADNY
     return rank
 }
@@ -184,9 +184,7 @@ nerthus.tips.other_ni = function ()
         for (const i in list)
         {
             if (list[i].isPlayer)
-            {
                 list[i].tip[0] = nerthus.tips.parseNiTip(list[i], false)
-            }
         }
         return list
     }
@@ -204,7 +202,7 @@ nerthus.tips.hero = function(hero)
     return tip
 }
 
-nerthus.tips.hero_ni = function()
+nerthus.tips.hero_ni = function ()
 {
     nerthus.heroCreateStrTip = Engine.hero.createStrTip
     Engine.hero.createStrTip = function ()
@@ -218,9 +216,9 @@ nerthus.tips.hero_ni = function()
 nerthus.tips.parseNiTip = function (player, isHero)
 {
     let tip = ""
-    if(isHero)
-        tip += "<div class=\"rank\">" + _t('my_character', null, 'map') + "</div>"
-    let rank = nerthus.tips.rank_ni(player)
+    if (isHero)
+        tip += "<div class=\"rank\">" + _t("my_character", null, "map") + "</div>"
+    let rank = this.rank_ni(player)
     if (rank !== -1)
         tip += "<div class=\"rank\">" + nerthus.ranks.rankName[rank] + "</div>"
 
@@ -229,7 +227,6 @@ nerthus.tips.parseNiTip = function (player, isHero)
 
     let nick = "<div class=\"nick\">" + player.d.nick + "</div>"
     let prof = isset(player.d.prof) ? "<div class=\"profs-icon " + player.d.prof + "\"></div>" : ""
-    let style =
     tip += "<div class=\"info-wrapper\">" + nick + prof + "</div>"
 
     if (isset(player.wanted) && parseInt(player.wanted) === 1)
@@ -237,7 +234,7 @@ nerthus.tips.parseNiTip = function (player, isHero)
     if (player.d.clan)
         tip += "<div class=\"clan-in-tip\">[" + player.d.clan.name + "]</div>"
 
-    let title = nerthus.tips.title(player.d)
+    let title = this.title(player.d)
     tip += "<div class=\"clan-in-tip\">" + title + "</div>"
 
     let buffs = ""

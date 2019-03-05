@@ -119,9 +119,12 @@ nerthus.night.setNight_ni = function () {
             ret.push({
                 draw: function (e)
                 {
+                    let style = e.strokeStyle
+                    e.fillStyle = "#000"
                     e.globalAlpha = nerthus.night.dimValue;
                     e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height);
                     e.globalAlpha = 1.0;
+                    e.fillStyle = style
                 },
                 update: function ()
                 {

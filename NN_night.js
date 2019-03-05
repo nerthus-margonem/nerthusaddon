@@ -64,8 +64,15 @@ nerthus.night.lights.types.add = function(type,size)
 
 nerthus.night.lights.add = function(lights)
 {
-    for(var i in lights)
+    for(let i in lights)
         this.display(lights[i])
+}
+
+nerthus.night.lights.add_ni = function (lights)
+{
+    for (let i in lights)
+        this.display(lights[i])
+    nerthus.night.setLights_ni()
 }
 
 nerthus.night.lights.display = function(light)
@@ -85,9 +92,70 @@ nerthus.night.lights.display = function(light)
     .appendTo("#ground")
 }
 
+nerthus.night.lights.display_ni = function(light)
+{
+    let lt = this.types[light.type]
+
+    let image = new Image()
+    image.src = lt.url
+    let obj = {
+        image: image,
+        x: parseInt(light.x),
+        y: parseInt(light.y)
+    }
+    if(!nerthus.lightDrawList)
+        nerthus.lightDrawList = []
+    nerthus.lightDrawList.push(obj)
+    return obj
+}
+
 nerthus.night.lights.on = function()
 {
     $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),this.add.bind(this))
+}
+
+nerthus.night.lights.on_ni = function()
+{
+    $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + Engine.map.d.id + ".json"),this.add_ni.bind(this))
+}
+
+nerthus.night.setLights_ni = function () {
+    let gateways = Engine.map.gateways.getDrawableItems
+    Engine.map.gateways.getDrawableItems = function () {
+        let ret = gateways()
+        if(nerthus.lightDrawList)
+        {
+            let lightListLen = nerthus.lightDrawList.length || 0
+            for (let i = 0; i < lightListLen; i++)
+            {
+                if(!nerthus.lightDrawList[i].added)
+                {
+                    ret.push({
+                        draw: function (e)
+                        {
+                            e.drawImage(
+                                nerthus.lightDrawList[i].image,
+                                nerthus.lightDrawList[i].x - Engine.map.offset[0],
+                                nerthus.lightDrawList[i].y - Engine.map.offset[1])
+                        },
+                        update: function ()
+                        {
+                        },
+                        getOrder: function ()
+                        {
+                            return 1000 //light always on top
+                        },
+                        d: {},
+                        tip: "",
+                        removeHightlight: function() {}
+                    })
+                    nerthus.lightDrawList[i].added = true
+                }
+            }
+        }
+        return ret
+    }
+
 }
 
 nerthus.night.start = function()
@@ -109,27 +177,36 @@ nerthus.night.start = function()
 
 nerthus.night.start_ni = function ()
 {
-    this.lights.types.add("S", "64px")
-    this.lights.types.add("M", "96px")
-    this.lights.types.add("L", "160px")
-    this.lights.types.add("XL", "192px")
-    if (nerthus.options["night"])
+    if (Engine.map.d.id === undefined)
     {
-        let hour = new Date().getHours()
-        if (hour <= 4 || hour > 18)
+        setTimeout(nerthus.night.start_ni.bind(this), 500)
+    } else
+    {
+        nerthus.night.lights.display = nerthus.night.lights.display_ni
+
+        this.lights.types.add("S", "64px")
+        this.lights.types.add("M", "96px")
+        this.lights.types.add("L", "160px")
+        this.lights.types.add("XL", "192px")
+        if (nerthus.options["night"])
         {
-           // this.lights.on.bind(this.lights))
-            this.dim_ni(this.opacity())
-        }
-    }
-    API.addCallbackToEvent("clear_map_npcs",
-        function ()
-        {
-            setTimeout(function ()
+            let hour = new Date().getHours()
+            if (hour <= 4 || hour > 18)
             {
-                nerthus.night.dim_ni(nerthus.night.opacity())
-            }, 500)
-        })
+                this.lights.on_ni()
+                this.dim_ni(this.opacity())
+            }
+        }
+        API.addCallbackToEvent("clear_map_npcs",
+            function ()
+            {
+                setTimeout(function ()
+                {
+                    nerthus.night.lights.on_ni()
+                    nerthus.night.dim_ni(nerthus.night.opacity())
+                }, 500)
+            })
+    }
 }
 
 

@@ -5,6 +5,30 @@
 try{
 
 nerthus.maps = {}
+nerthus.maps.specialMap = false
+
+nerthus.maps.draw_ni = function ()
+{
+    let tmpMapDraw = nerthus.defaultMapDraw
+    nerthus.mapDraw = function (Canvas_rendering_context)
+    {
+        tmpMapDraw(Canvas_rendering_context) // main map
+        if (nerthus.maps.specialMap)
+            Canvas_rendering_context.drawImage(nerthus.maps.specialMap, 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+        for (const i in nerthus.additionalDrawList)
+        {
+            Canvas_rendering_context.drawImage(
+                nerthus.additionalDrawList[i].image,
+                nerthus.additionalDrawList[i].x - Engine.map.offset[0],
+                nerthus.additionalDrawList[i].y - Engine.map.offset[1])
+        }
+        if (Engine.map.goMark)
+        {
+            Engine.map.drawGoMark(Canvas_rendering_context)
+        }
+    }
+    Engine.map.draw = nerthus.mapDraw
+}
 
 nerthus.maps.seasonMaps = function()
 {
@@ -24,6 +48,7 @@ nerthus.maps.seasonMaps_ni = function()
             nerthus.maps.change_ni(nerthus.mapsArr[i][2])
             break
         }
+        nerthus.maps.specialMap = false
     }
 }
 
@@ -36,18 +61,7 @@ nerthus.maps.change_ni = function (map_url)
 {
     let mapImage = new Image()
     mapImage.src = map_url
-
-    let tmpMapDraw = nerthus.defaultMapDraw
-    nerthus.mapDraw = function (Canvas_rendering_context)
-    {
-        tmpMapDraw(Canvas_rendering_context)
-        Canvas_rendering_context.drawImage(mapImage, 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
-        if (Engine.map.goMark)
-        {
-            Engine.map.drawGoMark(Canvas_rendering_context)
-        }
-    }
-    Engine.map.draw = nerthus.mapDraw
+    nerthus.maps.specialMap = mapImage
 }
 
 nerthus.maps.start = function()
@@ -57,18 +71,23 @@ nerthus.maps.start = function()
 
 nerthus.maps.start_ni = function()
 {
-    nerthus.defaultMapDraw = Engine.map.draw
-    nerthus.maps.seasonMaps_ni()
-    API.addCallbackToEvent("clear_map_npcs",
-        function ()
-        {
-            setTimeout(function ()
+    if (Engine.map.d.id === undefined)
+    {
+        setTimeout(nerthus.maps.start_ni.bind(this), 500)
+    } else
+    {
+        nerthus.defaultMapDraw = Engine.map.draw
+        nerthus.maps.seasonMaps_ni()
+        API.addCallbackToEvent("clear_map_npcs",
+            function ()
             {
-                nerthus.maps.seasonMaps_ni()
-            }, 500)
-        })
+                setTimeout(function ()
+                {
+                    nerthus.maps.seasonMaps_ni()
+                }, 500)
+            })
+        nerthus.maps.draw_ni()
+    }
 }
-
-}
-catch(e){log('NerthusMap Error: '+e.message,1)}
+}catch(e){log('NerthusMap Error: '+e.message,1)}
 

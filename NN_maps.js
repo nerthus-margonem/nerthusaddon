@@ -1,8 +1,8 @@
 /**
-    Name: NerthusMaps
-    Zawiera zmiane map na nocne oraz na sezonowe.
-**/
-try{
+ Name: NerthusMaps
+ Zawiera zmiane map na specjalne czy też sezonowe.
+ **/
+try {
 
 nerthus.maps = {}
 nerthus.maps.specialMap = false
@@ -30,12 +30,17 @@ nerthus.maps.draw_ni = function ()
     Engine.map.draw = nerthus.mapDraw
 }
 
-nerthus.maps.seasonMaps = function()
+nerthus.maps.customMaps = function ()
 {
-    var season = nerthus.season()
-    for(i in nerthus.mapsArr)
-        if( nerthus.mapsArr[i][0] == season && nerthus.mapsArr[i][1] == map.id )
+    let season = nerthus.season()
+    for (const i in nerthus.mapsArr)
+    {
+        if (nerthus.mapsArr[i][1] === map.id && (nerthus.mapsArr[i][0] === 0 || nerthus.mapsArr[i][0] === season))
+        {
             nerthus.maps.change(nerthus.mapsArr[i][2])
+            return nerthus.mapsArr[i]
+        }
+    }
 }
 
 nerthus.maps.seasonMaps_ni = function ()
@@ -53,9 +58,9 @@ nerthus.maps.seasonMaps_ni = function ()
     return false
 }
 
-nerthus.maps.change = function(map_url)
+nerthus.maps.change = function (map_url)
 {
-    $("#ground").css("backgroundImage","url(" + map_url + ")")
+    $("#ground").css("backgroundImage", "url(" + map_url + ")")
 }
 
 nerthus.maps.change_ni = function (map_url)
@@ -65,10 +70,11 @@ nerthus.maps.change_ni = function (map_url)
     this.specialMap = mapImage
 }
 
-nerthus.maps.start = function()
+nerthus.maps.start = function ()
 {
-    nerthus.defer(nerthus.maps.seasonMaps)
+    nerthus.defer(nerthus.maps.customMaps)
 }
+
 
 nerthus.maps.start_ni = function ()
 {
@@ -90,4 +96,3 @@ nerthus.maps.start_ni = function ()
     }
 }
 }catch(e){log('NerthusMap Error: '+e.message,1)}
-

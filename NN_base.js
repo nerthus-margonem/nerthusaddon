@@ -80,7 +80,7 @@ nerthus.loadSettings = function()
         if(localStorage.nerthus_options)
         {
             var options = JSON.parse(localStorage.nerthus_options)
-            for(opt in options)
+            for(const opt in options)
                 if(this.options.hasOwnProperty(opt))
                     this.options[opt] = options[opt]
         }

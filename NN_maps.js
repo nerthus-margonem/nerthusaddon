@@ -14,7 +14,7 @@ nerthus.maps.customMaps = function ()
         if (nerthus.mapsArr[i][1] === map.id && (nerthus.mapsArr[i][0] === 0 || nerthus.mapsArr[i][0] === season))
         {
             nerthus.maps.change(nerthus.mapsArr[i][2])
-            break
+            return nerthus.mapsArr[i]
         }
     }
 }

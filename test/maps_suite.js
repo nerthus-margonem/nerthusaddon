@@ -1,16 +1,19 @@
-const SEASON = 1
-const ANY_SEASON = 0
-const MAP_ID = 42
-const MAP_URL = "some_url"
-DEFERRED = []
+
+suite("maps")
 
 before(function()
 {
-    map = {id : MAP_ID}
+    this.SEASON = 1
+    this.ANY_SEASON = 0
+    this.MAP_ID = 42
+    this.MAP_URL = "some_url"
+    this.DEFERRED = []
+
+    map = {id : this.MAP_ID}
 
     nerthus = {}
-    nerthus.defer = (func) => {DEFERRED.push(func)}
-    nerthus.season = () => {return SEASON}
+    nerthus.defer = function(func){this.DEFERRED.push(func)}.bind(this)
+    nerthus.season = function(){return this.SEASON}.bind(this)
 
     expect = require("expect.js")
     require("../NN_maps.js")
@@ -25,12 +28,10 @@ before(function()
     $("<div>").attr("id","ground").appendTo("body")
 })
 
-suite("maps")
-
 beforeEach(function()
 {
     nerthus.mapsArr = []
-    DEFERRED = []
+    this.DEFERRED = []
     $("#ground").css("backgroundImage", "")
 })
 
@@ -42,30 +43,30 @@ test("No maps defined", function()
 
 test("Maps with matching id and season is defined", function()
 {
-    nerthus.mapsArr = [[SEASON, MAP_ID, MAP_URL]]
+    nerthus.mapsArr = [[this.SEASON, this.MAP_ID, this.MAP_URL]]
     nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).to.contain(MAP_URL)
+    expect($("#ground").css("backgroundImage")).to.contain(this.MAP_URL)
 })
 
 test("Maps with matching id and any season is defined", function()
 {
-    nerthus.mapsArr = [[ANY_SEASON, MAP_ID, MAP_URL]]
+    nerthus.mapsArr = [[this.ANY_SEASON, this.MAP_ID, this.MAP_URL]]
     nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).to.contain(MAP_URL)
+    expect($("#ground").css("backgroundImage")).to.contain(this.MAP_URL)
 })
 
 test("Maps with not matching season is defined", function()
 {
-    const OTHER_SEASON = SEASON + 1
-    nerthus.mapsArr = [[OTHER_SEASON, MAP_ID, MAP_URL]]
+    const OTHER_SEASON = this.SEASON + 1
+    nerthus.mapsArr = [[OTHER_SEASON, this.MAP_ID, this.MAP_URL]]
     nerthus.maps.customMaps()
     expect($("#ground").css("backgroundImage")).empty()
 })
 
 test("Maps with not matching id is defined", function()
 {
-    const OTHER_MAP_ID = MAP_ID + 1
-    nerthus.mapsArr = [[SEASON, OTHER_MAP_ID, MAP_URL]]
+    const OTHER_MAP_ID = this.MAP_ID + 1
+    nerthus.mapsArr = [[this.SEASON, OTHER_MAP_ID, this.MAP_URL]]
     nerthus.maps.customMaps()
     expect($("#ground").css("backgroundImage")).empty()
 })
@@ -73,6 +74,6 @@ test("Maps with not matching id is defined", function()
 test("start defer map change", function()
 {
     nerthus.maps.start()
-    expect(DEFERRED).to.contain(nerthus.maps.customMaps)
+    expect(this.DEFERRED).to.contain(nerthus.maps.customMaps)
 })
 

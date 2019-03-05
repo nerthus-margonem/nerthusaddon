@@ -13,11 +13,12 @@ before(function()
     g.names.ranks = []
     expect = require("expect.js")
     let fs = require('fs')
-
     eval(fs.readFileSync('./NN_dlaRadnych.js')+'')
-
 })
 
+test("dummy",function()
+{
+})
 
 test("Rank names on SI",function()
 {

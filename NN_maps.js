@@ -6,7 +6,6 @@ try {
 
 nerthus.maps = {}
 nerthus.maps.specialMap = false
-
 nerthus.maps.draw_ni = function ()
 {
     let tmpMapDraw = nerthus.defaultMapDraw

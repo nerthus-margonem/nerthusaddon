@@ -1,10 +1,13 @@
 test:
 	mocha -u qunit -R spec
 
-test_simple:
+test-leaks:
+	mocha -u qunit -R spec --check-leaks
+
+test-simple:
 	mocha -u qunit -C
 
-test_deps:
+test-deps:
 	npm install
 #	npm install mocha
 #	npm install expect.js
@@ -16,10 +19,10 @@ test_deps:
 check:
 	bash ./test_js_syntax.sh
 
-test_coverage:
+test-coverage:
 	npm run test-coverage
 
 coverage:
 	npm run coverage
 
-.PHONY: test test_simpe check test_coverage coverage
+.PHONY: test test-simpe test-leaks check test-coverage coverage

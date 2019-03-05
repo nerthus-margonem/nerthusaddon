@@ -1,21 +1,23 @@
 suite("start")
 
+const VERSION_CURRENT = "CURRENT_VERSION"
+const VERSION_OLD = "OLD_VERSION"
+const VERSION_MASTER = ""
+const PREFIX_CDN = 'http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon'
+const VERSION_SEPARATOR_CDN = "@"
+const PREFIX_MASTER = 'http://akrzyz.github.io/nerthusaddon'
+const VERSION_SEPARATOR_MASTER = ""
+const ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
+let LOAD_HELPER = {}
+    LOAD_HELPER.loaded = false
+    LOAD_HELPER.on_load = function(){this.loaded = true}.bind(LOAD_HELPER)
+
 before(function()
 {
     log = function(msg){console.log(msg)}
 
     require("../NN_start.js")
     expect = require("expect.js")
-
-    VERSION_CURRENT = "CURRENT_VERSION"
-    VERSION_OLD = "OLD_VERSION"
-    VERSION_MASTER = ""
-    PREFIX_CDN = 'http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon'
-    VERSION_SEPARATOR_CDN = "@"
-    PREFIX_MASTER = 'http://akrzyz.github.io/nerthusaddon'
-    VERSION_SEPARATOR_MASTER = ""
-    ADDITIONAL_SCRIPTS = ["ADDITIONAL_SCRIPT_1.js", "ADDITIONAL_SCRIPT_2.js"]
-
 })
 
 beforeEach(function()
@@ -29,9 +31,7 @@ beforeEach(function()
     localStorage = {}
     localStorage.removeItem = function(item){delete this[item]}
 
-    LOAD_HELPER = {}
-    LOAD_HELPER.loaded = false;
-    LOAD_HELPER.on_load = function(){this.loaded = true}.bind(LOAD_HELPER)
+    LOAD_HELPER.loaded = false
 
     nerthus.RUNABLE_MODULE = {}
     nerthus.RUNABLE_MODULE.running = false
@@ -48,10 +48,10 @@ beforeEach(function()
 
 test("fileUrl concat filesPrefix and file_name into url", function()
 {
-    let FILE = 'SCRIPT.JS'
-    let PREFIX = 'PREFIX'
-    let VERSION = 'VERSION'
-    let FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
+    const FILE = 'SCRIPT.JS'
+    const PREFIX = 'PREFIX'
+    const VERSION = 'VERSION'
+    const FILE_URL = 'PREFIX@VERSION/SCRIPT.JS'
 
     nerthus.addon.filesPrefix = PREFIX
     nerthus.addon.version = VERSION
@@ -60,10 +60,10 @@ test("fileUrl concat filesPrefix and file_name into url", function()
 
 test("fileUrl concat filesPrefix and file_name into url with special characters", function()
 {
-    let FILE = 'SCRIPTS/SCRIPT ĄŹĆ.JS'
-    let PREFIX = 'PREFIX'
-    let VERSION = 'VERSION'
-    let FILE_URL = 'PREFIX@VERSION/SCRIPTS/SCRIPT%20%C4%84%C5%B9%C4%86.JS'
+    const FILE = 'SCRIPTS/SCRIPT ĄŹĆ.JS'
+    const PREFIX = 'PREFIX'
+    const VERSION = 'VERSION'
+    const FILE_URL = 'PREFIX@VERSION/SCRIPTS/SCRIPT%20%C4%84%C5%B9%C4%86.JS'
 
     nerthus.addon.filesPrefix = PREFIX
     nerthus.addon.version = VERSION
@@ -97,8 +97,8 @@ test("ScriptsLoader : load empty script list", function()
 
 test("ScriptsLoader : load single script", function()
 {
-    var FILE = "SCRIPT.JS"
-    var FILE_URL = nerthus.addon.fileUrl(FILE)
+    const FILE = "SCRIPT.JS"
+    const FILE_URL = nerthus.addon.fileUrl(FILE)
 
     NerthusAddonUtils.loadScripts([FILE], LOAD_HELPER.on_load)
 
@@ -109,10 +109,10 @@ test("ScriptsLoader : load single script", function()
 
 test("ScriptsLoader : load multiple scripts", function()
 {
-    var FILE_1 = "SCRIPT_1.JS"
-    var FILE_2 = "SCRIPT_2.JS"
-    var FILE_URL_1 = nerthus.addon.fileUrl(FILE_1)
-    var FILE_URL_2 = nerthus.addon.fileUrl(FILE_2)
+    const FILE_1 = "SCRIPT_1.JS"
+    const FILE_2 = "SCRIPT_2.JS"
+    const FILE_URL_1 = nerthus.addon.fileUrl(FILE_1)
+    const FILE_URL_2 = nerthus.addon.fileUrl(FILE_2)
 
     NerthusAddonUtils.loadScripts([FILE_1, FILE_2], LOAD_HELPER.on_load)
 

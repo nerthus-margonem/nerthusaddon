@@ -190,7 +190,7 @@ nerthus.graf['chat']    = nerthus.addon.fileUrl("img/chatPanel2.png")
 
 
 nerthus.ranks = {}
-nerthus.ranks.rankName = {}
+nerthus.ranks.rankName = []
 
 nerthus.ranks.start = function()
 {

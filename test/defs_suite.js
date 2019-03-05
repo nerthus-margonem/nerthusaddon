@@ -18,7 +18,16 @@ before(function()
 
 })
 
-test("dummy", function()
+
+test("Rank names on SI",function()
 {
+    nerthus.ranks.start()
+    expect(g.names.ranks.length).to.be.greaterThan(7)
+})
+
+test("Rank names on NI", function()
+{
+    nerthus.ranks.start_ni()
+    expect(nerthus.ranks.rankName.length).to.be.greaterThan(7)
 })
 

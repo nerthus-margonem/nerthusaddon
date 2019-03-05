@@ -38,18 +38,19 @@ nerthus.maps.seasonMaps = function()
             nerthus.maps.change(nerthus.mapsArr[i][2])
 }
 
-nerthus.maps.seasonMaps_ni = function()
+nerthus.maps.seasonMaps_ni = function ()
 {
     let season = nerthus.season()
-    for(i in nerthus.mapsArr)
+    for (const i in nerthus.mapsArr)
     {
         if (nerthus.mapsArr[i][1] === Engine.map.d.id && (nerthus.mapsArr[i][0] === 0 || nerthus.mapsArr[i][0] === season))
         {
-            nerthus.maps.change_ni(nerthus.mapsArr[i][2])
-            break
+            this.change_ni(nerthus.mapsArr[i][2])
+            return nerthus.mapsArr[i]
         }
-        nerthus.maps.specialMap = false
     }
+    this.specialMap = false
+    return false
 }
 
 nerthus.maps.change = function(map_url)
@@ -61,7 +62,7 @@ nerthus.maps.change_ni = function (map_url)
 {
     let mapImage = new Image()
     mapImage.src = map_url
-    nerthus.maps.specialMap = mapImage
+    this.specialMap = mapImage
 }
 
 nerthus.maps.start = function()
@@ -69,15 +70,14 @@ nerthus.maps.start = function()
     nerthus.defer(nerthus.maps.seasonMaps)
 }
 
-nerthus.maps.start_ni = function()
+nerthus.maps.start_ni = function ()
 {
     if (Engine.map.d.id === undefined)
-    {
-        setTimeout(nerthus.maps.start_ni.bind(this), 500)
-    } else
+        setTimeout(this.start_ni.bind(this), 500)
+    else
     {
         nerthus.defaultMapDraw = Engine.map.draw
-        nerthus.maps.seasonMaps_ni()
+        this.seasonMaps_ni()
         API.addCallbackToEvent("clear_map_npcs",
             function ()
             {
@@ -86,7 +86,7 @@ nerthus.maps.start_ni = function()
                     nerthus.maps.seasonMaps_ni()
                 }, 500)
             })
-        nerthus.maps.draw_ni()
+        this.draw_ni()
     }
 }
 }catch(e){log('NerthusMap Error: '+e.message,1)}

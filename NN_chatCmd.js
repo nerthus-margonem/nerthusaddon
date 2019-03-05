@@ -24,16 +24,15 @@ nerthus.chatCmd.run = function(ch)
     return false
 }
 
-nerthus.chatCmd.run_ni = function(e)
+nerthus.chatCmd.run_ni = function (e)
 {
-    if (e[1].s !== "abs" && e[1].s !== "") return;
+    if (e[1].s !== "abs" && e[1].s !== "") return
     let clone = JSON.parse(JSON.stringify(e[1]))
     let ch = nerthus.chatCmd.run(clone)
-    if(ch) {
+    if (ch)
+    {
         if (ch.t === "")
-        {
             e[0].remove()
-        }
         else
         {
             e[0].addClass(ch.s)
@@ -75,7 +74,7 @@ nerthus.chatCmd.fetch_callback = function(cmd,ch)
 
 nerthus.chatCmd.mapChanging = function (is_on)
 {
-    nerthus.chatCmd.mapChangingOn = is_on
+    this.mapChangingOn = is_on
     if (is_on)
     {
         let tmpMapDraw = nerthus.mapDraw //so that it is after permament custom maps
@@ -88,7 +87,8 @@ nerthus.chatCmd.mapChanging = function (is_on)
                 Engine.map.drawGoMark(Canvas_rendering_context)
             }
         }
-    } else
+    }
+    else
     {
         Engine.map.draw = nerthus.mapDraw
     }
@@ -208,7 +208,8 @@ nerthus.chatCmd.map_ni["light"] = function (ch)
         if (hour <= 4) opacity = "0.8"
         if (Engine.map.d.mainid !== 0)
             opacity = "0"
-    } else opacity = 1 - opacity
+    }
+    else opacity = 1 - opacity
 
     let $nNight = $("#nNight")
     if ($nNight.length > 0)
@@ -216,7 +217,8 @@ nerthus.chatCmd.map_ni["light"] = function (ch)
         $nNight.css({
             opacity: opacity
         })
-    } else
+    }
+    else
     {
         $("<div id=nNight />")
             .css({
@@ -366,9 +368,8 @@ nerthus.chatCmd.start = function()
 nerthus.chatCmd.start_ni = function()
 {
     if (typeof nerthus.mapDraw !== "function")
-    {
         nerthus.mapDraw = Engine.map.draw
-    }
+
     nerthus.mapImage = new Image()
     this.appendStyles()
 

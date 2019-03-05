@@ -88,7 +88,7 @@ nerthus.npc.dialog.open = function(npc, index)
 
 nerthus.npc.dialog.open_ni = function(id, index)
 {
-    let dialog = nerthus.npc.dialog.list[id][index]
+    let dialog = this.list[id][index]
     const message = this.parse_placeholders_ni(dialog[0])
     const replies = this.parse_replies_ni(dialog, id)
     this.display_ni(message, replies, id)
@@ -103,9 +103,8 @@ nerthus.npc.dialog.display = function(message, replies, npc)
     $("#dialog").show()
 }
 
-nerthus.npc.dialog.display_ni = function (message, replies, id)
+nerthus.npc.dialog.parseInnerDialog_ni = function (message, replies)
 {
-
     let innerDial = "<p class=\"npc-message\">" + message + "</p><ul class=\"answers\">"
     let repliesLen = replies.length
     for (let i = 0; i < repliesLen; i++)
@@ -120,6 +119,12 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
                 "<span class=\"answer-text\">" + (i + 1) + ". " + replies[i].text + "</span>" +
             "</li>"
     }
+    return innerDial
+}
+
+nerthus.npc.dialog.display_ni = function (message, replies, id)
+{
+    let innerDial = this.parseInnerDialog_ni(message, replies)
 
     let $dialWin = $(".dialogue-window")
     if ($dialWin.length === 0)
@@ -152,23 +157,24 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
                 "</div>" +
             "</div>"
 
-        $(dial).appendTo(".bottom.positioner").find(".content .inner.scroll-wrapper .scroll-pane .answers .answer")
-            .each(function (index)
+        $(dial).appendTo(".bottom.positioner")
+            .find(".content .inner.scroll-wrapper .scroll-pane .answers .answer").each(function (index)
+        {
+            $(this).click(function ()
             {
-                $(this).click(function ()
-                {
-                    if (replies[index].to === "END")
-                        nerthus.npc.dialog.close_ni()
-                    else
-                        nerthus.npc.dialog.open_ni(id, replies[index].to)
-                })
+                if (replies[index].to === "END")
+                    nerthus.npc.dialog.close_ni()
+                else
+                    nerthus.npc.dialog.open_ni(id, replies[index].to)
             })
+        })
 
         setTimeout(function ()
         {
             $(".dialogue-window").css("height", "300px")
         }, 10) //NI animation
-    } else
+    }
+    else
     {
         $dialWin.find(".content .inner.scroll-wrapper .scroll-pane").empty().append(innerDial)
         $dialWin.find(".content .inner.scroll-wrapper .scroll-pane .answers .answer").each(function (index)
@@ -243,7 +249,7 @@ nerthus.npc.compose = function(npc)
     return $npc
 }
 
-nerthus.npc.compose_ni = function(npc)
+nerthus.npc.compose_ni = function (npc)
 {
     let x = parseInt(npc.x)
     let y = parseInt(npc.y)
@@ -269,8 +275,8 @@ nerthus.npc.compose_ni = function(npc)
     Engine.npcs.updateData(data)
     CFG.npath = npath
 
-    nerthus.npc.dialog.list[id] = npc.dialog
-    nerthus.npc.list[id] = npc
+    this.dialog.list[id] = npc.dialog
+    this.list[id] = npc
     return data
 }
 
@@ -384,9 +390,8 @@ nerthus.npc.load_npcs = function()
 nerthus.npc.load_npcs_ni = function ()
 {
     if (Engine.map.d.id === undefined)
-    {
-        setTimeout(nerthus.npc.load_npcs_ni.bind(this), 500)
-    } else
+        setTimeout(this.load_npcs_ni.bind(this), 500)
+    else
     {
         let file_with_npc = nerthus.addon.fileUrl("/npcs/map_" + Engine.map.d.id + ".json")
         this.load_npcs_from_file(file_with_npc)
@@ -406,7 +411,7 @@ nerthus.npc.dialog.check = function (command, d)
         let id = match[1]
         if (id >= 50000000)
         {
-            if (nerthus.npc.dialog.list[id] !== undefined)
+            if (this.list[id] !== undefined)
             {
                 return id
             }
@@ -423,22 +428,19 @@ nerthus.npc.start = function()
 nerthus.npc.start_ni = function ()
 {
     if (Engine.map.d.id === undefined)
+        setTimeout(this.start_ni.bind(this), 500)
+    else
     {
-        setTimeout(nerthus.npc.start_ni.bind(this), 500)
-    } else
-    {
-        nerthus.npc.set_collision = nerthus.npc.set_collision_ni
-        nerthus.npc.compose = nerthus.npc.compose_ni
-        nerthus.npc.load_npcs = nerthus.npc.load_npcs_ni
+        this.set_collision = this.set_collision_ni
+        this.compose = this.compose_ni
+        this.load_npcs = this.load_npcs_ni
 
         let _nerthg = _g
         _g = function (c, d)
         {
             let id = nerthus.npc.dialog.check(c)
             if (id > 0)
-            {
                 nerthus.npc.dialog.open_ni(id, 0)
-            }
             _nerthg(c, d)
         }
 

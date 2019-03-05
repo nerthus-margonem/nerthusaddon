@@ -1,5 +1,3 @@
-suite("maps")
-
 const SEASON = 1
 const ANY_SEASON = 0
 const MAP_ID = 42
@@ -28,6 +26,8 @@ before(function()
 
     $("<div>").attr("id","ground").appendTo("body")
 })
+
+suite("maps")
 
 beforeEach(function()
 {

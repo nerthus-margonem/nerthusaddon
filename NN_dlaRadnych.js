@@ -204,16 +204,16 @@ nerthus.ranks.start = function()
     g.names.ranks[7] = "Radny"                                          //"Radny";
 }
 
-nerthus.ranks.start_ni = function()
+nerthus.ranks.start_ni = function ()
 {
-    nerthus.ranks.rankName[0] = "Kreator"
-    nerthus.ranks.rankName[1] = "Uber Miszcz Gry"
-    nerthus.ranks.rankName[2] = "Miszcz Gry"
-    nerthus.ranks.rankName[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
-    nerthus.ranks.rankName[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
-    nerthus.ranks.rankName[5] = "Trubadur"       //"Męczystruna";                //"Bard";
-    nerthus.ranks.rankName[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
-    nerthus.ranks.rankName[7] = "Radny"                                          //"Radny";
+    this.rankName[0] = "Kreator"
+    this.rankName[1] = "Uber Miszcz Gry"
+    this.rankName[2] = "Miszcz Gry"
+    this.rankName[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
+    this.rankName[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
+    this.rankName[5] = "Trubadur"       //"Męczystruna";                //"Bard";
+    this.rankName[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
+    this.rankName[7] = "Radny"                                          //"Radny";
 }
 
 }catch(e){log('NerthusRada Error: '+e.message,1)}

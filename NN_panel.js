@@ -89,19 +89,6 @@ nerthus.panel.get_settings = function ()
     return options
 }
 
-nerthus.panel.start = function()
-{
-    this.mAlert = this.mAlert_si
-
-    nerthus.defer(function()
-    {
-        this.create_icon()
-        .css({ position:"absolute", top:"0px", left:"242px", cursor:"pointer" })
-        .click(this.display_panel.bind(this))
-        .appendTo("#panel")
-    }.bind(this))
-}
-
 nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart)
@@ -124,6 +111,19 @@ nerthus.panel.create_css_ni = function ()
         "background-position: 0;" +
         "}" +
         "</style>"
+}
+
+nerthus.panel.start = function()
+{
+    this.mAlert = this.mAlert_si
+
+    nerthus.defer(function()
+    {
+        this.create_icon()
+            .css({ position:"absolute", top:"0px", left:"242px", cursor:"pointer" })
+            .click(this.display_panel.bind(this))
+            .appendTo("#panel")
+    }.bind(this))
 }
 
 nerthus.panel.start_ni = function ()

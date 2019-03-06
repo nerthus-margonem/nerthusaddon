@@ -15,14 +15,20 @@ before(function()
     g.chat = {}
     g.chat.parsers = []
 
-    function Image() {
+    Engine = {
+        map: {
+            d: {
+                id: 0
+            }
+        }
+    }
+
+    Image = function() {
         this.src = ""
     }
 
     expect = require("expect.js")
-    let fs = require('fs')
-
-    eval(fs.readFileSync('./NN_chatCmd.js')+'')
+    require("../NN_chatCmd.js")
 
 })
 
@@ -40,4 +46,15 @@ test("change http*Krzywi się.*/ to normal link", function() {
     const buggedLink = "http*Krzywi się.*/www.link.pl/images/image.gif"
     const fixedLink = "http://www.link.pl/images/image.gif"
     expect(nerthus.chatCmd.fixUrl(buggedLink)).to.be(fixedLink)
+})
+
+test("*map command with map url - NI", function() {
+    const command = {
+        t: "*map http://MAPS.COM/MAP.PNG",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map_ni["map"](command)
+    expect(ch.t).to.be.equal("")
+    expect(ch.n).to.be.equal("")
+    expect(nerthus.chatCmd.mapImage.src).to.be.equal("http://MAPS.COM/MAP.PNG")
 })

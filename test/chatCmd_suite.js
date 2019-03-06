@@ -58,3 +58,25 @@ test("*map command with map url - NI", function() {
     expect(ch.n).to.be.equal("")
     expect(nerthus.chatCmd.mapImage.src).to.be.equal("http://MAPS.COM/MAP.PNG")
 })
+
+test("*map command without map url - NI", function() {
+    const command = {
+        t: "*map",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map_ni["map"](command)
+    expect(ch.t).to.be.equal("")
+    expect(ch.n).to.be.equal("")
+    expect(nerthus.chatCmd.mapImage.src).to.be.equal("")
+})
+
+test("*me command", function() {
+    const command = {
+        t: "*me TESTING COMMANDS",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.public_map["me"](command)
+    expect(ch.n).to.be.equal("")
+    expect(ch.s).to.be.equal("me")
+    expect(ch.t).to.be.equal("TESTING COMMANDS")
+})

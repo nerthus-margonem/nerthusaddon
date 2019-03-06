@@ -348,7 +348,7 @@ nerthus.chatCmd.public_map["me"] = function(ch)
 {
     ch.s="me"
     ch.n=""
-    ch.t=ch.t.replace(/^\*me/,"")
+    ch.t=ch.t.replace(/^\*me /,"")
     return ch
 }
 

@@ -17,9 +17,7 @@ before(function()
     log = function(msg){console.log(msg)}
 
     expect = require("expect.js")
-    let fs = require('fs')
-    eval(fs.readFileSync('./NN_start.js')+'')
-  
+    require("../NN_start.js")
     Date.now = function(){}
 
 })

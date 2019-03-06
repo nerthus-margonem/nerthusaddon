@@ -16,9 +16,10 @@ before(function()
 {
     log = function(msg){console.log(msg)}
 
+    Date.now = function(){}
+
     expect = require("expect.js")
     require("../NN_start.js")
-    Date.now = function(){}
 
 })
 

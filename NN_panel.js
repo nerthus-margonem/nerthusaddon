@@ -106,9 +106,9 @@ nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart)
     {
-        API.Storage.set("hotWidget/nerthus", [7, "top-right"])
-        Engine.interface.addKeyToDefaultWidgetSet("nerthus", 7, "top-right", "Nerthus", "green", nerthus.panel.display_panel)
-        Engine.interface.createOneWidget("nerthus", {nerthus: [7, "top-right"]}, true)
+        API.Storage.set("hotWidget/nerthus", [6, "top-right"])
+        Engine.interface.addKeyToDefaultWidgetSet("nerthus", 6, "top-right", "Nerthus", "green", nerthus.panel.display_panel)
+        Engine.interface.createOneWidget("nerthus", {nerthus: [6, "top-right"]}, true)
     }
     else
     {

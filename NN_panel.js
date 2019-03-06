@@ -25,14 +25,14 @@ nerthus.panel.mAlert_ni = function(text, buttons)
     mAlert(text, buttons)
 }
 
-nerthus.panel.display_panel = function()
+nerthus.panel.display_panel = function ()
 {
-    $.getJSON(nerthus.addon.fileMasterUrl('panel_links.json'), function(panel_data)
+    $.getJSON(nerthus.addon.fileMasterUrl("panel_links.json"), function (panel_data)
     {
-        var $panel = this.panel_string(panel_data)
-        this.mAlert($panel, [ {txt:"save", callback: this.save.bind(this)},
-                              {txt:"ok",   callback: () => true} ])
-    }.bind(this))
+        let $panel = nerthus.panel.panel_string(panel_data)
+        nerthus.panel.mAlert($panel, [{txt: "save", callback: nerthus.panel.save},
+            {txt: "ok", callback: () => true}])
+    })
 }
 
 nerthus.panel.panel_string = function(panel_data)
@@ -102,21 +102,35 @@ nerthus.panel.start = function()
     }.bind(this))
 }
 
-nerthus.panel.start_ni = function()
+nerthus.panel.create_button_ni = function ()
+{
+    if (Engine.interfaceStart)
+    {
+        API.Storage.set("hotWidget/nerthus", [7, "top-right"])
+        Engine.interface.addKeyToDefaultWidgetSet("nerthus", 7, "top-right", "Nerthus", "green", nerthus.panel.display_panel)
+        Engine.interface.createOneWidget("nerthus", {nerthus: [7, "top-right"]}, true)
+    }
+    else
+    {
+        setTimeout(nerthus.panel.create_button_ni, 500)
+    }
+}
+
+nerthus.panel.create_css_ni = function ()
+{
+    return "<style>" +
+        ".main-buttons-container .widget-button .icon.nerthus {" +
+        "background-image: url(" + nerthus.graf.shield + ");" +
+        "background-position: 0;" +
+        "}" +
+        "</style>"
+}
+
+nerthus.panel.start_ni = function ()
 {
     this.mAlert = this.mAlert_ni
-
-    let $icon = this.create_icon()
-    .css({top:"5px",left:"6px", position:"absolute"})
-
-    let $button = $("<div>")
-    .addClass("widget-button")
-    .addClass("green")
-    .css({position:"absolute", right:"220px"})
-    .appendTo(".main-buttons-container.top-right")
-    .click(this.display_panel.bind(this))
-    .append($icon)
-
+    $("head").append(this.create_css_ni())
+    this.create_button_ni()
 }
 
 }catch(e){log('NerthusPanel Error: '+e.message,1);}

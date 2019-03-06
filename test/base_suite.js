@@ -43,9 +43,7 @@ before(function()
     rights = {ADMIN : 1, SMG : 16, MG : 2, MC : 4}
 
     expect = require("expect.js")
-    let fs = require('fs')
-
-    eval(fs.readFileSync('./NN_base.js')+'')
+    require("../NN_base.js")
 
 })
 

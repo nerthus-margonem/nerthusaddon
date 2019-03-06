@@ -73,19 +73,19 @@ nerthus.panel.link = function(link)
     return $('<a href="' + link.url + '" target="blank">' + link.name + '</a>')
 }
 
-nerthus.panel.save = function()
+nerthus.panel.save = function ()
 {
-    var settings = this.get_settings()
+    let settings = nerthus.panel.get_settings()
     nerthus.storeSettings(settings)
-    message('zapisano, wciśnij f5')
+    message("Zapisano, wciśnij F5")
     return true
 }
 
-nerthus.panel.get_settings = function()
+nerthus.panel.get_settings = function ()
 {
-    var options = {}
-    for(var option in nerthus.options)
-        options[option] = $('#panCb'+option).attr('checked')
+    let options = {}
+    for (const option in nerthus.options)
+        options[option] = $("#panCb" + option).attr("checked")
     return options
 }
 

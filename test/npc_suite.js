@@ -4,6 +4,7 @@ minimal_npc = function(name="Stefan", x=8, y=42, url="")
     return { "name" : name, "x" : x, "y" : y, "url" : url}
 }
 
+let NPC = minimal_npc("Kici")
 before(function()
 {
     log = function(msg){console.log(msg)}
@@ -32,7 +33,6 @@ before(function()
         remove : function(){this.lock = null}
     }
 
-    NPC = minimal_npc("Kici")
     NPC.x = 8
     NPC.y = 4
     NPC.url = "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif"
@@ -445,7 +445,7 @@ test("npc should be present only in days defined in npc.days, weekend only npc [
     var npc = minimal_npc()
     npc.days = [5,6]
 
-    _date = setWeekDay(0)
+    let _date = setWeekDay(0)
     expect(nerthus.npc.is_deployable(npc)).not.ok()
 
     _date = setWeekDay(1)

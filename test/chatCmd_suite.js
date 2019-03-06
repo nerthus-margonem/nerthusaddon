@@ -80,3 +80,13 @@ test("*me command", function() {
     expect(ch.s).to.be.equal("me")
     expect(ch.t).to.be.equal("TESTING COMMANDS")
 })
+
+test("*weather command", function() {
+    const command = {
+        t: "*weather 7",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map["weather"](command)
+    expect(ch).to.be.equal(true)
+    expect(nerthus_weather_bard_id).to.be.equal(7)
+})

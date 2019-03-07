@@ -232,7 +232,7 @@ test("run addon in new interface", function()
 
 test("other modules are started even if start of previous failed", function()
 {
-    nerthus.RUNABLE_MODULE_ONE.start = function(){throw "module one start error"}
+    nerthus.RUNABLE_MODULE_ONE.start = function(){throw new Error("module one start error")}
 
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
     NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)

@@ -92,14 +92,25 @@ nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart)
     {
-        API.Storage.set("hotWidget/nerthus", [6, "top-right"])
-        Engine.interface.addKeyToDefaultWidgetSet("nerthus", 6, "top-right", "Nerthus", "green", nerthus.panel.display_panel)
-        Engine.interface.createOneWidget("nerthus", {nerthus: [6, "top-right"]}, true)
+        let position = this.load_button_position()
+        API.Storage.set("hotWidget/nerthus", position)
+        Engine.interface.addKeyToDefaultWidgetSet("nerthus", position[0], position[1], "Nerthus", "green", this.display_panel.bind(this))
+        Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
     }
     else
     {
-        setTimeout(nerthus.panel.create_button_ni, 500)
+        setTimeout(this.create_button_ni.bind(this), 500)
     }
+}
+
+nerthus.panel.load_button_position = function ()
+{
+    let position = API.Storage.get("hotWidget/nerthus")
+    if (position)
+        return position
+    else
+        return [6, "top-right"]
+
 }
 
 nerthus.panel.create_css_ni = function ()

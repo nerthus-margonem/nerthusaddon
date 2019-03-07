@@ -14,7 +14,7 @@ nerthus.chatCmd.run = function(ch)
         if(callback)
         {
             ch.t = this.fixUrl(ch.t)
-            log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
+            NerthusAddonUtils.log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
             return callback(ch)
         }
         return false

@@ -14,10 +14,10 @@ nerthus.night.lights.add_testable = function(light)
 
 nerthus.night.lights.dump = function()
 {
-    log("//"+map.name+" : map_"+map.id+".json")
-    log("[")
+    NerthusAddonUtils.log("//"+map.name+" : map_"+map.id+".json")
+    NerthusAddonUtils.log("[")
     this.log_lights()
-    log("]")
+    NerthusAddonUtils.log("]")
     message("dumping done")
 }
 
@@ -32,7 +32,7 @@ nerthus.night.lights.log_lights = function()
             var type = $(this).attr("type")
             lights.push('{"x" : "' +x+ '", "y" : "' +y+ '", "type" : "' +type+ '"}')
     });
-    log(lights.join(",<br>"))
+    NerthusAddonUtils.log(lights.join(",<br>"))
 }
 
 nerthus.night.lights.give_me_the_light = function()

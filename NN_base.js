@@ -326,4 +326,3 @@ nerthus.base.start = function()
 }
 
 nerthus.loadSettings()
-

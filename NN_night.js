@@ -1,7 +1,7 @@
-
 nerthus.night = {}
 nerthus.night.dimValue = 0
 nerthus.night.allAdded_ni = false
+
 nerthus.night.opacity = function()
 {
     const hour = new Date().getHours()
@@ -243,4 +243,3 @@ nerthus.night.lights.give_me_the_light = function()
 {
     $.getScript(nerthus.addon.fileUrl("/NN_night_lights_mgr.js"))
 }
-

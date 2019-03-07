@@ -1,4 +1,3 @@
-
 nerthus.chatCmd = {};
 nerthus.chatCmd.map = {};
 nerthus.chatCmd.map_ni = {};

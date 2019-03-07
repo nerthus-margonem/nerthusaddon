@@ -164,4 +164,3 @@ NerthusAddonUtils = (function()
 })()
 
 NerthusAddonUtils.runAddon()
-

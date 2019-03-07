@@ -1,4 +1,3 @@
-
 nerthus.night.lights.make_testable = function(light)
 {
     light
@@ -60,4 +59,3 @@ nerthus.night.lights.give_me_the_light = function()
 }
 
 nerthus.defer(nerthus.night.lights.give_me_the_light)
-

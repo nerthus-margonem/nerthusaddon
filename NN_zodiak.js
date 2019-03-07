@@ -1,4 +1,3 @@
-
 nerthus.zodiac = {}
 nerthus.zodiac.icon = nerthus.addon.fileUrl("img/zodiacIcons.gif")
 nerthus.zodiac.SIGNS = {

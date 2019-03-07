@@ -1,4 +1,3 @@
-
 nerthus.npc = {}
 nerthus.npc.list = {}
 nerthus.npc.dialog = {}

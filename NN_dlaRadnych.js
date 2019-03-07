@@ -154,6 +154,8 @@ nerthus.mapsArr =
 
     //Cytadela - Nithal
     [0, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
+    //Labolatorium Elendaru
+    [0, 864, nerthus.addon.fileUrl("maps/Akademia wojskowa - piwnica p.2.png")],
 
     //Siedziba Leśnego Bractwa
     [0,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
@@ -161,6 +163,7 @@ nerthus.mapsArr =
     [0,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
 
     [0, 37, nerthus.addon.fileUrl("maps/Brama Północy.png")]
+
 ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'

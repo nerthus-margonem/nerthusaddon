@@ -1,5 +1,3 @@
-try
-{
 
 nerthus.npc = {}
 nerthus.npc.dialog = {}
@@ -217,4 +215,3 @@ nerthus.npc.start = function()
     nerthus.defer(this.load_npcs.bind(this))
 }
 
-}catch(e) {log('nerthus npc: ' + e.message, 1);}

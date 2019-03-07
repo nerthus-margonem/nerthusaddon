@@ -2,7 +2,6 @@
     Name: Nerthus Panel
     Plik zawiera funkcje do ustawiania tarczy otierającej panel
 **/
-try{
 
 nerthus.panel = {}
 
@@ -81,4 +80,3 @@ nerthus.panel.start = function()
     nerthus.defer(this.display_icon.bind(this));
 }
 
-}catch(e){log('NerthusPanel Error: '+e.message,1);}

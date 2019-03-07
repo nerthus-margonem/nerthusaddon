@@ -1,10 +1,9 @@
-/**    Name: NerthusBaseFunctions
-    Pierwszy plik z dodatku Nerthusa
-    Zawiera stworzenie obiktu nerthus i jego podstawowe funkcje
-    Zawiera stare opcja jak opisy zamiast lvli
+/**
+ * Name: NerthusBaseFunctions
+ * Pierwszy plik z dodatku Nerthusa
+ * Zawiera stworzenie obiktu nerthus i jego podstawowe funkcje
+ * Zawiera stare opcja jak opisy zamiast lvli
 **/
-
-try{
 
 nerthus.defer = function(fun,data)
 {
@@ -80,7 +79,7 @@ nerthus.loadSettings = function()
         if(localStorage.nerthus_options)
         {
             var options = JSON.parse(localStorage.nerthus_options)
-            for(opt in options)
+            for(const opt in options)
                 if(this.options.hasOwnProperty(opt))
                     this.options[opt] = options[opt]
         }
@@ -230,4 +229,3 @@ nerthus.base.start = function()
 
 nerthus.loadSettings()
 
-}catch(e){log('NerthusBase Error: '+e.message)}

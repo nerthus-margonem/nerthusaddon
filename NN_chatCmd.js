@@ -1,4 +1,3 @@
-try{
 
 nerthus.chatCmd = {};
 nerthus.chatCmd.map = {};
@@ -399,7 +398,3 @@ nerthus.chatCmd.start_ni = function()
             }, 500)
         })
 }
-
-
-}catch(e){log('nerthus chatCmd: '+e.message,1);}
-

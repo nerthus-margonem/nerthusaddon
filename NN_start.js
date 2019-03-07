@@ -1,10 +1,9 @@
 /**
-     Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
-     Wersja jest w pliku version.json
-     Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
-     Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
- **/
-try{
+    Start dodatku. Najpierw pobiera wersje dodatku, która jest rewizją z mastera, potem resztę plików dodatku w tej wersji.
+    Wersja jest w pliku version.json
+    Jeżeli jest zdefiniowana zmienna localStorage.NerthusAddonDebug = true odpala debug moda i ciągnie świeże pliki bezpośrednio z master z pominięciem cdn
+    Flaga localStorage.NerthusAddonDebug = true blokuje wczytywanie z localStorage
+**/
 
 nerthus = {}
 nerthus.addon = {}
@@ -48,7 +47,6 @@ NerthusAddonUtils = (function()
     }
     utils.purgeStorage = function()
     {
-        log("deleting nerthus from storage, hasNerthus: " + localStorage.hasOwnProperty("nerthus"))
         localStorage.removeItem("nerthus")
     }
     utils.runAddon = function()
@@ -96,12 +94,20 @@ NerthusAddonUtils = (function()
     utils.startPlugins = function(callback)
     {
         const postfix = getCookie("interface") === "ni" ? "_ni" : ""
-        const start_method = "start" + postfix
+        const start = "start" + postfix
 
-        log("starting method: " + start_method)
-        for(var i in nerthus)
-            if(nerthus[i] && nerthus[i][start_method])
-                call(nerthus[i][start_method].bind(nerthus[i]))
+        for(const module in nerthus)
+        {
+            if(nerthus[module] && nerthus[module][start])
+            try
+            {
+                call(nerthus[module][start].bind(nerthus[module]))
+            }
+            catch(error)
+            {
+                log("nerthus error in nerthus." + module + "." + start + "(), message: " + error.message, 1)
+            }
+        }
         call(callback)
     }
 
@@ -159,4 +165,3 @@ NerthusAddonUtils = (function()
 
 NerthusAddonUtils.runAddon()
 
-}catch(e){log('NerthusStart Error: '+e.message,1)}

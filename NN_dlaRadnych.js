@@ -2,7 +2,6 @@
     Name: Nerthus dla Rady
     Drugi plik z dodatku Nerthusa. Zawiera podstawowe zmienne do modyfikacji.
 **/
-try{
 
 //Lista osób specjalnych - uprawnieni do używania specjalnych komend na chacie - taki bard bez etykietki
 nerthus.NerthusSpec = [
@@ -215,6 +214,3 @@ nerthus.ranks.start_ni = function ()
     this.rankName[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
     this.rankName[7] = "Radny"                                          //"Radny";
 }
-
-}catch(e){log('NerthusRada Error: '+e.message,1)}
-

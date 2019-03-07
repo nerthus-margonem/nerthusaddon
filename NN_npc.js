@@ -1,5 +1,3 @@
-try
-{
 
 nerthus.npc = {}
 nerthus.npc.list = {}
@@ -455,5 +453,3 @@ nerthus.npc.start_ni = function ()
             })
     }
 }
-
-}catch(e) {log('nerthus npc: ' + e.message, 1);}

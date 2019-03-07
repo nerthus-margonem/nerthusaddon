@@ -2,7 +2,6 @@
  Name: NerthusMaps
  Zawiera zmiane map na specjalne czy też sezonowe.
  **/
-try {
 
 nerthus.maps = {}
 nerthus.maps.specialMap = false
@@ -73,7 +72,6 @@ nerthus.maps.start = function ()
     nerthus.defer(nerthus.maps.customMaps)
 }
 
-
 nerthus.maps.start_ni = function ()
 {
     if (Engine.map.d.id === undefined)
@@ -93,4 +91,3 @@ nerthus.maps.start_ni = function ()
         this.draw_ni()
     }
 }
-}catch(e){log('NerthusMap Error: '+e.message,1)}

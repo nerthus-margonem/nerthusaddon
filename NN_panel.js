@@ -2,7 +2,6 @@
     Name: Nerthus Panel
     Plik zawiera funkcje do ustawiania tarczy otwierającej panel
 **/
-try{
 
 nerthus.panel = {}
 
@@ -133,4 +132,3 @@ nerthus.panel.start_ni = function ()
     this.create_button_ni()
 }
 
-}catch(e){log('NerthusPanel Error: '+e.message,1);}

@@ -239,92 +239,94 @@ test("option removed - present in stored but not loaded", function()
 
 suite("tips")
 
+let PLAYER = {}
+
 beforeEach(function(){
-    player = {rights:0, nick:"NAME", id:42, lvl:1}
+    PLAYER = {rights:0, nick:"NAME", id:42, lvl:1}
     nerthus.NerthusRad = []
 })
 
-test("rank: player without any privilages", function()
+test("rank: PLAYER without any privilages", function()
 {
-    expect(nerthus.tips.rank(player)).to.be.equal("")
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("")
 })
 
 test("rank: admin", function()
 {
-    player.rights = rights.ADMIN
-    expect(nerthus.tips.rank(player)).to.be.equal("ADMIN")
+    PLAYER.rights = rights.ADMIN
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("ADMIN")
 })
 
 test("rank: smg", function()
 {
-    player.rights = rights.SMG
-    expect(nerthus.tips.rank(player)).to.be.equal("SMG")
+    PLAYER.rights = rights.SMG
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("SMG")
 })
 
 test("rank: mg", function()
 {
-    player.rights = rights.MG
-    expect(nerthus.tips.rank(player)).to.be.equal("MG")
+    PLAYER.rights = rights.MG
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("MG")
 })
 
 test("rank: radny", function()
 {
-    nerthus.NerthusRad = [player.nick]
-    expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
+    nerthus.NerthusRad = [PLAYER.nick]
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("RADNY")
 })
 
 test("rank: bard", function()
 {
-    nerthus.NerthusNarr = [player.nick]
-    expect(nerthus.tips.rank(player)).to.be.equal("BARD")
+    nerthus.NerthusNarr = [PLAYER.nick]
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("BARD")
 })
 
 test("rank: bard + mc", function()
 {
-    nerthus.NerthusNarr = [player.nick]
-    player.rights = rights.MC
-    expect(nerthus.tips.rank(player)).to.be.equal("BARD_MC")
+    nerthus.NerthusNarr = [PLAYER.nick]
+    PLAYER.rights = rights.MC
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("BARD_MC")
 })
 
 test("rank: bard is overrided by radny", function()
 {
-    nerthus.NerthusNarr = [player.nick]
-    nerthus.NerthusRad = [player.nick]
-    expect(nerthus.tips.rank(player)).to.be.equal("RADNY")
+    nerthus.NerthusNarr = [PLAYER.nick]
+    nerthus.NerthusRad = [PLAYER.nick]
+    expect(nerthus.tips.rank(PLAYER)).to.be.equal("RADNY")
 })
 
 test("title : non lvl", function()
 {
-    player.lvl = 0
-    expect(nerthus.tips.title(player)).to.be.equal("")
+    PLAYER.lvl = 0
+    expect(nerthus.tips.title(PLAYER)).to.be.equal("")
 })
 
 test("title : lvl 1-8", function()
 {
-    player.lvl = 1
-    expect(nerthus.tips.title(player)).to.be.equal("lvl1-8")
-    player.lvl = 8
-    expect(nerthus.tips.title(player)).to.be.equal("lvl1-8")
+    PLAYER.lvl = 1
+    expect(nerthus.tips.title(PLAYER)).to.be.equal("lvl1-8")
+    PLAYER.lvl = 8
+    expect(nerthus.tips.title(PLAYER)).to.be.equal("lvl1-8")
 })
 
 test("title : lvl 9-16", function()
 {
-    player.lvl = 9
-    expect(nerthus.tips.title(player)).to.be.equal("lvl9-16")
-    player.lvl = 16
-    expect(nerthus.tips.title(player)).to.be.equal("lvl9-16")
+    PLAYER.lvl = 9
+    expect(nerthus.tips.title(PLAYER)).to.be.equal("lvl9-16")
+    PLAYER.lvl = 16
+    expect(nerthus.tips.title(PLAYER)).to.be.equal("lvl9-16")
 })
 
 test("title : lvl*8 above lvl names lenght", function()
 {
-    player.lvl = nerthus.lvlNames.length * 8 + 10
-    expect(nerthus.tips.title(player)).to.be.equal(nerthus.lvlNames[nerthus.lvlNames.length - 1])
+    PLAYER.lvl = nerthus.lvlNames.length * 8 + 10
+    expect(nerthus.tips.title(PLAYER)).to.be.equal(nerthus.lvlNames[nerthus.lvlNames.length - 1])
 })
 
 test("title : vip, special names for vips", function()
 {
-    nerthus.vips[player.id] = "VIP"
-    expect(nerthus.tips.title(player)).to.be.equal("VIP")
+    nerthus.vips[PLAYER.id] = "VIP"
+    expect(nerthus.tips.title(PLAYER)).to.be.equal("VIP")
 })
 
 test("other : nick only", function()

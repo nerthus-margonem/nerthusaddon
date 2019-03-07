@@ -4,9 +4,9 @@ before(function()
 {
     log = function(msg){console.log(msg)}
 
-    nerthus = {}
-    nerthus.addon = {}
-    nerthus.addon.fileUrl = Function.prototype
+    nerthus = {
+        addon : { fileUrl : function(){} }
+    }
 
     g = {}
     g.names = {}

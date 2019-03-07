@@ -2,8 +2,7 @@
 // OBSŁUGA PICIA - Autor Godfryd
 //==================================================================
 // Przystosowanie do NI - Kris Aphalon
-try
-{
+
 nerthus.alko = {}
 
 nerthus.alko.lvl = 0  //stanupojenia alkoholowego 0 trzeźwy 100 urwany film.
@@ -178,5 +177,3 @@ nerthus.alko.start_ni = function()
     }
     nerthus.alko.initiateHandlers_ni()
 }
-
-}catch(e){log('NerthusAlk Error: '+e.message,1)}

@@ -17,11 +17,9 @@ before(function()
     nerthus.season = function(){return SEASON}
 
     expect = require("expect.js")
-    let fs = require('fs')
+    require("../NN_maps.js")
 
-    eval(fs.readFileSync('./NN_maps.js')+'')
-
-    var jsdom = require("jsdom");
+    let jsdom = require("jsdom");
     const { JSDOM } = jsdom;
     const { window } = new JSDOM();
     const { document } = (new JSDOM('')).window;

@@ -1,6 +1,4 @@
 //pogoda dla nerthusa
-try
-{
 
 if(typeof nerthus.weather === 'undefined')
     nerthus.weather = {id:null, change_timer:null}
@@ -326,6 +324,4 @@ nerthus.weather.start = function()
     if(nerthus.options['weather'])
         nerthus.defer(this.run.bind(this))
 }
-
-}catch(e){log('NerthusWeather Error: '+e.message,1)}
 

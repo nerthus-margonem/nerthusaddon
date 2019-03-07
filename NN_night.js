@@ -1,5 +1,3 @@
-try
-{
 
 nerthus.night = {}
 nerthus.night.opacity = function()
@@ -86,4 +84,3 @@ nerthus.night.lights.give_me_the_light = function()
     $.getScript(nerthus.addon.fileUrl("/NN_night_lights_mgr.js"))
 }
 
-}catch(err){log('nerthus night error: '+ err.message ,1)}

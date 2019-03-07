@@ -1,5 +1,3 @@
-try
-{
 
 nerthus.zodiac = {}
 nerthus.zodiac.icon = nerthus.addon.fileUrl("img/zodiacIcons.gif")
@@ -139,6 +137,4 @@ nerthus.zodiac.start = function ()
     if (nerthus.options['zodiac'])
         nerthus.defer(this.run.bind(this))
 }
-
-} catch (e) {log('NerthusZodiac Error: ' + e.message, 1)}
 

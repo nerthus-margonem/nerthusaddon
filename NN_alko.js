@@ -1,8 +1,6 @@
 //==================================================================
 // OBSŁUGA PICIA - Autor Godfryd
 //==================================================================
-try
-{
 nerthus.alko = {}
 
 nerthus.alko.lvl = 0  //stanupojenia alkoholowego 0 trzeźwy 100 urwany film.
@@ -126,4 +124,3 @@ nerthus.alko.start = function()
     nerthus.defer(this.run.bind(this))
 }
 
-}catch(e){log('NerthusAlk Error: '+e.message,1)}

@@ -1,4 +1,3 @@
-try{
 
 nerthus.chatCmd = {};
 nerthus.chatCmd.map = {};
@@ -177,6 +176,4 @@ nerthus.chatCmd.start = function()
     $("<style type='text/css'> #chattxt .dial666{ color:#FF66FF ; } </style>").appendTo("head");
     g.chat.parsers.push(nerthus.chatCmd.run.bind(this));
 }
-
-}catch(e){log('nerthus chatCmd: '+e.message,1);}
 

@@ -12,10 +12,14 @@
     "jsdom": "^12.0.0"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "coveralls": "^3.0.3",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "test-coverage": "nyc --reporter=html --reporter=text mocha -u qunit -R spec",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",

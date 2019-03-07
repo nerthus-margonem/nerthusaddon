@@ -1,5 +1,3 @@
-try
-{
 
 nerthus.night.lights.make_testable = function(light)
 {
@@ -63,7 +61,3 @@ nerthus.night.lights.give_me_the_light = function()
 
 nerthus.defer(nerthus.night.lights.give_me_the_light)
 
-}catch(err)
-{
-log('night lights mgr error: '+ err.message ,1)
-}

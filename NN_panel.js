@@ -51,17 +51,15 @@ nerthus.panel.panel_string = function(panel_data)
 
 nerthus.panel.settings_str = function()
 {
-    var $settings = $("<div>")
-    var $info = $("<div>")
-    .css('text-decoration', 'underline')
-    .css('cursor','pointer')
-    .text("ustawienia")
-    .click(function(){$(this).nextAll().toggle()})
-    $settings.append($info)
-    for(var option in nerthus.options)
+    let $settings = $("<div>")
+    let info =
+        "<span style='text-decoration: underline; cursor: pointer' class='nerthus-settings-button' " +
+        "onclick='$(\".nerthus-settings-button\").nextAll().toggle()'>Ustawienia</span>"
+    $settings.append(info)
+    for(const option in nerthus.options)
     {
-        var $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
-        var $cb_name = $("<b>").text(option)
+        let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
+        let $cb_name = $("<b>").text(option)
         $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
     return $settings

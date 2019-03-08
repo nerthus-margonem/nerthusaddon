@@ -3,7 +3,7 @@ node_js:
   - "node"
 
 before_install:
-  - make instal-test-dependencies
+  - make install-test-dependencies
 
 script:
   - make check-syntax

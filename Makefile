@@ -7,7 +7,7 @@ test-leaks:
 test-simple:
 	mocha -u qunit -C
 
-instal-test-dependencies:
+install-test-dependencies:
 	npm install
 #	npm install mocha
 #	npm install expect.js

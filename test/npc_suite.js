@@ -1,5 +1,5 @@
 
-minimal_npc = function(name="Stefan", x=8, y=42, url="")
+const minimal_npc = function(name="Stefan", x=8, y=42, url="")
 {
     return { "name" : name, "x" : x, "y" : y, "url" : url}
 }
@@ -32,6 +32,8 @@ before(function()
         add : function(lock){this.lock = lock},
         remove : function(){this.lock = null}
     }
+
+    hero = {}
 
     NPC.x = 8
     NPC.y = 4
@@ -77,13 +79,15 @@ before(function()
 
 })
 
-clear_html = function()
+beforeEach(function()
 {
     $("#body").empty()
     $("#base").empty()
     $(".message").empty()
     $(".replies").empty()
-}
+
+    hero = {}
+})
 
 suite("npc dialog parse message")
 
@@ -172,7 +176,6 @@ test("placeholder #NAME is replace by hero.nick", function()
 })
 
 suite("npc dialog API")
-beforeEach(clear_html)
 
 test("open dialog display dialog from given index", function()
 {
@@ -247,7 +250,6 @@ test("create tipless npc", function()
 })
 
 suite("npc deployment")
-beforeEach(clear_html)
 
 test("deployed npc is added to #base", function()
 {
@@ -304,7 +306,6 @@ test("npc with url starting with # should be resolved as url pointing to local a
 })
 
 suite("npc time")
-beforeEach(clear_html)
 
 setTime = function(hour, minutes)
 {
@@ -387,7 +388,6 @@ test("npc with time shell be deployed in time range end time 18:00 vs 7-18", fun
 })
 
 suite("npc time with minutes")
-beforeEach(clear_html)
 
 test("npc with time shell be deployed in expected time 10:20 vs 10:10-10:30", function()
 {
@@ -415,7 +415,6 @@ test("npc with time shell be deployed in time range end time 18:15 vs 7:05-18:15
 })
 
 suite("npc days")
-beforeEach(clear_html)
 
 test("npc with empty days should not be present", function()
 {
@@ -473,7 +472,6 @@ test("npc should be present only in days defined in npc.days, weekend only npc [
 })
 
 suite("npc date DD.MM.YYYY-DD.MM.YYYY")
-beforeEach(clear_html)
 
 setDate = function(day, month, year)
 {
@@ -543,7 +541,6 @@ test("npc with date should be present in last day of range 4.4.2020 vs 2.2.2020-
 })
 
 suite("npc date DD.MM-DD.MM")
-beforeEach(clear_html)
 
 test("npc with date should not be present before date 1.1.2020 vs 15.1-15.5", function()
 {
@@ -571,7 +568,6 @@ test("npc with date should be present in last day of range 15.5.2020 vs 15.1-15.
 })
 
 suite("npc date DD-DD")
-beforeEach(clear_html)
 
 test("npc with date should not be present before date 1.1.2020 vs 5-15", function()
 {
@@ -599,7 +595,6 @@ test("npc with date should be present in last day of range 15.8.2020 vs 5-15", f
 })
 
 suite("npc date DD-DD.MM")
-beforeEach(clear_html)
 
 test("npc with date should not be present before date 1.1.2020 vs 5-15.5", function()
 {
@@ -632,7 +627,6 @@ test("npc with date should be present in last day of range 15.5.2020 vs 5-15.5",
 })
 
 suite("npc date DD.MM-DD")
-beforeEach(clear_html)
 
 test("npc with date should not be present before date 1.1.2020 vs 5.5-15", function()
 {

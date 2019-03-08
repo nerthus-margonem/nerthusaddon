@@ -171,6 +171,11 @@ test("setEnterMsg : msg present", function()
 
 suite("store and load options")
 
+beforeEach(function()
+{
+    localStorage = {}
+})
+
 test("same amount of options", function()
 {
     const DEFAULT_OPTIONS = {op1:"val1", op2:"val2", op3:true}

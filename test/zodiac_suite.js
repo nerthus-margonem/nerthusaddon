@@ -29,13 +29,16 @@ test("Correct zodiac sign around the year", function()
         CAPRICORN   : 11
     }
 
-    let _date = Date
+    const _date = Date
     let setDate = function(day, month)
     {
-        let date = new _date(0)
-        date.setUTCDate(day)
-        date.setUTCMonth(month-1)
-        return date
+        Date = function()
+        {
+            var date = new _date(0)
+            date.setUTCDate(day)
+            date.setUTCMonth(month-1)
+            return date
+        }
     }
 
     let expectSignToBeBetween = function(sign, begin, end)
@@ -84,5 +87,7 @@ test("Correct zodiac sign around the year", function()
 
     // Koniec/początek roku (31 grudnia – 1 stycznia)
     expectSignToBeBetween(SIGNS.CAPRICORN,{day:31,month:12},{day:1,month:1})
+
+    Date = _date
 })
 

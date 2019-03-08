@@ -55,7 +55,7 @@ beforeEach(function()
     nerthus.addon.version = VERSION_MASTER
     nerthus.addon.version_separator = VERSION_SEPARATOR_CDN
     nerthus.addon.filesPrefix = PREFIX_CDN
-
+    nerthus.scripts = []
 })
 
 test("fileUrl concat filesPrefix and file_name into url", function()
@@ -97,6 +97,20 @@ test("storage : localStorage exist but flag NerthusAddonNoStorage prevent it", f
 {
     localStorage.NerthusAddonNoStorage = true
     expect(NerthusAddonUtils.storage()).to.not.be.ok()
+})
+
+test("addon.store : addion is stored in localStorage", function()
+{
+    expect(localStorage.nerthus).to.not.be.ok()
+    nerthus.addon.store()
+    expect(localStorage.nerthus).to.be.ok()
+})
+
+test("addon.store : addion is not stored when localStorage not exist", function()
+{
+    delete localStorage
+    nerthus.addon.store()
+    expect(typeof localStorage).to.be('undefined')
 })
 
 test("ScriptsLoader : load empty script list", function()

@@ -1,0 +1,23 @@
+[
+    {
+        "name": "",
+        "x": "5",
+        "y": "3",
+        "url": "#img/npc/swiecznik.gif",
+        "collision": false
+    },
+    {
+        "name": "",
+        "x": "9",
+        "y": "3",
+        "url": "#img/npc/swiecznik.gif",
+        "collision": false
+    },
+    {
+        "name": "",
+        "x": "4",
+        "y": "11",
+        "url": "/obrazki/npc/map/pochodnia2_stojac.gif",
+        "collision": false
+    }
+]

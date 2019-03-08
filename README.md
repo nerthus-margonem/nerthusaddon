@@ -5,24 +5,25 @@
   Addon for nerthus server in game [margonem](http://www.margonem.pl/)
 
 ### How to update addon to newest version?
-  * put in console `delete localStorage.nerthus` and refresh game 
+  * put in console `delete localStorage.nerthus` and refresh game
 
 ### How to test changes in game?
-  * In order to run addon in version from master branch set in console variable `localStorage.NerthusAddonDebug = true` 
+  * In order to run addon in version from master branch set in console variable `localStorage.NerthusAddonDebug = true`
   * In order to back to normal version `delete localStorage.NerthusAddonDebug`
- 
+
 ### How to run tests
-  * runing tests require nodejs and some node modules
-  * run `make test_deps` to install dependencies
-  * to run tests type `make test` or `make test-coverage`in project root directory
+  * runing tests require nodejs and npm
+  * run `make install-test-dependencies` to install dependencies
+  * to run tests type `make run-tests-with-coverage` in project root directory
+  * test are run with [mocha](https://mochajs.org/) and [expect](https://github.com/Automattic/expect.js/)
   * tests are written in QUnit framework
- 
+
 ### How to introduce changes to game
   * Put desired revision hash to file [version.json](version.json)
   * It usually takes couple minutes before changes are visible in game
   * Only exception are changes in [NN_start.js](NN_start.js), changes there require addon link update on [server command site](http://serwery.margonem.pl/)
-  
-### How to deliver changes? 
+
+### How to deliver changes?
   * Feel free to make pull requests
 
 ### How to run light manager in game?

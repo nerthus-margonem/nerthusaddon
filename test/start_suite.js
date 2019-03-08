@@ -18,6 +18,10 @@ before(function()
     getCookie = function(cookie){return COOKIES[cookie]}
     log = function(msg){console.log(msg)}
 
+    document = {
+        createElement: function(){return {}},
+        querySelector: function(){return {}}
+    }
     $ = function(){return {remove: function(){}, append: function(){}, addClass:function(){}}}
     $._data = function(){return {keydown: [{handler: function(){}}]}}
     $.LOADED_SCRIPTS = []

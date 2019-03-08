@@ -1,20 +1,27 @@
 [
     {
-        "name": "",
+        "tip": "",
         "x": "5",
         "y": "3",
         "url": "#img/npc/swiecznik.gif",
         "collision": false
     },
     {
-        "name": "",
+        "tip": "",
         "x": "9",
         "y": "3",
         "url": "#img/npc/swiecznik.gif",
         "collision": false
     },
     {
-        "name": "",
+        "tip": "",
+        "x": "7",
+        "y": "9",
+        "url": "#img/npc/swiecznik.gif",
+        "collision": false
+    },
+    {
+        "tip": "",
         "x": "4",
         "y": "11",
         "url": "/obrazki/npc/map/pochodnia2_stojac.gif",

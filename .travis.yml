@@ -3,11 +3,11 @@ node_js:
   - "node"
 
 before_install:
-  - make test-deps
+  - make instal-test-dependencies
 
 script:
-  - make check
-  - make test-coverage
+  - make check-syntax
+  - make run-tests-with-coverage
 
 after_success:
-  - make coverage
+  - make push-coverage-raport

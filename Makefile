@@ -7,7 +7,7 @@ test-leaks:
 test-simple:
 	mocha -u qunit -C
 
-test-deps:
+instal-test-dependencies:
 	npm install
 #	npm install mocha
 #	npm install expect.js
@@ -16,13 +16,21 @@ test-deps:
 #	npm install nyc --save-dev
 #	npm install coveralls --save-dev
 
-check:
+check-syntax:
 	bash ./test_js_syntax.sh
 
-test-coverage:
-	npm run test-coverage
+run-tests-with-coverage: clean-coverage test-with-coverage coverage-raport-text
 
-coverage:
-	npm run coverage
+test-with-coverage:
+	bash ./for_each_test_file.sh npm run test-with-coverage
 
-.PHONY: test test-simpe test-leaks check test-coverage coverage
+push-coverage-raport:
+	npm run push-coverage-raport
+
+coverage-raport-text:
+	npm run coverage-raport-text
+
+clean-coverage:
+	rm -rf ./coverage ./.nyc_output
+
+.PHONY: test test-simpe test-leaks check-syntax run-tests-with-coverage test-with-coverage push-coverage-raport coverage-raport-text clean-coverage

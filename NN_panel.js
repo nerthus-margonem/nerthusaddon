@@ -136,7 +136,7 @@ nerthus.panel.start = function()
 
 nerthus.panel.start_ni = function ()
 {
-    if (!Engine.hero.tip)
+    if (typeof Engine.hero === "undefined")
         setTimeout(this.start_ni.bind(this), 500)
     else
     {

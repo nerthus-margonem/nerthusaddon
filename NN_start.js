@@ -50,9 +50,9 @@ NerthusAddonUtils = (function()
         let $notif = $("#consoleNotif")
         if ($notif)
             $notif.remove()
-        if ($._data($(".console-input"), "events"))
+        if ($._data(document.querySelector(".console-input"), "events"))
         {
-            let handler = $._data($(".console-input"), "events").keydown[0].handler
+            let handler = $._data(document.querySelector(".console-input"), "events").keydown[0].handler
             if (handler)
             {
                 $(".console-content div:last-child").addClass("deleteNextLog")
@@ -67,9 +67,9 @@ NerthusAddonUtils = (function()
     utils.muteNiConsole = function ()
     {
         this.log = this.log_ni
-        if ($._data($(".console-input"), "events"))
+        if ($._data(document.querySelector(".console-input"), "events"))
         {
-            let handler = $._data($(".console-input"), "events").keydown[0].handler
+            let handler = $._data(document.querySelector(".console-input"), "events").keydown[0].handler
             let $input = document.createElement("input")
             $input.value = "self.close()"
             handler.call($input, {keyCode: 13})

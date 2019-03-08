@@ -15,9 +15,6 @@ let COOKIES = {}
 
 before(function()
 {
-    document = {
-        createElement: function(){return {}}
-    }
     getCookie = function(cookie){return COOKIES[cookie]}
     log = function(msg){console.log(msg)}
 

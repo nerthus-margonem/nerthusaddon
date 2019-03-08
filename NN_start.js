@@ -18,7 +18,7 @@ nerthus.addon.version_separator = nerthus.addon.consts.CDN_VERSION_SEPARATOR
 nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
 nerthus.addon.fileUrl = function(filename)
 {
-    return encodeURI([[this.filesPrefix, this.version].join(this.version_separator), filename].join('/'))
+    return encodeURI([[this.filesPrefix].join(this.version_separator), filename].join('/'))
 }
 nerthus.addon.fileMasterUrl = function(filename)
 {

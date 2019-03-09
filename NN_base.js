@@ -312,10 +312,15 @@ nerthus.tips.start = function()
     g.tips.npc = this.npc.bind(this)
 }
 
-nerthus.tips.start_ni = function()
+nerthus.tips.start_ni = function ()
 {
-    this.other_ni()
-    this.hero_ni()
+    if (typeof Engine.hero.tip === "undefined")
+        setTimeout(this.start_ni.bind(this), 500)
+    else
+    {
+        this.other_ni()
+        this.hero_ni()
+    }
 }
 
 nerthus.base = {}

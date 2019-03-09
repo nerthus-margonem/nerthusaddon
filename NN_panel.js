@@ -136,13 +136,8 @@ nerthus.panel.start = function()
 
 nerthus.panel.start_ni = function ()
 {
-    if (typeof Engine.hero === "undefined")
-        setTimeout(this.start_ni.bind(this), 500)
-    else
-    {
-        this.mAlert = this.mAlert_ni
-        $("head").append(this.create_css_ni())
-        this.create_button_ni()
-    }
+    this.mAlert = this.mAlert_ni
+    $("head").append(this.create_css_ni())
+    this.create_button_ni()
 }
 

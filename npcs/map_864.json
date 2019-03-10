@@ -1,23 +1,43 @@
 [
     {
-        "name": "",
+        "name": "Świecznik",
+        "tip": "",
         "x": "5",
         "y": "3",
         "url": "#img/npc/swiecznik.gif",
         "collision": false
     },
     {
-        "name": "",
+        "name": "Świecznik",
+        "tip": "",
         "x": "9",
         "y": "3",
         "url": "#img/npc/swiecznik.gif",
         "collision": false
     },
     {
-        "name": "",
+        "name": "Świecznik",
+        "tip": "",
+        "x": "7",
+        "y": "9",
+        "url": "#img/npc/swiecznik.gif",
+        "collision": false
+    },
+    {
+        "name": "Stojąca pochodnia",
+        "tip": "",
         "x": "4",
         "y": "11",
         "url": "/obrazki/npc/map/pochodnia2_stojac.gif",
         "collision": false
+    },
+    {
+        "name": "Ogień piecyka",
+        "tip": "",
+        "x": "7",
+        "y": "5",
+        "url": "obrazki/npc/map/piec_ogien01.gif",
+        "collision": false
     }
 ]
+

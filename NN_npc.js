@@ -444,13 +444,6 @@ nerthus.npc.start_ni = function ()
         }
 
         this.load_npcs()
-        API.addCallbackToEvent("clear_map_npcs",
-            function ()
-            {
-                setTimeout(function ()
-                {
-                    nerthus.npc.load_npcs()
-                }, 500)
-            })
+        nerthus.loadOnEveryMap(this.load_npcs.bind(this))
     }
 }

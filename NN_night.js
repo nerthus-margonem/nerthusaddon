@@ -196,6 +196,20 @@ nerthus.night.start = function()
     }
 }
 
+nerthus.night.run_ni = function ()
+{
+    if (nerthus.options["night"])
+    {
+        let hour = new Date().getHours()
+        if (hour <= 4 || hour > 18)
+        {
+            nerthus.night.dim_ni(nerthus.night.opacity())
+            nerthus.night.lights.on_ni()
+            nerthus.night.allAdded_ni = false
+        }
+    }
+}
+
 nerthus.night.start_ni = function ()
 {
     if (Engine.map.d.id === undefined)
@@ -219,23 +233,8 @@ nerthus.night.start_ni = function ()
                 nerthus.night.setNight_ni()
             }
         }
-        API.addCallbackToEvent("clear_map_npcs",
-            function ()
-            {
-                setTimeout(function ()
-                {
-                    if (nerthus.options["night"])
-                    {
-                        let hour = new Date().getHours()
-                        if (hour <= 4 || hour > 18)
-                        {
-                            nerthus.night.dim_ni(nerthus.night.opacity())
-                            nerthus.night.lights.on_ni()
-                            nerthus.night.allAdded_ni = false
-                        }
-                    }
-                }, 500)
-            })
+        this.run_ni()
+        nerthus.loadOnEveryMap(nerthus.night.run_ni)
     }
 }
 

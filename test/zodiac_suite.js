@@ -6,9 +6,9 @@ before(function()
     nerthus.addon = {}
     nerthus.addon.fileUrl = function () {}
 
+
     expect = require("expect.js")
     require("../NN_zodiak.js")
-
 })
 
 

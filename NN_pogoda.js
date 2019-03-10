@@ -14,11 +14,22 @@ nerthus.weather.set_weather = function(id)
     $('#nWeather').css('background','url('+nerthus.graf.weather+') -'+ spot.x * 55 +'px -'+ spot.y * 55 +'px')
 }
 
+nerthus.weather.set_weather_ni = function (id)
+{
+    id = parseInt(id)
+    if (0 > id || id > 20)
+        id = this.calculate()
+    this.id = id
+    this.display_ni()
+    let spot = this.spot.fromId(id)
+    $("#nWeatherStyle").text("#nWeather{background: url(" + nerthus.graf.weather + ") -" + spot.x * 55 + "px -" + spot.y * 55 + "px !important; background-color: transparent !important;}")
+}
+
 nerthus.weather.set_global_weather = function()
 {
-    var weatherId = this.calculate()
-    this.set_weather(weatherId)
-    this.start_change_timer()
+    let weatherId = nerthus.weather.calculate()
+    nerthus.weather.set_weather(weatherId)
+    nerthus.weather.start_change_timer()
 }
 
 nerthus.weather.run = function()
@@ -35,6 +46,32 @@ nerthus.weather.run = function()
         this.set_weather(nerthus_weather_bard_id)
     else
         this.set_global_weather()
+}
+
+nerthus.weather.run_ni = function ()
+{
+    //ikonka
+    let left = $(".game-layer.layer.ui-droppable")[0].style.left
+    $("<div id=\"nWeather\" class=\"mini-map\" style=\"z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 55px; left:" + left + "; margin: 5px;pointer-events: auto;display:block\"></div>").appendTo(".layer.interface-layer")
+        .mouseover(function ()
+        {
+            $("#nWeatherDesc").fadeIn(500).html(this.descriptions[this.id][Math.floor(Math.random() * this.descriptions[this.id].length)])
+        }.bind(this))
+        .mouseleave(function ()
+        {
+            $("#nWeatherDesc").fadeOut(500)
+        })
+    //pole opisowe
+    $("<div id=\"nWeatherDesc\" style=\"z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 5px; left: 60px; font: bold 14px Georgia; color:#F0F8FF\"></div>").prependTo(".game-layer.layer.ui-droppable")
+
+    //style for background which is overwritten by Engine
+    $("head").append("<style id=\"nWeatherStyle\"></style>")
+
+    //workaround na pogode ustawianą przez bardów i zapisywanie nerthusa w pamięci
+    if (typeof nerthus_weather_bard_id === "undefined")
+    {
+        this.set_global_weather()
+    } else this.set_weather(nerthus_weather_bard_id)
 }
 
 nerthus.weather.start_change_timer = function()
@@ -253,8 +290,15 @@ nerthus.weather.descriptions =
 nerthus.weather.display = function()
 {
     this.effects.clear()
-    if (map.mainid==0 && map.id!=3459 && map.id!=3969) //are we outside? + Mirvenis + Szkoła w Ithan
+    if (map.mainid === 0 && map.id !== 3459 && map.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
         this.effects.display(this.id)
+}
+
+nerthus.weather.display_ni = function()
+{
+    nerthus.weather.effects.clear()
+    if (Engine.map.d.mainid === 0 && Engine.map.d.id !== 3459 && Engine.map.d.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
+        nerthus.weather.effects.display(nerthus.weather.id)
 }
 
 nerthus.weather.effects = {}
@@ -307,16 +351,33 @@ nerthus.weather.effects.display_snow = function()
 nerthus.weather.effects.display_url = function(url, opacity)
 {
     $("<div class='nWeather'/>")
-    .css({width : $('#ground').width(),
-          height : $('#ground').height(),
-          backgroundImage : 'url(' + url + ')',
-          zIndex : map.y * 2 + 9,
-          position : "absolute",
-          top : "0px",
-          left : "0px",
-          pointerEvents: 'none',
-          opacity : opacity ? opacity : 1})
-    .appendTo("#ground")
+        .css({width : $('#ground').width(),
+            height : $('#ground').height(),
+            backgroundImage : 'url(' + url + ')',
+            zIndex : map.y * 2 + 9,
+            position : "absolute",
+            top : "0px",
+            left : "0px",
+            pointerEvents: 'none',
+            opacity : opacity ? opacity : 1})
+        .appendTo("#ground")
+}
+
+nerthus.weather.effects.display_url_ni = function (url, opacity)
+{
+    $("<div class='nWeather'/>")
+        .css({
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url(" + url + ")",
+            zIndex: 200,
+            position: "absolute",
+            top: "0",
+            left: "0",
+            pointerEvents: "none",
+            opacity: opacity ? opacity : 1
+        })
+        .appendTo(".game-layer.layer.ui-droppable")
 }
 
 nerthus.weather.start = function()
@@ -325,3 +386,24 @@ nerthus.weather.start = function()
         nerthus.defer(this.run.bind(this))
 }
 
+//TODO movement of weather like on SI
+nerthus.weather.start_ni = function ()
+{
+    nerthus.weather.run = nerthus.weather.run_ni
+    nerthus.weather.display = nerthus.weather.display_ni
+    nerthus.weather.effects.display_url = nerthus.weather.effects.display_url_ni
+    nerthus.weather.set_weather = nerthus.weather.set_weather_ni
+    if (nerthus.options["weather"])
+        nerthus.defer_ni(this.run_ni.bind(this))
+    API.addCallbackToEvent("clear_map_npcs",
+        function ()
+        {
+            setTimeout(function ()
+            {
+                if (typeof nerthus_weather_bard_id === "undefined")
+                {
+                    nerthus.weather.set_global_weather()
+                } else nerthus.weather.set_weather(nerthus_weather_bard_id)
+            }, 500)
+        })
+}

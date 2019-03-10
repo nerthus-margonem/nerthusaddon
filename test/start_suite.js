@@ -18,7 +18,12 @@ before(function()
     getCookie = function(cookie){return COOKIES[cookie]}
     log = function(msg){console.log(msg)}
 
-    $ = {}
+    document = {
+        createElement: function(){return {}},
+        querySelector: function(){return {}}
+    }
+    $ = function(){return {remove: function(){}, append: function(){}, addClass:function(){}}}
+    $._data = function(){return {keydown: [{handler: function(){}}]}}
     $.LOADED_SCRIPTS = []
     $.LOADED_JSONS = []
     $.getJSON = function(url, callback){this.LOADED_JSONS.push(url); callback({version:VERSION_CURRENT})}
@@ -29,6 +34,8 @@ before(function()
     $.getScript = function(url, callback){this.LOADED_SCRIPTS.push(url); callback()}
 
     expect = require("expect.js")
+    require("../NN_start.js")
+
 })
 
 beforeEach(function()
@@ -159,7 +166,7 @@ test("GitHubLoader", function()
 {
     nerthus.scripts = ADDITIONAL_SCRIPTS
 
-    NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromGitHub("start", LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect($.LOADED_SCRIPTS).to.have.length(2 + ADDITIONAL_SCRIPTS.length)
@@ -173,7 +180,7 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
 {
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
-    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage("start", LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
@@ -230,13 +237,13 @@ test("Runner : run from localStorage in old version", function()
     expect(localStorage.nerthus).to.not.be.ok() //removed from storege
 })
 
-test("run addon in new interface", function()
+test("run addon in new interface", function() //TODO find a way to test if runAddon correctly gets cookie
 {
     COOKIES["interface"] = "ni"
 
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
-    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage("start_ni", LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
@@ -249,7 +256,7 @@ test("other modules are started even if start of previous failed", function()
     nerthus.RUNABLE_MODULE_ONE.start = function(){throw new Error("module one start error")}
 
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
-    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage("start", LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()

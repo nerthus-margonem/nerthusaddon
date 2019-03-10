@@ -12,6 +12,15 @@ nerthus.defer = function(fun,data)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 
+nerthus.defer_ni = function(fun,data)
+{
+    if(typeof fun !== 'function')
+        throw new TypeError('fun must be function when it is ' + typeof fun)
+    // there is no such thing as g.loadQueue.push() in new interface
+    // global addon loads on NI after all inits (?) so there is no need for loadQueue
+    fun(data)
+}
+
 nerthus.seasons = {SPRING : 1, SUMMER : 2, AUTUMN : 3, WINTER : 4}
 nerthus.season = function()
 {
@@ -126,6 +135,23 @@ nerthus.tips.rank = function(player)
     return rank != this.ranks.NONE ? g.names.ranks[rank] : ""
 }
 
+nerthus.tips.rank_ni = function (player)
+{
+    let rank = this.ranks.NONE
+    if (player.rights)
+        rank = this.rights2rank(player.rights)
+    if (nerthus.isNarr(player.nick))
+    {
+        if (rank === this.ranks.MC)
+            rank = this.ranks.BARD_MC
+        else
+            rank = this.ranks.BARD
+    }
+    if (nerthus.isRad(player.nick))
+        rank = this.ranks.RADNY
+    return rank
+}
+
 nerthus.tips.title = function(player)
 {
     //sprawdza czy vip, jeśli tak, to daje inny opis
@@ -148,6 +174,22 @@ nerthus.tips.other = function(other)
     return tip
 }
 
+nerthus.tips.other_ni = function ()
+{
+    nerthus.othersDrawableList = Engine.others.getDrawableList
+    Engine.others.getDrawableList = function ()
+    {
+        let list = nerthus.othersDrawableList()
+        for (const i in list)
+        {
+            if (list[i].isPlayer)
+                list[i].tip[0] = nerthus.tips.parseNiTip(list[i], false)
+        }
+        return list
+    }
+    return Engine.others.getDrawableList
+}
+
 nerthus.tips.hero = function(hero)
 {
     var title = this.title(hero)
@@ -156,6 +198,56 @@ nerthus.tips.hero = function(hero)
     tip += hero.clan ? "<center>[" + hero.clan.name + "]</center>" : ""
     tip += title ? "<center>" + title + "</center>" : ""
     tip += rank ? "<i><font color='red'>" + rank + "</font></i>" : ""
+    return tip
+}
+
+nerthus.tips.hero_ni = function ()
+{
+    nerthus.heroCreateStrTip = Engine.hero.createStrTip
+    Engine.hero.createStrTip = function ()
+    {
+        return nerthus.tips.parseNiTip(Engine.hero, true)
+    }
+    Engine.hero.tip[0] = Engine.hero.createStrTip()
+    return Engine.hero.createStrTip
+}
+
+nerthus.tips.parseNiTip = function (player, isHero)
+{
+    let tip = ""
+    if (isHero)
+        tip += "<div class=\"rank\">" + _t("my_character", null, "map") + "</div>"
+    let rank = this.rank_ni(player)
+    if (rank !== -1)
+        tip += "<div class=\"rank\">" + nerthus.ranks.rankName[rank] + "</div>"
+
+    if (isset(player.d.guest) && parseInt(player.d.guest))
+        tip += "<div class=\"rank\">" + _t("deputy") + "</div>"
+
+    let nick = "<div class=\"nick\">" + player.d.nick + "</div>"
+    let prof = isset(player.d.prof) ? "<div class=\"profs-icon " + player.d.prof + "\"></div>" : ""
+    tip += "<div class=\"info-wrapper\">" + nick + prof + "</div>"
+
+    if (isset(player.wanted) && parseInt(player.wanted) === 1)
+        tip += "<div class=wanted></div>"
+    if (player.d.clan)
+        tip += "<div class=\"clan-in-tip\">[" + player.d.clan.name + "]</div>"
+
+    let title = this.title(player.d)
+    tip += "<div class=\"clan-in-tip\">" + title + "</div>"
+
+    let buffs = ""
+    let bless = isset(player.d.ble) ? "<div class=\"bless\"></div>" : ""
+    let mute = player.d.attr & 1 ? "<div class=\"mute\"></div>" : ""
+    let kB = isset(player.d.vip) && player.d.vip === "1" ? "<div class=\"k-b\"></div>" : ""
+    let warn = player.d.attr & 2 ? "<div class=\"warn\"></div>" : ""
+    let line = player.d.clan ? "<div class=\"line\"></div>" : ""
+    let wanted = player.d.wanted ? "<div class=\"wanted-i\"></div>" : ""
+
+    if (bless !== "" || mute !== "" || kB !== "" || warn !== "" || wanted !== "")
+        buffs = "<div class=\"buffs-wrapper\">" + line + wanted + bless + mute + kB + warn + "</div>"
+    tip += buffs
+
     return tip
 }
 
@@ -220,6 +312,17 @@ nerthus.tips.start = function()
     g.tips.npc = this.npc.bind(this)
 }
 
+nerthus.tips.start_ni = function ()
+{
+    if (typeof Engine.hero.tip === "undefined")
+        setTimeout(this.start_ni.bind(this), 500)
+    else
+    {
+        this.other_ni()
+        this.hero_ni()
+    }
+}
+
 nerthus.base = {}
 nerthus.base.start = function()
 {
@@ -228,4 +331,3 @@ nerthus.base.start = function()
 }
 
 nerthus.loadSettings()
-

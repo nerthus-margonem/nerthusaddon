@@ -1,6 +1,8 @@
 //==================================================================
 // OBSŁUGA PICIA - Autor Godfryd
 //==================================================================
+// Przystosowanie do NI - Kris Aphalon
+
 nerthus.alko = {}
 
 nerthus.alko.lvl = 0  //stanupojenia alkoholowego 0 trzeźwy 100 urwany film.
@@ -108,6 +110,48 @@ nerthus.alko.drink = function(c,d)
     }
 }
 
+nerthus.alko.drink_ni = function (command)
+{
+    // jeżli użyjemy towaru konsumpcyjnego o wymaganiach levelowych 18 to dodaje nam 10% upojenia alkoholowego
+    let match = command.match(/^moveitem.*id=(\d+)/)
+    if (match)
+    {
+
+        let item = Engine.items.getItemById(match[1])
+        if (item.cl === 16 || item.cl === 23) //16 - konsumpcyjne, 23 - ???
+            if (item.stat.search("lvl=") > -1)
+                if (parseInt(item.stat.match(/lvl=([0-9]+)/)[1]) === 18)
+                {
+                    this.lvl += 10
+                    if (this.lvl > 100)
+                        this.lvl = 100
+                    if (!this.timer)
+                        this.timer = setInterval(this.timer_handler.bind(this), 10000)
+                }
+    }
+}
+
+nerthus.alko.initiateHandlers_ni = function ()
+{
+    let initSendButton = $._data(document.querySelector(".section.chat-tpl .send-btn.right"), "events").click[0].handler
+    $._data(document.querySelector(".section.chat-tpl .send-btn.right"), "events").click[0].handler = function ()
+    {
+        let $input = $(".section.chat-tpl .input-wrapper input")
+        $input.val(nerthus.alko.shuffleMessage($input.val()))
+        initSendButton()
+    }
+    $._data(document.querySelector(".section.chat-tpl .input-wrapper input"), "events").keypress[0].handler = function (e)
+    {
+        if (e.key === "Enter")
+        {
+            let $input = $(".section.chat-tpl .input-wrapper input")
+            $input.val(nerthus.alko.shuffleMessage($input.val()))
+            initSendButton()
+        }
+    }
+}
+
+
 nerthus.alko.start = function()
 {
     var _nerthg = _g
@@ -124,3 +168,12 @@ nerthus.alko.start = function()
     nerthus.defer(this.run.bind(this))
 }
 
+nerthus.alko.start_ni = function()
+{
+    let _nerthg = _g
+    _g = function (c,d) {
+        nerthus.alko.drink_ni(c,d)
+        _nerthg(c,d)
+    }
+    nerthus.alko.initiateHandlers_ni()
+}

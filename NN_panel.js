@@ -86,6 +86,14 @@ nerthus.panel.get_settings = function ()
     return options
 }
 
+nerthus.panel.get_settings_ni = function ()
+{
+    let options = {}
+    for (const option in nerthus.options)
+        options[option] = $("#panCb" + option).prop("checked")
+    return options
+}
+
 nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart)
@@ -136,6 +144,7 @@ nerthus.panel.start = function()
 
 nerthus.panel.start_ni = function ()
 {
+    this.get_settings = this.get_settings_ni
     this.mAlert = this.mAlert_ni
     $("head").append(this.create_css_ni())
     this.create_button_ni()

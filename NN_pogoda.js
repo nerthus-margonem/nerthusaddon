@@ -71,7 +71,8 @@ nerthus.weather.run_ni = function ()
     if (typeof nerthus_weather_bard_id === "undefined")
     {
         this.set_global_weather()
-    } else this.set_weather(nerthus_weather_bard_id)
+    }
+    else this.set_weather(nerthus_weather_bard_id)
 }
 
 nerthus.weather.start_change_timer = function()
@@ -389,21 +390,13 @@ nerthus.weather.start = function()
 //TODO movement of weather like on SI
 nerthus.weather.start_ni = function ()
 {
-    nerthus.weather.run = nerthus.weather.run_ni
-    nerthus.weather.display = nerthus.weather.display_ni
-    nerthus.weather.effects.display_url = nerthus.weather.effects.display_url_ni
-    nerthus.weather.set_weather = nerthus.weather.set_weather_ni
+    this.run = this.run_ni
+    this.display = this.display_ni
+    this.effects.display_url = this.effects.display_url_ni
+    this.set_weather = this.set_weather_ni
     if (nerthus.options["weather"])
-        nerthus.defer_ni(this.run_ni.bind(this))
-    API.addCallbackToEvent("clear_map_npcs",
-        function ()
-        {
-            setTimeout(function ()
-            {
-                if (typeof nerthus_weather_bard_id === "undefined")
-                {
-                    nerthus.weather.set_global_weather()
-                } else nerthus.weather.set_weather(nerthus_weather_bard_id)
-            }, 500)
-        })
+    {
+        this.run_ni()
+        nerthus.loadOnEveryMap(this.run_ni.bind(this))
+    }
 }

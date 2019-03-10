@@ -21,7 +21,21 @@ nerthus.defer_ni = function(fun,data)
     fun(data)
 }
 
-nerthus.seasons = {SPRING : 1, SUMMER : 2, AUTUMN : 3, WINTER : 4}
+nerthus.loadQueue = []
+nerthus.loadOnEveryMap = function (fun, data)
+{
+    nerthus.loadQueue.push([fun, data])
+}
+nerthus.loadNewMapQueue = function ()
+{
+
+    for (const i in this.loadQueue)
+    {
+        this.loadQueue[i][0](this.loadQueue[i][1])
+    }
+}
+
+nerthus.seasons = {SPRING: 1, SUMMER: 2, AUTUMN: 3, WINTER: 4}
 nerthus.season = function()
 {
     var makeStartDate = function(day,month)
@@ -320,6 +334,14 @@ nerthus.tips.start_ni = function ()
     {
         this.other_ni()
         this.hero_ni()
+        API.addCallbackToEvent("clear_map_npcs",
+            function ()
+            {
+                setTimeout(function ()
+                {
+                    nerthus.loadNewMapQueue()
+                }, 500)
+            })
     }
 }
 

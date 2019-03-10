@@ -80,14 +80,7 @@ nerthus.maps.start_ni = function ()
     {
         nerthus.defaultMapDraw = Engine.map.draw
         this.seasonMaps_ni()
-        API.addCallbackToEvent("clear_map_npcs",
-            function ()
-            {
-                setTimeout(function ()
-                {
-                    nerthus.maps.seasonMaps_ni()
-                }, 500)
-            })
+        nerthus.loadOnEveryMap(this.seasonMaps_ni.bind(this))
         this.draw_ni()
     }
 }

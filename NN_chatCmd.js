@@ -388,12 +388,5 @@ nerthus.chatCmd.start_ni = function()
 
     API.addCallbackToEvent('newMsg', this.run_ni)
     API.addCallbackToEvent('updateMsg', this.run_ni)
-    API.addCallbackToEvent("clear_map_npcs",
-        function ()
-        {
-            setTimeout(function ()
-            {
-                nerthus.chatCmd.mapChanging(nerthus.chatCmd.mapChangingOn)
-            }, 500)
-        })
+    nerthus.loadOnEveryMap(this.mapChanging.bind(this), this.mapChangingOn)
 }

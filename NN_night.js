@@ -13,12 +13,13 @@ nerthus.night.opacity = function()
 
 nerthus.night.dim = function(opacity)
 {
-    if(map.mainid != 0)
+    if(map.mainid !== 0)
         return
 
-    $("<div id=nNight />")
-    .css({height  : $("#ground").css("height"),
-          width   : $("#ground").css("width"),
+    let $ground = $("#ground")
+    $("<div id=nNight></div>")
+    .css({height  : $ground.css("height"),
+          width   : $ground.css("width"),
           zIndex  : map.y * 2 + 11,
           opacity : opacity,
           pointerEvents   : "none",
@@ -43,9 +44,9 @@ nerthus.night.lights.types.add = function(type,size)
     this[type] = {'url' : nerthus.addon.fileUrl("/img/night_light_" + type + ".png"), 'width' : size, 'height' : size}
 }
 
-nerthus.night.lights.add = function(lights)
+nerthus.night.lights.add = function (lights)
 {
-    for(let i in lights)
+    for (const i in lights)
         this.display(lights[i])
 }
 
@@ -59,8 +60,8 @@ nerthus.night.lights.add_ni = function (lights)
 
 nerthus.night.lights.display = function(light)
 {
-    var lt = this.types[light.type]
-    return $('<div/>')
+    let lt = this.types[light.type]
+    return $('<div></div>')
     .css({background:'url('+ lt.url +')',
           width : lt.width,
           height : lt.height,
@@ -186,7 +187,7 @@ nerthus.night.start = function()
     this.lights.types.add("XL","192px")
     if(nerthus.options['night'])
     {
-        var hour = new Date().getHours()
+        let hour = new Date().getHours()
         if( hour <= 4 || hour > 18 )
         {
             nerthus.defer(this.lights.on.bind(this.lights))

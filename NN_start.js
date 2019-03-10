@@ -85,7 +85,7 @@ NerthusAddonUtils = (function()
     }
     utils.purgeStorage = function()
     {
-        localStorage.removeItem("nerthus")
+        localStorage.removeItem("nerthus" + nerthus.startMethod)
     }
     utils.runAddon = function()
     {

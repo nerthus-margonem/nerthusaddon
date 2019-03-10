@@ -36,7 +36,7 @@
         "tip": "",
         "x": "7",
         "y": "5",
-        "url": "obrazki/npc/map/piec_ogien01.gif",
+        "url": "/obrazki/npc/map/piec_ogien01.gif",
         "collision": false
     }
 ]

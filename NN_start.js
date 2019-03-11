@@ -24,7 +24,7 @@ nerthus.addon.fileMasterUrl = function(filename)
 {
     return encodeURI([[this.consts.MASTER_PREFIX].join(this.consts.MASTER_VERSION_SEPARATOR), filename].join('/'))
 }
-nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
+nerthus.addon.consts.VERSION_URL = nerthus.addon.fileUrl("version.json")
 nerthus.addon.store = function()
 {
     if(NerthusAddonUtils.storage())

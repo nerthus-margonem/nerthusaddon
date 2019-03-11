@@ -12,15 +12,6 @@ nerthus.defer = function(fun,data)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 
-nerthus.defer_ni = function(fun,data)
-{
-    if(typeof fun !== 'function')
-        throw new TypeError('fun must be function when it is ' + typeof fun)
-    // there is no such thing as g.loadQueue.push() in new interface
-    // global addon loads on NI after all inits (?) so there is no need for loadQueue
-    fun(data)
-}
-
 nerthus.loadQueue = []
 nerthus.loadOnEveryMap = function (fun, data)
 {

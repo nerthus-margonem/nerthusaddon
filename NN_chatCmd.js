@@ -1,9 +1,9 @@
-nerthus.chatCmd = {};
-nerthus.chatCmd.map = {};
-nerthus.chatCmd.map_ni = {};
-nerthus.chatCmd.public_map = {};
-nerthus.chatCmd.mapImage = new Image();
-nerthus.chatCmd.mapChangingOn = false;
+nerthus.chatCmd = {}
+nerthus.chatCmd.map = {}
+nerthus.chatCmd.map_ni = {}
+nerthus.chatCmd.public_map = {}
+nerthus.chatCmd.mapImage = new Image()
+nerthus.chatCmd.mapChangingOn = false
 
 nerthus.chatCmd.run = function(ch)
 {
@@ -378,7 +378,6 @@ nerthus.chatCmd.start_ni = function()
     if (typeof nerthus.mapDraw !== "function")
         nerthus.mapDraw = Engine.map.draw
 
-    nerthus.mapImage = new Image()
     this.appendStyles()
 
     this.map["map"] = this.map_ni["map"]

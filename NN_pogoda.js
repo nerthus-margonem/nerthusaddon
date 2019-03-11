@@ -395,7 +395,7 @@ nerthus.weather.start_ni = function ()
     this.set_weather = this.set_weather_ni
     if (nerthus.options["weather"])
     {
-        this.run_ni.bind(this)
+        this.run_ni()
         API.addCallbackToEvent("clear_map_npcs",
             function ()
             {

@@ -264,7 +264,7 @@ nerthus.npc.compose_ni = function (npc)
         icon: match[2],
         nick: npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>",
         wt: 0,
-        type: npc.hasOwnProperty("tip") || npc.name !== "" ? 0 : 4,
+        type: npc.hasOwnProperty("tip") && npc.tip === "" || npc.name === "" ? 4 : 0,
         x: x,
         y: y
     }

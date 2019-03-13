@@ -30,7 +30,7 @@ nerthus.panel.panel_string = function(panel_data)
     var $hello = $("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ").append(this.link(panel_data.forum)))
     var $info = $("<div>").text(panel_data.panel_info)
     $links.append($hello, $info)
-    for(var i in panel_data.links)
+    for(const i in panel_data.links)
         $links.append($('<div>').append(this.link(panel_data.links[i])))
     $panel.append($links)
     $panel.append(this.settings_str())
@@ -62,15 +62,15 @@ nerthus.panel.link = function(link)
 
 nerthus.panel.save = function()
 {
-    var settings = this.get_settings()
-    nerthus.storeSettings(settings)
+    const options = this.get_settings()
+    nerthus.storeSettings(options)
     message('zapisano, wciśnij f5')
 }
 
 nerthus.panel.get_settings = function()
 {
     var options = {}
-    for(var option in nerthus.options)
+    for(const option in nerthus.options)
         options[option] = $('#panCb'+option).attr('checked')
     return options
 }

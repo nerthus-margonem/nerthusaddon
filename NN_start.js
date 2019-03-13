@@ -56,11 +56,11 @@ NerthusAddonUtils = (function()
             nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
             nerthus.addon.filesPrefix = nerthus.addon.consts.MASTER_PREFIX
             nerthus.addon.version_separator = nerthus.addon.consts.MASTER_VERSION_SEPARATOR
-            this.loadFromGitHub()
+            this.loadFromGitHub(this.startPlugins.bind(this))
         }
         else if(this.storage() && this.storage().nerthus)
         {
-            this.loadFromStorage()
+            this.loadFromStorage(this.startPlugins.bind(this))
             var checkVersion = function(version)
             {
                 if(version != nerthus.addon.version)
@@ -88,7 +88,7 @@ NerthusAddonUtils = (function()
     {
         nerthus = this.parser.parse(this.storage().nerthus)
         log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
-        this.startPlugins(onLoaded)
+        onLoaded()
     }
 
     utils.startPlugins = function(callback)

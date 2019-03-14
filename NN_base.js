@@ -316,6 +316,7 @@ nerthus.tips.start = function()
 
 nerthus.tips.start_ni = function ()
 {
+    nerthus.loadSettings()
     if (typeof Engine.hero.tip === "undefined")
         setTimeout(this.start_ni.bind(this), 500)
     else

@@ -126,7 +126,7 @@ NerthusAddonUtils = (function()
         this.log("Load nerthus addon from github, version = " + nerthus.addon.version)
         if (startMethod === "start_ni")
             this.muteNiConsole()
-        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'], function(){
+        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js', 'NN_worldEdit.js'], function(){
             this.loadScripts(nerthus.scripts, this.startPlugins.bind(this, startMethod, onLoaded))
         }.bind(this))
     }

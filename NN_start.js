@@ -85,7 +85,7 @@ NerthusAddonUtils = (function()
     }
     utils.purgeStorage = function()
     {
-        localStorage.removeItem("nerthus" + nerthus.startMethod)
+        localStorage.removeItem("nerthus")
     }
     utils.runAddon = function()
     {
@@ -128,17 +128,17 @@ NerthusAddonUtils = (function()
     }
     utils.loadFromGitHub = function(startMethod, onLoaded)
     {
-        log("Load nerthus addon from github, version = " + nerthus.addon.version)
+        this.log("Load nerthus addon from github, version = " + nerthus.addon.version)
         if (startMethod === "start_ni")
             this.muteNiConsole()
-        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'],
+        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js', 'NN_worldEdit.js'],
             function(){ this.loadScripts(nerthus.scripts, onLoaded) }.bind(this))
     }
 
     utils.loadFromStorage = function(startMethod, onLoaded)
     {
         nerthus = this.parser.parse(this.storage().nerthus)
-        log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
+        this.log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
         if (startMethod === "start_ni")
             this.muteNiConsole()
         onLoaded()

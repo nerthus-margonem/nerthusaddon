@@ -28,7 +28,7 @@ nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
 nerthus.addon.store = function()
 {
     if(NerthusAddonUtils.storage())
-        NerthusAddonUtils.storage()["nerthus" + nerthus.startMethod] = NerthusAddonUtils.parser.stringify(nerthus)
+        NerthusAddonUtils.storage()["nerthus"] = NerthusAddonUtils.parser.stringify(nerthus)
 }
 
 NerthusAddonUtils = (function()
@@ -102,7 +102,7 @@ NerthusAddonUtils = (function()
             nerthus.addon.version_separator = nerthus.addon.consts.MASTER_VERSION_SEPARATOR
             this.loadFromGitHub(this.startPlugins.bind(this, startMethod))
         }
-        else if(this.storage() && this.storage()["nerthus" + nerthus.startMethod])
+        else if(this.storage() && this.storage()["nerthus"])
         {
             this.loadFromStorage(this.startPlugins.bind(this, startMethod))
             var checkVersion = function(version)

@@ -100,12 +100,12 @@ NerthusAddonUtils = (function()
             nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
             nerthus.addon.filesPrefix = nerthus.addon.consts.MASTER_PREFIX
             nerthus.addon.version_separator = nerthus.addon.consts.MASTER_VERSION_SEPARATOR
-            this.loadFromGitHub(startMethod)
+            this.loadFromGitHub(this.startPlugins.bind(this, startMethod))
         }
         else if(this.storage() && this.storage()["nerthus" + nerthus.startMethod])
         {
-            this.loadFromStorage(startMethod)
-            let checkVersion = function(version)
+            this.loadFromStorage(this.startPlugins.bind(this, startMethod))
+            var checkVersion = function(version)
             {
                 if(version !== nerthus.addon.version)
                 {
@@ -118,26 +118,30 @@ NerthusAddonUtils = (function()
         }
         else
         {
-            this.loadVersion(this.loadFromGitHub.bind(this, startMethod, nerthus.addon.store))
+            this.loadVersion(this.loadFromGitHub.bind(this,
+                function ()
+                {
+                    nerthus.addon.store()
+                    this.startPlugins(startMethod)
+                }.bind(this)))
         }
     }
     utils.loadFromGitHub = function(startMethod, onLoaded)
     {
-        this.log("Load nerthus addon from github, version = " + nerthus.addon.version)
+        log("Load nerthus addon from github, version = " + nerthus.addon.version)
         if (startMethod === "start_ni")
             this.muteNiConsole()
-        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js', 'NN_worldEdit.js'], function(){
-            this.loadScripts(nerthus.scripts, this.startPlugins.bind(this, startMethod, onLoaded))
-        }.bind(this))
+        this.loadScripts(['NN_dlaRadnych.js', 'NN_base.js'],
+            function(){ this.loadScripts(nerthus.scripts, onLoaded) }.bind(this))
     }
 
     utils.loadFromStorage = function(startMethod, onLoaded)
     {
-        nerthus = this.parser.parse(this.storage()["nerthus" + nerthus.startMethod])
-        this.log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
+        nerthus = this.parser.parse(this.storage().nerthus)
+        log("Load nerthus addon from local storage, version = " + nerthus.addon.version)
         if (startMethod === "start_ni")
             this.muteNiConsole()
-        this.startPlugins(startMethod, onLoaded)
+        onLoaded()
     }
 
     utils.startPlugins = function(startMethod, callback)

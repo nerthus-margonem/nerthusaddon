@@ -97,7 +97,7 @@ nerthus.loadSettings = function()
                 if(this.options.hasOwnProperty(opt))
                     this.options[opt] = options[opt]
         }
-        localStorage.nerthus_options = JSON.stringify(this.options)
+        this.storeSettings(this.options)
     }
 }
 
@@ -105,10 +105,7 @@ nerthus.storeSettings = function(options)
 {
     this.options = options
     if(typeof localStorage !== 'undefined')
-    {
         localStorage.nerthus_options = JSON.stringify(this.options)
-        this.addon.store()
-    }
 }
 
 nerthus.tips = {}
@@ -339,8 +336,7 @@ nerthus.tips.start_ni = function ()
 nerthus.base = {}
 nerthus.base.start = function()
 {
+    nerthus.loadSettings()
     nerthus.setChatInfo()
     nerthus.setEnterMsg()
 }
-
-nerthus.loadSettings()

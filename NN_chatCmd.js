@@ -1,9 +1,6 @@
-nerthus.chatCmd = {};
-nerthus.chatCmd.map = {};
-nerthus.chatCmd.map_ni = {};
-nerthus.chatCmd.public_map = {};
-nerthus.chatCmd.mapImage = new Image();
-nerthus.chatCmd.mapChangingOn = false;
+nerthus.chatCmd = {}
+nerthus.chatCmd.map = {}
+nerthus.chatCmd.public_map = {}
 
 nerthus.chatCmd.run = function(ch)
 {
@@ -68,28 +65,6 @@ nerthus.chatCmd.fetch_callback = function(cmd,ch)
     if(!callback && (nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)))
         callback = this.map[cmd[1]]
     return callback
-}
-
-nerthus.chatCmd.mapChanging = function (is_on)
-{
-    this.mapChangingOn = is_on
-    if (is_on)
-    {
-        let tmpMapDraw = nerthus.mapDraw //so that it is after permament custom maps
-        Engine.map.draw = function (Canvas_rendering_context)
-        {
-            tmpMapDraw(Canvas_rendering_context)
-            Canvas_rendering_context.drawImage(nerthus.chatCmd.mapImage, 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
-            if (Engine.map.goMark)
-            {
-                Engine.map.drawGoMark(Canvas_rendering_context)
-            }
-        }
-    }
-    else
-    {
-        Engine.map.draw = nerthus.mapDraw
-    }
 }
 
 nerthus.chatCmd.map["nar"] = function(ch)
@@ -165,164 +140,44 @@ nerthus.chatCmd.map["sys"] = function(ch)
 nerthus.chatCmd.map["map"] = function(ch)
 {
     let map_url = ch.t.split(" ").slice(1).join(" ")
-    $("#ground").css("backgroundImage", "url(" + map_url + ")")
-    return true;
-}
-
-nerthus.chatCmd.map_ni["map"] = function(ch)
-{
-    let map_url = ch.t.split(" ").slice(1).join(" ")
+    nerthus.worldEdit.changeMap(map_url, 1)
     ch.n = ""
     ch.t = ""
-    if(map_url)
-    {
-        nerthus.chatCmd.mapImage.src = map_url
-        nerthus.chatCmd.mapChanging(true)
-    }
-    else
-    {
-        nerthus.chatCmd.mapImage.src = ""
-        nerthus.chatCmd.mapChanging(false)
-    }
     return ch
 }
 
 nerthus.chatCmd.map["light"] = function(ch)
 {
-    var opacity = ch.t.split(" ")[1];
-    $("#base").css("opacity",opacity);
-    return true;
-}
-
-nerthus.chatCmd.map_ni["light"] = function (ch)
-{
     let opacity = ch.t.split(" ")[1]
-    if (opacity === undefined)
-    {
-        const hour = new Date().getHours()
-        opacity = 0
-        if (hour >= 18) opacity = 0.3
-        if (hour >= 21) opacity = 0.6
-        if (hour <= 4) opacity = 0.8
-        if (Engine.map.d.mainid !== 0)
-            opacity = 0
-    }
-    else opacity = 1 - opacity
+    nerthus.worldEdit.changeLight(typeof opacity === "undefined" ? undefined : 1 - opacity)
 
-    nerthus.night.dimValue = opacity
-    return true
-}
-
-nerthus.chatCmd.map["addGraf"] = function(ch)
-{  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
-    var cmd = ch.t.split(" ").slice(1).join(" ").split(",");
-    var x = parseInt(cmd[0]);
-    var y = parseInt(cmd[1]);
-    var _url = cmd[2];
-    var _tip = cmd[3] ? ' tip="<b>'+cmd[3]+'</b>" ctip="t_npc"' : "";
-    var isCol = parseInt(cmd[4]);
-    $('<img id="_ng-' + cmd[0] + '-' + cmd[1] + '" src="'+ _url +'"'+_tip+'>').css("position","absolute").appendTo('#base')
-        .load(function()
-        {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-            var _x = 32 * x + 16 - Math.floor($(this).width() / 2);
-            var _y = 32 * y + 32 - $(this).height();
-            $(this).css({top:"" + _y + "px", left: "" + _x + "px"}).css("z-index", y * 2 + 9);
-        })
-    if(isCol) g.npccol[ x + 256 * y] = true;
-    return true;
-}
-
-nerthus.chatCmd.map_ni["addGraf"] = function (ch)
-{
-    //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
-    let cmd = ch.t.split(" ").slice(1).join(" ").split(",")
-    let x = parseInt(cmd[0])
-    let y = parseInt(cmd[1])
-
-    let _url = cmd[2]
-    let exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
-    let match = exp.exec(_url)
-
-
-    let name = cmd[3]
-    let isCol = parseInt(cmd[4])
-
-    let id = 10000000 + (x * 1000) + y //id that no other game npc will have
-    let data = {}
-
-    data[id] = {
-        actions: 0,
-        grp: 0,
-        nick: name,
-        type: name === "" ? 4 : 0,
-        wt: 0,
-        x: x,
-        y: y
-    }
-    if(match[4] === "gif")
-    {
-        data[id].icon = match[2]
-        let npath = CFG.npath
-        CFG.npath = match[1]
-        Engine.npcs.updateData(data)
-        CFG.npath = npath
-    }
-    else
-    {
-        data[id].icon = "obj/cos.gif"
-        Engine.npcs.updateData(data)
-        let image = new Image()
-        image.src = _url
-
-        let _x = 32 * x + 16 - Math.floor(image.width / 2)
-        let _y = 32 * y + 32 - image.height
-        let obj = {
-            image: image,
-            x: _x,
-            y: _y,
-            id: id
-        }
-        if(!nerthus.additionalDrawList)
-            nerthus.additionalDrawList = []
-        nerthus.additionalDrawList.push(obj)
-    }
-
-
-    if (isCol) Engine.map.col.set(x, y, 2)
     ch.n = ""
     ch.t = ""
     return ch
 }
 
+nerthus.chatCmd.map["addGraf"] = function (ch)
+{  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
+    let cmd = ch.t.split(" ").slice(1).join(" ").split(",")
+    let x = parseInt(cmd[0])
+    let y = parseInt(cmd[1])
+    let _url = cmd[2]
+    let name = cmd[3]
+    let isCol = parseInt(cmd[4])
 
-nerthus.chatCmd.map["delGraf"] = function(ch)
-{
-    var cmd = ch.t.split(" ")[1].split(",");
-    var x = parseInt(cmd[0]);
-    var y = parseInt(cmd[1]);
-    $('#_ng-' + x + '-' + y).remove();
-    delete g.npccol[x + 256 * y];
-    return true;
+    nerthus.worldEdit.addNpc(x, y, _url, name, isCol)
+    ch.n = ""
+    ch.t = ""
+    return ch
 }
 
-nerthus.chatCmd.map_ni["delGraf"] = function (ch)
+nerthus.chatCmd.map["delGraf"] = function(ch)
 {
     let cmd = ch.t.split(" ")[1].split(",")
     let x = parseInt(cmd[0])
     let y = parseInt(cmd[1])
-    let id = 10000000 + (x * 1000) + y //id that no other game npc will have
-    let data = {}
-    data[id] = {
-        del: 1,
-        id: id.toString()
-    }
-    Engine.npcs.updateData(data)
-    for(const i in nerthus.additionalDrawList)
-    {
-        if(nerthus.additionalDrawList[i].id === id)
-            delete nerthus.additionalDrawList[i]
-    }
-    Engine.map.col.unset(x, y, 2)
+
+    nerthus.worldEdit.deleteNpc(x, y)
     ch.n = ""
     ch.t = ""
     return ch
@@ -378,22 +233,8 @@ nerthus.chatCmd.start_ni = function()
     if (typeof nerthus.mapDraw !== "function")
         nerthus.mapDraw = Engine.map.draw
 
-    nerthus.mapImage = new Image()
     this.appendStyles()
-
-    this.map["map"] = this.map_ni["map"]
-    this.map["addGraf"] = this.map_ni["addGraf"]
-    this.map["delGraf"] = this.map_ni["delGraf"]
-    this.map["light"] = this.map_ni["light"]
 
     API.addCallbackToEvent('newMsg', this.run_ni)
     API.addCallbackToEvent('updateMsg', this.run_ni)
-    API.addCallbackToEvent("clear_map_npcs",
-        function ()
-        {
-            setTimeout(function ()
-            {
-                nerthus.chatCmd.mapChanging(nerthus.chatCmd.mapChangingOn)
-            }, 500)
-        })
 }

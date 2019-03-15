@@ -184,8 +184,6 @@ test("StorageLoader : load addon in current version, nerthus remain in storage",
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
-    expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal("SI")
-    expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
 })
 
 test("Runner : run in debug mode", function()
@@ -197,6 +195,8 @@ test("Runner : run in debug mode", function()
     expect(nerthus.addon.version).to.be.equal(VERSION_MASTER)
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_MASTER)
     expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_MASTER)
+    expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal("SI")
+    expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
 })
 
 test("Runner : run from github", function()
@@ -207,6 +207,8 @@ test("Runner : run from github", function()
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
     expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_CDN)
     expect(localStorage.nerthus).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal("SI")
+    expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
 })
 
 test("Runner : run from localStorage in actual version", function()
@@ -221,6 +223,8 @@ test("Runner : run from localStorage in actual version", function()
     expect(nerthus.addon.filesPrefix).to.be.equal(PREFIX_CDN)
     expect(nerthus.addon.version_separator).to.be.equal(VERSION_SEPARATOR_CDN)
     expect(localStorage.nerthus).to.be.ok() //remain in storage
+    expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal("SI")
+    expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
 })
 
 test("Runner : run from localStorage in old version", function()
@@ -243,10 +247,8 @@ test("run addon in new interface", function() //TODO find a way to test if runAd
 
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
-    NerthusAddonUtils.loadFromStorage("start_ni", LOAD_HELPER.on_load)
+    NerthusAddonUtils.runAddon()
 
-    expect(LOAD_HELPER.loaded).to.be.ok()
-    expect(localStorage.nerthus).to.be.ok()
     expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal("NI")
     expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("NI")
 })
@@ -255,11 +257,9 @@ test("other modules are started even if start of previous failed", function()
 {
     nerthus.RUNABLE_MODULE_ONE.start = function(){throw new Error("module one start error")}
 
-    localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
-    NerthusAddonUtils.loadFromStorage("start", LOAD_HELPER.on_load)
+    NerthusAddonUtils.startPlugins(LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
-    expect(localStorage.nerthus).to.be.ok()
     expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal(false)
     expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
 })

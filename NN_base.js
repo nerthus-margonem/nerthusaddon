@@ -12,7 +12,21 @@ nerthus.defer = function(fun,data)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 
-nerthus.seasons = {SPRING : 1, SUMMER : 2, AUTUMN : 3, WINTER : 4}
+nerthus.loadQueue = []
+nerthus.loadOnEveryMap = function (fun, data)
+{
+    nerthus.loadQueue.push([fun, data])
+}
+nerthus.loadNewMapQueue = function ()
+{
+
+    for (const i in this.loadQueue)
+    {
+        this.loadQueue[i][0](this.loadQueue[i][1])
+    }
+}
+
+nerthus.seasons = {SPRING: 1, SUMMER: 2, AUTUMN: 3, WINTER: 4}
 nerthus.season = function()
 {
     var makeStartDate = function(day,month)
@@ -83,7 +97,7 @@ nerthus.loadSettings = function()
                 if(this.options.hasOwnProperty(opt))
                     this.options[opt] = options[opt]
         }
-        localStorage.nerthus_options = JSON.stringify(this.options)
+        this.storeSettings(this.options)
     }
 }
 
@@ -91,10 +105,7 @@ nerthus.storeSettings = function(options)
 {
     this.options = options
     if(typeof localStorage !== 'undefined')
-    {
         localStorage.nerthus_options = JSON.stringify(this.options)
-        this.addon.store()
-    }
 }
 
 nerthus.tips = {}
@@ -305,20 +316,28 @@ nerthus.tips.start = function()
 
 nerthus.tips.start_ni = function ()
 {
+    nerthus.loadSettings()
     if (typeof Engine.hero.tip === "undefined")
         setTimeout(this.start_ni.bind(this), 500)
     else
     {
         this.other_ni()
         this.hero_ni()
+        API.addCallbackToEvent("clear_map_npcs",
+            function ()
+            {
+                setTimeout(function ()
+                {
+                    nerthus.loadNewMapQueue()
+                }, 500)
+            })
     }
 }
 
 nerthus.base = {}
 nerthus.base.start = function()
 {
+    nerthus.loadSettings()
     nerthus.setChatInfo()
     nerthus.setEnterMsg()
 }
-
-nerthus.loadSettings()

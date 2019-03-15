@@ -1,7 +1,6 @@
 /**
     Name: Nerthus Panel
-    Plik zawiera funkcje do ustawiania tarczy otwierającej panel
-**/
+    Plik zawiera funkcje do ustawiania tarczy otwierającej panel**/
 
 nerthus.panel = {}
 
@@ -39,10 +38,10 @@ nerthus.panel.panel_string = function(panel_data)
     var $panel = $("<div>")
     var $links = $("<div>").css('text-align','center')
     var $hello = $("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ")
-                           .append(this.link(panel_data.forum)))
+        .append(this.link(panel_data.forum)))
     var $info = $("<div>").text(panel_data.panel_info)
     $links.append($hello, $info)
-    for(var i in panel_data.links)
+    for(const i in panel_data.links)
         $links.append($('<div>').append(this.link(panel_data.links[i])))
     $panel.append($links)
     $panel.append(this.settings_str())
@@ -81,6 +80,22 @@ nerthus.panel.settings_str_ni = function()
     return $settings
 }
 
+nerthus.panel.settings_str_ni = function()
+{
+    let $settings = $("<div>")
+    let info =
+        "<span style='text-decoration: underline; cursor: url(../img/gui/cursor/5.png), auto' class='nerthus-settings-button' " +
+        "onclick='$(\".nerthus-settings-button\").nextAll().toggle()'>Ustawienia</span>"
+    $settings.append(info)
+    for(const option in nerthus.options)
+    {
+        let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option],'style': 'cursor: url(../img/gui/cursor/5.png), auto'})
+        let $cb_name = $("<b>").text(option)
+        $settings.append($("<div>").append($cb).append($cb_name).hide())
+    }
+    return $settings
+}
+
 nerthus.panel.link = function(link)
 {
     return $('<a href="' + link.url + '" target="blank">' + link.name + '</a>')
@@ -88,17 +103,24 @@ nerthus.panel.link = function(link)
 
 nerthus.panel.save = function ()
 {
-    let settings = nerthus.panel.get_settings()
-    nerthus.storeSettings(settings)
-    message("Zapisano, wciśnij F5")
-    return true
+    const options = nerthus.panel.get_settings()
+    nerthus.storeSettings(options)
+    message('Zapisano, wciśnij f5')
 }
 
 nerthus.panel.get_settings = function ()
 {
     let options = {}
+    for(const option in nerthus.options)
+        options[option] = $('#panCb'+option).attr('checked')
+    return options
+}
+
+nerthus.panel.get_settings_ni = function ()
+{
+    let options = {}
     for (const option in nerthus.options)
-        options[option] = $("#panCb" + option).attr("checked")
+        options[option] = $("#panCb" + option).prop("checked")
     return options
 }
 

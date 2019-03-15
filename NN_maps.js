@@ -41,5 +41,8 @@ nerthus.maps.start_ni = function ()
     if (typeof Engine.map.d.id === "undefined")
         setTimeout(this.start_ni.bind(this), 500)
     else
+    {
+        this.customMaps_ni()
         nerthus.loadOnEveryMap(this.customMaps_ni.bind(this))
+    }
 }

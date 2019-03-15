@@ -192,7 +192,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
             {
                 let style = e.strokeStyle
                 e.fillStyle = "#000"
-                e.globalAlpha = nerthus.worldEdit.nightDimValue
+                e.globalAlpha = nerthus.worldEdit.nightDimValue === -1 ? 0 : nerthus.worldEdit.nightDimValue
                 e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
                 e.globalAlpha = 1.0
                 e.fillStyle = style
@@ -362,14 +362,18 @@ nerthus.worldEdit.start = function ()
 
 nerthus.worldEdit.start_ni = function ()
 {
-    this.addCollision = this.addCollision_ni
-    this.deleteCollision = this.deleteCollision_ni
-    this.addNpc = this.addNpc_ni
-    this.deleteNpc = this.deleteNpc_ni
-    this.changeMap = this.changeMap_ni
-    this.changeLight = this.changeLight_ni
-    this.addLights = this.addLights_ni
+    if (typeof Engine.map.d.id === "undefined")
+        setTimeout(nerthus.worldEdit.start_ni.bind(this), 500)
+    else
+    {
+        this.addCollision = this.addCollision_ni
+        this.deleteCollision = this.deleteCollision_ni
+        this.addNpc = this.addNpc_ni
+        this.deleteNpc = this.deleteNpc_ni
+        this.changeMap = this.changeMap_ni
+        this.changeLight = this.changeLight_ni
+        this.addLights = this.addLights_ni
 
-    this.startMapChanging_ni()
-    // nerthus.loadOnEveryMap(this.startMapChanging_ni.bind(this))
+        this.startMapChanging_ni()
+    }
 }

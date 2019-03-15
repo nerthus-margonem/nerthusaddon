@@ -390,13 +390,18 @@ nerthus.weather.start = function()
 //TODO movement of weather like on SI
 nerthus.weather.start_ni = function ()
 {
-    this.run = this.run_ni
-    this.display = this.display_ni
-    this.effects.display_url = this.effects.display_url_ni
-    this.set_weather = this.set_weather_ni
-    if (nerthus.options["weather"])
+    if (typeof Engine.map.d.id === "undefined")
+        setTimeout(nerthus.weather.start_ni.bind(this), 500)
+    else
     {
-        this.run_ni()
-        nerthus.loadOnEveryMap(this.run_ni.bind(this))
+        this.run = this.run_ni
+        this.display = this.display_ni
+        this.effects.display_url = this.effects.display_url_ni
+        this.set_weather = this.set_weather_ni
+        if (nerthus.options["weather"])
+        {
+            this.run_ni()
+            nerthus.loadOnEveryMap(this.run_ni.bind(this))
+        }
     }
 }

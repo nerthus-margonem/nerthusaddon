@@ -133,29 +133,29 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
         let dial =
             "<div class=\"dialogue-window\" style=\"height: 0;\">" +
             "<div class=\"background\">" +
-                "<div class=\"upper-left\"></div>" +
-                "<div class=\"upper-right\"></div>" +
-                "<div class=\"top\"></div>" +
-                "<div class=\"left\"></div>" +
-                "<div class=\"right\"></div>" +
-                "<div class=\"bottom\"></div>" +
+            "<div class=\"upper-left\"></div>" +
+            "<div class=\"upper-right\"></div>" +
+            "<div class=\"top\"></div>" +
+            "<div class=\"left\"></div>" +
+            "<div class=\"right\"></div>" +
+            "<div class=\"bottom\"></div>" +
             "</div>" +
             "<div class=\"content\">" +
-                "<div class=\"inner scroll-wrapper scrollable\">" +
-                    "<div class=\"scroll-pane\">"
+            "<div class=\"inner scroll-wrapper scrollable\">" +
+            "<div class=\"scroll-pane\">"
 
         dial += innerDial
         dial +=
             "</ul></div>" +
-                "<div class=\"scrollbar-wrapper\">" +
-                    "<div class=\"background\" style=\"pointer-events: none;\"></div>" +
-                    "<div class=\"arrow-up\"></div>" +
-                    "<div class=\"arrow-down\"></div>" +
-                    "<div class=\"track\">" +
-                        "<div class=\"handle ui-draggable ui-draggable-handle\" style=\"top: 0;\"></div>" +
-                    "</div></div></div></div>" +
-                    "<header><div class=\"h_content\">" + nerthus.npc.list[id].name + "</div></header>" +
-                "</div>"
+            "<div class=\"scrollbar-wrapper\">" +
+            "<div class=\"background\" style=\"pointer-events: none;\"></div>" +
+            "<div class=\"arrow-up\"></div>" +
+            "<div class=\"arrow-down\"></div>" +
+            "<div class=\"track\">" +
+            "<div class=\"handle ui-draggable ui-draggable-handle\" style=\"top: 0;\"></div>" +
+            "</div></div></div></div>" +
+            "<header><div class=\"h_content\">" + nerthus.npc.list[id].name + "</div></header>" +
+            "</div>"
 
 
         $(dial).appendTo(".bottom.positioner")
@@ -242,42 +242,50 @@ nerthus.npc.dialog.setScrollwheel_ni = function ()
 {
     let $pane = $('.interface-layer .inner.scroll-wrapper.scrollable .scroll-pane')
 
-    $pane.on('mousewheel DOMMouseScroll', function (e) {
-        let isFirefox = typeof InstallTrigger !== 'undefined';
-        let stateScroll = isFirefox ? e.originalEvent.detail : e.originalEvent.deltaY;
-        nerthus.npc.dialog.setNewBarPos(stateScroll < 0, 20);
-    }).on('update', function () {
-        nerthus.npc.dialog.updateScroll_ni();
-        nerthus.npc.dialog.updateBarPos_ni();
-    }).on('scrollBottom', function () {
-        nerthus.npc.dialog.scrollTo_ni(1);
-    }).on('scrollTop', function () {
-        nerthus.npc.dialog.scrollTo_ni(0);
-    }).on('stopDragBar', function () {
+    $pane.on('mousewheel DOMMouseScroll', function (e)
+    {
+        let isFirefox = typeof InstallTrigger !== 'undefined'
+        let stateScroll = isFirefox ? e.originalEvent.detail : e.originalEvent.deltaY
+        nerthus.npc.dialog.setNewBarPos(stateScroll < 0, 20)
+    }).on('update', function ()
+    {
+        nerthus.npc.dialog.updateScroll_ni()
+        nerthus.npc.dialog.updateBarPos_ni()
+    }).on('scrollBottom', function ()
+    {
+        nerthus.npc.dialog.scrollTo_ni(1)
+    }).on('scrollTop', function ()
+    {
+        nerthus.npc.dialog.scrollTo_ni(0)
+    }).on('stopDragBar', function ()
+    {
         //stop = true; ?????????
-    }).on('updateBarPos', function () {
-        nerthus.npc.dialog.updateBarPos_ni();
-    }).on('setScroll', function (ev, n) {
-        nerthus.npc.dialog.setScroll_ni(n);
-    }).on('updateWhenBottom', function () {
-       // let scrollVisible = isVisible();
-        nerthus.npc.dialog.updateScroll_ni();
-        nerthus.npc.dialog.updateBarPos_ni();
-    });
+    }).on('updateBarPos', function ()
+    {
+        nerthus.npc.dialog.updateBarPos_ni()
+    }).on('setScroll', function (ev, n)
+    {
+        nerthus.npc.dialog.setScroll_ni(n)
+    }).on('updateWhenBottom', function ()
+    {
+        // let scrollVisible = isVisible();
+        nerthus.npc.dialog.updateScroll_ni()
+        nerthus.npc.dialog.updateBarPos_ni()
+    })
 }
 
 nerthus.npc.dialog.updateBarPos_ni = function ()
 {
     let $pane = $('.interface-layer .inner.scroll-wrapper.scrollable .scroll-pane')
 
-    let new_pos = $pane.scrollTop();
-    let max_scroll = $pane[0].scrollHeight - $pane.height();
-    if (new_pos > max_scroll) new_pos = max_scroll;
-    if (new_pos < 0) new_pos = 0;
+    let new_pos = $pane.scrollTop()
+    let max_scroll = $pane[0].scrollHeight - $pane.height()
+    if (new_pos > max_scroll) new_pos = max_scroll
+    if (new_pos < 0) new_pos = 0
 
-    let p = new_pos / max_scroll;
-    nerthus.npc.dialog.updateBarPosition_ni(p);
-    nerthus.npc.dialog.scrollTo_ni(p);
+    let p = new_pos / max_scroll
+    nerthus.npc.dialog.updateBarPosition_ni(p)
+    nerthus.npc.dialog.scrollTo_ni(p)
 }
 
 nerthus.npc.dialog.updateBarPosition_ni = function (percentage)
@@ -285,7 +293,7 @@ nerthus.npc.dialog.updateBarPosition_ni = function (percentage)
     //if (!options.track) return; ????
     let $track = $(".interface-layer .dialogue-window .track")
 
-    let top = Math.round(($track.height() - $('.handle', $track).height()) * percentage);
+    let top = Math.round(($track.height() - $('.handle', $track).height()) * percentage)
     $('.handle', $track).css('top', top)
 }
 
@@ -303,13 +311,13 @@ nerthus.npc.dialog.updateScroll_ni = function ()
 nerthus.npc.dialog.setScroll_ni = function (new_pos)
 {
     let $pane = $('.interface-layer .inner.scroll-wrapper .scroll-pane')
-    let max_scroll = $pane[0].scrollHeight - $pane.height();
-    if (new_pos > max_scroll) new_pos = max_scroll;
-    if (new_pos < 0) new_pos = 0;
+    let max_scroll = $pane[0].scrollHeight - $pane.height()
+    if (new_pos > max_scroll) new_pos = max_scroll
+    if (new_pos < 0) new_pos = 0
 
-    let p = new_pos / max_scroll;
-    nerthus.npc.dialog.updateBarPosition_ni(p);
-    nerthus.npc.dialog.scrollTo_ni(p);
+    let p = new_pos / max_scroll
+    nerthus.npc.dialog.updateBarPosition_ni(p)
+    nerthus.npc.dialog.scrollTo_ni(p)
 }
 
 nerthus.npc.dialog.setNewBarPos = function (increase, distance)
@@ -317,14 +325,14 @@ nerthus.npc.dialog.setNewBarPos = function (increase, distance)
     let $pane = $('.interface-layer .inner.scroll-wrapper .scroll-pane')
 
 
-    let new_pos = $pane.scrollTop() + (increase ? -distance : distance);
-    let max_scroll = $pane[0].scrollHeight - $pane.height();
-    if (new_pos > max_scroll) new_pos = max_scroll;
-    if (new_pos < 0) new_pos = 0;
+    let new_pos = $pane.scrollTop() + (increase ? -distance : distance)
+    let max_scroll = $pane[0].scrollHeight - $pane.height()
+    if (new_pos > max_scroll) new_pos = max_scroll
+    if (new_pos < 0) new_pos = 0
 
-    let p = new_pos / max_scroll;
-    nerthus.npc.dialog.updateBarPosition_ni(p);
-    nerthus.npc.dialog.scrollTo_ni(p);
+    let p = new_pos / max_scroll
+    nerthus.npc.dialog.updateBarPosition_ni(p)
+    nerthus.npc.dialog.scrollTo_ni(p)
 }
 
 nerthus.npc.dialog.addArows_ni = function ()
@@ -381,13 +389,13 @@ nerthus.npc.dialog.setNewBarPos = function (increase, distance)
 
 
     let new_pos = $pane.scrollTop() + (increase ? -distance : distance)
-    let max_scroll = $pane[0].scrollHeight - $pane.height();
-    if (new_pos > max_scroll) new_pos = max_scroll;
-    if (new_pos < 0) new_pos = 0;
+    let max_scroll = $pane[0].scrollHeight - $pane.height()
+    if (new_pos > max_scroll) new_pos = max_scroll
+    if (new_pos < 0) new_pos = 0
 
-    let p = new_pos / max_scroll;
-    nerthus.npc.dialog.updateBarPosition_ni(p);
-    nerthus.npc.dialog.scrollTo_ni(p);
+    let p = new_pos / max_scroll
+    nerthus.npc.dialog.updateBarPosition_ni(p)
+    nerthus.npc.dialog.scrollTo_ni(p)
 }
 
 nerthus.npc.dialog.close = function ()

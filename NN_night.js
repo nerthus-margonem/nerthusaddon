@@ -40,11 +40,11 @@ nerthus.night.lights.on = function()
 
 nerthus.night.lights.on_ni = function()
 {
-    if (Engine.map.d.id === undefined)
-        setTimeout(nerthus.night.lights.on_ni.bind(this), 500)
+    if (typeof Engine.map.d.id === "undefined")
+        setTimeout(this.on_ni.bind(this), 500)
     else
     {
-        nerthus.lightDrawList = []
+        nerthus.worldEdit.lightDrawList = []
         $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + Engine.map.d.id + ".json"), nerthus.worldEdit.addLights.bind(this))
 
     }

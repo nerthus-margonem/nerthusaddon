@@ -173,10 +173,10 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
         this.addScrollBar_ni()
         this.setScrollwheel_ni()
         this.addArows_ni()
+        this.updateScroll_ni()
         setTimeout(function ()
         {
             $(".dialogue-window").css("height", "300px")
-            nerthus.npc.dialog.updateScroll_ni()
         }, 10) //NI animation
     }
     else
@@ -301,9 +301,9 @@ nerthus.npc.dialog.updateScroll_ni = function ()
 {
     let $warpper = $('.interface-layer .inner.scroll-wrapper')
     let $pane = $('.interface-layer .inner.scroll-wrapper  .scroll-pane')
-    //let height = $pane.height() > 0 ? $pane.height() : 173
+    let height = $pane.height() !== 0 ? $pane.height() : 173 //it bugs out when opening 1st time, this should work
     //toggle visibility of scrollbar if needed
-    if ($pane[0].scrollHeight - $pane.height() > 1)
+    if ($pane[0].scrollHeight - height > 1)
         $warpper.addClass('scrollable')
     else
         $warpper.removeClass('scrollable')

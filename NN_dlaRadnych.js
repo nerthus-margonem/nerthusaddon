@@ -24,10 +24,9 @@ nerthus.NerthusSpec = [
 
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
 nerthus.NerthusRad = [
-                      'Umbrael Regis', 
-                      'Korano Ligatur', 
-                     ]
-                      
+    'Umbrael Regis',
+    'Korano Ligatur'
+]
 
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
 nerthus.NerthusNarr = [

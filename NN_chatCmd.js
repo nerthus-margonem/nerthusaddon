@@ -52,18 +52,17 @@ nerthus.chatCmd.fixUrl = function(text)
     return text.replace(url, "$1:/$2")
 }
 
-nerthus.chatCmd.fetch_cmd = function(ch)
+nerthus.chatCmd.fetch_cmd = function (ch)
 {
-    if(ch.t[0]=='*')
-        return RegExp(/^\*(\S+)/).exec(ch.t)
-    return null
+    if (ch.t[0] === '*')
+        return RegExp(/^\*(\S+)/).exec(ch.t)[1]
 }
 
 nerthus.chatCmd.fetch_callback = function(cmd,ch)
 {
-    let callback = this.public_map[cmd[1]]
+    let callback = this.public_map[cmd]
     if(!callback && (nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)))
-        callback = this.map[cmd[1]]
+        callback = this.map[cmd]
     return callback
 }
 
@@ -71,15 +70,17 @@ nerthus.chatCmd.map["nar"] = function(ch)
 {
     ch.s = "nar"
     ch.n = ""
-    ch.t = ch.t.replace(/^\*nar/,"")
+    ch.t = ch.t.replace(/^\*nar1? /,"")
     return ch
 }
+
+nerthus.chatCmd.map["nar1"] = nerthus.chatCmd.map["nar"]
 
 nerthus.chatCmd.map["nar2"] = function(ch)
 {
     ch.s = "nar2"
     ch.n = ""
-    ch.t = ch.t.replace(/^\*nar2/,"")
+    ch.t = ch.t.replace(/^\*nar2 /,"")
     return ch
 }
 
@@ -87,17 +88,20 @@ nerthus.chatCmd.map["nar3"] = function(ch)
 {
     ch.s = "nar3"
     ch.n = ""
-    ch.t = ch.t.replace(/^\*nar3/,"")
+    ch.t = ch.t.replace(/^\*nar3 /,"")
     return ch
 }
 
-nerthus.chatCmd.map["dial1"] = function(ch)
+//shouldn't ch.n be the speaker?
+nerthus.chatCmd.map["dial"] = function(ch)
 {
     ch.s = "dial1"
     ch.n = ""
     ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t)
     return ch
 }
+
+nerthus.chatCmd.map["dial1"] = nerthus.chatCmd.map["dial"]
 
 nerthus.chatCmd.map["dial2"] = function(ch)
 {
@@ -133,7 +137,7 @@ nerthus.chatCmd.map["sys"] = function(ch)
 {
     ch.s="sys_comm"
     ch.n=""
-    ch.t=ch.t.replace(/^\*sys/,"")
+    ch.t=ch.t.replace(/^\*sys /,"")
     return ch
 }
 
@@ -149,7 +153,13 @@ nerthus.chatCmd.map["map"] = function(ch)
 nerthus.chatCmd.map["light"] = function(ch)
 {
     let opacity = ch.t.split(" ")[1]
-    nerthus.worldEdit.changeLight(typeof opacity === "undefined" ? undefined : 1 - opacity)
+    if(typeof opacity === "undefined")
+        nerthus.worldEdit.changeLight()
+    else
+    {
+        opacity = opacity.replace(",",".")
+        nerthus.worldEdit.changeLight(1 - opacity)
+    }
 
     ch.n = ""
     ch.t = ""
@@ -163,7 +173,7 @@ nerthus.chatCmd.map["addGraf"] = function (ch)
     let y = parseInt(cmd[1])
     let _url = cmd[2]
     let name = cmd[3]
-    let isCol = parseInt(cmd[4])
+    let isCol = parseInt(cmd[4]) > 0
 
     nerthus.worldEdit.addNpc(x, y, _url, name, isCol)
     ch.n = ""

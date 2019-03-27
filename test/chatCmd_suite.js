@@ -15,9 +15,9 @@ before(function()
     nerthus = {}
     nerthus.defer = function(){}
     nerthus.worldEdit = {
-        changeMap: function (url, plane)
+        changeMap: function (url, layer)
         {
-            WorldEdit.changeMap = [url, plane]
+            WorldEdit.changeMap = [url, layer]
         },
         changeLight: function (opacity) {
             WorldEdit.changeLight = opacity
@@ -109,7 +109,7 @@ test("*map command with map url", function() {
 
     //first argument - map_url
     expect(WorldEdit.changeMap[0]).to.equal("http://MAPS.COM/MAP.PNG")
-    //second argument - plane
+    //second argument - layer
     expect(WorldEdit.changeMap[1]).to.equal(1)
 })
 
@@ -123,7 +123,7 @@ test("*map command without map url", function() {
     expect(ch.n).to.be.equal("")
     //first argument - map_url
     expect(WorldEdit.changeMap[0]).to.equal("")
-    //second argument - plane
+    //second argument - layer
     expect(WorldEdit.changeMap[1]).to.equal(1)
 })
 

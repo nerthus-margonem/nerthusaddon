@@ -125,10 +125,10 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y)
     this.deleteCollision_ni(x, y)
 }
 
-nerthus.worldEdit.changeMap = function (url, plane)
+nerthus.worldEdit.changeMap = function (url, layer)
 {
     let $edit
-    switch (plane)
+    switch (layer)
     {
         case 1:
             $edit = $("#ground")
@@ -141,16 +141,16 @@ nerthus.worldEdit.changeMap = function (url, plane)
     $edit.css("backgroundImage", "url(" + url + ")")
 }
 
-nerthus.worldEdit.changeMap_ni = function (url, plane)
+nerthus.worldEdit.changeMap_ni = function (url, layer)
 {
     if (url)
     {
         let img = new Image()
         img.src = url
-        nerthus.worldEdit.mapImages[plane] = img
+        nerthus.worldEdit.mapImages[layer] = img
     }
     else
-        delete nerthus.worldEdit.mapImages[plane]
+        delete nerthus.worldEdit.mapImages[layer]
 }
 
 nerthus.worldEdit.startMapChanging_ni = function ()

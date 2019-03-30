@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nerthus NI
-// @namespace    http://tampermonkey.net/
-// @version      1.0
+// @namespace    http://www.margonem.pl/
+// @version      2.0
 // @description  Addon for Nerthus
 // @author       Kris Aphalon
 // @match        http://nerthus.margonem.pl/
@@ -11,14 +11,12 @@
 (function ()
 {
     "use strict"
-    let loadScript = function (scriptName)
+    let loadScript = function (scriptSrc)
     {
-        let head = document.getElementsByTagName("head")[0]
         let script = document.createElement("script")
-        script.type = "text/javascript"
-        script.src = scriptName
+        script.src = scriptSrc
         script.async = false
-        head.appendChild(script)
+        document.head.appendChild(script)
     }
     loadScript("https://krisaphalon.github.io/nerthusaddon/NN_start.js")
 })()

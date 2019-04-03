@@ -166,21 +166,22 @@ test("GitHubLoader", function()
 {
     nerthus.scripts = ADDITIONAL_SCRIPTS
 
-    NerthusAddonUtils.loadFromGitHub("start", LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load, "start")
 
     expect(LOAD_HELPER.loaded).to.be.ok()
-    expect($.LOADED_SCRIPTS).to.have.length(2 + ADDITIONAL_SCRIPTS.length)
+    expect($.LOADED_SCRIPTS).to.have.length(3 + ADDITIONAL_SCRIPTS.length)
     expect($.LOADED_SCRIPTS[0]).to.be.equal(nerthus.addon.fileUrl("NN_dlaRadnych.js"))
     expect($.LOADED_SCRIPTS[1]).to.be.equal(nerthus.addon.fileUrl("NN_base.js"))
-    expect($.LOADED_SCRIPTS[2]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
-    expect($.LOADED_SCRIPTS[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
+    expect($.LOADED_SCRIPTS[2]).to.be.equal(nerthus.addon.fileUrl("NN_worldEdit.js"))
+    expect($.LOADED_SCRIPTS[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
+    expect($.LOADED_SCRIPTS[4]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
 })
 
 test("StorageLoader : load addon in current version, nerthus remain in storage", function()
 {
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
-    NerthusAddonUtils.loadFromStorage("start", LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load, "start")
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
@@ -253,13 +254,24 @@ test("run addon in new interface", function() //TODO find a way to test if runAd
     expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("NI")
 })
 
-test("other modules are started even if start of previous failed", function()
+test("SI: other modules are started even if start of previous failed", function()
 {
     nerthus.RUNABLE_MODULE_ONE.start = function(){throw new Error("module one start error")}
 
-    NerthusAddonUtils.startPlugins(LOAD_HELPER.on_load)
+    NerthusAddonUtils.startPlugins("start", LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal(false)
     expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
+})
+
+test("NI: other modules are started even if start of previous failed", function()
+{
+    nerthus.RUNABLE_MODULE_ONE.start_ni = function(){throw new Error("module one start error")}
+
+    NerthusAddonUtils.startPlugins("start_ni", LOAD_HELPER.on_load)
+
+    expect(LOAD_HELPER.loaded).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal(false)
+    expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("NI")
 })

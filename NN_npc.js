@@ -116,8 +116,8 @@ nerthus.npc.dialog.parseInnerDialog_ni = function (message, replies)
             line_option = "line_exit"
         innerDial +=
             "<li class=\"answer dialogue-window-answer " + line_option + "\">" +
-                "<div class=\"icon " + line_option + "\"></div>" +
-                "<span class=\"answer-text\">" + (i + 1) + ". " + replies[i].text + "</span>" +
+            "<div class=\"icon " + line_option + "\"></div>" +
+            "<span class=\"answer-text\">" + (i + 1) + ". " + replies[i].text + "</span>" +
             "</li>"
     }
     return innerDial

@@ -1,6 +1,4 @@
 nerthus.night = {}
-nerthus.night.dimValue = 0
-nerthus.night.allAdded_ni = false
 
 nerthus.night.opacity = function()
 {

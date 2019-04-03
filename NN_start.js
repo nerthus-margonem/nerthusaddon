@@ -150,15 +150,15 @@ NerthusAddonUtils = (function()
         for(const module in nerthus)
         {
             if(nerthus.hasOwnProperty(module) && nerthus[module][startMethod])
-            try
-            {
-                call(nerthus[module][startMethod].bind(nerthus[module]))
-            }
-            catch(error)
-            {
-                //default log so that on NI user knows something is not right
-                log("nerthus error in nerthus." + module + "." + startMethod + "(), message: " + error.message, 1)
-            }
+                try
+                {
+                    call(nerthus[module][startMethod].bind(nerthus[module]))
+                }
+                catch(error)
+                {
+                    //default log so that on NI user knows something is not right
+                    log("nerthus error in nerthus." + module + "." + startMethod + "(), message: " + error.message, 1)
+                }
         }
         call(callback)
     }

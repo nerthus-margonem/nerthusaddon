@@ -125,10 +125,10 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y)
     this.deleteCollision_ni(x, y)
 }
 
-nerthus.worldEdit.changeMap = function (url, plane)
+nerthus.worldEdit.changeMap = function (url, layer)
 {
     let $edit
-    switch (plane)
+    switch (layer)
     {
         case 1:
             $edit = $("#ground")
@@ -141,16 +141,16 @@ nerthus.worldEdit.changeMap = function (url, plane)
     $edit.css("backgroundImage", "url(" + url + ")")
 }
 
-nerthus.worldEdit.changeMap_ni = function (url, plane)
+nerthus.worldEdit.changeMap_ni = function (url, layer)
 {
     if (url)
     {
         let img = new Image()
         img.src = url
-        nerthus.worldEdit.mapImages[plane] = img
+        nerthus.worldEdit.mapImages[layer] = img
     }
     else
-        delete nerthus.worldEdit.mapImages[plane]
+        delete nerthus.worldEdit.mapImages[layer]
 }
 
 nerthus.worldEdit.startMapChanging_ni = function ()
@@ -160,7 +160,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
     Engine.map.draw = function (Canvas_rendering_context)
     {
         //draw normal map
-        tmpMapDraw(Canvas_rendering_context)
+        tmpMapDraw.call(Engine.map, Canvas_rendering_context);
 
         //draw new maps on top of map
         //'for in' so that we won't try to draw empty attribute by accidental

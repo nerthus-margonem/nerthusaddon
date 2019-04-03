@@ -160,7 +160,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
     Engine.map.draw = function (Canvas_rendering_context)
     {
         //draw normal map
-        tmpMapDraw(Canvas_rendering_context)
+        tmpMapDraw.call(Engine.map, Canvas_rendering_context);
 
         //draw new maps on top of map
         //'for in' so that we won't try to draw empty attribute by accidental

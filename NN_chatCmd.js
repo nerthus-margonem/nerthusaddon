@@ -2,17 +2,26 @@ nerthus.chatCmd = {}
 nerthus.chatCmd.map = {}
 nerthus.chatCmd.public_map = {}
 
-nerthus.chatCmd.run = function(ch)
+nerthus.chatCmd.run = function (ch)
 {
+    // return TRUE if you want message to NOT show in chat
+    // return FALSE if you want message to show in chat
+    // change message by directly editing object passed as reference
+
+
     let cmd = this.fetch_cmd(ch)
-    if(cmd)
+    if (cmd)
     {
-        var callback = this.fetch_callback(cmd,ch)
-        if(callback)
+        let callback = this.fetch_callback(cmd, ch)
+        console.log(callback)
+        if (callback)
         {
             ch.t = this.fixUrl(ch.t)
-            NerthusAddonUtils.log("["+ch.k+"] " + ch.n + " -> " + ch.t) //gdzie kto co
-            return callback(ch)
+            NerthusAddonUtils.log("[" + ch.k + "] " + ch.n + " -> " + ch.t) //[which tab] author -> command
+
+            // return negation so that on callbacks returning TRUE or OBJECT message is visible
+            // and on callbacks returning FALSE or UNDEFINED it is not
+            return !callback(ch)
         }
         return false
     }
@@ -21,29 +30,28 @@ nerthus.chatCmd.run = function(ch)
 
 nerthus.chatCmd.run_ni = function (e)
 {
-    if (e[1].s !== "abs" && e[1].s !== "") return
-    let clone = JSON.parse(JSON.stringify(e[1]))
-    let ch = nerthus.chatCmd.run(clone)
-    if (ch)
+    let ch = e[1],
+        $msg = e[0]
+
+    if (ch.s !== "abs" && ch.s !== "") return
+    if (!this.run(e[1]))
     {
-        if (ch.t === "")
-            e[0].remove()
-        else
+        console.log(ch)
+        $msg.addClass(ch.s)
+        let content = $msg.children().eq(2).contents()
+        $msg.children(2).addClass(ch.s)
+        for (let i = 0; i < content.length; i++)
         {
-            e[0].addClass(ch.s)
-            let content = e[0].children().eq(2).contents()
-            e[0].children(2).addClass(ch.s)
-            for (let i = 0; i < content.length; i++)
-            {
-                let text = content.eq(i)
-                if (i === 0)
-                    text.replaceWith(ch.t)
-                else
-                    text.replaceWith("")	//delete?
-            }
-            e[0].children().eq(0).contents().eq(0).replaceWith(ch.n)
+            let text = content.eq(i)
+            if (i === 0)
+                text.replaceWith(e[1].t)
+            else
+                text.remove()
         }
+        $msg.children().eq(0).contents().eq(0).replaceWith(ch.n)
     }
+    else
+        $msg.remove()
 }
 
 nerthus.chatCmd.fixUrl = function(text)
@@ -145,9 +153,8 @@ nerthus.chatCmd.map["map"] = function(ch)
 {
     let map_url = ch.t.split(" ").slice(1).join(" ")
     nerthus.worldEdit.changeMap(map_url, 1)
-    ch.n = ""
-    ch.t = ""
-    return ch
+
+    return false
 }
 
 nerthus.chatCmd.map["light"] = function(ch)
@@ -161,9 +168,7 @@ nerthus.chatCmd.map["light"] = function(ch)
         nerthus.worldEdit.changeLight(1 - opacity)
     }
 
-    ch.n = ""
-    ch.t = ""
-    return ch
+    return false
 }
 
 nerthus.chatCmd.map["addGraf"] = function (ch)
@@ -176,9 +181,8 @@ nerthus.chatCmd.map["addGraf"] = function (ch)
     let isCol = parseInt(cmd[4]) > 0
 
     nerthus.worldEdit.addNpc(x, y, _url, name, isCol)
-    ch.n = ""
-    ch.t = ""
-    return ch
+
+    return false
 }
 
 nerthus.chatCmd.map["delGraf"] = function(ch)
@@ -188,37 +192,30 @@ nerthus.chatCmd.map["delGraf"] = function(ch)
     let y = parseInt(cmd[1])
 
     nerthus.worldEdit.deleteNpc(x, y)
-    ch.n = ""
-    ch.t = ""
-    return ch
+
+    return false
 }
 
 nerthus.chatCmd.map["weather"] = function(ch)
 {
     var weather_id = parseInt(ch.t.split(" ")[1])
     nerthus_weather_bard_id = weather_id
-    try
-    {
-        nerthus.weather.set_weather(weather_id)
-    }catch(e)
-    {
-        //nothing to do now
-    }
-    return true;
+    nerthus.weather.set_weather(weather_id)
+
+    return false
 }
 
-nerthus.chatCmd.public_map["me"] = function(ch)
+nerthus.chatCmd.public_map["me"] = function (ch)
 {
-    ch.s="me"
-    ch.n=""
-    ch.t=ch.t.replace(/^\*me /,"")
+    ch.s = "me"
+    ch.n = ""
+    ch.t = ch.t.replace(/^\*me /, "")
     return ch
 }
 
 nerthus.chatCmd.appendStyles = function()
 {
     let style = document.createElement('style')
-    style.type = "text/css"
     style.innerHTML =  ".me{ color: #e7d798 !important }"
         + ".sys_comm{ color: #f33 !important }"
         + ".nar{ color: lightblue !important }"
@@ -245,6 +242,6 @@ nerthus.chatCmd.start_ni = function()
 
     this.appendStyles()
 
-    API.addCallbackToEvent('newMsg', this.run_ni)
-    API.addCallbackToEvent('updateMsg', this.run_ni)
+    API.addCallbackToEvent('newMsg', this.run_ni.bind(this))
+    API.addCallbackToEvent('updateMsg', this.run_ni.bind(this))
 }

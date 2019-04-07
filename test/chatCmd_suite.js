@@ -31,6 +31,13 @@ before(function()
             WorldEdit.deleteNpc = [x, y]
         }
     }
+    //to be moved to worldEdit
+    nerthus.weather = {
+        set_weather: function (number)
+        {
+
+        }
+    }
 
     //game constants
     g = {}
@@ -104,8 +111,8 @@ test("*map command with map url", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["map"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
 
     //first argument - map_url
     expect(WorldEdit.changeMap[0]).to.equal("http://MAPS.COM/MAP.PNG")
@@ -119,8 +126,9 @@ test("*map command without map url", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["map"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - map_url
     expect(WorldEdit.changeMap[0]).to.equal("")
     //second argument - layer
@@ -133,8 +141,9 @@ test("*addGraf command with collision", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["addGraf"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - x
     expect(WorldEdit.addNpc[0]).to.equal(2)
     //second argument - y
@@ -153,8 +162,9 @@ test("*addGraf command without collision", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["addGraf"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - x
     expect(WorldEdit.addNpc[0]).to.equal(2)
     //second argument - y
@@ -173,8 +183,9 @@ test("*addGraf command with collision set to 0", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["addGraf"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - x
     expect(WorldEdit.addNpc[0]).to.equal(2)
     //second argument - y
@@ -193,8 +204,9 @@ test("*delGraf command", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["delGraf"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - x
     expect(WorldEdit.deleteNpc[0]).to.equal(2)
     //second argument - y
@@ -207,8 +219,8 @@ test("*light command", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["light"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+    expect(ch).to.be.equal(false)
+
     //first argument - opacity
     expect(WorldEdit.changeLight).to.equal(0.7)
 })
@@ -219,8 +231,9 @@ test("*light command reset to default light", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["light"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - opacity
     expect(WorldEdit.changeLight).to.equal(undefined)
 })
@@ -231,8 +244,9 @@ test("*light command with ','", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["light"](command)
-    expect(ch.t).to.be.equal("")
-    expect(ch.n).to.be.equal("")
+
+    expect(ch).to.be.equal(false)
+
     //first argument - opacity
     expect(WorldEdit.changeLight).to.equal(0.7)
 })
@@ -392,6 +406,9 @@ test("*weather command", function() {
         n: ""
     }
     const ch = nerthus.chatCmd.map["weather"](command)
-    expect(ch).to.be.equal(true)
+
+    expect(ch).to.be.equal(false)
     expect(nerthus_weather_bard_id).to.be.equal(7)
 })
+
+//TODO more tests

@@ -606,9 +606,13 @@ nerthus.npc.load_npcs_ni = function ()
     }
 }
 
-nerthus.npc.load_npcs_from_file = function(url)
+nerthus.npc.load_npcs_from_file = function (url)
 {
-    $.getJSON(url, function(npcs){npcs.forEach(nerthus.npc.deploy.bind(nerthus.npc))})
+    $.getJSON(url, function (npcs)
+    {
+        if (npcs)
+            npcs.forEach(nerthus.npc.deploy.bind(nerthus.npc))
+    })
 }
 
 nerthus.npc.dialog.check = function (command)

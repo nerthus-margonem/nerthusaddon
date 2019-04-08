@@ -131,11 +131,11 @@ nerthus.worldEdit.changeMap = function (url, layer)
     switch (layer)
     {
         case 1:
-            $edit = $("#ground")
+            $edit = $("#bground")
             break
         case 0:
         default:
-            $edit = $("#bground")
+            $edit = $("#ground")
             break
     }
     $edit.css("backgroundImage", "url(" + url + ")")

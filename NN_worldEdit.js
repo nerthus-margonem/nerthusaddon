@@ -237,18 +237,25 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y)
 
 nerthus.worldEdit.changeMap = function (url, layer)
 {
-    let $edit
-    switch (layer)
+    //never change $("#bground") backgroundImage, as it's default one and we don't want to display black map
+    if (url)
     {
-        case 1:
-            $edit = $("#bground")
-            break
-        case 0:
-        default:
-            $edit = $("#ground")
-            break
+        const img = new Image()
+        img.src = url
+        this.mapImages[layer] = img
     }
-    $edit.css("backgroundImage", "url(" + url + ")")
+    else
+    {
+        delete this.mapImages[layer]
+
+        this.mapImages = this.mapImages.filter(function (el) {
+            return el != null;
+        });
+    }
+
+    const mapImagesLen = this.mapImages.length
+    if (mapImagesLen > 0)
+        $("#ground").css("backgroundImage", "url(" + this.mapImages[mapImagesLen - 1].src + ")")
 }
 
 nerthus.worldEdit.changeMap_ni = function (url, layer)
@@ -257,10 +264,17 @@ nerthus.worldEdit.changeMap_ni = function (url, layer)
     {
         let img = new Image()
         img.src = url
-        nerthus.worldEdit.mapImages[layer] = img
+        this.mapImages[layer] = img
     }
     else
-        delete nerthus.worldEdit.mapImages[layer]
+    {
+
+        delete this.mapImages[layer]
+
+        this.mapImages = this.mapImages.filter(function (el) {
+            return el != null;
+        });
+    }
 }
 
 nerthus.worldEdit.startMapChanging_ni = function ()
@@ -273,9 +287,18 @@ nerthus.worldEdit.startMapChanging_ni = function ()
         tmpMapDraw.call(Engine.map, Canvas_rendering_context);
 
         //draw new maps on top of map
-        //'for in' so that we won't try to draw empty attribute by accidental
-        for (const i in nerthus.worldEdit.mapImages)
+
+        const mapImagesLen = nerthus.worldEdit.mapImages.length
+        /*
+        // currently on SI there is no (programmed) way of displaying more than 1 layer.
+        // So this part of code, while better than current one, is commented out to remain consistent.
+
+        for (let i = 0; i < mapImagesLen; i++)
             Canvas_rendering_context.drawImage(nerthus.worldEdit.mapImages[i], 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+         */
+        if (mapImagesLen > 0)
+            Canvas_rendering_context.drawImage(nerthus.worldEdit.mapImages[mapImagesLen - 1], 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+
 
         //draw goMark (red X on ground that shows you where you've clicked)
         if (Engine.map.goMark)

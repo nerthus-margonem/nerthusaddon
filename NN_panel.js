@@ -3,6 +3,20 @@
     Plik zawiera funkcje do ustawiania tarczy otwierającej panel**/
 
 nerthus.panel = {}
+nerthus.panel.settings_translations = {
+    "night": "Pory dnia i nocy",
+    "weather": "Pogoda",
+    "zodiac": "Znaki zodiaku",
+    "hideNpcs": "Ukrywanie NPCów"
+}
+
+nerthus.panel.translate_option = function (name)
+{
+    if(nerthus.panel.settings_translations[name])
+        return nerthus.panel.settings_translations[name]
+    return name
+}
+
 
 nerthus.panel.create_icon = function()
 {
@@ -58,7 +72,7 @@ nerthus.panel.settings_str = function()
     for(const option in nerthus.options)
     {
         let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
-        let $cb_name = $("<b>").text(option)
+        let $cb_name = $("<b>").text(this.translate_option(option))
         $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
     return $settings
@@ -90,7 +104,7 @@ nerthus.panel.settings_str_ni = function()
     for(const option in nerthus.options)
     {
         let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option],'style': 'cursor: url(../img/gui/cursor/5.png), auto'})
-        let $cb_name = $("<b>").text(option)
+        let $cb_name = $("<b>").text(this.translate_option(option))
         $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
     return $settings

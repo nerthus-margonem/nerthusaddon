@@ -7,6 +7,7 @@ nerthus.worldEdit.additionalDrawList = []
 nerthus.worldEdit.nightDimValue = -1
 nerthus.worldEdit.lightDrawList = []
 nerthus.worldEdit.lightTypes = {}
+nerthus.worldEdit.npcHideList = []
 
 nerthus.worldEdit.weatherDisplayOn = false
 nerthus.worldEdit.weatherCurrentFrameNumbers = {
@@ -523,9 +524,52 @@ nerthus.worldEdit.changeLight_ni = function (opacity)
     nerthus.worldEdit.nightDimValue = opacity
 }
 
+
+nerthus.worldEdit.hideNpc = function (id)
+{
+    if (nerthus.options.hideNpcs)
+        $("#Nerthus-npc-hiding").append("#npc" + id + "{display: none}")
+}
+
+nerthus.worldEdit.startNpcHiding = function ()
+{
+    const tmpNpcDraw = Engine.npcs.getDrawableList
+    Engine.npcs.getDrawableList = function ()
+    {
+        let ret = tmpNpcDraw()
+        let retLen = ret.length
+        const listLen = nerthus.worldEdit.npcHideList.length
+        for (let i = 0; i < retLen; i++)
+        {
+            for (let j = 0; j < listLen; j++)
+            {
+                if (ret[i].d.id === nerthus.worldEdit.npcHideList[j])
+                {
+                    ret.splice(i, 1)
+                    retLen = retLen - 1
+                    break
+                }
+            }
+
+        }
+        return ret
+    }
+}
+
+nerthus.worldEdit.hideNpc_ni = function (id)
+{
+    nerthus.worldEdit.npcHideList.push(id)
+}
+
 nerthus.worldEdit.start = function ()
 {
+    if (nerthus.options.hideNpcs)
+        $("head").append("<style id='Nerthus-npc-hiding'></style>")
+}
 
+nerthus.worldEdit.purgeNpcList = function ()
+{
+    this.npcHideList = []
 }
 
 nerthus.worldEdit.start_ni = function ()
@@ -545,6 +589,10 @@ nerthus.worldEdit.start_ni = function ()
         this.displayWeatherEffect = this.displayWeatherEffect_ni
         this.clearWeather = this.clearWeather_ni
 
+        this.hideNpc = this.hideNpc_ni
+
+        if (nerthus.options.hideNpcs)
+            this.startNpcHiding()
         this.startMapChanging_ni()
     }
 }

@@ -142,37 +142,46 @@ nerthus.worldEdit.deleteCollision_ni = function (x, y)
     Engine.map.col.unset(x, y, 2)
 }
 
-nerthus.worldEdit.addNpc = function (x, y, url, name, collision)
+nerthus.worldEdit.addNpc = function (x, y, url, name, collision, map_id)
 {
-    let tip = name ? ' tip="<b>' + name + '</b>" ctip="t_npc"' : ""
-    let $npc = $('<img id="_ng-' + x + '-' + y + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
-        .css("position", "absolute")
-        .appendTo('#base')
-        .load(function ()
-        {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-            let _x = 32 * x + 16 - Math.floor($(this).width() / 2)
-            let _y = 32 * y + 32 - $(this).height()
-            $(this)
-                .css({
-                    "top": "" + _y + "px",
-                    "left": "" + _x + "px",
-                    "z-index": y * 2 + 9
-                })
-        })
-    if (collision)
-        this.addCollision(x, y)
+    if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
+    {
+        const tip = name ? ' tip="<b>' + name + '</b>" ctip="t_npc"' : ""
+        const $npc = $('<img id="_ng-' + x + '-' + y + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
+            .css("position", "absolute")
+            .appendTo('#base')
+            .load(function ()
+            {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
+                const _x = 32 * x + 16 - Math.floor($(this).width() / 2)
+                const _y = 32 * y + 32 - $(this).height()
+                $(this)
+                    .css({
+                        "top": "" + _y + "px",
+                        "left": "" + _x + "px",
+                        "z-index": y * 2 + 9
+                    })
+            })
+        if (collision)
+            this.addCollision(x, y)
 
-    this.npcs.push([$npc, x, y, url, name])
+        this.npcs.push([$npc, x, y, url, name, collision, map_id])
+    }
 }
 
-nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision)
+nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
 {
-    let exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
-    let match = exp.exec(url)
+    this.npcs.push([x, y, url, name, collision, map_id])
+    if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
+        this.paintNpc_ni(x, y, url, name, collision, map_id)
+}
 
-    let id = 10000000 + (x * 1000) + y //id that no other game npc will have
+nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
+{
+    const exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
+    const match = exp.exec(url)
+
+    const id = 10000000 + (x * 1000) + y //id that no other game npc will have
     let data = {}
-
     data[id] = {
         actions: 0,
         grp: 0,
@@ -185,7 +194,7 @@ nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision)
     if (match[4] === "gif")
     {
         data[id].icon = match[2]
-        let npath = CFG.npath
+        const npath = CFG.npath
         CFG.npath = match[1]
         Engine.npcs.updateData(data)
         CFG.npath = npath
@@ -194,46 +203,77 @@ nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision)
     {
         data[id].icon = "obj/cos.gif"
         Engine.npcs.updateData(data)
-        let image = new Image()
+        const image = new Image()
         image.src = url
 
-        let _x = 32 * x + 16 - Math.floor(image.width / 2)
-        let _y = 32 * y + 32 - image.height
-        let obj = {
+        const _x = 32 * x + 16 - Math.floor(image.width / 2)
+        const _y = 32 * y + 32 - image.height
+        const obj = {
             image: image,
             x: _x,
             y: _y,
-            id: id
+            id: id,
+            map_id: map_id
         }
         nerthus.worldEdit.additionalDrawList.push(obj)
     }
 
 
-    if (collision)
-        this.addCollision_ni()
+    if (collision && (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id))
+        this.addCollision_ni(x, y)
 }
 
-nerthus.worldEdit.deleteNpc = function (x, y)
-{
-    $('#_ng-' + x + '-' + y).remove()
-    this.deleteCollision(x, y)
-}
 
-nerthus.worldEdit.deleteNpc_ni = function (x, y)
+nerthus.worldEdit.readdNpcList_ni = function ()
 {
-    let id = 10000000 + (x * 1000) + y //id that no other game npc will have
-    let data = {}
-    data[id] = {
-        del: 1,
-        id: id.toString()
-    }
-    Engine.npcs.updateData(data)
-    for (const i in nerthus.worldEdit.additionalDrawList)
+    this.npcs.forEach(function (npc)
     {
-        if (nerthus.worldEdit.additionalDrawList[i].id === id)
-            delete nerthus.worldEdit.additionalDrawList[i]
+        console.log(npc)
+        console.log(parseInt(npc[5]))
+        console.log(Engine.map.d.id)
+        if (typeof npc[5] === "undefined" || parseInt(npc[5]) === Engine.map.d.id)
+            nerthus.worldEdit.paintNpc_ni(npc[0], npc[1], npc[2], npc[3], npc[4], npc[5])
+    })
+}
+
+nerthus.worldEdit.deleteNpc = function (x, y, map_id)
+{
+    if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
+    {
+        $('#_ng-' + x + '-' + y).remove()
+        this.deleteCollision(x, y)
     }
-    this.deleteCollision_ni(x, y)
+}
+
+nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
+{
+    console.table([x,y,map_id])
+    if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
+    {
+        const id = 10000000 + (x * 1000) + y //id that no other game npc will have
+        let data = {}
+        data[id] = {
+            del: 1,
+            id: id.toString()
+        }
+        Engine.npcs.updateData(data)
+        for (const i in nerthus.worldEdit.additionalDrawList)
+        {
+            if (nerthus.worldEdit.additionalDrawList[i].id === id)
+                delete nerthus.worldEdit.additionalDrawList[i]
+        }
+        this.deleteCollision_ni(x, y)
+    }
+
+    console.log(this.npcs)
+    for (let i = 0; i < this.npcs.length; i++)
+        if (this.npcs[i][0] === x && this.npcs[i][1] === y)
+            if (typeof map_id === "undefined" || parseInt(map_id) === parseInt(this.npcs[i][5]))
+            {
+                console.log(this.npcs)
+                this.npcs.splice(i, 1)
+                console.log(this.npcs)
+            }
 }
 
 nerthus.worldEdit.changeMap = function (url, layer)
@@ -281,7 +321,7 @@ nerthus.worldEdit.changeMap_ni = function (url, layer)
 nerthus.worldEdit.startMapChanging_ni = function ()
 {
     //manipulation of map
-    let tmpMapDraw = Engine.map.draw
+    const tmpMapDraw = Engine.map.draw
     Engine.map.draw = function (Canvas_rendering_context)
     {
         //draw normal map
@@ -289,7 +329,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
 
         //draw new maps on top of map
 
-        const mapImagesLen = nerthus.worldEdit.mapImages.length
+        const mapImagesLength = nerthus.worldEdit.mapImages.length
         /*
         // currently on SI there is no (programmed) way of displaying more than 1 layer.
         // So this part of code, while better than current one, is commented out to remain consistent.
@@ -297,8 +337,11 @@ nerthus.worldEdit.startMapChanging_ni = function ()
         for (let i = 0; i < mapImagesLen; i++)
             Canvas_rendering_context.drawImage(nerthus.worldEdit.mapImages[i], 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
          */
-        if (mapImagesLen > 0)
-            Canvas_rendering_context.drawImage(nerthus.worldEdit.mapImages[mapImagesLen - 1], 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+        if (mapImagesLength > 0)
+            Canvas_rendering_context.drawImage(
+                nerthus.worldEdit.mapImages[mapImagesLength - 1],
+                0 - Engine.map.offset[0],
+                0 - Engine.map.offset[1])
 
 
         //draw goMark (red X on ground that shows you where you've clicked)
@@ -306,17 +349,21 @@ nerthus.worldEdit.startMapChanging_ni = function ()
             Engine.map.drawGoMark(Canvas_rendering_context)
 
         //draw additional things/png npcs after map
-        for (const i in nerthus.worldEdit.additionalDrawList)
+        const drawListLength = nerthus.worldEdit.additionalDrawList.length
+        for (let i = 0; i < drawListLength; i++)
         {
-            Canvas_rendering_context.drawImage(
-                nerthus.worldEdit.additionalDrawList[i].image,
-                nerthus.worldEdit.additionalDrawList[i].x - Engine.map.offset[0],
-                nerthus.worldEdit.additionalDrawList[i].y - Engine.map.offset[1])
+            if (typeof nerthus.worldEdit.additionalDrawList[i].map_id !== "undefined" ||
+                nerthus.worldEdit.additionalDrawList[i].map_id === Engine.map.d.id)
+
+                Canvas_rendering_context.drawImage(
+                    nerthus.worldEdit.additionalDrawList[i].image,
+                    nerthus.worldEdit.additionalDrawList[i].x - Engine.map.offset[0],
+                    nerthus.worldEdit.additionalDrawList[i].y - Engine.map.offset[1])
         }
     }
 
     //manipulation of other
-    let tmpEmotionsDraw = Engine.emotions.getDrawableList
+    const tmpEmotionsDraw = Engine.emotions.getDrawableList
     Engine.emotions.getDrawableList = function ()
     {
         let ret = tmpEmotionsDraw()
@@ -594,5 +641,7 @@ nerthus.worldEdit.start_ni = function ()
         if (nerthus.options.hideNpcs)
             this.startNpcHiding()
         this.startMapChanging_ni()
+
+        nerthus.loadOnEveryMap(this.readdNpcList_ni.bind(this))
     }
 }

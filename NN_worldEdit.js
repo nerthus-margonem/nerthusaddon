@@ -221,6 +221,8 @@ nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
 
     if (collision && (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id))
         this.addCollision_ni(x, y)
+    else
+        this.deleteCollision_ni(x, y, 2) //apparently NI adds default collision when adding NPC
 }
 
 

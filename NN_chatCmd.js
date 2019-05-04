@@ -151,7 +151,7 @@ nerthus.chatCmd.map["sys"] = function(ch)
 
 nerthus.chatCmd.map["map"] = function(ch)
 {
-    let map_url = ch.t.split(" ").slice(1).join(" ")
+    const map_url = ch.t.split(" ").slice(1).join(" ")
     nerthus.worldEdit.changeMap(map_url, 1)
 
     return false
@@ -172,26 +172,28 @@ nerthus.chatCmd.map["light"] = function(ch)
 }
 
 nerthus.chatCmd.map["addGraf"] = function (ch)
-{  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol
-    let cmd = ch.t.split(" ").slice(1).join(" ").split(",")
-    let x = parseInt(cmd[0])
-    let y = parseInt(cmd[1])
-    let _url = cmd[2]
-    let name = cmd[3]
-    let isCol = parseInt(cmd[4]) > 0
+{  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
+    const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
+    const x = parseInt(cmd[0])
+    const y = parseInt(cmd[1])
+    const _url = cmd[2]
+    const name = cmd[3]
+    const isCol = parseInt(cmd[4]) > 0
+    const map_id = cmd[5]
 
-    nerthus.worldEdit.addNpc(x, y, _url, name, isCol)
+    nerthus.worldEdit.addNpc(x, y, _url, name, isCol, map_id)
 
     return false
 }
 
 nerthus.chatCmd.map["delGraf"] = function(ch)
 {
-    let cmd = ch.t.split(" ")[1].split(",")
-    let x = parseInt(cmd[0])
-    let y = parseInt(cmd[1])
+    const cmd = ch.t.split(" ")[1].split(",")
+    const x = parseInt(cmd[0])
+    const y = parseInt(cmd[1])
+    const map_id = cmd[2]
 
-    nerthus.worldEdit.deleteNpc(x, y)
+    nerthus.worldEdit.deleteNpc(x, y, map_id)
 
     return false
 }

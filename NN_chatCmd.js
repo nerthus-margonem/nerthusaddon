@@ -63,7 +63,12 @@ nerthus.chatCmd.fixUrl = function(text)
 nerthus.chatCmd.fetch_cmd = function (ch)
 {
     if (ch.t[0] === '*')
-        return RegExp(/^\*(\S+)/).exec(ch.t)[1]
+    {
+        const command = RegExp(/^\*(\S+)/).exec(ch.t)
+        //fixes bug with /dice, and presumably '* text' messages
+        if (command)
+            return command[1]
+    }
 }
 
 nerthus.chatCmd.fetch_callback = function(cmd,ch)

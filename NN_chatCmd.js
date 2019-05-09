@@ -203,6 +203,16 @@ nerthus.chatCmd.map["delGraf"] = function(ch)
     return false
 }
 
+nerthus.chatCmd.map["hide"] = function(ch)
+{
+    const cmd = ch.t.split(" ")[1].split(",")
+    const id = parseInt(cmd[0])
+
+    nerthus.worldEdit.hideGameNpc(id)
+
+    return false
+}
+
 nerthus.chatCmd.map["weather"] = function(ch)
 {
     var weather_id = parseInt(ch.t.split(" ")[1])

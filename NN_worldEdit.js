@@ -121,7 +121,6 @@ nerthus.worldEdit.displayWeatherEffect_ni = function (name, opacity)
 }
 
 
-
 nerthus.worldEdit.addCollision = function (x, y)
 {
     g.npccol[x + 256 * y] = true
@@ -249,7 +248,6 @@ nerthus.worldEdit.deleteNpc = function (x, y, map_id)
 
 nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
 {
-    console.table([x,y,map_id])
     if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
     {
         const id = 10000000 + (x * 1000) + y //id that no other game npc will have
@@ -267,15 +265,11 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
         this.deleteCollision_ni(x, y)
     }
 
-    console.log(this.npcs)
+
     for (let i = 0; i < this.npcs.length; i++)
         if (this.npcs[i][0] === x && this.npcs[i][1] === y)
             if (typeof map_id === "undefined" || parseInt(map_id) === parseInt(this.npcs[i][5]))
-            {
-                console.log(this.npcs)
                 this.npcs.splice(i, 1)
-                console.log(this.npcs)
-            }
 }
 
 nerthus.worldEdit.changeMap = function (url, layer)
@@ -291,9 +285,10 @@ nerthus.worldEdit.changeMap = function (url, layer)
     {
         delete this.mapImages[layer]
 
-        this.mapImages = this.mapImages.filter(function (el) {
-            return el != null;
-        });
+        this.mapImages = this.mapImages.filter(function (el)
+        {
+            return el != null
+        })
     }
 
     const mapImagesLen = this.mapImages.length
@@ -314,9 +309,10 @@ nerthus.worldEdit.changeMap_ni = function (url, layer)
 
         delete this.mapImages[layer]
 
-        this.mapImages = this.mapImages.filter(function (el) {
-            return el != null;
-        });
+        this.mapImages = this.mapImages.filter(function (el)
+        {
+            return el != null
+        })
     }
 }
 
@@ -327,7 +323,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
     Engine.map.draw = function (Canvas_rendering_context)
     {
         //draw normal map
-        tmpMapDraw.call(Engine.map, Canvas_rendering_context);
+        tmpMapDraw.call(Engine.map, Canvas_rendering_context)
 
         //draw new maps on top of map
 
@@ -389,7 +385,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
         ret.push({
             draw: function (e)
             {
-                if(nerthus.worldEdit.weatherDisplayOn)
+                if (nerthus.worldEdit.weatherDisplayOn)
                 {
                     const len = nerthus.worldEdit.currentWeatherEffects.length
                     for (let i = 0; i < len; i++)
@@ -574,13 +570,26 @@ nerthus.worldEdit.changeLight_ni = function (opacity)
 }
 
 
-nerthus.worldEdit.hideNpc = function (id)
+nerthus.worldEdit.hideGameNpc = function (id)
 {
+    nerthus.worldEdit.npcHideList.push(id)
+
+    const $style = $("#Nerthus-npc-hiding")
     if (nerthus.options.hideNpcs)
-        $("#Nerthus-npc-hiding").append("#npc" + id + "{display: none}")
+        if ($style[0])
+            $style.append("#npc" + id + "{display: none}")
+}
+nerthus.worldEdit.startNpcHiding = function ()
+{
+    $("head").append("<style id='Nerthus-npc-hiding'></style>")
+    const $style = $("#Nerthus-npc-hiding")
+
+    const len = nerthus.worldEdit.npcHideList.length
+    for (let id = 0; id < len; id++)
+        $style.append("#npc" + nerthus.worldEdit.npcHideList[id] + "{display: none}")
 }
 
-nerthus.worldEdit.startNpcHiding = function ()
+nerthus.worldEdit.startNpcHiding_ni = function ()
 {
     const tmpNpcDraw = Engine.npcs.getDrawableList
     Engine.npcs.getDrawableList = function ()
@@ -605,20 +614,21 @@ nerthus.worldEdit.startNpcHiding = function ()
     }
 }
 
-nerthus.worldEdit.hideNpc_ni = function (id)
+nerthus.worldEdit.hideGameNpc_ni = function (id)
 {
-    nerthus.worldEdit.npcHideList.push(id)
+    nerthus.worldEdit.npcHideList.push(id.toString())
+}
+
+
+nerthus.worldEdit.purgeNpcList = function ()
+{
+    this.npcHideList = []
 }
 
 nerthus.worldEdit.start = function ()
 {
     if (nerthus.options.hideNpcs)
-        $("head").append("<style id='Nerthus-npc-hiding'></style>")
-}
-
-nerthus.worldEdit.purgeNpcList = function ()
-{
-    this.npcHideList = []
+        nerthus.defer(this.startNpcHiding.bind(this))
 }
 
 nerthus.worldEdit.start_ni = function ()
@@ -638,10 +648,10 @@ nerthus.worldEdit.start_ni = function ()
         this.displayWeatherEffect = this.displayWeatherEffect_ni
         this.clearWeather = this.clearWeather_ni
 
-        this.hideNpc = this.hideNpc_ni
+        this.hideGameNpc = this.hideGameNpc_ni
 
         if (nerthus.options.hideNpcs)
-            this.startNpcHiding()
+            this.startNpcHiding_ni()
         this.startMapChanging_ni()
 
         nerthus.loadOnEveryMap(this.readdNpcList_ni.bind(this))

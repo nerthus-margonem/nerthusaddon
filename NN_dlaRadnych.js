@@ -113,8 +113,8 @@ nerthus.vips = {
     10523 : 'Lux Aeterna',
     14615 : 'Iluzjonista',
     10222 : 'Władca Ciemności',
-    15746 : 'Miłośniczka kocimiętki'
-    19126 : 'Test'
+    15746 : 'Miłośniczka kocimiętki',
+    19126 : 'Test',
     16360 : 'Głos Bogów'
 }
 

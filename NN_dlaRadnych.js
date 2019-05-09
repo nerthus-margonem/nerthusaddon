@@ -38,6 +38,7 @@ nerthus.NerthusNarr = [
     'Rothe',
     'Argetus',
     'Kamivis'
+    'Velrin z Vermyru'
 ]
 
 //Nazwy rang tych zamiast lvla

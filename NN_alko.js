@@ -52,35 +52,47 @@ nerthus.alko.shuffleMessage = function(msg)
     if(["*/@"].indexOf(msg[0]) >= 0 || (this.lvl <= 0))
         return msg
 
+    let t = []
     switch (Math.floor(this.lvl/10))
     {
+        case 10:
         case 9: msg = "/me bełkota coś niezrozumiale."
             break
         case 8:
             msg = this.shuffleArray(msg.split(" ")).join(" ")
         case 7:
             t = msg.split(", ")
-            for (tt in t) t[tt]=this.shuffleArray(t[tt].split(" ")).join(" ")
+            for (const index in t)
+                t[index]=this.shuffleArray(t[index].split(" ")).join(" ")
             msg = t.join(", ")
         case 6:
             t = msg.split(", ")
-            for (tt in t) t[tt]=this.shuffleArray(t[tt].split(" "),1).join(" ")
+            for (const index in t)
+                t[index]=this.shuffleArray(t[index].split(" "),1).join(" ")
             msg = t.join(", ");
         case 5:
             t = msg.split(" ")
-            for (tt in t) if (t[tt].length > 4) t[tt]=this.shuffleArray(t[tt].split("")).join("")
+            for (const index in t)
+                if (t[index].length > 4)
+                    t[index]=this.shuffleArray(t[index].split("")).join("")
             msg = t.join(" ")
         case 4:
             t = msg.split(" ")
-            for (tt in t) if (t[tt].length > 5) t[tt]=this.shuffleArray(t[tt].split("")).join("")
+            for (const index in t)
+                if (t[index].length > 5)
+                    t[index]=this.shuffleArray(t[index].split("")).join("")
             msg = t.join(" ")
         case 3:
             t = msg.split(" ")
-            for (tt in t) if (t[tt].length > 4) t[tt]=this.shuffleArray(t[tt].split(""),1).join("")
+            for (const index in t)
+                if (t[index].length > 4)
+                    t[index]=this.shuffleArray(t[index].split(""),1).join("")
             msg = t.join(" ")
         case 2:
             t = msg.split(" ");
-            for (tt in t) if (t[tt].length > 5) t[tt]=this.shuffleArray(t[tt].split(""),1).join("")
+            for (const index in t)
+                if (t[index].length > 5)
+                    t[index]=this.shuffleArray(t[index].split(""),1).join("")
             msg = t.join(" ");
         case 1:
             msg = msg.replace(/\.|\,|\:|\?|\!|\-/g," *hik*")

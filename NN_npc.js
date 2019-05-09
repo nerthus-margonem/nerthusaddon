@@ -514,7 +514,7 @@ nerthus.npc.deploy = function (npc)
     {
         if(!this.is_deployable(npc) || !this.is_deletable(npc))
             return
-        nerthus.worldEdit.hideNpc(npc.id)
+        nerthus.worldEdit.hideGameNpc(npc.id)
     }
     else
     {

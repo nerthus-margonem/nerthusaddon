@@ -113,9 +113,9 @@ nerthus.vips = {
     10523 : 'Lux Aeterna',
     14615 : 'Iluzjonista',
     10222 : 'Władca Ciemności',
-    15746 : 'Miłośniczka kocimiętki',
-    19126 : 'Test',
-    16360 : 'Głos Bogów'
+    15746 : 'Miłośniczka kocimiętki'
+  
+
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic

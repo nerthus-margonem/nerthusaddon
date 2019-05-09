@@ -29,7 +29,9 @@ nerthus.NerthusRad = [
                      ]
                       
 
-//Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
+//Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis'
+
+//PRZED KAŻDĄ KOLEJNĄ OSOBĄ MUSI ZNALEŹĆ SIĘ PRZECINEK!!!
 nerthus.NerthusNarr = [
     'Svain',
     'Laliemm',
@@ -37,7 +39,7 @@ nerthus.NerthusNarr = [
     'Materios Dragonius',
     'Rothe',
     'Argetus',
-    'Kamivis'
+    'Kamivis',
     'Velrin z Vermyru'
 ]
 

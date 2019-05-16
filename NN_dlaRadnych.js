@@ -34,7 +34,6 @@ nerthus.NerthusRad = [
 //PRZED KAŻDĄ KOLEJNĄ OSOBĄ MUSI ZNALEŹĆ SIĘ PRZECINEK!!!
 nerthus.NerthusNarr = [
     'Svain',
-    'Laliemm',
     'Kostryn',
     'Materios Dragonius',
     'Rothe',

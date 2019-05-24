@@ -233,7 +233,7 @@ nerthus.chatCmd.public_map["me"] = function (ch)
 nerthus.chatCmd.appendStyles = function()
 {
     let style = document.createElement('style')
-    style.innerHTML =  ".me{ color: #e7d798 !important }"
+    style.innerHTML =  ".me{ color: #f70 !important }"
         + ".sys_comm{ color: #f33 !important }"
         + ".nar{ color: lightblue !important }"
         + ".nar2{ color: #D6A2FF !important }"

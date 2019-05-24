@@ -31,7 +31,6 @@ nerthus.NerthusRad = [
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis',
 nerthus.NerthusNarr = [
     'Svain',
-    'Laliemm',
     'Kostryn',
     'Materios Dragonius',
     'Rothe',

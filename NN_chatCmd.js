@@ -34,24 +34,40 @@ nerthus.chatCmd.run_ni = function (e)
         $msg = e[0]
 
     if (ch.s !== "abs" && ch.s !== "") return
-    if (!this.run(e[1]))
+
+    const cmd = this.fetch_cmd(ch)
+    //if there is a command
+    if (cmd)
     {
-        console.log(ch)
-        $msg.addClass(ch.s)
-        let content = $msg.children().eq(2).contents()
-        $msg.children(2).addClass(ch.s)
-        for (let i = 0; i < content.length; i++)
+        const callback = this.fetch_callback(cmd, ch)
+        //if user typing command have permission for it
+        if (callback)
         {
-            let text = content.eq(i)
-            if (i === 0)
-                text.replaceWith(e[1].t)
+            ch.t = this.fixUrl(ch.t)
+            NerthusAddonUtils.log("[" + ch.k + "] " + ch.n + " -> " + ch.t) //[which tab] author -> command
+
+            //if after executing command you need to show results on chat
+            if (callback(ch))
+            {
+                $msg.addClass(ch.s)
+                let content = $msg.children().eq(2).contents()
+                $msg.children(2).addClass(ch.s)
+                for (let i = 0; i < content.length; i++)
+                {
+                    let text = content.eq(i)
+                    if (i === 0)
+                        text.replaceWith(e[1].t)
+                    else
+                        text.remove()
+                }
+                $msg.children().eq(0).contents().eq(0).replaceWith(ch.n)
+            }
             else
-                text.remove()
+                $msg.remove()
+
         }
-        $msg.children().eq(0).contents().eq(0).replaceWith(ch.n)
     }
-    else
-        $msg.remove()
+
 }
 
 nerthus.chatCmd.fixUrl = function(text)

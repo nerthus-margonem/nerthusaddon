@@ -131,7 +131,7 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
     if ($dialWin.length === 0)
     {
         let dial =
-            "<div class=\"dialogue-window\" style=\"height: 0;\">" +
+            "<div class=\"dialogue-window\">" +
             "<div class=\"background\">" +
             "<div class=\"upper-left\"></div>" +
             "<div class=\"upper-right\"></div>" +
@@ -176,11 +176,12 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
         this.updateScroll_ni()
         setTimeout(function ()
         {
-            $(".dialogue-window").css("height", "300px")
+            $(".dialogue-window").addClass("is-open")
         }, 10) //NI animation
     }
     else
     {
+        $(".dialogue-window").addClass("is-open")
         $dialWin.find(".content .inner.scroll-wrapper .scroll-pane").empty().append(innerDial)
         $dialWin.find(".content .inner.scroll-wrapper .scroll-pane .answers .answer").each(function (index)
         {
@@ -406,11 +407,7 @@ nerthus.npc.dialog.close = function ()
 
 nerthus.npc.dialog.close_ni = function ()
 {
-    $(".dialogue-window").css("height", "0")
-    setTimeout(function ()
-    {
-        $(".dialogue-window").remove()
-    }, 200) //NI animation
+    $(".dialogue-window").removeClass("is-open")
     Engine.lock.remove("nerthus_dialog")
 }
 

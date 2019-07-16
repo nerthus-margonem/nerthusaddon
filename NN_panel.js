@@ -126,10 +126,17 @@ nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart)
     {
-        let position = this.load_button_position()
+        const position = this.load_button_position()
         API.Storage.set("hotWidget/nerthus", position)
         Engine.interface.addKeyToDefaultWidgetSet("nerthus", position[0], position[1], "Nerthus", "green", this.display_panel.bind(this))
         Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
+
+        const oldAddWidgetButtons = Engine.interface.addWidgetButtons.bind(Engine.interface);
+        Engine.interface.addWidgetButtons = function (additionalBarHide)
+        {
+            oldAddWidgetButtons(additionalBarHide)
+            Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
+        }
     }
     else
     {

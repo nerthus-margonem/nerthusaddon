@@ -1,6 +1,6 @@
 /**
-    Name: Nerthus Panel
-    Plik zawiera funkcje do ustawiania tarczy otwierającej panel**/
+ Name: Nerthus Panel
+ Plik zawiera funkcje do ustawiania tarczy otwierającej panel**/
 
 nerthus.panel = {}
 nerthus.panel.settings_translations = {
@@ -21,8 +21,8 @@ nerthus.panel.translate_option = function (name)
 nerthus.panel.create_icon = function()
 {
     return $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus" data-tip="Nerthus">')
-    .mouseover(function(){$(this).css('opacity','0.6')})
-    .mouseout(function(){$(this).css('opacity','1')})
+        .mouseover(function(){$(this).css('opacity','0.6')})
+        .mouseout(function(){$(this).css('opacity','1')})
 }
 
 nerthus.panel.mAlert = null
@@ -88,6 +88,22 @@ nerthus.panel.settings_str_ni = function()
     for(const option in nerthus.options)
     {
         let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option],'style': 'cursor: url(../img/gui/cursor/5.png), auto'})
+        let $cb_name = $("<b>").text(option)
+        $settings.append($("<div>").append($cb).append($cb_name).hide())
+    }
+    return $settings
+}
+
+nerthus.panel.settings_str_ni = function()
+{
+    let $settings = $("<div>")
+    let info =
+        "<span style='text-decoration: underline; cursor: url(../img/gui/cursor/5.png), auto' class='nerthus-settings-button' " +
+        "onclick='$(\".nerthus-settings-button\").nextAll().toggle()'>Ustawienia</span>"
+    $settings.append(info)
+    for(const option in nerthus.options)
+    {
+        let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option],'style': 'cursor: url(../img/gui/cursor/5.png), auto'})
         let $cb_name = $("<b>").text(this.translate_option(option))
         $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
@@ -122,21 +138,22 @@ nerthus.panel.get_settings_ni = function ()
     return options
 }
 
+nerthus.panel.get_settings_ni = function ()
+{
+    let options = {}
+    for (const option in nerthus.options)
+        options[option] = $("#panCb" + option).prop("checked")
+    return options
+}
+
 nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart)
     {
         const position = this.load_button_position()
-        API.Storage.set("hotWidget/nerthus", position)
+        API.Storage.set("hotWidget/" + Engine.interface.getPathToHotWidgetVersion(true) + "/nerthus/", position)
         Engine.interface.addKeyToDefaultWidgetSet("nerthus", position[0], position[1], "Nerthus", "green", this.display_panel.bind(this))
         Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
-
-        const oldAddWidgetButtons = Engine.interface.addWidgetButtons.bind(Engine.interface);
-        Engine.interface.addWidgetButtons = function (additionalBarHide)
-        {
-            oldAddWidgetButtons(additionalBarHide)
-            Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
-        }
     }
     else
     {
@@ -146,7 +163,7 @@ nerthus.panel.create_button_ni = function ()
 
 nerthus.panel.load_button_position = function ()
 {
-    let position = API.Storage.get("hotWidget/nerthus")
+    let position = API.Storage.get("hotWidget/" + Engine.interface.getPathToHotWidgetVersion(true) + "/nerthus/")
     if (position)
         return position
     else

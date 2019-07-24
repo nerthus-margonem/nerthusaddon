@@ -13,7 +13,6 @@ nerthus.chatCmd.run = function (ch)
     if (cmd)
     {
         let callback = this.fetch_callback(cmd, ch)
-        console.log(callback)
         if (callback)
         {
             ch.t = this.fixUrl(ch.t)

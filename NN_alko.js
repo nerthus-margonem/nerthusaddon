@@ -102,23 +102,23 @@ nerthus.alko.shuffleMessage = function(msg)
     return msg
 }
 
-nerthus.alko.drink = function(c,d)
+nerthus.alko.drink = function (c, d)
 {
     // jeżli użyjemy towaru konsumpcyjnego o wymaganiach levelowych 18 to dodaje nam 10% upojenia alkoholowego
     var match = c.match(/^moveitem.*id=(\d+)/)
     if (match)
     {
-        var it = g.item[match[1]]
-        if (it.cl == 16 || it.cl == 23)
-        if (it.stat.search("lvl=") > -1)
-        if (parseInt(it.stat.match(/lvl=([0-9]+)/)[1]) == 18)
-        {
-            this.lvl += 10
-            if (this.lvl > 100)
-                this.lvl = 100
-            if (!this.timer)
-                this.timer = setInterval(this.timer_handler.bind(this), 10000)
-        }
+        const item = g.item[match[1]]
+        if (item && (item.cl === 16 || item.cl === 23))
+            if (item.stat.search("lvl=") > -1)
+                if (parseInt(item.stat.match(/lvl=([0-9]+)/)[1]) === 18)
+                {
+                    this.lvl += 10
+                    if (this.lvl > 100)
+                        this.lvl = 100
+                    if (!this.timer)
+                        this.timer = setInterval(this.timer_handler.bind(this), 10000)
+                }
     }
 }
 
@@ -129,8 +129,8 @@ nerthus.alko.drink_ni = function (command)
     if (match)
     {
 
-        let item = Engine.items.getItemById(match[1])
-        if (item.cl === 16 || item.cl === 23) //16 - konsumpcyjne, 23 - ???
+        const item = Engine.items.getItemById(match[1])
+        if (item && (item.cl === 16 || item.cl === 23)) //16 - konsumpcyjne, 23 - ???
             if (item.stat.search("lvl=") > -1)
                 if (parseInt(item.stat.match(/lvl=([0-9]+)/)[1]) === 18)
                 {

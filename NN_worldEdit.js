@@ -350,7 +350,7 @@ nerthus.worldEdit.startMapChanging_ni = function ()
         const drawListLength = nerthus.worldEdit.additionalDrawList.length
         for (let i = 0; i < drawListLength; i++)
         {
-            if (typeof nerthus.worldEdit.additionalDrawList[i].map_id !== "undefined" ||
+            if (typeof nerthus.worldEdit.additionalDrawList[i].map_id === "undefined" ||
                 nerthus.worldEdit.additionalDrawList[i].map_id === Engine.map.d.id)
 
                 Canvas_rendering_context.drawImage(
@@ -507,7 +507,11 @@ nerthus.worldEdit.changeDefaultLight = function (opacity)
 
         let $ground = $("#ground")
 
-        $("<div id=nNight></div>")
+        let $night = $("#nNight")
+        if (!$night.get(0))
+            $night = $("<div id=nNight></div>")
+
+        $night
             .css({
                 height: $ground.css("height"),
                 width: $ground.css("width"),

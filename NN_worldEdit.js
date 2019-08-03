@@ -507,7 +507,11 @@ nerthus.worldEdit.changeDefaultLight = function (opacity)
 
         let $ground = $("#ground")
 
-        $("<div id=nNight></div>")
+        let $night = $("#nNight")
+        if (!$night.get(0))
+            $night = $("<div id=nNight></div>")
+
+        $night
             .css({
                 height: $ground.css("height"),
                 width: $ground.css("width"),

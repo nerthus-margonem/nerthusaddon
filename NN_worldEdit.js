@@ -250,13 +250,17 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
 {
     if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
     {
-        const id = 10000000 + (x * 1000) + y //id that no other game npc will have
-        let data = {}
-        data[id] = {
-            del: 1,
-            id: id.toString()
+        const id = 10000000 + (x * 1000) + y //id that no other game npc will have(id))
+        if(Engine.npcs.getById(id))
+        {
+            console.log("updating data...")
+            let data = {}
+            data[id] = {
+                del: 1,
+                id: id.toString()
+            }
+            Engine.npcs.updateData(data)
         }
-        Engine.npcs.updateData(data)
         for (const i in nerthus.worldEdit.additionalDrawList)
         {
             if (nerthus.worldEdit.additionalDrawList[i].id === id)

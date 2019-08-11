@@ -109,7 +109,7 @@ nerthus.alko.drink = function (c, d)
     if (match)
     {
         const item = g.item[match[1]]
-        if (item && (item.cl === 16 || item.cl === 23))
+        if (item && (item.cl === 16))
             if (item.stat.search("lvl=") > -1)
                 if (parseInt(item.stat.match(/lvl=([0-9]+)/)[1]) === 18)
                 {
@@ -130,7 +130,7 @@ nerthus.alko.drink_ni = function (command)
     {
 
         const item = Engine.items.getItemById(match[1])
-        if (item && (item.cl === 16 || item.cl === 23)) //16 - konsumpcyjne, 23 - ???
+        if (item && (item.cl === 16)) //16 - konsumpcyjne
             if (item.stat.search("lvl=") > -1)
                 if (parseInt(item.stat.match(/lvl=([0-9]+)/)[1]) === 18)
                 {

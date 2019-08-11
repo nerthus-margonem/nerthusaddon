@@ -179,6 +179,8 @@ nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
     const exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
     const match = exp.exec(url)
 
+    if (name === "")
+        name = "nameless - " + x + "-" + y
     const id = 10000000 + (x * 1000) + y //id that no other game npc will have
     let data = {}
     data[id] = {
@@ -251,9 +253,8 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
     if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
     {
         const id = 10000000 + (x * 1000) + y //id that no other game npc will have(id))
-        if(Engine.npcs.getById(id))
+        if (Engine.npcs.getById(id))
         {
-            console.log("updating data...")
             let data = {}
             data[id] = {
                 del: 1,
@@ -265,6 +266,10 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
         {
             if (nerthus.worldEdit.additionalDrawList[i].id === id)
                 delete nerthus.worldEdit.additionalDrawList[i]
+            nerthus.worldEdit.additionalDrawList = nerthus.worldEdit.additionalDrawList.filter(function (el)
+            {
+                return el !== null
+            })
         }
         this.deleteCollision_ni(x, y)
     }

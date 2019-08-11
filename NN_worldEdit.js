@@ -184,17 +184,18 @@ nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
     data[id] = {
         actions: 0,
         grp: 0,
-        nick:  name === "" ? "nameless - " + x + "-" + y : name,
+        nick: name === "" ? "Bez nazwy" : name,
         type: name === "" ? 4 : 0,
         wt: 0,
         x: x,
         y: y
     }
+    console.log(data)
     if (match[4] === "gif")
     {
-        data[id].icon = match[2]
+        data[id].icon = url
         const npath = CFG.npath
-        CFG.npath = match[1]
+        CFG.npath = ""
         Engine.npcs.updateData(data)
         CFG.npath = npath
     }

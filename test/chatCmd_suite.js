@@ -51,6 +51,13 @@ before(function()
         }
     }
 
+    API = {
+        addCallbackToEvent(eventName, func) {
+
+        }
+    }
+
+
     expect = require("expect.js")
     require("../NN_chatCmd.js")
 

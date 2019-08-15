@@ -59,12 +59,14 @@ nerthus.night.lights.give_me_the_light = function()
     var togglemouseMove = $("<span>toggle move</span>").click(function(){hero.opt ^= 64; message("blocked: " + Boolean(hero.opt & 64))})
     $.getScript("http://addons2.margonem.pl/get/1/1689public.js",function()
     {
-        for(const i in nerthus.worldEdit.lightTypes)
-            aldiMenu.add($("<span>light "+i+"</span>").attr("type",i).click(function()
+        Object.keys(nerthus.worldEdit.lightTypes).forEach(function (type)
+        {
+            aldiMenu.add($("<span>light " + type + "</span>").attr("type", type).click(function ()
             {
-                var light = {'type' : $(this).attr("type"), 'x' : hero.x*32, 'y' : hero.y*32}
+                const light = {'type': type, 'x': hero.x * 32, 'y': hero.y * 32}
                 nerthus.night.lights.add_testable(light)
             }))
+        })
         aldiMenu.add(dumpLight)
         aldiMenu.add(addBorder)
         aldiMenu.add(delBorder)

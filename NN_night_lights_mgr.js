@@ -23,7 +23,7 @@ nerthus.night.lights.add_testable = function(light)
             pointerEvents: "none"
         })
         .addClass("nightLight")
-        .attr("type", light)
+        .attr("type", light.type)
         .appendTo("#ground"))
 }
 

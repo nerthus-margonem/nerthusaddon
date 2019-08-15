@@ -144,8 +144,6 @@ test("fetch callback narrator's map - not nar", () =>
     }
 
     const callback = nerthus.chatCmd.fetch_callback("PUBLIC",ch)
-    console.log(nerthus.isNarr())
-    console.log(callback)
     expect(callback).to.equal(undefined)
 
     nerthus.chatCmd.map = map

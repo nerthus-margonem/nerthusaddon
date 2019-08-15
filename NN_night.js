@@ -63,8 +63,6 @@ nerthus.night.start = function()
     this.lights.types.add("XL","192px")
     if(nerthus.options['night'])
     {
-        nerthus.defer(this.lights.on.bind(this.lights))
-        nerthus.defer(this.dim.bind(this, this.opacity()))
         nerthus.loadOnEveryMap(this.run.bind(this))
     }
 

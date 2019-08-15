@@ -359,6 +359,7 @@ nerthus.weather.start = function ()
     {
         nerthus.worldEdit.weatherDisplayOn = true
         nerthus.defer(this.run.bind(this))
+        nerthus.loadOnEveryMap(this.set_global_weather.bind(this))
     }
 }
 

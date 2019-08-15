@@ -19,11 +19,29 @@ nerthus.loadOnEveryMap = function (fun, data)
 }
 nerthus.loadNewMapQueue = function ()
 {
-
     for (const i in this.loadQueue)
     {
         this.loadQueue[i][0](this.loadQueue[i][1])
     }
+}
+
+//observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
+nerthus.startObservingMapChange_SI = function ()
+{
+    //map.y is one of the last properties loaded, so we just run every item in queue after it's defined
+    Object.defineProperty(window.map, "y", {
+        set(val)
+        {
+            this.__y = val;
+            nerthus.loadNewMapQueue()
+
+            return val;
+        },
+        get()
+        {
+            return this.__y
+        }
+    });
 }
 
 nerthus.seasons = {SPRING: 1, SUMMER: 2, AUTUMN: 3, WINTER: 4}
@@ -340,4 +358,6 @@ nerthus.base.start = function()
     nerthus.loadSettings()
     nerthus.setChatInfo()
     nerthus.setEnterMsg()
+
+    nerthus.startObservingMapChange_SI()
 }

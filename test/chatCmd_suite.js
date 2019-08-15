@@ -137,7 +137,7 @@ test("fetch callback narrator's map - not nar", () =>
     const map = nerthus.chatCmd.map
     nerthus.isNarr = nerthus.isRad = nerthus.isSpec = () => {return false}
     nerthus.chatCmd.map = {
-        "PUBLIC": "public"
+        "PUBLIC": "private"
     }
     const ch = {
         n: "Tester"

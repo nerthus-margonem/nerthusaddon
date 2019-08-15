@@ -96,6 +96,79 @@ test("styles appended when start NI executed", () =>
     expect(document.head.innerHTML).to.contain(style.innerHTML)
 })
 
+test("fetch callback public map - not nar", () =>
+{
+    const public_map = nerthus.chatCmd.public_map
+    nerthus.isNarr = nerthus.isRad = nerthus.isSpec = () => {return false}
+    nerthus.chatCmd.public_map = {
+        "PUBLIC": "public"
+    }
+    const ch = {
+        n: "Tester"
+    }
+
+    const callback = nerthus.chatCmd.fetch_callback("PUBLIC",ch)
+
+    expect(callback).to.equal("public")
+
+    nerthus.chatCmd.public_map = public_map
+})
+
+test("fetch callback public map - nar", () =>
+{
+    const public_map = nerthus.chatCmd.public_map
+    nerthus.isNarr = nerthus.isRad = nerthus.isSpec = () => {return true}
+    nerthus.chatCmd.public_map = {
+        "PUBLIC": "public"
+    }
+    const ch = {
+        n: "Tester"
+    }
+
+    const callback = nerthus.chatCmd.fetch_callback("PUBLIC",ch)
+
+    expect(callback).to.equal("public")
+
+    nerthus.chatCmd.public_map = public_map
+})
+
+test("fetch callback narrator's map - not nar", () =>
+{
+    const map = nerthus.chatCmd.map
+    nerthus.isNarr = nerthus.isRad = nerthus.isSpec = () => {return false}
+    nerthus.chatCmd.map = {
+        "PUBLIC": "public"
+    }
+    const ch = {
+        n: "Tester"
+    }
+
+    const callback = nerthus.chatCmd.fetch_callback("PUBLIC",ch)
+    console.log(nerthus.isNarr())
+    console.log(callback)
+    expect(callback).to.equal(undefined)
+
+    nerthus.chatCmd.map = map
+})
+
+test("fetch callback narrator's map - nar", () =>
+{
+    const map = nerthus.chatCmd.map
+    nerthus.isNarr = nerthus.isRad = nerthus.isSpec = () => {return true}
+    nerthus.chatCmd.map = {
+        "NARRATORS": "private"
+    }
+    const ch = {
+        n: "Tester"
+    }
+
+    const callback = nerthus.chatCmd.fetch_callback("NARRATORS",ch)
+
+    expect(callback).to.equal("private")
+
+    nerthus.chatCmd.map = map
+})
+
 test("fetch command from ch object", function()
 {
     const ch = {

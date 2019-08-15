@@ -86,12 +86,12 @@ nerthus.chatCmd.fetch_cmd = function (ch)
     }
 }
 
-nerthus.chatCmd.fetch_callback = function(cmd,ch)
+nerthus.chatCmd.fetch_callback = function (cmd, ch)
 {
-    let callback = this.public_map[cmd]
-    if(!callback && (nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)))
-        callback = this.map[cmd]
-    return callback
+    if ((nerthus.isNarr(ch.n) || nerthus.isRad(ch.n) || nerthus.isSpec(ch.n)) && this.map[cmd])
+        return this.map[cmd]
+    else
+        return this.public_map[cmd]
 }
 
 nerthus.chatCmd.map["nar"] = function(ch)

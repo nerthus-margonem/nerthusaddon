@@ -498,17 +498,9 @@ nerthus.worldEdit.addLights_ni = function (lights)
 
 nerthus.worldEdit.changeDefaultLight = function (opacity)
 {
-    if (opacity && nerthus.worldEdit.nightDimValue === -1)
+    if (nerthus.worldEdit.nightDimValue === -1)
     {
-        opacity = 0
-        const hour = new Date().getHours()
-        if (hour >= 18) opacity = 0.3
-        if (hour >= 21) opacity = 0.6
-        if (hour <= 4) opacity = 0.8
-        if (map.mainid !== 0)
-            opacity = 0
-
-        let $ground = $("#ground")
+        const $ground = $("#ground")
 
         let $night = $("#nNight")
         if (!$night.get(0))
@@ -516,8 +508,8 @@ nerthus.worldEdit.changeDefaultLight = function (opacity)
 
         $night
             .css({
-                height: $ground.css("height"),
-                width: $ground.css("width"),
+                height: map.y * 32,
+                width: map.x * 32,
                 zIndex: map.y * 2 + 11,
                 opacity: opacity,
                 pointerEvents: "none",
@@ -576,6 +568,19 @@ nerthus.worldEdit.changeLight_ni = function (opacity)
     nerthus.worldEdit.nightDimValue = opacity
 }
 
+nerthus.worldEdit.resetLight = function ()
+{
+    document.querySelectorAll("#ground .nightLight")
+        .forEach(function (light)
+        {
+            light.parentNode.removeChild(light)
+        })
+}
+
+nerthus.worldEdit.resetLight_ni = function()
+{
+    nerthus.worldEdit.lights = []
+}
 
 nerthus.worldEdit.hideGameNpc = function (id)
 {
@@ -650,7 +655,9 @@ nerthus.worldEdit.start_ni = function ()
         this.deleteNpc = this.deleteNpc_ni
         this.changeMap = this.changeMap_ni
         this.changeLight = this.changeLight_ni
+
         this.addLights = this.addLights_ni
+        this.resetLight = this.resetLight_ni
 
         this.displayWeatherEffect = this.displayWeatherEffect_ni
         this.clearWeather = this.clearWeather_ni

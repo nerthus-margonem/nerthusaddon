@@ -33,8 +33,15 @@ nerthus.night.lights.types.add = function (type, size)
 
 nerthus.night.lights.on = function()
 {
-    $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"),nerthus.worldEdit.addLights.bind(this))
+    const hour = new Date().getHours()
+    if (hour <= 4 || hour > 18)
+    {
+        $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"), nerthus.worldEdit.addLights.bind(this))
+    }
 }
+
+nerthus.night.lights.reset = nerthus.worldEdit.resetLight
+
 
 nerthus.night.lights.on_ni = function()
 {
@@ -56,14 +63,23 @@ nerthus.night.start = function()
     this.lights.types.add("XL","192px")
     if(nerthus.options['night'])
     {
-        let hour = new Date().getHours()
-        if( hour <= 4 || hour > 18 )
-        {
-            nerthus.defer(this.lights.on.bind(this.lights))
-            nerthus.defer(this.dim.bind(this, this.opacity()))
-        }
+        nerthus.defer(this.lights.on.bind(this.lights))
+        nerthus.defer(this.dim.bind(this, this.opacity()))
+        nerthus.loadOnEveryMap(this.run.bind(this))
+    }
+
+}
+
+nerthus.night.run = function ()
+{
+    if (nerthus.options["night"])
+    {
+        nerthus.night.dim(nerthus.night.opacity())
+        nerthus.night.lights.reset()
+        nerthus.night.lights.on()
     }
 }
+
 
 nerthus.night.run_ni = function ()
 {

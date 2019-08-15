@@ -54,12 +54,39 @@ before(function()
     expect = require("expect.js")
     require("../NN_chatCmd.js")
 
+    const jsdom = require("jsdom")
+    const {JSDOM} = jsdom
+    const {window} = new JSDOM()
+    const {document} = (new JSDOM('')).window
+    global.document = document
+
+
 })
+
+beforeEach(function()
+{
+    document.head.innerHTML = ""
+})
+
 //TODO tests of changing objects in map functions
 // due to pointers when passing objects
 // are they needed/wanted?
 test("dummy", function()
 {
+})
+
+test("styles appended when start SI executed", () =>
+{
+    const style = nerthus.chatCmd.createStyles()
+    nerthus.chatCmd.start()
+    expect(document.head.innerHTML).to.contain(style.innerHTML)
+})
+
+test("styles appended when start NI executed", () =>
+{
+    const style = nerthus.chatCmd.createStyles()
+    nerthus.chatCmd.start_ni()
+    expect(document.head.innerHTML).to.contain(style.innerHTML)
 })
 
 test("fetch command from ch object", function()

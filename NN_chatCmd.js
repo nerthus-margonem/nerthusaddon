@@ -245,10 +245,10 @@ nerthus.chatCmd.public_map["me"] = function (ch)
     return ch
 }
 
-nerthus.chatCmd.appendStyles = function()
+nerthus.chatCmd.createStyles = function ()
 {
-    let style = document.createElement('style')
-    style.innerHTML =  ".me{ color: #f70 !important }"
+    const style = document.createElement('style')
+    style.innerHTML = ".me{ color: #f70 !important }"
         + ".sys_comm{ color: #f33 !important }"
         + ".nar{ color: lightblue !important }"
         + ".nar2{ color: #D6A2FF !important }"
@@ -257,12 +257,13 @@ nerthus.chatCmd.appendStyles = function()
         + ".dial2{ color: #CC9966 !important }"
         + ".dial3{ color: #D3D3D3 !important }"
         + ".dial666{ color: #FF66FF !important }"
-    document.head.appendChild(style)
+
+    return style
 }
 
 nerthus.chatCmd.start = function()
 {
-    this.appendStyles()
+    document.head.appendChild(this.createStyles())
 
     g.chat.parsers.push(nerthus.chatCmd.run.bind(this))
 }
@@ -272,7 +273,7 @@ nerthus.chatCmd.start_ni = function()
     if (typeof nerthus.mapDraw !== "function")
         nerthus.mapDraw = Engine.map.draw
 
-    this.appendStyles()
+    document.head.appendChild(this.createStyles())
 
     API.addCallbackToEvent('newMsg', this.run_ni.bind(this))
     API.addCallbackToEvent('updateMsg', this.run_ni.bind(this))

@@ -9,10 +9,10 @@ nerthus.chatCmd.run = function (ch)
     // change message by directly editing object passed as reference
 
 
-    let cmd = this.fetch_cmd(ch)
+    const cmd = this.fetch_cmd(ch)
     if (cmd)
     {
-        let callback = this.fetch_callback(cmd, ch)
+        const callback = this.fetch_callback(cmd, ch)
         if (callback)
         {
             ch.t = this.fixUrl(ch.t)

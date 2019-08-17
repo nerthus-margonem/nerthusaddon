@@ -35,12 +35,22 @@ nerthus.npc.dialog.parse_reply = function (row_reply, npc)
     reply.text = this.parse_placeholders(reply.text)
     if (reply.to === "END")
     {
-        reply.click = this.close.bind(this)
+        reply.click = function ()
+        {
+            nerthus.npc.dialog.close()
+            nerthus.npc.dialog.removeScroll()
+        }
         reply.icon = this.decorator.classes.EXIT
     }
     else if (reply.to)
     {
-        reply.click = this.open.bind(this, npc, reply.to)
+        reply.click = function ()
+        {
+            nerthus.npc.dialog.removeScroll()
+            nerthus.npc.dialog.open(npc, reply.to)
+            nerthus.npc.dialog.addScroll()
+            $("#dlgin").scrollTop(0)
+        }
         reply.icon = this.decorator.classes.LINE
     }
     return reply
@@ -79,11 +89,35 @@ nerthus.npc.dialog.open_ni = function (id, index)
     Engine.lock.add("nerthus_dialog")
 }
 
+nerthus.npc.dialog.addScroll = function ()
+{
+    clearInterval(g.talk.scrollCheckInterval)
+    g.talk.scrollCheckInterval = setInterval(function ()
+    {
+        if ($('#talkscroll').length) return
+        if ($('#dlgin').height() < ($('#dlgin .message').innerHeight() + $('#dlgin .replies').innerHeight()))
+        {
+            $('#dlgin').css({'margin-right': 20})
+            window.addScrollbar('dlgin', 490, 'talkscroll')
+        }
+    }, 100)
+    if ($('#dlgin').height() < ($('#dlgin .message').innerHeight() + $('#dlgin .replies').innerHeight()))
+    {
+        $('#dlgin').css({'margin-right': 20})
+        window.addScrollbar('dlgin', 490, 'talkscroll')
+    }
+}
+nerthus.npc.dialog.removeScroll = function ()
+{
+    window.removeScrollbar('dlgin', 'talkscroll');
+}
+
 nerthus.npc.dialog.display = function (message, replies, npc)
 {
     $("#dlgin .message").empty().append(this.compose.message(message, npc))
     var $replies = $("#dlgin .replies").empty()
     $replies.append.apply($replies, replies.map(this.compose.reply.bind(this.compose)))
+    this.addScroll()
     $("#dialog").show()
 }
 

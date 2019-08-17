@@ -35,6 +35,8 @@ before(function()
     g.talk = {
         scrollCheckInterval: 0
     }
+    setInterval = function() {}
+    clearInterval = function() {}
     removeScrollbar = function () {}
     addScrollbar = function() {}
 

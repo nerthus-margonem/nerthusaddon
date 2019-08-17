@@ -155,7 +155,7 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
 
         setTimeout(function ()
         {
-            $(".dialogue-window").addClass("is-open")
+            $dialWin.addClass("is-open")
         }, 10) //NI animation
     }
     else

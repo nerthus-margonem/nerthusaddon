@@ -704,7 +704,7 @@ test("npc with lvl equal to hero - NI", () =>
     expect(nerthus.npc.is_deletable_ni(npc)).to.be(false)
 })
 
-test("npc with 12 lvl less than hero", () =>
+test("npc with 12 lvls less than hero", () =>
 {
     const npc = {
         lvl: 88
@@ -714,7 +714,7 @@ test("npc with 12 lvl less than hero", () =>
     expect(nerthus.npc.is_deletable(npc)).to.be(false)
 })
 
-test("npc with 12 lvl less than hero - NI", () =>
+test("npc with 12 lvls less than hero - NI", () =>
 {
     const npc = {
         lvl: 88
@@ -723,7 +723,7 @@ test("npc with 12 lvl less than hero - NI", () =>
     expect(nerthus.npc.is_deletable_ni(npc)).to.be(false)
 })
 
-test("npc with 100 lvl less than hero", () =>
+test("npc with 100 lvls less than hero", () =>
 {
     const npc = {
         lvl: 1
@@ -733,7 +733,7 @@ test("npc with 100 lvl less than hero", () =>
     expect(nerthus.npc.is_deletable(npc)).to.be(true)
 })
 
-test("npc with 100 lvl less than hero - NI", () =>
+test("npc with 100 lvls less than hero - NI", () =>
 {
     const npc = {
         lvl: 1
@@ -742,7 +742,7 @@ test("npc with 100 lvl less than hero - NI", () =>
     expect(nerthus.npc.is_deletable_ni(npc)).to.be(true)
 })
 
-test("npc with 13 lvl less than hero", () =>
+test("npc with 13 lvls less than hero", () =>
 {
     const npc = {
         lvl: 87
@@ -752,7 +752,7 @@ test("npc with 13 lvl less than hero", () =>
     expect(nerthus.npc.is_deletable(npc)).to.be(false)
 })
 
-test("npc with 13 lvl less than hero - NI", () =>
+test("npc with 13 lvls less than hero - NI", () =>
 {
     const npc = {
         lvl: 87

@@ -80,3 +80,22 @@ test("settings_str_ni passes with options",() =>
     }
     expect(nerthus.panel.settings_str_ni()).to.be.ok()
 })
+
+test("panel_string returns false when no panel data provided",() =>
+{
+    const $obj = nerthus.panel.panel_string()
+    expect($obj).to.be(false)
+})
+
+test("panel_string returns jQuery object",() =>
+{
+    const panel_data = {
+        forum: "FORUM",
+        panel_info: "INFO",
+        links: "LINKS"
+    }
+
+    const $obj = nerthus.panel.panel_string(panel_data)
+    expect($obj instanceof $).to.be(true)
+})
+

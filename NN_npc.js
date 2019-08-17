@@ -303,13 +303,12 @@ nerthus.npc.is_deployable = function (npc)
 
 nerthus.npc.is_deletable = function (npc)
 {
-    return !(npc.lvl + 13 > hero.lvl)
-
+    return !(npc.lvl + 13 >= hero.lvl)
 }
 
 nerthus.npc.is_deletable_ni = function (npc)
 {
-    return !(npc.lvl + 13 > Engine.hero.d.lvl)
+    return !(npc.lvl + 13 >= Engine.hero.d.lvl)
 }
 
 nerthus.npc.time = {}

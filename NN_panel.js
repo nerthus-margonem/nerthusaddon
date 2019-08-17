@@ -27,9 +27,11 @@ nerthus.panel.create_icon = function()
 
 nerthus.panel.mAlert = null
 
-nerthus.panel.mAlert_si = function(text, buttons)
 {
-    mAlert(text, buttons.length, buttons.map(button => button.callback))
+    mAlert(text, buttons.length, buttons.map(function (button)
+    {
+        return button.callback
+    }))
 }
 
 nerthus.panel.mAlert_ni = function(text, buttons)

@@ -169,7 +169,7 @@ nerthus.tips.rank_ni = function (player)
     }
     if (nerthus.isRad(player.nick))
         rank = this.ranks.RADNY
-    return rank
+    return rank === -1 ? "" : nerthus.ranks.rankName[rank]
 }
 
 nerthus.tips.title = function(player)
@@ -237,32 +237,32 @@ nerthus.tips.parseNiTip = function (player, isHero)
     let tip = ""
     if (isHero)
         tip += "<div class=\"rank\">" + _t("my_character", null, "map") + "</div>"
-    let rank = this.rank_ni(player)
-    if (rank !== -1)
-        tip += "<div class=\"rank\">" + nerthus.ranks.rankName[rank] + "</div>"
+    const rank = this.rank_ni(player)
+    if (rank)
+        tip += "<div class=\"rank\">" + rank + "</div>"
 
-    if (isset(player.d.guest) && parseInt(player.d.guest))
+    if (player.d.guest)
         tip += "<div class=\"rank\">" + _t("deputy") + "</div>"
 
-    let nick = "<div class=\"nick\">" + player.d.nick + "</div>"
-    let prof = isset(player.d.prof) ? "<div class=\"profs-icon " + player.d.prof + "\"></div>" : ""
+    const nick = "<div class=\"nick\">" + player.d.nick + "</div>"
+    const prof = player.d.prof ? "<div class=\"profs-icon " + player.d.prof + "\"></div>" : ""
     tip += "<div class=\"info-wrapper\">" + nick + prof + "</div>"
 
-    if (isset(player.wanted) && parseInt(player.wanted) === 1)
+    if (parseInt(player.wanted) === 1)
         tip += "<div class=wanted></div>"
     if (player.d.clan)
         tip += "<div class=\"clan-in-tip\">[" + player.d.clan.name + "]</div>"
 
-    let title = this.title(player.d)
+    const title = this.title(player.d)
     tip += "<div class=\"clan-in-tip\">" + title + "</div>"
 
     let buffs = ""
-    let bless = isset(player.d.ble) ? "<div class=\"bless\"></div>" : ""
-    let mute = player.d.attr & 1 ? "<div class=\"mute\"></div>" : ""
-    let kB = isset(player.d.vip) && player.d.vip === "1" ? "<div class=\"k-b\"></div>" : ""
-    let warn = player.d.attr & 2 ? "<div class=\"warn\"></div>" : ""
-    let line = player.d.clan ? "<div class=\"line\"></div>" : ""
-    let wanted = player.d.wanted ? "<div class=\"wanted-i\"></div>" : ""
+    const line = player.d.clan ? "<div class=\"line\"></div>" : ""
+    const wanted = player.d.wanted ? "<div class=\"wanted-i\"></div>" : ""
+    const bless = player.d.ble ? "<div class=\"bless\"></div>" : ""
+    const mute = player.d.attr & 1 ? "<div class=\"mute\"></div>" : ""
+    const kB = player.d.vip === "1" ? "<div class=\"k-b\"></div>" : ""
+    const warn = player.d.attr & 2 ? "<div class=\"warn\"></div>" : ""
 
     if (bless !== "" || mute !== "" || kB !== "" || warn !== "" || wanted !== "")
         buffs = "<div class=\"buffs-wrapper\">" + line + wanted + bless + mute + kB + warn + "</div>"

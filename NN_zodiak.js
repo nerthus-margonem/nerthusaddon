@@ -45,41 +45,15 @@ nerthus.zodiac.calculate = function(date)
     return SIGNS.find(function(SIGN){ return SIGN.date <= date }).sign
 }
 
-nerthus.zodiac.set_zodiac = function(sign)
+nerthus.zodiac.set_zodiac = function (sign)
 {
     this.sign = parseInt(sign)
     $('#nZodiac').css('background', 'url(' + this.icon + ') -' + this.sign * 55 + 'px -' + this.sign * 55 + 'px')
 }
 
-nerthus.zodiac.set_zodiac_ni = function (sign)
+nerthus.zodiac.createIcon = function ()
 {
-    this.sign = parseInt(sign)
-    $("#nZodiacStyle").text("#nZodiac{background: url(" + this.icon + ") -" + this.sign * 55 + "px -" + this.sign * 55 + "px !important; background-color: transparent !important;}")
-}
-
-nerthus.zodiac.run = function ()
-{
-    //ikonka zodiaku
-    $('<div id="nZodiac" style="z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 55px; left: 0px; cursor: pointer"></div>').appendTo('#centerbox2')
-        .mouseenter(function(){ $("#nZodiacDesc").fadeIn(500).html(this.descriptions[this.sign][0]) }.bind(this))
-        .mouseleave(function(){ $("#nZodiacDesc").fadeOut(500) })
-        .click(function(){
-            if ($("#nZodiacDesc").html() === nerthus.zodiac.descriptions[nerthus.zodiac.sign][0])
-                $("#nZodiacDesc").fadeIn(500).html(nerthus.zodiac.descriptions[nerthus.zodiac.sign][1])
-            else
-                $("#nZodiacDesc").fadeIn(500).html(nerthus.zodiac.descriptions[nerthus.zodiac.sign][0])
-        });
-    //pole opisowe zodiaku
-    $('<div id="nZodiacDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 60px; left: 60px; font: bold 14px Georgia; color:#F0F8FF"></div>').appendTo('#centerbox2');
-
-    this.set_zodiac(this.calculate())
-}
-
-nerthus.zodiac.run_ni = function ()
-{
-    //ikonka
-    let left = $(".game-layer.layer.ui-droppable")[0].style.left
-    $("<div id=\"nZodiac\" class=\"mini-map\" style=\"z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 110px; left:" + left + "; margin: 5px;pointer-events: auto;display:block\"></div>").appendTo(".layer.interface-layer")
+    return $('<div id="nZodiac" style="z-Index:300; height:55px; width: 55px; opacity: 0.8; position: absolute; top: 55px; left: 0; cursor: pointer"></div>')
         .mouseenter(function ()
         {
             $("#nZodiacDesc").fadeIn(500).html(this.descriptions[this.sign][0])
@@ -90,18 +64,43 @@ nerthus.zodiac.run_ni = function ()
         })
         .click(function ()
         {
-            if ($("#nZodiacDesc").html() === nerthus.zodiac.descriptions[nerthus.zodiac.sign][0])
-                $("#nZodiacDesc").fadeIn(500).html(nerthus.zodiac.descriptions[nerthus.zodiac.sign][1])
+            const $desc = $("#nZodiacDesc")
+            if ($desc.html() === nerthus.zodiac.descriptions[nerthus.zodiac.sign][0])
+                $desc.fadeIn(500).html(nerthus.zodiac.descriptions[nerthus.zodiac.sign][1])
             else
-                $("#nZodiacDesc").fadeIn(500).html(nerthus.zodiac.descriptions[nerthus.zodiac.sign][0])
+                $desc.fadeIn(500).html(nerthus.zodiac.descriptions[nerthus.zodiac.sign][0])
         })
-    //pole opisowe
-    $("<div id=\"nZodiacDesc\" style=\"z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 65px; left: 60px; font: bold 14px Georgia; color:#F0F8FF\"></div>").prependTo(".game-layer.layer.ui-droppable")
+}
+nerthus.zodiac.createDescription = function ()
+{
+    return $('<div id="nZodiacDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 55px; left: 60px; font: bold 14px Georgia; color:#F0F8FF"></div>')
+}
 
-    //style for background which is overwritten by Engine
-    $("head").append("<style id=\"nZodiacStyle\"></style>")
+nerthus.zodiac.run = function ()
+{
+    this.createIcon().appendTo('#centerbox2')
+    this.createDescription().appendTo('#centerbox2')
 
-    this.set_zodiac_ni(this.calculate())
+    this.set_zodiac(this.calculate())
+}
+
+nerthus.zodiac.run_ni = function ()
+{
+    this.createIcon()
+        .css({
+            margin: "5px",
+            pointerEvents: "auto",
+            display: "block"
+        })
+        .appendTo(".game-layer.layer.ui-droppable")
+
+    this.createDescription()
+        .css({
+            top: "65px"
+        })
+        .prependTo(".game-layer.layer.ui-droppable")
+
+    this.set_zodiac(this.calculate())
 }
 
 nerthus.zodiac.descriptions = [

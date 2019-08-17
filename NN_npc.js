@@ -25,7 +25,7 @@ nerthus.npc.dialog.parse_replies_ni = function (dialog, id)
 {
     let replies = []
     for (let i = 1; i < dialog.length; i++)
-        replies.push(this.parse_reply_ni(dialog[i], id))
+        replies.push(this.parse_reply(dialog[i], id))
     return replies
 }
 
@@ -41,23 +41,6 @@ nerthus.npc.dialog.parse_reply = function (row_reply, npc)
     else if (reply.to)
     {
         reply.click = this.open.bind(this, npc, reply.to)
-        reply.icon = this.decorator.classes.LINE
-    }
-    return reply
-}
-
-nerthus.npc.dialog.parse_reply_ni = function (row_reply, id)
-{
-    let reply = this.parse_row_reply(row_reply)
-    reply.text = this.parse_placeholders_ni(reply.text)
-    if (reply.to === "END")
-    {
-        reply.click = this.close.bind(this)
-        reply.icon = this.decorator.classes.EXIT
-    }
-    else if (reply.to)
-    {
-        reply.click = this.open_ni.bind(this, id, reply.to)
         reply.icon = this.decorator.classes.LINE
     }
     return reply
@@ -90,7 +73,7 @@ nerthus.npc.dialog.open = function (npc, index)
 nerthus.npc.dialog.open_ni = function (id, index)
 {
     let dialog = this.list[id][index]
-    const message = this.parse_placeholders_ni(dialog[0])
+    const message = this.parse_placeholders(dialog[0])
     const replies = this.parse_replies_ni(dialog, id)
     this.display_ni(message, replies, id)
     Engine.lock.add("nerthus_dialog")
@@ -454,6 +437,8 @@ nerthus.npc.start_ni = function ()
         this.compose = this.compose_ni
         this.load_npcs = this.load_npcs_ni
         this.is_deletable = this.is_deletable_ni
+        this.dialog.parse_placeholders = this.dialog.parse_placeholders_ni
+        this.dialog.open = this.dialog.open_ni
 
         let _nerthg = _g
         _g = function (c, d)

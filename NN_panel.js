@@ -3,6 +3,7 @@
  Plik zawiera funkcje do ustawiania tarczy otwierającej panel**/
 
 nerthus.panel = {}
+nerthus.panel.defaultPosition = [6, "top-right"]
 nerthus.panel.settings_translations = {
     "night": "Pory dnia i nocy",
     "weather": "Pogoda",
@@ -27,6 +28,7 @@ nerthus.panel.create_icon = function()
 
 nerthus.panel.mAlert = null
 
+nerthus.panel.mAlert_si = function (text, buttons)
 {
     mAlert(text, buttons.length, buttons.map(function (button)
     {
@@ -123,8 +125,7 @@ nerthus.panel.create_button_ni = function ()
     if (Engine.interfaceStart)
     {
         const position = this.load_button_position()
-        API.Storage.set("hotWidget/" + Engine.interface.getPathToHotWidgetVersion(true) + "/nerthus/", position)
-        Engine.interface.addKeyToDefaultWidgetSet("nerthus", position[0], position[1], "Nerthus", "green", this.display_panel.bind(this))
+        Engine.interface.saveHotWidgetToStorage("nerthus", position[0], position[1])
         Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
     }
     else
@@ -135,12 +136,11 @@ nerthus.panel.create_button_ni = function ()
 
 nerthus.panel.load_button_position = function ()
 {
-    let position = API.Storage.get("hotWidget/" + Engine.interface.getPathToHotWidgetVersion(true) + "/nerthus/")
+    const position = API.Storage.get("hotWidget/" + Engine.interface.getPathToHotWidgetVersion(true)).nerthus;
     if (position)
         return position
     else
-        return [6, "top-right"]
-
+        return this.defaultPosition
 }
 
 nerthus.panel.create_css_ni = function ()
@@ -172,5 +172,20 @@ nerthus.panel.start_ni = function ()
     this.mAlert = this.mAlert_ni
     $("head").append(this.create_css_ni())
     this.create_button_ni()
+
+    const initDefaultWidgetSet = Engine.interface.initDefaultWidgetSet
+    Engine.interface.initDefaultWidgetSet = function ()
+    {
+        initDefaultWidgetSet()
+        Engine.interface.addKeyToDefaultWidgetSet(
+            "nerthus",
+            nerthus.panel.defaultPosition[0],
+            nerthus.panel.defaultPosition[1],
+            "Nerthus",
+            "green",
+            nerthus.panel.display_panel.bind(nerthus.panel)
+        )
+
+    }
 }
 

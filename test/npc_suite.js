@@ -763,13 +763,13 @@ test("npc with 13 lvls less than hero - NI", () =>
 
 suite("misc npc stuff")
 
-test("resolve url - normal",() =>
+test("resolve url - normal", () =>
 {
     const url = "http://example.com/example.png"
     expect(nerthus.npc.resolve_url(url)).to.equal("http://example.com/example.png")
 })
 
-test("resolve url - relative",() =>
+test("resolve url - relative", () =>
 {
     const url = "#example.png"
     expect(nerthus.npc.resolve_url(url)).to.equal("NERTH_PREFIX:example.png")

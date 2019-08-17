@@ -45,17 +45,10 @@ nerthus.zodiac.calculate = function(date)
     return SIGNS.find(function(SIGN){ return SIGN.date <= date }).sign
 }
 
-nerthus.zodiac.set_zodiac = function(sign)
+nerthus.zodiac.set_zodiac = function (sign)
 {
     this.sign = parseInt(sign)
     $('#nZodiac').css('background', 'url(' + this.icon + ') -' + this.sign * 55 + 'px -' + this.sign * 55 + 'px')
-}
-
-nerthus.zodiac.set_zodiac_ni = function (sign)
-{
-    this.sign = parseInt(sign)
-    $("#nZodiacStyle")
-        .text("#nZodiac{background: url(" + this.icon + ") -" + this.sign * 55 + "px -" + this.sign * 55 + "px !important; background-color: transparent !important;}")
 }
 
 nerthus.zodiac.createIcon = function ()
@@ -81,7 +74,6 @@ nerthus.zodiac.createIcon = function ()
 nerthus.zodiac.createDescription = function ()
 {
     return $('<div id="nZodiacDesc" style="z-Index:300; width: 410px; opacity: 0.8; position: absolute; top: 55px; left: 60px; font: bold 14px Georgia; color:#F0F8FF"></div>')
-
 }
 
 nerthus.zodiac.run = function ()
@@ -94,7 +86,6 @@ nerthus.zodiac.run = function ()
 
 nerthus.zodiac.run_ni = function ()
 {
-    //const left = $(".game-layer.layer.ui-droppable")[0].style.left
     this.createIcon()
         .css({
             margin: "5px",
@@ -109,10 +100,7 @@ nerthus.zodiac.run_ni = function ()
         })
         .prependTo(".game-layer.layer.ui-droppable")
 
-    //style for background which is overwritten by Engine
-    $("head").append("<style id=\"nZodiacStyle\"></style>")
-
-    this.set_zodiac_ni(this.calculate())
+    this.set_zodiac(this.calculate())
 }
 
 nerthus.zodiac.descriptions = [

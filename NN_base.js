@@ -169,7 +169,7 @@ nerthus.tips.rank_ni = function (player)
     }
     if (nerthus.isRad(player.nick))
         rank = this.ranks.RADNY
-    return rank
+    return rank === -1 ? "" : nerthus.ranks.rankName[rank]
 }
 
 nerthus.tips.title = function(player)
@@ -238,8 +238,8 @@ nerthus.tips.parseNiTip = function (player, isHero)
     if (isHero)
         tip += "<div class=\"rank\">" + _t("my_character", null, "map") + "</div>"
     const rank = this.rank_ni(player)
-    if (rank !== -1)
-        tip += "<div class=\"rank\">" + nerthus.ranks.rankName[rank] + "</div>"
+    if (rank)
+        tip += "<div class=\"rank\">" + rank + "</div>"
 
     if (player.d.guest)
         tip += "<div class=\"rank\">" + _t("deputy") + "</div>"

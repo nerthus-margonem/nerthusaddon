@@ -11,10 +11,16 @@ before(function()
     nerthus.ranks = {
         rankName:
             {
-                "CUSTOM": "CUSTOM RANK"
+                0: "ADMIN",
+                1: "SMG",
+                2: "MG",
+                3: "MC",
+                4: "SMC",
+                5: "BARD",
+                6: "BARD_MC",
+                7: "RADNY"
             }
     }
-
 
     g = {}
     g.chat = {}
@@ -274,10 +280,21 @@ test("rank: PLAYER without any privilages", function()
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("")
 })
 
+test("rank NI: PLAYER without any privilages", function()
+{
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("")
+})
+
 test("rank: admin", function()
 {
     PLAYER.rights = rights.ADMIN
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("ADMIN")
+})
+
+test("rank NI: admin", function()
+{
+    PLAYER.rights = rights.ADMIN
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("ADMIN")
 })
 
 test("rank: smg", function()
@@ -286,10 +303,22 @@ test("rank: smg", function()
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("SMG")
 })
 
+test("rank NI: smg", function()
+{
+    PLAYER.rights = rights.SMG
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("SMG")
+})
+
 test("rank: mg", function()
 {
     PLAYER.rights = rights.MG
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("MG")
+})
+
+test("rank NI: mg", function()
+{
+    PLAYER.rights = rights.MG
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("MG")
 })
 
 test("rank: radny", function()
@@ -298,11 +327,24 @@ test("rank: radny", function()
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("RADNY")
 })
 
+test("rank NI: radny", function()
+{
+    nerthus.NerthusRad = [PLAYER.nick]
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("RADNY")
+})
+
 test("rank: bard", function()
 {
     nerthus.NerthusNarr = [PLAYER.nick]
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("BARD")
 })
+
+test("rank NI: bard", function()
+{
+    nerthus.NerthusNarr = [PLAYER.nick]
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("BARD")
+})
+
 
 test("rank: bard + mc", function()
 {
@@ -311,11 +353,25 @@ test("rank: bard + mc", function()
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("BARD_MC")
 })
 
+test("rank NI: bard + mc", function()
+{
+    nerthus.NerthusNarr = [PLAYER.nick]
+    PLAYER.rights = rights.MC
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("BARD_MC")
+})
+
 test("rank: bard is overrided by radny", function()
 {
     nerthus.NerthusNarr = [PLAYER.nick]
     nerthus.NerthusRad = [PLAYER.nick]
     expect(nerthus.tips.rank(PLAYER)).to.be.equal("RADNY")
+})
+
+test("rank NI: bard is overrided by radny", function()
+{
+    nerthus.NerthusNarr = [PLAYER.nick]
+    nerthus.NerthusRad = [PLAYER.nick]
+    expect(nerthus.tips.rank_ni(PLAYER)).to.be.equal("RADNY")
 })
 
 test("title : non lvl", function()
@@ -577,7 +633,7 @@ test("nerthus.tips.npc : type=1 in group", function()
 test("parse NI tip - hero, no rank, no profession, not wanted, no clan, no buffs", () =>
 {
     const rank_ni = nerthus.tips.rank_ni
-    nerthus.tips.rank_ni = () => -1
+    nerthus.tips.rank_ni = () => ""
     const title = nerthus.tips.title
     nerthus.tips.title = () => "TITLE"
     const player = {
@@ -619,7 +675,7 @@ test("parse NI tip - hero, custom rank, no profession, not wanted, no clan, no b
     }
     const correctTip =
         "<div class=\"rank\">Moja postać</div>" +
-        "<div class=\"rank\">CUSTOM RANK</div>" +
+        "<div class=\"rank\">CUSTOM</div>" +
         "<div class=\"info-wrapper\">" +
             "<div class=\"nick\">" + player.d.nick + "</div>" +
         "</div>" +
@@ -650,7 +706,7 @@ test("parse NI tip - hero, custom rank, profession, not wanted, no clan, no buff
     }
     const correctTip =
         "<div class=\"rank\">Moja postać</div>" +
-        "<div class=\"rank\">CUSTOM RANK</div>" +
+        "<div class=\"rank\">CUSTOM</div>" +
         "<div class=\"info-wrapper\">" +
         "<div class=\"nick\">" + player.d.nick + "</div>" +
         "<div class=\"profs-icon " + player.d.prof + "\"></div>" +
@@ -683,7 +739,7 @@ test("parse NI tip - hero, custom rank, profession, wanted, no clan, no buffs, n
     }
     const correctTip =
         "<div class=\"rank\">Moja postać</div>" +
-        "<div class=\"rank\">CUSTOM RANK</div>" +
+        "<div class=\"rank\">CUSTOM</div>" +
         "<div class=\"info-wrapper\">" +
             "<div class=\"nick\">" + player.d.nick + "</div>" +
             "<div class=\"profs-icon " + player.d.prof + "\"></div>" +
@@ -723,7 +779,7 @@ test("parse NI tip - hero, custom rank, profession, wanted, clan, no buffs, not 
     }
     const correctTip =
         "<div class=\"rank\">Moja postać</div>" +
-        "<div class=\"rank\">CUSTOM RANK</div>" +
+        "<div class=\"rank\">CUSTOM</div>" +
         "<div class=\"info-wrapper\">" +
             "<div class=\"nick\">" + player.d.nick + "</div>" +
             "<div class=\"profs-icon " + player.d.prof + "\"></div>" +
@@ -765,7 +821,7 @@ test("parse NI tip - hero, custom rank, profession, wanted, clan, buffs, not dep
     }
     const correctTip =
         "<div class=\"rank\">Moja postać</div>" +
-        "<div class=\"rank\">CUSTOM RANK</div>" +
+        "<div class=\"rank\">CUSTOM</div>" +
         "<div class=\"info-wrapper\">" +
             "<div class=\"nick\">" + player.d.nick + "</div>" +
             "<div class=\"profs-icon " + player.d.prof + "\"></div>" +
@@ -809,7 +865,7 @@ test("parse NI tip - hero, custom rank, profession, wanted, clan, buffs, deputy"
     }
     const correctTip =
         "<div class=\"rank\">Moja postać</div>" +
-        "<div class=\"rank\">CUSTOM RANK</div>" +
+        "<div class=\"rank\">CUSTOM</div>" +
         "<div class=\"rank\">Zastępca</div>" +
         "<div class=\"info-wrapper\">" +
             "<div class=\"nick\">" + player.d.nick + "</div>" +

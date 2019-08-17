@@ -45,25 +45,30 @@ nerthus.panel.display_panel = function ()
 {
     $.getJSON(nerthus.addon.fileMasterUrl("panel_links.json"), function (panel_data)
     {
-        let $panel = nerthus.panel.panel_string(panel_data)
-        nerthus.panel.mAlert($panel, [{txt: "save", callback: nerthus.panel.save},
-            {txt: "ok", callback: () => true}])
+        const $panel = nerthus.panel.panel_string(panel_data)
+        if ($panel)
+            nerthus.panel.mAlert($panel, [{txt: "save", callback: nerthus.panel.save},
+                {txt: "ok", callback: () => true}])
     })
 }
 
-nerthus.panel.panel_string = function(panel_data)
+nerthus.panel.panel_string = function (panel_data)
 {
-    var $panel = $("<div>")
-    var $links = $("<div>").css('text-align','center')
-    var $hello = $("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ")
-        .append(this.link(panel_data.forum)))
-    var $info = $("<div>").text(panel_data.panel_info)
-    $links.append($hello, $info)
-    for(const i in panel_data.links)
-        $links.append($('<div>').append(this.link(panel_data.links[i])))
-    $panel.append($links)
-    $panel.append(this.settings_str())
-    return $panel
+    if (panel_data)
+    {
+        const $panel = $("<div>")
+        const $links = $("<div>").css('text-align', 'center')
+        const $hello = $("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ")
+            .append(this.link(panel_data.forum)))
+        const $info = $("<div>").text(panel_data.panel_info)
+        $links.append($hello, $info)
+        for (const i in panel_data.links)
+            $links.append($('<div>').append(this.link(panel_data.links[i])))
+        $panel.append($links)
+        $panel.append(this.settings_str())
+        return $panel
+    }
+    return false
 }
 
 nerthus.panel.settings_str = function()

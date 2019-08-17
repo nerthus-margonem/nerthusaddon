@@ -123,13 +123,6 @@ nerthus.panel.get_settings_ni = function ()
     return options
 }
 
-nerthus.panel.get_settings_ni = function ()
-{
-    let options = {}
-    for (const option in nerthus.options)
-        options[option] = $("#panCb" + option).prop("checked")
-    return options
-}
 
 nerthus.panel.create_button_ni = function ()
 {

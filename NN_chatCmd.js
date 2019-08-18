@@ -370,7 +370,6 @@ nerthus.chatCmd.public_map["draw"] = function (ch)
             let cards = ""
             let cardDrawnCount = 0
             let endText = "."
-            let cardArr = []
             for (let i = 0; i < number_of_cards; i++)
             {
                 const card = nerthus.chatCmd.cards.getCard(deck_number, ts, deck_type)
@@ -411,6 +410,8 @@ nerthus.chatCmd.public_map["draw"] = function (ch)
     return ch
 }
 
+nerthus.chatCmd.public_map["dobierz"] = nerthus.chatCmd.public_map["draw"]
+
 nerthus.chatCmd.public_map["shuffle"] = function (ch)
 {
 
@@ -449,6 +450,8 @@ nerthus.chatCmd.public_map["shuffle"] = function (ch)
     return ch
 }
 
+nerthus.chatCmd.public_map["tasuj"] = nerthus.chatCmd.public_map["shuffle"]
+
 nerthus.chatCmd.createStyles = function ()
 {
     const style = document.createElement('style')
@@ -467,7 +470,7 @@ nerthus.chatCmd.createStyles = function ()
 
 nerthus.chatCmd.getHeroNick = function ()
 {
-    if (hero)
+    if (typeof hero !== "undefined")
         return hero.nick
     else
         return Engine.hero.d.nick

@@ -98,18 +98,18 @@ nerthus.npc.dialog.addScroll = function ()
         if ($('#dlgin').height() < ($('#dlgin .message').innerHeight() + $('#dlgin .replies').innerHeight()))
         {
             $('#dlgin').css({'margin-right': 20})
-            window.addScrollbar('dlgin', 490, 'talkscroll')
+            addScrollbar('dlgin', 490, 'talkscroll')
         }
     }, 100)
     if ($('#dlgin').height() < ($('#dlgin .message').innerHeight() + $('#dlgin .replies').innerHeight()))
     {
         $('#dlgin').css({'margin-right': 20})
-        window.addScrollbar('dlgin', 490, 'talkscroll')
+        addScrollbar('dlgin', 490, 'talkscroll')
     }
 }
 nerthus.npc.dialog.removeScroll = function ()
 {
-    window.removeScrollbar('dlgin', 'talkscroll');
+    removeScrollbar('dlgin', 'talkscroll');
 }
 
 nerthus.npc.dialog.display = function (message, replies, npc)

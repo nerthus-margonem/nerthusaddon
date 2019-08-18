@@ -32,6 +32,13 @@ before(function()
         add : function(lock){this.lock = lock},
         remove : function(){this.lock = null}
     }
+    g.talk = {
+        scrollCheckInterval: 0
+    }
+    setInterval = function() {}
+    clearInterval = function() {}
+    removeScrollbar = function () {}
+    addScrollbar = function() {}
 
     Engine = {
         hero: {

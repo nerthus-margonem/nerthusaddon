@@ -2,6 +2,99 @@ nerthus.chatCmd = {}
 nerthus.chatCmd.map = {}
 nerthus.chatCmd.public_map = {}
 
+nerthus.chatCmd.cards = {}
+nerthus.chatCmd.cards.currentDecks = {}
+nerthus.chatCmd.cards.currentDecks[52] = {}
+nerthus.chatCmd.cards.currentDecks[54] = {}
+nerthus.chatCmd.cards.saveCardsForSession = function (data, ts)
+{
+    sessionStorage.setItem("nerthus_cards_" + ts, JSON.stringify(data))
+}
+nerthus.chatCmd.cards.loadCardsFromSession = function (ts)
+{
+    const cards = sessionStorage.getItem("nerthus_cards_" + ts)
+    if (cards)
+        return JSON.parse(cards)
+}
+nerthus.chatCmd.cards.pseudoRandom = function (seed)
+{
+    seed = (seed * 9301 + 49297) % 233280
+    return seed / 233280
+}
+nerthus.chatCmd.cards.getCard = function (deckId, ts, deck_type)
+{
+    if (!this.currentDecks[deck_type][deckId]) this.currentDecks[deck_type][deckId] = []
+
+    const card = Math.floor(this.pseudoRandom(ts) * deck_type)
+
+    let valueName, colorName
+    if (card === 52 || card === 53)
+    {
+        valueName = "jokera"
+        if (card === 52)
+            colorName = "czarnego"
+        if (card === 53)
+            colorName = "czerwonego"
+    }
+    else
+    {
+        const value = Math.floor(card / 4)
+        const color = card % 4
+        valueName = this.values[value]
+        colorName = this.colors[color]
+    }
+
+    const len = this.currentDecks[deck_type][deckId].length
+    if (len === deck_type)
+        return false
+    for (let i = 0; i < len; i++)
+        if (this.currentDecks[deck_type][deckId][i] === card)
+            return this.getCard(deckId, ts + 2901, deck_type)
+
+    this.currentDecks[deck_type][deckId].push(card)
+    console.log(card, [valueName, colorName])
+    return {
+        id: card,
+        value: valueName,
+        color: colorName
+    }
+}
+
+nerthus.chatCmd.cards.numbers = [
+    "",
+    "jedną kartę",
+    "dwie karty",
+    "trzy karty",
+    "cztery karty",
+    "pięć kart",
+    "sześć kart",
+    "siedem kart",
+    "osiem kart",
+    "dziewięć kart",
+    "dziesięć kart"
+]
+nerthus.chatCmd.cards.colors = [
+    "pik",
+    "kier",
+    "trefl",
+    "karo"
+]
+nerthus.chatCmd.cards.values = [
+    "asa",
+    "dwójkę",
+    "trójkę",
+    "czwórkę",
+    "piątkę",
+    "szóstkę",
+    "siódemkę",
+    "ósemkę",
+    "dziewiątkę",
+    "dziesiątkę",
+    "waleta",
+    "królową",
+    "króla"
+]
+
 nerthus.chatCmd.run = function (ch)
 {
     // return TRUE if you want message to NOT show in chat
@@ -245,6 +338,117 @@ nerthus.chatCmd.public_map["me"] = function (ch)
     return ch
 }
 
+//playing cards
+nerthus.chatCmd.public_map["draw"] = function (ch)
+{
+    const nick = ch.n
+    ch.s = "draw"
+    ch.n = ""
+
+    if (ch.k !== 0)
+        ch.t = nick + " próbował zagrać w karty, ale za bardzo się z nimi krył (można grać tylko na czacie głównym)."
+    else
+    {
+        const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
+        const number_of_cards = parseInt(cmd[0])
+        const deck_number = cmd[1] ? cmd[1] : "1"
+        let deck_type = parseInt(cmd[2])
+        deck_type = deck_type === 54 ? deck_type : 52
+        const ts = ch.ts
+
+        const savedCards = nerthus.chatCmd.cards.loadCardsFromSession(ts)
+        if(savedCards && nerthus.chatCmd.cards.currentDecks[deck_type])
+        {
+            nerthus.chatCmd.cards.currentDecks[deck_type][deck_number] = savedCards.cards
+            ch.t = savedCards.text
+        }
+        else if (nerthus.chatCmd.cards.currentDecks[deck_type][deck_number] &&
+            nerthus.chatCmd.cards.currentDecks[deck_type][deck_number].length === deck_type)
+            ch.t = nick + " próbował pociągnąć kartę z talii numer " + deck_number + ", ale nie było w niej już ani jednej karty."
+        else
+        {
+            let cards = ""
+            let cardDrawnCount = 0
+            let endText = "."
+            let cardArr = []
+            for (let i = 0; i < number_of_cards; i++)
+            {
+                const card = nerthus.chatCmd.cards.getCard(deck_number, ts, deck_type)
+                if (!card)
+                {
+                    endText = ", tym samym nie pozostawiając już ani jednej karty."
+                    break
+                }
+                if (i === 0)
+                    cards += card.value + " " + card.color
+                else if (i + 1 === number_of_cards)
+                    cards += " i " + card.value + " " + card.color
+                else
+                    cards += ", " + card.value + " " + card.color
+
+                cardDrawnCount++
+            }
+            if (nerthus.chatCmd.cards.currentDecks[deck_type][deck_number].length === deck_type)
+                endText = ", tym samym nie pozostawiając już ani jednej karty."
+            else
+                endText = ", zostawiając na stole " +
+                    (deck_type - nerthus.chatCmd.cards.currentDecks[deck_type][deck_number].length) +
+                    " z " + deck_type + " kart."
+
+            if (nerthus.cardCheat || nick === nerthus.chatCmd.getHeroNick())
+                ch.t = nick + " pociągnął " + cards + " z talii numer " + deck_number + endText
+            else
+                ch.t = nick + " pociągnął " + nerthus.chatCmd.cards.numbers[cardDrawnCount] + " z talii numer " + deck_number + endText
+
+            const data = {
+                text: ch.t,
+                cards: nerthus.chatCmd.cards.currentDecks[deck_type][deck_number]
+            }
+            nerthus.chatCmd.cards.saveCardsForSession(data, ts)
+        }
+
+    }
+    return ch
+}
+
+nerthus.chatCmd.public_map["shuffle"] = function (ch)
+{
+
+    const nick = ch.n
+    ch.s = "draw"
+    ch.n = ""
+
+
+    if (ch.k !== 0)
+        ch.t = nick + " próbował przetasować talię, ale pogubił karty (można tasować tylko na czacie głównym)."
+    else
+    {
+        const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
+        const deck_number = cmd[0]
+        let deck_type = parseInt(cmd[1])
+        deck_type = deck_type === 54 ? deck_type : 52
+
+        const savedCards = nerthus.chatCmd.cards.loadCardsFromSession(ts)
+        if(savedCards)
+        {
+            nerthus.chatCmd.cards.currentDecks[deck_type][deck_number] = savedCards.cards
+            ch.t = savedCards.text
+        }
+        else
+        {
+            ch.t = nick + " przestasował talię numer " + deck_number + ", która składała się z " + deck_type + " kart."
+            nerthus.chatCmd.cards.currentDecks[deck_type][deck_number] = []
+
+            const data = {
+                text: ch.t,
+                cards: nerthus.chatCmd.cards.currentDecks[deck_type][deck_number]
+            }
+            nerthus.chatCmd.cards.saveCardsForSession(data, ch.ts)
+        }
+    }
+    return ch
+}
+
 nerthus.chatCmd.createStyles = function ()
 {
     const style = document.createElement('style')
@@ -259,6 +463,14 @@ nerthus.chatCmd.createStyles = function ()
         + ".dial666{ color: #FF66FF !important }"
 
     return style
+}
+
+nerthus.chatCmd.getHeroNick = function ()
+{
+    if (hero)
+        return hero.nick
+    else
+        return Engine.hero.d.nick
 }
 
 nerthus.chatCmd.start = function()

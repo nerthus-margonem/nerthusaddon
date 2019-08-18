@@ -52,7 +52,6 @@ nerthus.chatCmd.cards.getCard = function (deckId, ts, deck_type)
             return this.getCard(deckId, ts + 2901, deck_type)
 
     this.currentDecks[deck_type][deckId].push(card)
-    console.log(card, [valueName, colorName])
     return {
         id: card,
         value: valueName,
@@ -492,4 +491,10 @@ nerthus.chatCmd.start_ni = function()
 
     API.addCallbackToEvent('newMsg', this.run_ni.bind(this))
     API.addCallbackToEvent('updateMsg', this.run_ni.bind(this))
+
+    const setAvatarData = Engine.chat.setAvatarData
+    Engine.chat.setAvatarData = function(tpl, d, pos) {
+        if(d.n === "") return
+        return setAvatarData(tpl, d, pos)
+    }
 }

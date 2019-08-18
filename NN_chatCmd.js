@@ -311,13 +311,11 @@ nerthus.chatCmd.public_map["me"] = function (ch)
 nerthus.chatCmd.public_map["draw"] = function (ch)
 {
     const nick = ch.n
+    ch.s = "draw"
+    ch.n = ""
+
     if(ch.k !== 0)
-    {
-        ch.s = "draw"
-        ch.n = ""
         ch.t = nick + " próbował zagrać w karty, ale za bardzo się z nimi krył (można grać tylko na czacie głównym)."
-        return ch
-    }
     else
     {
         const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
@@ -325,18 +323,10 @@ nerthus.chatCmd.public_map["draw"] = function (ch)
         const deck_number = cmd[1] ? cmd[1] : "1"
 
         if (nerthus.chatCmd.cards.currentDecks[deck_number] && nerthus.chatCmd.cards.currentDecks[deck_number].length === 52)
-        {
-            ch.s = "draw"
-            ch.n = ""
             ch.t = nick + " próbował pociągnąć kartę z talii numer " + deck_number + ", ale nie było w niej już ani jednej karty."
-            return ch
-        }
         else
         {
             const ts = ch.ts
-
-            ch.s = "draw"
-            ch.n = ""
 
             let cards = ""
             let cardDrawnCount = 0
@@ -363,33 +353,28 @@ nerthus.chatCmd.public_map["draw"] = function (ch)
                 ch.t = nick + " pociągnął " + cards + " z talii numer " + deck_number + lastCardDrawn
             else
                 ch.t = nick + " pociągnął " + nerthus.chatCmd.cards.numbers[cardDrawnCount] + " z talii numer " + deck_number + lastCardDrawn
-
-            return ch
         }
     }
+    return ch
 }
 
 nerthus.chatCmd.public_map["shuffle"] = function (ch)
 {
+
     const nick = ch.n
+    ch.s = "draw"
+    ch.n = ""
+
     if(ch.k !== 0)
-    {
-        ch.s = "draw"
-        ch.n = ""
         ch.t = nick + " próbował przetasować talię, ale pogubił karty (można tasować tylko na czacie głównym)."
-        return ch
-    }
     else
     {
         const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
         const deck_number = cmd[0]
-
-        ch.s = "draw"
-        ch.n = ""
         ch.t = nick + " przestasował talię nr " + deck_number
         nerthus.chatCmd.cards.currentDecks[deck_number] = []
-        return ch
     }
+    return ch
 }
 
 nerthus.chatCmd.createStyles = function ()

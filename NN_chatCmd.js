@@ -350,7 +350,7 @@ nerthus.chatCmd.public_map["draw"] = function (ch)
     {
         const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
         const number_of_cards = parseInt(cmd[0])
-        const deck_number = cmd[1] ? cmd[1] : "1"
+        const deck_number = cmd[1] ? parseInt(cmd[1]) : 1
         let deck_type = parseInt(cmd[2])
         deck_type = deck_type === 54 ? deck_type : 52
         const ts = ch.ts

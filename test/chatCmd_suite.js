@@ -48,6 +48,12 @@ before(function()
             d: {
                 id: 0
             }
+        },
+        chat: {
+            setAvatarData: function ()
+            {
+                
+            }
         }
     }
 

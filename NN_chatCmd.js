@@ -394,7 +394,7 @@ nerthus.chatCmd.public_map["draw"] = function (ch)
                     (deck_type - nerthus.chatCmd.cards.currentDecks[deck_type][deck_number].length) +
                     " z " + deck_type + " kart."
 
-            if (nerthus.cardCheat || nick === nerthus.chatCmd.getHeroNick())
+            if (localStorage.nerthus_cardCheat || nick === nerthus.chatCmd.getHeroNick())
                 ch.t = nick + " pociągnął " + cards + " z talii numer " + deck_number + endText
             else
                 ch.t = nick + " pociągnął " + nerthus.chatCmd.cards.numbers[cardDrawnCount] + " z talii numer " + deck_number + endText

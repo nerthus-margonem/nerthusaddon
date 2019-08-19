@@ -35,6 +35,10 @@ before(function()
     g.talk = {
         scrollCheckInterval: 0
     }
+    map = {
+        resizeView: function() {}
+    }
+
     setInterval = function() {}
     clearInterval = function() {}
     removeScrollbar = function () {}

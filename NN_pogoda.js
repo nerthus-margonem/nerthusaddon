@@ -365,9 +365,7 @@ nerthus.weather.start = function ()
 
 nerthus.weather.start_ni = function ()
 {
-    if (typeof Engine.map.d.id === "undefined")
-        setTimeout(nerthus.weather.start_ni.bind(this), 500)
-    else
+    nerthus.onDefined("Engine.map.d.id", () =>
     {
         this.run = this.run_ni
         this.display = this.display_ni
@@ -382,5 +380,5 @@ nerthus.weather.start_ni = function ()
             this.run_ni()
             nerthus.loadOnEveryMap(this.run_ni.bind(this))
         }
-    }
+    })
 }

@@ -352,6 +352,21 @@ nerthus.tips.start_ni = function ()
     }
 }
 
+nerthus.onDefined = function (valueToBeDefined, callback)
+{
+    const valArr = valueToBeDefined.toString().split(".")
+    const len = valArr.length
+    let object = window
+    for (let i = 0; i < len; i++)
+    {
+        if (typeof object[valArr[i]] === "undefined")
+            return setTimeout(nerthus.onDefined.bind(this, valueToBeDefined, callback), 500)
+        else
+            object = object[valArr[i]]
+    }
+    callback()
+}
+
 nerthus.base = {}
 nerthus.base.start = function()
 {

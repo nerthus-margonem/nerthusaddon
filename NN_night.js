@@ -33,11 +33,10 @@ nerthus.night.lights.types.add = function (type, size)
 
 nerthus.night.lights.on = function()
 {
+    this.reset()
     const hour = new Date().getHours()
     if (hour <= 4 || hour > 18)
-    {
         $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"), nerthus.worldEdit.addLights.bind(this))
-    }
 }
 
 nerthus.night.lights.reset = nerthus.worldEdit.resetLight
@@ -49,9 +48,12 @@ nerthus.night.lights.on_ni = function()
         setTimeout(this.on_ni.bind(this), 500)
     else
     {
-        nerthus.worldEdit.lightDrawList = []
-        $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + Engine.map.d.id + ".json"), nerthus.worldEdit.addLights.bind(this))
-
+        const hour = new Date().getHours()
+        if (hour <= 4 || hour > 18)
+        {
+            nerthus.worldEdit.lightDrawList = []
+            $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + Engine.map.d.id + ".json"), nerthus.worldEdit.addLights.bind(this))
+        }
     }
 }
 
@@ -73,32 +75,17 @@ nerthus.night.run = function ()
     if (nerthus.options["night"])
     {
         nerthus.night.dim(nerthus.night.opacity())
-        nerthus.night.lights.reset()
         nerthus.night.lights.on()
-    }
-}
-
-
-nerthus.night.run_ni = function ()
-{
-    if (nerthus.options["night"])
-    {
-        let hour = new Date().getHours()
-        if (hour <= 4 || hour > 18)
-        {
-            nerthus.night.dim_ni(nerthus.night.opacity())
-            nerthus.night.lights.on_ni()
-        }
     }
 }
 
 nerthus.night.start_ni = function ()
 {
-    if (typeof Engine.map.d.id === "undefined")
-        setTimeout(nerthus.night.start_ni.bind(this), 500)
-    else
+    nerthus.onDefined("Engine.map.d.id", () =>
     {
+        nerthus.night.dim = nerthus.night.dim_ni
         nerthus.night.lights.display = nerthus.night.lights.display_ni
+        nerthus.night.lights.on = nerthus.night.lights.on_ni
 
         this.lights.types.add("S", "64px")
         this.lights.types.add("M", "96px")
@@ -113,9 +100,9 @@ nerthus.night.start_ni = function ()
                 this.lights.on_ni()
             }
         }
-        this.run_ni()
-        nerthus.loadOnEveryMap(this.run_ni.bind(this))
-    }
+        this.run()
+        nerthus.loadOnEveryMap(this.run.bind(this))
+    })
 }
 
 

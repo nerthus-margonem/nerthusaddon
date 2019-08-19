@@ -94,11 +94,11 @@ nerthus.night.run_ni = function ()
 
 nerthus.night.start_ni = function ()
 {
-    if (typeof Engine.map.d.id === "undefined")
-        setTimeout(nerthus.night.start_ni.bind(this), 500)
-    else
+    nerthus.onDefined("Engine.map.d.id", () =>
     {
+        nerthus.night.dim = nerthus.night.dim_ni
         nerthus.night.lights.display = nerthus.night.lights.display_ni
+        nerthus.night.lights.on = nerthus.night.lights.on_ni
 
         this.lights.types.add("S", "64px")
         this.lights.types.add("M", "96px")
@@ -116,6 +116,7 @@ nerthus.night.start_ni = function ()
         this.run_ni()
         nerthus.loadOnEveryMap(this.run_ni.bind(this))
     }
+    })
 }
 
 

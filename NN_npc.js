@@ -462,9 +462,7 @@ nerthus.npc.start = function()
 
 nerthus.npc.start_ni = function ()
 {
-    if (Engine.map.d.id === undefined)
-        setTimeout(this.start_ni.bind(this), 500)
-    else
+    nerthus.onDefined("Engine.map", () =>
     {
         this.set_collision = this.set_collision_ni
         this.compose = this.compose_ni
@@ -484,5 +482,5 @@ nerthus.npc.start_ni = function ()
 
         this.load_npcs()
         nerthus.loadOnEveryMap(this.load_npcs.bind(this))
-    }
+    })
 }

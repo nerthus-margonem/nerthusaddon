@@ -411,6 +411,11 @@ nerthus.npc.set_collision_ni = function(npc)
 }
 
 
+nerthus.npc.reset_npcs = function ()
+{
+    $(".nerthus_npc").remove()
+}
+
 nerthus.npc.load_npcs = function ()
 {
     const file_with_npc = nerthus.addon.fileUrl("/npcs/map_" + map.id + ".json")
@@ -455,9 +460,17 @@ nerthus.npc.dialog.check = function (command)
     return false
 }
 
-nerthus.npc.start = function()
+nerthus.npc.start = function ()
 {
-    nerthus.defer(this.load_npcs.bind(this))
+    nerthus.defer(function ()
+    {
+        nerthus.npc.load_npcs()
+        nerthus.loadOnEveryMap(function ()
+        {
+            nerthus.npc.reset_npcs()
+            nerthus.npc.load_npcs()
+        })
+    })
 }
 
 nerthus.npc.start_ni = function ()

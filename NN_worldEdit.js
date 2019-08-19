@@ -645,9 +645,7 @@ nerthus.worldEdit.start = function ()
 
 nerthus.worldEdit.start_ni = function ()
 {
-    if (typeof Engine.map.d.id === "undefined")
-        setTimeout(nerthus.worldEdit.start_ni.bind(this), 500)
-    else
+    nerthus.onDefined("Engine.map.d.id", () =>
     {
         this.addCollision = this.addCollision_ni
         this.deleteCollision = this.deleteCollision_ni
@@ -669,5 +667,5 @@ nerthus.worldEdit.start_ni = function ()
         this.startMapChanging_ni()
 
         nerthus.loadOnEveryMap(this.readdNpcList_ni.bind(this))
-    }
+    })
 }

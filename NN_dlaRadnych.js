@@ -135,9 +135,6 @@ nerthus.EnterMsg = ''
  */
 nerthus.mapsArr =
 [
-    //Festyn Karka-han
-    [0, 35, nerthus.addon.fileUrl("maps/Karka-han - festyn.png")],
-
     //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
     [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
     [4, 257, nerthus.addon.fileUrl("maps/Mythar - zima.png")],

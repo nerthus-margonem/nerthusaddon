@@ -78,6 +78,8 @@ nerthus.npc.dialog.open = function (npc, index)
     const replies = this.parse_replies(npc, index)
     this.display(message, replies, npc)
     g.lock.add("nerthus_dialog")
+
+    map.resizeView(512,192)
 }
 
 nerthus.npc.dialog.open_ni = function (id, index)
@@ -209,6 +211,7 @@ nerthus.npc.dialog.close = function ()
 {
     $("#dialog").hide()
     g.lock.remove("nerthus_dialog")
+    map.resizeView(512,512);
 }
 
 nerthus.npc.dialog.close_ni = function ()

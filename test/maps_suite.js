@@ -42,6 +42,10 @@ before(function ()
             WorldEdit.changeMap = [url, layer]
         }
     }
+    nerthus.onDefined = (valueToBeDefined, callback) =>
+    {
+        callback()
+    }
 
     expect = require("expect.js")
     require("../NN_maps.js")

@@ -33,7 +33,7 @@ nerthus.maps.customMaps_ni = function ()
 
 nerthus.maps.start = function ()
 {
-    nerthus.defer(this.customMaps.bind(this))
+    nerthus.loadOnEveryMap(this.customMaps.bind(this))
 }
 
 nerthus.maps.start_ni = function ()

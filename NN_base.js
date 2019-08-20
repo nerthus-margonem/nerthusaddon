@@ -28,20 +28,19 @@ nerthus.loadNewMapQueue = function ()
 //observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
 nerthus.startObservingMapChange_SI = function ()
 {
-    //map.y is one of the last properties loaded, so we just run every item in queue after it's defined
-    Object.defineProperty(window.map, "y", {
+    Object.defineProperty(window.map, "loaded", {
         set(val)
         {
-            this.__y = val;
+            this.__loaded = val
             nerthus.loadNewMapQueue()
 
-            return val;
+            return val
         },
         get()
         {
-            return this.__y
+            return this.__loaded
         }
-    });
+    })
 }
 
 nerthus.seasons = {SPRING: 1, SUMMER: 2, AUTUMN: 3, WINTER: 4}

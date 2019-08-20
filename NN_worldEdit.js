@@ -296,7 +296,7 @@ nerthus.worldEdit.changeMap = function (url, layer)
 
     const mapImagesLen = this.mapImages.length
     if (mapImagesLen > 0)
-        $("#ground").css("backgroundImage", "url(" + this.mapImages[mapImagesLen - 1].src + ")")
+        $("#ground").css("background", "url(" + this.mapImages[mapImagesLen - 1].src + ")")
 }
 
 nerthus.worldEdit.changeMap_ni = function (url, layer)

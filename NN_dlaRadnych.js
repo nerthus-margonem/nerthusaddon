@@ -129,8 +129,12 @@ nerthus.EnterMsg = ''
 nerthus.mapsArr =
 [
     //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
-    [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
     [4, 257, nerthus.addon.fileUrl("maps/Mythar - zima.png")],
+
+    //Werbin
+
+    [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
+    [0, 9, nerthus.addon.fileUrl("maps/Werbin.png")],
 
     //Zniszczone Opactwo
     [0, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],

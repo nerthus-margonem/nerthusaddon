@@ -701,3 +701,19 @@ test("*hide command with map name", function ()
 })
 
 
+suite("playing cards")
+
+test("pseudo random generates same number with same seed", () =>
+{
+    const number = 235325.123
+    expect(nerthus.chatCmd.cards.pseudoRandom(number))
+        .to.be.equal(nerthus.chatCmd.cards.pseudoRandom(number))
+})
+
+test("pseudo random generates different numbers with different seed", () =>
+{
+    const number = 235325.123
+    const number2 = 123123123.22
+    expect(nerthus.chatCmd.cards.pseudoRandom(number))
+        .to.not.be.equal(nerthus.chatCmd.cards.pseudoRandom(number2))
+})

@@ -65,21 +65,21 @@ nerthus.chatCmd.cards.getCard = function (deck_id, ts, deck_type)
 }
 nerthus.chatCmd.cards.isDeckFull = function (deck_type, deck_number)
 {
-    return nerthus.chatCmd.cards.currentDecks[deck_type][deck_number] &&
-        nerthus.chatCmd.cards.currentDecks[deck_type][deck_number].length === deck_type
+    return this.currentDecks[deck_type][deck_number] &&
+        this.currentDecks[deck_type][deck_number].length === deck_type
 }
 nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, deck_type, ts, nick)
 {
     deck_type = deck_type === 54 ? deck_type : 52
 
-    const savedCards = nerthus.chatCmd.cards.loadCardsFromSession(ts)
+    const savedCards = this.loadCardsFromSession(ts)
     if (savedCards)
     {
-        nerthus.chatCmd.cards.currentDecks[deck_type][deck_number] = savedCards.cards
+        this.currentDecks[deck_type][deck_number] = savedCards.cards
         return savedCards.text
     }
 
-    if (nerthus.chatCmd.cards.isDeckFull(deck_type, deck_number))
+    if (this.isDeckFull(deck_type, deck_number))
         return nick + " próbował pociągnąć kartę z talii numer " + deck_number + ", ale nie było w niej już ani jednej karty."
 
 
@@ -88,7 +88,7 @@ nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, de
     let endText = "."
     for (let i = 0; i < number_of_cards; i++)
     {
-        const card = nerthus.chatCmd.cards.getCard(deck_number, ts, deck_type)
+        const card = this.getCard(deck_number, ts, deck_type)
         if (!card)
         {
             endText = ", tym samym nie pozostawiając już ani jednej karty."
@@ -104,11 +104,11 @@ nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, de
         cardDrawnCount++
     }
 
-    if (nerthus.chatCmd.cards.isDeckFull(deck_type, deck_number))
+    if (this.isDeckFull(deck_type, deck_number))
         endText = ", tym samym nie pozostawiając już ani jednej karty."
     else
         endText = ", zostawiając na stole " +
-            (deck_type - nerthus.chatCmd.cards.currentDecks[deck_type][deck_number].length) +
+            (deck_type - this.currentDecks[deck_type][deck_number].length) +
             " z " + deck_type + " kart."
 
 
@@ -116,11 +116,11 @@ nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, de
     if (localStorage.nerthus_cardCheat || nick === nerthus.chatCmd.getHeroNick())
         returnText = nick + " pociągnął " + cards + " z talii numer " + deck_number + endText
     else
-        returnText = nick + " pociągnął " + nerthus.chatCmd.cards.numbers[cardDrawnCount] + " z talii numer " + deck_number + endText
+        returnText = nick + " pociągnął " + this.numbers[cardDrawnCount] + " z talii numer " + deck_number + endText
 
     const data = {
         text: returnText,
-        cards: nerthus.chatCmd.cards.currentDecks[deck_type][deck_number]
+        cards: this.currentDecks[deck_type][deck_number]
     }
     nerthus.chatCmd.cards.saveCardsForSession(data, ts)
     return returnText

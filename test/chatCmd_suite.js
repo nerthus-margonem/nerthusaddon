@@ -15,20 +15,23 @@ before(function()
     nerthus = {}
     nerthus.defer = function(){}
     nerthus.worldEdit = {
-        changeMap: function (url, layer)
+        changeMap(url, layer)
         {
             WorldEdit.changeMap = [url, layer]
         },
-        changeLight: function (opacity) {
+        changeLight(opacity) {
             WorldEdit.changeLight = opacity
         },
-        addNpc: function (x, y, url, name, collision)
+        addNpc(x, y, url, name, collision)
         {
             WorldEdit.addNpc = [x, y, url, name, collision]
         },
-        deleteNpc: function (x, y)
+        deleteNpc(x, y)
         {
             WorldEdit.deleteNpc = [x, y]
+        },
+        hideGameNpc(id){
+            WorldEdit.hideGameNpc = id
         }
     }
     //to be moved to worldEdit
@@ -548,4 +551,29 @@ test("*weather command", function() {
     expect(nerthus_weather_bard_id).to.be.equal(7)
 })
 
-//TODO more tests
+test("*hide command", function ()
+{
+    const command = {
+        t: "*hide 7456",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map["hide"](command)
+
+    expect(ch).to.be.equal(false)
+    expect(WorldEdit.hideGameNpc).to.be.equal(7456)
+})
+
+test("*hide command with map name", function ()
+{
+    //npc id is unique, so there is no need for distinguishing map
+    const command = {
+        t: "*hide 7456,6436",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map["hide"](command)
+
+    expect(ch).to.be.equal(false)
+    expect(WorldEdit.hideGameNpc).to.be.equal(7456)
+})
+
+

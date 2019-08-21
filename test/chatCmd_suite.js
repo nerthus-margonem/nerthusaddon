@@ -99,6 +99,130 @@ test("dummy", function()
 {
 })
 
+test("run when there is no command", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = () =>
+    {
+        return undefined
+    }
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: ""
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(false)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+})
+
+test("run when there is a command, but not a callback", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = (ch) =>
+    {
+        return {
+            t: "command",
+            k: 0,
+            n: "author"
+        }
+    }
+    const fetch_callback = nerthus.chatCmd.fetch_callback
+    nerthus.chatCmd.fetch_callback = () =>
+    {
+        return false
+    }
+
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: "author"
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(false)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+    nerthus.chatCmd.fetch_callback = fetch_callback
+})
+
+test("run when there is a command and callback which hides msg", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = (ch) =>
+    {
+        return {
+            t: "command",
+            k: 0,
+            n: "author"
+        }
+    }
+    const fetch_callback = nerthus.chatCmd.fetch_callback
+    nerthus.chatCmd.fetch_callback = () =>
+    {
+        return function ()
+        {
+            return false
+        }
+    }
+    const fixUrl = nerthus.chatCmd.fixUrl
+    nerthus.chatCmd.fixUrl = (t) =>
+    {
+        console.log(t)
+        return t
+    }
+
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: "author"
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(true)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+    nerthus.chatCmd.fetch_callback = fetch_callback
+    nerthus.chatCmd.fixUrl = fixUrl
+})
+
+test("run when there is a command and callback which doesn't hide msg", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = (ch) =>
+    {
+        return {
+            t: "command",
+            k: 0,
+            n: "author"
+        }
+    }
+    const fetch_callback = nerthus.chatCmd.fetch_callback
+    nerthus.chatCmd.fetch_callback = () =>
+    {
+        return function ()
+        {
+            return true
+        }
+    }
+    const fixUrl = nerthus.chatCmd.fixUrl
+    nerthus.chatCmd.fixUrl = (t) =>
+    {
+        return t
+    }
+
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: "author"
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(false)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+    nerthus.chatCmd.fetch_callback = fetch_callback
+    nerthus.chatCmd.fixUrl = fixUrl
+})
+
 test("getHeroNick on SI", () =>
 {
     Engine.hero = undefined

@@ -21,42 +21,47 @@ nerthus.chatCmd.cards.pseudoRandom = function (seed)
     seed = (seed * 9301 + 49297) % 233280
     return seed / 233280
 }
-nerthus.chatCmd.cards.getCard = function (deck_id, ts, deck_type)
+nerthus.chatCmd.cards.getCardFromId = function (card_id)
 {
-    if (!this.currentDecks[deck_type][deck_id]) this.currentDecks[deck_type][deck_id] = []
-
-    const card = Math.floor(this.pseudoRandom(ts) * deck_type)
-
     let valueName, colorName
-    if (card === 52 || card === 53)
+    if (card_id === 52 || card_id === 53)
     {
         valueName = "jokera"
-        if (card === 52)
+        if (card_id === 52)
             colorName = "czarnego"
-        if (card === 53)
+        if (card_id === 53)
             colorName = "czerwonego"
     }
     else
     {
-        const value = Math.floor(card / 4)
-        const color = card % 4
+        const value = Math.floor(card_id / 4)
+        const color = card_id % 4
         valueName = this.values[value]
         colorName = this.colors[color]
     }
+
+    return {
+        id: card_id,
+        value: valueName,
+        color: colorName
+    }
+}
+nerthus.chatCmd.cards.getCard = function (deck_id, ts, deck_type)
+{
+    if (!this.currentDecks[deck_type][deck_id]) this.currentDecks[deck_type][deck_id] = []
+
+    const card_id = Math.floor(this.pseudoRandom(ts) * deck_type)
 
     const len = this.currentDecks[deck_type][deck_id].length
     if (len === deck_type)
         return false
     for (let i = 0; i < len; i++)
-        if (this.currentDecks[deck_type][deck_id][i] === card)
+        if (this.currentDecks[deck_type][deck_id][i] === card_id)
             return this.getCard(deck_id, ts + 2901, deck_type)
 
-    this.currentDecks[deck_type][deck_id].push(card)
-    return {
-        id: card,
-        value: valueName,
-        color: colorName
-    }
+    this.currentDecks[deck_type][deck_id].push(card_id)
+
+    return nerthus.chatCmd.cards.getCardFromId(card_id)
 }
 
 nerthus.chatCmd.cards.numbers = [

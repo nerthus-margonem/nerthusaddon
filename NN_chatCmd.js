@@ -161,12 +161,10 @@ nerthus.chatCmd.cards.values = [
     "króla"
 ]
 
-nerthus.chatCmd.run = function (ch)
-{
-    // return TRUE if you want message to NOT show in chat
-    // return FALSE if you want message to show in chat
-    // change message by directly editing object passed as reference
 
+nerthus.chatCmd.handleChatObj = function (ch)
+{
+    // change message by directly editing object passed as reference
 
     const cmd = this.fetch_cmd(ch)
     if (cmd)
@@ -177,13 +175,21 @@ nerthus.chatCmd.run = function (ch)
             ch.t = this.fixUrl(ch.t)
             NerthusAddonUtils.log("[" + ch.k + "] " + ch.n + " -> " + ch.t) //[which tab] author -> command
 
-            // return negation so that on callbacks returning TRUE or OBJECT message is visible
-            // and on callbacks returning FALSE or UNDEFINED it is not
-            return !callback(ch)
+            return callback(ch)
         }
-        return false
+        return true
     }
-    return false
+    return true
+}
+
+nerthus.chatCmd.run = function (ch)
+{
+    // return TRUE if you want message to NOT show in chat
+    // return FALSE if you want message to show in chat
+
+    // function returns negation so that on callbacks returning TRUE or OBJECT message is visible
+    // and on callbacks returning FALSE or UNDEFINED it is not
+    return !this.handleChatObj(ch)
 }
 
 nerthus.chatCmd.edit_ni_msg = function ($msg, ch)
@@ -204,31 +210,15 @@ nerthus.chatCmd.edit_ni_msg = function ($msg, ch)
 
 nerthus.chatCmd.run_ni = function (e)
 {
-    let ch = e[1],
-        $msg = e[0]
+    const $msg = e[0],
+            ch = e[1]
 
     if (ch.s !== "abs" && ch.s !== "") return
 
-    const cmd = this.fetch_cmd(ch)
-    //if there is a command
-    if (cmd)
-    {
-        const callback = this.fetch_callback(cmd, ch)
-        //if user typing command have permission for it
-        if (callback)
-        {
-            ch.t = this.fixUrl(ch.t)
-            NerthusAddonUtils.log("[" + ch.k + "] " + ch.n + " -> " + ch.t) //[which tab] author -> command
-
-            //if after executing command you need to show results on chat
-            if (callback(ch))
-                this.edit_ni_msg($msg, ch)
-            else
-                $msg.remove()
-
-        }
-    }
-
+    if (this.handleChatObj(ch))
+        this.edit_ni_msg($msg, ch)
+    else
+        $msg.remove()
 }
 
 nerthus.chatCmd.fixUrl = function(text)

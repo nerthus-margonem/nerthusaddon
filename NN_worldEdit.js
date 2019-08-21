@@ -439,7 +439,6 @@ nerthus.worldEdit.startOtherChanging_ni = function ()
 
 nerthus.worldEdit.startWorldEdit_ni = function ()
 {
-
     this.startMapChanging_ni()
     this.startOtherChanging_ni()
 }

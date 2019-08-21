@@ -119,6 +119,22 @@ nerthus.chatCmd.run = function (ch)
     return false
 }
 
+nerthus.chatCmd.edit_ni_msg = function ($msg, ch)
+{
+    $msg.addClass(ch.s)
+    const content = $msg.children().eq(2).contents()
+    $msg.children(2).addClass(ch.s)
+    for (let i = 0; i < content.length; i++)
+    {
+        const text = content.eq(i)
+        if (i === 0)
+            text.replaceWith(ch.t)
+        else
+            text.remove()
+    }
+    $msg.children().eq(0).contents().eq(0).replaceWith(ch.n)
+}
+
 nerthus.chatCmd.run_ni = function (e)
 {
     let ch = e[1],
@@ -139,20 +155,7 @@ nerthus.chatCmd.run_ni = function (e)
 
             //if after executing command you need to show results on chat
             if (callback(ch))
-            {
-                $msg.addClass(ch.s)
-                let content = $msg.children().eq(2).contents()
-                $msg.children(2).addClass(ch.s)
-                for (let i = 0; i < content.length; i++)
-                {
-                    let text = content.eq(i)
-                    if (i === 0)
-                        text.replaceWith(e[1].t)
-                    else
-                        text.remove()
-                }
-                $msg.children().eq(0).contents().eq(0).replaceWith(ch.n)
-            }
+                this.edit_ni_msg($msg, ch)
             else
                 $msg.remove()
 

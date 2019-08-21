@@ -20,7 +20,7 @@ before(function ()
     //helper object to check proper argument passing to NN_worldEdit.js
     WorldEdit = []
     //helper for start_ni
-    start_ni_HELPER = []
+    start_HELPER = []
 
     nerthus = {}
     nerthus.defer = function (func)
@@ -33,7 +33,7 @@ before(function ()
     }
     nerthus.loadOnEveryMap = function (func)
     {
-        start_ni_HELPER.loadOnEveryMap = func
+        start_HELPER.loadOnEveryMap = func
     }
 
     nerthus.worldEdit = {
@@ -62,7 +62,7 @@ after(function ()
     delete Engine
 
     delete WorldEdit
-    delete start_ni_HELPER
+    delete start_HELPER
     delete nerthus
 
     delete $
@@ -147,8 +147,8 @@ test("SI: start defer map change is a bound function", function ()
     nerthus.maps.start()
 
     //function should be bound function
-    expect(DEFERRED[0].name).to.equal("bound ")
-    expect(DEFERRED[0].prototype).to.equal(undefined)
+    expect(start_HELPER.loadOnEveryMap.name).to.equal("bound ")
+    expect(start_HELPER.loadOnEveryMap.prototype).to.equal(undefined)
 })
 
 test("SI: start defer map change bound function works the same as normal function", function ()
@@ -156,7 +156,7 @@ test("SI: start defer map change bound function works the same as normal functio
     nerthus.maps.start()
 
     let ret = nerthus.maps.customMaps()
-    let retBound = DEFERRED[0]()
+    let retBound = start_HELPER.loadOnEveryMap()
 
     expect(ret).to.equal(retBound)
 })
@@ -237,15 +237,15 @@ test("NI: start_ni loaded properly", function ()
 {
     nerthus.maps.customMaps_ni = function ()
     {
-        start_ni_HELPER.customMaps = true
+        start_HELPER.customMaps = true
     }
 
     nerthus.maps.start_ni()
 
 
-    expect(start_ni_HELPER.customMaps).to.equal(true)
+    expect(start_HELPER.customMaps).to.equal(true)
 
     //function should be bound function
-    expect(start_ni_HELPER.loadOnEveryMap.name).to.equal("bound ")
-    expect(start_ni_HELPER.loadOnEveryMap.prototype).to.equal(undefined)
+    expect(start_HELPER.loadOnEveryMap.name).to.equal("bound ")
+    expect(start_HELPER.loadOnEveryMap.prototype).to.equal(undefined)
 })

@@ -465,14 +465,10 @@ nerthus.npc.dialog.check = function (command)
 
 nerthus.npc.start = function ()
 {
-    nerthus.defer(function ()
+    nerthus.loadOnEveryMap(function ()
     {
+        nerthus.npc.reset_npcs()
         nerthus.npc.load_npcs()
-        nerthus.loadOnEveryMap(function ()
-        {
-            nerthus.npc.reset_npcs()
-            nerthus.npc.load_npcs()
-        })
     })
 }
 

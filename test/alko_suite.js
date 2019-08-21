@@ -10,8 +10,6 @@ before(function ()
 
     expect = require("expect.js")
     let e = require("../NN_alko.js")
-    console.log(e)
-    console.log(nerthus)
     nerthus.alko.shuffleArray = function (array, cc)
     {
         SHUFFLE.push([array,cc])

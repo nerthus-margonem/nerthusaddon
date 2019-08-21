@@ -15,20 +15,23 @@ before(function()
     nerthus = {}
     nerthus.defer = function(){}
     nerthus.worldEdit = {
-        changeMap: function (url, layer)
+        changeMap(url, layer)
         {
             WorldEdit.changeMap = [url, layer]
         },
-        changeLight: function (opacity) {
+        changeLight(opacity) {
             WorldEdit.changeLight = opacity
         },
-        addNpc: function (x, y, url, name, collision)
+        addNpc(x, y, url, name, collision)
         {
             WorldEdit.addNpc = [x, y, url, name, collision]
         },
-        deleteNpc: function (x, y)
+        deleteNpc(x, y)
         {
             WorldEdit.deleteNpc = [x, y]
+        },
+        hideGameNpc(id){
+            WorldEdit.hideGameNpc = id
         }
     }
     //to be moved to worldEdit
@@ -43,6 +46,9 @@ before(function()
     g = {}
     g.chat = {}
     g.chat.parsers = []
+    hero = {
+        nick: "NICK_SI"
+    }
     Engine = {
         map: {
             d: {
@@ -53,6 +59,11 @@ before(function()
             setAvatarData: function ()
             {
                 
+            }
+        },
+        hero: {
+            d: {
+                nick: "NICK_NI"
             }
         }
     }
@@ -86,6 +97,148 @@ beforeEach(function()
 // are they needed/wanted?
 test("dummy", function()
 {
+})
+
+test("run when there is no command", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = () =>
+    {
+        return undefined
+    }
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: ""
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(false)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+})
+
+test("run when there is a command, but not a callback", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = (ch) =>
+    {
+        return {
+            t: "command",
+            k: 0,
+            n: "author"
+        }
+    }
+    const fetch_callback = nerthus.chatCmd.fetch_callback
+    nerthus.chatCmd.fetch_callback = () =>
+    {
+        return false
+    }
+
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: "author"
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(false)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+    nerthus.chatCmd.fetch_callback = fetch_callback
+})
+
+test("run when there is a command and callback which hides msg", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = (ch) =>
+    {
+        return {
+            t: "command",
+            k: 0,
+            n: "author"
+        }
+    }
+    const fetch_callback = nerthus.chatCmd.fetch_callback
+    nerthus.chatCmd.fetch_callback = () =>
+    {
+        return function ()
+        {
+            return false
+        }
+    }
+    const fixUrl = nerthus.chatCmd.fixUrl
+    nerthus.chatCmd.fixUrl = (t) =>
+    {
+        console.log(t)
+        return t
+    }
+
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: "author"
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(true)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+    nerthus.chatCmd.fetch_callback = fetch_callback
+    nerthus.chatCmd.fixUrl = fixUrl
+})
+
+test("run when there is a command and callback which doesn't hide msg", () =>
+{
+    const fetch_cmd = nerthus.chatCmd.fetch_cmd
+    nerthus.chatCmd.fetch_cmd = (ch) =>
+    {
+        return {
+            t: "command",
+            k: 0,
+            n: "author"
+        }
+    }
+    const fetch_callback = nerthus.chatCmd.fetch_callback
+    nerthus.chatCmd.fetch_callback = () =>
+    {
+        return function ()
+        {
+            return true
+        }
+    }
+    const fixUrl = nerthus.chatCmd.fixUrl
+    nerthus.chatCmd.fixUrl = (t) =>
+    {
+        return t
+    }
+
+    const command = {
+        t: "*command ",
+        k: 0,
+        n: "author"
+    }
+
+    expect(nerthus.chatCmd.run(command)).to.equal(false)
+
+    nerthus.chatCmd.fetch_cmd = fetch_cmd
+    nerthus.chatCmd.fetch_callback = fetch_callback
+    nerthus.chatCmd.fixUrl = fixUrl
+})
+
+test("getHeroNick on SI", () =>
+{
+    Engine.hero = undefined
+    hero.nick = "NICK_SI"
+    expect(nerthus.chatCmd.getHeroNick()).to.equal("NICK_SI")
+})
+
+test("getHeroNick on NI", () =>
+{
+    hero = undefined
+    Engine.hero = {
+        d: {
+            nick: "NICK_NI"
+        }
+    }
+    expect(nerthus.chatCmd.getHeroNick()).to.equal("NICK_NI")
 })
 
 test("styles appended when start SI executed", () =>
@@ -522,4 +675,29 @@ test("*weather command", function() {
     expect(nerthus_weather_bard_id).to.be.equal(7)
 })
 
-//TODO more tests
+test("*hide command", function ()
+{
+    const command = {
+        t: "*hide 7456",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map["hide"](command)
+
+    expect(ch).to.be.equal(false)
+    expect(WorldEdit.hideGameNpc).to.be.equal(7456)
+})
+
+test("*hide command with map name", function ()
+{
+    //npc id is unique, so there is no need for distinguishing map
+    const command = {
+        t: "*hide 7456,6436",
+        n: ""
+    }
+    const ch = nerthus.chatCmd.map["hide"](command)
+
+    expect(ch).to.be.equal(false)
+    expect(WorldEdit.hideGameNpc).to.be.equal(7456)
+})
+
+

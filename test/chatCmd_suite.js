@@ -43,6 +43,9 @@ before(function()
     g = {}
     g.chat = {}
     g.chat.parsers = []
+    hero = {
+        nick: "NICK_SI"
+    }
     Engine = {
         map: {
             d: {
@@ -53,6 +56,11 @@ before(function()
             setAvatarData: function ()
             {
                 
+            }
+        },
+        hero: {
+            d: {
+                nick: "NICK_NI"
             }
         }
     }
@@ -86,6 +94,24 @@ beforeEach(function()
 // are they needed/wanted?
 test("dummy", function()
 {
+})
+
+test("getHeroNick on SI", () =>
+{
+    Engine.hero = undefined
+    hero.nick = "NICK_SI"
+    expect(nerthus.chatCmd.getHeroNick()).to.equal("NICK_SI")
+})
+
+test("getHeroNick on NI", () =>
+{
+    hero = undefined
+    Engine.hero = {
+        d: {
+            nick: "NICK_NI"
+        }
+    }
+    expect(nerthus.chatCmd.getHeroNick()).to.equal("NICK_NI")
 })
 
 test("styles appended when start SI executed", () =>

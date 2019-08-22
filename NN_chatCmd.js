@@ -63,7 +63,7 @@ nerthus.chatCmd.cards.getCard = function (deck_id, ts, deck_type)
 
     return nerthus.chatCmd.cards.getCardFromId(card_id)
 }
-nerthus.chatCmd.cards.isDeckFull = function (deck_type, deck_number)
+nerthus.chatCmd.cards.isDeckEmpty = function (deck_type, deck_number)
 {
     return this.currentDecks[deck_type][deck_number] &&
         this.currentDecks[deck_type][deck_number].length === deck_type
@@ -79,7 +79,7 @@ nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, de
         return savedCards.text
     }
 
-    if (this.isDeckFull(deck_type, deck_number))
+    if (this.isDeckEmpty(deck_type, deck_number))
         return nick + " próbował pociągnąć kartę z talii numer " + deck_number + ", ale nie było w niej już ani jednej karty."
 
 
@@ -104,7 +104,7 @@ nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, de
         cardDrawnCount++
     }
 
-    if (this.isDeckFull(deck_type, deck_number))
+    if (this.isDeckEmpty(deck_type, deck_number))
         endText = ", tym samym nie pozostawiając już ani jednej karty."
     else
         endText = ", zostawiając na stole " +

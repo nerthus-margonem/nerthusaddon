@@ -223,6 +223,128 @@ test("run when there is a command and callback which doesn't hide msg", () =>
     nerthus.chatCmd.fixUrl = fixUrl
 })
 
+test("run_ni when there is no command", () =>
+{
+    const handleChatObj = nerthus.chatCmd.handleChatObj
+    nerthus.chatCmd.handleChatObj = (ch) =>
+    {
+        return true
+    }
+    let edit_msg_called = false
+    const edit_ni_msg = nerthus.chatCmd.edit_ni_msg
+    nerthus.chatCmd.edit_ni_msg = ($msg, ch) =>
+    {
+        edit_msg_called = true
+    }
+
+    let $msg_removed = false
+    const $msg = {
+        remove()
+        {
+            $msg_removed = true
+        }
+    }
+    const obj = [
+        $msg,
+        {
+            t: "*command ",
+            k: 0,
+            n: "",
+            s: ""
+        }
+    ]
+
+    nerthus.chatCmd.run_ni(obj)
+    expect($msg_removed).to.equal(false)
+    expect(edit_msg_called).to.equal(false)
+
+    nerthus.chatCmd.handleChatObj = handleChatObj
+    nerthus.chatCmd.edit_ni_msg = edit_ni_msg
+})
+
+test("run when there is a command", () =>
+{
+    const handleChatObj = nerthus.chatCmd.handleChatObj
+    nerthus.chatCmd.handleChatObj = (ch) =>
+    {
+        return {
+            t: "*command ",
+            k: 0,
+            n: "",
+            s: ""
+        }
+    }
+    let edit_msg_called = false
+    const edit_ni_msg = nerthus.chatCmd.edit_ni_msg
+    nerthus.chatCmd.edit_ni_msg = ($msg, ch) =>
+    {
+        edit_msg_called = true
+    }
+
+    let $msg_removed = false
+    const $msg = {
+        remove()
+        {
+            $msg_removed = true
+        }
+    }
+    const obj = [
+        $msg,
+        {
+            t: "*command ",
+            k: 0,
+            n: "",
+            s: ""
+        }
+    ]
+
+    nerthus.chatCmd.run_ni(obj)
+    expect($msg_removed).to.equal(false)
+    expect(edit_msg_called).to.equal(true)
+
+    nerthus.chatCmd.handleChatObj = handleChatObj
+    nerthus.chatCmd.edit_ni_msg = edit_ni_msg
+})
+
+test("run when there is a command and it needs to be hidden", () =>
+{
+    const handleChatObj = nerthus.chatCmd.handleChatObj
+    nerthus.chatCmd.handleChatObj = (ch) =>
+    {
+        return false
+    }
+    let edit_msg_called = false
+    const edit_ni_msg = nerthus.chatCmd.edit_ni_msg
+    nerthus.chatCmd.edit_ni_msg = ($msg, ch) =>
+    {
+        edit_msg_called = true
+    }
+
+    let $msg_removed = false
+    const $msg = {
+        remove()
+        {
+            $msg_removed = true
+        }
+    }
+    const obj = [
+        $msg,
+        {
+            t: "*command ",
+            k: 0,
+            n: "",
+            s: ""
+        }
+    ]
+
+    nerthus.chatCmd.run_ni(obj)
+    expect($msg_removed).to.equal(true)
+    expect(edit_msg_called).to.equal(false)
+
+    nerthus.chatCmd.handleChatObj = handleChatObj
+    nerthus.chatCmd.edit_ni_msg = edit_ni_msg
+})
+
 test("getHeroNick on SI", () =>
 {
     Engine.hero = undefined

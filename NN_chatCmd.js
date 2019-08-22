@@ -215,9 +215,10 @@ nerthus.chatCmd.run_ni = function (e)
 
     if (ch.s !== "abs" && ch.s !== "") return
 
-    if (this.handleChatObj(ch))
+    const chatParse = this.handleChatObj(ch)
+    if (typeof chatParse === "object")
         this.edit_ni_msg($msg, ch)
-    else
+    else if (chatParse === false)
         $msg.remove()
 }
 

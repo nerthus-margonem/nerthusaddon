@@ -701,3 +701,209 @@ test("*hide command with map name", function ()
 })
 
 
+suite("playing cards")
+beforeEach(() =>
+{
+    nerthus.chatCmd.cards.currentDecks = {
+        52: {},
+        54: {}
+    }
+})
+
+test("pseudo random generates same number with same seed", () =>
+{
+    const number = 235325.123
+    expect(nerthus.chatCmd.cards.pseudoRandom(number))
+        .to.be.equal(nerthus.chatCmd.cards.pseudoRandom(number))
+})
+
+test("pseudo random generates different numbers with different seed", () =>
+{
+    const number = 235325.123
+    const number2 = 123123123.22
+    expect(nerthus.chatCmd.cards.pseudoRandom(number))
+        .to.not.be.equal(nerthus.chatCmd.cards.pseudoRandom(number2))
+})
+
+test("getCard defines deck when it's not yet defined", () =>
+{
+    const pseudoRandom = nerthus.chatCmd.cards.pseudoRandom
+    nerthus.chatCmd.cards.pseudoRandom = (number) =>
+    {
+        return number
+    }
+
+    const deck_type = 52
+    const deck_id = 1
+
+    nerthus.chatCmd.cards.getCard(deck_id, 1, deck_type)
+    expect(nerthus.chatCmd.cards.currentDecks[deck_type][deck_id]).to.be.ok()
+
+    nerthus.chatCmd.cards.pseudoRandom = pseudoRandom
+})
+
+test("getCard returns proper card with correct arguments", () =>
+{
+    const pseudoRandom = nerthus.chatCmd.cards.pseudoRandom
+    nerthus.chatCmd.cards.pseudoRandom = (number) =>
+    {
+        return number
+    }
+
+    const deck_type = 52
+    const deck_id = 1
+
+    const card = nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+    expect(card.id).to.be.within(0, 51)
+    expect(typeof card.value).to.be.equal("string")
+    expect(typeof card.color).to.be.equal("string")
+
+    nerthus.chatCmd.cards.pseudoRandom = pseudoRandom
+})
+
+test("getCard returns 52 cards proper cards in deck type 52 (depended on pseudorandom)", () =>
+{
+    const deck_type = 52
+    const deck_id = 1
+
+    for (let i = 0; i < deck_type; i++)
+    {
+        const card = nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+        console.log(card)
+        expect(card.id).to.be.within(0, 51)
+        expect(typeof card.value).to.be.equal("string")
+        expect(typeof card.color).to.be.equal("string")
+    }
+})
+
+test("getCard returns false after 52th card in deck type 52 (depended on pseudorandom)", () =>
+{
+    const deck_type = 52
+    const deck_id = 1
+
+    for (let i = 0; i < deck_type; i++)
+        nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+
+    const card = nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+    expect(card).to.be.equal(false)
+})
+
+test("getCard returns 54 cards proper cards in deck type 54 (depended on pseudorandom)", () =>
+{
+    const deck_type = 54
+    const deck_id = 1
+
+    for (let i = 0; i < deck_type; i++)
+    {
+        const card = nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+        console.log(card)
+        expect(card.id).to.be.within(0, 53)
+        expect(typeof card.value).to.be.equal("string")
+        expect(typeof card.color).to.be.equal("string")
+    }
+})
+
+test("getCard returns false after 54th card in deck type 54 (depended on pseudorandom)", () =>
+{
+    const deck_type = 54
+    const deck_id = 1
+
+    for (let i = 0; i < deck_type; i++)
+        nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+
+    const card = nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
+    expect(card).to.be.equal(false)
+})
+
+test("*draw command does not execute getDrawnCards when it is on chat other than global", () =>
+{
+    let drawnCardsExecuted = false
+    const getDrawnCards = nerthus.chatCmd.getDrawnCards
+    nerthus.chatCmd.cards.getDrawnCards = function ()
+    {
+        drawnCardsExecuted = true
+        return "PARSED"
+    }
+    const command = {
+        t: "*draw 1",
+        n: "",
+        k: 1
+    }
+    const ch = nerthus.chatCmd.public_map["draw"](command)
+    expect(ch.t).to.not.be.equal("PARSED")
+    expect(drawnCardsExecuted).to.be.equal(false)
+
+    nerthus.chatCmd.getDrawnCards = getDrawnCards
+})
+
+test("*draw command executes getDrawnCards with proper attributes", () =>
+{
+    let drawnCardsExecuted = []
+    const getDrawnCards = nerthus.chatCmd.getDrawnCards
+    nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, deck_type, ts, nick)
+    {
+        drawnCardsExecuted = [number_of_cards, deck_number, deck_type, ts, nick]
+        return "PARSED"
+    }
+    const nick = "NICK"
+    const ts = 123456.123
+    const command = {
+        t: "*draw 3,5,52",
+        n: nick,
+        k: 0,
+        ts: ts
+    }
+    const ch = nerthus.chatCmd.public_map["draw"](command)
+    expect(drawnCardsExecuted[0]).to.be.equal(3)
+    expect(drawnCardsExecuted[1]).to.be.equal(5)
+    expect(drawnCardsExecuted[2]).to.be.equal(52)
+    expect(drawnCardsExecuted[3]).to.be.equal(ts)
+    expect(drawnCardsExecuted[4]).to.be.equal(nick)
+
+    nerthus.chatCmd.getDrawnCards = getDrawnCards
+})
+
+test("*draw command executes getDrawnCards with proper attributes, even when there are spaces in command", () =>
+{
+    let drawnCardsExecuted = []
+    const getDrawnCards = nerthus.chatCmd.getDrawnCards
+    nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, deck_type, ts, nick)
+    {
+        drawnCardsExecuted = [number_of_cards, deck_number, deck_type, ts, nick]
+        return "PARSED"
+    }
+    const nick = "NICK"
+    const ts = 123456.123
+    const command = {
+        t: "*draw 3, 5, 52",
+        n: nick,
+        k: 0,
+        ts: ts
+    }
+    const ch = nerthus.chatCmd.public_map["draw"](command)
+    expect(drawnCardsExecuted[0]).to.be.equal(3)
+    expect(drawnCardsExecuted[1]).to.be.equal(5)
+    expect(drawnCardsExecuted[2]).to.be.equal(52)
+    expect(drawnCardsExecuted[3]).to.be.equal(ts)
+    expect(drawnCardsExecuted[4]).to.be.equal(nick)
+
+    nerthus.chatCmd.getDrawnCards = getDrawnCards
+})
+
+test("isDeckEmpty returns true when deck is fully drawn", () =>
+{
+    nerthus.chatCmd.cards.currentDecks[3] = [[0, 0, 0]]
+    expect(nerthus.chatCmd.cards.isDeckEmpty(3, 0)).to.be.ok()
+})
+
+test("isDeckEmpty returns false when deck is not fully drawn", () =>
+{
+    nerthus.chatCmd.cards.currentDecks[3] = [[0, 0]]
+    expect(nerthus.chatCmd.cards.isDeckEmpty(3, 0)).to.not.be.ok()
+})
+
+test("isDeckEmpty returns false when deck does not exist yet (in that case it should be full)", () =>
+{
+    nerthus.chatCmd.cards.currentDecks[3] = []
+    expect(nerthus.chatCmd.cards.isDeckEmpty(3, 0)).to.not.be.ok()
+})

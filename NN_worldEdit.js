@@ -319,7 +319,7 @@ nerthus.worldEdit.changeMap_ni = function (url, layer)
     }
 }
 
-nerthus.worldEdit.startMapChanging_ni = function ()
+nerthus.worldEdit.startMapChanging_ni = function()
 {
     //manipulation of map
     const tmpMapDraw = Engine.map.draw
@@ -362,66 +362,85 @@ nerthus.worldEdit.startMapChanging_ni = function ()
                     nerthus.worldEdit.additionalDrawList[i].y - Engine.map.offset[1])
         }
     }
+}
 
-    //manipulation of other
+nerthus.worldEdit.getCurrentDarknessPaint = function ()
+{
+    return {
+        draw: function (e)
+        {
+            const style = e.fillStyle
+            e.fillStyle = "#000"
+            e.globalAlpha = nerthus.worldEdit.nightDimValue === -1 ? 0 : nerthus.worldEdit.nightDimValue
+            e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
+            e.globalAlpha = 1.0
+            e.fillStyle = style
+        },
+        getOrder: function ()
+        {
+            return 950 //darkness bellow lights but above everything else
+        }
+    }
+}
+
+nerthus.worldEdit.getCurrentWeatherPaint = function ()
+{
+    return {
+        draw: function (e)
+        {
+            if (nerthus.worldEdit.weatherDisplayOn)
+            {
+                const len = nerthus.worldEdit.currentWeatherEffects.length
+                for (let i = 0; i < len; i++)
+                {
+                    const name = nerthus.worldEdit.currentWeatherEffects[i][0]
+                    const opacity = nerthus.worldEdit.currentWeatherEffects[i][1]
+                    const img = nerthus.worldEdit.weatherImages[name][nerthus.worldEdit.weatherCurrentFrameNumbers[name] + 1]
+
+                    //check if img has been loaded correctly to not stop entire game in case of error
+                    if (img.complete && img.naturalWidth !== 0)
+                    {
+                        const pattern = e.createPattern(img, "repeat")
+                        const style = e.fillStyle
+                        const alpha = e.globalAlpha
+                        e.fillStyle = pattern
+                        e.globalAlpha = opacity
+                        e.translate(0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+                        e.fillRect(0, 0, Engine.map.width, Engine.map.height)
+                        e.translate(Engine.map.offset[0], Engine.map.offset[1])
+                        e.fillStyle = style
+                        e.globalAlpha = alpha
+                    }
+                }
+            }
+        },
+        getOrder: function ()
+        {
+            return 940 //weather bellow lights and weather but above everything else
+        }
+    }
+}
+
+nerthus.worldEdit.startOtherChanging_ni = function ()
+{
     const tmpEmotionsDraw = Engine.emotions.getDrawableList
     Engine.emotions.getDrawableList = function ()
     {
         let ret = tmpEmotionsDraw()
         //Darkness
-        ret.push({
-            draw: function (e)
-            {
-                const style = e.fillStyle
-                e.fillStyle = "#000"
-                e.globalAlpha = nerthus.worldEdit.nightDimValue === -1 ? 0 : nerthus.worldEdit.nightDimValue
-                e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
-                e.globalAlpha = 1.0
-                e.fillStyle = style
-            },
-            getOrder: function ()
-            {
-                return 950 //darkness bellow lights but above everything else
-            }
-        })
+        ret.push(nerthus.worldEdit.getCurrentDarknessPaint())
         //weather
-        ret.push({
-            draw: function (e)
-            {
-                if (nerthus.worldEdit.weatherDisplayOn)
-                {
-                    const len = nerthus.worldEdit.currentWeatherEffects.length
-                    for (let i = 0; i < len; i++)
-                    {
-                        const name = nerthus.worldEdit.currentWeatherEffects[i][0]
-                        const opacity = nerthus.worldEdit.currentWeatherEffects[i][1]
-                        const img = nerthus.worldEdit.weatherImages[name][nerthus.worldEdit.weatherCurrentFrameNumbers[name] + 1]
-
-                        //check if img has been loaded correctly to not stop entire game in case of error
-                        if (img.complete && img.naturalWidth !== 0)
-                        {
-                            const pattern = e.createPattern(img, "repeat")
-                            const style = e.fillStyle
-                            const alpha = e.globalAlpha
-                            e.fillStyle = pattern
-                            e.globalAlpha = opacity
-                            e.translate(0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
-                            e.fillRect(0, 0, Engine.map.width, Engine.map.height)
-                            e.translate(Engine.map.offset[0], Engine.map.offset[1])
-                            e.fillStyle = style
-                            e.globalAlpha = alpha
-                        }
-                    }
-                }
-            },
-            getOrder: function ()
-            {
-                return 940 //weather bellow lights and weather but above everything else
-            }
-        })
+        ret.push(nerthus.worldEdit.getCurrentWeatherPaint())
         return ret
     }
     this.defaultEmotionsDraw = Engine.emotions.getDrawableList
+}
+
+
+nerthus.worldEdit.startWorldEdit_ni = function ()
+{
+    this.startMapChanging_ni()
+    this.startOtherChanging_ni()
 }
 
 nerthus.worldEdit.resetLightChanging_ni = function ()
@@ -664,7 +683,7 @@ nerthus.worldEdit.start_ni = function ()
 
         if (nerthus.options.hideNpcs)
             this.startNpcHiding_ni()
-        this.startMapChanging_ni()
+        this.startWorldEdit_ni()
 
         nerthus.loadOnEveryMap(this.readdNpcList_ni.bind(this))
     })

@@ -814,3 +814,78 @@ test("getCard returns false after 54th card in deck type 54 (depended on pseudor
     const card = nerthus.chatCmd.cards.getCard(deck_id, Math.random(), deck_type)
     expect(card).to.be.equal(false)
 })
+
+test("*draw command does not execute getDrawnCards when it is on chat other than global", () =>
+{
+    let drawnCardsExecuted = false
+    const getDrawnCards = nerthus.chatCmd.getDrawnCards
+    nerthus.chatCmd.cards.getDrawnCards = function ()
+    {
+        drawnCardsExecuted = true
+        return "PARSED"
+    }
+    const command = {
+        t: "*draw 1",
+        n: "",
+        k: 1
+    }
+    const ch = nerthus.chatCmd.public_map["draw"](command)
+    expect(ch.t).to.not.be.equal("PARSED")
+    expect(drawnCardsExecuted).to.be.equal(false)
+
+    nerthus.chatCmd.getDrawnCards = getDrawnCards
+})
+
+test("*draw command executes getDrawnCards with proper attributes", () =>
+{
+    let drawnCardsExecuted = []
+    const getDrawnCards = nerthus.chatCmd.getDrawnCards
+    nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, deck_type, ts, nick)
+    {
+        drawnCardsExecuted = [number_of_cards, deck_number, deck_type, ts, nick]
+        return "PARSED"
+    }
+    const nick = "NICK"
+    const ts = 123456.123
+    const command = {
+        t: "*draw 3,5,52",
+        n: nick,
+        k: 0,
+        ts: ts
+    }
+    const ch = nerthus.chatCmd.public_map["draw"](command)
+    expect(drawnCardsExecuted[0]).to.be.equal(3)
+    expect(drawnCardsExecuted[1]).to.be.equal(5)
+    expect(drawnCardsExecuted[2]).to.be.equal(52)
+    expect(drawnCardsExecuted[3]).to.be.equal(ts)
+    expect(drawnCardsExecuted[4]).to.be.equal(nick)
+
+    nerthus.chatCmd.getDrawnCards = getDrawnCards
+})
+
+test("*draw command executes getDrawnCards with proper attributes, even when there are spaces in command", () =>
+{
+    let drawnCardsExecuted = []
+    const getDrawnCards = nerthus.chatCmd.getDrawnCards
+    nerthus.chatCmd.cards.getDrawnCards = function (number_of_cards, deck_number, deck_type, ts, nick)
+    {
+        drawnCardsExecuted = [number_of_cards, deck_number, deck_type, ts, nick]
+        return "PARSED"
+    }
+    const nick = "NICK"
+    const ts = 123456.123
+    const command = {
+        t: "*draw 3, 5, 52",
+        n: nick,
+        k: 0,
+        ts: ts
+    }
+    const ch = nerthus.chatCmd.public_map["draw"](command)
+    expect(drawnCardsExecuted[0]).to.be.equal(3)
+    expect(drawnCardsExecuted[1]).to.be.equal(5)
+    expect(drawnCardsExecuted[2]).to.be.equal(52)
+    expect(drawnCardsExecuted[3]).to.be.equal(ts)
+    expect(drawnCardsExecuted[4]).to.be.equal(nick)
+
+    nerthus.chatCmd.getDrawnCards = getDrawnCards
+})

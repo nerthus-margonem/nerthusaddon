@@ -889,3 +889,21 @@ test("*draw command executes getDrawnCards with proper attributes, even when the
 
     nerthus.chatCmd.getDrawnCards = getDrawnCards
 })
+
+test("isDeckEmpty returns true when deck is fully drawn", () =>
+{
+    nerthus.chatCmd.cards.currentDecks[3] = [[0, 0, 0]]
+    expect(nerthus.chatCmd.cards.isDeckEmpty(3, 0)).to.be.ok()
+})
+
+test("isDeckEmpty returns false when deck is not fully drawn", () =>
+{
+    nerthus.chatCmd.cards.currentDecks[3] = [[0, 0]]
+    expect(nerthus.chatCmd.cards.isDeckEmpty(3, 0)).to.not.be.ok()
+})
+
+test("isDeckEmpty returns false when deck does not exist yet (in that case it should be full)", () =>
+{
+    nerthus.chatCmd.cards.currentDecks[3] = []
+    expect(nerthus.chatCmd.cards.isDeckEmpty(3, 0)).to.not.be.ok()
+})

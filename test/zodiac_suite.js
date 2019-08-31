@@ -1,93 +1,97 @@
-suite("Zodiak")
-
-before(function()
+suite("Zodiak", function ()
 {
-    nerthus = {}
-    nerthus.addon = {}
-    nerthus.addon.fileUrl = function () {}
-
-
-    expect = require("expect.js")
-    require("../NN_zodiak.js")
-})
-
-
-test("Correct zodiac sign around the year", function()
-{
-    const SIGNS = {
-        AQUARIUS    : 0,
-        PISCES      : 1,
-        ARIES       : 2,
-        TAURUS      : 3,
-        GEMINI      : 4,
-        CANCER      : 5,
-        LEO         : 6,
-        VIRGO       : 7,
-        LIBRA       : 8,
-        SCORPIO     : 9,
-        SAGITTARIUS : 10,
-        CAPRICORN   : 11
-    }
-
-    const _date = Date
-    let setDate = function(day, month)
+    const expect = require("expect.js")
+    suiteSetup(function ()
     {
-        Date = function()
+        nerthus = {}
+        nerthus.addon = {}
+        nerthus.addon.fileUrl = function ()
         {
-            var date = new _date(0)
-            date.setUTCDate(day)
-            date.setUTCMonth(month-1)
-            return date
         }
-    }
 
-    let expectSignToBeBetween = function(sign, begin, end)
+
+        require("../NN_zodiak.js")
+    })
+
+
+    test("Correct zodiac sign around the year", function ()
     {
-        let date = setDate(begin.day, begin.month)
-        expect(nerthus.zodiac.calculate(date)).to.be(sign)
-        date = setDate(end.day, end.month)
-        expect(nerthus.zodiac.calculate(date)).to.be(sign)
-    }
+        const SIGNS = {
+            AQUARIUS: 0,
+            PISCES: 1,
+            ARIES: 2,
+            TAURUS: 3,
+            GEMINI: 4,
+            CANCER: 5,
+            LEO: 6,
+            VIRGO: 7,
+            LIBRA: 8,
+            SCORPIO: 9,
+            SAGITTARIUS: 10,
+            CAPRICORN: 11
+        }
 
-    // Wodnik (20 stycznia – 18 lutego)
-    expectSignToBeBetween(SIGNS.AQUARIUS,{day:20,month:1},{day:18,month:2})
+        const _date = Date
+        let setDate = function (day, month)
+        {
+            Date = function ()
+            {
+                var date = new _date(0)
+                date.setUTCDate(day)
+                date.setUTCMonth(month - 1)
+                return date
+            }
+        }
 
-    // Ryby (19 lutego – 20 marca)
-    expectSignToBeBetween(SIGNS.PISCES,{day:19,month:2},{day:20,month:3})
+        let expectSignToBeBetween = function (sign, begin, end)
+        {
+            let date = setDate(begin.day, begin.month)
+            expect(nerthus.zodiac.calculate(date)).to.be(sign)
+            date = setDate(end.day, end.month)
+            expect(nerthus.zodiac.calculate(date)).to.be(sign)
+        }
 
-    // Baran (21 marca – 19 kwietnia)
-    expectSignToBeBetween(SIGNS.ARIES,{day:21,month:3},{day:19,month:4})
+        // Wodnik (20 stycznia – 18 lutego)
+        expectSignToBeBetween(SIGNS.AQUARIUS, {day: 20, month: 1}, {day: 18, month: 2})
 
-    // Byk (20 kwietnia – 22 maja)
-    expectSignToBeBetween(SIGNS.TAURUS,{day:20,month:4},{day:22,month:5})
+        // Ryby (19 lutego – 20 marca)
+        expectSignToBeBetween(SIGNS.PISCES, {day: 19, month: 2}, {day: 20, month: 3})
 
-    // Bliźnięta (23 maja – 21 czerwca)
-    expectSignToBeBetween(SIGNS.GEMINI,{day:23,month:5},{day:21,month:6})
+        // Baran (21 marca – 19 kwietnia)
+        expectSignToBeBetween(SIGNS.ARIES, {day: 21, month: 3}, {day: 19, month: 4})
 
-    // Rak (22 czerwca – 22 lipca)
-    expectSignToBeBetween(SIGNS.CANCER,{day:22,month:6},{day:22,month:7})
+        // Byk (20 kwietnia – 22 maja)
+        expectSignToBeBetween(SIGNS.TAURUS, {day: 20, month: 4}, {day: 22, month: 5})
 
-    // Lew (23 lipca – 23 sierpnia)
-    expectSignToBeBetween(SIGNS.LEO,{day:23,month:7},{day:23,month:8})
+        // Bliźnięta (23 maja – 21 czerwca)
+        expectSignToBeBetween(SIGNS.GEMINI, {day: 23, month: 5}, {day: 21, month: 6})
 
-    // Panna (24 sierpnia – 22 września)
-    expectSignToBeBetween(SIGNS.VIRGO,{day:24,month:8},{day:22,month:9})
+        // Rak (22 czerwca – 22 lipca)
+        expectSignToBeBetween(SIGNS.CANCER, {day: 22, month: 6}, {day: 22, month: 7})
 
-    // Waga (23 września – 22 października)
-    expectSignToBeBetween(SIGNS.LIBRA,{day:23,month:9},{day:22,month:10})
+        // Lew (23 lipca – 23 sierpnia)
+        expectSignToBeBetween(SIGNS.LEO, {day: 23, month: 7}, {day: 23, month: 8})
 
-    // Skorpion (23 października – 21 listopada)
-    expectSignToBeBetween(SIGNS.SCORPIO,{day:23,month:10},{day:21,month:11})
+        // Panna (24 sierpnia – 22 września)
+        expectSignToBeBetween(SIGNS.VIRGO, {day: 24, month: 8}, {day: 22, month: 9})
 
-    // Strzelec (22 listopada – 21 grudnia)
-    expectSignToBeBetween(SIGNS.SAGITTARIUS,{day:22,month:11},{day:21,month:12})
+        // Waga (23 września – 22 października)
+        expectSignToBeBetween(SIGNS.LIBRA, {day: 23, month: 9}, {day: 22, month: 10})
 
-    // Koziorożec (22 grudnia – 19 stycznia)
-    expectSignToBeBetween(SIGNS.CAPRICORN,{day:22,month:12},{day:19,month:1})
+        // Skorpion (23 października – 21 listopada)
+        expectSignToBeBetween(SIGNS.SCORPIO, {day: 23, month: 10}, {day: 21, month: 11})
 
-    // Koniec/początek roku (31 grudnia – 1 stycznia)
-    expectSignToBeBetween(SIGNS.CAPRICORN,{day:31,month:12},{day:1,month:1})
+        // Strzelec (22 listopada – 21 grudnia)
+        expectSignToBeBetween(SIGNS.SAGITTARIUS, {day: 22, month: 11}, {day: 21, month: 12})
 
-    Date = _date
+        // Koziorożec (22 grudnia – 19 stycznia)
+        expectSignToBeBetween(SIGNS.CAPRICORN, {day: 22, month: 12}, {day: 19, month: 1})
+
+        // Koniec/początek roku (31 grudnia – 1 stycznia)
+        expectSignToBeBetween(SIGNS.CAPRICORN, {day: 31, month: 12}, {day: 1, month: 1})
+
+        Date = _date
+    })
+
+
 })
-

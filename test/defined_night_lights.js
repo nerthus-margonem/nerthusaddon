@@ -1,31 +1,32 @@
-suite("user defined night lights")
-
-let expect = require("expect.js")
-let fs = require('fs')
-let path = require('path')
-const LIGHTS_DIR = "./night_lights"
-
-let checkLight = function(light)
+suite("user defined night lights", function ()
 {
-    expect(light).to.be.an(typeof({}))
+    const expect = require("expect.js")
+    const fs = require('fs')
+    const path = require('path')
+    const LIGHTS_DIR = "./night_lights"
 
-    expect(light).to.have.property("x")
-    expect(light.x).to.match(/^-{0,1}\d+$/)
+    function checkLight(light)
+    {
+        expect(light).to.be.an("object")
 
-    expect(light).to.have.property("y")
-    expect(light.y).to.match(/^-{0,1}\d+$/)
+        expect(light).to.have.property("x")
+        expect(light.x).to.match(/^-?\d+$/)
 
-    expect(light).to.have.property("type")
-    expect(light.type).to.be.a(typeof("string"))
-}
+        expect(light).to.have.property("y")
+        expect(light.y).to.match(/^-?\d+$/)
 
-let checkFileWithLights = function(filename)
-{
-    let file = fs.readFileSync(path.join(LIGHTS_DIR, filename))
-    let lights = JSON.parse(file)
-    expect(lights).to.be.an(typeof([]))
-    lights.forEach(light => checkLight(light))
-}
+        expect(light).to.have.property("type")
+        expect(light.type).to.be.a("string")
+    }
 
-let files = fs.readdirSync(LIGHTS_DIR)
-files.forEach(filename => test("check map " + filename, () => checkFileWithLights(filename)))
+    function checkFileWithLights(filename)
+    {
+        const file = fs.readFileSync(path.join(LIGHTS_DIR, filename))
+        const lights = JSON.parse(file)
+        expect(lights).to.be.an("object")
+        lights.forEach(light => checkLight(light))
+    }
+
+    const files = fs.readdirSync(LIGHTS_DIR)
+    files.forEach(filename => test("check map " + filename, () => checkFileWithLights(filename)))
+})

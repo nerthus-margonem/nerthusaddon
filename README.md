@@ -16,7 +16,7 @@
   * run `make install-test-dependencies` to install dependencies
   * to run tests type `make run-tests-with-coverage` in project root directory
   * test are run with [mocha](https://mochajs.org/) and [expect](https://github.com/Automattic/expect.js/)
-  * tests are written with TDD interface
+  * tests are written in QUnit framework
 
 ### How to introduce changes to game
   * Put desired revision hash to file [version.json](version.json)

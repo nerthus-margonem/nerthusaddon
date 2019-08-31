@@ -22,7 +22,7 @@ check-syntax:
 run-tests-with-coverage: clean-coverage test-with-coverage coverage-raport-text
 
 test-with-coverage:
-	npm run test-with-coverage
+	bash ./for_each_test_file.sh npm run test-with-coverage
 
 push-coverage-raport:
 	npm run push-coverage-raport

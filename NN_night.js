@@ -39,7 +39,10 @@ nerthus.night.lights.on = function()
         $.getJSON(nerthus.addon.fileUrl("/night_lights/map_" + map.id + ".json"), nerthus.worldEdit.addLights.bind(this))
 }
 
-nerthus.night.lights.reset = nerthus.worldEdit.resetLight
+nerthus.night.lights.reset = function ()
+{
+    nerthus.worldEdit.resetLight()
+}
 
 
 nerthus.night.lights.on_ni = function()

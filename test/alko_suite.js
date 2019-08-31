@@ -3,7 +3,6 @@ suite("Alcohol", function ()
     const expect = require("expect.js")
     suiteSetup(function ()
     {
-        console.log(expect)
         msg = "THIS IS, the test message. It has interpunction and varying size of letters."
         SHUFFLE = []
 

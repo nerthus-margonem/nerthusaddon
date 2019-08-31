@@ -32,7 +32,23 @@ before(function()
         add : function(lock){this.lock = lock},
         remove : function(){this.lock = null}
     }
+    g.talk = {
+        scrollCheckInterval: 0
+    }
+    map = {
+        resizeView: function() {}
+    }
 
+    setInterval = function() {}
+    clearInterval = function() {}
+    removeScrollbar = function () {}
+    addScrollbar = function() {}
+
+    Engine = {
+        hero: {
+            d: {}
+        }
+    }
     hero = {}
 
     NPC.x = 8
@@ -656,4 +672,116 @@ test("npc with date should be present in first day of range 5.5.2020 vs 5.5-15",
 test("npc with date should be present in last day of range 15.12.2020 vs 5.5-15", function()
 {
     npc_expected_in_date("5.5-15",[15,12,2020])
+})
+
+
+suite("hide npcs")
+
+test("npc with lvl higher than hero", () =>
+{
+    const npc = {
+        lvl: 200
+    }
+    hero.lvl = 100
+
+    expect(nerthus.npc.is_deletable(npc)).to.be(false)
+})
+
+test("npc with lvl higher than hero - NI", () =>
+{
+    const npc = {
+        lvl: 200
+    }
+    Engine.hero.d.lvl = 100
+    expect(nerthus.npc.is_deletable_ni(npc)).to.be(false)
+})
+
+test("npc with lvl equal to hero", () =>
+{
+    const npc = {
+        lvl: 100
+    }
+    hero.lvl = 100
+
+    expect(nerthus.npc.is_deletable(npc)).to.be(false)
+})
+
+test("npc with lvl equal to hero - NI", () =>
+{
+    const npc = {
+        lvl: 100
+    }
+    Engine.hero.d.lvl = 100
+    expect(nerthus.npc.is_deletable_ni(npc)).to.be(false)
+})
+
+test("npc with 12 lvls less than hero", () =>
+{
+    const npc = {
+        lvl: 88
+    }
+    hero.lvl = 100
+
+    expect(nerthus.npc.is_deletable(npc)).to.be(false)
+})
+
+test("npc with 12 lvls less than hero - NI", () =>
+{
+    const npc = {
+        lvl: 88
+    }
+    Engine.hero.d.lvl = 100
+    expect(nerthus.npc.is_deletable_ni(npc)).to.be(false)
+})
+
+test("npc with 100 lvls less than hero", () =>
+{
+    const npc = {
+        lvl: 1
+    }
+    hero.lvl = 101
+
+    expect(nerthus.npc.is_deletable(npc)).to.be(true)
+})
+
+test("npc with 100 lvls less than hero - NI", () =>
+{
+    const npc = {
+        lvl: 1
+    }
+    Engine.hero.d.lvl = 101
+    expect(nerthus.npc.is_deletable_ni(npc)).to.be(true)
+})
+
+test("npc with 13 lvls less than hero", () =>
+{
+    const npc = {
+        lvl: 87
+    }
+    hero.lvl = 100
+
+    expect(nerthus.npc.is_deletable(npc)).to.be(false)
+})
+
+test("npc with 13 lvls less than hero - NI", () =>
+{
+    const npc = {
+        lvl: 87
+    }
+    Engine.hero.d.lvl = 100
+    expect(nerthus.npc.is_deletable_ni(npc)).to.be(false)
+})
+
+suite("misc npc stuff")
+
+test("resolve url - normal", () =>
+{
+    const url = "http://example.com/example.png"
+    expect(nerthus.npc.resolve_url(url)).to.equal("http://example.com/example.png")
+})
+
+test("resolve url - relative", () =>
+{
+    const url = "#example.png"
+    expect(nerthus.npc.resolve_url(url)).to.equal("NERTH_PREFIX:example.png")
 })

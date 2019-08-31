@@ -12,7 +12,38 @@ nerthus.defer = function(fun,data)
     g.loadQueue.push({'fun':fun, 'data':data})
 }
 
-nerthus.seasons = {SPRING : 1, SUMMER : 2, AUTUMN : 3, WINTER : 4}
+nerthus.loadQueue = []
+nerthus.loadOnEveryMap = function (fun, data)
+{
+    nerthus.loadQueue.push([fun, data])
+}
+nerthus.loadNewMapQueue = function ()
+{
+    for (const i in this.loadQueue)
+    {
+        this.loadQueue[i][0](this.loadQueue[i][1])
+    }
+}
+
+//observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
+nerthus.startObservingMapChange_SI = function ()
+{
+    Object.defineProperty(window.map, "loaded", {
+        set(val)
+        {
+            this.__loaded = val
+            nerthus.loadNewMapQueue()
+
+            return val
+        },
+        get()
+        {
+            return this.__loaded
+        }
+    })
+}
+
+nerthus.seasons = {SPRING: 1, SUMMER: 2, AUTUMN: 3, WINTER: 4}
 nerthus.season = function()
 {
     var makeStartDate = function(day,month)
@@ -71,7 +102,7 @@ nerthus.isSpec = function(nick)
     return this.NerthusSpec.indexOf(nick) >= 0
 }
 
-nerthus.options = {'night':true, 'weather':true, 'zodiac':true}
+nerthus.options = {'night': true, 'weather': true, 'zodiac': true, 'hideNpcs': false}
 nerthus.loadSettings = function()
 {
     if(typeof localStorage !== 'undefined')
@@ -123,6 +154,23 @@ nerthus.tips.rank = function(player)
     return rank != this.ranks.NONE ? g.names.ranks[rank] : ""
 }
 
+nerthus.tips.rank_ni = function (player)
+{
+    let rank = this.ranks.NONE
+    if (player.rights)
+        rank = this.rights2rank(player.rights)
+    if (nerthus.isNarr(player.nick))
+    {
+        if (rank === this.ranks.MC)
+            rank = this.ranks.BARD_MC
+        else
+            rank = this.ranks.BARD
+    }
+    if (nerthus.isRad(player.nick))
+        rank = this.ranks.RADNY
+    return rank === -1 ? "" : nerthus.ranks.rankName[rank]
+}
+
 nerthus.tips.title = function(player)
 {
     //sprawdza czy vip, jeśli tak, to daje inny opis
@@ -145,6 +193,22 @@ nerthus.tips.other = function(other)
     return tip
 }
 
+nerthus.tips.other_ni = function ()
+{
+    nerthus.othersDrawableList = Engine.others.getDrawableList
+    Engine.others.getDrawableList = function ()
+    {
+        let list = nerthus.othersDrawableList()
+        for (const i in list)
+        {
+            if (list[i].isPlayer)
+                list[i].tip[0] = nerthus.tips.parseNiTip(list[i], false)
+        }
+        return list
+    }
+    return Engine.others.getDrawableList
+}
+
 nerthus.tips.hero = function(hero)
 {
     var title = this.title(hero)
@@ -153,6 +217,56 @@ nerthus.tips.hero = function(hero)
     tip += hero.clan ? "<center>[" + hero.clan.name + "]</center>" : ""
     tip += title ? "<center>" + title + "</center>" : ""
     tip += rank ? "<i><font color='red'>" + rank + "</font></i>" : ""
+    return tip
+}
+
+nerthus.tips.hero_ni = function ()
+{
+    nerthus.heroCreateStrTip = Engine.hero.createStrTip
+    Engine.hero.createStrTip = function ()
+    {
+        return nerthus.tips.parseNiTip(Engine.hero, true)
+    }
+    Engine.hero.tip[0] = Engine.hero.createStrTip()
+    return Engine.hero.createStrTip
+}
+
+nerthus.tips.parseNiTip = function (player, isHero)
+{
+    let tip = ""
+    if (isHero)
+        tip += "<div class=\"rank\">" + _t("my_character", null, "map") + "</div>"
+    const rank = this.rank_ni(player)
+    if (rank)
+        tip += "<div class=\"rank\">" + rank + "</div>"
+
+    if (player.d.guest)
+        tip += "<div class=\"rank\">" + _t("deputy") + "</div>"
+
+    const nick = "<div class=\"nick\">" + player.d.nick + "</div>"
+    const prof = player.d.prof ? "<div class=\"profs-icon " + player.d.prof + "\"></div>" : ""
+    tip += "<div class=\"info-wrapper\">" + nick + prof + "</div>"
+
+    if (parseInt(player.wanted) === 1)
+        tip += "<div class=wanted></div>"
+    if (player.d.clan)
+        tip += "<div class=\"clan-in-tip\">[" + player.d.clan.name + "]</div>"
+
+    const title = this.title(player.d)
+    tip += "<div class=\"clan-in-tip\">" + title + "</div>"
+
+    let buffs = ""
+    const line = player.d.clan ? "<div class=\"line\"></div>" : ""
+    const wanted = player.d.wanted ? "<div class=\"wanted-i\"></div>" : ""
+    const bless = player.d.ble ? "<div class=\"bless\"></div>" : ""
+    const mute = player.d.attr & 1 ? "<div class=\"mute\"></div>" : ""
+    const kB = player.d.vip === "1" ? "<div class=\"k-b\"></div>" : ""
+    const warn = player.d.attr & 2 ? "<div class=\"warn\"></div>" : ""
+
+    if (bless !== "" || mute !== "" || kB !== "" || warn !== "" || wanted !== "")
+        buffs = "<div class=\"buffs-wrapper\">" + line + wanted + bless + mute + kB + warn + "</div>"
+    tip += buffs
+
     return tip
 }
 
@@ -217,10 +331,47 @@ nerthus.tips.start = function()
     g.tips.npc = this.npc.bind(this)
 }
 
+nerthus.tips.start_ni = function ()
+{
+    nerthus.loadSettings()
+    if (typeof Engine.hero.tip === "undefined")
+        setTimeout(this.start_ni.bind(this), 500)
+    else
+    {
+        this.other_ni()
+        this.hero_ni()
+        API.addCallbackToEvent("clear_map_npcs",
+            function ()
+            {
+                setTimeout(function ()
+                {
+                    nerthus.loadNewMapQueue()
+                }, 500)
+            })
+    }
+}
+
+nerthus.onDefined = function (valueToBeDefined, callback)
+{
+    const valArr = valueToBeDefined.toString().split(".")
+    const len = valArr.length
+    let object = window
+    for (let i = 0; i < len; i++)
+    {
+        if (typeof object[valArr[i]] === "undefined")
+            return setTimeout(nerthus.onDefined.bind(this, valueToBeDefined, callback), 500)
+        else
+            object = object[valArr[i]]
+    }
+    callback()
+}
+
 nerthus.base = {}
 nerthus.base.start = function()
 {
     nerthus.loadSettings()
     nerthus.setChatInfo()
     nerthus.setEnterMsg()
+
+    nerthus.startObservingMapChange_SI()
 }

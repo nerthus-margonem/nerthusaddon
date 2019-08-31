@@ -1,80 +1,251 @@
-
 suite("maps")
 
-const SEASON = 1
-const ANY_SEASON = 0
-const MAP_ID = 42
-const MAP_URL = "some_url"
-let DEFERRED = []
-
-before(function()
+before(function ()
 {
+    SEASON = 1
+    ANY_SEASON = 0
+    MAP_ID = 42
+    MAP_URL = "some_url"
+    DEFERRED = []
 
-    map = {id : MAP_ID}
+    map = {id: MAP_ID}
+    Engine = {
+        map: {
+            d: {
+                id: MAP_ID
+            }
+        }
+    }
+
+    //helper object to check proper argument passing to NN_worldEdit.js
+    WorldEdit = []
+    //helper for start_ni
+    start_HELPER = []
 
     nerthus = {}
-    nerthus.defer = function(func){DEFERRED.push(func)}
-    nerthus.season = function(){return SEASON}
+    nerthus.defer = function (func)
+    {
+        DEFERRED.push(func)
+    }
+    nerthus.season = function ()
+    {
+        return SEASON
+    }
+    nerthus.loadOnEveryMap = function (func)
+    {
+        start_HELPER.loadOnEveryMap = func
+    }
+
+    nerthus.worldEdit = {
+        changeMap: function (url, layer)
+        {
+            WorldEdit.changeMap = [url, layer]
+        }
+    }
+    nerthus.onDefined = (valueToBeDefined, callback) =>
+    {
+        callback()
+    }
 
     expect = require("expect.js")
     require("../NN_maps.js")
 
-    var jsdom = require("jsdom");
-    const { JSDOM } = jsdom;
-    const { window } = new JSDOM();
-    const { document } = (new JSDOM('')).window;
-    global.document = document;
-    $ = require("jquery")(window)
+})
+after(function ()
+{
+    delete SEASON
+    delete ANY_SEASON
+    delete MAP_ID
+    delete MAP_URL
+    delete DEFERRED
+    delete map
+    delete Engine
 
-    $("<div>").attr("id","ground").appendTo("body")
+    delete WorldEdit
+    delete start_HELPER
+    delete nerthus
+
+    delete $
+    delete expect
+    delete global.document
 })
 
-beforeEach(function()
+beforeEach(function ()
 {
+    WorldEdit = []
     nerthus.mapsArr = []
     DEFERRED = []
-    $("#ground").css("backgroundImage", "")
 })
 
-test("No maps defined", function()
+test("SI: No maps defined", function ()
 {
-    nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).empty()
+    let ret = nerthus.maps.customMaps()
+
+    expect(ret).to.equal(false)
 })
 
-test("Maps with matching id and season is defined", function()
+test("SI: Map with matching id and season is defined", function ()
 {
     nerthus.mapsArr = [[SEASON, MAP_ID, MAP_URL]]
-    nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).to.contain(MAP_URL)
+
+    let ret = nerthus.maps.customMaps()
+
+    expect(ret).to.equal(true)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(MAP_URL)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
 })
 
-test("Maps with matching id and any season is defined", function()
+test("SI: Map with matching id and 'any season' is defined", function ()
 {
     nerthus.mapsArr = [[ANY_SEASON, MAP_ID, MAP_URL]]
     nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).to.contain(MAP_URL)
+
+    let ret = nerthus.maps.customMaps()
+
+    expect(ret).to.equal(true)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(MAP_URL)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
 })
 
-test("Maps with not matching season is defined", function()
+test("SI: Map with not matching season is defined", function ()
 {
     const OTHER_SEASON = SEASON + 1
     nerthus.mapsArr = [[OTHER_SEASON, MAP_ID, MAP_URL]]
-    nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).empty()
+
+    let ret = nerthus.maps.customMaps()
+
+    expect(ret).to.equal(false)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(false)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
 })
 
-test("Maps with not matching id is defined", function()
+test("SI: Maps with not matching id is defined", function ()
 {
     const OTHER_MAP_ID = MAP_ID + 1
     nerthus.mapsArr = [[SEASON, OTHER_MAP_ID, MAP_URL]]
-    nerthus.maps.customMaps()
-    expect($("#ground").css("backgroundImage")).empty()
+
+    let ret = nerthus.maps.customMaps()
+
+    expect(ret).to.equal(false)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(false)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
 })
 
-test("start defer map change", function()
+//there is no way to check if content of bound function
+//equals to content of another
+
+test("SI: start defer map change is a bound function", function ()
 {
     nerthus.maps.start()
-    expect(DEFERRED).to.contain(nerthus.maps.customMaps)
+
+    //function should be bound function
+    expect(start_HELPER.loadOnEveryMap.name).to.equal("bound ")
+    expect(start_HELPER.loadOnEveryMap.prototype).to.equal(undefined)
 })
 
+test("SI: start defer map change bound function works the same as normal function", function ()
+{
+    nerthus.maps.start()
+
+    let ret = nerthus.maps.customMaps()
+    let retBound = start_HELPER.loadOnEveryMap()
+
+    expect(ret).to.equal(retBound)
+})
+
+
+test("NI: No maps defined", function ()
+{
+    let ret = nerthus.maps.customMaps_ni()
+
+    expect(ret).to.equal(false)
+})
+
+test("NI: Map with matching id and season is defined", function ()
+{
+    nerthus.mapsArr = [[SEASON, MAP_ID, MAP_URL]]
+
+    let ret = nerthus.maps.customMaps_ni()
+
+    expect(ret).to.equal(true)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(MAP_URL)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
+})
+
+test("NI: Map with matching id and 'any season' is defined", function ()
+{
+    nerthus.mapsArr = [[ANY_SEASON, MAP_ID, MAP_URL]]
+    nerthus.maps.customMaps_ni()
+
+    let ret = nerthus.maps.customMaps_ni()
+
+    expect(ret).to.equal(true)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(MAP_URL)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
+})
+
+test("NI: Map with not matching season is defined", function ()
+{
+    const OTHER_SEASON = SEASON + 1
+    nerthus.mapsArr = [[OTHER_SEASON, MAP_ID, MAP_URL]]
+
+    let ret = nerthus.maps.customMaps_ni()
+
+    expect(ret).to.equal(false)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(false)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
+})
+
+test("NI: Maps with not matching id is defined", function ()
+{
+    const OTHER_MAP_ID = MAP_ID + 1
+    nerthus.mapsArr = [[SEASON, OTHER_MAP_ID, MAP_URL]]
+
+    let ret = nerthus.maps.customMaps_ni()
+
+    expect(ret).to.equal(false)
+    //first argument - map url
+    expect(WorldEdit.changeMap[0]).to.equal(false)
+    //second argument - layer
+    expect(WorldEdit.changeMap[1]).to.equal(0)
+})
+
+/*
+TODO implement async test
+test("NI: Engine.map.d.id is undefined / addon loaded too quickly", function ()
+{
+    Engine.map.d.id = undefined
+})
+
+*/
+
+test("NI: start_ni loaded properly", function ()
+{
+    nerthus.maps.customMaps_ni = function ()
+    {
+        start_HELPER.customMaps = true
+    }
+
+    nerthus.maps.start_ni()
+
+
+    expect(start_HELPER.customMaps).to.equal(true)
+
+    //function should be bound function
+    expect(start_HELPER.loadOnEveryMap.name).to.equal("bound ")
+    expect(start_HELPER.loadOnEveryMap.prototype).to.equal(undefined)
+})

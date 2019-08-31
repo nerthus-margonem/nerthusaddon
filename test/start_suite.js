@@ -18,7 +18,12 @@ before(function()
     getCookie = function(cookie){return COOKIES[cookie]}
     log = function(msg){console.log(msg)}
 
-    $ = {}
+    document = {
+        createElement: function(){return {}},
+        querySelector: function(){return {}}
+    }
+    $ = function(){return {remove: function(){}, append: function(){}, addClass:function(){}}}
+    $._data = function(){return {keydown: [{handler: function(){}}]}}
     $.LOADED_SCRIPTS = []
     $.LOADED_JSONS = []
     $.getJSON = function(url, callback){this.LOADED_JSONS.push(url); callback({version:VERSION_CURRENT})}
@@ -29,6 +34,8 @@ before(function()
     $.getScript = function(url, callback){this.LOADED_SCRIPTS.push(url); callback()}
 
     expect = require("expect.js")
+    require("../NN_start.js")
+
 })
 
 beforeEach(function()
@@ -159,21 +166,43 @@ test("GitHubLoader", function()
 {
     nerthus.scripts = ADDITIONAL_SCRIPTS
 
-    NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load, "start")
 
     expect(LOAD_HELPER.loaded).to.be.ok()
-    expect($.LOADED_SCRIPTS).to.have.length(2 + ADDITIONAL_SCRIPTS.length)
+    expect($.LOADED_SCRIPTS).to.have.length(3 + ADDITIONAL_SCRIPTS.length)
     expect($.LOADED_SCRIPTS[0]).to.be.equal(nerthus.addon.fileUrl("NN_dlaRadnych.js"))
     expect($.LOADED_SCRIPTS[1]).to.be.equal(nerthus.addon.fileUrl("NN_base.js"))
-    expect($.LOADED_SCRIPTS[2]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
-    expect($.LOADED_SCRIPTS[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
+    expect($.LOADED_SCRIPTS[2]).to.be.equal(nerthus.addon.fileUrl("NN_worldEdit.js"))
+    expect($.LOADED_SCRIPTS[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
+    expect($.LOADED_SCRIPTS[4]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
+})
+
+test("GitHubLoader NI", function ()
+{
+    nerthus.scripts = ADDITIONAL_SCRIPTS
+    let consoleMuted = false
+    NerthusAddonUtils.muteNiConsole = function ()
+    {
+        consoleMuted = true
+    }
+
+    NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load, "start_ni")
+
+    expect(LOAD_HELPER.loaded).to.be.ok()
+    expect($.LOADED_SCRIPTS).to.have.length(3 + ADDITIONAL_SCRIPTS.length)
+    expect($.LOADED_SCRIPTS[0]).to.be.equal(nerthus.addon.fileUrl("NN_dlaRadnych.js"))
+    expect($.LOADED_SCRIPTS[1]).to.be.equal(nerthus.addon.fileUrl("NN_base.js"))
+    expect($.LOADED_SCRIPTS[2]).to.be.equal(nerthus.addon.fileUrl("NN_worldEdit.js"))
+    expect($.LOADED_SCRIPTS[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
+    expect($.LOADED_SCRIPTS[4]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
+    expect(consoleMuted).to.be(true)
 })
 
 test("StorageLoader : load addon in current version, nerthus remain in storage", function()
 {
     localStorage.nerthus = NerthusAddonUtils.parser.stringify(nerthus)
 
-    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load)
+    NerthusAddonUtils.loadFromStorage(LOAD_HELPER.on_load, "start")
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(localStorage.nerthus).to.be.ok()
@@ -234,7 +263,7 @@ test("Runner : run from localStorage in old version", function()
     expect(localStorage.nerthus).to.not.be.ok() //removed from storege
 })
 
-test("run addon in new interface", function()
+test("run addon in new interface", function() //TODO find a way to test if runAddon correctly gets cookie
 {
     COOKIES["interface"] = "ni"
 
@@ -246,13 +275,24 @@ test("run addon in new interface", function()
     expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("NI")
 })
 
-test("other modules are started even if start of previous failed", function()
+test("SI: other modules are started even if start of previous failed", function()
 {
     nerthus.RUNABLE_MODULE_ONE.start = function(){throw new Error("module one start error")}
 
-    NerthusAddonUtils.startPlugins(LOAD_HELPER.on_load)
+    NerthusAddonUtils.startPlugins("start", LOAD_HELPER.on_load)
 
     expect(LOAD_HELPER.loaded).to.be.ok()
     expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal(false)
     expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("SI")
+})
+
+test("NI: other modules are started even if start of previous failed", function()
+{
+    nerthus.RUNABLE_MODULE_ONE.start_ni = function(){throw new Error("module one start error")}
+
+    NerthusAddonUtils.startPlugins("start_ni", LOAD_HELPER.on_load)
+
+    expect(LOAD_HELPER.loaded).to.be.ok()
+    expect(nerthus.RUNABLE_MODULE_ONE.RUNNING).to.be.equal(false)
+    expect(nerthus.RUNABLE_MODULE_TWO.RUNNING).to.be.equal("NI")
 })

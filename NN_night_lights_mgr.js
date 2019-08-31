@@ -1,4 +1,3 @@
-
 nerthus.night.lights.make_testable = function(light)
 {
     light
@@ -10,15 +9,30 @@ nerthus.night.lights.make_testable = function(light)
 
 nerthus.night.lights.add_testable = function(light)
 {
-    this.make_testable(this.display(light))
+    const lt = nerthus.worldEdit.lightTypes[light.type]
+    this.make_testable(
+    $('<div></div>')
+        .css({
+            background: 'url(' + lt.url + ')',
+            width: lt.width,
+            height: lt.height,
+            zIndex: map.y * 2 + 12,
+            position: 'absolute',
+            left: parseInt(light.x),
+            top: parseInt(light.y),
+            pointerEvents: "none"
+        })
+        .addClass("nightLight")
+        .attr("type", light.type)
+        .appendTo("#ground"))
 }
 
 nerthus.night.lights.dump = function()
 {
-    log("//"+map.name+" : map_"+map.id+".json")
-    log("[")
+    NerthusAddonUtils.log("//"+map.name+" : map_"+map.id+".json")
+    NerthusAddonUtils.log("[")
     this.log_lights()
-    log("]")
+    NerthusAddonUtils.log("]")
     message("dumping done")
 }
 
@@ -33,7 +47,7 @@ nerthus.night.lights.log_lights = function()
             var type = $(this).attr("type")
             lights.push('{"x" : "' +x+ '", "y" : "' +y+ '", "type" : "' +type+ '"}')
     });
-    log(lights.join(",<br>"))
+    NerthusAddonUtils.log(lights.join(",<br>"))
 }
 
 nerthus.night.lights.give_me_the_light = function()
@@ -45,13 +59,14 @@ nerthus.night.lights.give_me_the_light = function()
     var togglemouseMove = $("<span>toggle move</span>").click(function(){hero.opt ^= 64; message("blocked: " + Boolean(hero.opt & 64))})
     $.getScript("http://addons2.margonem.pl/get/1/1689public.js",function()
     {
-        for(i in nerthus.night.lights.types)
-            if(typeof nerthus.night.lights.types[i] === 'object')
-                aldiMenu.add($("<span>light "+i+"</span>").attr("type",i).click(function()
-                {
-                    var light = {'type' : $(this).attr("type"), 'x' : hero.x*32, 'y' : hero.y*32}
-                    nerthus.night.lights.add_testable(light)
-                }))
+        Object.keys(nerthus.worldEdit.lightTypes).forEach(function (type)
+        {
+            aldiMenu.add($("<span>light " + type + "</span>").attr("type", type).click(function ()
+            {
+                const light = {'type': type, 'x': hero.x * 32, 'y': hero.y * 32}
+                nerthus.night.lights.add_testable(light)
+            }))
+        })
         aldiMenu.add(dumpLight)
         aldiMenu.add(addBorder)
         aldiMenu.add(delBorder)
@@ -60,4 +75,3 @@ nerthus.night.lights.give_me_the_light = function()
 }
 
 nerthus.defer(nerthus.night.lights.give_me_the_light)
-

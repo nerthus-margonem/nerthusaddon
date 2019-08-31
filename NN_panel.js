@@ -1,82 +1,203 @@
 /**
-    Name: Nerthus Panel
-    Plik zawiera funkcje do ustawiania tarczy otierającej panel
-**/
+ Name: Nerthus Panel
+ Plik zawiera funkcje do ustawiania tarczy otwierającej panel**/
 
 nerthus.panel = {}
-
-nerthus.panel.display_icon = function()
-{
-    $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus">').appendTo('#panel')
-    .css({position:"absolute",top:"0px",left:"242px",cursor:"pointer"})
-    .click(this.display_panel.bind(this))
-    .mouseover(function(){$(this).css('opacity','0.6')})
-    .mouseout(function(){$(this).css('opacity','1')});
+nerthus.panel.defaultPosition = [6, "top-right"]
+nerthus.panel.settings_translations = {
+    "night": "Pory dnia i nocy",
+    "weather": "Pogoda",
+    "zodiac": "Znaki zodiaku",
+    "hideNpcs": "Ukrywanie NPCów"
 }
 
-nerthus.panel.display_panel = function()
+nerthus.panel.translate_option = function (name)
 {
-    $.getJSON(nerthus.addon.fileMasterUrl('panel_links.json'), function(panel_data)
+    if(nerthus.panel.settings_translations[name])
+        return nerthus.panel.settings_translations[name]
+    return name
+}
+
+
+nerthus.panel.create_icon = function()
+{
+    return $('<img id="tarcza" src="'+nerthus.graf.shield+'" tip="Nerthus" data-tip="Nerthus">')
+        .mouseover(function(){$(this).css('opacity','0.6')})
+        .mouseout(function(){$(this).css('opacity','1')})
+}
+
+nerthus.panel.mAlert = null
+
+nerthus.panel.mAlert_si = function (text, buttons)
+{
+    mAlert(text, buttons.length, buttons.map(function (button)
     {
-        var $panel = this.panel_string(panel_data)
-        mAlert($panel, 2, [this.save.bind(this)])
-    }.bind(this))
+        return button.callback
+    }))
 }
 
-nerthus.panel.panel_string = function(panel_data)
+nerthus.panel.mAlert_ni = function(text, buttons)
 {
-    var $panel = $("<div>")
-    var $links = $("<div>").css('text-align','center')
-    var $hello = $("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ").append(this.link(panel_data.forum)))
-    var $info = $("<div>").text(panel_data.panel_info)
-    $links.append($hello, $info)
-    for(const i in panel_data.links)
-        $links.append($('<div>').append(this.link(panel_data.links[i])))
-    $panel.append($links)
-    $panel.append(this.settings_str())
-    return $panel
+    mAlert(text, buttons)
+}
+
+nerthus.panel.display_panel = function ()
+{
+    $.getJSON(nerthus.addon.fileMasterUrl("panel_links.json"), function (panel_data)
+    {
+        const $panel = nerthus.panel.panel_string(panel_data)
+        if ($panel)
+            nerthus.panel.mAlert($panel, [{txt: "save", callback: nerthus.panel.save},
+                {txt: "ok", callback: () => true}])
+    })
+}
+
+nerthus.panel.panel_string = function (panel_data)
+{
+    if (panel_data)
+    {
+        const $panel = $("<div>")
+        const $links = $("<div>").css('text-align', 'center')
+        const $hello = $("<div>").append($("<b>").text("Witaj na Nerthusie, zapraszamy na ")
+            .append(this.link(panel_data.forum)))
+        const $info = $("<div>").text(panel_data.panel_info)
+        $links.append($hello, $info)
+        for (const i in panel_data.links)
+            $links.append($('<div>').append(this.link(panel_data.links[i])))
+        $panel.append($links)
+        $panel.append(this.settings_str())
+        return $panel
+    }
+    return false
 }
 
 nerthus.panel.settings_str = function()
 {
-    var $settings = $("<div>")
-    var $info = $("<div>")
-    .css('text-decoration', 'underline')
-    .css('cursor','pointer')
-    .text("ustawienia")
-    .click(function(){$(this).nextAll().toggle()})
-    $settings.append($info)
-    for(var option in nerthus.options)
+    let $settings = $("<div>")
+    const info = $("<span>Ustawienia</span>")
+        .addClass("nerthus-settings-button")
+        .css({
+            textDecoration: "underline",
+            cursor: "pointer"
+        })
+        .click(function ()
+        {
+            $(".nerthus-settings-button").nextAll().toggle()
+        })
+    $settings.append(info)
+    for(const option in nerthus.options)
     {
-        var $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
-        var $cb_name = $("<b>").text(option)
+        const $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option]})
+        const $cb_name = $("<b>").text(this.translate_option(option))
         $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
     return $settings
 }
+
+nerthus.panel.settings_str_ni = function()
+{
+    let $settings = $("<div>")
+    let info =
+        "<span style='text-decoration: underline; cursor: url(../img/gui/cursor/5.png), auto' class='nerthus-settings-button' " +
+        "onclick='$(\".nerthus-settings-button\").nextAll().toggle()'>Ustawienia</span>"
+    $settings.append(info)
+    for(const option in nerthus.options)
+    {
+        let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option],'style': 'cursor: url(../img/gui/cursor/5.png), auto'})
+        let $cb_name = $("<b>").text(this.translate_option(option))
+        $settings.append($("<div>").append($cb).append($cb_name).hide())
+    }
+    return $settings
+}
+
 
 nerthus.panel.link = function(link)
 {
     return $('<a href="' + link.url + '" target="blank">' + link.name + '</a>')
 }
 
-nerthus.panel.save = function()
+nerthus.panel.save = function ()
 {
-    const options = this.get_settings()
+    const options = nerthus.panel.get_settings()
     nerthus.storeSettings(options)
-    message('zapisano, wciśnij f5')
+    message('Zapisano, wciśnij f5')
 }
 
-nerthus.panel.get_settings = function()
+nerthus.panel.get_settings = function ()
 {
-    var options = {}
-    for(const option in nerthus.options)
-        options[option] = $('#panCb'+option).attr('checked')
+    let options = {}
+    for (const option in nerthus.options)
+        options[option] = document.getElementById("panCb" + option).checked
     return options
+}
+
+
+nerthus.panel.create_button_ni = function ()
+{
+    if (Engine.interfaceStart)
+    {
+        const position = this.load_button_position()
+        Engine.interface.saveHotWidgetToStorage("nerthus", position[0], position[1])
+        Engine.interface.createOneWidget("nerthus", {nerthus: position}, true)
+    }
+    else
+    {
+        setTimeout(this.create_button_ni.bind(this), 500)
+    }
+}
+
+nerthus.panel.load_button_position = function ()
+{
+    const position = API.Storage.get("hotWidget/" + Engine.interface.getPathToHotWidgetVersion(true)).nerthus;
+    if (position)
+        return position
+    else
+        return this.defaultPosition
+}
+
+nerthus.panel.create_css_ni = function ()
+{
+    return "<style>" +
+        ".main-buttons-container .widget-button .icon.nerthus {" +
+        "background-image: url(" + nerthus.graf.shield + ");" +
+        "background-position: 0;" +
+        "}" +
+        "</style>"
 }
 
 nerthus.panel.start = function()
 {
-    nerthus.defer(this.display_icon.bind(this));
+    this.mAlert = this.mAlert_si
+
+    nerthus.defer(function()
+    {
+        this.create_icon()
+            .css({ position:"absolute", top:"0px", left:"242px", cursor:"pointer" })
+            .click(this.display_panel.bind(this))
+            .appendTo("#panel")
+    }.bind(this))
+}
+
+nerthus.panel.start_ni = function ()
+{
+    this.settings_str = this.settings_str_ni
+    this.mAlert = this.mAlert_ni
+    $("head").append(this.create_css_ni())
+    this.create_button_ni()
+
+    const initDefaultWidgetSet = Engine.interface.initDefaultWidgetSet
+    Engine.interface.initDefaultWidgetSet = function ()
+    {
+        initDefaultWidgetSet()
+        Engine.interface.addKeyToDefaultWidgetSet(
+            "nerthus",
+            nerthus.panel.defaultPosition[0],
+            nerthus.panel.defaultPosition[1],
+            "Nerthus",
+            "green",
+            nerthus.panel.display_panel.bind(nerthus.panel)
+        )
+
+    }
 }
 

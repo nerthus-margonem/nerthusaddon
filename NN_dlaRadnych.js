@@ -141,8 +141,12 @@ nerthus.EnterMsg = ''
 nerthus.mapsArr =
 [
     //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
-    [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
     [4, 257, nerthus.addon.fileUrl("maps/Mythar - zima.png")],
+
+    //Werbin
+
+    [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
+    [0, 9, nerthus.addon.fileUrl("maps/Werbin.png")],
 
     //Zniszczone Opactwo
     [0, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],
@@ -183,20 +187,20 @@ nerthus.mapsArr =
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'
 nerthus.scripts =
 [
-    'NN_chatCmd.js',
     'NN_alko.js',
     'NN_panel.js',
     'NN_maps.js',
     'NN_night.js',
     'NN_pogoda.js',
     'NN_npc.js',
-    'NN_zodiak.js'
+    'NN_zodiak.js',
+    'NN_chatCmd.js'
 ]
 
 nerthus.graf = {}
 nerthus.graf['weather'] = nerthus.addon.fileUrl("img/weatherIcons.gif")
-nerthus.graf['rain']    = nerthus.addon.fileUrl("img/weather_rain.gif")
-nerthus.graf['snow']    = nerthus.addon.fileUrl("img/weather_snow.jpg")
+nerthus.graf['rain']    = nerthus.addon.fileUrl("img/weather/rain.gif")
+nerthus.graf['snow']    = nerthus.addon.fileUrl("img/weather/snow.gif")
 nerthus.graf['shield']  = nerthus.addon.fileUrl("img/nerthus_icon.gif")
 nerthus.graf['panelTop']= nerthus.addon.fileUrl("img/nerthusPanel.png")
 nerthus.graf['dazed']   = nerthus.addon.fileUrl("img/dazed.png")
@@ -205,6 +209,8 @@ nerthus.graf['chat']    = nerthus.addon.fileUrl("img/chatPanel2.png")
 
 
 nerthus.ranks = {}
+nerthus.ranks.rankName = []
+
 nerthus.ranks.start = function()
 {
     g.names.ranks[0] = "Kreator"
@@ -217,3 +223,14 @@ nerthus.ranks.start = function()
     g.names.ranks[7] = "Radny"                                          //"Radny";
 }
 
+nerthus.ranks.start_ni = function ()
+{
+    this.rankName[0] = "Kreator"
+    this.rankName[1] = "Uber Miszcz Gry"
+    this.rankName[2] = "Miszcz Gry"
+    this.rankName[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
+    this.rankName[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
+    this.rankName[5] = "Trubadur"       //"Męczystruna";                //"Bard";
+    this.rankName[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
+    this.rankName[7] = "Radny"                                          //"Radny";
+}

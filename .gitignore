@@ -1,6 +1,6 @@
 .tern-project
 node_modules/*
 .idea
-package-lock.json
 .nyc_output/*
 coverage/*
+.htaccess

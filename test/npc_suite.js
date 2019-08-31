@@ -1,5 +1,9 @@
 suite("Npc", function ()
 {
+    if(typeof nerthus !== "undefined")
+        console.log(nerthus)
+    else
+        console.log("No nerthus!")
     const expect = require("expect.js")
     const minimal_npc = function (name = "Stefan", x = 8, y = 42, url = "")
     {

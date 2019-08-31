@@ -1,9 +1,5 @@
 suite("maps", function ()
 {
-    if(typeof nerthus !== "undefined")
-        console.log(nerthus)
-    else
-        console.log("No nerthus!")
     suiteSetup(function ()
     {
         SEASON = 1

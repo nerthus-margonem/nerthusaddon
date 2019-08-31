@@ -1,9 +1,6 @@
 suite("chatCmd", function ()
 {
-    if(typeof nerthus !== "undefined")
-        console.log(nerthus)
-    else
-        console.log("No nerthus!")
+
     suiteSetup(function ()
     {
         NerthusAddonUtils = {

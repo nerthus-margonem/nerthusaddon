@@ -1,9 +1,5 @@
 suite("Weather", function ()
 {
-    if(typeof nerthus !== "undefined")
-        console.log(nerthus)
-    else
-        console.log("No nerthus!")
     const expect = require("expect.js")
     suiteSetup(function ()
     {

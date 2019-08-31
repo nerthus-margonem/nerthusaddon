@@ -1,9 +1,5 @@
 suite("Start", function ()
 {
-    if(typeof nerthus !== "undefined")
-        console.log(nerthus)
-    else
-        console.log("No nerthus!")
     const VERSION_CURRENT = "CURRENT_VERSION"
     const VERSION_OLD = "OLD_VERSION"
     const VERSION_MASTER = ""

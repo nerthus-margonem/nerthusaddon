@@ -1,9 +1,5 @@
 suite("user defined night lights", function ()
 {
-    if(typeof nerthus !== "undefined")
-        console.log(nerthus)
-    else
-        console.log("No nerthus!")
     const expect = require("expect.js")
     const fs = require('fs')
     const path = require('path')

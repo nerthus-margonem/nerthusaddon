@@ -6,8 +6,6 @@ nerthus.npc.dialog.decorator = {}
 nerthus.npc.dialog.decorator.classes = {}
 nerthus.npc.dialog.decorator.classes.LINE = "icon LINE_OPTION"
 nerthus.npc.dialog.decorator.classes.EXIT = "icon LINE_EXIT"
-nerthus.npc.dialog.arrowTimeout = false
-nerthus.npc.dialog.arrowInterval = false
 
 nerthus.npc.dialog.parse_message = function(npc, index)
 {

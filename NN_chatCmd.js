@@ -173,7 +173,7 @@ nerthus.chatCmd.handleChatObj = function (ch)
         if (callback)
         {
             ch.t = this.fixUrl(ch.t)
-            log("[" + ch.k + "] " + ch.n + " -> " + ch.t) //[which tab] author -> command
+            NerthusAddonUtils.log("[" + ch.k + "] " + ch.n + " -> " + ch.t) //[which tab] author -> command
 
             return callback(ch)
         }

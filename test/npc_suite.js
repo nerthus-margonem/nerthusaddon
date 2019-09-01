@@ -1,7 +1,6 @@
-
-const minimal_npc = function(name="Stefan", x=8, y=42, url="")
+const minimal_npc = function (name = "Stefan", x = 8, y = 42, url = "")
 {
-    return { "name" : name, "x" : x, "y" : y, "url" : url}
+    return {"name": name, "x": x, "y": y, "url": url}
 }
 
 let NPC = minimal_npc("Kici")
@@ -55,40 +54,40 @@ before(function()
     NPC.y = 4
     NPC.url = "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif"
     NPC.dialog =
-    {
-        "0" : //Simple dialog
-        [
-            "Hej wam!",
-            "A no Hej",
-            "Elo"
-        ],
-        "1" : //normal dialog
-        [
-            "A jakoś leci",
-            "a tak sobie... ->2",
-            "dobrze ->END"
-        ],
-        "2" : //normal dialog
-        [
-            "To już koniec",
-            "a no konie ->END"
-        ],
-        "3" : //placeholder #NAME
-        [
-            "Witaj #NAME dawno cie nie widaiłem",
-            "Ja #NAME mam wiele obowiązków"
-        ]
+        {
+            "0" : //Simple dialog
+                [
+                    "Hej wam!",
+                    "A no Hej",
+                    "Elo"
+                ],
+            "1" : //normal dialog
+                [
+                    "A jakoś leci",
+                    "a tak sobie... ->2",
+                    "dobrze ->END"
+                ],
+            "2" : //normal dialog
+                [
+                    "To już koniec",
+                    "a no konie ->END"
+                ],
+            "3" : //placeholder #NAME
+                [
+                    "Witaj #NAME dawno cie nie widaiłem",
+                    "Ja #NAME mam wiele obowiązków"
+                ]
 
-    }
+        }
 
     dialog = nerthus.npc.dialog
 
     //dialog object
     $("<div>").attr("id","dialog")
-    .append($("<div>").attr("id","dlgin")
+        .append($("<div>").attr("id","dlgin")
             .append($("<div>").attr("id","message").addClass("message"))
             .append($("<div>").attr("id","replies").addClass("replies")))
-    .appendTo("body")
+        .appendTo("body")
 
     //base object
     $("<div>").attr("id","base").appendTo("body")
@@ -249,8 +248,10 @@ suite("npc compose")
 
 test("create npc with tip equal to name", function()
 {
-    var npc = minimal_npc()
-    var $npc = nerthus.npc.compose(npc)
+    const npc = minimal_npc()
+    const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+    const customNpc = new nerthus.npc.CustomNpc(npc.x, npc.y, npc.url, tip)
+    const $npc = nerthus.npc.compose(customNpc)
 
     expect($npc.attr("tip")).to.be.ok()
     expect($npc.attr("tip")).to.contain(npc.name)
@@ -258,9 +259,11 @@ test("create npc with tip equal to name", function()
 
 test("create tipless npc", function()
 {
-    var npc = minimal_npc()
+    const npc = minimal_npc()
     npc.tip = null
-    var $npc = nerthus.npc.compose(npc)
+    const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+    const customNpc = new nerthus.npc.CustomNpc(npc.x, npc.y, npc.url, tip)
+    const $npc = nerthus.npc.compose(customNpc)
 
     expect($npc.attr("tip")).not.ok()
 })

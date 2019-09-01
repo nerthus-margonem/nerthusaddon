@@ -7,6 +7,26 @@ nerthus.npc.dialog.decorator.classes = {}
 nerthus.npc.dialog.decorator.classes.LINE = "icon LINE_OPTION"
 nerthus.npc.dialog.decorator.classes.EXIT = "icon LINE_EXIT"
 
+nerthus.npc.CustomNpc = function (x, y, url, nick, collision, dialog)
+{
+    this.x = parseInt(x)
+    this.y = parseInt(y)
+
+    this.id = 50000000 + (x * 1000) + y //id that no other game npc will have
+
+    this.nick = nick
+    this.type = this.nick === "" ? 4 : 0
+
+    this.icon = nerthus.npc.resolve_url(url)
+
+    this.actions = 0
+    this.grp = 0
+    this.wt = 0
+
+    this.collision = collision
+    this.dialog = dialog
+}
+
 nerthus.npc.dialog.parse_message = function(npc, index)
 {
     return this.parse_placeholders(npc.dialog[index][0])
@@ -240,10 +260,11 @@ nerthus.npc.dialog.compose.message = function(message, npc)
 nerthus.npc.compose = function (npc)
 {
     const click = npc.dialog ? this.dialog.open.bind(this.dialog, npc, 0) : null
-    let $npc = $("<img>")
-        .attr("src", this.resolve_url(npc.url))
-        .css("position", "absolute")
-        .css("z-index", npc.y * 2 + 9)
+    const $npc = $("<img src='" + npc.icon + "'>")
+        .css({
+            position: "absolute",
+            zIndex: npc.y * 2 + 9
+        })
         .addClass("nerthus_npc")
         .click(this.click_wrapper(npc, click))
         .appendTo('#base')
@@ -254,41 +275,23 @@ nerthus.npc.compose = function (npc)
             $(this).css({top: "" + y + "px", left: "" + x + "px"})
         })
 
-    const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
-    if (tip)
-        $npc.attr("ctip", "t_npc").attr("tip", tip)
+    if (npc.nick)
+        $npc.attr("ctip", "t_npc").attr("tip", npc.nick)
 
     return $npc
 }
 
 nerthus.npc.compose_ni = function (npc)
 {
-    let x = parseInt(npc.x)
-    let y = parseInt(npc.y)
+    const data = {}
+    data[npc.id] = npc
 
-    let _url = this.resolve_url(npc.url)
-    let exp = /(.*\/)(?!.*\/)(.*)/
-    let match = exp.exec(_url)
-    let id = 50000000 + (x * 1000) + y //id that no other game npc will have
-    let data = {}
-    data[id] = {
-        actions: 0,
-        grp: 0,
-        icon: match[2],
-        nick: npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>",
-        wt: 0,
-        type: npc.hasOwnProperty("tip") && npc.tip === "" || npc.name === "" ? 4 : 0,
-        x: x,
-        y: y
-    }
-
-    let npath = CFG.npath
-    CFG.npath = match[1]
+    const npath = CFG.npath
+    CFG.npath = ""
     Engine.npcs.updateData(data)
     CFG.npath = npath
 
-    this.dialog.list[id] = npc.dialog
-    this.list[id] = npc
+    this.dialog.list[npc.id] = npc.dialog
     return data
 }
 
@@ -324,8 +327,13 @@ nerthus.npc.deploy = function (npc)
     {
         if (!this.is_deployable(npc))
             return
-        this.compose(npc)
-        this.set_collision(npc)
+
+        const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+        const customNpc = new this.CustomNpc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
+
+        this.list[customNpc.id] = customNpc
+        this.compose(customNpc)
+        this.set_collision(customNpc)
     }
 }
 

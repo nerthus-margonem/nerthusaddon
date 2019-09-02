@@ -146,7 +146,8 @@ nerthus.worldEdit.addNpc = function (x, y, url, name, collision, map_id)
     if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
     {
         const tip = name ? ' tip="<b>' + name + '</b>" ctip="t_npc"' : ""
-        const $npc = $('<img id="_ng-' + x + '-' + y + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
+        const $npc = $('<img id="npc' + (50000000 + (x * 1000) + y) + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
+            .addClass("nerthus_npc")
             .css("position", "absolute")
             .appendTo('#base')
             .load(function ()

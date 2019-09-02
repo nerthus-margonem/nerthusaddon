@@ -160,7 +160,7 @@ nerthus.npc.dialog.parseInnerDialog_ni = function (message, replies)
     return innerDial
 }
 
-nerthus.npc.dialog.addEventToAnswer = (answer, $dialWin, replies, index, id) =>
+nerthus.npc.dialog.addEventToAnswer = function (answer, $dialWin, replies, index, id)
 {
     if (replies[index])
         $(answer).click(function ()
@@ -169,7 +169,7 @@ nerthus.npc.dialog.addEventToAnswer = (answer, $dialWin, replies, index, id) =>
                 nerthus.npc.dialog.close_ni()
             else
                 nerthus.npc.dialog.open_ni(id, replies[index].to)
-            $('.scroll-wrapper', $dialWin).trigger("update")
+            $(".scroll-wrapper", $dialWin).trigger("update")
         })
 }
 

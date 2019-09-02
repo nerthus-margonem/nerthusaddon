@@ -265,6 +265,7 @@ nerthus.npc.compose = function (npc)
             position: "absolute",
             zIndex: npc.y * 2 + 9
         })
+        .attr("id", "npc" + npc.id)
         .addClass("nerthus_npc")
         .click(this.click_wrapper(npc, click))
         .appendTo('#base')

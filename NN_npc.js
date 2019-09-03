@@ -12,7 +12,7 @@ nerthus.npc.CustomNpc = function (x, y, url, nick, collision, dialog)
     this.x = parseInt(x)
     this.y = parseInt(y)
 
-    this.id = 50000000 + (x * 1000) + y //id that no other game npc will have
+    this.id = nerthus.worldEdit.coordsToId(x, y)
 
     this.nick = nick
     this.type = this.nick === "" ? 4 : 0

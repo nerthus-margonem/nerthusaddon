@@ -13,6 +13,13 @@ before(function()
     nerthus.addon.PREFIX = "NERTH_PREFIX:"
     nerthus.addon.fileUrl = function(url){return this.PREFIX + url}
 
+    nerthus.worldEdit = {
+        coordsToId(x, y)
+        {
+            return 50000000 + (x * 1000) + y
+        }
+    }
+
     expect = require("expect.js")
     require("../NN_npc.js")
 

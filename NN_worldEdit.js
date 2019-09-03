@@ -47,19 +47,19 @@ nerthus.worldEdit.setWeatherUrls = function ()
         "snow": snowInterval
     }
 
-    this.weatherImages.rain[0] = new Image
+    this.weatherImages.rain[0] = new Image()
     this.weatherImages.rain[0].src = nerthus.graf.rain
     for (let i = 1; i <= rainFramesCount; i++)
     {
-        this.weatherImages.rain[i] = new Image
+        this.weatherImages.rain[i] = new Image()
         this.weatherImages.rain[i].src = nerthus.addon.fileUrl("img/weather/rain_frame_" + i + ".png")
     }
 
-    this.weatherImages.snow[0] = new Image
+    this.weatherImages.snow[0] = new Image()
     this.weatherImages.snow[0].src = nerthus.graf.snow
     for (let i = 1; i <= snowFramesCount; i++)
     {
-        this.weatherImages.snow[i] = new Image
+        this.weatherImages.snow[i] = new Image()
         this.weatherImages.snow[i].src = nerthus.addon.fileUrl("img/weather/snow_frame_" + i + ".png")
     }
 }

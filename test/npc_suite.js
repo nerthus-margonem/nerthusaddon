@@ -204,11 +204,13 @@ test("open dialog display dialog from given index", function()
     const INDEX = 0
     dialog.open(NPC,INDEX)
 
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[INDEX][0])
+    const message = $("#dialog #dlgin .message").html()
+    expect(message).to.contain(NPC.nick)
+    expect(message).to.contain(NPC.dialog[INDEX][0])
 
-    expect($("#dialog #dlgin .replies").html()).to.contain(NPC.dialog[INDEX][1])
-    expect($("#dialog #dlgin .replies").html()).to.contain(NPC.dialog[INDEX][2])
+    const replies = $("#dialog #dlgin .replies").html()
+    expect(replies).to.contain(NPC.dialog[INDEX][1])
+    expect(replies).to.contain(NPC.dialog[INDEX][2])
 })
 
 test("reply with ->$LINE go to next dialog", function()
@@ -217,11 +219,11 @@ test("reply with ->$LINE go to next dialog", function()
     const NEXT_INDEX = 2
     dialog.open(NPC,BEGIN_INDEX)
 
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
+    expect($("#dialog #dlgin .message").html()).to.contain(NPC.nick)
     expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[BEGIN_INDEX][0])
 
     $("#dialog #dlgin .replies li")[0].click() // dialog[1][1] go to dialog 2
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
+    expect($("#dialog #dlgin .message").html()).to.contain(NPC.nick)
     expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[NEXT_INDEX][0])
 })
 
@@ -230,7 +232,7 @@ test("reply with ->END close dialog", function()
     const INDEX = 1
     dialog.open(NPC,INDEX)
 
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
+    expect($("#dialog #dlgin .message").html()).to.contain(NPC.nick)
     expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[INDEX][0])
 
     expect($("#dialog").css("display")).to.be("block")
@@ -256,7 +258,7 @@ suite("npc compose")
 test("create npc with tip equal to name", function()
 {
     const npc = minimal_npc()
-    const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+    const tip = npc.hasOwnProperty("tip") ? npc.tip : npc.name
     const customNpc = new nerthus.npc.CustomNpc(npc.x, npc.y, npc.url, tip)
     const $npc = nerthus.npc.compose(customNpc)
 

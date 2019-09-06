@@ -254,7 +254,7 @@ nerthus.npc.dialog.compose.reply = function (reply)
 }
 nerthus.npc.dialog.compose.message = function(message, npc)
 {
-    return "<h4><b>" + npc.name + "</b></h4>" + message
+    return "<h4>" + npc.nick + "</h4>" + message
 }
 
 nerthus.npc.compose = function (npc)
@@ -277,7 +277,8 @@ nerthus.npc.compose = function (npc)
         })
 
     if (npc.nick)
-        $npc.attr("ctip", "t_npc").attr("tip", npc.nick)
+        $npc.attr("ctip", "t_npc")
+            .attr("tip", npc.nick)
 
     return $npc
 }

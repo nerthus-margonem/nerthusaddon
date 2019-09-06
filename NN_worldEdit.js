@@ -30,6 +30,12 @@ nerthus.worldEdit.currentWeatherEffects = []
 
 nerthus.worldEdit.defaultEmotionsDraw = function () {}
 
+// unified id for nerthus npcs
+nerthus.worldEdit.coordsToId = function (x, y)
+{
+    return 50000000 + (x * 1000) + y
+}
+
 nerthus.worldEdit.setWeatherUrls = function ()
 {
     const rainFramesCount = 3
@@ -47,19 +53,19 @@ nerthus.worldEdit.setWeatherUrls = function ()
         "snow": snowInterval
     }
 
-    this.weatherImages.rain[0] = new Image
+    this.weatherImages.rain[0] = new Image()
     this.weatherImages.rain[0].src = nerthus.graf.rain
     for (let i = 1; i <= rainFramesCount; i++)
     {
-        this.weatherImages.rain[i] = new Image
+        this.weatherImages.rain[i] = new Image()
         this.weatherImages.rain[i].src = nerthus.addon.fileUrl("img/weather/rain_frame_" + i + ".png")
     }
 
-    this.weatherImages.snow[0] = new Image
+    this.weatherImages.snow[0] = new Image()
     this.weatherImages.snow[0].src = nerthus.graf.snow
     for (let i = 1; i <= snowFramesCount; i++)
     {
-        this.weatherImages.snow[i] = new Image
+        this.weatherImages.snow[i] = new Image()
         this.weatherImages.snow[i].src = nerthus.addon.fileUrl("img/weather/snow_frame_" + i + ".png")
     }
 }
@@ -146,7 +152,8 @@ nerthus.worldEdit.addNpc = function (x, y, url, name, collision, map_id)
     if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
     {
         const tip = name ? ' tip="<b>' + name + '</b>" ctip="t_npc"' : ""
-        const $npc = $('<img id="_ng-' + x + '-' + y + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
+        const $npc = $('<img id="npc' + this.coordsToId(x,y) + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
+            .addClass("nerthus_npc")
             .css("position", "absolute")
             .appendTo('#base')
             .load(function ()
@@ -179,7 +186,7 @@ nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
     const exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
     const match = exp.exec(url)
 
-    const id = 10000000 + (x * 1000) + y //id that no other game npc will have
+    const id = this.coordsToId(x, y)
     let data = {}
     data[id] = {
         actions: 0,
@@ -242,7 +249,7 @@ nerthus.worldEdit.deleteNpc = function (x, y, map_id)
 {
     if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
     {
-        $('#_ng-' + x + '-' + y).remove()
+        $("#npc" + this.coordsToId(x, y)).remove()
         this.deleteCollision(x, y)
     }
 }
@@ -251,7 +258,7 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
 {
     if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
     {
-        const id = 10000000 + (x * 1000) + y //id that no other game npc will have(id))
+        const id = this.coordsToId(x, y)
         if (Engine.npcs.getById(id))
         {
             Engine.npcs.removeOne(id)

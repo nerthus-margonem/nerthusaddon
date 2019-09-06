@@ -11,16 +11,29 @@ let checkNpc = function(npc)
     {
         expect(npc).to.be.an(typeof({}))
 
-        expect(npc).to.have.property("name")
-        expect(npc.name).to.be.a(typeof("string"))
+        if (typeof npc.name === "undefined")
+        {
+            expect(npc).to.have.property("type")
+            expect(npc.type).to.be.a("string")
 
-        expect(npc).to.have.property("x")
-        expect(npc.x).to.match(/^\d+$/)
+            expect(npc).to.have.property("id")
 
-        expect(npc).to.have.property("y")
-        expect(npc.y).to.match(/^\d+$/)
+            expect(npc).to.have.property("lvl")
+            expect(npc.lvl).to.be.a("number")
+        } else
+        {
+            expect(npc).to.have.property("name")
+            expect(npc.name).to.be.a("string")
 
-        expect(npc).to.have.property("url")
+            expect(npc).to.have.property("x")
+            expect(npc.x).to.match(/^\d+$/)
+
+            expect(npc).to.have.property("y")
+            expect(npc.y).to.match(/^\d+$/)
+
+            expect(npc).to.have.property("url")
+        }
+
 
         if(npc.hasOwnProperty("time"))
             expect(npc.time).to.match(/^[0-9]+(:[0-9]+){0,1}-[0-9]+(:[0-9]+){0,1}$/)

@@ -1,7 +1,6 @@
-
-const minimal_npc = function(name="Stefan", x=8, y=42, url="")
+const minimal_npc = function (name = "Stefan", x = 8, y = 42, url = "")
 {
-    return { "name" : name, "x" : x, "y" : y, "url" : url}
+    return {"name": name, "x": x, "y": y, "url": url}
 }
 
 let NPC = minimal_npc("Kici")
@@ -13,6 +12,13 @@ before(function()
     nerthus.addon = {}
     nerthus.addon.PREFIX = "NERTH_PREFIX:"
     nerthus.addon.fileUrl = function(url){return this.PREFIX + url}
+
+    nerthus.worldEdit = {
+        coordsToId(x, y)
+        {
+            return 50000000 + (x * 1000) + y
+        }
+    }
 
     expect = require("expect.js")
     require("../NN_npc.js")
@@ -55,40 +61,40 @@ before(function()
     NPC.y = 4
     NPC.url = "http://game1.margonem.pl/obrazki/itemy/eve/ka-kotek.gif"
     NPC.dialog =
-    {
-        "0" : //Simple dialog
-        [
-            "Hej wam!",
-            "A no Hej",
-            "Elo"
-        ],
-        "1" : //normal dialog
-        [
-            "A jakoś leci",
-            "a tak sobie... ->2",
-            "dobrze ->END"
-        ],
-        "2" : //normal dialog
-        [
-            "To już koniec",
-            "a no konie ->END"
-        ],
-        "3" : //placeholder #NAME
-        [
-            "Witaj #NAME dawno cie nie widaiłem",
-            "Ja #NAME mam wiele obowiązków"
-        ]
+        {
+            "0" : //Simple dialog
+                [
+                    "Hej wam!",
+                    "A no Hej",
+                    "Elo"
+                ],
+            "1" : //normal dialog
+                [
+                    "A jakoś leci",
+                    "a tak sobie... ->2",
+                    "dobrze ->END"
+                ],
+            "2" : //normal dialog
+                [
+                    "To już koniec",
+                    "a no konie ->END"
+                ],
+            "3" : //placeholder #NAME
+                [
+                    "Witaj #NAME dawno cie nie widaiłem",
+                    "Ja #NAME mam wiele obowiązków"
+                ]
 
-    }
+        }
 
     dialog = nerthus.npc.dialog
 
     //dialog object
     $("<div>").attr("id","dialog")
-    .append($("<div>").attr("id","dlgin")
+        .append($("<div>").attr("id","dlgin")
             .append($("<div>").attr("id","message").addClass("message"))
             .append($("<div>").attr("id","replies").addClass("replies")))
-    .appendTo("body")
+        .appendTo("body")
 
     //base object
     $("<div>").attr("id","base").appendTo("body")
@@ -198,11 +204,13 @@ test("open dialog display dialog from given index", function()
     const INDEX = 0
     dialog.open(NPC,INDEX)
 
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[INDEX][0])
+    const message = $("#dialog #dlgin .message").html()
+    expect(message).to.contain(NPC.nick)
+    expect(message).to.contain(NPC.dialog[INDEX][0])
 
-    expect($("#dialog #dlgin .replies").html()).to.contain(NPC.dialog[INDEX][1])
-    expect($("#dialog #dlgin .replies").html()).to.contain(NPC.dialog[INDEX][2])
+    const replies = $("#dialog #dlgin .replies").html()
+    expect(replies).to.contain(NPC.dialog[INDEX][1])
+    expect(replies).to.contain(NPC.dialog[INDEX][2])
 })
 
 test("reply with ->$LINE go to next dialog", function()
@@ -211,11 +219,11 @@ test("reply with ->$LINE go to next dialog", function()
     const NEXT_INDEX = 2
     dialog.open(NPC,BEGIN_INDEX)
 
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
+    expect($("#dialog #dlgin .message").html()).to.contain(NPC.nick)
     expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[BEGIN_INDEX][0])
 
     $("#dialog #dlgin .replies li")[0].click() // dialog[1][1] go to dialog 2
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
+    expect($("#dialog #dlgin .message").html()).to.contain(NPC.nick)
     expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[NEXT_INDEX][0])
 })
 
@@ -224,7 +232,7 @@ test("reply with ->END close dialog", function()
     const INDEX = 1
     dialog.open(NPC,INDEX)
 
-    expect($("#dialog #dlgin .message").html()).to.contain(NPC.name)
+    expect($("#dialog #dlgin .message").html()).to.contain(NPC.nick)
     expect($("#dialog #dlgin .message").html()).to.contain(NPC.dialog[INDEX][0])
 
     expect($("#dialog").css("display")).to.be("block")
@@ -249,8 +257,10 @@ suite("npc compose")
 
 test("create npc with tip equal to name", function()
 {
-    var npc = minimal_npc()
-    var $npc = nerthus.npc.compose(npc)
+    const npc = minimal_npc()
+    const tip = npc.hasOwnProperty("tip") ? npc.tip : npc.name
+    const customNpc = new nerthus.npc.CustomNpc(npc.x, npc.y, npc.url, tip)
+    const $npc = nerthus.npc.compose(customNpc)
 
     expect($npc.attr("tip")).to.be.ok()
     expect($npc.attr("tip")).to.contain(npc.name)
@@ -258,9 +268,11 @@ test("create npc with tip equal to name", function()
 
 test("create tipless npc", function()
 {
-    var npc = minimal_npc()
+    const npc = minimal_npc()
     npc.tip = null
-    var $npc = nerthus.npc.compose(npc)
+    const tip = npc.hasOwnProperty("tip") ? npc.tip : "<b>" + npc.name + "</b>"
+    const customNpc = new nerthus.npc.CustomNpc(npc.x, npc.y, npc.url, tip)
+    const $npc = nerthus.npc.compose(customNpc)
 
     expect($npc.attr("tip")).not.ok()
 })

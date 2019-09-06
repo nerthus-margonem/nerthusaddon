@@ -1,28 +1,28 @@
 [
 {
-    "name" : "Kicia",
-    "x" : "37",
+    "name" : "Kot",
+    "x" : "35",
     "y" : "52",
-    "url" : "http://nerthus.margonem.pl/obrazki/itemy/eve/ka-kotek.gif",
+    "url" : "/obrazki/npc/dom/staly-bywalec.gif",
     "collision" : true,
     "dialog" :
     {
         "0" :
         [
-            "Miau miau miau",
-            "o jaka fajna kicia, pogłaszcze cię ->1",
-            "skąd się tu kiciu wzięłaś? ->2",
-            "lepiej nie podchodzić.. ->END"
+            "[ Kot siedzi i macha swoim ogonem, przyglądając się tobie z zaciekawieniem. ]",
+            "O, jaki fajny kot, dasz się pogłaskać? ->1",
+            "Skąd się on tu w ogóle wziął? Nie widziałem takiego kota wcześniej... ->2",
+            "Lepiej nie podchodzić.. ->END"
         ],
         "1" :
         [
-            "Mrrr",
-            "dobry kociak ->END"
+            "[ Zwierzak nadstawił głowę, a po chwili drapania za uszkiem mruczeć. Wygląda na zadowolonego. ]",
+            "Dobry kociak. ->END"
         ],
         "2" :
         [
-            "Witaj #NAME jestem <a href='https://www.margonem.pl/?task=forum&show=posts&id=264553&ps=5#post41810772' target='_blank'>testową kicią</a>",
-            "aaa, to ok ... ->END"
+            "[ Kot odwrócił głowę i zaczął lizać sobie łapkę. Wygląda na to, że w tej krainie można zobaczyć <a href='https://www.margonem.pl/?task=forum&show=posts&id=264553&ps=5#post41810772' target='_blank'>więcej rzeczy</a> niż zwykle. ]",
+            "Hmm, ciekawe co jeszcze nowego mnie tutaj spotka. ->END"
         ]
     }
 },

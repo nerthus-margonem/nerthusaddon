@@ -312,6 +312,8 @@ nerthus.worldEdit.checkCurrentMap = function ()
     const customMapImage = this.checkMaps(map.id)
     if (customMapImage)
         $("#ground").css("background", "url(" + customMapImage.src + ")")
+    else
+        $("#ground").css("background", "")
 }
 
 nerthus.worldEdit.changeMap = function (url, layer, mapId)

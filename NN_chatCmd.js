@@ -322,10 +322,23 @@ nerthus.chatCmd.map["sys"] = function(ch)
     return ch
 }
 
-nerthus.chatCmd.map["map"] = function(ch)
+nerthus.chatCmd.map["map"] = function (ch)
 {
-    const map_url = ch.t.split(" ").slice(1).join(" ")
-    nerthus.worldEdit.changeMap(map_url, 1)
+    const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
+    const map_url = cmd[0]
+    const map_id = cmd[1]
+    if (map_id)
+        nerthus.worldEdit.changeMap(map_url, 2, map_id)
+    else
+        nerthus.worldEdit.changeMap(map_url, 1)
+
+    return false
+}
+
+nerthus.chatCmd.map["resetMap"] = function (ch)
+{
+    const map_id = ch.t.split(" ").slice(1).join(" ")
+    nerthus.worldEdit.changeMap("", 2, map_id)
 
     return false
 }

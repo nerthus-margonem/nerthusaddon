@@ -282,51 +282,77 @@ nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
                 this.npcs.splice(i, 1)
 }
 
-nerthus.worldEdit.changeMap = function (url, layer)
+/*
+ * There are two types of *map you can do
+ * Normal *map that should work on every map
+ * And *map with mapId that should only work on map with that id
+ *
+ * *map with map id always beat *map without map id
+ *
+ * To reset map with id use *resetMap [mapId]
+ * To reset map without id use *map (without arguments)
+ */
+nerthus.worldEdit.checkMaps = function (mapId)
 {
-    //never change $("#bground") backgroundImage, as it's default one and we don't want to display black map
+    for (let i = this.mapImages.length - 1; 0 <= i; i--)
+    {
+        if (i > 1)
+        {
+            for (let j = this.mapImages[i].length - 1; 0 <= j; j--)
+                if (this.mapImages[i][j] && (this.mapImages[i][j].mapId === mapId || isNaN(this.mapImages[i][j].mapId)))
+                    return this.mapImages[i][j].img
+        }
+        else if (this.mapImages[i] && (this.mapImages[i].mapId === mapId || isNaN(this.mapImages[i].mapId)))
+            return this.mapImages[i].img
+    }
+}
+
+nerthus.worldEdit.checkCurrentMap = function ()
+{
+    const customMapImage = this.checkMaps(map.id)
+    if (customMapImage)
+        $("#ground").css("background", "url(" + customMapImage.src + ")")
+    else
+        $("#ground").css("background", "")
+}
+
+nerthus.worldEdit.changeMap = function (url, layer, mapId)
+{
+    mapId = parseInt(mapId)
+
+    if (layer > 1 && !this.mapImages[layer]) this.mapImages[layer] = []
+
     if (url)
     {
         const img = new Image()
         img.src = url
-        this.mapImages[layer] = img
+
+        if (layer > 1)
+            this.mapImages[layer].push({
+                img: img,
+                mapId: mapId
+            })
+        else
+            this.mapImages[layer] = {
+                img: img,
+                mapId: mapId
+            }
     }
     else
     {
-        delete this.mapImages[layer]
-
-        this.mapImages = this.mapImages.filter(function (el)
-        {
-            return el != null
-        })
+        if (layer > 1)
+            this.mapImages[layer] = this.mapImages[layer].filter(function (el)
+            {
+                return el.mapId !== mapId
+            })
+        else
+            delete this.mapImages[layer]
     }
-
-    const mapImagesLen = this.mapImages.length
-    if (mapImagesLen > 0)
-        $("#ground").css("background", "url(" + this.mapImages[mapImagesLen - 1].src + ")")
+    if (typeof map !== "undefined")
+        this.checkCurrentMap()
 }
 
-nerthus.worldEdit.changeMap_ni = function (url, layer)
-{
-    if (url)
-    {
-        let img = new Image()
-        img.src = url
-        this.mapImages[layer] = img
-    }
-    else
-    {
-
-        delete this.mapImages[layer]
-
-        this.mapImages = this.mapImages.filter(function (el)
-        {
-            return el != null
-        })
-    }
-}
-
-nerthus.worldEdit.startMapChanging_ni = function()
+nerthus.worldEdit.startMapChanging_ni = function ()
 {
     //manipulation of map
     const tmpMapDraw = Engine.map.draw
@@ -336,20 +362,14 @@ nerthus.worldEdit.startMapChanging_ni = function()
         tmpMapDraw.call(Engine.map, Canvas_rendering_context)
 
         //draw new maps on top of map
-
-        const mapImagesLength = nerthus.worldEdit.mapImages.length
-        /*
-        // currently on SI there is no (programmed) way of displaying more than 1 layer.
-        // So this part of code, while better than current one, is commented out to remain consistent.
-
-        for (let i = 0; i < mapImagesLen; i++)
-            Canvas_rendering_context.drawImage(nerthus.worldEdit.mapImages[i], 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
-         */
-        if (mapImagesLength > 0)
+        const customMapImage = nerthus.worldEdit.checkMaps(Engine.map.d.id)
+        if (customMapImage)
+        {
             Canvas_rendering_context.drawImage(
-                nerthus.worldEdit.mapImages[mapImagesLength - 1],
+                customMapImage,
                 0 - Engine.map.offset[0],
                 0 - Engine.map.offset[1])
+        }
 
 
         //draw goMark (red X on ground that shows you where you've clicked)
@@ -665,6 +685,7 @@ nerthus.worldEdit.purgeNpcList = function ()
 
 nerthus.worldEdit.start = function ()
 {
+    nerthus.loadOnEveryMap(this.checkCurrentMap.bind(this))
     if (nerthus.options.hideNpcs)
         nerthus.defer(this.startNpcHiding.bind(this))
 }
@@ -677,7 +698,6 @@ nerthus.worldEdit.start_ni = function ()
         this.deleteCollision = this.deleteCollision_ni
         this.addNpc = this.addNpc_ni
         this.deleteNpc = this.deleteNpc_ni
-        this.changeMap = this.changeMap_ni
         this.changeLight = this.changeLight_ni
 
         this.addLights = this.addLights_ni

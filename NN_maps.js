@@ -11,7 +11,7 @@ nerthus.maps.customMaps = function ()
     for (const i in nerthus.mapsArr)
         if (nerthus.mapsArr[i][1] === map.id && (nerthus.mapsArr[i][0] === 0 || nerthus.mapsArr[i][0] === season))
         {
-            nerthus.worldEdit.changeMap(nerthus.mapsArr[i][2], 0)
+            nerthus.worldEdit.changeMap(nerthus.mapsArr[i][2], 0, map.id)
             return true
         }
     nerthus.worldEdit.changeMap(false, 0)
@@ -24,7 +24,7 @@ nerthus.maps.customMaps_ni = function ()
     for (const i in nerthus.mapsArr)
         if (nerthus.mapsArr[i][1] === Engine.map.d.id && (nerthus.mapsArr[i][0] === 0 || nerthus.mapsArr[i][0] === season))
         {
-            nerthus.worldEdit.changeMap(nerthus.mapsArr[i][2], 0)
+            nerthus.worldEdit.changeMap(nerthus.mapsArr[i][2], 0, Engine.map.d.id)
             return true
         }
     nerthus.worldEdit.changeMap(false, 0)

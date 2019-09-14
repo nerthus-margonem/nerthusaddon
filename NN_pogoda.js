@@ -296,14 +296,14 @@ nerthus.weather.descriptions =
 nerthus.weather.display = function ()
 {
     nerthus.worldEdit.clearWeather()
-    if (map.mainid === 0 && map.id !== 3459 && map.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
+    if (map.mainid === 0 || map.id === 1862 && map.id !== 3459 && map.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
         this.effects.display(this.id)
 }
 
 nerthus.weather.display_ni = function ()
 {
     nerthus.worldEdit.clearWeather()
-    if (Engine.map.d.mainid === 0 && Engine.map.d.id !== 3459 && Engine.map.d.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
+    if (Engine.map.d.mainid === 0 || Engine.map.d.id === 1862 && Engine.map.d.id !== 3459 && Engine.map.d.id !== 3969) //are we outside? + Mirvenis + Szkoła w Ithan
         this.effects.display(this.id)
 }
 

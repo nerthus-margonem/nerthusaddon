@@ -1,0 +1,27 @@
+[
+    {
+        "type": "delete",
+        "id": 101202,
+        "lvl": 13
+    },
+    {
+        "type": "delete",
+        "id": 101201,
+        "lvl": 11
+    },
+    {
+        "type": "delete",
+        "id": 101200,
+        "lvl": 13
+    },
+    {
+        "type": "delete",
+        "id": 101199,
+        "lvl": 11
+    },
+    {
+        "type": "delete",
+        "id": 101203,
+        "lvl": 13
+    }
+]

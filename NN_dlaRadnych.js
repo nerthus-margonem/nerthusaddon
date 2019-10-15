@@ -38,7 +38,6 @@ nerthus.NerthusNarr = [
     'Rothe',
     'Argetus',
     'Kamivis',
-    'Victor Cane',
     'Ney Talleyrand',
     'Yao Shasamo',
     'Rothen'

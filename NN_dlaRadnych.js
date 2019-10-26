@@ -142,7 +142,7 @@ nerthus.mapsArr =
     [4, 257, nerthus.addon.fileUrl("maps/Mythar - zima.png")],
 
     // Torneg
-    [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
+    // [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
 
     //Werbin
     [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],

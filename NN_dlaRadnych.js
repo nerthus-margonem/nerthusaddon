@@ -28,7 +28,6 @@ nerthus.NerthusRad = [
     "Korano Ligatur"
 ]
 
-
 //Lista narratorów - możliwość używania *nar i ranga "bard" + 'Umbrael Regis'
 
 //PRZED KAŻDĄ KOLEJNĄ OSOBĄ MUSI ZNALEŹĆ SIĘ PRZECINEK!!!
@@ -116,8 +115,6 @@ nerthus.vips = {
     14615 : 'Iluzjonista',
     10222 : 'Władca Ciemności',
     15746 : 'Miłośniczka kocimiętki'
-  
-
 }
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic

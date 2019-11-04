@@ -92,6 +92,22 @@ nerthus.panel.settings_str = function()
         $settings.append($("<div>").append($cb).append($cb_name).hide())
     }
     return $settings
+}//
+
+nerthus.panel.settings_str_ni = function()
+{
+    let $settings = $("<div>")
+    let info =
+        "<span style='text-decoration: underline; cursor: url(../img/gui/cursor/5.png), auto' class='nerthus-settings-button' " +
+        "onclick='$(\".nerthus-settings-button\").nextAll().toggle()'>Ustawienia</span>"
+    $settings.append(info)
+    for(const option in nerthus.options)
+    {
+        let $cb = $("<input>",{'type':"checkbox", 'id':'panCb'+option, 'checked':nerthus.options[option],'style': 'cursor: url(../img/gui/cursor/5.png), auto'})
+        let $cb_name = $("<b>").text(option)
+        $settings.append($("<div>").append($cb).append($cb_name).hide())
+    }
+    return $settings
 }
 
 nerthus.panel.settings_str_ni = function()

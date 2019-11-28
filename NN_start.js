@@ -9,23 +9,24 @@ nerthus = {}
 nerthus.addon = {}
 nerthus.addon.consts = {}
 nerthus.addon.consts.MASTER_VERSION = ""
-nerthus.addon.consts.MASTER_PREFIX = 'https://krisaphalon.github.io/nerthusaddon'
+nerthus.addon.consts.MASTER_PREFIX = 'http://akrzyz.github.io/nerthusaddon'
 nerthus.addon.consts.MASTER_VERSION_SEPARATOR = ''
-//nerthus.addon.consts.CDN_PREFIX = 'http://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon'
-//nerthus.addon.consts.CDN_VERSION_SEPARATOR = '@gh-pages'
+nerthus.addon.consts.CDN_PREFIX = 'http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon'
+nerthus.addon.consts.CDN_VERSION_SEPARATOR = '@'
 nerthus.addon.version = nerthus.addon.consts.MASTER_VERSION
-nerthus.addon.version_separator = nerthus.addon.consts.MASTER_VERSION_SEPARATOR
-nerthus.addon.filesPrefix = nerthus.addon.consts.MASTER_PREFIX
-
-
+nerthus.addon.version_separator = nerthus.addon.consts.CDN_VERSION_SEPARATOR
+nerthus.addon.filesPrefix = nerthus.addon.consts.CDN_PREFIX
 nerthus.addon.fileUrl = function(filename)
 {
-    return encodeURI([[this.filesPrefix, ""].join(this.version_separator), filename].join('/'))
+    const url = this.filesPrefix + this.version_separator + this.version + "/" + filename
+    return encodeURI(url)
 }
-nerthus.addon.fileMasterUrl = nerthus.addon.fileUrl
-
-
-nerthus.addon.consts.VERSION_URL = nerthus.addon.fileUrl("version.json")
+nerthus.addon.fileMasterUrl = function(filename)
+{
+    const url = this.consts.MASTER_PREFIX + this.consts.MASTER_VERSION + this.consts.MASTER_VERSION_SEPARATOR + "/" + filename
+    return encodeURI(url)
+}
+nerthus.addon.consts.VERSION_URL = nerthus.addon.fileMasterUrl("version.json")
 nerthus.addon.store = function()
 {
     if(NerthusAddonUtils.storage())
@@ -86,7 +87,7 @@ NerthusAddonUtils = (function()
     }
     utils.purgeStorage = function()
     {
-        localStorage.removeItem("nerthus" + nerthus.startMethod)
+        localStorage.removeItem("nerthus")
     }
     utils.runAddon = function()
     {

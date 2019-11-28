@@ -60,10 +60,10 @@ nerthus.panel.constructElement.settingCheckbox = function (optionName)
     )
 }
 
-nerthus.panel.constructElement.settings = function ()
+nerthus.panel.constructElement.settings = function (options)
 {
     const settingsList = []
-    for (const option in nerthus.options)
+    for (const option in options)
         settingsList.push(this.settingCheckbox(option))
     const settings = settingsList.join('')
 
@@ -124,7 +124,7 @@ nerthus.panel.createPanel = function (data, hidden)
     const buttonGroupLeft = this.constructElement.buttonGroup(data.leftPanel)
     const buttonGroupCenter = this.constructElement.buttonGroup(data.centerPanel)
     const buttonGroupRight = this.constructElement.buttonGroup(data.rightPanel)
-    const settings = this.constructElement.settings()
+    const settings = this.constructElement.settings(nerthus.options)
 
     this.$elm = $(this.constructElement.panel(buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settings))
     const defaultPanel = this.$elm.find('.default-panel')

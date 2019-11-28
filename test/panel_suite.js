@@ -67,12 +67,14 @@ afterEach(() =>
     $('body > #nerthus-panel').remove()
 })
 
-test("translate",() =>{
-    expect(nerthus.panel.translate_option("translate")).to.equal("przetłumaczony")
+test('translate', () =>
+{
+    expect(nerthus.panel.translate_option('translate')).to.equal('przetłumaczony')
 })
 
-test("translate untranslatable",() =>{
-    expect(nerthus.panel.translate_option("untranslatable")).to.equal("untranslatable")
+test('translate untranslatable', () =>
+{
+    expect(nerthus.panel.translate_option('untranslatable')).to.equal('untranslatable')
 })
 
 test('constructElement.button returns proper HTML string', () =>
@@ -130,9 +132,26 @@ test('createPanel doesn\'t create second panel', () =>
     expect($('body > #nerthus-panel').length).to.be.equal(1)
 })
 
-test("$elm is proper jQuery object",() =>
+test('$elm is proper jQuery object', () =>
 {
     nerthus.panel.createPanel(data)
     expect(nerthus.panel.$elm instanceof $).to.be(true)
 })
 
+test('clicking settings button toggles between default and settings panels', () =>
+{
+    nerthus.panel.createPanel(data)
+
+    const $defaultPanel = $('.default-panel')
+    const $settingsPanel = $('.settings-panel')
+    const $settingsButton = $('.nerthus-settings-button')
+
+    expect($defaultPanel.hasClass('hidden')).to.be(false)
+    expect($settingsPanel.hasClass('hidden')).to.be(true)
+    $settingsButton.click()
+    expect($defaultPanel.hasClass('hidden')).to.be(true)
+    expect($settingsPanel.hasClass('hidden')).to.be(false)
+    $settingsButton.click()
+    expect($defaultPanel.hasClass('hidden')).to.be(false)
+    expect($settingsPanel.hasClass('hidden')).to.be(true)
+})

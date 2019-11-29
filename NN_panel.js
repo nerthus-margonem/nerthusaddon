@@ -187,7 +187,7 @@ nerthus.panel.createPanel = function (data, hidden)
 
 nerthus.panel.preloadPanel = function ()
 {
-    if (!this.$elm.parent('body').length)
+    if (!this.$elm.parent || !this.$elm.parent('body').length)
         $.getJSON(nerthus.addon.fileMasterUrl('panel_links.json'), function (data)
         {
             nerthus.panel.createPanel.bind(nerthus.panel, data, true)()
@@ -196,7 +196,7 @@ nerthus.panel.preloadPanel = function ()
 
 nerthus.panel.showPanel = function ()
 {
-    if (!this.$elm.parent('body').length)
+    if (!this.$elm.parent || !this.$elm.parent('body').length)
         $.getJSON(nerthus.addon.fileMasterUrl('panel_links.json'), function (data)
         {
             nerthus.panel.createPanel.bind(nerthus.panel, data, false)()

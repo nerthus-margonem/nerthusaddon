@@ -121,62 +121,68 @@ nerthus.panel.constructElement.icon = function ()
 
 nerthus.panel.createPanel = function (data, hidden)
 {
-    const buttonGroupLeft = this.constructElement.buttonGroup(data.leftPanel)
-    const buttonGroupCenter = this.constructElement.buttonGroup(data.centerPanel)
-    const buttonGroupRight = this.constructElement.buttonGroup(data.rightPanel)
-    const settings = this.constructElement.settings(nerthus.options)
+    if (!this.$elm.parent || !this.$elm.parent("body").length)
+    {
+        const buttonGroupLeft = this.constructElement.buttonGroup(data.leftPanel)
+        const buttonGroupCenter = this.constructElement.buttonGroup(data.centerPanel)
+        const buttonGroupRight = this.constructElement.buttonGroup(data.rightPanel)
+        const settings = this.constructElement.settings(nerthus.options)
 
-    this.$elm = $(this.constructElement.panel(buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settings))
-    const defaultPanel = this.$elm.find('.default-panel')
-    const settingsPanel = this.$elm.find('.settings-panel')
-    const panelName = this.$elm.find('.panel-name')
-    this.$elm.find('.nerthus-settings-button')
-        .click(function ()
+        this.$elm = $(this.constructElement.panel(buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settings))
+        const defaultPanel = this.$elm.find(".default-panel")
+        const settingsPanel = this.$elm.find(".settings-panel")
+        const panelName = this.$elm.find(".panel-name")
+        this.$elm.find(".nerthus-settings-button")
+            .click(function ()
+            {
+                defaultPanel.toggleClass("hidden")
+                settingsPanel.toggleClass("hidden")
+                const tip = settingsPanel.hasClass("hidden") ? "Ustawienia" : "Powrót"
+                const $this = $(this)
+                $this.toggleClass("back-to-default")
+                if (settingsPanel.hasClass("hidden"))
+                {
+                    $this.attr({"tip": "Ustawienia", "data-tip": "Ustawienia"})
+                        .children().attr("src", nerthus.addon.fileUrl("img/panel/settings.png"))
+                    panelName.text("Panel Nerthusa")
+                } else
+                {
+                    $this.attr({"tip": "Powrót", "data-tip": "Powrót"})
+                        .children().attr("src", nerthus.addon.fileUrl("img/panel/settings-back.png"))
+                    panelName.text("Panel Nerthusa - ustawienia")
+                }
+            })
+            .end()
+            .find(".close-button, .cancel-button, .ok-button").click(function ()
         {
-            defaultPanel.toggleClass('hidden')
-            settingsPanel.toggleClass('hidden')
-            const tip = settingsPanel.hasClass('hidden') ? 'Ustawienia' : 'Powrót'
-            const $this = $(this)
-            $this.toggleClass('back-to-default')
-            if (settingsPanel.hasClass('hidden'))
-            {
-                $this.attr({'tip': 'Ustawienia', 'data-tip': 'Ustawienia'})
-                    .children().attr('src', nerthus.addon.fileUrl('img/panel/settings.png'))
-                panelName.text('Panel Nerthusa')
-            }
-            else
-            {
-                $this.attr({'tip': 'Powrót', 'data-tip': 'Powrót'})
-                    .children().attr('src', nerthus.addon.fileUrl('img/panel/settings-back.png'))
-                panelName.text('Panel Nerthusa - ustawienia')
-            }
-        })
-        .end()
-        .find('.close-button, .cancel-button, .ok-button').click(function () { nerthus.panel.$elm.remove() }).end()
-        .find('.save-button').click(function () {
+            nerthus.panel.$elm.remove()
+        }).end()
+            .find(".save-button").click(function ()
+        {
             nerthus.panel.saveSettings()
             nerthus.panel.$elm.remove()
         }).end()
 
-    this.$elm
-        .css({
-            visibility: hidden ? 'hidden' : 'visible',
-            opacity: 0
-        })
-        .appendTo('body')
-        .css('opacity', hidden ? '0' : '1') // change opacity after appending to body for nice animation
-        .draggable({
-            start: function ()
-            {
-                const lock = window.g ? window.g.lock : window.Engine.lock
-                lock.add('nerthus-panel-drag')
-            },
-            stop: function ()
-            {
-                const lock = window.g ? window.g.lock : window.Engine.lock
-                lock.remove('nerthus-panel-drag')
-            }
-        })
+        this.$elm
+            .css({
+                visibility: hidden ? "hidden" : "visible",
+                opacity: 0
+            })
+            .appendTo("body")
+            .css("opacity", hidden ? "0" : "1") // change opacity after appending to body for nice animation
+            .draggable({
+                start: function ()
+                {
+                    const lock = window.g ? window.g.lock : window.Engine.lock
+                    lock.add("nerthus-panel-drag")
+                },
+                stop: function ()
+                {
+                    const lock = window.g ? window.g.lock : window.Engine.lock
+                    lock.remove("nerthus-panel-drag")
+                }
+            })
+    }
 }
 
 nerthus.panel.preloadPanel = function ()

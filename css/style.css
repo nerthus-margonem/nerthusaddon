@@ -1,3 +1,22 @@
+/* Chat colors */
+.me { color: #f70 !important }
+
+.sys_comm { color: #f33 !important }
+
+.nar { color: lightblue !important }
+
+.nar2 { color: #D6A2FF !important }
+
+.nar3 { color: #00CED1 !important }
+
+.dial1 { color: #33CC66 !important }
+
+.dial2 { color: #CC9966 !important }
+
+.dial3 { color: #D3D3D3 !important }
+
+.dial666 { color: #FF66FF !important }
+
 /* Shield */
 #nerthus-shield {
     cursor: pointer;

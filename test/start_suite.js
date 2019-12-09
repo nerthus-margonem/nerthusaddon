@@ -180,12 +180,6 @@ test("GitHubLoader", function()
 test("GitHubLoader NI", function ()
 {
     nerthus.scripts = ADDITIONAL_SCRIPTS
-    let consoleMuted = false
-    NerthusAddonUtils.muteNiConsole = function ()
-    {
-        consoleMuted = true
-    }
-
     NerthusAddonUtils.loadFromGitHub(LOAD_HELPER.on_load, "start_ni")
 
     expect(LOAD_HELPER.loaded).to.be.ok()
@@ -195,7 +189,6 @@ test("GitHubLoader NI", function ()
     expect($.LOADED_SCRIPTS[2]).to.be.equal(nerthus.addon.fileUrl("NN_worldEdit.js"))
     expect($.LOADED_SCRIPTS[3]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[0]))
     expect($.LOADED_SCRIPTS[4]).to.be.equal(nerthus.addon.fileUrl(ADDITIONAL_SCRIPTS[1]))
-    expect(consoleMuted).to.be(true)
 })
 
 test("StorageLoader : load addon in current version, nerthus remain in storage", function()

@@ -134,52 +134,64 @@ nerthus.EnterMsg = ''
  *  [0, map_id, "url_reszta_roku"]
  */
 nerthus.mapsArr =
-[
-    //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
-    [4, 257, nerthus.addon.fileUrl("maps/Mythar - zima.png")],
+    [
+        //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
+        [4, 257, '/obrazki/miasta/zima-mythar.png'],
 
-    // Torneg
-    // [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
+        // Ithan
+        [4, 2, '/obrazki/miasta/zima-ithan.png'],
 
-    //Werbin
-    [4, 9, nerthus.addon.fileUrl("maps/Werbin - zima.png")],
-    [0, 9, nerthus.addon.fileUrl("maps/Werbin.png")],
+        // Torneg
+        [4, 2, '/obrazki/miasta/zima-torneg.png'],
+        // [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
 
-    //Zniszczone Opactwo
-    [0, 8, nerthus.addon.fileUrl("maps/Zniszczone Opactwo.png")],
-    [0, 290, nerthus.addon.fileUrl("maps/Opactwo.png")],
-    [0, 291, nerthus.addon.fileUrl("maps/Opactwo p.1.png")],
-    [0, 292, nerthus.addon.fileUrl("maps/Opactwo - piwnica.png")],
+        // Werbin
+        [4, 9, '/obrazki/miasta/zima-werbin.png'],
+        [0, 9, nerthus.addon.fileUrl('maps/Werbin.png')],
 
-    //Dolina Yss
-    [0, 11, nerthus.addon.fileUrl("maps/Dolina Yss.png")],
+        // Karka-han
+        [4, 35, '/obrazki/miasta/zima-karka-han.png'],
 
-    //Stare Ruiny
-    [0, 12, nerthus.addon.fileUrl("maps/Stare Ruiny.png")],
-    [0, 169, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście wschodnie.png")],
-    [0, 174, nerthus.addon.fileUrl("maps/Przeklęty Zamek - sala zgromadzeń.png")],
-    [0, 175, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.1.png")],
-    [0, 3741, nerthus.addon.fileUrl("maps/Przeklęty Zamek p.2.png")],
-    [0, 3742, nerthus.addon.fileUrl("maps/Przeklęty Zamek - komnata.png")],
-    [0, 172, nerthus.addon.fileUrl("maps/Przeklęty Zamek - zbrojownia.png")],
-    [0, 170, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia północne.png")],
-    [0, 168, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście północne.png")],
-    [0, 171, nerthus.addon.fileUrl("maps/Przeklęty Zamek - podziemia południowe.png")],
-    [0, 167, nerthus.addon.fileUrl("maps/Przeklęty Zamek - wejście południowe.png")],
+        // Eder
+        [4, 33, '/obrazki/miasta/zima-eder.png'],
 
-    //Cytadela - Nithal
-    [0, 866, nerthus.addon.fileUrl("maps/Cytadela p.1.png")],
-    //Labolatorium Elendaru
-    [0, 864, nerthus.addon.fileUrl("maps/Akademia wojskowa - piwnica p.2.png")],
+        // Zniszczone Opactwo
+        [0, 8, nerthus.addon.fileUrl('maps/Zniszczone Opactwo.png')],
+        [0, 290, nerthus.addon.fileUrl('maps/Opactwo.png')],
+        [0, 291, nerthus.addon.fileUrl('maps/Opactwo p.1.png')],
+        [0, 292, nerthus.addon.fileUrl('maps/Opactwo - piwnica.png')],
 
-    //Siedziba Leśnego Bractwa
-    [0,3246, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.1.png")],
-    [0,3247, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.2.png")],
-    [0,3248, nerthus.addon.fileUrl("maps/Zapomniana kopalnia p.3.png")],
+        // Dolina Yss
+        [0, 11, nerthus.addon.fileUrl('maps/Dolina Yss.png')],
 
-    [0, 37, nerthus.addon.fileUrl("maps/Brama Północy.png")]
+        // Stare Ruiny
+        [0, 12, nerthus.addon.fileUrl('maps/Stare Ruiny.png')],
+        [0, 169, nerthus.addon.fileUrl('maps/Przeklęty Zamek - wejście wschodnie.png')],
+        [0, 174, nerthus.addon.fileUrl('maps/Przeklęty Zamek - sala zgromadzeń.png')],
+        [0, 175, nerthus.addon.fileUrl('maps/Przeklęty Zamek p.1.png')],
+        [0, 3741, nerthus.addon.fileUrl('maps/Przeklęty Zamek p.2.png')],
+        [0, 3742, nerthus.addon.fileUrl('maps/Przeklęty Zamek - komnata.png')],
+        [0, 172, nerthus.addon.fileUrl('maps/Przeklęty Zamek - zbrojownia.png')],
+        [0, 170, nerthus.addon.fileUrl('maps/Przeklęty Zamek - podziemia północne.png')],
+        [0, 168, nerthus.addon.fileUrl('maps/Przeklęty Zamek - wejście północne.png')],
+        [0, 171, nerthus.addon.fileUrl('maps/Przeklęty Zamek - podziemia południowe.png')],
+        [0, 167, nerthus.addon.fileUrl('maps/Przeklęty Zamek - wejście południowe.png')],
 
-]
+        // Nithal
+        [4, 574, '/obrazki/miasta/zima-nithal.png'],
+
+        // Cytadela - Nithal
+        [0, 866, nerthus.addon.fileUrl('maps/Cytadela p.1.png')],
+        // Labolatorium Elendaru
+        [0, 864, nerthus.addon.fileUrl('maps/Akademia wojskowa - piwnica p.2.png')],
+
+        // Siedziba Leśnego Bractwa
+        [0, 3246, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.1.png')],
+        [0, 3247, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.2.png')],
+        [0, 3248, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.3.png')],
+
+        [0, 37, nerthus.addon.fileUrl('maps/Brama Północy.png')]
+    ]
 
 //lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'
 nerthus.scripts =

@@ -139,7 +139,7 @@ nerthus.mapsArr =
         [4, 257, '/obrazki/miasta/zima-mythar.png'],
 
         // Ithan
-        [4, 2, '/obrazki/miasta/zima-ithan.png'],
+        [4, 1, '/obrazki/miasta/zima-ithan.png'],
 
         // Torneg
         [4, 2, '/obrazki/miasta/zima-torneg.png'],

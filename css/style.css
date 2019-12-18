@@ -36,6 +36,7 @@
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/1.png), url(http://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
     left: calc(50% - 204px);
     pointer-events: auto;
     position: fixed;
@@ -107,7 +108,7 @@
 #nerthus-panel .close-button {
     background: url(http://tempest.margonem.pl/img/gui/buttony.png?v=5) -263px -79px;
     border: 0;
-    cursor: url(../img/gui/cursor/5.png), url(../img/gui/cursor/5.cur), pointer;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     height: 22px;
     padding: 0;
     pointer-events: auto;
@@ -151,7 +152,7 @@
     box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
     box-sizing: border-box;
     color: #E6D6BF;
-    cursor: url(../img/gui/cursor/5.png), url(../img/gui/cursor/5.cur), pointer;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     display: inline-block;
     height: 42px;
     line-height: 34px;
@@ -264,13 +265,14 @@
 }
 
 #nerthus-panel .setting-label {
+    cursor: unset;
     height: 24px;
     position: relative;
     width: 155px;
 }
 
 #nerthus-panel .setting-label-text {
-    cursor: pointer;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;;
     left: 25px;
     line-height: 28px;
     position: relative;
@@ -284,7 +286,7 @@
     border: 2px solid #6e644b;
     border-radius: 2px;
     box-sizing: border-box;
-    cursor: pointer;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;;
     display: inline-block;
     height: 18px;
     left: 0;

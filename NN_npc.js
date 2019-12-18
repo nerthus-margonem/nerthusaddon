@@ -491,7 +491,7 @@ nerthus.npc.start_ni = function ()
         this.dialog.parse_placeholders = this.dialog.parse_placeholders_ni
         this.dialog.open = this.dialog.open_ni
 
-        let _nerthg = _g
+        const _nerthg = _g
         _g = function (c, d)
         {
             let id = nerthus.npc.dialog.check(c)

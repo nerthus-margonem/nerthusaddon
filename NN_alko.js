@@ -164,28 +164,30 @@ nerthus.alko.initiateHandlers_ni = function ()
 }
 
 
-nerthus.alko.start = function()
+nerthus.alko.start = function ()
 {
-    var _nerthg = _g
-    _g = function (c,d) {
-        this.drink(c,d)
-        _nerthg(c,d)
-    }.bind(this)
-
-    var _chatSendMsg = chatSendMsg;
-    chatSendMsg = function(msg) {
-        _chatSendMsg(this.shuffleMessage(msg))
-    }.bind(this)
+    const _nerthg = _g
+    _g = function (c, d)
+    {
+        nerthus.alko.drink(c, d)
+        _nerthg(c, d)
+    }
+    const _chatSendMsg = chatSendMsg
+    window.chatSendMsg = function (msg)
+    {
+        _chatSendMsg(nerthus.alko.shuffleMessage(msg))
+    }
 
     nerthus.defer(this.run.bind(this))
 }
 
-nerthus.alko.start_ni = function()
+nerthus.alko.start_ni = function ()
 {
-    let _nerthg = _g
-    _g = function (c,d) {
-        nerthus.alko.drink_ni(c,d)
-        _nerthg(c,d)
+    const _nerthg = _g
+    window._g = function (c, d)
+    {
+        nerthus.alko.drink_ni(c, d)
+        _nerthg(c, d)
     }
     nerthus.alko.initiateHandlers_ni()
 }

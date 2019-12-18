@@ -216,7 +216,7 @@ nerthus.panel.saveSettings = function ()
 
 nerthus.panel.create_button_ni = function ()
 {
-    if (Engine.interfaceStart)
+    if (Engine.interfaceStart && Object.keys(Engine.interface.getDefaultWidgetSet()).includes('nerthus'))
     {
         const position = this.load_button_position()
         Engine.interface.saveHotWidgetToStorage('nerthus', position[0], position[1])
@@ -258,12 +258,24 @@ nerthus.panel.start = function ()
 nerthus.panel.start_ni = function ()
 {
     $('head').append(this.create_css_ni())
-    this.create_button_ni()
-
-    const initDefaultWidgetSet = Engine.interface.initDefaultWidgetSet
-    Engine.interface.initDefaultWidgetSet = function ()
+    if (!Engine.interfaceStart)
     {
-        initDefaultWidgetSet()
+        const initDefaultWidgetSet = Engine.interface.initDefaultWidgetSet
+        Engine.interface.initDefaultWidgetSet = function ()
+        {
+            initDefaultWidgetSet()
+            Engine.interface.addKeyToDefaultWidgetSet(
+                'nerthus',
+                nerthus.panel.defaultPosition[0],
+                nerthus.panel.defaultPosition[1],
+                'Nerthus',
+                'green',
+                nerthus.panel.showPanel.bind(nerthus.panel)
+            )
+        }
+    }
+    else
+    {
         Engine.interface.addKeyToDefaultWidgetSet(
             'nerthus',
             nerthus.panel.defaultPosition[0],
@@ -273,4 +285,5 @@ nerthus.panel.start_ni = function ()
             nerthus.panel.showPanel.bind(nerthus.panel)
         )
     }
+    this.create_button_ni()
 }

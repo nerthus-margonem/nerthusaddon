@@ -28,7 +28,7 @@ nerthus.panel.constructElement = {}
 nerthus.panel.constructElement.button = function(data)
 {
     return  (
-        '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '">' +
+        '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '" data-tip="' + data.name + '">' +
             '<img src="' + nerthus.addon.fileUrl('img/panel/' + data.icon) + '" alt="' + data.name + '">' +
         '</a>'
     )
@@ -106,7 +106,7 @@ nerthus.panel.constructElement.panel = function (buttonGroupLeft, buttonGroupCen
                 '<div class="settings-panel hidden">' +
                     settings +
                 '</div>' +
-                '<button class="button nerthus-settings-button" tip="Ustawienia">' +
+                '<button class="button nerthus-settings-button" tip="Ustawienia" data-tip="Ustawienia">' +
                     '<img src="' + nerthus.addon.fileUrl('img/panel/settings.png') + '" alt="Ustawienia">' +
                 '</button>' +
             '</div>' +

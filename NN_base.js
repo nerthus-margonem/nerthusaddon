@@ -28,6 +28,7 @@ nerthus.loadNewMapQueue = function ()
 //observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
 nerthus.startObservingMapChange_SI = function ()
 {
+    window.map.__loaded = window.map.loaded
     Object.defineProperty(window.map, "loaded", {
         set(val)
         {

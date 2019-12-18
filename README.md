@@ -18,7 +18,7 @@ Installation
   to disallow it from loading basic version. You might additionally need to type `delete localStorage.nerthus` to
   remove traces of the old loading.
 ##### If you want to test addon outside of Nerthus server:
-  - While in game, type in console: `$.getScript('https://akrzyz.github.io/nerthusaddon/nerthus_addon.user.js')`
+  - While in game, type in console: `$.getScript('https://akrzyz.github.io/nerthusaddon/NN_start.js')`
   - Addon should now load and work until page reload (new interface) or map change (old interface)
  
 FAQ

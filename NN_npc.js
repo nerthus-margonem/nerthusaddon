@@ -400,13 +400,15 @@ nerthus.npc.date.parse_to_date = function(date_str) //DD.MM.YYYY
     date.setFullYear(year, month, day)
     return date
 }
-nerthus.npc.date.validate = function(npc)
+nerthus.npc.date.validate = function (npc)
 {
-    if(!npc.date)
+    if (!npc.date)
         return true
 
-    const begin = this.parse_to_date(npc.date.split("-")[0])
-    const end = this.parse_to_date(npc.date.split("-")[1])
+    let begin = this.parse_to_date(npc.date.split('-')[0])
+    const end = this.parse_to_date(npc.date.split('-')[1])
+    if (end < begin)
+        begin.setTime(begin.getTime() - 31556952000) //1 year prior, for winter dates for example 21.11-20.03
     const now = new Date()
     return begin <= now && now <= end
 }

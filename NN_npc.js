@@ -267,7 +267,6 @@ nerthus.npc.compose = function (npc)
         })
         .attr("id", "npc" + npc.id)
         .addClass("nerthus_npc")
-        .click(this.click_wrapper(npc, click))
         .appendTo('#base')
         .load(function ()
         {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
@@ -279,7 +278,9 @@ nerthus.npc.compose = function (npc)
     if (npc.nick)
         $npc.attr("ctip", "t_npc")
             .attr("tip", npc.nick)
-
+    if (click) {
+        $npc.click(this.click_wrapper(npc, click))
+    }
     return $npc
 }
 

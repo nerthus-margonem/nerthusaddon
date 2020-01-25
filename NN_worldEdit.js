@@ -628,14 +628,29 @@ nerthus.worldEdit.resetLight_ni = function()
     nerthus.worldEdit.lights = []
 }
 
-nerthus.worldEdit.hideGameNpc = function (id)
+nerthus.worldEdit.changeGameNpc = function (npc)
+{
+    if (!$('#Nerthus-npc-modifications')[0])
+        $('head').append('<style id="Nerthus-npc-modifications"></style>')
+    const $style = $('#Nerthus-npc-modifications')
+
+    $style.append('#npc' + npc.id + '{' +
+        (npc.newUrl ? 'background-image: url(' + npc.newUrl + ') !important;' : '') +
+        (npc.newWidth ? 'width:' + npc.newWidth + '!important;' : '') +
+        '}')
+
+}
+
+nerthus.worldEdit.hideGameNpc = function (id, always)
 {
     nerthus.worldEdit.npcHideList.push(id)
 
-    const $style = $("#Nerthus-npc-hiding")
-    if (nerthus.options.hideNpcs)
+    const $style = $('#Nerthus-npc-hiding')
+    if (nerthus.options.hideNpcs || always)
         if ($style[0])
-            $style.append("#npc" + id + "{display: none}")
+            $style.append('#npc' + id + '{display: none}')
+        else
+            nerthus.worldEdit.startNpcHiding()
 }
 nerthus.worldEdit.startNpcHiding = function ()
 {

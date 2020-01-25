@@ -1,70 +1,168 @@
 [
-{
-    "name" : "Kot",
-    "x" : "35",
-    "y" : "52",
-    "url" : "/obrazki/npc/dom/staly-bywalec.gif",
-    "collision" : true,
-    "dialog" :
-    {
-        "0" :
-        [
-            "[ Kot siedzi i macha swoim ogonem, przyglądając się tobie z zaciekawieniem. ]",
-            "O, jaki fajny kot, dasz się pogłaskać? ->1",
-            "Skąd się on tu w ogóle wziął? Nie widziałem takiego kota wcześniej... ->2",
-            "Lepiej nie podchodzić.. ->END"
-        ],
-        "1" :
-        [
-            "[ Zwierzak nadstawił głowę, a po chwili drapania za uszkiem mruczeć. Wygląda na zadowolonego. ]",
-            "Dobry kociak. ->END"
-        ],
-        "2" :
-        [
-            "[ Kot odwrócił głowę i zaczął lizać sobie łapkę. Wygląda na to, że w tej krainie można zobaczyć <a href='https://www.margonem.pl/?task=forum&show=posts&id=264553&ps=5#post41810772' target='_blank'>więcej rzeczy</a> niż zwykle. ]",
-            "Hmm, ciekawe co jeszcze nowego mnie tutaj spotka. ->END"
-        ]
+  {
+    "name": "Kot",
+    "x": "35",
+    "y": "52",
+    "url": "/obrazki/npc/dom/staly-bywalec.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "[ Kot siedzi i macha swoim ogonem, przyglądając się tobie z zaciekawieniem. ]",
+        "O, jaki fajny kot, dasz się pogłaskać? ->1",
+        "Skąd się on tu w ogóle wziął? Nie widziałem takiego kota wcześniej... ->2",
+        "Lepiej nie podchodzić.. ->END"
+      ],
+      "1": [
+        "[ Zwierzak nadstawił głowę, a po chwili drapania za uszkiem mruczeć. Wygląda na zadowolonego. ]",
+        "Dobry kociak. ->END"
+      ],
+      "2": [
+        "[ Kot odwrócił głowę i zaczął lizać sobie łapkę. Wygląda na to, że w tej krainie można zobaczyć <a href='https://www.margonem.pl/?task=forum&show=posts&id=264553&ps=5#post41810772' target='_blank'>więcej rzeczy</a> niż zwykle. ]",
+        "Hmm, ciekawe co jeszcze nowego mnie tutaj spotka. ->END"
+      ]
     }
-},
-{
-	"name": "Duch",
-	"x": "38",
-	"y": "57",
-	"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost6.gif",
-	"date": "30.10-4.11"
-},
-{
-	"name": "Duch",
-	"x": "53",
-	"y": "75",
-	"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
-	"date": "30.10-4.11"
-},
-{
-    "name" : "Kartka porwana przez wiatr",
-    "x" : "49",
-    "y" : "79",
-    "url" : "https://margonem.pl/obrazki/itemy/pap/pap40.gif",
-    "collision" : true,
-    "time" : "18-6",
-    "dialog" :
-    {
-        "0" :
-        [
-            "[ Postrzępiony kawałek kartki zaplątał się u stóp drzewa. Łopotał, gdy wiatr próbował nieść go dalej, ale jak dotąd nie dał się porwać. ]",
-            "[ Podnoszę go. ] ->1",
-            "[ Odchodzę. ]->END"
-        ],
-        "1" :
-        [
-            "[ Atrament częściowo się rozpłynął, jednak tekst nadal jest możliwy do odczytania. Drobne, pozawijane literki wymagają dłuższej chwili skupienia. ]",
-            " Dalej ->2"
-        ],
-        "2" :
-        [
-            "...dlaczego wśród nocy dziewczyna odeszła? Dlaczego wśród nocy, pomimo przestrogi, za mury wyszła idąc nad brzeg wody?",
-            "Dziwne ->END"
-        ]
+  },
+  {
+    "name": "Duch",
+    "x": "38",
+    "y": "57",
+    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost6.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "name": "Duch",
+    "x": "53",
+    "y": "75",
+    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "name": "Kartka porwana przez wiatr",
+    "x": "49",
+    "y": "79",
+    "url": "https://margonem.pl/obrazki/itemy/pap/pap40.gif",
+    "collision": true,
+    "time": "18-6",
+    "dialog": {
+      "0": [
+        "[ Postrzępiony kawałek kartki zaplątał się u stóp drzewa. Łopotał, gdy wiatr próbował nieść go dalej, ale jak dotąd nie dał się porwać. ]",
+        "[ Podnoszę go. ] ->1",
+        "[ Odchodzę. ]->END"
+      ],
+      "1": [
+        "[ Atrament częściowo się rozpłynął, jednak tekst nadal jest możliwy do odczytania. Drobne, pozawijane literki wymagają dłuższej chwili skupienia. ]",
+        " Dalej ->2"
+      ],
+      "2": [
+        "...dlaczego wśród nocy dziewczyna odeszła? Dlaczego wśród nocy, pomimo przestrogi, za mury wyszła idąc nad brzeg wody?",
+        "Dziwne ->END"
+      ]
     }
-}
+  },
+  {
+    "type": "delete",
+    "id": 76926,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 127238,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141786,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 126726,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 126725,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 77050,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 181550,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141785,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141791,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141794,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141796,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141793,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141801,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 141802,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 141797,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 141800,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 181538,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  }
 ]

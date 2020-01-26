@@ -260,27 +260,42 @@ nerthus.npc.dialog.compose.message = function(message, npc)
 nerthus.npc.compose = function (npc)
 {
     const click = npc.dialog ? this.dialog.open.bind(this.dialog, npc, 0) : null
-    const $npc = $("<img src='" + npc.icon + "'>")
+
+    const img = new Image()
+    const $npc = $('<div id="npc' + npc.id + '" class="npc nerthus-npc"></div>')
         .css({
-            position: "absolute",
-            zIndex: npc.y * 2 + 9
+            zIndex: npc.y * 2 + 9,
+            left: npc.x * 32,
+            top: npc.y * 32 - 16
         })
-        .attr("id", "npc" + npc.id)
-        .addClass("nerthus_npc")
         .appendTo('#base')
-        .load(function ()
-        {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-            const x = 32 * parseInt(npc.x) + 16 - Math.floor($(this).width() / 2)
-            const y = 32 * parseInt(npc.y) + 32 - $(this).height()
-            $(this).css({top: "" + y + "px", left: "" + x + "px"})
+    img.onload = function ()
+    {
+        const width = img.width
+        const height = img.height
+
+        const tmpLeft = npc.x * 32 + 16 - Math.round(width / 2) + ((npc.type > 3 && !(width % 64)) ? -16 : 0)
+        const wpos = Math.round(this.x) + Math.round(this.y) * 256
+        let wat
+        if (map.water && map.water[wpos])
+            wat = map.water[wpos] / 4
+        $npc.css({
+            backgroundImage: 'url(' + img.src + ')',
+            left: tmpLeft,
+            top: npc.y * 32 + 32 - height + (wat > 8 ? 0 : 0),
+            width: (tmpLeft + width > map.x * 32 ? map.x * 32 - tmpLeft : width),
+            height: height - (wat > 8 ? ((wat - 8) * 4) : 0)
         })
+    }
+    img.src = npc.icon
 
     if (npc.nick)
-        $npc.attr("ctip", "t_npc")
-            .attr("tip", npc.nick)
-    if (click) {
-        $npc.click(this.click_wrapper(npc, click))
-    }
+        $npc.attr({
+            ctip: 't_npc',
+            tip: npc.nick
+        })
+    if (click) $npc.click(this.click_wrapper(npc, click))
+
     return $npc
 }
 
@@ -428,7 +443,7 @@ nerthus.npc.set_collision_ni = function(npc)
 
 nerthus.npc.reset_npcs = function ()
 {
-    $(".nerthus_npc").remove()
+    $(".nerthus-npc").remove()
 }
 
 nerthus.npc.load_npcs = function ()

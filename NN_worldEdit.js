@@ -149,23 +149,40 @@ nerthus.worldEdit.deleteCollision_ni = function (x, y)
 
 nerthus.worldEdit.addNpc = function (x, y, url, name, collision, map_id)
 {
-    if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
+    if (typeof map_id === 'undefined' || parseInt(map_id) === map.id)
     {
-        const tip = name ? ' tip="<b>' + name + '</b>" ctip="t_npc"' : ""
-        const $npc = $('<img id="npc' + this.coordsToId(x,y) + '" src="' + url + '"' + tip + ' alt="nerthus-npc">')
-            .addClass("nerthus_npc")
-            .css("position", "absolute")
+        const img = new Image()
+        const $npc = $('<div id="npc' + this.coordsToId(x,y) + '" class="npc nerthus-npc"></div>')
+            .css({
+                zIndex: y * 2 + 9,
+                left: x * 32,
+                top: y * 32 - 16
+            })
             .appendTo('#base')
-            .load(function ()
-            {  //wyśrodkowanie w osi x i wyrównanie do stóp w osi y
-                const _x = 32 * x + 16 - Math.floor($(this).width() / 2)
-                const _y = 32 * y + 32 - $(this).height()
-                $(this)
-                    .css({
-                        "top": "" + _y + "px",
-                        "left": "" + _x + "px",
-                        "z-index": y * 2 + 9
-                    })
+        img.onload = function ()
+        {
+            const width = img.width
+            const height = img.height
+
+            const tmpLeft = x * 32 + 16 - Math.round(width / 2)
+            const wpos = Math.round(x) + Math.round(y) * 256
+            let wat
+            if (map.water && map.water[wpos])
+                wat = map.water[wpos] / 4
+            $npc.css({
+                backgroundImage: 'url(' + img.src + ')',
+                left: tmpLeft,
+                top: y * 32 + 32 - height + (wat > 8 ? 0 : 0),
+                width: (tmpLeft + width > map.x * 32 ? map.x * 32 - tmpLeft : width),
+                height: height - (wat > 8 ? ((wat - 8) * 4) : 0)
+            })
+        }
+        img.src = url
+
+        if (name)
+            $npc.attr({
+                ctip: 't_npc',
+                tip: '<b>' + name + '</b>'
             })
         if (collision)
             this.addCollision(x, y)

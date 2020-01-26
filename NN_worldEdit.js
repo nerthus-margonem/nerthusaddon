@@ -651,11 +651,13 @@ nerthus.worldEdit.changeGameNpc = function (npc)
         $('head').append('<style id="Nerthus-npc-modifications"></style>')
     const $style = $('#Nerthus-npc-modifications')
 
-    $style.append('#npc' + npc.id + '{' +
-        (npc.newUrl ? 'background-image: url(' + npc.newUrl + ') !important;' : '') +
-        (npc.newWidth ? 'width:' + npc.newWidth + '!important;' : '') +
-        '}')
+    if(npc.new) {
+        let styleText = ''
+        for (let i = 0; i < npc.new.length; i++)
+            styleText += npc.new[i][0] + ': ' + npc.new[i][1] + ' !important;'
 
+        $style.append('#npc' + npc.id + '{' + styleText + '}')
+    }
 }
 
 nerthus.worldEdit.hideGameNpc = function (id, always)

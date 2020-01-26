@@ -2,14 +2,24 @@
   {
     "type": "change",
     "id": 187803,
-    "newUrl": "/obrazki/npc/map/zim-szare3-lew1.gif",
+    "new": [
+      [
+        "background-image",
+        "url(/obrazki/npc/map/zim-szare3-lew1.gif)"
+      ]
+    ],
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 187802,
-    "newUrl": "/obrazki/npc/map/zim-szare3-praw1.gif",
+    "new": [
+      [
+        "background-image",
+        "url(/obrazki/npc/map/zim-szare3-praw1.gif)"
+      ]
+    ],
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -34,8 +44,16 @@
   {
     "type": "change",
     "id": 187805,
-    "newUrl": "/obrazki/npc/map/zim-szare2-lew2.gif",
-    "newWidth": "96px",
+    "new": [
+      [
+        "background-image",
+        "url(/obrazki/npc/map/zim-szare2-lew2.gif)"
+      ],
+      [
+        "width",
+        "96px"
+      ]
+    ],
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -60,9 +78,41 @@
   {
     "type": "change",
     "id": 187799,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
-    "newWidth": "96px",
+    "new": [
+      [
+        "background-image",
+        "url(/obrazki/npc/map/zim-sosn-mal1a.gif)"
+      ],
+      [
+        "width",
+        "96px"
+      ]
+    ],
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka",
+    "tip": "",
+    "x": "78",
+    "y": "50",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche drzewo",
+    "tip": "",
+    "x": "81",
+    "y": "28",
+    "url": "/obrazki/npc/map/zim-szare4-praw2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche proste",
+    "tip": "",
+    "x": "90",
+    "y": "32",
+    "url": "/obrazki/npc/map/zim-prost3b.gif",
     "date": "22.11-20.03"
   }
 ]

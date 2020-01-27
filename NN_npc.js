@@ -421,8 +421,11 @@ nerthus.npc.date.validate = function (npc)
 
     const begin = this.parse_to_date(npc.date.split('-')[0])
     const end = this.parse_to_date(npc.date.split('-')[1])
-
+    
     const now = new Date()
+    if (begin > end)
+        begin.setTime(begin.getTime() - 31556952000) //1 year prior, for winter dates for example 21.11-20.03
+
     return begin <= now && now <= end
 }
 

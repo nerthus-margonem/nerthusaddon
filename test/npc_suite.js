@@ -19,6 +19,17 @@ before(function()
             return 50000000 + (x * 1000) + y
         }
     }
+    Image = function (url) {
+        Object.defineProperty(this, 'onload', {
+            set (x)
+            {
+                this._onload = x;
+                setTimeout(this._onload,1)
+                return this._onload
+            }
+        })
+        return url;
+    }
 
     expect = require("expect.js")
     require("../NN_npc.js")
@@ -286,7 +297,7 @@ test("deployed npc is added to #base", function()
     nerthus.npc.deploy(NPC)
 
     expect($("#base").children()).not.empty()
-    expect($("#base").children().hasClass("nerthus_npc")).ok()
+    expect($("#base").children().hasClass("nerthus-npc")).ok()
 })
 
 test("npc has tip same as name", function()
@@ -316,11 +327,10 @@ test("npc with collision", function()
 
 test("npc with normal url", function()
 {
-    var npc = minimal_npc()
+    const npc = minimal_npc()
     npc.url = "http://img.gif"
     nerthus.npc.deploy(npc)
-
-    expect($("#base").children().attr("src")).to.be.equal(npc.url)
+    expect($("#base").children().css("background-image")).to.be.equal('url(' + npc.url + ')')
 })
 
 test("npc with url starting with # should be resolved as url pointing to local addon path", function()
@@ -330,7 +340,7 @@ test("npc with url starting with # should be resolved as url pointing to local a
     npc.url = "#" + URL
     nerthus.npc.deploy(npc)
 
-    expect($("#base").children().attr("src")).to.be(nerthus.addon.PREFIX + URL)
+    expect($("#base").children().css("background-image")).to.be('url(' + nerthus.addon.PREFIX + URL + ')')
 })
 
 suite("npc time")

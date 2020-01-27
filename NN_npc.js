@@ -261,14 +261,15 @@ nerthus.npc.compose = function (npc)
 {
     const click = npc.dialog ? this.dialog.open.bind(this.dialog, npc, 0) : null
 
-    const img = new Image()
     const $npc = $('<div id="npc' + npc.id + '" class="npc nerthus-npc"></div>')
         .css({
+            backgroundImage: 'url(' + npc.icon + ')',
             zIndex: npc.y * 2 + 9,
             left: npc.x * 32,
             top: npc.y * 32 - 16
         })
-        .appendTo('#base')
+
+    const img = new Image()
     img.onload = function ()
     {
         const width = img.width
@@ -280,7 +281,6 @@ nerthus.npc.compose = function (npc)
         if (map.water && map.water[wpos])
             wat = map.water[wpos] / 4
         $npc.css({
-            backgroundImage: 'url(' + img.src + ')',
             left: tmpLeft,
             top: npc.y * 32 + 32 - height + (wat > 8 ? 0 : 0),
             width: (tmpLeft + width > map.x * 32 ? map.x * 32 - tmpLeft : width),
@@ -288,7 +288,7 @@ nerthus.npc.compose = function (npc)
         })
     }
     img.src = npc.icon
-
+    $npc.appendTo('#base')
     if (npc.nick)
         $npc.attr({
             ctip: 't_npc',
@@ -335,24 +335,23 @@ nerthus.npc.click_wrapper = function (npc, click_handler)
 
 nerthus.npc.deploy = function (npc)
 {
-    if (!this.is_deployable(npc)) return
+    if (!this.is_deployable(npc)) return 1
     switch (npc.type)
     {
         case 'delete':
             if (!this.is_deletable(npc))
                 return
-            nerthus.worldEdit.hideGameNpc(npc.id, npc.lvl === 0)
-            break
+            return nerthus.worldEdit.hideGameNpc(npc.id, npc.lvl === 0)
         case 'change':
-            nerthus.worldEdit.changeGameNpc(npc)
-            break
+            return nerthus.worldEdit.changeGameNpc(npc)
         default:
             const tip = npc.hasOwnProperty('tip') ? npc.tip : '<b>' + npc.name + '</b>'
             const customNpc = new this.CustomNpc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
 
             this.list[customNpc.id] = customNpc
-            this.compose(customNpc)
+            const $npc = this.compose(customNpc)
             this.set_collision(customNpc)
+            return $npc
     }
 }
 
@@ -420,10 +419,9 @@ nerthus.npc.date.validate = function (npc)
     if (!npc.date)
         return true
 
-    let begin = this.parse_to_date(npc.date.split('-')[0])
+    const begin = this.parse_to_date(npc.date.split('-')[0])
     const end = this.parse_to_date(npc.date.split('-')[1])
-    if (end < begin)
-        begin.setTime(begin.getTime() - 31556952000) //1 year prior, for winter dates for example 21.11-20.03
+
     const now = new Date()
     return begin <= now && now <= end
 }

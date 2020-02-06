@@ -25,7 +25,6 @@ nerthus.NerthusSpec = [
 //lista radnych - możliwość używania komend chatowych i ranga "radny"
 nerthus.NerthusRad = [
     "Umbrael Regis",
-    "Riveth",
     "Astratas"
 ]
 

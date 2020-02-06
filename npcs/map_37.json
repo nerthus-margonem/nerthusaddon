@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Drzwi",
+    "tip": "",
+    "x": "34",
+    "y": "6",
+    "url": "#img/npc/drzwi.gif"
+  },
+  {
+    "name": "Przejście",
+    "tip": "Siedziba Leśnego Bractwa",
+    "x": "34",
+    "y": "6",
+    "url": "/img/exit.png"
+  }
+]
+

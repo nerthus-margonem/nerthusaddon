@@ -266,7 +266,8 @@ nerthus.npc.compose = function (npc)
             backgroundImage: 'url(' + npc.icon + ')',
             zIndex: npc.y * 2 + 9,
             left: npc.x * 32,
-            top: npc.y * 32 - 16
+            top: npc.y * 32 - 16,
+            pointerEvents: npc.type === 4 ? 'none' : 'auto'
         })
 
     const img = new Image()

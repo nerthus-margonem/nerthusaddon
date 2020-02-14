@@ -229,7 +229,7 @@ nerthus.npc.dialog.close = function ()
 {
     $("#dialog").hide()
     g.lock.remove("nerthus_dialog")
-    map.resizeView(512,512);
+    map.resizeView()
 }
 
 nerthus.npc.dialog.close_ni = function ()

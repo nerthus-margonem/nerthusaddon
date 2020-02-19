@@ -268,11 +268,14 @@ nerthus.panel.start_ni = function ()
 {
     $('head').append(this.create_css_ni())
     const addWidgetButtons = Engine.interface.addWidgetButtons
-    Engine.interface.addWidgetButtons = function ()
+    Engine.interface.addWidgetButtons = function (additionalBarHide)
     {
-        addWidgetButtons.call(Engine.interface)
+        addWidgetButtons.call(Engine.interface, additionalBarHide)
         nerthus.panel.addNerthusToDefaultWidgetSet_ni()
         nerthus.panel.create_button_ni()
+
+        // Only add Nerthus button once, then return to default function
+        Engine.interface.addWidgetButtons = addWidgetButtons
     }
 
     // If interface was already initialised, add Nerthus button manually (as addWidgetButtons already ran)

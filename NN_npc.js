@@ -513,12 +513,12 @@ nerthus.npc.start_ni = function ()
         this.dialog.open = this.dialog.open_ni
 
         const _nerthg = _g
-        _g = function (c, d)
+        window._g = function (task, callback, payload)
         {
-            let id = nerthus.npc.dialog.check(c)
+            let id = nerthus.npc.dialog.check(task)
             if (id > 0)
                 nerthus.npc.dialog.open_ni(id, 0)
-            _nerthg(c, d)
+            _nerthg(task, callback, payload)
         }
 
         this.load_npcs()

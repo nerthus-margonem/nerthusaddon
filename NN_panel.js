@@ -224,20 +224,11 @@ nerthus.panel.create_button_ni = function ()
 {
     if (Engine.interfaceStart && Object.keys(Engine.interface.getDefaultWidgetSet()).includes('nerthus'))
     {
-        const position = this.load_button_position()
-        Engine.interface.saveHotWidgetToStorage('nerthus', position[0], position[1])
-        Engine.interface.createOneWidget('nerthus', {nerthus: position}, true)
+        const serverStoragePos = Engine.serverStorage.get(Engine.interface.getPathToHotWidgetVersion())
+        const nerthusPos = serverStoragePos.nerthus ? serverStoragePos.nerthus : this.defaultPosition
+        Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
     }
     else setTimeout(this.create_button_ni.bind(this), 500)
-}
-
-nerthus.panel.load_button_position = function ()
-{
-    const position = API.Storage.get('hotWidget/' + Engine.interface.getPathToHotWidgetVersion(true)).nerthus
-    if (position)
-        return position
-    else
-        return this.defaultPosition
 }
 
 nerthus.panel.create_css_ni = function ()
@@ -261,35 +252,33 @@ nerthus.panel.start = function ()
     }.bind(this))
 }
 
+nerthus.panel.addNerthusToDefaultWidgetSet_ni = function ()
+{
+    Engine.interface.addKeyToDefaultWidgetSet(
+        'nerthus',
+        nerthus.panel.defaultPosition[0],
+        nerthus.panel.defaultPosition[1],
+        'Nerthus',
+        'green',
+        nerthus.panel.togglePanel.bind(nerthus.panel)
+    )
+}
+
 nerthus.panel.start_ni = function ()
 {
     $('head').append(this.create_css_ni())
-    if (!Engine.interfaceStart)
+    const addWidgetButtons = Engine.interface.addWidgetButtons
+    Engine.interface.addWidgetButtons = function ()
     {
-        const initDefaultWidgetSet = Engine.interface.initDefaultWidgetSet
-        Engine.interface.initDefaultWidgetSet = function ()
-        {
-            initDefaultWidgetSet()
-            Engine.interface.addKeyToDefaultWidgetSet(
-                'nerthus',
-                nerthus.panel.defaultPosition[0],
-                nerthus.panel.defaultPosition[1],
-                'Nerthus',
-                'green',
-                nerthus.panel.togglePanel.bind(nerthus.panel)
-            )
-        }
+        addWidgetButtons.call(Engine.interface)
+        nerthus.panel.addNerthusToDefaultWidgetSet_ni()
+        nerthus.panel.create_button_ni()
     }
-    else
+
+    // If interface was already initialised, add Nerthus button manually (as addWidgetButtons already ran)
+    if (Engine.interfaceStart)
     {
-        Engine.interface.addKeyToDefaultWidgetSet(
-            'nerthus',
-            nerthus.panel.defaultPosition[0],
-            nerthus.panel.defaultPosition[1],
-            'Nerthus',
-            'green',
-            nerthus.panel.togglePanel.bind(nerthus.panel)
-        )
+        nerthus.panel.addNerthusToDefaultWidgetSet_ni()
+        nerthus.panel.create_button_ni()
     }
-    this.create_button_ni()
 }

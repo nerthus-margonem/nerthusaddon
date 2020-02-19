@@ -167,10 +167,10 @@ nerthus.alko.initiateHandlers_ni = function ()
 nerthus.alko.start = function ()
 {
     const _nerthg = _g
-    _g = function (c, d)
+    _g = function (task, d)
     {
-        nerthus.alko.drink(c, d)
-        _nerthg(c, d)
+        nerthus.alko.drink(task, d)
+        _nerthg(task, d)
     }
     const _chatSendMsg = chatSendMsg
     window.chatSendMsg = function (msg)
@@ -184,10 +184,10 @@ nerthus.alko.start = function ()
 nerthus.alko.start_ni = function ()
 {
     const _nerthg = _g
-    window._g = function (c, d)
+    window._g = function (task, callback, payload)
     {
-        nerthus.alko.drink_ni(c, d)
-        _nerthg(c, d)
+        nerthus.alko.drink_ni(task)
+        _nerthg(task, callback, payload)
     }
     nerthus.alko.initiateHandlers_ni()
 }

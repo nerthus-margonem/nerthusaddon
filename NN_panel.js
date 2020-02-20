@@ -225,8 +225,12 @@ nerthus.panel.create_button_ni = function ()
     if (Engine.interfaceStart && Object.keys(Engine.interface.getDefaultWidgetSet()).includes('nerthus'))
     {
         const serverStoragePos = Engine.serverStorage.get(Engine.interface.getPathToHotWidgetVersion())
-        const nerthusPos = serverStoragePos.nerthus ? serverStoragePos.nerthus : this.defaultPosition
-        Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
+        if (serverStoragePos)
+        {
+            const nerthusPos = serverStoragePos.nerthus ? serverStoragePos.nerthus : this.defaultPosition
+            Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
+        }
+        else setTimeout(this.create_button_ni.bind(this), 500)
     }
     else setTimeout(this.create_button_ni.bind(this), 500)
 }

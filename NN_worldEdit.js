@@ -565,16 +565,14 @@ nerthus.worldEdit.changeLight = function (opacity)
 
     let $night = $('#nerthus-night')
     if (!$night.length)
-        $night = $('<div id="nerthus-night"></div>')
+        $night = $('<div id="nerthus-night"></div>').appendTo('#ground')
 
-    $night
-        .css({
-            height: map.y * 32,
-            width: map.x * 32,
-            zIndex: map.y * 2 + 11,
-            opacity: opacity
-        })
-        .appendTo('#ground')
+    $night.css({
+        height: map.y * 32,
+        width: map.x * 32,
+        zIndex: map.y * 2 + 11,
+        opacity: opacity
+    })
 }
 
 nerthus.worldEdit.changeLight_ni = function (opacity)

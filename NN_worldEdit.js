@@ -610,6 +610,7 @@ nerthus.worldEdit.changeLight = function (opacity)
             opacity: opacity
         })
         .appendTo("#ground")
+
     nerthus.worldEdit.nightDimValue = opacity
 }
 

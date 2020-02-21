@@ -41,6 +41,12 @@ before(function()
 
         }
     }
+    nerthus.night = {
+        dim(opacity)
+        {
+            WorldEdit.changeLight = opacity
+        }
+    }
 
     //game constants
     g = {}

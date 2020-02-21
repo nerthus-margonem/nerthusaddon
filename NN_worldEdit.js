@@ -611,7 +611,6 @@ nerthus.worldEdit.changeLight = function (opacity)
             backgroundColor: "black"
         })
         .appendTo("#ground")
-        .draggable()
     nerthus.worldEdit.nightDimValue = opacity
 }
 

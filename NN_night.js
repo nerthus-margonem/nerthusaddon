@@ -11,7 +11,7 @@ nerthus.night.opacity = function()
 
 nerthus.night.dim = function(opacity)
 {
-    nerthus.worldEdit.changeDefaultLight(map.mainid === 0 || map.id === 1862 ? opacity : 0)
+    nerthus.worldEdit.changeLight(map.mainid === 0 || map.id === 1862 ? opacity : 0)
 }
 
 nerthus.night.dim_ni = function (opacity)

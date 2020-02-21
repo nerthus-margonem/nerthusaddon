@@ -2,24 +2,14 @@
   {
     "type": "change",
     "id": 187803,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-szare3-lew1.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew1.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 187802,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-szare3-praw1.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-szare3-praw1.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -44,16 +34,7 @@
   {
     "type": "change",
     "id": 187805,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-szare2-lew2.gif)"
-      ],
-      [
-        "width",
-        "96px"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-szare2-lew2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -78,16 +59,7 @@
   {
     "type": "change",
     "id": 187799,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-sosn-mal1a.gif)"
-      ],
-      [
-        "width",
-        "96px"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },

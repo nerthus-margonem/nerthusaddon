@@ -98,12 +98,7 @@
   {
     "type": "change",
     "id": 181550,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-choin-mala1a.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -152,105 +147,64 @@
   {
     "type": "change",
     "id": 141797,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-choin-mala1a.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 141800,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-choin-duza2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 181538,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-szare3-lew2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 182869,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-dach-blach2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-dach-blach2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 182871,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-dach-blach2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-dach-blach2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 182870,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-dach-blach2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-dach-blach2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 182868,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-dach-blach2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-dach-blach2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 181564,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zim-sosn-mal2a.gif)"
-      ],
-      [
-        "width",
-        "96px"
-      ],
-      [
-        "left",
-        "1248px"
-      ]
-    ],
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka",
+    "tip": "",
+    "x": "40",
+    "y": "64",
+    "url": "/obrazki/npc/map/zim-sosn-mal3a.gif",
     "date": "22.11-20.03"
   },
   {
@@ -272,12 +226,7 @@
   {
     "type": "change",
     "id": 181687,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/sw-choin-duza3.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/sw-choin-duza3.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -290,120 +239,70 @@
   {
     "type": "change",
     "id": 142348,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142346,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142347,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142345,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142344,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142342,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142340,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142339,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142341,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "change",
     "id": 142343,
-    "new": [
-      [
-        "background-image",
-        "url(/obrazki/npc/map/zima-tuja2.gif)"
-      ]
-    ],
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   }

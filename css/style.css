@@ -17,6 +17,13 @@
 
 .dial666 { color: #FF66FF !important }
 
+/* Night */
+#nerthus-night {
+    background-color: black;
+    pointer-events: none;
+    position: absolute;
+}
+
 /* Shield */
 #nerthus-shield {
     cursor: pointer;

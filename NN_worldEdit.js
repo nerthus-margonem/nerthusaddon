@@ -7,7 +7,6 @@ nerthus.worldEdit.additionalDrawList = []
 nerthus.worldEdit.nightDimValue = -1
 nerthus.worldEdit.lightDrawList = []
 nerthus.worldEdit.lightTypes = {}
-nerthus.worldEdit.npcHideList = []
 
 nerthus.worldEdit.weatherDisplayOn = false
 nerthus.worldEdit.weatherCurrentFrameNumbers = {
@@ -598,87 +597,83 @@ nerthus.worldEdit.resetLight_ni = function()
 
 nerthus.worldEdit.changeGameNpc = function (npc)
 {
-    if (!$('#Nerthus-npc-modifications')[0])
-        $('head').append('<style id="Nerthus-npc-modifications"></style>')
-    const $style = $('#Nerthus-npc-modifications')
+    let $style = $('#nerthus-npc-changing')
+    if (!$style.length)
+        $style = $('<style id="nerthus-npc-changing" />').appendTo('head')
 
-    if(npc.new) {
-        let styleText = ''
-        for (let i = 0; i < npc.new.length; i++)
-            styleText += npc.new[i][0] + ': ' + npc.new[i][1] + ' !important;'
+    $style.append('#npc' + npc.id + '{' +
+        'background-repeat: no-repeat;' +
+        'background-image: url(' + npc.newUrl + ') !important;' +
+        '}')
+}
 
-        $style.append('#npc' + npc.id + '{' + styleText + '}')
+nerthus.worldEdit.changeGameNpc_ni = function (npc)
+{
+    const callback = function (newNpc)
+    {
+        if (newNpc.d.id === npc.id.toString())
+        {
+            const img = new Image()
+            img.src = npc.newUrl
+            newNpc.sprite = img
+            Object.defineProperty(newNpc, 'sprite', {
+                get() {return img},
+                set() {return img}
+            })
+
+            // Run only once
+            // setTimeout so that it removes itself after all NPCs are checked by API,
+            // otherwise it would throw error
+            setTimeout(API.removeCallbackFromEvent.bind(API, 'newNpc', callback), 0)
+        }
     }
+    API.addCallbackToEvent('newNpc', callback)
 }
 
 nerthus.worldEdit.hideGameNpc = function (id, always)
 {
-    nerthus.worldEdit.npcHideList.push(id)
+    let $style = $('#nerthus-npc-hiding')
+    if (!$style.length)
+        $style = $('<style id="nerthus-npc-hiding" />').appendTo('head')
 
-    const $style = $('#Nerthus-npc-hiding')
     if (nerthus.options.hideNpcs || always)
-        if ($style[0])
-            $style.append('#npc' + id + '{display: none}')
-        else
-            nerthus.worldEdit.startNpcHiding()
-}
-nerthus.worldEdit.startNpcHiding = function ()
-{
-    $("head").append("<style id='Nerthus-npc-hiding'></style>")
-    const $style = $("#Nerthus-npc-hiding")
-
-    const len = nerthus.worldEdit.npcHideList.length
-    for (let id = 0; id < len; id++)
-        $style.append("#npc" + nerthus.worldEdit.npcHideList[id] + "{display: none}")
+        $style.append('#npc' + id + '{display: none}')
 }
 
-nerthus.worldEdit.startNpcHiding_ni = function ()
+nerthus.worldEdit.hideGameNpc_ni = function (id, always)
 {
-    const tmpNpcDraw = Engine.npcs.getDrawableList
-    Engine.npcs.getDrawableList = function ()
+    if (nerthus.options.hideNpcs || always)
     {
-        let ret = tmpNpcDraw()
-        let retLen = ret.length
-        const listLen = nerthus.worldEdit.npcHideList.length
-        for (let i = 0; i < retLen; i++)
+        const callback = function (newNpc)
         {
-            for (let j = 0; j < listLen; j++)
+            if (newNpc.d.id === id.toString())
             {
-                if (ret[i].d.id === nerthus.worldEdit.npcHideList[j])
-                {
-                    ret.splice(i, 1)
-                    retLen = retLen - 1
-                    break
-                }
+                // Remove in this fashion (instead of just calling .delete()
+                // because we don't want to unset collisions when hiding
+                API.callEvent('removeNpc', newNpc)
+                Engine.npcs.removeOne(newNpc.d.id)
+                Engine.emotions.removeAllFromSourceId(newNpc.d.id)
+
+                // Run only once
+                // setTimeout so that it removes itself after all NPCs are checked by API,
+                // otherwise it would throw error
+                setTimeout(API.removeCallbackFromEvent.bind(API, 'newNpc', callback), 0)
             }
-
         }
-        return ret
+        API.addCallbackToEvent('newNpc', callback)
     }
-}
-
-nerthus.worldEdit.hideGameNpc_ni = function (id)
-{
-    nerthus.worldEdit.npcHideList.push(id.toString())
-}
-
-
-nerthus.worldEdit.purgeNpcList = function ()
-{
-    this.npcHideList = []
 }
 
 nerthus.worldEdit.start = function ()
 {
     nerthus.loadOnEveryMap(this.checkCurrentMap.bind(this))
-    if (nerthus.options.hideNpcs)
-        nerthus.defer(this.startNpcHiding.bind(this))
 }
 
 nerthus.worldEdit.start_ni = function ()
 {
     nerthus.onDefined("Engine.map.d.id", () =>
     {
+        this.changeGameNpc = this.changeGameNpc_ni
         this.addCollision = this.addCollision_ni
         this.deleteCollision = this.deleteCollision_ni
         this.addNpc = this.addNpc_ni
@@ -693,8 +688,6 @@ nerthus.worldEdit.start_ni = function ()
 
         this.hideGameNpc = this.hideGameNpc_ni
 
-        if (nerthus.options.hideNpcs)
-            this.startNpcHiding_ni()
         this.startWorldEdit_ni()
 
         nerthus.loadOnEveryMap(this.readdNpcList_ni.bind(this))

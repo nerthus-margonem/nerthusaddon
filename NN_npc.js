@@ -460,8 +460,7 @@ nerthus.npc.load_npcs_ni = function ()
         setTimeout(this.load_npcs_ni.bind(this), 500)
     else
     {
-        nerthus.worldEdit.purgeNpcList()
-        let file_with_npc = nerthus.addon.fileUrl("npcs/map_" + Engine.map.d.id + ".json")
+        const file_with_npc = nerthus.addon.fileUrl("npcs/map_" + Engine.map.d.id + ".json")
         this.load_npcs_from_file(file_with_npc)
     }
 }

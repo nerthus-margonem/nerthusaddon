@@ -597,7 +597,7 @@ nerthus.worldEdit.changeLight = function (opacity)
         }
     }
 
-    let $ground = $('#ground')
+    const $ground = $('#ground')
     let $night = $('#nNight')
     if (!$night.length)
         $night = $('<div id="nerthus-night"></div>')

@@ -579,16 +579,7 @@ nerthus.worldEdit.changeLight = function (opacity)
 
 nerthus.worldEdit.changeLight_ni = function (opacity)
 {
-    if (typeof opacity === "undefined")
-    {
-        opacity = 0
-        const hour = new Date().getHours()
-        if (hour >= 18) opacity = 0.3
-        if (hour >= 21) opacity = 0.6
-        if (hour <= 4) opacity = 0.8
-        if (Engine.map.d.mainid !== 0)
-            opacity = 0
-    }
+    if (typeof opacity === "undefined") opacity = 0
 
     nerthus.worldEdit.nightDimValue = opacity
 }

@@ -597,10 +597,10 @@ nerthus.worldEdit.changeLight = function (opacity)
         }
     }
 
-    let $ground = $("#ground")
-    let $night = $("#nNight")
-    if (!$night.get(0))
-        $night = $("<div id=nNight></div>")
+    let $ground = $('#ground')
+    let $night = $('#nNight')
+    if (!$night.length)
+        $night = $('<div id=nNight></div>')
 
     $night
         .css({

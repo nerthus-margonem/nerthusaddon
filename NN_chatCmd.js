@@ -347,7 +347,7 @@ nerthus.chatCmd.map["light"] = function(ch)
 {
     let opacity = ch.t.split(" ")[1]
     if(typeof opacity === "undefined")
-        nerthus.worldEdit.changeLight()
+        nerthus.night.dim()
     else
     {
         opacity = opacity.replace(",",".")

@@ -559,54 +559,22 @@ nerthus.worldEdit.addLights_ni = function (lights)
     nerthus.worldEdit.resetLightChanging_ni()
 }
 
-nerthus.worldEdit.changeDefaultLight = function (opacity)
-{
-    if (nerthus.worldEdit.nightDimValue === -1)
-    {
-        let $night = $("#nerthus-night")
-        if (!$night.length)
-            $night = $('<div id="nerthus-night"></div>')
-
-        $night
-            .css({
-                height: map.y * 32,
-                width: map.x * 32,
-                zIndex: map.y * 2 + 11,
-                opacity: opacity,
-            })
-            .appendTo("#ground")
-    }
-}
-
 nerthus.worldEdit.changeLight = function (opacity)
 {
-    if (typeof opacity === 'undefined')
-    {
-        opacity = 0
-        if (map.mainid === 0)
-        {
-            const hour = new Date().getHours()
-            if (hour >= 18) opacity = 0.3
-            if (hour >= 21) opacity = 0.6
-            if (hour <= 4) opacity = 0.8
-        }
-    }
+    nerthus.worldEdit.nightDimValue = opacity
 
-    const $ground = $('#ground')
     let $night = $('#nerthus-night')
     if (!$night.length)
         $night = $('<div id="nerthus-night"></div>')
 
     $night
         .css({
-            height: $ground.css("height"),
-            width: $ground.css("width"),
+            height: map.y * 32,
+            width: map.x * 32,
             zIndex: map.y * 2 + 11,
             opacity: opacity
         })
-        .appendTo("#ground")
-
-    nerthus.worldEdit.nightDimValue = opacity
+        .appendTo('#ground')
 }
 
 nerthus.worldEdit.changeLight_ni = function (opacity)

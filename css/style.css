@@ -19,8 +19,9 @@
 
 /* Night */
 #nerthus-night {
-    pointer-events: none;
     background-color: black;
+    pointer-events: none;
+    position: absolute;
 }
 
 /* Shield */

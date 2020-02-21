@@ -22,6 +22,13 @@
   },
   {
     "type": "change",
+    "id": 179008,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
     "id": 142661,
     "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,

@@ -1,0 +1,125 @@
+[
+  {
+    "type": "change",
+    "id": 112480,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 112479,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 179007,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 142661,
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 142662,
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 130003,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 130008,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 130007,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 150129,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche drzewo",
+    "tip": "",
+    "x": "25",
+    "y": "23",
+    "url": "/obrazki/npc/map/zim-szare4-praw2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 130010,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": "24",
+    "y": "24",
+    "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": "26",
+    "y": "26",
+    "url": "/obrazki/npc/map/zim-choin-duza3.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 150128,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 181977,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": "72",
+    "y": "57",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": "79",
+    "y": "59",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  }
+]

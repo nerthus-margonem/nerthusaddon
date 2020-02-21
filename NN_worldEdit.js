@@ -585,15 +585,16 @@ nerthus.worldEdit.changeDefaultLight = function (opacity)
 
 nerthus.worldEdit.changeLight = function (opacity)
 {
-    if (typeof opacity === "undefined")
+    if (typeof opacity === 'undefined')
     {
         opacity = 0
-        const hour = new Date().getHours()
-        if (hour >= 18) opacity = 0.3
-        if (hour >= 21) opacity = 0.6
-        if (hour <= 4) opacity = 0.8
-        if (map.mainid !== 0)
-            opacity = 0
+        if (map.mainid === 0)
+        {
+            const hour = new Date().getHours()
+            if (hour >= 18) opacity = 0.3
+            if (hour >= 21) opacity = 0.6
+            if (hour <= 4) opacity = 0.8
+        }
     }
 
     let $ground = $("#ground")

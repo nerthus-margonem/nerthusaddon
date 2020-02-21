@@ -563,11 +563,9 @@ nerthus.worldEdit.changeDefaultLight = function (opacity)
 {
     if (nerthus.worldEdit.nightDimValue === -1)
     {
-        const $ground = $("#ground")
-
-        let $night = $("#nNight")
-        if (!$night.get(0))
-            $night = $("<div id=nNight></div>")
+        let $night = $("#nerthus-night")
+        if (!$night.length)
+            $night = $('<div id="nerthus-night"></div>')
 
         $night
             .css({
@@ -575,11 +573,8 @@ nerthus.worldEdit.changeDefaultLight = function (opacity)
                 width: map.x * 32,
                 zIndex: map.y * 2 + 11,
                 opacity: opacity,
-                pointerEvents: "none",
-                backgroundColor: "black"
             })
             .appendTo("#ground")
-            .draggable()
     }
 }
 
@@ -598,7 +593,7 @@ nerthus.worldEdit.changeLight = function (opacity)
     }
 
     const $ground = $('#ground')
-    let $night = $('#nNight')
+    let $night = $('#nerthus-night')
     if (!$night.length)
         $night = $('<div id="nerthus-night"></div>')
 

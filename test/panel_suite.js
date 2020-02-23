@@ -64,7 +64,7 @@ before(function()
 
 afterEach(() =>
 {
-    $('body > #nerthus-panel').remove()
+    $('body > #nerthus-interface').remove()
 })
 
 test('translate', () =>
@@ -106,7 +106,7 @@ test('constructElement.settings returns proper HTML string', () =>
     expect(isHTML(str)).to.be.ok()
 })
 
-test('constructElement.panel returns proper HTML string', () =>
+test('constructElement.interface returns proper HTML string', () =>
 {
     const str = nerthus.panel.constructElement.panel(
         data.leftPanel, data.centerPanel, data.rightPanel, nerthus.options
@@ -123,13 +123,13 @@ test('constructElement.icon returns proper HTML string', () =>
 test('createPanel properly appends DOM into body', () =>
 {
     nerthus.panel.createPanel(data)
-    expect($('body > #nerthus-panel').length).to.be.equal(1)
+    expect($('body > #nerthus-interface').length).to.be.equal(1)
 })
-test('createPanel doesn\'t create second panel', () =>
+test('createPanel doesn\'t create second interface', () =>
 {
     nerthus.panel.createPanel(data)
     nerthus.panel.createPanel(data)
-    expect($('body > #nerthus-panel').length).to.be.equal(1)
+    expect($('body > #nerthus-interface').length).to.be.equal(1)
 })
 
 test('$elm is proper jQuery object', () =>
@@ -142,8 +142,8 @@ test('clicking settings button toggles between default and settings panels', () 
 {
     nerthus.panel.createPanel(data)
 
-    const $defaultPanel = $('.default-panel')
-    const $settingsPanel = $('.settings-panel')
+    const $defaultPanel = $('.default-interface')
+    const $settingsPanel = $('.settings-interface')
     const $settingsButton = $('.nerthus-settings-button')
 
     expect($defaultPanel.hasClass('hidden')).to.be(false)

@@ -20,7 +20,7 @@ jobs:
     - name: install dependencies
       run: npm i
     - name: run build
-      run: npm build
+      run: npm run-script build
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"

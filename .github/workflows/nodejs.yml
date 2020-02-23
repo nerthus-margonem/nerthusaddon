@@ -21,5 +21,15 @@ jobs:
       run: npm i
     - name: run build
       run: npm build
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Automatic Webpack Build" -a
+    - name: Push changes
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       env:
         CI: true

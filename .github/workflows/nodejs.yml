@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x, 12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,6 +25,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git add .
         git commit -m "Automatic Webpack Build" -a
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.5.0

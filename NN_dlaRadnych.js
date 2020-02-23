@@ -189,21 +189,6 @@ nerthus.mapsArr =
         [0, 3248, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.3.png')],
     ]
 
-//lista dodatkowych skryptów odpalanych w dodatku, tak na przyszłość - dodawać adres skryptu w apostrofach np: 'http://addons.margonem.pl/get/82.js'
-nerthus.scripts =
-[
-    'NN_style.js',
-    'NN_worldEdit.js',
-    'NN_alko.js',
-    'NN_panel.js',
-    'NN_maps.js',
-    'NN_night.js',
-    'NN_pogoda.js',
-    'NN_npc.js',
-    'NN_zodiak.js',
-    'NN_chatCmd.js'
-]
-
 nerthus.graf = {}
 nerthus.graf['weather'] = nerthus.addon.fileUrl("img/weatherIcons.gif")
 nerthus.graf['rain']    = nerthus.addon.fileUrl("img/weather/rain.gif")
@@ -213,31 +198,3 @@ nerthus.graf['panelTop']= nerthus.addon.fileUrl("img/nerthusPanel.png")
 nerthus.graf['dazed']   = nerthus.addon.fileUrl("img/dazed.png")
 nerthus.graf['loading'] = nerthus.addon.fileUrl("img/loadingnerthus.png")
 nerthus.graf['chat']    = nerthus.addon.fileUrl("img/chatPanel2.png")
-
-
-nerthus.ranks = {}
-nerthus.ranks.rankName = []
-
-nerthus.ranks.start = function()
-{
-    g.names.ranks[0] = "Kreator"
-    g.names.ranks[1] = "Uber Miszcz Gry"
-    g.names.ranks[2] = "Miszcz Gry"
-    g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
-    g.names.ranks[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
-    g.names.ranks[5] = "Trubadur"       //"Męczystruna";                //"Bard";
-    g.names.ranks[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
-    g.names.ranks[7] = "Radny"                                          //"Radny";
-}
-
-nerthus.ranks.start_ni = function ()
-{
-    this.rankName[0] = "Kreator"
-    this.rankName[1] = "Uber Miszcz Gry"
-    this.rankName[2] = "Miszcz Gry"
-    this.rankName[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
-    this.rankName[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
-    this.rankName[5] = "Trubadur"       //"Męczystruna";                //"Bard";
-    this.rankName[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
-    this.rankName[7] = "Radny"                                          //"Radny";
-}

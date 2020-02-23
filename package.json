@@ -14,14 +14,17 @@
     "expect.js": "^0.3.1",
     "jsdom": "^12.2.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "test": "mocha -u qunit -R spec",
     "test-coverage": "nyc --reporter=html --reporter=text --no-clean mocha -u qunit -R spec",
     "test-with-coverage": "nyc --reporter=none --no-clean mocha -u qunit -R spec",
     "coverage-raport-text": "nyc report --reporter=text",
-    "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls"
+    "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",

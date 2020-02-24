@@ -58,15 +58,14 @@ nerthus.npc.dialog.parse_row_reply = function (reply)
     return {text: reply[0], to: reply[1]}
 }
 
-nerthus.npc.dialog.parse_placeholders = function (text)
+function parse_placeholders(text)
 {
-    return text.replace("#NAME", hero.nick)
+    if (INTERFACE === 'NI')
+        return text.replace('#NAME', Engine.hero.d.nick)
+    else
+        return text.replace('#NAME', hero.nick)
 }
 
-nerthus.npc.dialog.parse_placeholders_ni = function (text)
-{
-    return text.replace("#NAME", Engine.hero.d.nick)
-}
 
 nerthus.npc.dialog.open = function (npc, index)
 {

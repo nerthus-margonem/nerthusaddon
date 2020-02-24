@@ -24,7 +24,7 @@ const SI = new webpack.DefinePlugin({
 const NI = new webpack.DefinePlugin({
     INTERFACE: JSON.stringify("NI"),
     FILE_PREFIX: JSON.stringify('http://localhost/nerthusaddon/'),
-    AVAILABLE_MAP_FILES: availableMapFiles
+    AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
     //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
 });
 

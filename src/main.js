@@ -4,7 +4,8 @@ import {loadSettings} from './settings'
 import {initPanel} from './interface/panel'
 import {addBasicStyles} from './interface/css-manager'
 import {initiateGameIntegrationLoaders} from './game-integration/loaders'
-
+import {initNpcManager} from './npc/npc-manager'
+import {initNightManager} from './night/night-manager'
 
 function start()
 {
@@ -15,6 +16,10 @@ function start()
     loadSettings()
 
     initiateGameIntegrationLoaders()
+
+    initNpcManager()
+
+    initNightManager()
 
     initChatMgr()
     initBasicChatCommands()

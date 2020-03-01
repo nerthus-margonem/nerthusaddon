@@ -24,15 +24,16 @@
     }
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 131865,
-    "new": [
-      [
-        "top",
-        "2768px"
-      ]
-    ],
     "lvl": 0
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "4",
+    "y": "88",
+    "url": "/obrazki/npc/map/pochodnia1_stojac.gif"
   },
   {
     "name": "Choinka",

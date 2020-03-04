@@ -6,27 +6,32 @@ const path = require('path')
 
 const childProcess = require('child_process')
 
-const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString();
+const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString()
 
 const availableMapFiles = {}
 
-availableMapFiles.npc = childProcess.execSync('ls npcs').toString().split('\n')
-availableMapFiles.lights = childProcess.execSync('ls night-lights').toString().split('\n')
+const npcMapList = childProcess.execSync('ls npcs').toString().match(/(\d*)*\.json/g)
+npcMapList.forEach(function (item, index) {this[index] = parseInt(item)}, npcMapList)
+availableMapFiles.npc = npcMapList
+
+const lightMapList = childProcess.execSync('ls night-lights').toString().match(/(\d*)*\.json/g)
+lightMapList.forEach(function (item, index) {this[index] = parseInt(item)}, lightMapList)
+availableMapFiles.lights = lightMapList
 
 const SI = new webpack.DefinePlugin({
-    INTERFACE: JSON.stringify("SI"),
+    INTERFACE: JSON.stringify('SI'),
     FILE_PREFIX: JSON.stringify('http://localhost/nerthusaddon/'),
     //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
     AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
     OTHER: JSON.stringify(commitHash)
-});
+})
 
 const NI = new webpack.DefinePlugin({
-    INTERFACE: JSON.stringify("NI"),
+    INTERFACE: JSON.stringify('NI'),
     FILE_PREFIX: JSON.stringify('http://localhost/nerthusaddon/'),
-    AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
+    AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles)
     //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
-});
+})
 
 module.exports = [
     {

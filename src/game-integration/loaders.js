@@ -1,11 +1,17 @@
 const loadQueue = []
 
-export function loadOnEveryMap(fun, data)
+/**
+ * Executes function immediately, then executes it at every new map load
+ * @param fun - function that will be executed
+ * @param args - arguments function will take
+ */
+export function loadOnEveryMap(fun, args)
 {
-    loadQueue.push([fun, data])
+    fun(args)
+    loadQueue.push([fun, args])
 }
 
-function loadNewMapQueue()
+function loadNewMapQueue(mapId)
 {
     for (const i in loadQueue)
     {
@@ -13,23 +19,35 @@ function loadNewMapQueue()
     }
 }
 
-
 export function initiateGameIntegrationLoaders()
 {
     if (INTERFACE === 'NI')
     {
-
+        // Load map queue when new map file is provided (Engine.map.d contains current data at that point)
+        const mapUpdate = Engine.map.onUpdate.file
+        Engine.map.onUpdate.file = function (new_v, old_v)
+        {
+            mapUpdate.call(Engine.map.onUpdate, new_v, old_v)
+            //loadNewMapQueue(Engine.map.d.id)
+            console.log('Load map queue')
+            console.log(Engine.map.d.id)
+        }
     }
     else
     {
         // Observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
+        let previousMapId = window.map.id
         window.map.__loaded = window.map.loaded
         Object.defineProperty(window.map, 'loaded', {
             set(val)
             {
+                console.log('New map loaded')
                 this.__loaded = val
-                loadNewMapQueue()
-
+                if (previousMapId !== window.map.id)
+                {
+                    loadNewMapQueue(window.map.id)
+                    previousMapId = window.map.id
+                }
                 return val
             },
             get() { return this.__loaded }
@@ -37,22 +55,8 @@ export function initiateGameIntegrationLoaders()
     }
 }
 
-export function onDefined(valueToBeDefined, callback) //TODO ?
+export function addToNIdrawList(preparedObject, id)
 {
-    const valArr = valueToBeDefined.toString().split('.')
-    const len = valArr.length
-    let object = window
-    for (let i = 0; i < len; i++)
-    {
-        if (typeof object[valArr[i]] === 'undefined')
-            return setTimeout(onDefined.bind(this, valueToBeDefined, callback), 500)
-        else
-            object = object[valArr[i]]
-    }
-    callback()
-}
-
-export function addToNIdrawList(preparedObject, id) {
     const npcList = Engine.npcs.check()
     npcList[id] = preparedObject
 }

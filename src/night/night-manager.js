@@ -1,7 +1,7 @@
 import * as exceptionMaps from '../res/outdoor-map-exceptions'
 import {settings} from '../settings'
 import {addToNIdrawList, loadOnEveryMap, onDefined} from '../game-integration/loaders'
-import {turnLightsOn} from './lights'
+import {resetLights, turnLightsOn} from './lights'
 
 /**
  * @param time - Date
@@ -9,7 +9,6 @@ import {turnLightsOn} from './lights'
  */
 function timeToOpacity(time)
 {
-    return 0.6
     const hour = time.getHours()
     //const hour = new Date().getHours()
     if (hour <= 4) return 0.8
@@ -62,6 +61,7 @@ function dim(opacity)
     let mainid
     if (INTERFACE === 'NI')
     {
+        console.log("DIM NI MAP: " + Engine.map.d.id)
         mainid = Engine.map.d.mainid
         id = Engine.map.d.id
     }
@@ -70,13 +70,11 @@ function dim(opacity)
         mainid = map.mainid
         id = map.id
     }
-    if (mainid === 0 && !exceptionMaps.indoor.contains(id) || exceptionMaps.outdoor.contains(id))
-    {
+    if ((mainid === 0 && !exceptionMaps.default.indoor.includes(id)) || exceptionMaps.default.outdoor.includes(id))
         changeLight(opacity)
-    }
-
+    else
+        changeLight(0)
 }
-
 
 function checkAndApplyNight()
 {
@@ -86,7 +84,7 @@ function checkAndApplyNight()
         const dimValue = timeToOpacity(date)
         if (dimValue)
         {
-            dim()
+            dim(dimValue)
             turnLightsOn()
         }
     }
@@ -94,22 +92,21 @@ function checkAndApplyNight()
 
 export function initNightManager()
 {
-    if (INTERFACE === 'NI')
-    {
-        onDefined('Engine.map.d.id', () =>
-        {
-            checkAndApplyNight()
-            loadOnEveryMap(checkAndApplyNight)
-        })
-    }
-    else
-    {
-        checkAndApplyNight()
-        loadOnEveryMap(checkAndApplyNight)
-    }
+    loadOnEveryMap(checkAndApplyNight)
+    // if (INTERFACE === 'NI')
+    // {
+    //     onDefined('Engine.map.d.id', () =>
+    //     {
+    //         checkAndApplyNight()
+    //         loadOnEveryMap(checkAndApplyNight)
+    //     })
+    // }
+    // else
+    // {
+    //     loadOnEveryMap(checkAndApplyNight)
+    // }
 }
 
-//
 // nerthus.night.lights.give_me_the_light = function ()
 // {
 //     $.getScript(nerthus.addon.fileUrl('/NN_night_lights_mgr.js'))

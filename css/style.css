@@ -30,6 +30,7 @@
     background-color: black;
     pointer-events: none;
     position: absolute;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /* Shield */

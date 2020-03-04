@@ -1,6 +1,6 @@
 import {addToNIdrawList} from '../game-integration/loaders'
 
-const LIGHT_TYPES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
+const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
 
 function getLightTypeUrl(lightType)
 {
@@ -27,30 +27,28 @@ function addLights(lights)
     {
         for (const i in lights)
         {
-            const lightType = LIGHT_TYPES[lights[i].type]
-
             const image = new Image()
             image.onload = addToNIdrawList.bind(null, getLightNiObject(image))
-            image.src = getLightTypeUrl(lightType)
+            image.src = getLightTypeUrl(lights[i].type)
         }
     }
     else
     {
         for (const i in lights)
         {
-            const lightType = LIGHT_TYPES[lights[i].type]
+            const lightTypeSize = LIGHT_TYPE_SIZES[lights[i].type]
             $('<div />')
                 .css({
-                    background: 'url(' + getLightTypeUrl(lightType) + ')',
-                    width: lightType.width,
-                    height: lightType.height,
+                    background: 'url(' + getLightTypeUrl(lights[i].type) + ')',
+                    width: lightTypeSize,
+                    height: lightTypeSize,
                     zIndex: map.y * 2 + 12,
                     position: 'absolute',
                     left: parseInt(lights[i].x),
                     top: parseInt(lights[i].y),
                     pointerEvents: 'none'
                 })
-                .addClass('nightLight')
+                .addClass('night-light')
                 .attr('type', lights[i].type)
                 .appendTo('#ground')
         }
@@ -61,7 +59,7 @@ function addLights(lights)
 function resetLights()
 {
     if (INTERFACE === 'SI')
-        $('#ground .nightLight').remove()
+        $('#ground .night-light').remove()
 }
 
 
@@ -73,14 +71,17 @@ export function turnLightsOn()
             setTimeout(turnLightsOn, 500)
         else
         {
-            //TODO only those who exist
-            $.getJSON(FILE_PREFIX + '/night_lights/map_' + map.id + '.json', addLights)
+            if (AVAILABLE_MAP_FILES.lights.includes(Engine.map.d.id)) //TODO don't repeat this long list
+                $.getJSON(FILE_PREFIX + '/night-lights/map_' + Engine.map.d.id + '.json', addLights)
+            else console.log('lights not loaded - no file')
         }
     }
     else
     {
         resetLights()
-        //TODO only those who exist
-        $.getJSON(FILE_PREFIX + '/night_lights/map_' + map.id + '.json', addLights)
+        console.log('tried lights')
+        if (AVAILABLE_MAP_FILES.lights.includes(map.id))
+            $.getJSON(FILE_PREFIX + '/night-lights/map_' + map.id + '.json', addLights)
+        else console.log('lights not loaded - no file')
     }
 }

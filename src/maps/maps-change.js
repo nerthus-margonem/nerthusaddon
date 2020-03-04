@@ -32,7 +32,7 @@ nerthus.worldEdit.checkCurrentMap = function ()
         $("#ground").css("background", "")
 }
 
-nerthus.worldEdit.changeMap = function (url, layer, mapId)
+export function changeMap(url, layer, mapId)
 {
     mapId = parseInt(mapId)
 

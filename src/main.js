@@ -11,6 +11,8 @@ function start()
 {
     console.log(AVAILABLE_MAP_FILES)
     console.log('File prafix: ' + FILE_PREFIX)
+    console.log("map loaded SI?")
+    console.log(window.map ? window.map.loaded : '')
     //$('<link rel="stylesheet" href="' + nerthus.addon.fileUrl("css/style.css") + '">').appendTo('head')
     addBasicStyles()
     loadSettings()
@@ -28,10 +30,21 @@ function start()
     console.log('Nerthus addon fully loaded')
 }
 
-
-if (INTERFACE == 'NI')
+if (INTERFACE === 'NI')
 {
-    start()
+    if (Engine.map.d.id) start()
+    else
+    {
+        const mapUpdate = Engine.map.onUpdate.file
+        Engine.map.onUpdate.file = function (new_v, old_v)
+        {
+            mapUpdate.call(Engine.map.onUpdate, new_v, old_v)
+            // Immediately replace the function back, because we want to use it only once
+            Engine.map.onUpdate.file = mapUpdate
+
+            start()
+        }
+    }
 }
 else
 {

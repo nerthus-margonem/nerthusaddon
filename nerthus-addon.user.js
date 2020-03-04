@@ -11,7 +11,7 @@
 {
     function start()
     {
-        const arr = /interface=(..); /.exec(document.cookie)
+        const arr = /interface=(..)/.exec(document.cookie)
         if (arr)
         {
             const gameInterface = arr[1]

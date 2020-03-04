@@ -240,13 +240,13 @@ export function initPanel()
                 defaultPosition[1],
                 'Nerthus',
                 'green',
-                togglePanel.bind(nerthus.panel)
+                togglePanel
             )
         }
 
         $('head').append('<style>' +
             '.main-buttons-container .widget-button .icon.nerthus {' +
-            'background-image: url(' + nerthus.graf.shield + ');' +
+            'background-image: url(' + '' + ');' + //TODO shield graphic
             'background-position: 0;' +
             '}' +
             '</style>'

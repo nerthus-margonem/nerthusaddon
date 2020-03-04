@@ -1,157 +1,79 @@
-import {setCollision} from './collision'
+import {removeCollision, setCollision} from './collision'
 
-nerthus.worldEdit.addNpc = function (x, y, url, name, collision, map_id)
-{
-    if (typeof map_id === 'undefined' || parseInt(map_id) === map.id)
-    {
-        const img = new Image()
-        const $npc = $('<div id="npc' + this.coordsToId(x,y) + '" class="npc nerthus-npc"></div>')
-            .css({
-                zIndex: y * 2 + 9,
-                left: x * 32,
-                top: y * 32 - 16
-            })
-            .appendTo('#base')
-        img.onload = function ()
-        {
-            const width = img.width
-            const height = img.height
-
-            const tmpLeft = x * 32 + 16 - Math.round(width / 2)
-            const wpos = Math.round(x) + Math.round(y) * 256
-            let wat
-            if (map.water && map.water[wpos])
-                wat = map.water[wpos] / 4
-            $npc.css({
-                backgroundImage: 'url(' + img.src + ')',
-                left: tmpLeft,
-                top: y * 32 + 32 - height + (wat > 8 ? 0 : 0),
-                width: (tmpLeft + width > map.x * 32 ? map.x * 32 - tmpLeft : width),
-                height: height - (wat > 8 ? ((wat - 8) * 4) : 0)
-            })
-        }
-        img.src = url
-
-        if (name)
-            $npc.attr({
-                ctip: 't_npc',
-                tip: '<b>' + name + '</b>'
-            })
-        if (collision)
-            this.addCollision(x, y)
-
-        this.npcs.push([$npc, x, y, url, name, collision, map_id])
-    }
-}
-
-nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
-{
-    this.npcs.push([x, y, url, name, collision, map_id])
-    if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
-        this.paintNpc_ni(x, y, url, name, collision, map_id)
-}
-
-nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
-{
-    const exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
-    const match = exp.exec(url)
-
-    const id = this.coordsToId(x, y)
-    let data = {}
-    data[id] = {
-        actions: 0,
-        grp: 0,
-        nick: name === "" ? "Bez nazwy" : name,
-        type: name === "" ? 4 : 0,
-        wt: 0,
-        x: x,
-        y: y
-    }
-    console.log(data)
-    if (match[4] === "gif")
-    {
-        data[id].icon = url
-        const npath = CFG.npath
-        CFG.npath = ""
-        Engine.npcs.updateData(data)
-        CFG.npath = npath
-    }
-    else
-    {
-        data[id].icon = "obj/cos.gif"
-        Engine.npcs.updateData(data)
-        const image = new Image()
-        image.src = url
-
-        const _x = 32 * x + 16 - Math.floor(image.width / 2)
-        const _y = 32 * y + 32 - image.height
-        const obj = {
-            image: image,
-            x: _x,
-            y: _y,
-            id: id,
-            map_id: map_id
-        }
-        nerthus.worldEdit.additionalDrawList.push(obj)
-    }
+// nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
+// {
+//     this.npcs.push([x, y, url, name, collision, map_id])
+//     if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
+//         this.paintNpc_ni(x, y, url, name, collision, map_id)
+// }
+//
+// nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
+// {
+//     const exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
+//     const match = exp.exec(url)
+//
+//     const id = this.coordsToId(x, y)
+//     let data = {}
+//     data[id] = {
+//         actions: 0,
+//         grp: 0,
+//         nick: name === "" ? "Bez nazwy" : name,
+//         type: name === "" ? 4 : 0,
+//         wt: 0,
+//         x: x,
+//         y: y
+//     }
+//     console.log(data)
+//     if (match[4] === "gif")
+//     {
+//         data[id].icon = url
+//         const npath = CFG.npath
+//         CFG.npath = ""
+//         Engine.npcs.updateData(data)
+//         CFG.npath = npath
+//     }
+//     else
+//     {
+//         data[id].icon = "obj/cos.gif"
+//         Engine.npcs.updateData(data)
+//         const image = new Image()
+//         image.src = url
+//
+//         const _x = 32 * x + 16 - Math.floor(image.width / 2)
+//         const _y = 32 * y + 32 - image.height
+//         const obj = {
+//             image: image,
+//             x: _x,
+//             y: _y,
+//             id: id,
+//             map_id: map_id
+//         }
+//         // Engine.npcs.check().push({
+//         //     draw: function(ctx) {
+//         //
+//         //     }
+//         // })
+//     }
+//
+//
+//     if (collision && (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id))
+//         this.addCollision_ni(x, y)
+//     else
+//         this.deleteCollision_ni(x, y, 2) //apparently NI adds default collision when adding NPC
+// }
 
 
-    if (collision && (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id))
-        this.addCollision_ni(x, y)
-    else
-        this.deleteCollision_ni(x, y, 2) //apparently NI adds default collision when adding NPC
-}
-
-
-nerthus.worldEdit.readdNpcList_ni = function ()
-{
-    this.npcs.forEach(function (npc)
-    {
-        console.log(npc)
-        console.log(parseInt(npc[5]))
-        console.log(Engine.map.d.id)
-        if (typeof npc[5] === "undefined" || parseInt(npc[5]) === Engine.map.d.id)
-            nerthus.worldEdit.paintNpc_ni(npc[0], npc[1], npc[2], npc[3], npc[4], npc[5])
-    })
-}
-
-nerthus.worldEdit.deleteNpc = function (x, y, map_id)
-{
-    if (typeof map_id === "undefined" || parseInt(map_id) === map.id)
-    {
-        $("#npc" + this.coordsToId(x, y)).remove()
-        this.deleteCollision(x, y)
-    }
-}
-
-nerthus.worldEdit.deleteNpc_ni = function (x, y, map_id)
-{
-    if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
-    {
-        const id = this.coordsToId(x, y)
-        if (Engine.npcs.getById(id))
-        {
-            Engine.npcs.removeOne(id)
-        }
-        for (const i in nerthus.worldEdit.additionalDrawList)
-        {
-            if (nerthus.worldEdit.additionalDrawList[i].id === id)
-                delete nerthus.worldEdit.additionalDrawList[i]
-            nerthus.worldEdit.additionalDrawList = nerthus.worldEdit.additionalDrawList.filter(function (el)
-            {
-                return el !== null
-            })
-        }
-        this.deleteCollision_ni(x, y)
-    }
-
-
-    for (let i = 0; i < this.npcs.length; i++)
-        if (this.npcs[i][0] === x && this.npcs[i][1] === y)
-            if (typeof map_id === "undefined" || parseInt(map_id) === parseInt(this.npcs[i][5]))
-                this.npcs.splice(i, 1)
-}
-
+// nerthus.worldEdit.readdNpcList_ni = function ()
+// {
+//     this.npcs.forEach(function (npc)
+//     {
+//         console.log(npc)
+//         console.log(parseInt(npc[5]))
+//         console.log(Engine.map.d.id)
+//         if (typeof npc[5] === "undefined" || parseInt(npc[5]) === Engine.map.d.id)
+//             nerthus.worldEdit.paintNpc_ni(npc[0], npc[1], npc[2], npc[3], npc[4], npc[5])
+//     })
+// }
 
 function clickWrapper(npc, click_handler)
 {
@@ -179,7 +101,10 @@ export function addNpc(npc)
         CFG.npath = npath
 
         //this.dialog.list[npc.id] = npc.dialog TODO
-        setCollision(npc)
+        if (npc.collision)
+            setCollision(npc.x, npc.y)
+        else
+            removeCollision(npc.x, npc.y)
         return data
     }
     else
@@ -222,7 +147,8 @@ export function addNpc(npc)
                 tip: npc.nick
             })
         if (click) $npc.click(clickWrapper(npc, click))
-        setCollision(npc)
+        if (npc.collision)
+            setCollision(npc.x, npc.y)
         return $npc
     }
 

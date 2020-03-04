@@ -1,12 +1,4 @@
-g.names.ranks[0] = "Kreator"
-g.names.ranks[1] = "Uber Miszcz Gry"
-g.names.ranks[2] = "Miszcz Gry"
-g.names.ranks[3] = "Strażnik Słowa" //"Modelator Czasu";            //"Moderator czatu";
-g.names.ranks[4] = "Tkacz Słów"     //"Modelator czasoprzestrzeni"; //"Super moderator";
-g.names.ranks[5] = "Trubadur"       //"Męczystruna";                //"Bard";
-g.names.ranks[6] = "Piewca Słowa"   //"Modelator struny";           //"Bard + MC";
-g.names.ranks[7] = "Radny"                                          //"Radny";
-
+const RANK_NAMES = ['Kreator', 'Uber Miszcz Gry', 'Miszcz Gry', 'Strażnik Słowa', 'Tkacz Słów', 'Trubadur', 'Piewca Słowa', 'Radny']
 const RANKS = {NONE: -1, ADM: 0, SMG: 1, MG: 2, MC: 3, SMC: 4, BARD: 5, BARD_MC: 6, RADNY: 7}
 const RIGHTS = {ADM: 1, MG: 2, SMG: 16}
 
@@ -34,12 +26,7 @@ function rank(player)
     if (nerthus.isRad(player.nick))
         rank = RANKS.RADNY
 
-    //TODO rankname always?
-    if (INTERFACE === 'NI')
-        return rank === RANKS.NONE ? '' : nerthus.ranks.rankName[rank]
-    else
-        return rank === RANKS.NONE ? '' : g.names.ranks[rank]
-
+    return rank === RANKS.NONE ? '' : RANK_NAMES[rank]
 }
 
 function title(player)

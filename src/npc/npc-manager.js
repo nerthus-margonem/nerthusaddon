@@ -74,7 +74,7 @@ function loadNpcsFromFile(url)
     })
 }
 
-function loadNpcs() //TODO is npc file present?
+function loadNpcs()
 {
     if (INTERFACE === 'NI')
     {
@@ -82,14 +82,14 @@ function loadNpcs() //TODO is npc file present?
             setTimeout(loadNpcs, 500)
         else
         {
-            const file_with_npc = FILE_PREFIX + 'npcs/map_' + Engine.map.d.id + '.json'
-            loadNpcsFromFile(file_with_npc)
+            if (AVAILABLE_MAP_FILES.npc.includes(Engine.map.d.id))
+                loadNpcsFromFile(FILE_PREFIX + 'npcs/map_' + Engine.map.d.id + '.json')
         }
     }
     else
     {
-        const file_with_npc = FILE_PREFIX + '/npcs/map_' + map.id + '.json'
-        loadNpcsFromFile(file_with_npc)
+        if (AVAILABLE_MAP_FILES.npc.includes(map.id))
+            loadNpcsFromFile(FILE_PREFIX + '/npcs/map_' + map.id + '.json')
     }
 
 }
@@ -97,23 +97,6 @@ function loadNpcs() //TODO is npc file present?
 
 export function initNpcManager()
 {
-    if (INTERFACE === 'NI')
-    {
-        onDefined('Engine.map', () =>
-        {
-            const __g = _g
-            window._g = function (task, callback, payload)
-            {
-                let id = nerthus.npc.dialog.check(task)
-                if (id > 0)
-                    nerthus.npc.dialog.open_ni(id, 0)
-                __g(task, callback, payload)
-            }
-
-            loadNpcs()
-        })
-    }
-
     loadOnEveryMap(function ()
     {
         resetNpcs()

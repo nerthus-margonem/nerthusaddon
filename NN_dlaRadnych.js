@@ -9,7 +9,7 @@ nerthus.NerthusSpec = [
     "Sihaya",
     "Lechi Chucherko",
     "Ath`Lar Draa`Ilythiiri",
-    "Ihoold",
+    "Ihoold", //REMOVED
     "Aktibro",
     "Shiraya",
     "Minstrella",
@@ -123,71 +123,8 @@ nerthus.chatInfoStr = ''
 //<img src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif"><font style="font-size:200%; color:#1E90FF">Nerthus Wita</font><img  src="http://game3.margonem.pl/obrazki/npc/mas/ner_her_1.gif">
 nerthus.EnterMsg = ''
 
-/* Mapy do ustawienia. Format:
- *  [sezon, id mapy, link do grafiki]
- *  Sezon: 0 - przez cały rok; 1 - wiosna; 2 - lato; 3 - jesień; 4 - zima
- *  Jeżeli chcemy by jakaś mapa była zmieniona w jednej porze roku,
- *  a w reszcie miała inną grafikę to należy to zrobić w tej kolejności:
- *  [4, map_id, "url_zima"],
- *  [0, map_id, "url_reszta_roku"]
- */
-nerthus.mapsArr =
-    [
-        //[4,11,'http://cdn.rawgit.com/akrzyz/nerthusaddon/master/maps/dolina_yss_zima.png']
-        [4, 257, '/obrazki/miasta/zima-mythar.png'],
 
-        // Ithan
-        [4, 1, '/obrazki/miasta/zima-ithan.png'],
 
-        // Torneg
-        [4, 2, '/obrazki/miasta/zima-torneg.png'],
-        // [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
-
-        // Werbin
-        [4, 9, '/obrazki/miasta/zima-werbin.png'],
-        [0, 9, nerthus.addon.fileUrl('maps/Werbin.png')],
-
-        // Karka-han
-        [4, 35, '/obrazki/miasta/zima-karka-han.png'],
-
-        // Eder
-        [4, 33, '/obrazki/miasta/zima-eder.png'],
-
-        // Zniszczone Opactwo
-        [0, 8, nerthus.addon.fileUrl('maps/Zniszczone Opactwo.png')],
-        [0, 290, nerthus.addon.fileUrl('maps/Opactwo.png')],
-        [0, 291, nerthus.addon.fileUrl('maps/Opactwo p.1.png')],
-        [0, 292, nerthus.addon.fileUrl('maps/Opactwo - piwnica.png')],
-
-        // Dolina Yss
-        [0, 11, nerthus.addon.fileUrl('maps/Dolina Yss.png')],
-
-        // Stare Ruiny
-        [0, 12, nerthus.addon.fileUrl('maps/Stare Ruiny.png')],
-        [0, 169, nerthus.addon.fileUrl('maps/Przeklęty Zamek - wejście wschodnie.png')],
-        [0, 174, nerthus.addon.fileUrl('maps/Przeklęty Zamek - sala zgromadzeń.png')],
-        [0, 175, nerthus.addon.fileUrl('maps/Przeklęty Zamek p.1.png')],
-        [0, 3741, nerthus.addon.fileUrl('maps/Przeklęty Zamek p.2.png')],
-        [0, 3742, nerthus.addon.fileUrl('maps/Przeklęty Zamek - komnata.png')],
-        [0, 172, nerthus.addon.fileUrl('maps/Przeklęty Zamek - zbrojownia.png')],
-        [0, 170, nerthus.addon.fileUrl('maps/Przeklęty Zamek - podziemia północne.png')],
-        [0, 168, nerthus.addon.fileUrl('maps/Przeklęty Zamek - wejście północne.png')],
-        [0, 171, nerthus.addon.fileUrl('maps/Przeklęty Zamek - podziemia południowe.png')],
-        [0, 167, nerthus.addon.fileUrl('maps/Przeklęty Zamek - wejście południowe.png')],
-
-        // Nithal
-        [4, 574, '/obrazki/miasta/zima-nithal.png'],
-
-        // Cytadela - Nithal
-        [0, 866, nerthus.addon.fileUrl('maps/Cytadela p.1.png')],
-        // Labolatorium Elendaru
-        [0, 864, nerthus.addon.fileUrl('maps/Akademia wojskowa - piwnica p.2.png')],
-
-        // Siedziba Leśnego Bractwa
-        [0, 3246, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.1.png')],
-        [0, 3247, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.2.png')],
-        [0, 3248, nerthus.addon.fileUrl('maps/Zapomniana kopalnia p.3.png')],
-    ]
 
 nerthus.graf = {}
 nerthus.graf['weather'] = nerthus.addon.fileUrl("img/weatherIcons.gif")

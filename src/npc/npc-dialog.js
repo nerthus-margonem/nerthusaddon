@@ -114,7 +114,8 @@ function removeScroll()
 
 function displayDialog(message, replies, npc)
 {
-    if (INTERFACE === "NI") {
+    if (INTERFACE === 'NI')
+    {
         const innerDial = this.parseInnerDialog_ni(message, replies)
 
         let $dialWin = $('.dialogue-window')
@@ -154,7 +155,7 @@ function displayDialog(message, replies, npc)
         }
         else
         {
-            $('.dialogue-window').addClass('is-open')
+            $dialWin.addClass('is-open')
             $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).empty().append(innerDial)
         }
 
@@ -163,13 +164,20 @@ function displayDialog(message, replies, npc)
             nerthus.npc.dialog.addEventToAnswer(this, $dialWin, replies, index, id)
         })
 
-    } else {
+    }
+    else
+    {
         $('#dlgin .message').empty().append(composeMessage(message, npc))
         const $replies = $('#dlgin .replies').empty()
         $replies.append.apply($replies, replies.map(composeReply))
         addScroll()
         $('#dialog').show()
     }
+}
+
+function composeMessage(message, npc)
+{
+    return '<h4>' + npc.nick + '</h4>' + message
 }
 
 nerthus.npc.dialog.parseInnerDialog_ni = function (message, replies)
@@ -239,10 +247,6 @@ function composeReply(reply)
         .click(reply.click)
 }
 
-function composeMessage(message, npc)
-{
-    return '<h4>' + npc.nick + '</h4>' + message
-}
 
 nerthus.npc.dialog.check = function (command)
 {

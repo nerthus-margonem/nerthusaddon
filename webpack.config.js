@@ -11,12 +11,10 @@ const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString(
 const availableMapFiles = {}
 
 const npcMapList = childProcess.execSync('ls npcs').toString().match(/(\d*)*\.json/g)
-npcMapList.forEach(function (item, index) {this[index] = parseInt(item)}, npcMapList)
-availableMapFiles.npc = npcMapList
+availableMapFiles.npc = npcMapList.map(item => parseInt(item));
 
 const lightMapList = childProcess.execSync('ls night-lights').toString().match(/(\d*)*\.json/g)
-lightMapList.forEach(function (item, index) {this[index] = parseInt(item)}, lightMapList)
-availableMapFiles.lights = lightMapList
+availableMapFiles.lights = lightMapList.map(item => parseInt(item));
 
 const SI = new webpack.DefinePlugin({
     INTERFACE: JSON.stringify('SI'),

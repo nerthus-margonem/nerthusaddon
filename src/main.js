@@ -6,6 +6,7 @@ import {addBasicStyles} from './interface/css-manager'
 import {initiateGameIntegrationLoaders} from './game-integration/loaders'
 import {initNpcManager} from './npc/npc-manager'
 import {initNightManager} from './night/night-manager'
+import {initMapsManager} from './maps/maps-manager'
 
 function start()
 {
@@ -18,6 +19,8 @@ function start()
     loadSettings()
 
     initiateGameIntegrationLoaders()
+
+    initMapsManager()
 
     initNpcManager()
 

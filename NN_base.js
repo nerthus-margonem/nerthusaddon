@@ -5,32 +5,7 @@
  * Zawiera stare opcja jak opisy zamiast lvli
 **/
 
-nerthus.seasons = {SPRING: 1, SUMMER: 2, AUTUMN: 3, WINTER: 4}
-nerthus.season = function()
-{
-    var makeStartDate = function(day,month)
-    {
-        var date = new Date()
-        date.setUTCDate(day)
-        date.setUTCMonth(month - 1)
-        return date
-    }
-    const date = new Date()
-    const SPRING_BEGIN = makeStartDate(21,3)
-    const SUMMER_BEGIN = makeStartDate(22,6)
-    const AUTUMN_BEGIN = makeStartDate(23,9)
-    const WINTER_BEGIN = makeStartDate(22,11) //long winter
 
-    if(date >= WINTER_BEGIN)
-        return this.seasons.WINTER
-    if(date >= AUTUMN_BEGIN)
-        return this.seasons.AUTUMN
-    if(date >= SUMMER_BEGIN)
-        return this.seasons.SUMMER
-    if(date >= SPRING_BEGIN)
-        return this.seasons.SPRING
-    return this.seasons.WINTER
-}
 
 nerthus.setChatInfo = function()
 {

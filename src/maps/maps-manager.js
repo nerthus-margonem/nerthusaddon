@@ -52,7 +52,7 @@ function applyMapChange(mapId)
 {
     const mapImage = new Image()
 
-    const basicMapUrl = getBasicMapUrl()
+    const basicMapUrl = getBasicMapUrl(mapId)
     if (customMapsUrls[mapId])
         mapImage.src = resolveNerthusUrl(customMapsUrls[mapId])
     else if (customMapNoIdUrl)

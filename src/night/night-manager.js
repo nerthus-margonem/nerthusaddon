@@ -1,7 +1,7 @@
 import {default as exceptionMaps} from '../res/outdoor-map-exceptions'
 import {settings} from '../settings'
-import {addToNIdrawList, loadOnEveryMap, onDefined} from '../game-integration/loaders'
-import {resetLights, turnLightsOn} from './lights'
+import {addToNIdrawList, loadOnEveryMap} from '../game-integration/loaders'
+import {turnLightsOn} from './lights'
 
 /**
  * @param time - Date

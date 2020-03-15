@@ -4,7 +4,7 @@ export function changeGameNpc(npc)
     {
         const callback = function (newNpc)
         {
-            if (newNpc.d.id === npc.id.toString())
+            if (newNpc.d && newNpc.d.id === npc.id.toString())
             {
                 const img = new Image()
                 img.src = npc.newUrl

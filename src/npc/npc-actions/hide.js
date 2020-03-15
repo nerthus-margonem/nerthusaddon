@@ -16,7 +16,7 @@ export function hideGameNpc(id, always)
         {
             const callback = function (newNpc)
             {
-                if (newNpc.d.id === id.toString())
+                if (newNpc.d && newNpc.d.id === id.toString())
                 {
                     // Remove in this fashion (instead of just calling .delete()
                     // because we don't want to unset collisions when hiding

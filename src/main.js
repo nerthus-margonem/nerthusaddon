@@ -34,14 +34,27 @@ if (INTERFACE === 'NI')
     if (Engine.map.d.id) start()
     else
     {
-        const mapUpdate = Engine.map.onUpdate.file
-        Engine.map.onUpdate.file = function (new_v, old_v)
+        // We need to make sure map image is loaded, as most of
+        // the Engine's functions won't work correctly without it.
+        // Since we can't influence weirdly linked dependencies in
+        // the game's code, we are going to use this hack, as
+        // we know for certain hero.updateCollider is called once
+        // after map update
+        const heroUpdateCollider = Engine.hero.updateCollider
+        Engine.hero.updateCollider = function ()
         {
-            mapUpdate.call(Engine.map.onUpdate, new_v, old_v)
-            // Immediately replace the function back, because we want to use it only once
-            Engine.map.onUpdate.file = mapUpdate
+            heroUpdateCollider.call(Engine.hero)
+            // Make sure map image has been loaded, as something else can
+            // execute this function otherwise.
+            if (Engine.map.imgLoaded)
+            {
+                // We only want to start once, so after starting
+                // this hook is no longer needed. That's why we
+                // change it back to default.
+                Engine.hero.updateCollider = heroUpdateCollider
 
-            start()
+                start()
+            }
         }
     }
 }

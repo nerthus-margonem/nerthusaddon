@@ -10,10 +10,6 @@ import {initMapsManager} from './maps/maps-manager'
 
 function start()
 {
-    console.log(AVAILABLE_MAP_FILES)
-    console.log('File prafix: ' + FILE_PREFIX)
-    console.log("map loaded SI?")
-    console.log(window.map ? window.map.loaded : '')
     //$('<link rel="stylesheet" href="' + nerthus.addon.fileUrl("css/style.css") + '">').appendTo('head')
     addBasicStyles()
     loadSettings()

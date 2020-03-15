@@ -1,6 +1,6 @@
 import {loadOnEveryMap} from '../game-integration/loaders'
 import {getCurrentSeason} from '../time'
-import * as basicMapsUrls from '../res/map-config'
+import {default as basicMapsUrls} from '../res/map-config'
 import {resolveNerthusUrl} from '../utility-functions'
 
 export const MAP_PRIORITY = {CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0}

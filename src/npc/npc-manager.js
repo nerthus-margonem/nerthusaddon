@@ -3,9 +3,10 @@ import {loadOnEveryMap, onDefined} from '../game-integration/loaders'
 import {hideGameNpc, isNpcHidable} from './npc-actions/hide'
 import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
+import {initNpcDialog} from './npc-dialog'
 
 // unified id for nerthus npcs
-function coordsToId(x, y)
+export function coordsToId(x, y)
 {
     return 50000000 + (x * 1000) + y
 }
@@ -97,6 +98,7 @@ function loadNpcs()
 
 export function initNpcManager()
 {
+    initNpcDialog()
     loadOnEveryMap(function ()
     {
         resetNpcs()

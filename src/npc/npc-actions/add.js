@@ -1,4 +1,5 @@
 import {removeCollision, setCollision} from './collision'
+import {addDialogToDialogList, openDialog} from '../npc-dialog'
 
 // nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
 // {
@@ -75,16 +76,16 @@ import {removeCollision, setCollision} from './collision'
 //     })
 // }
 
-function clickWrapper(npc, click_handler)
+function clickWrapper(npc, clickHandler)
 {
-    if (!click_handler)
+    if (!clickHandler)
         return
     return function (event)
     {
         if (Math.abs(npc.x - hero.x) > 1 || Math.abs(npc.y - hero.y) > 1)
             hero.mClick(event)
         else
-            click_handler()
+            clickHandler()
     }
 }
 
@@ -100,7 +101,8 @@ export function addNpc(npc)
         Engine.npcs.updateData(data)
         CFG.npath = npath
 
-        //this.dialog.list[npc.id] = npc.dialog TODO
+        if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog)
+
         if (npc.collision)
             setCollision(npc.x, npc.y)
         else
@@ -109,9 +111,6 @@ export function addNpc(npc)
     }
     else
     {
-        const click = null
-        //const click = npc.dialog ? this.dialog.open.bind(this.dialog, npc, 0) : null //TODO
-
         const $npc = $('<div id="npc' + npc.id + '" class="npc nerthus-npc"></div>')
             .css({
                 backgroundImage: 'url(' + npc.icon + ')',
@@ -146,11 +145,15 @@ export function addNpc(npc)
                 ctip: 't_npc',
                 tip: npc.nick
             })
-        if (click) $npc.click(clickWrapper(npc, click))
+
+        if (npc.dialog)
+        {
+            addDialogToDialogList(npc.id, npc.nick, npc.dialog)
+            $npc.click(openDialog.bind(null, npc.id, 0))
+        }
+
         if (npc.collision)
             setCollision(npc.x, npc.y)
         return $npc
     }
-
-
 }

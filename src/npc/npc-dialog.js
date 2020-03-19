@@ -1,90 +1,84 @@
-const LINE = 'icon LINE_OPTION'
-const EXIT = 'icon LINE_EXIT'
+import {coordsToId} from './npc-manager'
 
-function parse_message(npc, index)
+const LINE_ICON = 'icon LINE_OPTION line_option' // TODO NI/SI?
+const EXIT_ICON = 'icon LINE_EXIT line_exit'
+
+let dialogList = {}
+
+export function addDialogToDialogList(npcId, npcNick, dialog)
 {
-    return parse_placeholders(npc.dialog[index][0])
+    dialogList[npcId] = {
+        npcNick: npcNick,
+        dialog: dialog
+    }
 }
 
-function parse_replies(npc, index)
+export function openDialog(npcId, index)
 {
-    const replies = []
+    const npcNick = dialogList[npcId].npcNick
+    const dialog = dialogList[npcId].dialog
+    const npcMessage = parsePlaceholders(dialog[index][0])
+    const playerReplies = parseReplies(dialog[index], npcId)
+
+    displayDialog(npcId, npcNick, npcMessage, playerReplies)
+
     if (INTERFACE === 'NI')
     {
-        for (let i = 1; i < dialog.length; i++)
-            replies.push(parse_reply(dialog[i], id))
-        return replies
+        Engine.lock.add('nerthus-dialog')
     }
     else
     {
-        for (let i = 1; i < npc.dialog[index].length; i++)
-            replies.push(parse_reply(npc.dialog[index][i], npc))
-        return replies
+        g.lock.add('nerthus-dialog')
+
+        map.resizeView(512, 192)
     }
 }
 
-
-function parse_reply(row_reply, npc)
+function parseReplies(dialogInstance, npcId)
 {
-    let reply = this.parse_row_reply(row_reply)
-    reply.text = this.parse_placeholders(reply.text)
+    const replies = []
+
+    for (let i = 1; i < dialogInstance.length; i++)
+        replies.push(parseReply(dialogInstance[i], npcId))
+    return replies
+
+}
+
+
+function parseReply(replyRow, npcId)
+{
+    const reply = parseReplyRow(replyRow)
     if (reply.to === 'END')
     {
-        reply.click = function ()
-        {
-            nerthus.npc.dialog.close()
-            nerthus.npc.dialog.removeScroll()
-        }
-        reply.icon = this.decorator.classes.EXIT
+        reply.click = closeDialog
+        reply.icon = EXIT_ICON
     }
     else if (reply.to)
     {
         reply.click = function ()
         {
-            nerthus.npc.dialog.removeScroll()
-            nerthus.npc.dialog.open(npc, reply.to)
-            nerthus.npc.dialog.addScroll()
+            removeScroll()
+            openDialog(npcId, reply.to)
+            addScroll()
             $('#dlgin').scrollTop(0)
         }
-        reply.icon = this.decorator.classes.LINE
+        reply.icon = LINE_ICON
     }
     return reply
 }
 
-nerthus.npc.dialog.parse_row_reply = function (reply)
+function parseReplyRow(reply)
 {
-    reply = reply.split('->')
-    return {text: reply[0], to: reply[1]}
+    const replyArr = reply.split('->')
+    return {text: parsePlaceholders(replyArr[0]), to: replyArr[1]}
 }
 
-function parse_placeholders(text)
+function parsePlaceholders(text)
 {
     if (INTERFACE === 'NI')
         return text.replace('#NAME', Engine.hero.d.nick)
     else
         return text.replace('#NAME', hero.nick)
-}
-
-
-function openDialog(npc, index)
-{
-    if (INTERFACE === 'NI')
-    {
-        const dialog = this.list[id][index]
-        const message = this.parse_placeholders(dialog[0])
-        const replies = this.parse_replies_ni(dialog, id)
-        this.display_ni(message, replies, id)
-        Engine.lock.add('nerthus-dialog')
-    }
-    else
-    {
-        const message = this.parse_message(npc, index)
-        const replies = this.parse_replies(npc, index)
-        this.display(message, replies, npc)
-        g.lock.add('nerthus-dialog')
-
-        map.resizeView(512, 192)
-    }
 }
 
 function addScroll()
@@ -112,11 +106,43 @@ function removeScroll()
     removeScrollbar('dlgin', 'talkscroll')
 }
 
-function displayDialog(message, replies, npc)
+function parseInnerDialog(npcMessage, playerReplies)
+{
+    let innerDial = '<p class="npc-message">' + npcMessage + '</p><ul class="answers">'
+    const repliesLen = playerReplies.length
+    for (let i = 0; i < repliesLen; i++)
+    {
+        let iconClass = LINE_ICON
+        if (playerReplies[i].to === 'END') iconClass = EXIT_ICON
+
+        innerDial +=
+            '<li class="answer dialogue-window-answer ' + iconClass + '">' +
+            '<div class="' + iconClass + '"></div>' +
+            '<span class="answer-text">' + (i + 1) + '. ' + playerReplies[i].text + '</span>' +
+            '</li>'
+    }
+    return innerDial
+}
+
+
+function addEventToAnswer(answer, $dialWin, replies, index, id)
+{
+    if (replies[index])
+        $(answer).click(function ()
+        {
+            if (replies[index].to === 'END')
+                closeDialog()
+            else
+                openDialog(id, replies[index].to)
+            $('.scroll-wrapper', $dialWin).trigger('update')
+        })
+}
+
+function displayDialog(npcId, npcNick, npcMessage, playerReplies)//(message, replies, npc)
 {
     if (INTERFACE === 'NI')
     {
-        const innerDial = this.parseInnerDialog_ni(message, replies)
+        const innerDial = parseInnerDialog(npcMessage, playerReplies)
 
         let $dialWin = $('.dialogue-window')
         if ($dialWin.length === 0)
@@ -143,7 +169,7 @@ function displayDialog(message, replies, npc)
                 '<div class="track">' +
                 '<div class="handle ui-draggable ui-draggable-handle" style="top: 0;"></div>' +
                 '</div></div></div></div>' +
-                '<header><div class="h_content">' + nerthus.npc.list[id].name + '</div></header>' +
+                '<header><div class="h_content">' + npcNick + '</div></header>' +
                 '</div>'
             $dialWin = $(dial).appendTo('.bottom.positioner')
             $('.scroll-wrapper', $dialWin).addScrollBar({track: true})
@@ -159,62 +185,17 @@ function displayDialog(message, replies, npc)
             $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).empty().append(innerDial)
         }
 
-        $('.content .inner.scroll-wrapper .scroll-pane .answers .answer', $dialWin).each(function (index)
-        {
-            nerthus.npc.dialog.addEventToAnswer(this, $dialWin, replies, index, id)
-        })
-
+        $('.content .inner.scroll-wrapper .scroll-pane .answers .answer', $dialWin)
+            .each(function (index) {addEventToAnswer(this, $dialWin, playerReplies, index, npcId)})
     }
     else
     {
-        $('#dlgin .message').empty().append(composeMessage(message, npc))
+        $('#dlgin .message').empty().append('<h4>' + npcNick + '</h4>' + npcMessage)
         const $replies = $('#dlgin .replies').empty()
-        $replies.append.apply($replies, replies.map(composeReply))
+        $replies.append.apply($replies, playerReplies.map(composeReply))
         addScroll()
         $('#dialog').show()
     }
-}
-
-function composeMessage(message, npc)
-{
-    return '<h4>' + npc.nick + '</h4>' + message
-}
-
-nerthus.npc.dialog.parseInnerDialog_ni = function (message, replies)
-{
-    let innerDial = '<p class="npc-message">' + message + '</p><ul class="answers">'
-    let repliesLen = replies.length
-    for (let i = 0; i < repliesLen; i++)
-    {
-        let line_option = 'line_option'
-
-        if (replies[i].to === 'END')
-            line_option = 'line_exit'
-        innerDial +=
-            '<li class="answer dialogue-window-answer ' + line_option + '">' +
-            '<div class="icon ' + line_option + '"></div>' +
-            '<span class="answer-text">' + (i + 1) + '. ' + replies[i].text + '</span>' +
-            '</li>'
-    }
-    return innerDial
-}
-
-nerthus.npc.dialog.addEventToAnswer = function (answer, $dialWin, replies, index, id)
-{
-    if (replies[index])
-        $(answer).click(function ()
-        {
-            if (replies[index].to === 'END')
-                nerthus.npc.dialog.close_ni()
-            else
-                nerthus.npc.dialog.open_ni(id, replies[index].to)
-            $('.scroll-wrapper', $dialWin).trigger('update')
-        })
-}
-
-nerthus.npc.dialog.display_ni = function (message, replies, id)
-{
-
 }
 
 function closeDialog()
@@ -229,38 +210,44 @@ function closeDialog()
         $('#dialog').hide()
         g.lock.remove('nerthus-dialog')
         map.resizeView()
+        removeScroll()
     }
-}
-
-function composeIcon(type)
-{
-    return $('<div>').addClass(type)
 }
 
 function composeReply(reply)
 {
-    const icon = this.icon(reply.icon)
     return $('<li>')
         .addClass(reply.icon)
-        .append(icon)
+        .append('<div class="' + reply.icon + '">')
         .append(reply.text)
         .click(reply.click)
 }
 
-
-nerthus.npc.dialog.check = function (command)
+function checkDialog(command)
 {
-    let match = command.match(/^talk.*id=(\d+)/)
+    const match = command.match(/^talk.*id=(\d+)/)
     if (match)
     {
-        let id = match[1]
-        if (id >= 50000000)
+        const id = match[1]
+        if (id >= coordsToId(0, 0) &&
+            dialogList[id] !== undefined)
         {
-            if (this.list[id] !== undefined)
-            {
-                return id
-            }
+            return id
         }
     }
     return false
+}
+
+export function initNpcDialog()
+{
+    if (INTERFACE === 'NI')
+    {
+        const __g = _g
+        window._g = function (task, callback, payload)
+        {
+            const id = checkDialog(task)
+            if (id) openDialog(id, 0)
+            __g(task, callback, payload)
+        }
+    }
 }

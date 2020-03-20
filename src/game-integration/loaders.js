@@ -11,7 +11,7 @@ export function loadOnEveryMap(fun, args)
     loadQueue.push([fun, args])
 }
 
-function loadNewMapQueue(mapId)
+function loadNewMapQueue()
 {
     for (const i in loadQueue)
     {
@@ -19,7 +19,7 @@ function loadNewMapQueue(mapId)
     }
 }
 
-export function initiateGameIntegrationLoaders()
+export function initiateGameIntegrationLoaders() //TODO bug: sometimes long loading new map is loaded faster than old
 {
     if (INTERFACE === 'NI')
     {
@@ -36,7 +36,8 @@ export function initiateGameIntegrationLoaders()
     else
     {
         // Observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
-        let previousMapId = window.map.id
+        let previousMapId = -1
+
         window.map.__loaded = window.map.loaded
         Object.defineProperty(window.map, 'loaded', {
             set(val)

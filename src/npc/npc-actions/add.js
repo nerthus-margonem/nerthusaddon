@@ -76,10 +76,8 @@ import {addDialogToDialogList, openDialog} from '../npc-dialog'
 //     })
 // }
 
-function clickWrapper(npc, clickHandler)
+function createClickWrapper(npc, clickHandler)
 {
-    if (!clickHandler)
-        return
     return function (event)
     {
         if (Math.abs(npc.x - hero.x) > 1 || Math.abs(npc.y - hero.y) > 1)
@@ -149,7 +147,7 @@ export function addNpc(npc)
         if (npc.dialog)
         {
             addDialogToDialogList(npc.id, npc.nick, npc.dialog)
-            $npc.click(openDialog.bind(null, npc.id, 0))
+            $npc.click(createClickWrapper(npc, openDialog.bind(null, npc.id, 0)))
         }
 
         if (npc.collision)

@@ -83,38 +83,7 @@ nerthus.lvlNames = [
 ]
 
 //vips {player_id : title}
-nerthus.vips = {
-    16    : 'Teźa',
-    50    : 'Mulher Má',
-    319   : 'Niecny drow',
-    6749  : 'Przezacna',
-    7422  : 'Mistrz pióra',
-    9565  : 'Donna Amadonna',
-    6901  : 'Zło wcielone',
-    2720  : 'Fochnisia',
-    3077  : 'Siewca Wiatru',
-    10430 : 'Wschodzące Słońce',
-    10473 : 'Wędrowny Rysownik',
-    2230  : 'Mhroczniś',
-    513   : 'Zbieracz gumijagód',
-    4146  : 'Gumitruskawka',
-    10406 : 'Latorośle drowa',
-    12002 : 'Głodny hobbit',
-    12932 : 'Latorośle drowa',
-    10372 : 'Boski Wiatr',
-    10880 : 'Boski Wiatr',
-    13931 : 'Wilcza Zamieć',
-    9226  : 'Zadumany',
-    1558  : 'Zielarka',
-    15098 : 'Siostra Płomieni',
-    13438 : 'Zakuty łeb',
-    16089 : 'Chochlica-ponczlica',
-    16372 : 'Chluba Lolth',
-    10523 : 'Lux Aeterna',
-    14615 : 'Iluzjonista',
-    10222 : 'Władca Ciemności',
-    15746 : 'Miłośniczka kocimiętki'
-}
+nerthus.vips =
 
 //Info jakie się wyświetla po załadowaniu gry - to czerwone, jeżeli jest '' to nie wyświetla się nic
 nerthus.chatInfoStr = ''

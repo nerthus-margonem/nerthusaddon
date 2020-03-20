@@ -7,12 +7,15 @@ import {initiateGameIntegrationLoaders} from './game-integration/loaders'
 import {initNpcManager} from './npc/npc-manager'
 import {initNightManager} from './night/night-manager'
 import {initMapsManager} from './maps/maps-manager'
+import {initTips} from './game-integration/tips'
 
 function start()
 {
     //$('<link rel="stylesheet" href="' + nerthus.addon.fileUrl("css/style.css") + '">').appendTo('head')
     addBasicStyles()
     loadSettings()
+
+    initTips()
 
     initiateGameIntegrationLoaders()
 

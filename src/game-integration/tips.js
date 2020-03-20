@@ -1,5 +1,9 @@
+import {default as lvlNames} from '../res/lvl-names'
+import {default as vips} from '../res/vips'
+import {checkPermissionLvl, PERMISSION_LVL} from '../permissions'
+
 const RANK_NAMES = ['Kreator', 'Uber Miszcz Gry', 'Miszcz Gry', 'Strażnik Słowa', 'Tkacz Słów', 'Trubadur', 'Piewca Słowa', 'Radny']
-const RANKS = {NONE: -1, ADM: 0, SMG: 1, MG: 2, MC: 3, SMC: 4, BARD: 5, BARD_MC: 6, RADNY: 7}
+const RANKS = {NONE: -1, ADM: 0, SMG: 1, MG: 2, MC: 3, SMC: 4, NARRATOR: 5, NARRATOR_MC: 6, COUNCILOR: 7}
 const RIGHTS = {ADM: 1, MG: 2, SMG: 16}
 
 function rights2rank(rights)
@@ -11,143 +15,110 @@ function rights2rank(rights)
     return RANKS.NONE
 }
 
-function rank(player)
+function getRankNameOf(player)
 {
     let rank = RANKS.NONE
-    if (player.RIGHTS)
-        rank = rights2rank(player.RIGHTS)
-    if (nerthus.isNarr(player.nick))
-    {
-        if (rank === RANKS.MC)
-            rank = RANKS.BARD_MC
-        else
-            rank = RANKS.BARD
-    }
-    if (nerthus.isRad(player.nick))
-        rank = RANKS.RADNY
+    if (player.rights) rank = rights2rank(player.rights)
 
+    switch (checkPermissionLvl(player))
+    {
+        case PERMISSION_LVL.NARRATOR:
+            if (rank === RANKS.MC)
+                rank = RANKS.NARRATOR_MC
+            else
+                rank = RANKS.NARRATOR
+            break
+        case PERMISSION_LVL.COUNCILOR:
+            rank = RANKS.COUNCILOR
+            break
+    }
     return rank === RANKS.NONE ? '' : RANK_NAMES[rank]
 }
 
-function title(player)
+function getTitle(player)
 {
-    //sprawdza czy vip, jeśli tak, to daje inny opis
-    var title = nerthus.vips[parseInt(player.id)]
+    const title = vips[parseInt(player.id)]
     if (title)
         return title
     if (player.lvl)
-        return nerthus.lvlNames[Math.min(nerthus.lvlNames.length - 1, (parseInt(player.lvl) - 1) >> 3)]
+        return lvlNames[Math.min(lvlNames.length - 1, (parseInt(player.lvl) - 1) >> 3)]
     return ''
 }
 
-function other(other)
+function createPlayerTip(player)
 {
-    var tip = '<b>' + other.nick + '</b>'
-    tip += other.clan ? '[' + other.clan.name + ']<br>' : ''
-    tip += this.title(other)
-    var rank = this.rank(other)
-    tip += rank ? '<i>' + rank + '</i>' : ''
-    tip += (other.attr & 1) ? '<img src=img/mute.gif>' : ''
+    let tip = '<div style="text-align: center"><b>' + player.nick + '</b>'
+    tip += player.ble ? '<b class="bless">' + player.ble + '</b>' : ''
+    tip += player.clan ? '[' + player.clan.name + ']<br>' : ''
+    tip += '<div style="text-align: center;">' + getTitle(player) + '</div>'
+    const rank = getRankNameOf(player)
+    tip += rank ? '<i style="color: #ff1a00">' + rank + '</i>' : ''
+    tip += (player.attr & 1) ? '<img src=img/mute.gif>' : ''
+    tip += '</div>'
     return tip
 }
 
-function other_ni()
+function parseTip(player, isHero)
 {
-    nerthus.othersDrawableList = Engine.others.getDrawableList
-    Engine.others.getDrawableList = function ()
+    if (INTERFACE === 'NI')
     {
-        let list = nerthus.othersDrawableList()
-        for (const i in list)
-        {
-            if (list[i].isPlayer)
-                list[i].tip[0] = parseNiTip(list[i], false)
-        }
-        return list
+        let tip = ''
+        const rank = getRankNameOf(player)
+        if (rank)
+            tip += '<div class="rank">' + rank + '</div>'
+
+        if (player.d.guest)
+            tip += '<div class="rank">' + _t('deputy') + '</div>'
+
+        const nick = '<div class="nick">' + player.d.nick + '</div>'
+        const prof = player.d.prof ? '<div class="profs-icon ' + player.d.prof + '"></div>' : ''
+        tip += '<div class="info-wrapper">' + nick + prof + '</div>'
+
+        if (parseInt(player.wanted) === 1)
+            tip += '<div class=wanted></div>'
+        if (player.d.clan)
+            tip += '<div class="clan-in-tip">[' + player.d.clan.name + ']</div>'
+
+        const title = getTitle(player.d)
+        tip += '<div class="clan-in-tip">' + title + '</div>'
+
+        let buffs = ''
+        const line = player.d.clan ? '<div class="line"></div>' : ''
+        const wanted = player.d.wanted ? '<div class="wanted-i"></div>' : ''
+        const bless = player.d.ble ? '<div class="bless"></div>' : ''
+        const mute = player.d.attr & 1 ? '<div class="mute"></div>' : ''
+        const kB = player.d.vip === '1' ? '<div class="k-b"></div>' : ''
+        const warn = player.d.attr & 2 ? '<div class="warn"></div>' : ''
+
+        if (bless !== '' || mute !== '' || kB !== '' || warn !== '' || wanted !== '')
+            buffs = '<div class="buffs-wrapper">' + line + wanted + bless + mute + kB + warn + '</div>'
+        tip += buffs
+
+        return tip
     }
-    return Engine.others.getDrawableList
 }
 
-function hero(hero)
+
+function getNpcTypeName(worldType)
 {
-    var title = this.title(hero)
-    var rank = this.rank(hero)
-    var tip = '<b>' + hero.nick + '</b>'
-    tip += hero.clan ? '[' + hero.clan.name + ']' : ''
-    tip += title ? 'title' : ''
-    tip += rank ? '<i><font color=\'red\'>' + rank + '</font></i>' : ''
-    return tip
-}
-
-hero_ni = function ()
-{
-    nerthus.heroCreateStrTip = Engine.hero.createStrTip
-    Engine.hero.createStrTip = function ()
-    {
-        return parseNiTip(Engine.hero, true)
-    }
-    Engine.hero.tip[0] = Engine.hero.createStrTip()
-    return Engine.hero.createStrTip
-}
-
-parseNiTip = function (player, isHero)
-{
-    let tip = ''
-    if (isHero)
-        tip += '<div class="rank">' + _t('my_character', null, 'map') + '</div>'
-    const rank = this.rank_ni(player)
-    if (rank)
-        tip += '<div class="rank">' + rank + '</div>'
-
-    if (player.d.guest)
-        tip += '<div class="rank">' + _t('deputy') + '</div>'
-
-    const nick = '<div class="nick">' + player.d.nick + '</div>'
-    const prof = player.d.prof ? '<div class="profs-icon ' + player.d.prof + '"></div>' : ''
-    tip += '<div class="info-wrapper">' + nick + prof + '</div>'
-
-    if (parseInt(player.wanted) === 1)
-        tip += '<div class=wanted></div>'
-    if (player.d.clan)
-        tip += '<div class="clan-in-tip">[' + player.d.clan.name + ']</div>'
-
-    const title = this.title(player.d)
-    tip += '<div class="clan-in-tip">' + title + '</div>'
-
-    let buffs = ''
-    const line = player.d.clan ? '<div class="line"></div>' : ''
-    const wanted = player.d.wanted ? '<div class="wanted-i"></div>' : ''
-    const bless = player.d.ble ? '<div class="bless"></div>' : ''
-    const mute = player.d.attr & 1 ? '<div class="mute"></div>' : ''
-    const kB = player.d.vip === '1' ? '<div class="k-b"></div>' : ''
-    const warn = player.d.attr & 2 ? '<div class="warn"></div>' : ''
-
-    if (bless !== '' || mute !== '' || kB !== '' || warn !== '' || wanted !== '')
-        buffs = '<div class="buffs-wrapper">' + line + wanted + bless + mute + kB + warn + '</div>'
-    tip += buffs
-
-    return tip
-}
-
-npcType = function (npc)
-{
-    if (npc.wt > 99)
+    if (worldType > 99)
         return 'tytan'
-    if (npc.wt > 79)
+    if (worldType > 79)
         return 'heros'
-    if (npc.wt > 29)
+    if (worldType > 29)
         return 'elita III'
-    if (npc.wt > 19)
+    if (worldType > 19)
         return 'elita II'
-    if (npc.wt > 9)
+    if (worldType > 9)
         return 'elita'
     return ''
 }
 
-npcDanger = function (npc)
+function getNpcDanger(npc)
 {
-    if (npc.type == 2 || npc.type == 3)
+    if (npc.type === 2 || npc.type === 3)
     {
-        var lvlDiff = npc.lvl - hero.lvl
+        const lvlDiff = npc.lvl - hero.lvl
         if (lvlDiff < -13)
             return {style: 'style="color:#888"', str: 'Niewarty uwagi'}
         if (lvlDiff > 19)
@@ -159,52 +130,51 @@ npcDanger = function (npc)
     return {style: '', str: ''}
 }
 
-npc = function (npc)
+function createNpcTip(npc)
 {
-    var tip = '<b>' + npc.nick + '</b>'
-    if (npc.type == 4)
+    let tip = '<b>' + npc.nick + '</b>'
+    if (npc.type === 4)
         return tip
 
-    var type = this.npcType(npc)
+    const type = getNpcTypeName(npc.wt)
     tip += type ? '<i>' + type + '</i>' : ''
 
     if (npc.type <= 0)
         return tip
 
-    var danger = this.npcDanger(npc)
-    var grp = npc.grp ? ', w grupie' : ''
+    const danger = getNpcDanger(npc)
+    const grp = npc.grp ? ', w grupie' : ''
     tip += '<span ' + danger.style + '>' + danger.str + grp + '</span>'
     return tip
 }
 
-start = function ()
+export function initTips()
 {
-    nerthus.defer(function ()
+    if (INTERFACE === 'NI')
     {
-        hero.RIGHTS = hero.uprawnienia
-        $('#hero').attr('tip', this.hero.bind(this, hero))
-    }.bind(this))
+        const othersDrawableList = Engine.others.getDrawableList
+        Engine.others.getDrawableList = function ()
+        {
+            const list = othersDrawableList()
+            for (const i in list)
+            {
+                if (list[i].isPlayer)
+                    list[i].tip[0] = parseTip(list[i], false)
+            }
+            return list
+        }
 
-    g.tips.other = this.other.bind(this)
-    g.tips.npc = this.npc.bind(this)
-}
-
-start_ni = function ()
-{
-    nerthus.loadSettings()
-    if (typeof Engine.hero.tip === 'undefined')
-        setTimeout(this.start_ni.bind(this), 500)
+        Engine.hero.createStrTip = function ()
+        {
+            return parseTip(Engine.hero, true)
+        }
+        Engine.hero.tip[0] = Engine.hero.createStrTip()
+    }
     else
     {
-        this.other_ni()
-        this.hero_ni()
-        API.addCallbackToEvent('clear_map_npcs',
-            function ()
-            {
-                setTimeout(function ()
-                {
-                    nerthus.loadNewMapQueue()
-                }, 500)
-            })
+        $('#hero').attr('tip', createPlayerTip(hero))
+
+        g.tips.other = createPlayerTip
+        g.tips.npc = createNpcTip
     }
 }

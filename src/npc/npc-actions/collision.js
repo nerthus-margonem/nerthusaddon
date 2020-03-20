@@ -1,4 +1,4 @@
-export function setCollision(x, y) //todo make it to x,y from npc
+export function setCollision(x, y)
 {
     if (INTERFACE === 'NI')
         Engine.map.col.set(x, y, 2)

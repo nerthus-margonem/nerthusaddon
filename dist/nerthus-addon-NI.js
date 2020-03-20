@@ -238,7 +238,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setCollision\", function() { return setCollision; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"removeCollision\", function() { return removeCollision; });\nfunction setCollision(x, y) //todo make it to x,y from npc\n{\n    if (true)\n        Engine.map.col.set(x, y, 2)\n    else\n        {}\n}\n\nfunction removeCollision(x, y)\n{\n    if (true)\n        Engine.map.col.unset(x, y, 2)\n    else\n        {}\n}\n\n\n//# sourceURL=webpack:///./src/npc/npc-actions/collision.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setCollision\", function() { return setCollision; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"removeCollision\", function() { return removeCollision; });\nfunction setCollision(x, y)\n{\n    if (true)\n        Engine.map.col.set(x, y, 2)\n    else\n        {}\n}\n\nfunction removeCollision(x, y)\n{\n    if (true)\n        Engine.map.col.unset(x, y, 2)\n    else\n        {}\n}\n\n\n//# sourceURL=webpack:///./src/npc/npc-actions/collision.js?");
 
 /***/ }),
 

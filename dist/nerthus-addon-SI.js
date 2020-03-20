@@ -238,7 +238,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setCollision\", function() { return setCollision; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"removeCollision\", function() { return removeCollision; });\nfunction setCollision(x, y) //todo make it to x,y from npc\n{\n    if (false)\n        {}\n    else\n        g.npccol[x + 256 * y] = true\n}\n\nfunction removeCollision(x, y)\n{\n    if (false)\n        {}\n    else\n        delete g.npccol[x + 256 * y]\n}\n\n\n//# sourceURL=webpack:///./src/npc/npc-actions/collision.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"setCollision\", function() { return setCollision; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"removeCollision\", function() { return removeCollision; });\nfunction setCollision(x, y)\n{\n    if (false)\n        {}\n    else\n        g.npccol[x + 256 * y] = true\n}\n\nfunction removeCollision(x, y)\n{\n    if (false)\n        {}\n    else\n        delete g.npccol[x + 256 * y]\n}\n\n\n//# sourceURL=webpack:///./src/npc/npc-actions/collision.js?");
 
 /***/ }),
 

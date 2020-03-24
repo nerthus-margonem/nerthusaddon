@@ -217,13 +217,12 @@ function create_button_ni()
 {
     if (Engine.interfaceStart && Object.keys(Engine.interface.getDefaultWidgetSet()).includes('nerthus'))
     {
+        let nerthusPos = defaultPosition
+
         const serverStoragePos = Engine.serverStorage.get(Engine.interface.getPathToHotWidgetVersion())
-        if (serverStoragePos)
-        {
-            const nerthusPos = serverStoragePos.nerthus ? serverStoragePos.nerthus : defaultPosition
-            Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
-        }
-        else setTimeout(create_button_ni.bind(this), 500)
+        if (serverStoragePos && serverStoragePos.nerthus) nerthusPos = serverStoragePos.nerthus
+
+        Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
     }
     else setTimeout(create_button_ni.bind(this), 500)
 }

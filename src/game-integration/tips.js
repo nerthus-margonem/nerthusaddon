@@ -20,7 +20,7 @@ function getRankNameOf(player)
     let rank = RANKS.NONE
     if (player.rights) rank = rights2rank(player.rights)
 
-    switch (checkPermissionLvl(player))
+    switch (checkPermissionLvl(player.nick))
     {
         case PERMISSION_LVL.NARRATOR:
             if (rank === RANKS.MC)
@@ -52,7 +52,7 @@ function createPlayerTip(player)
     tip += player.clan ? '[' + player.clan.name + ']<br>' : ''
     tip += '<div style="text-align: center;">' + getTitle(player) + '</div>'
     const rank = getRankNameOf(player)
-    tip += rank ? '<i style="color: #ff1a00">' + rank + '</i>' : ''
+    tip += rank ? '<i style="color: #f90">' + rank + '</i>' : ''
     tip += (player.attr & 1) ? '<img src=img/mute.gif>' : ''
     tip += '</div>'
     return tip

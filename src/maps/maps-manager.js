@@ -60,7 +60,7 @@ function applyMapChange(mapId)
     else if (basicMapUrl)
         mapImage.src = resolveNerthusUrl(basicMapUrl)
     else
-        mapImage.src = ''
+        return
 
     currentTopMap = mapImage
 

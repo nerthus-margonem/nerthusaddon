@@ -1,4 +1,5 @@
 import {checkPermissionLvl} from '../permissions'
+import {initChatDrunkenness} from './chat-drunkenness'
 
 const commandsMap = {}
 const commandsPublicMap = {}
@@ -113,6 +114,7 @@ export function initChatMgr()
     {
         g.chat.parsers.push(run)
     }
+    initChatDrunkenness()
 }
 
 export function registerChatCommand(name, func, isPublic)

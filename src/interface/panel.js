@@ -271,8 +271,6 @@ export function initPanel()
     }
     else
     {
-        console.log("HMM")
-        console.log(document.getElementById('interface'))
         $(constructElement.icon())
             .hover(preloadPanel.bind(this))
             .click(togglePanel.bind(this))

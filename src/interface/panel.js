@@ -224,7 +224,7 @@ function create_button_ni()
 
         Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
     }
-    else setTimeout(create_button_ni.bind(this), 500)
+    else setTimeout(create_button_ni, 500)
 }
 
 export function initPanel()

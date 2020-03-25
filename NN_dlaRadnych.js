@@ -141,7 +141,7 @@ nerthus.mapsArr =
 
         // Torneg
         [4, 2, '/obrazki/miasta/zima-torneg.png'],
-        // [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
+        [0, 2, nerthus.addon.fileUrl("maps/Torneg.png")],
 
         // Werbin
         [4, 9, '/obrazki/miasta/zima-werbin.png'],

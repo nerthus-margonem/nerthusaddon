@@ -1,25 +1,201 @@
 [
-{
-	"name": "Duch",
-	"x": "53",
-	"y": "17",
-	"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost6.gif",
-	"date": "30.10-4.11"
-},
-{
-	"name": "Duch",
-	"x": "63",
-	"y": "53",
-	"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost5.gif",
-	"date": "30.10-4.11"
-},
-{
-	"name": "Duch",
-	"x": "53",
-	"y": "75",
-	"url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
-	"date": "30.10-4.11"
-}
+  {
+    "name": "Duch",
+    "x": "53",
+    "y": "17",
+    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost6.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "name": "Duch",
+    "x": "63",
+    "y": "53",
+    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost5.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "name": "Duch",
+    "x": "53",
+    "y": "75",
+    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "type": "delete",
+    "id": 162316,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Część szklarni",
+    "tip": "",
+    "x": "35",
+    "y": "17",
+    "url": "#/img/npc/torneg-glasshouse.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "20",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Krzak góra",
+    "tip": "",
+    "x": "4",
+    "y": "20",
+    "url": "#/img/npc/krzak-gora.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "44",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "44",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 162312,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Drzewo góra",
+    "tip": "",
+    "x": "37",
+    "y": "63",
+    "url": "/obrazki/npc/map/drzew1-gora3.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Choinka góra",
+    "tip": "",
+    "x": "54",
+    "y": "61",
+    "url": "/obrazki/npc/map/choinka-up.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "75",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Palisada południe",
+    "tip": "",
+    "x": "85",
+    "y": "64",
+    "url": "#/img/npc/torneg-palisade-south.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Palisada wschód",
+    "tip": "",
+    "x": "93",
+    "y": "17",
+    "url": "#/img/npc/torneg-palisade-east.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "94",
+    "y": "15",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "95",
+    "y": "55",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "95",
+    "y": "54",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "95",
+    "y": "48",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "94",
+    "y": "48",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Wieżyczka góra",
+    "tip": "",
+    "x": "51",
+    "y": "62",
+    "url": "#/img/npc/watchtower-top.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Wieżyczka dół",
+    "tip": "",
+    "x": "51",
+    "y": "64",
+    "url": "#/img/npc/watchtower-bot.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "50",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "51",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  }
 ]
-
-

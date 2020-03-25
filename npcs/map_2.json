@@ -163,5 +163,39 @@
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
+  },
+  {
+    "name": "Wieżyczka góra",
+    "tip": "",
+    "x": "51",
+    "y": "62",
+    "url": "#/img/npc/watchtower-top.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Wieżyczka dół",
+    "tip": "",
+    "x": "51",
+    "y": "64",
+    "url": "#/img/npc/watchtower-bot.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "50",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "51",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
   }
 ]

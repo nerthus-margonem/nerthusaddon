@@ -6,6 +6,7 @@
     "url": "/obrazki/npc/eve/kup_nocula.gif",
     "collision": true,
     "date": "01.04-01.04",
+    "time": "8-24",
     "dialog": {
       "0": [
         "Zawędrowałeś tak daleko... Wiem czego szukasz...",
@@ -76,6 +77,7 @@
     "url": "/obrazki/npc/tru/tortury4.gif",
     "collision": true,
     "date": "01.04-01.04",
+    "time": "8-24",
     "dialog": {
       "0": [
         "[ Kobieta przykuta do skały zdaje się być powiązana ze zjawą stojącą nieopodal. ]",

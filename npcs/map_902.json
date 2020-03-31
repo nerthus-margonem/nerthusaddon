@@ -5,6 +5,7 @@
     "y": "13",
     "url": "/obrazki/npc/hum/wlochacze_2b.gif",
     "collision": true,
+    "date": "01.04",
     "dialog": {
       "0": [
         "Okropieństwo, im dłużej tu jestem tym bardziej różowy się staje, jeszcze chwila a zmienię się w watę cukrową!",

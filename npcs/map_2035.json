@@ -5,6 +5,7 @@
     "y": "11",
     "url": "/obrazki/npc/eve/zatop-tytan1.gif",
     "collision": true,
+    "date": "01.04",
     "dialog": {
       "0": [
         "[ Niemalże całe pomieszczenie zamieszkuje przerośnięty morski stwór. Odór owoców morskich jest prawie nie do wytrzymania. ]",

@@ -5,6 +5,7 @@
     "y": "28",
     "url": "/obrazki/npc/eve/hero_piniata.gif",
     "collision": true,
+    "date": "01.04",
     "dialog": {
       "0": [
         "[ Kolorowa piniata stoi w płytkim dołku, próbując swoimi kartonowymi łapkami kopać ziemię. Nie wychodzi jej to najlepiej. Zaraz obok stoi jej właściciel, poganiając ją. ]",
@@ -18,6 +19,7 @@
     "y": "28",
     "url": "/obrazki/npc/eve/pom-grin01.gif",
     "collision": true,
+    "date": "01.04",
     "dialog": {
       "0": [
         "Szybciej! Ile kopać jeden dół, nie mieć przecież cały dzień!",

@@ -305,5 +305,281 @@
     "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 66,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 44102,
+    "newUrl": "/obrazki/npc/pot/bestia34.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 44106,
+    "newUrl": "/obrazki/npc/pot/bestia31.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 9860,
+    "newUrl": "/obrazki/npc/pot/bestia32.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 2,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 3,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 44110,
+    "newUrl": "/obrazki/npc/pot/bestia33.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 50615,
+    "newUrl": "/obrazki/npc/pot/bestia31.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 72129,
+    "newUrl": "/obrazki/npc/pot/bestia32.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 4,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 5,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 56085,
+    "newUrl": "/obrazki/npc/pot/bestia32.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 104482,
+    "newUrl": "/obrazki/npc/pot/bestia33.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 44104,
+    "newUrl": "/obrazki/npc/pot/bestia35.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 9666,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 9668,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 1,
+    "newUrl": "/obrazki/npc/pot/bestia32.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 53189,
+    "newUrl": "/obrazki/npc/pot/bestia30.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 44103,
+    "newUrl": "/obrazki/npc/pot/bestia33.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 80501,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 80499,
+    "newUrl": "/obrazki/npc/pot/bestia36.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 57189,
+    "newUrl": "/obrazki/npc/pot/bestia34.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Umbrael Regis",
+    "x": "61",
+    "y": "24",
+    "url": "https://i.imgur.com/58Y6Z7a.png",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Witaj. Pewnie zastanawiasz się co tu się dzieje. Otóż prowadzimy właśnie reset Nerthusa. Właśnie kończymy Ithan.",
+        "Zaraz, jak to reset? ->1",
+        "<span id='quest5'>Dość o resetach, Mam wszystkie części przycisku do resetu Nerthusa!</span><script>setTimeout(function(){if(localStorage['nerthus-quest']!=='5')getCookie('interface')==='ni'?$('#quest5').closest('li').remove():$('#quest5').parent().remove()},0)</script>  ->6",
+        "No nareszcie, ile można było czekać. ->END"
+      ],
+      "1": [
+        "Normalnie. Wszystko wraca do początkowego stanu.",
+        "O co chodzi z tymi galaretami? ->2",
+        "Kiedyś to było, a teraz będzie jak kiedyś, wreszcie ktoś pomyślał. ->END"
+      ],
+      "2": [
+        "A, to efekt uboczny resetu. Nie przejmuj się, wrócą oni do normy. Miejmy nadzieję.",
+        "<span id='quest0'>Coś nie tak? Może w czymś pomóc?</span><script>setTimeout(function(){if(localStorage['nerthus-quest'])getCookie('interface')==='ni'?$('#quest0').closest('li').remove():$('#quest0').parent().remove()},0)</script>  ->3",
+        "Ciekawe czy mają jakiś smak... ->END"
+      ],
+      "3": [
+        "W zasadzie to tak. Tak się składa, że wysłałem moich pomocników w cztery części świata by pozbierali dla mnie cztery części przycisku do resetu. Niestety, wciąż nie wrócili. Mógłbyś pomóc mi ich odnaleźć?",
+        "A co będę z tego miał? ->4",
+        "Wolę nie, plecy mnie bolą od chodzenia. ->END"
+      ],
+      "4": [
+        "Jeśli się pospieszysz i będziesz pierwszy, być może coś mi się uda załatwić. To jak, wchodzisz w to?",
+        "Niech będzie. ->5",
+        "Niezbyt mam ochotę. ->END"
+      ],
+      "5": [
+        "<script>localStorage['nerthus-quest'] = '1';message('Rozpoczęto zadanie: znaleźć 4 części przycisku resetu Nerthusa')</script>Świetnie! Pierwszego gagatka wysłałem do młynu. Nie wiem gdzie są młyny w tej krainie, więc musisz samemu znaleźć go. On też ci powie gdzie reszta poszła. Powodzenia!",
+        "W co ja się wpakowałem... ->END"
+      ],
+      "6": [
+        "Świetnie, teraz będziemy mogli w końcu zakończyć to, na co się zbierało przez tyle lat.",
+        "Dalej. ->7"
+      ],
+      "7": [
+        "[ Cztery części przycisku wzniosły się w powietrze, wirując wokół siebie. Ciemna magia zaczęła łączyć je ze sobą niczym spaczony klej. Pulsująca formacja powoli opadła w ręce Umbraela, świecąc złowrogim, czerwonym światłem. Przycisk resetu Nerthusa został ponownie złożony. ]",
+        "Dalej. ->8"
+      ],
+      "8":[
+        "Teraz pozostaje tylko jedno...",
+        "Dalej. ->9"
+      ],
+      "9": [
+        "[ Idziecie wraz z Umbraelem który niczym świętość trzyma przycisk przed sobą. Dochodzicie do ściany, która po poszybkim odsunięciu zawadzających roślin odsłania starożytny kontakt elektryczny. ]",
+        "Dalej. ->10"
+      ],
+      "10": [
+        "Teraz chwila prawdy. Było miło #NAME, zobaczymy się po drugiej stronie.",
+        "Było miło Umb, może tym razem los potoczy się inaczej i zostaniemy przyjaciółmi. ->11"
+      ],
+      "11": [
+        "[ Umbrael nie odezwął się przyłożył jedynie końcówkę kabla od przycisku do kontaktu z zamiarem zakończenia tego świata ]",
+        "Dalej. ->12"
+      ],
+      "12": [
+        "[ Stuk ]",
+        "Dalej. ->13"
+      ],
+      "13": [
+        "[ Stuk puk ]",
+        "Dalej. ->14"
+      ],
+      "14": [
+        "No dalej, właź!",
+        "Dalej. ->15"
+      ],
+      "15": [
+        "[Stuk puk puk puk stuk BAH]",
+        "Dalej. ->16"
+      ],
+      "16": [
+        "Cóż. Dosyć to kompromitujące. Nie pasuje.",
+        "To co teraz robimy? ->17"
+      ],
+      "17": [
+        "W zasadzie to chyba jest to do wyrzucenia. Ale tak czy siak dzięki za pomoc.",
+        "A co z tym kodem co był przy każdym z kawałków? ->18"
+      ],
+      "18": [
+        "Ten kod? Nie wiem. Zrób z nim co chcesz. Jak dla mnie możesz nawet <b>wysłać na skrzynkę Kris Aphalon czy też Discorda Kris Aphalon#3484</b>, mi się nie przyda.",
+        "A nagroda? ->19"
+      ],
+      "19": [
+        "Nagrodą są przyjaźnie które zawarliśmy w podróży. No nie patrz tak na mnie. No dobra, no i jeszcze jak jesteś pierwszy to jak wyślesz to do Krisa to dostaniesz coś od niego.",
+        "<script>localStorage['nerthus-quest'] = '6';message('Zadanie zakończone!');message('Zdobyto: Przyjaźnie które zawarliśmy po drodze.')</script>I pomyśleć, że tyle się starałem a Nerthus wciąż stoi... ->END"
+      ]
+    }
+  },
+  {
+    "name": "Chumra Umbraela",
+    "x": "62",
+    "y": "23",
+    "url": "/obrazki/npc/tru/tri_ghost5.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Nie zawracaj mi głowy, bycie prawą chmurą Umbraela to duża odpowiedzialność. Muszę dopilnować, by ten reset przebiegł zgodnie z planem",
+        "To nie przeszkadzam w takim razie. ->END"
+      ]
+    }
+  },
+  {
+    "name": "Galareta",
+    "x": "45",
+    "y": "39",
+    "url": "/obrazki/npc/pot/bestia34.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "[ Kuriozalna galareta powoli sunie po bruku ulicy, zostawiając za sobą lepką ciecz. ]",
+        "Przepraszam, może w czymś pomóc? ->1",
+        "Posprzątałbyś po sobie a nie. ->END"
+      ],
+      "1": [
+        "[ Galareta wskazuje swoim ramieniem, albo przynajmniej jedną ze swoich odnóg na różowego maga stojącego nieopodal. To chyba jego sprawka. ]",
+        "Dzięki, pójdę chyba do niego. ->END"
+      ]
+    }
+  },
+  {
+    "name": "Kałuża z oczami",
+    "x": "46",
+    "y": "50",
+    "url": "/obrazki/npc/pot/bestia31.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "[ Na ziemi leży kałuża. Co ciekawe, ta różni się od innych kałuż tym, że ma oczy. Wlepia je prosto w ciebie. ]",
+        "Przepraszam, jakiś problem? ->1",
+        "Co się gapisz, eh za grosz szacunku. ->END"
+      ],
+      "1": [
+        "[ Galareta wskazuje swoimi oczami na wyższy plac. Chyba chce przekazać, żeby pójść w tamtą stronę. ]",
+        "Aha. To dzięki za rozmowę. ->END"
+      ]
+    }
   }
 ]

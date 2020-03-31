@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Kolorowa Pianiata",
+    "x": "66",
+    "y": "28",
+    "url": "/obrazki/npc/eve/hero_piniata.gif",
+    "collision": true,
+    "date": "01.04-01.04",
+    "time": "8-24",
+    "dialog": {
+      "0": [
+        "[ Kolorowa piniata stoi w płytkim dołku, próbując swoimi kartonowymi łapkami kopać ziemię. Nie wychodzi jej to najlepiej. Zaraz obok stoi jej właściciel, poganiając ją. ]",
+        "Chyba powinienem zagadać do jej właściciela. ->END"
+      ]
+    }
+  },
+  {
+    "name": "Gawery",
+    "x": "67",
+    "y": "28",
+    "url": "/obrazki/npc/eve/pom-grin01.gif",
+    "collision": true,
+    "date": "01.04-01.04",
+    "time": "8-24",
+    "dialog": {
+      "0": [
+        "Szybciej! Ile kopać jeden dół, nie mieć przecież cały dzień!",
+        "<span id='quest2'>Przepraszam...</span><script>setTimeout(function(){if(localStorage['nerthus-quest'][0]!=='2')getCookie('interface')==='ni'?$('#quest2').closest('li').remove():$('#quest2').parent().remove()},0)</script>  ->1",
+        "Wolę nie podchodzić. ->END"
+      ],
+      "1": [
+        "[ Zielony Ludek oderwał wzrok od swojego wierzchowca i wytrzeszczył swe małe, śliskie oczy na ciebie. ]",
+        "Dalej. ->2"
+      ],
+      "2": [
+        "Czego? Nie widać że praca?",
+        "<span id='quest2'>Przyszedłem po część przycisku do resetu nerthusa.</span><script>setTimeout(function(){if(localStorage['nerthus-quest']!=='2')getCookie('interface')==='ni'?$('#quest2').closest('li').remove():$('#quest2').parent().remove()},0)</script> ->3",
+        "<span id='quest2-1'>Mam łopatę.</span><script>setTimeout(function(){let e;if(e='ni'===getCookie('interface')?function(){$('#quest2-1').closest('li').remove()}:function(){$('#quest2-1').parent().remove()},'2.1'===localStorage['nerthus-quest']){let t=1;if('ni'===getCookie('interface')){const e=Engine.items.testMyItems();for(const n in e)'Żelazna łopata'===e[n].name&&(t=0)}else for(const e in g.item)'Żelazna łopata'===g.item[e].name&&'g'===g.item[e].loc&&(t=0);t&&e()}else e()},0)</script> ->5",
+        "<span id='quest2-2'>Mam piwo.</span><script>setTimeout(function(){let e;if(e='ni'===getCookie('interface')?function(){$('#quest2-2').closest('li').remove()}:function(){$('#quest2-2').parent().remove()},'2.2'===localStorage['nerthus-quest']){let t=1;if('ni'===getCookie('interface')){const e=Engine.items.testMyItems();for(const n in e)'Piwo'===e[n].name&&(t=0)}else for(const e in g.item)'Piwo'===g.item[e].name&&'g'===g.item[e].loc&&(t=0);t&&e()}else e()},0)</script> ->7",
+        "W takim razie nie przeszkadzam. ->END"
+      ],
+      "3": [
+        "Przycisk. Widzieć. Ja chcę przycisk dać. Ale przycisk nie mieć. Ty musieć przynieść łopata.",
+        "Czyli mam przynieść żelazną łopatę, a ty przyniesiesz dasz mi część przycisku? ->4",
+        "Wolę postać i pośmiać się z was. ->END"
+      ],
+      "4": [
+        "Ty przynieść. Ja dać. Ty iść. Żelazna łopata.",
+        "<script>localStorage['nerthus-quest'] = '2.1';message('Przynieś: Żelazna łopata')</script>W porządku, w takim razie idę po nią. ->END"
+      ],
+      "5": [
+        "Łopata jest. Czemu tyle zeszło. Ja długo czekać na ciebie. Teraz ty długo czekać kiedy ja kopać. Wiem. Nie czekać. Przynieść piwo.",
+        "Co? Teraz jeszcze mam iść po piwo dla ciebie? Nie mogłeś wcześniej o tym powiedzieć!? ->6",
+        "Chyba na głowę upadłeś. ->END"
+      ],
+      "6": [
+        "Nie marudzić. Iść po piwo. Albo nie mieć przycisku.",
+        "<script>localStorage['nerthus-quest'] = '2.2';message('Przynieś: Piwo')</script>Parszywy mały gżdyl... ->END"
+      ],
+      "7": [
+        "[ Zielony ludek wziął piwo od ciebie, polał nim swoje ręce, a następnie złapał wbitą w ziemię łopatę i rzucił nią w gałęzie drzew. Po kilku trzaskach złamanych gałęzi i głośnym brzdękiem łopata wróciła na ziemię, wraz z kawałkiem przycisku którego szukałeś ]",
+        "Dalej. ->8"
+      ],
+      "8": [
+        "Proszę. Brać kawałek. Łopatę też. Niepotrzebna.",
+        "Co? Tylko do tego ci była potrzebna? Nie mogłeś powiedzieć że kawałek przycisku jest na drzewie? ->9",
+        "Dziękuję, bardzo mi miło. ->10"
+      ],
+      "9": [
+        "Nie marudzić. Dostać kawałek. Cieszyć się. Iść dalej.",
+        "Dalej. ->10"
+      ],
+      "10": [
+        "<script>localStorage['nerthus-quest'] = '3';message('Otrzymano: Druga część przycisku resetu Nerthusa')</script>[ Odchodząc na dostateczną odległośc by nie widzieć już zielonego skrzata, oderwałeś kartkę lekko przyczepioną do przycisku. Zapisane na niej były wskazówki dalszego postępowania. ]",
+        "Czytam. ->11"
+      ],
+      "11": [
+        "<i>Druga litera kodu to ostatnia litera imienia pana w szlafroku wpatrującego się w drzewo. Kolejna część znajduje się w jaskini miodem i tęczą płynącej.</i>",
+        "Co? Od kiedy tęcza pływa? ->END"
+      ]
+    }
+  }
+]

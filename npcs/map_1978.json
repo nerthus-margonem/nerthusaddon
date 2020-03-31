@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Spragniona dusza",
+    "x": "10",
+    "y": "12",
+    "url": "/obrazki/npc/eve/kup_nocula.gif",
+    "collision": true,
+    "date": "01.04-01.04",
+    "time": "8-24",
+    "dialog": {
+      "0": [
+        "Zawędrowałeś tak daleko... Wiem czego szukasz...",
+        "<span id='quest4'>Świetnie, możesz mi to od razu więc dać.</span><script>setTimeout(function(){if(localStorage['nerthus-quest']!=='4')getCookie('interface')==='ni'?$('#quest4').closest('li').remove():$('#quest4').parent().remove()},0)</script>  ->1",
+        "Przepraszam, chyba pomyliłem czasoprzetrzenie->END"
+      ],
+      "1": [
+        "[ Twoje ciało przeszył niemiłosierny chłód, idący aż po sam szpik kości. ]",
+        "Dalej ->2"
+      ],
+      "2": [
+        "Jesteś już... u kresu swej podróży... może przed twoim ostatecznym zwycięstwem skusisz się... na herbatkę...?",
+        "Skoro nalegasz... ->3",
+        "Chyba nie mam wyjścia. ->3",
+        "Herbatki? Biorę codziennie. ->3"
+      ],
+      "3": [
+        "[ Pustą przestrzeń wokoło wypełnił niemy śmiech. Zjawa zakręciła się wokół ciebie niczym psotna nimfa. Na jej twarzy pojawił się leciutki uśmieszek. ]",
+        "Dalej. ->4"
+      ],
+      "4": [
+        "Jaką herbatę więc pijesz? Czarną, jaśminową?",
+        "Czarną, jak twoje włosy. ->5",
+        "Jaśminową, jak twoje włosy. ->11"
+      ],
+      "5": [
+        "[ Uśmieszek zniknął z wizerunku zjawy, pozostawiając po sobie wykrzywiony grymas. Mimo że widziałeś w swoim życiu wiele potworów, to żaden z nich nie wyglądał tak straszliwie jak zjawa przed tobą. ]",
+        "Dalej. ->6"
+      ],
+      "6": [
+        "<b>NIE PRZYPOMINAJ MI CZYM SIĘ STAŁAM, MARNY CZŁOWIEKU, BO SKOŃCZYSZ <span style='color: red'>MARTWY</span> NA DNIE TEGO PADOŁU NIEDOLI.</b>",
+        "Wybacz o pani, to się więcej nie powtórzy ->7"
+      ],
+      "7": [
+        "<b>NO JA MYŚLĘ.</b> Na czym więc skończyliśmy?",
+        "Pytałaś chyba o rodzaj herbaty... ->8"
+      ],
+      "8": [
+        "To już nieistotne, przeszła mi ochota. Trzymaj swoją nagrodę i wynocha mi stąd.",
+        "Dalej. ->9"
+      ],
+      "9": [
+        "<script>localStorage['nerthus-quest'] = '5';message('Otrzymano: Czwarta część przycisku resetu Nerthusa')</script>[ Zjawa wręczyła ci ostatni z potrzebnych elementów do stworzenia przycisku. Teraz wystarczy, że zaniesiesz je wszystkie z powrotem do Umbraela. ]",
+        "Dalej. ->10"
+      ],
+      "10": [
+        "I jeszcze jedno. Ostatnia litera kodu to trzecia litera mojego koloru włosów.",
+        "Dzięki, wracam do Umbraela ->END"
+      ],
+      "11": [
+        "Ohhh, widzę że stoi przede mną prawdziwy romantyk, myślę że spełnimy czas baaardzo przyjemnie.",
+        "[ Spędź czas bardzo przyjemnie. ] ->12"
+      ],
+      "12": [
+        "[ Po kilku godzinach miłego picia herbaty i gawędzenia, przyszedł jednak czas na kontynuację zadania. Nie można przecież herbatkować w nieskończoność. ]",
+        "Dalej. ->13"
+      ],
+      "13": [
+        "Ahh jak dawno nie rozmawiałam z kimś tak inteligentnym. Ale chyba już czas na ciebie. Nie mogę cię przecież trzymać wiecznie. Proszę, po to tu chyba przyszedłeś.",
+        "Dziękuję, mi też było miło, potwórzmy to kiedyś. ->9"
+      ]
+    }
+  },
+  {
+    "name": "Kobieta z jaśminowymi włosami.",
+    "x": "16",
+    "y": "16",
+    "url": "/obrazki/npc/tru/tortury4.gif",
+    "collision": true,
+    "date": "01.04-01.04",
+    "time": "8-24",
+    "dialog": {
+      "0": [
+        "[ Kobieta przykuta do skały zdaje się być powiązana ze zjawą stojącą nieopodal. ]",
+        "Zaraz, przecież nie umiem chodzić po powietrzu->END"
+      ]
+    }
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "name": "Różowy włochacz",
+    "x": "29",
+    "y": "13",
+    "url": "/obrazki/npc/hum/wlochacze_2b.gif",
+    "collision": true,
+    "date": "01.04-01.04",
+    "time": "8-24",
+    "dialog": {
+      "0": [
+        "Okropieństwo, im dłużej tu jestem tym bardziej różowy się staje, jeszcze chwila a zmienię się w watę cukrową!",
+        "<span id='quest3'>Przepraszam, ja po kawałek przycisku do resetu</span><script>setTimeout(function(){if(localStorage['nerthus-quest'][0]!=='3')getCookie('interface')==='ni'?$('#quest3').closest('li').remove():$('#quest3').parent().remove()},0)</script>  ->1",
+        "Nie marudź, inni mają gorzej. ->END"
+      ],
+      "1": [
+        "Ah tak. Spodziewałem się ciebie. Dobra, im szybciej to skończymy tym szybciej będę mógł się stąd wynosić. Bo widzisz, to nie takie proste.",
+        "Zamieniam się w słuch. ->2",
+        "Znudziło mi się pomaganie ->END"
+      ],
+      "2": [
+        "Otóż przycisk znajduje się na tamtej skarpie. Tylko problem w tym, że nie ma jak go sięgnąc. Wpadłem więc na świetny pomysł. Włożymy wory do worów i tyle ich wrzucimy do jeziorka zaraz pod skarpą, że woda osiągnie poziom który pozwoli na łatwe dostanie się do przycisku.",
+        "Kapitalny pomysł, zaczynamy w takim razie? ->4",
+        "Nie istnieje przypadkiem jakiś lepszy pomysł? ->3",
+        "Nie lubię pływać, chyba daruje sobie. ->END"
+      ],
+      "3": [
+        "Długo myślałem nad innymi rozwiązaniami, ale lepszego nie udało mi się wymyślić. To jak, zaczynamy? ",
+        "Chyba nie ma wyjścia... ->4"
+      ],
+      "4": [
+        "Pamiętaj, jeżeli będziesz chciał przestać, to możesz to zrobić w każdej chwili. Tylko jeżeli za długo będziesz zwlekał, to trzeba będzie zacząć od początku.",
+        "<script>if(!sessionStorage.wory)sessionStorage.wory=0</script>Zaczynamy! ->5"
+      ],
+      "5": [
+        "Wór do wora a wór do jeziora! Jeszcze <span id='quest3-1'></span>, no dalej!<script>sessionStorage.wory = +sessionStorage.wory + 1; $('#quest3-1').text(200 - sessionStorage.wory)</script>",
+        "<span id='quest3-2'>I kolejny wór... <span><script>setTimeout(function(){if(+sessionStorage.wory >= 199)getCookie('interface')==='ni'?$('#quest3-2').closest('li').remove():$('#quest3-2').parent().remove()},0)</script>  ->5",
+        "<span id='quest3-3'>I kolejny wór... <span><script>setTimeout(function(){if(+sessionStorage.wory < 199)getCookie('interface')==='ni'?$('#quest3-3').closest('li').remove():$('#quest3-3').parent().remove()},0)</script>  ->6",
+        "DOSYĆ ZABIERZCIE MNIE STĄD. ->END"
+      ],
+      "6": [
+        "Dobra, starczy już. Kawał dobrej roboty. Możesz już podpływać po kawałek. Powodzenia w podróży. Ja się wynoszę z tej przeklętej jaskini.",
+        "[ Podpłyń do kawałka przycisku ] ->7"
+      ],
+      "7": [
+        "<script>localStorage['nerthus-quest'] = '4';message('Otrzymano: Trzecia część przycisku resetu Nerthusa')</script>[ Dzięki podniesieniu poziomu wody z łatwością dotarłeś do przycisku. Po raz kolejny była do niego przyczepiona kartka z instrukcjami. ]",
+        "Czytam. ->8"
+      ],
+      "8": [
+        "<i>Trzecia litera kodu to piąta litera lądowych zwierząt z tej lokacji. Ostatnia część znajduje się w krainie cieni.</i>",
+        "Że niby gdzie?->END"
+      ]
+    }
+  }
+]

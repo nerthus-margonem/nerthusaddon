@@ -202,7 +202,7 @@ nerthus.npc.dialog.display_ni = function (message, replies, id)
                     "<div class=\"track\">" +
                         "<div class=\"handle ui-draggable ui-draggable-handle\" style=\"top: 0;\"></div>" +
                 "</div></div></div></div>" +
-                "<header><div class=\"h_content\">" + nerthus.npc.list[id].name + "</div></header>" +
+                "<header><div class=\"h_content\">" + nerthus.npc.list[id].nick + "</div></header>" +
             "</div>"
         $dialWin = $(dial).appendTo(".bottom.positioner")
         $('.scroll-wrapper', $dialWin).addScrollBar({track: true})

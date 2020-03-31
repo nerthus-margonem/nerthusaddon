@@ -47,7 +47,7 @@
         "<script>localStorage['nerthus-quest'] = '2.1';message('Przynieś: Żelazna łopata')</script>W porządku, w takim razie idę po nią. ->END"
       ],
       "5": [
-        "Łopata jest. Teraz ty długo czekać. Przynieść piwo.",
+        "Łopata jest. Czemu tyle zeszło. Ja długo czekać na ciebie. Teraz ty długo czekać kiedy ja kopać. Wiem. Nie czekać. Przynieść piwo.",
         "Co? Teraz jeszcze mam iść po piwo dla ciebie? Nie mogłeś wcześniej o tym powiedzieć!? ->6",
         "Chyba na głowę upadłeś. ->END"
       ],

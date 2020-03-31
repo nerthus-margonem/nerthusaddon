@@ -311,154 +311,154 @@
     "id": 66,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 44102,
     "newUrl": "/obrazki/npc/pot/bestia34.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 44106,
     "newUrl": "/obrazki/npc/pot/bestia31.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 9860,
     "newUrl": "/obrazki/npc/pot/bestia32.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 2,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 3,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 44110,
     "newUrl": "/obrazki/npc/pot/bestia33.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 50615,
     "newUrl": "/obrazki/npc/pot/bestia31.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 72129,
     "newUrl": "/obrazki/npc/pot/bestia32.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 4,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 5,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 56085,
     "newUrl": "/obrazki/npc/pot/bestia32.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 104482,
     "newUrl": "/obrazki/npc/pot/bestia33.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 44104,
     "newUrl": "/obrazki/npc/pot/bestia35.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 9666,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 9668,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 1,
     "newUrl": "/obrazki/npc/pot/bestia32.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 53189,
     "newUrl": "/obrazki/npc/pot/bestia30.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 44103,
     "newUrl": "/obrazki/npc/pot/bestia33.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 80501,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 80499,
     "newUrl": "/obrazki/npc/pot/bestia36.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "type": "change",
     "id": 57189,
     "newUrl": "/obrazki/npc/pot/bestia34.gif",
     "lvl": 0,
-    "date": "01.04"
+    "date": "01.04-01.04"
   },
   {
     "name": "Umbrael Regis",
@@ -466,7 +466,7 @@
     "y": "24",
     "url": "#img/npc/pink-mage.gif",
     "collision": true,
-    "date": "01.04",
+    "date": "01.04-01.04",
     "dialog": {
       "0": [
         "Witaj. Pewnie zastanawiasz się co tu się dzieje. Otóż prowadzimy właśnie reset Nerthusa. Właśnie kończymy Ithan.",
@@ -562,7 +562,7 @@
     "y": "23",
     "url": "/obrazki/npc/tru/tri_ghost5.gif",
     "collision": true,
-    "date": "01.04",
+    "date": "01.04-01.04",
     "dialog": {
       "0": [
         "Nie zawracaj mi głowy, bycie prawą chmurą Umbraela to duża odpowiedzialność. Muszę dopilnować, by ten reset przebiegł zgodnie z planem",
@@ -576,7 +576,7 @@
     "y": "39",
     "url": "/obrazki/npc/pot/bestia34.gif",
     "collision": true,
-    "date": "01.04",
+    "date": "01.04-01.04",
     "dialog": {
       "0": [
         "[ Kuriozalna galareta powoli sunie po bruku ulicy, zostawiając za sobą lepką ciecz. ]",
@@ -595,7 +595,7 @@
     "y": "50",
     "url": "/obrazki/npc/pot/bestia31.gif",
     "collision": true,
-    "date": "01.04",
+    "date": "01.04-01.04",
     "dialog": {
       "0": [
         "[ Na ziemi leży kałuża. Co ciekawe, ta różni się od innych kałuż tym, że ma oczy. Wlepia je prosto w ciebie. ]",

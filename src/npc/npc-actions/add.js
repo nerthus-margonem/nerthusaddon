@@ -1,5 +1,5 @@
 import {removeCollision, setCollision} from './collision'
-import {addDialogToDialogList, openDialog} from '../npc-dialog'
+import {addDialogToDialogList, openDialog} from '../dialog'
 
 // nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
 // {

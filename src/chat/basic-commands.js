@@ -1,4 +1,4 @@
-import {registerChatCommand} from './chat-manager'
+import {registerChatCommand} from './chat'
 
 function makeDialogTextWithSpeaker(str)
 {

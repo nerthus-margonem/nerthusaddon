@@ -8,7 +8,7 @@ before(function()
 
 
     expect = require("expect.js")
-    require("../NN_zodiak.js")
+    require("../../NN_zodiak.js")
 })
 
 

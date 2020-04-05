@@ -10,11 +10,11 @@ const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString(
 
 const availableMapFiles = {}
 
-const npcMapList = childProcess.execSync('ls npcs').toString().match(/(\d*)*\.json/g)
-availableMapFiles.npc = npcMapList.map(item => parseInt(item));
+const npcMapList = childProcess.execSync('ls res/configs/npcs').toString().match(/(\d*)*\.json/g)
+availableMapFiles.npc = npcMapList.map(item => parseInt(item))
 
-const lightMapList = childProcess.execSync('ls night-lights').toString().match(/(\d*)*\.json/g)
-availableMapFiles.lights = lightMapList.map(item => parseInt(item));
+const lightMapList = childProcess.execSync('ls res/configs/night-lights').toString().match(/(\d*)*\.json/g)
+availableMapFiles.lights = lightMapList.map(item => parseInt(item))
 
 const SI = new webpack.DefinePlugin({
     INTERFACE: JSON.stringify('SI'),
@@ -31,25 +31,58 @@ const NI = new webpack.DefinePlugin({
     //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
 })
 
-module.exports = [
-    {
-        name: 'NI_production',
-        mode: 'development',
-        entry: './src/main.js',
-        output: {
-            path: path.resolve(__dirname, 'dist/'),
-            filename: 'nerthus-addon-NI.js'
-        },
-        plugins: [NI]
+module.exports = {
+    name: 'SI_production',
+    mode: 'development',
+    entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, 'dist/'),
+        filename: 'nerthus-addon-SI.js'
     },
-    {
-        name: 'SI_production',
-        mode: 'development',
-        entry: './src/main.js',
-        output: {
-            path: path.resolve(__dirname, 'dist/'),
-            filename: 'nerthus-addon-SI.js'
-        },
-        plugins: [SI]
-    }
-]
+    resolve: {
+        alias: {
+            src: '/src/',
+            res: '/res/'
+        }
+    },
+    plugins: [SI]
+}//[
+    // {
+    //     name: 'NI_production',
+    //     mode: 'development',
+    //     entry: './src/main.js',
+    //     output: {
+    //         path: path.resolve(__dirname, 'dist/'),
+    //         filename: 'nerthus-addon-NI.js'
+    //     },
+    //     plugins: [NI]
+    // // },
+    // {
+    //     name: 'SI_production',
+    //     mode: 'development',
+    //     entry: './src/main.js',
+    //     output: {
+    //         path: path.resolve(__dirname, 'dist/'),
+    //         filename: 'nerthus-addon-SI.js'
+    //     },
+    //     plugins: [SI]
+    // }//,
+    // // {
+    //     mode: 'development',
+    //     entry: './src/test-module.js',
+    //     output: {
+    //         path: path.resolve(__dirname, 'tmp/'),
+    //         filename: 'test-sii.js'
+    //     },
+    //     plugins: [SI],
+    //     module: {
+    //         rules: [
+    //             {
+    //                 test: /test\.js$/,
+    //                 use: 'mocha-loader',
+    //                 exclude: /node_modules/,
+    //             },
+    //         ],
+    //     },
+    // }
+//]

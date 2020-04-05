@@ -1,29 +1,39 @@
 {
   "name": "nerthusaddon",
-  "version": "2.9.2",
-  "description": "[![Build Status](https://travis-ci.org/akrzyz/nerthusaddon.svg?branch=master)](https://travis-ci.org/akrzyz/nerthusaddon) # nerthusaddon   Addon for nerthus server in game [margonem](http://www.margonem.pl/)",
-  "main": "NN_start.js",
+  "version": "3.1.0",
+  "description": "Addon for nerthus server in game [margonem](http://www.margonem.pl/)",
+  "main": "/src/main.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "jquery": "3.3.1"
+    "jquery": "3.4.1"
   },
   "devDependencies": {
-    "coveralls": "^3.0.9",
+    "webpack-node-externals": "^1.7.2",
+    "coveralls": "^3.0.11",
     "expect.js": "^0.3.1",
-    "jsdom": "^16.2.1",
-    "mocha": "^5.2.0",
+    "cheerio": "^1.0.0-rc.3",
+    "mocha": "^7.1.1",
+    "mocha-webpack": "2.0.0-beta.0",
     "nyc": "^15.0.0",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^4.0.0-beta.8",
+    "sinon": "^9.0.1",
+    "inject-loader": "^4.0.1",
+    "@babel/core": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0"
   },
   "scripts": {
-    "test": "mocha -u qunit -R spec",
-    "test-coverage": "nyc --reporter=html --reporter=text --no-clean mocha -u qunit -R spec",
-    "test-with-coverage": "nyc --reporter=none --no-clean mocha -u qunit -R spec",
+    "test": "mocha-webpack ./test/main.js",
+    "test-leaks": "mocha-webpack ./test/main.js --check-leaks",
+    "test-coverage": "nyc --reporter=html --reporter=text --no-clean mocha-webpack",
+    "test-with-coverage": "nyc --reporter=none --no-clean mocha-webpack",
     "coverage-raport-text": "nyc report --reporter=text",
     "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",
+    "clean-coverage": "rm -rf ./coverage ./.nyc_output",
     "build": "npx webpack"
   },
   "repository": {

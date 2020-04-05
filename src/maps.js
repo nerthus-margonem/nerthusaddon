@@ -1,7 +1,7 @@
-import {loadOnEveryMap} from '../game-integration/loaders'
-import {getCurrentSeason} from '../time'
-import {default as basicMapsUrls} from '../res/map-config'
-import {resolveNerthusUrl} from '../utility-functions'
+import {loadOnEveryMap} from './game-integration/loaders'
+import {getCurrentSeason} from './time'
+import {default as basicMapsUrls} from '../res/configs/maps.json'
+import {resolveNerthusUrl} from './utility-functions'
 
 export const MAP_PRIORITY = {CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0}
 
@@ -41,8 +41,8 @@ function getBasicMapUrl(mapId)
     const season = getCurrentSeason()
     if (basicMapsUrls[season][mapId])
         return basicMapsUrls[season][mapId]
-    else if (basicMapsUrls.DEFAULT[mapId])
-        return basicMapsUrls.DEFAULT[mapId]
+    else if (basicMapsUrls.default[mapId])
+        return basicMapsUrls.default[mapId]
     else
         return false
 }
@@ -63,9 +63,9 @@ function applyMapChange(mapId)
         return
 
     currentTopMap = mapImage
-
     if (INTERFACE !== 'NI')
-        $('#ground').css('background', 'url(' + mapImage.src + ')')
+        $('#ground').css('background-image', 'url(' + mapImage.src + ')')
+    console.log($('#ground').css('background-image'))
 }
 
 
@@ -99,7 +99,7 @@ export function applyCurrentMapChange()
     if (INTERFACE === 'NI')
         applyMapChange(Engine.map.d.id)
     else
-        applyMapChange(map.id)
+        applyMapChange(window.map.id)
 }
 
 
@@ -107,4 +107,5 @@ export function initMapsManager()
 {
     if (INTERFACE === 'NI') startMapChanging()
     loadOnEveryMap(applyCurrentMapChange)
+    return true;
 }

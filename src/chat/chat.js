@@ -1,5 +1,5 @@
 import {checkPermissionLvl} from '../permissions'
-import {initChatDrunkenness} from './chat-drunkenness'
+import {initChatDrunkenness} from './drunkenness'
 
 const commandsMap = {}
 const commandsPublicMap = {}

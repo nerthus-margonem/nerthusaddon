@@ -1,12 +1,12 @@
-import {initChatMgr} from './chat/chat-manager'
-import {initBasicChatCommands} from './chat/chat-basic-commands'
+import {initChatMgr} from './chat/chat'
+import {initBasicChatCommands} from './chat/basic-commands'
 import {loadSettings} from './settings'
 import {initPanel} from './interface/panel'
 import {addBasicStyles} from './interface/css-manager'
 import {initiateGameIntegrationLoaders} from './game-integration/loaders'
-import {initNpcManager} from './npc/npc-manager'
-import {initNightManager} from './night/night-manager'
-import {initMapsManager} from './maps/maps-manager'
+import {initNpcManager} from './npc/npc'
+import {initNightManager} from './night/night'
+import {initMapsManager} from './maps'
 import {initTips} from './game-integration/tips'
 
 function start()

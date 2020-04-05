@@ -29,12 +29,12 @@ before(function()
     $.getJSON = function(url, callback){this.LOADED_JSONS.push(url); callback({version:VERSION_CURRENT})}
 
     $.getScript = function(url, callback){nerthus.scripts = []; callback()} //hack for loading NN_start, otherwise exception is raised due to lack of loaded NN_dlaRadnych which define nerthus.scripts
-    require("../NN_start.js")
+    require("../../NN_start.js")
 
     $.getScript = function(url, callback){this.LOADED_SCRIPTS.push(url); callback()}
 
     expect = require("expect.js")
-    require("../NN_start.js")
+    require("../../NN_start.js")
 
 })
 

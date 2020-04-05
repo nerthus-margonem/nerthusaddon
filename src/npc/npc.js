@@ -1,9 +1,9 @@
-import {isNpcDeployable} from './npc-time-manager'
+import {isNpcDeployable} from './npc-time'
 import {loadOnEveryMap, onDefined} from '../game-integration/loaders'
 import {hideGameNpc, isNpcHidable} from './npc-actions/hide'
 import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
-import {initNpcDialog} from './npc-dialog'
+import {initNpcDialog} from './dialog'
 
 // unified id for nerthus npcs
 export function coordsToId(x, y)

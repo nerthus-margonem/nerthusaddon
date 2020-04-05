@@ -1,4 +1,4 @@
-import {default as permissions} from './res/permissions'
+import {default as permissions} from '../res/configs/permissions'
 /*
     0: normal player
     1: narrator

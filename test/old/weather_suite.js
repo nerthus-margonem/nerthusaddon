@@ -7,7 +7,7 @@ before(function()
     nerthus.options = {}
 
     expect = require("expect.js")
-    require("../NN_pogoda.js")
+    require("../../NN_pogoda.js")
 })
 
 test("dummy", function()

@@ -1,4 +1,4 @@
-import {default as exceptionMaps} from '../res/outdoor-map-exceptions'
+import {default as exceptionMaps} from '../../res/configs/map-exceptions'
 import {settings} from '../settings'
 import {addToNIdrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {turnLightsOn} from './lights'
@@ -106,8 +106,3 @@ export function initNightManager()
     //     loadOnEveryMap(checkAndApplyNight)
     // }
 }
-
-// nerthus.night.lights.give_me_the_light = function ()
-// {
-//     $.getScript(nerthus.addon.fileUrl('/NN_night_lights_mgr.js'))
-// }

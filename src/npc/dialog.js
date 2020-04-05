@@ -1,4 +1,4 @@
-import {coordsToId} from './npc-manager'
+import {coordsToId} from './npc'
 
 const LINE_ICON = 'icon LINE_OPTION line_option' // TODO NI/SI?
 const EXIT_ICON = 'icon LINE_EXIT line_exit'

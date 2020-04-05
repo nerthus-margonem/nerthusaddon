@@ -1,5 +1,5 @@
-import {default as lvlNames} from '../res/lvl-names'
-import {default as vips} from '../res/vips'
+import {default as lvlNames} from '../../res/configs/lvl-names'
+import {default as vips} from '../../res/configs/vips'
 import {checkPermissionLvl, PERMISSION_LVL} from '../permissions'
 
 const RANK_NAMES = ['Kreator', 'Uber Miszcz Gry', 'Miszcz Gry', 'Strażnik Słowa', 'Tkacz Słów', 'Trubadur', 'Piewca Słowa', 'Radny']

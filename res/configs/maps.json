@@ -1,8 +1,8 @@
 {
-  "SPRING": {},
-  "SUMMER": {},
-  "AUTUMN": {},
-  "WINTER": {
+  "spring": {},
+  "summer": {},
+  "autumn": {},
+  "winter": {
     "1": "/obrazki/miasta/zima-ithan.png",
     "2": "/obrazki/miasta/zima-torneg.png",
     "9": "/obrazki/miasta/zima-werbin.png",
@@ -11,7 +11,7 @@
     "257": "/obrazki/miasta/zima-mythar.png",
     "574": "/obrazki/miasta/zima-nithal.png"
   },
-  "DEFAULT": {
+  "default": {
     "8": "#/maps/Zniszczone Opactwo.png",
     "290": "#/maps/Opactwo.png",
     "291": "#/maps/Opactwo p.1.png",

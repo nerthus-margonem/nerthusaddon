@@ -18,6 +18,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm test-with-coverage | npm push-coverage-raport
+    - run: npm run test-with-coverage | npm run push-coverage-raport
       env:
         CI: true

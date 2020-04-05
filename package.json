@@ -32,6 +32,7 @@
     "test-coverage": "nyc --reporter=html --reporter=text --no-clean mocha-webpack",
     "test-with-coverage": "nyc --reporter=none --no-clean mocha-webpack",
     "coverage-raport-text": "nyc report --reporter=text",
+    "coverage-raport-text-lcov": "nyc report --reporter=text",
     "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",
     "clean-coverage": "rm -rf ./coverage ./.nyc_output",
     "build": "npx webpack"

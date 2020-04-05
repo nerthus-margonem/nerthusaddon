@@ -27,10 +27,10 @@
     "@babel/plugin-transform-modules-commonjs": "^7.9.0"
   },
   "scripts": {
-    "test": "mocha-webpack ./test/main.js --webpack-config webpack-config.test.js",
-    "test-leaks": "mocha-webpack ./test/main.js --check-leaks --webpack-config webpack-config.test.js",
-    "test-coverage": "nyc --reporter=html --reporter=text --no-clean mocha-webpack ./test/main.js --webpack-config webpack-config.test.js",
-    "test-with-coverage": "nyc --reporter=none --no-clean mocha-webpack ./test/main.js --webpack-config webpack-config.test.js",
+    "test": "mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
+    "test-leaks": "mocha-webpack --check-leaks --webpack-config webpack-config.test.js ./test/main.js",
+    "test-coverage": "nyc --reporter=html --reporter=text --no-clean mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
+    "test-with-coverage": "nyc --reporter=none --no-clean mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
     "coverage-raport-text": "nyc report --reporter=text",
     "coverage-raport-text-lcov": "nyc report --reporter=text-lcov",
     "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",

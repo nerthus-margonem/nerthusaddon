@@ -20,6 +20,7 @@ jobs:
     - run: npm ci
     - run: npm run test-coverage
     - run: npm run coverage-raport-text
+    - run: mkdir coverage
     - run: npm run coverage-raport-text-lcov > coverage/lcov.info
     - name: Coveralls
       uses: coverallsapp/github-action@master

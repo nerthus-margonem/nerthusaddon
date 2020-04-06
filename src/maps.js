@@ -65,7 +65,6 @@ function applyMapChange(mapId)
     currentTopMap = mapImage
     if (INTERFACE !== 'NI')
         $('#ground').css('background-image', 'url(' + mapImage.src + ')')
-    console.log($('#ground').css('background-image'))
 }
 
 

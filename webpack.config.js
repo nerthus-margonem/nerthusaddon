@@ -1,9 +1,5 @@
 const webpack = require('webpack')
 const path = require('path')
-
-//const version = require('version.json')
-//console.log(version)
-
 const childProcess = require('child_process')
 
 const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString()
@@ -31,58 +27,25 @@ const NI = new webpack.DefinePlugin({
     //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
 })
 
-module.exports = {
-    name: 'SI_production',
-    mode: 'development',
-    entry: './src/main.js',
-    output: {
-        path: path.resolve(__dirname, 'dist/'),
-        filename: 'nerthus-addon-SI.js'
+module.exports = [
+    {
+        name: 'NI_production',
+        mode: 'development',
+        entry: './src/main.js',
+        output: {
+            path: path.resolve(__dirname, 'dist/'),
+            filename: 'nerthus-addon-NI.js'
+        },
+        plugins: [NI]
     },
-    resolve: {
-        alias: {
-            src: '/src/',
-            res: '/res/'
-        }
-    },
-    plugins: [SI]
-}//[
-    // {
-    //     name: 'NI_production',
-    //     mode: 'development',
-    //     entry: './src/main.js',
-    //     output: {
-    //         path: path.resolve(__dirname, 'dist/'),
-    //         filename: 'nerthus-addon-NI.js'
-    //     },
-    //     plugins: [NI]
-    // // },
-    // {
-    //     name: 'SI_production',
-    //     mode: 'development',
-    //     entry: './src/main.js',
-    //     output: {
-    //         path: path.resolve(__dirname, 'dist/'),
-    //         filename: 'nerthus-addon-SI.js'
-    //     },
-    //     plugins: [SI]
-    // }//,
-    // // {
-    //     mode: 'development',
-    //     entry: './src/test-module.js',
-    //     output: {
-    //         path: path.resolve(__dirname, 'tmp/'),
-    //         filename: 'test-sii.js'
-    //     },
-    //     plugins: [SI],
-    //     module: {
-    //         rules: [
-    //             {
-    //                 test: /test\.js$/,
-    //                 use: 'mocha-loader',
-    //                 exclude: /node_modules/,
-    //             },
-    //         ],
-    //     },
-    // }
-//]
+    {
+        name: 'SI_production',
+        mode: 'development',
+        entry: './src/main.js',
+        output: {
+            path: path.resolve(__dirname, 'dist/'),
+            filename: 'nerthus-addon-SI.js'
+        },
+        plugins: [SI]
+    }
+]

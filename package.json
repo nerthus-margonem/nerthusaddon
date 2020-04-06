@@ -29,7 +29,7 @@
   "scripts": {
     "test": "mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
     "test-leaks": "mocha-webpack --check-leaks --webpack-config webpack-config.test.js ./test/main.js",
-    "test-coverage": "nyc --reporter=text --reporter=text-lcov --no-clean mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
+    "test-coverage": "nyc --reporter=text --reporter=text-lcov mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
     "coverage-raport-text": "nyc report --reporter=text",
     "coverage-raport-text-lcov": "nyc report --reporter=text-lcov",
     "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",

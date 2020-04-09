@@ -106,5 +106,4 @@ export function initMapsManager()
 {
     if (INTERFACE === 'NI') startMapChanging()
     loadOnEveryMap(applyCurrentMapChange)
-    return true;
 }

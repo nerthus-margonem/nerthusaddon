@@ -2,76 +2,76 @@ import {registerChatCommand} from './chat'
 
 function makeDialogTextWithSpeaker(str)
 {
-    str = str.split(" ").slice(1).join(" ").split(",")
-    return "«" + str[0] + "» " + str.slice(1).join(",")
+    str = str.split(' ').slice(1).join(' ').split(',')
+    return '«' + str[0] + '» ' + str.slice(1).join(',')
 }
 
 function nar1(ch)
 {
-    ch.s = "nar"
-    ch.n = ""
-    ch.t = ch.t.replace(/^\*nar1? /,"")
+    ch.s = 'nar'
+    ch.n = ''
+    ch.t = ch.t.replace(/^\*nar1? /, '')
     return ch
 }
 
 
 function nar2(ch)
 {
-    ch.s = "nar2"
-    ch.n = ""
-    ch.t = ch.t.replace(/^\*nar2 /,"")
+    ch.s = 'nar2'
+    ch.n = ''
+    ch.t = ch.t.replace(/^\*nar2 /, '')
     return ch
 }
 
 function nar3(ch)
 {
-    ch.s = "nar3"
-    ch.n = ""
-    ch.t = ch.t.replace(/^\*nar3 /,"")
+    ch.s = 'nar3'
+    ch.n = ''
+    ch.t = ch.t.replace(/^\*nar3 /, '')
     return ch
 }
 
 function dial1(ch)
 {
-    ch.s = "dial1"
-    ch.n = ""
+    ch.s = 'dial1'
+    ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
 }
 
 function dial2(ch)
 {
-    ch.s = "dial2"
-    ch.n = ""
+    ch.s = 'dial2'
+    ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
 }
 
 function dial3(ch)
 {
-    ch.s ="dial3"
-    ch.n =""
+    ch.s = 'dial3'
+    ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
 }
 
 function dial666(ch)
 {
-    ch.s ="dial666"
-    ch.n =""
-    ch.t = nerthus.chatCmd.makeDialogTextWithSpeaker(ch.t)
+    ch.s = 'dial666'
+    ch.n = ''
+    ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
 }
-
 
 
 function sys(ch)
 {
-    ch.s="sys_comm"
-    ch.n=""
-    ch.t=ch.t.replace(/^\*sys /,"")
+    ch.s = 'sys_comm'
+    ch.n = ''
+    ch.t = ch.t.replace(/^\*sys /, '')
     return ch
 }
+
 //
 // function map(ch)
 // {
@@ -156,9 +156,9 @@ function sys(ch)
 
 function me(ch)
 {
-    ch.s = "me"
-    ch.n = ""
-    ch.t = ch.t.replace(/^\*me /, "")
+    ch.s = 'me'
+    ch.n = ''
+    ch.t = ch.t.replace(/^\*me /, '')
     return ch
 }
 

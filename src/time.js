@@ -1,4 +1,5 @@
-export const SEASON = Object.freeze({SPRING: "spring", SUMMER: "summer", AUTUMN: "autumn", WINTER: "winter"})
+export const SEASON = Object.freeze({SPRING: 'spring', SUMMER: 'summer', AUTUMN: 'autumn', WINTER: 'winter'})
+
 //TODO implement this file in other places
 
 export function getCurrentSeason()

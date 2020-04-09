@@ -61,9 +61,9 @@ function fetch_cmd(ch)
 function fetch_callback(cmd, ch)
 {
     if (commandsMap[cmd] && checkPermissionLvl(ch.n))
-         return commandsMap[cmd]
-     else
-    return commandsPublicMap[cmd]
+        return commandsMap[cmd]
+    else
+        return commandsPublicMap[cmd]
 }
 
 function run(arg)

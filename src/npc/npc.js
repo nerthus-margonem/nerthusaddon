@@ -1,5 +1,5 @@
 import {isNpcDeployable} from './npc-time'
-import {loadOnEveryMap, onDefined} from '../game-integration/loaders'
+import {loadOnEveryMap} from '../game-integration/loaders'
 import {hideGameNpc, isNpcHidable} from './npc-actions/hide'
 import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
@@ -45,16 +45,22 @@ function deploy(npc)
     switch (npc.type)
     {
         case 'delete':
+        {
             if (!isNpcHidable(npc))
                 return
             return hideGameNpc(npc.id, npc.lvl === 0)
+        }
         case 'change':
+        {
             return changeGameNpc(npc)
+        }
         default:
-            const tip = npc.hasOwnProperty('tip') ? npc.tip : '<b>' + npc.name + '</b>'
+        {
+            const tip = npc.tip ? npc.tip : '<b>' + npc.name + '</b>'
             const customNpc = new CustomNpc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
 
             return addNpc(customNpc)
+        }
     }
 }
 

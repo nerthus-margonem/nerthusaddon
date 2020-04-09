@@ -58,7 +58,7 @@ function createPlayerTip(player)
     return tip
 }
 
-function parseTip(player, isHero)
+function parseTip(player)
 {
     if (INTERFACE === 'NI')
     {

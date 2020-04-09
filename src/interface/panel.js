@@ -134,36 +134,37 @@ function createPanel(data, hidden)
             {
                 defaultPanel.toggleClass('hidden')
                 settingsPanel.toggleClass('hidden')
-                const tip = settingsPanel.hasClass('hidden') ? 'Ustawienia' : 'Powrót'
                 const $this = $(this)
                 $this.toggleClass('back-to-default')
                 if (settingsPanel.hasClass('hidden'))
                 {
                     $this.attr({'tip': 'Ustawienia', 'data-tip': 'Ustawienia'})
-                        .children().attr('src', FILE_PREFIX +'img/panel/settings.png')
+                        .children().attr('src', FILE_PREFIX + 'img/panel/settings.png')
                     panelName.text('Panel Nerthusa')
                 }
                 else
                 {
                     $this.attr({'tip': 'Powrót', 'data-tip': 'Powrót'})
-                        .children().attr('src', FILE_PREFIX +'img/panel/settings-back.png')
+                        .children().attr('src', FILE_PREFIX + 'img/panel/settings-back.png')
                     panelName.text('Panel Nerthusa - ustawienia')
                 }
             })
             .end()
-            .find('.close-button, .cancel-button, .ok-button').click(function ()
-        {
-            $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
-            defaultPanel.removeClass('hidden')
-            settingsPanel.addClass('hidden')
-        }).end()
-            .find('.save-button').click(function ()
-        {
-            saveSettings()
-            $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
-            defaultPanel.removeClass('hidden')
-            settingsPanel.addClass('hidden')
-        }).end()
+            .find('.close-button, .cancel-button, .ok-button')
+            .click(function ()
+            {
+                $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
+                defaultPanel.removeClass('hidden')
+                settingsPanel.addClass('hidden')
+            }).end()
+            .find('.save-button')
+            .click(function ()
+            {
+                saveSettings()
+                $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
+                defaultPanel.removeClass('hidden')
+                settingsPanel.addClass('hidden')
+            }).end()
 
         $elm
             .css({
@@ -231,7 +232,7 @@ export function initPanel()
 {
     if (INTERFACE === 'NI')
     {
-        function addNerthusToDefaultWidgetSet()
+        const addNerthusToDefaultWidgetSet = function ()
         {
             Engine.interface.addKeyToDefaultWidgetSet(
                 'nerthus',

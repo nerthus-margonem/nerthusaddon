@@ -13,8 +13,7 @@ export function loadSettings()
     {
         const loadedSettings = JSON.parse(localStorage.nerthus_options)
         for (const opt in loadedSettings)
-            if (loadedSettings.hasOwnProperty(opt))
-                settings[opt] = loadedSettings[opt]
+            settings[opt] = loadedSettings[opt]
     }
     saveSetting(settings)
     return settings

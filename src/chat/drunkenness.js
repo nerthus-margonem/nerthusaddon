@@ -85,10 +85,10 @@ function shuffleMessage(msg)
             msg = t.join(' ')
         // fallthrough
         case 1:
-            msg = msg.replace(/[.,:?!\-]/g, ' *hik*')
+            msg = msg.replace(/[.,:?!-]/g, ' *hik*')
             break
         case 0:
-            msg = msg.replace(/[.,:?!\-]/g, '')
+            msg = msg.replace(/[.,:?!-]/g, '')
     }
     return msg
 }

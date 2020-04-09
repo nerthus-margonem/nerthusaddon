@@ -37,7 +37,7 @@ export function hideGameNpc(id, always)
     {
         let $style = $('#nerthus-npc-hiding')
         if (!$style.length)
-            $style = $('<style id="nerthus-npc-hiding"\>').appendTo('head')
+            $style = $('<style id="nerthus-npc-hiding"></style>').appendTo('head')
 
         if (always || settings.hideNpcs)
             $style.append('#npc' + id + '{display: none}')

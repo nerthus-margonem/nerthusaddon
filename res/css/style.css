@@ -29,7 +29,7 @@
 #nerthus-widgets-container {
     position: absolute;
     width: 512px;
-    z-index: 500;
+    z-index: 300;
 }
 
 .nerthus__widget {

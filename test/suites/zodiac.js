@@ -9,57 +9,78 @@ export function testZodiac()
 
         describe('getZodiacSign()', function ()
         {
-            it('should have correct zodiac sign around the year', function () // TODO split it
+            const maps = inject({
+                './widgets': {addWidget: sinon.fake()},
+                '../res/descriptions/zodiac.json': sinon.fake(),
+                './settings': {settings: {zodiac: true}}
+            })
+            const expectSignToBeBetween = function (sign, begin, end)
             {
-                const maps = inject({
-                    './widgets': {addWidget: sinon.fake()},
-                    '../res/descriptions/zodiac.json': sinon.fake.returns('fake')
-                })
+                expect(maps.getZodiacSign(begin.day, begin.month - 1)).to.be(sign)
+                expect(maps.getZodiacSign(end.day, end.month - 1)).to.be(sign)
+            }
 
-                const expectSignToBeBetween = function(sign, begin, end)
-                {
-                    expect(maps.getZodiacSign(begin.day, begin.month - 1)).to.be(sign)
-                    expect(maps.getZodiacSign(end.day, end.month - 1)).to.be(sign)
-                }
+            it('should return Aquarius between 20.01 and 18.02', function ()
+            {
+                expectSignToBeBetween('Aquarius', {day: 20, month: 1}, {day: 18, month: 2})
+            })
 
-                // Wodnik (20 stycznia – 18 lutego)
-                expectSignToBeBetween('Aquarius',{day:20,month:1},{day:18,month:2})
+            it('should return Pisces between 19.02 and 20.03', function ()
+            {
+                expectSignToBeBetween('Pisces', {day: 19, month: 2}, {day: 20, month: 3})
+            })
 
-                // Ryby (19 lutego – 20 marca)
-                expectSignToBeBetween('Pisces',{day:19,month:2},{day:20,month:3})
+            it('should return Aries between 21.03 and 19.04', function ()
+            {
+                expectSignToBeBetween('Aries', {day: 21, month: 3}, {day: 19, month: 4})
+            })
 
-                // Baran (21 marca – 19 kwietnia)
-                expectSignToBeBetween('Aries',{day:21,month:3},{day:19,month:4})
+            it('should return Taurus between 20.04 and 22.05', function ()
+            {
+                expectSignToBeBetween('Taurus', {day: 20, month: 4}, {day: 22, month: 5})
+            })
 
-                // Byk (20 kwietnia – 22 maja)
-                expectSignToBeBetween('Taurus',{day:20,month:4},{day:22,month:5})
+            it('should return Gemini between 23.05 and 21.06', function ()
+            {
+                expectSignToBeBetween('Gemini', {day: 23, month: 5}, {day: 21, month: 6})
+            })
 
-                // Bliźnięta (23 maja – 21 czerwca)
-                expectSignToBeBetween('Gemini',{day:23,month:5},{day:21,month:6})
+            it('should return Cancer between 22.06 and 22.07', function ()
+            {
+                expectSignToBeBetween('Cancer', {day: 22, month: 6}, {day: 22, month: 7})
+            })
 
-                // Rak (22 czerwca – 22 lipca)
-                expectSignToBeBetween('Cancer',{day:22,month:6},{day:22,month:7})
+            it('should return Leo between 23.07 and 21.08', function ()
+            {
+                expectSignToBeBetween('Leo', {day: 23, month: 7}, {day: 23, month: 8})
+            })
 
-                // Lew (23 lipca – 23 sierpnia)
-                expectSignToBeBetween('Leo',{day:23,month:7},{day:23,month:8})
+            it('should return Virgo between 24.08 and 22.09', function ()
+            {
+                expectSignToBeBetween('Virgo', {day: 24, month: 8}, {day: 22, month: 9})
+            })
 
-                // Panna (24 sierpnia – 22 września)
-                expectSignToBeBetween('Virgo',{day:24,month:8},{day:22,month:9})
+            it('should return Libra between 23.09 and 22.10', function ()
+            {
+                expectSignToBeBetween('Libra', {day: 23, month: 9}, {day: 22, month: 10})
+            })
 
-                // Waga (23 września – 22 października)
-                expectSignToBeBetween('Libra',{day:23,month:9},{day:22,month:10})
+            it('should return Scorpio between 23.10 and 22.11', function ()
+            {
+                expectSignToBeBetween('Scorpio', {day: 23, month: 10}, {day: 21, month: 11})
+            })
 
-                // Skorpion (23 października – 21 listopada)
-                expectSignToBeBetween('Scorpio',{day:23,month:10},{day:21,month:11})
-
-                // Strzelec (22 listopada – 21 grudnia)
-                expectSignToBeBetween('Sagittarius',{day:22,month:11},{day:21,month:12})
-
-                // Koziorożec (22 grudnia – 19 stycznia)
-                expectSignToBeBetween('Capricorn',{day:22,month:12},{day:19,month:1})
-
-                // Koniec/początek roku (31 grudnia – 1 stycznia)
-                expectSignToBeBetween('Capricorn',{day:31,month:12},{day:1,month:1})
+            it('should return Sagittarius between 22.11 and 21.12', function ()
+            {
+                expectSignToBeBetween('Sagittarius', {day: 22, month: 11}, {day: 21, month: 12})
+            })
+            it('should return Capricorn between 22.12 and 19.01', function ()
+            {
+                expectSignToBeBetween('Capricorn', {day: 22, month: 12}, {day: 19, month: 1})
+            })
+            it('should return Capricorn at the beginning and the end of the year', function ()
+            {
+                expectSignToBeBetween('Capricorn', {day: 31, month: 12}, {day: 1, month: 1})
             })
         })
     })

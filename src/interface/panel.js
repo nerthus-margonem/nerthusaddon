@@ -26,7 +26,7 @@ constructElement.button = function (data)
 {
     return (
         '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '" data-tip="' + data.name + '">' +
-        '<img src="' + FILE_PREFIX + 'img/panel/' + data.icon + '" alt="' + data.name + '">' +
+        '<img src="' + FILE_PREFIX + 'res/img/panel/' + data.icon + '" alt="' + data.name + '">' +
         '</a>'
     )
 }
@@ -104,7 +104,7 @@ constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGro
         settings +
         '</div>' +
         '<button class="button nerthus-settings-button" tip="Ustawienia" data-tip="Ustawienia">' +
-        '<img src="' + FILE_PREFIX + 'img/panel/settings.png' + '" alt="Ustawienia">' +
+        '<img src="' + FILE_PREFIX + 'res/img/panel/settings.png' + '" alt="Ustawienia">' +
         '</button>' +
         '</div>' +
         '</div>'
@@ -113,7 +113,7 @@ constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGro
 
 constructElement.icon = function ()
 {
-    return '<img id="nerthus-shield" src="' + FILE_PREFIX + 'img/nerthus_icon.gif' + '" tip="Nerthus" alt="Nerthus panel">'
+    return '<img id="nerthus-shield" src="' + FILE_PREFIX + 'res/img/widget-icon.gif" tip="Nerthus" alt="Nerthus panel">'
 }
 
 function createPanel(data, hidden)
@@ -139,13 +139,13 @@ function createPanel(data, hidden)
                 if (settingsPanel.hasClass('hidden'))
                 {
                     $this.attr({'tip': 'Ustawienia', 'data-tip': 'Ustawienia'})
-                        .children().attr('src', FILE_PREFIX + 'img/panel/settings.png')
+                        .children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
                     panelName.text('Panel Nerthusa')
                 }
                 else
                 {
                     $this.attr({'tip': 'Powrót', 'data-tip': 'Powrót'})
-                        .children().attr('src', FILE_PREFIX + 'img/panel/settings-back.png')
+                        .children().attr('src', FILE_PREFIX + 'res/img/panel/settings-back.png')
                     panelName.text('Panel Nerthusa - ustawienia')
                 }
             })
@@ -191,7 +191,7 @@ function createPanel(data, hidden)
 function preloadPanel()
 {
     if (!$elm.parent || !$elm.parent('body').length)
-        $.getJSON(FILE_PREFIX + 'panel_links.json', function (data)
+        $.getJSON(FILE_PREFIX + 'res/configs/panel-links.json', function (data)
         {
             createPanel(data, true)
         })
@@ -200,7 +200,7 @@ function preloadPanel()
 function togglePanel()
 {
     if (!$elm.parent || !$elm.parent('body').length)
-        $.getJSON(FILE_PREFIX + 'panel_links.json', createPanel)
+        $.getJSON(FILE_PREFIX + 'res/configs/panel-links.json', createPanel)
     else if ($elm.css('visibility') === 'visible')
         $elm.css({visibility: 'hidden', opacity: '0'})
     else
@@ -246,7 +246,7 @@ export function initPanel()
 
         $('head').append('<style>' +
             '.main-buttons-container .widget-button .icon.nerthus {' +
-            'background-image: url(' + '' + ');' + //TODO shield graphic
+            'background-image: url(' + FILE_PREFIX + 'res/img/widget-icon.gif);' +
             'background-position: 0;' +
             '}' +
             '</style>'

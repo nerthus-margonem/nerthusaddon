@@ -32,6 +32,16 @@
     z-index: 300;
 }
 
+.layer.interface-layer > #nerthus-widgets-container {
+    top: 60px;
+}
+
+.chat-size-0 #nerthus-widgets-container {margin-left: 5px;}
+
+.chat-size-1 #nerthus-widgets-container {margin-left: 260px;}
+
+.chat-size-2 #nerthus-widgets-container {margin-left: 515px;}
+
 .nerthus__widget {
     display: flex;
     opacity: 0.8;

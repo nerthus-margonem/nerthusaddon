@@ -1,6 +1,6 @@
 let $widgetsContainer
 
-export function addWidget(name, imageUrl, description) // TODO NI
+export function addWidget(name, imageUrl, description)
 {
     return $(
         '<div id="' + name + '-widget" class="nerthus__widget">' +

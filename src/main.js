@@ -13,7 +13,6 @@ import {initZodiac} from './zodiac'
 
 function start()
 {
-    //$('<link rel="stylesheet" href="' + nerthus.addon.fileUrl("css/style.css") + '">').appendTo('head')
     addBasicStyles()
     loadSettings()
 

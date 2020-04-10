@@ -1,5 +1,6 @@
 import {addWidget} from './widgets'
 import {default as zodiacDescriptions} from '../res/descriptions/zodiac.json'
+import {settings} from './settings'
 
 /**
  * Offset of sign icon in image
@@ -55,25 +56,28 @@ export function getZodiacSign(day, month)
 
 export function initZodiac()
 {
-    const date = new Date()
-    const currentSign = getZodiacSign(date.getUTCDate(), date.getUTCMonth())
-    const $widget = addWidget(
-        'Znak zodiaku',
-        FILE_PREFIX + 'res/img/zodiac-icons.gif',
-        zodiacDescriptions[currentSign][0]
-    )
-    $widget.children('.nerthus__widget-image')
-        .css({
-            cursor: 'pointer',
-            backgroundPositionY: SIGN_IMAGE_OFFSET[currentSign] + 'px'
-        })
-        .click(function ()
-        {
+    if (settings.zodiac)
+    {
+        const date = new Date()
+        const currentSign = getZodiacSign(date.getUTCDate(), date.getUTCMonth())
+        const $widget = addWidget(
+            'Znak zodiaku',
+            FILE_PREFIX + 'res/img/zodiac-icons.gif',
+            zodiacDescriptions[currentSign][0]
+        )
+        $widget.children('.nerthus__widget-image')
+            .css({
+                cursor: 'pointer',
+                backgroundPositionY: SIGN_IMAGE_OFFSET[currentSign] + 'px'
+            })
+            .click(function ()
+            {
 
-            const $desc = $widget.children('.nerthus__widget-desc')
-            if ($desc.text() === zodiacDescriptions[currentSign][0])
-                $desc.text(zodiacDescriptions[currentSign][1])
-            else
-                $desc.text(zodiacDescriptions[currentSign][0])
-        })
+                const $desc = $widget.children('.nerthus__widget-desc')
+                if ($desc.text() === zodiacDescriptions[currentSign][0])
+                    $desc.text(zodiacDescriptions[currentSign][1])
+                else
+                    $desc.text(zodiacDescriptions[currentSign][0])
+            })
+    }
 }

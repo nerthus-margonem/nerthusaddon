@@ -71,7 +71,6 @@ export function initZodiac()
         {
 
             const $desc = $widget.children('.nerthus__widget-desc')
-            console.log($desc.text())
             if ($desc.text() === zodiacDescriptions[currentSign][0])
                 $desc.text(zodiacDescriptions[currentSign][1])
             else

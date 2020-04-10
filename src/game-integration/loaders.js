@@ -28,9 +28,7 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
         Engine.map.onUpdate.file = function (new_v, old_v)
         {
             mapUpdate.call(Engine.map.onUpdate, new_v, old_v)
-            //loadNewMapQueue(Engine.map.d.id)
-            console.log('Load map queue')
-            console.log(Engine.map.d.id)
+            loadNewMapQueue(Engine.map.d.id)
         }
     }
     else

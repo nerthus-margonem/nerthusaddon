@@ -1,4 +1,4 @@
-import {addToNIdrawList} from '../game-integration/loaders'
+import {addToNiDrawList} from '../game-integration/loaders'
 
 const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
 
@@ -29,7 +29,7 @@ function addLights(lights)
         for (const i in lights)
         {
             const image = new Image()
-            image.onload = addToNIdrawList.bind(null, getLightNiObject(image))
+            image.onload = addToNiDrawList.bind(null, getLightNiObject(image))
             image.src = getLightTypeUrl(lights[i].type)
         }
     }

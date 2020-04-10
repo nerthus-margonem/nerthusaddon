@@ -1,6 +1,6 @@
 import {default as exceptionMaps} from '../../res/configs/map-exceptions'
 import {settings} from '../settings'
-import {addToNIdrawList, loadOnEveryMap} from '../game-integration/loaders'
+import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {turnLightsOn} from './lights'
 
 /**
@@ -40,7 +40,7 @@ function getDarknessNiObject(opacity)
 function changeLight(opacity)
 {
     if (INTERFACE === 'NI')
-        addToNIdrawList(getDarknessNiObject(opacity))
+        addToNiDrawList(getDarknessNiObject(opacity))
     else
     {
         let $night = $('#nerthus-night')

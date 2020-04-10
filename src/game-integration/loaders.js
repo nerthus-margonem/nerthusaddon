@@ -56,7 +56,7 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
     }
 }
 
-export function addToNIdrawList(preparedObject, id)
+export function addToNiDrawList(preparedObject, id)
 {
     const npcList = Engine.npcs.check()
     npcList[id] = preparedObject

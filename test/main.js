@@ -1,5 +1,6 @@
 import {testMaps} from './suites/maps'
 import * as cheerio from 'cheerio'
+import {testZodiac} from './suites/zodiac'
 
 function init()
 {
@@ -21,3 +22,4 @@ function init()
 
 init()
 testMaps()
+testZodiac()

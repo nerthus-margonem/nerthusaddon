@@ -4,7 +4,7 @@ const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
 
 function getLightTypeUrl(lightType)
 {
-    return FILE_PREFIX + '/img/night_light_' + lightType + '.png'
+    return FILE_PREFIX + 'res/img/night-lights/' + lightType + '.png'
 }
 
 function getLightNiObject(img)
@@ -73,7 +73,7 @@ export function turnLightsOn()
         else
         {
             if (AVAILABLE_MAP_FILES.lights.includes(Engine.map.d.id)) //TODO don't repeat this long list
-                $.getJSON(FILE_PREFIX + '/night-lights/map_' + Engine.map.d.id + '.json', addLights)
+                $.getJSON(FILE_PREFIX + 'res/configs/night-lights/map_' + Engine.map.d.id + '.json', addLights)
             else console.log('lights not loaded - no file')
         }
     }
@@ -82,7 +82,7 @@ export function turnLightsOn()
         resetLights()
         console.log('tried lights')
         if (AVAILABLE_MAP_FILES.lights.includes(map.id))
-            $.getJSON(FILE_PREFIX + '/night-lights/map_' + map.id + '.json', addLights)
+            $.getJSON(FILE_PREFIX + 'res/configs/night-lights/map_' + map.id + '.json', addLights)
         else console.log('lights not loaded - no file')
     }
 }

@@ -2,7 +2,6 @@ let $widgetsContainer
 
 export function addWidget(name, imageUrl, description) // TODO NI
 {
-    console.log('addingwidget')
     return $(
         '<div id="' + name + '-widget" class="nerthus__widget">' +
         '<div class="nerthus__widget-image" style="background-image: url(' + imageUrl + ')"></div>' +

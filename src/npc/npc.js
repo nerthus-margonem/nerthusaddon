@@ -30,6 +30,7 @@ function CustomNpc(x, y, url, nick, collision, dialog)
 
     this.icon = resolveUrl(url)
 
+    this.update = function(){}
     this.actions = 0
     this.grp = 0
     this.wt = 0

@@ -8,6 +8,8 @@ import {initNpcManager} from './npc/npc'
 import {initNightManager} from './night/night'
 import {initMapsManager} from './maps'
 import {initTips} from './game-integration/tips'
+import {initWidgets} from './widgets'
+import {initZodiac} from './zodiac'
 
 function start()
 {
@@ -27,6 +29,9 @@ function start()
 
     initChatMgr()
     initBasicChatCommands()
+
+    initWidgets()
+    initZodiac()
 
     initPanel()
     console.log('Nerthus addon fully loaded')

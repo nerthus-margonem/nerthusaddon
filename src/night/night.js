@@ -10,7 +10,6 @@ import {turnLightsOn} from './lights'
 function timeToOpacity(time)
 {
     const hour = time.getHours()
-    //const hour = new Date().getHours()
     if (hour <= 4) return 0.8
     if (hour >= 21) return 0.6
     if (hour >= 18) return 0.3
@@ -94,16 +93,4 @@ function checkAndApplyNight()
 export function initNightManager()
 {
     loadOnEveryMap(checkAndApplyNight)
-    // if (INTERFACE === 'NI')
-    // {
-    //     onDefined('Engine.map.d.id', () =>
-    //     {
-    //         checkAndApplyNight()
-    //         loadOnEveryMap(checkAndApplyNight)
-    //     })
-    // }
-    // else
-    // {
-    //     loadOnEveryMap(checkAndApplyNight)
-    // }
 }

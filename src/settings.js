@@ -15,6 +15,5 @@ export function loadSettings()
         for (const opt in loadedSettings)
             settings[opt] = loadedSettings[opt]
     }
-    saveSetting(settings)
     return settings
 }

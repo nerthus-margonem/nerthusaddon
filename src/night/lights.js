@@ -48,8 +48,8 @@ function addLights(lights)
                     height: lightTypeSize,
                     zIndex: map.y * 2 + 12,
                     position: 'absolute',
-                    left: parseInt(lights[i].x),
-                    top: parseInt(lights[i].y),
+                    left: lights[i].x,
+                    top: lights[i].y,
                     pointerEvents: 'none'
                 })
                 .addClass('night-light')

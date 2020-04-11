@@ -39,7 +39,6 @@ function addLights(lights)
         }
         else
         {
-
             const lightTypeSize = LIGHT_TYPE_SIZES[lights[i].type]
             $('<div />')
                 .css({

@@ -4,12 +4,7 @@ import {hideGameNpc, isNpcHidable} from './npc-actions/hide'
 import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
 import {initNpcDialog} from './dialog'
-
-// unified id for nerthus npcs
-export function coordsToId(x, y)
-{
-    return 50000000 + (x * 1000) + y
-}
+import {coordsToId} from '../utility-functions'
 
 function resolveUrl(url)
 {

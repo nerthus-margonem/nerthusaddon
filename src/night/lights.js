@@ -1,4 +1,5 @@
 import {addToNiDrawList} from '../game-integration/loaders'
+import {coordsToId} from '../utility-functions'
 
 const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
 
@@ -7,36 +8,38 @@ function getLightTypeUrl(lightType)
     return FILE_PREFIX + 'res/img/night-lights/' + lightType + '.png'
 }
 
-function getLightNiObject(img)
+function getLightNiObject(img, x, y)
 {
     return {
         draw: function (e)
         {
-            e.drawImage(img, 0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
+            e.drawImage(img, x - Engine.map.offset[0], y - Engine.map.offset[1])
         },
         getOrder: function ()
         {
             return 1000 // Lights always on top
         },
-        update: function() {}
+        update: function () {}
     }
 }
 
 function addLights(lights)
 {
-    if (INTERFACE === 'NI')
+    for (const i in lights)
     {
-        for (const i in lights)
+        if (INTERFACE === 'NI')
         {
             const image = new Image()
-            image.onload = addToNiDrawList.bind(null, getLightNiObject(image))
+            image.onload = addToNiDrawList.bind(
+                null,
+                getLightNiObject(image, lights[i].x, lights[i].y),
+                coordsToId(lights[i].x, lights[i].y)
+            )
             image.src = getLightTypeUrl(lights[i].type)
         }
-    }
-    else
-    {
-        for (const i in lights)
+        else
         {
+
             const lightTypeSize = LIGHT_TYPE_SIZES[lights[i].type]
             $('<div />')
                 .css({
@@ -54,7 +57,6 @@ function addLights(lights)
                 .appendTo('#ground')
         }
     }
-
 }
 
 function resetLights()

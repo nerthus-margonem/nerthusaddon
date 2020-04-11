@@ -1,3 +1,17 @@
-export function resolveNerthusUrl(url) {
-    return url.replace(/^#/,FILE_PREFIX)
+/**
+ * Function that takes coordinates and turns them to nerthus-specific ID.
+ * NI requires such id in several cases, and really big number makes sure,
+ * that (game npcs usually have id's that are few millions lower than that)
+ * @param {number} x
+ * @param {number} y
+ * @returns {number}
+ */
+export function coordsToId(x, y)
+{
+    return 50000000 + (x * 1000) + y
+}
+
+export function resolveNerthusUrl(url)
+{
+    return url.replace(/^#/, FILE_PREFIX)
 }

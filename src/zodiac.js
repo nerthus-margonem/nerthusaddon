@@ -43,7 +43,7 @@ export function initZodiac()
         const date = new Date()
         const currentSign = getZodiacSign(date.getUTCDate(), date.getUTCMonth())
         const $widget = addWidget(
-            'Znak zodiaku',
+            'zodiac',
             FILE_PREFIX + 'res/img/zodiac/' + currentSign + '.png',
             zodiacDescriptions[currentSign][0]
         )

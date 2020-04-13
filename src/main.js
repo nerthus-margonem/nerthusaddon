@@ -10,6 +10,7 @@ import {initMapsManager} from './maps'
 import {initTips} from './game-integration/tips'
 import {initWidgets} from './widgets'
 import {initZodiac} from './zodiac'
+import {initWeather} from './weather/weather'
 
 function start()
 {
@@ -26,11 +27,12 @@ function start()
 
     initNightManager()
 
+    initWidgets()
+    initWeather()
+    initZodiac()
+
     initChatMgr()
     initBasicChatCommands()
-
-    initWidgets()
-    initZodiac()
 
     initPanel()
     console.log('Nerthus addon fully loaded')

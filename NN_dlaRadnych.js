@@ -36,7 +36,7 @@ nerthus.NerthusNarr = [
     'Materios Dragonius',
     'Rothe',
     'Argetus',
-    'Kamivis',
+    'Lottie',
     'Yao Shasamo',
     'Rothen'
 ]

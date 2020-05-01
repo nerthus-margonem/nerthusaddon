@@ -51,7 +51,7 @@ function addLights(lights)
                     top: lights[i].y,
                     pointerEvents: 'none'
                 })
-                .addClass('night-light')
+                .addClass('nerthus__night-light')
                 .attr('type', lights[i].type)
                 .appendTo('#ground')
         }
@@ -61,7 +61,7 @@ function addLights(lights)
 function resetLights()
 {
     if (INTERFACE === 'SI')
-        $('#ground .night-light').remove()
+        $('#ground .nerthus__night-light').remove()
 }
 
 

@@ -28,9 +28,9 @@
     "eslint": "^6.8.0"
   },
   "scripts": {
-    "test": "mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
-    "test-leaks": "mocha-webpack --check-leaks --webpack-config webpack-config.test.js ./test/main.js",
-    "test-coverage": "nyc --reporter=text --reporter=text-lcov mocha-webpack --webpack-config webpack-config.test.js ./test/main.js",
+    "test": "mocha-webpack --webpack-config test/webpack-test.config.js ./test/main.js",
+    "test-leaks": "mocha-webpack --check-leaks --webpack-config test/webpack-test.config.js ./test/main.js",
+    "test-coverage": "nyc --reporter=text --reporter=text-lcov mocha-webpack --webpack-config test/webpack-test.config.js ./test/main.js",
     "coverage-raport-text": "nyc report --reporter=text",
     "coverage-raport-text-lcov": "nyc report --reporter=text-lcov",
     "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",

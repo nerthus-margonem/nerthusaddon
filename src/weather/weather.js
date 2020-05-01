@@ -3,28 +3,52 @@ import {Simple1DNoise} from './noise'
 import {addWidget} from '../widgets'
 import {default as weatherDescriptions} from '../../res/descriptions/weather.json'
 import {clearEffects, displayRain, displaySnow} from './effects'
+import {default as climates} from '../../res/configs/climates.json'
+import {isCurrentMapOutdoor} from '../utility-functions'
+import {loadOnEveryMap} from '../game-integration/loaders'
 
-// TODO
-// better humidity (less?)
-// map climates
 
+
+function getMapsClimate(mapId)
+{
+    for (const climateName in climates.maps)
+        if (climates.maps[climateName].indexOf(mapId) >= 0)
+            return climates.maps[climateName]
+    return false
+}
+
+function getClimateVariation(characteristic, date, climate)
+{
+    if (!characteristic[climate]) climate = 'default'
+
+    const now = new Date()
+    const start = new Date(now.getFullYear(), 3, 20) // start of spring
+    if (start > now) start.setUTCFullYear(now.getFullYear() - 1)
+    const day = Math.ceil((now - start) / (1000 * 60 * 60 * 24))
+    const firstSeason = Math.floor(day / 90)
+    const secondSeason = firstSeason === 3 ? 0 : firstSeason + 1
+    return characteristic[climate][firstSeason] * (1 - ((day / 90) - firstSeason)) +
+        characteristic[climate][secondSeason] * ((day / 90) - firstSeason)
+}
 
 const cloudinessNoise = new Simple1DNoise(2020)
 
-function getCloudiness(date)
+function getClimateCloudiness(date, climate)
 {
     const pointInTime = date.getTime() / 3600000
 
-    return cloudinessNoise.getVal(pointInTime)
+    const ret = cloudinessNoise.getVal(pointInTime) * getClimateVariation(climates.characteristics.cloudiness, date, climate)
+    return ret > 1 ? 1 : ret
 }
 
 const humidityNoise = new Simple1DNoise(420)
 
-function getHumidity(date)
+function getClimateHumidity(date, climate)
 {
     const pointInTime = date.getTime() / 3600000
 
-    return humidityNoise.getVal(pointInTime)
+    const ret = humidityNoise.getVal(pointInTime) * getClimateVariation(climates.characteristics.humidity, date, climate)
+    return ret > 1 ? 1 : ret
 }
 
 const temperatureNoise = new Simple1DNoise(666)
@@ -37,25 +61,74 @@ function getGlobalTemperature(date)
     // f(x) = 15 * Math.sin(0.52 * x - 1.5) + 9 is a graph that resembles average temperature graph in poland
     // https://en.climate-data.org/north-america/united-states-of-america/ohio/poland-137445/#climate-graph
     const x = month + (day / 31) //minor difference in 28 day month probably not noticeable
-    console.log(x)
     const dayTemperature = 15 * Math.sin(0.52 * x - 1.5) + 9
-    // 7 w dół i w górę
+
     const pointInTime = date.getTime() / 3600000
     const hourTemperatureChange = temperatureNoise.getVal(pointInTime) * 14 - 7
-    console.log(dayTemperature)
-    console.log(hourTemperatureChange)
 
     return dayTemperature + hourTemperatureChange
 }
 
-function getRegionalTemperatureDiff()
+
+function getClimateTemperature(date, climate)
 {
-    return 0
+    return getGlobalTemperature(date) + getClimateVariation(climates.characteristics.temperature, date, climate)
 }
 
-function getTemperature(date)
+function getCurrentRegionCharacteristic(date) // todo naming???
 {
-    return getGlobalTemperature(date) + getRegionalTemperatureDiff(date)
+    if (INTERFACE === 'NI')
+    {
+
+    }
+    else
+    {
+        const adjacentClimates = []
+        const gatewaysIds = []
+        for (let mapId in g.gwIds)
+        {
+            if (typeof g.gw[g.gwIds[mapId]] !== 'undefined') // some fast map switchers don't reset g.gwIds
+            {
+                mapId = parseInt(mapId)
+                const mapClimate = getMapsClimate(mapId)
+                if (mapClimate && gatewaysIds.indexOf(mapId) < 0)
+                {
+                    adjacentClimates.push(mapClimate)
+                    gatewaysIds.push(mapId)
+                }
+            }
+        }
+
+        const currentMapClimate = getMapsClimate(map.id)
+
+        let adjacentHumidity = 0
+        let adjacentCloudiness = 0
+        let adjacentTemperature = 0
+        const adjacentAmount = adjacentClimates.length
+        if (adjacentAmount > 0)
+        {
+            for (let i = 0; i < adjacentAmount; i++)
+            {
+                adjacentHumidity += getClimateHumidity(date, adjacentClimates[i])
+                adjacentCloudiness += getClimateCloudiness(date, adjacentClimates[i])
+                adjacentTemperature += getClimateTemperature(date, adjacentClimates[i])
+            }
+            adjacentHumidity /= adjacentAmount
+            adjacentCloudiness /= adjacentAmount
+            adjacentTemperature /= adjacentAmount
+
+            return {
+                'humidity': 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity,
+                'cloudiness': 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness,
+                'temperature': 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
+            }
+        }
+        else return {
+            'humidity': getClimateHumidity(date, currentMapClimate),
+            'cloudiness': getClimateCloudiness(date, currentMapClimate),
+            'temperature': getClimateTemperature(date, currentMapClimate)
+        }
+    }
 }
 
 /**
@@ -86,36 +159,35 @@ const SNOW_STRENGTH = {
     'snow-storm': 1
 }
 
+
 export function getWeather(date)
 {
-    const cloudiness = getCloudiness(date)
+    const characteristics = getCurrentRegionCharacteristic(date)
     let cloudinessPart
-    if (cloudiness <= 0.15) cloudinessPart = 0
-    else if (cloudiness <= 0.35) cloudinessPart = 1
-    else if (cloudiness <= 0.60) cloudinessPart = 2
+    if (characteristics.cloudiness <= 0.15) cloudinessPart = 0
+    else if (characteristics.cloudiness <= 0.35) cloudinessPart = 1
+    else if (characteristics.cloudiness <= 0.60) cloudinessPart = 2
     else cloudinessPart = 3
 
-    const humidity = getHumidity(date)
     let humidityPart
-    if (humidity <= 0.25) humidityPart = 0
-    else if (humidity <= 0.50) humidityPart = 1
-    else if (humidity <= 0.75) humidityPart = 2
+    if (characteristics.humidity <= 0.25) humidityPart = 0
+    else if (characteristics.humidity <= 0.50) humidityPart = 1
+    else if (characteristics.humidity <= 0.75) humidityPart = 2
     else humidityPart = 3
 
     let weather = WEATHER_TABLE[cloudinessPart][humidityPart]
 
-    const temperature = getTemperature(date)
-    if (temperature < -3)
+    if (characteristics.temperature < -3)
         weather = weather
             .replace('rain', 'snow')
             .replace(/^storm$/, 'snow-storm')
             .replace(/^day-storm$/, 'day-snow')
-    else if (temperature < 5)
+    else if (characteristics.temperature < 5)
         weather = weather
             .replace('rain', 'rain-with-snow')
             .replace(/^day-storm$/, 'day-rain-with-snow')
-    else if (temperature > 25) // really hot, less cloudiness and humidity
-        weather = WEATHER_TABLE[cloudinessPart - 0.2][humidityPart - 0.2]
+    // else if (characteristics.temperature > 25) // really hot, less cloudiness and humidity
+    //     weather = WEATHER_TABLE[cloudinessPart - 0.2][humidityPart - 0.2]  //todo this doesn't make sense
 
     let rain = 0
     if (RAIN_STRENGTH[weather]) rain = RAIN_STRENGTH[weather]
@@ -130,9 +202,20 @@ export function getWeather(date)
         name: weather,
         rainStrength: rain,
         snowStrength: snow,
-        temperature: temperature,
-        humidity: humidity,
-        cloudiness: cloudiness
+        temperature: characteristics.temperature,
+        humidity: characteristics.humidity,
+        cloudiness: characteristics.cloudiness
+    }
+}
+
+function displayWeatherEffects()
+{
+    const currentWeather = getWeather(new Date())
+    clearEffects()
+    if (isCurrentMapOutdoor())
+    {
+        if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
+        if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
     }
 }
 
@@ -147,12 +230,17 @@ function startChangeTimer($widget)
         const currentWeather = getWeather(new Date())
         $widget.children('.nerthus__widget-image')
             .css('background-image', FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png')
+
+        const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
         $widget.children('nerthus__widget-desc')
-            .text(weatherDescriptions[currentWeather.name][0])
+            .text(weatherDescriptions[currentWeather.name][descId])
 
         clearEffects()
-        if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
-        if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
+        if (isCurrentMapOutdoor())
+        {
+            if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
+            if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
+        }
 
         startChangeTimer($widget)
     }, timeout)
@@ -163,23 +251,22 @@ export function initWeather()
     if (settings.weather)
     {
         const currentWeather = getWeather(new Date())
-        console.log(currentWeather)
+        const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
         const $widget = addWidget(
             'weather',
             FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png',
-            weatherDescriptions[currentWeather.name][0]
+            weatherDescriptions[currentWeather.name][descId]
         )
 
-        clearEffects()
-        if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
-        if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
+        loadOnEveryMap(displayWeatherEffects)
+
+        startChangeTimer($widget)
         for (let i = 0; i < 20; i++)
         {
-            let date = new Date(2019, 0, 27).getTime()
+            let date = new Date().getTime()
             date += 1000 * 60 * 60 * i
             let newDate = new Date(date)
             console.log(getWeather(newDate))
         }
-        startChangeTimer($widget)
     }
 }

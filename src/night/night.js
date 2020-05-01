@@ -1,8 +1,7 @@
-import {default as exceptionMaps} from '../../res/configs/map-exceptions'
 import {settings} from '../settings'
 import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {turnLightsOn} from './lights'
-import {coordsToId} from '../utility-functions'
+import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 
 /**
  * @param time - Date
@@ -58,20 +57,7 @@ function changeLight(opacity)
 
 function dim(opacity)
 {
-    let id
-    let mainid
-    if (INTERFACE === 'NI')
-    {
-        console.log('DIM NI MAP: ' + Engine.map.d.id)
-        mainid = Engine.map.d.mainid
-        id = Engine.map.d.id
-    }
-    else
-    {
-        mainid = map.mainid
-        id = map.id
-    }
-    if ((mainid === 0 && !exceptionMaps.indoor.includes(id)) || exceptionMaps.outdoor.includes(id))
+    if (isCurrentMapOutdoor())
         changeLight(opacity)
     else
         changeLight(0)

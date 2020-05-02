@@ -100,7 +100,6 @@ function getCurrentRegionCharacteristic(date) // todo naming???
         }
 
         const currentMapClimate = getMapsClimate(map.id)
-
         let adjacentHumidity = 0
         let adjacentCloudiness = 0
         let adjacentTemperature = 0
@@ -163,6 +162,13 @@ const SNOW_STRENGTH = {
 export function getWeather(date)
 {
     const characteristics = getCurrentRegionCharacteristic(date)
+
+    if (characteristics.temperature > 25) // really hot, less cloudiness and humidity
+    {
+        characteristics.cloudiness *= 0.8
+        characteristics.humidity *= 0.8
+    }
+
     let cloudinessPart
     if (characteristics.cloudiness <= 0.15) cloudinessPart = 0
     else if (characteristics.cloudiness <= 0.35) cloudinessPart = 1
@@ -186,8 +192,6 @@ export function getWeather(date)
         weather = weather
             .replace('rain', 'rain-with-snow')
             .replace(/^day-storm$/, 'day-rain-with-snow')
-    // else if (characteristics.temperature > 25) // really hot, less cloudiness and humidity
-    //     weather = WEATHER_TABLE[cloudinessPart - 0.2][humidityPart - 0.2]  //todo this doesn't make sense
 
     let rain = 0
     if (RAIN_STRENGTH[weather]) rain = RAIN_STRENGTH[weather]

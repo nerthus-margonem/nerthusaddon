@@ -8,7 +8,6 @@ import {isCurrentMapOutdoor} from '../utility-functions'
 import {loadOnEveryMap} from '../game-integration/loaders'
 
 
-
 function getMapsClimate(mapId)
 {
     for (const climateName in climates.maps)
@@ -104,7 +103,9 @@ function getCurrentRegionCharacteristic(date) // todo naming???
         let adjacentCloudiness = 0
         let adjacentTemperature = 0
         const adjacentAmount = adjacentClimates.length
-        if (adjacentAmount > 0)
+
+        if (adjacentAmount === 0 && !currentMapClimate && !isCurrentMapOutdoor()) return false
+        else if (adjacentAmount > 0)
         {
             for (let i = 0; i < adjacentAmount; i++)
             {
@@ -116,17 +117,28 @@ function getCurrentRegionCharacteristic(date) // todo naming???
             adjacentCloudiness /= adjacentAmount
             adjacentTemperature /= adjacentAmount
 
-            return {
-                'humidity': 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity,
-                'cloudiness': 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness,
-                'temperature': 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
+            if (currentMapClimate)
+            {
+                return {
+                    'humidity': 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity,
+                    'cloudiness': 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness,
+                    'temperature': 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
+                }
+            }
+            else
+            {
+                return {
+                    'humidity': adjacentHumidity,
+                    'cloudiness': adjacentCloudiness,
+                    'temperature': adjacentTemperature
+                }
             }
         }
         else return {
-            'humidity': getClimateHumidity(date, currentMapClimate),
-            'cloudiness': getClimateCloudiness(date, currentMapClimate),
-            'temperature': getClimateTemperature(date, currentMapClimate)
-        }
+                'humidity': getClimateHumidity(date, currentMapClimate),
+                'cloudiness': getClimateCloudiness(date, currentMapClimate),
+                'temperature': getClimateTemperature(date, currentMapClimate)
+            }
     }
 }
 
@@ -163,71 +175,83 @@ const SNOW_STRENGTH = {
 export function getWeather(date)
 {
     const characteristics = getCurrentRegionCharacteristic(date)
-
-    if (characteristics.temperature > 25) // really hot, less cloudiness and humidity
+    if (characteristics)
     {
-        characteristics.cloudiness *= 0.8
-        characteristics.humidity *= 0.8
+        if (characteristics.temperature > 25) // really hot, less cloudiness and humidity
+        {
+            characteristics.cloudiness *= 0.8
+            characteristics.humidity *= 0.8
+        }
+
+        let cloudinessPart
+        if (characteristics.cloudiness <= 0.15) cloudinessPart = 0
+        else if (characteristics.cloudiness <= 0.35) cloudinessPart = 1
+        else if (characteristics.cloudiness <= 0.60) cloudinessPart = 2
+        else cloudinessPart = 3
+
+        let humidityPart
+        if (characteristics.humidity <= 0.25) humidityPart = 0
+        else if (characteristics.humidity <= 0.50) humidityPart = 1
+        else if (characteristics.humidity <= 0.75) humidityPart = 2
+        else humidityPart = 3
+
+        let weather = WEATHER_TABLE[cloudinessPart][humidityPart]
+
+        if (characteristics.temperature < -3)
+            weather = weather
+                .replace('rain', 'snow')
+                .replace(/^storm$/, 'snow-storm')
+                .replace(/^day-storm$/, 'day-snow')
+        else if (characteristics.temperature < 5)
+            weather = weather
+                .replace('rain', 'rain-with-snow')
+                .replace(/^day-storm$/, 'day-rain-with-snow')
+
+        let rain = 0
+        if (RAIN_STRENGTH[weather]) rain = RAIN_STRENGTH[weather]
+
+        let snow = 0
+        if (SNOW_STRENGTH[weather]) snow = SNOW_STRENGTH[weather]
+
+        if (date.getHours() < 6 || date.getHours() > 20)
+            weather = weather.replace('day', 'night')
+
+        return {
+            name: weather,
+            rainStrength: rain,
+            snowStrength: snow,
+            temperature: characteristics.temperature,
+            humidity: characteristics.humidity,
+            cloudiness: characteristics.cloudiness
+        }
     }
-
-    let cloudinessPart
-    if (characteristics.cloudiness <= 0.15) cloudinessPart = 0
-    else if (characteristics.cloudiness <= 0.35) cloudinessPart = 1
-    else if (characteristics.cloudiness <= 0.60) cloudinessPart = 2
-    else cloudinessPart = 3
-
-    let humidityPart
-    if (characteristics.humidity <= 0.25) humidityPart = 0
-    else if (characteristics.humidity <= 0.50) humidityPart = 1
-    else if (characteristics.humidity <= 0.75) humidityPart = 2
-    else humidityPart = 3
-
-    let weather = WEATHER_TABLE[cloudinessPart][humidityPart]
-
-    if (characteristics.temperature < -3)
-        weather = weather
-            .replace('rain', 'snow')
-            .replace(/^storm$/, 'snow-storm')
-            .replace(/^day-storm$/, 'day-snow')
-    else if (characteristics.temperature < 5)
-        weather = weather
-            .replace('rain', 'rain-with-snow')
-            .replace(/^day-storm$/, 'day-rain-with-snow')
-
-    let rain = 0
-    if (RAIN_STRENGTH[weather]) rain = RAIN_STRENGTH[weather]
-
-    let snow = 0
-    if (SNOW_STRENGTH[weather]) snow = SNOW_STRENGTH[weather]
-
-    if (date.getHours() < 6 || date.getHours() > 20)
-        weather = weather.replace('day', 'night')
-
-    return {
-        name: weather,
-        rainStrength: rain,
-        snowStrength: snow,
-        temperature: characteristics.temperature,
-        humidity: characteristics.humidity,
-        cloudiness: characteristics.cloudiness
-    }
+    else return 'indoor'
 }
 
 function displayWeatherEffects($widget)
 {
     const currentWeather = getWeather(new Date())
-    $widget.children('.nerthus__widget-image')
-        .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png)')
-
-    const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
-    $widget.children('nerthus__widget-desc')
-        .text(weatherDescriptions[currentWeather.name][descId])
-
-    clearEffects()
-    if (isCurrentMapOutdoor())
+    if (currentWeather === 'indoor')
     {
-        if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
-        if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
+        $widget.css('display', 'none')
+        clearEffects()
+    }
+    else
+    {
+        $widget.css('display', 'flex')
+            .children('.nerthus__widget-image')
+            .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png)')
+
+        const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
+        $widget.children('nerthus__widget-desc')
+            .text(weatherDescriptions[currentWeather.name][descId])
+
+        clearEffects()
+        if (isCurrentMapOutdoor())
+        {
+            if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
+            if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
+        }
     }
 }
 

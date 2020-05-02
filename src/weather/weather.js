@@ -145,6 +145,7 @@ const WEATHER_TABLE =
     ]
 
 const RAIN_STRENGTH = {
+    'rain-light': 0.5,
     'day-rain': 0.6,
     'day-storm': 1,
     'rain': 0.9,

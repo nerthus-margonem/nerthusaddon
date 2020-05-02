@@ -13,7 +13,7 @@ function getMapsClimate(mapId)
 {
     for (const climateName in climates.maps)
         if (climates.maps[climateName].indexOf(mapId) >= 0)
-            return climates.maps[climateName]
+            return climateName
     return false
 }
 

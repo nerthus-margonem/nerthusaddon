@@ -213,9 +213,16 @@ export function getWeather(date)
     }
 }
 
-function displayWeatherEffects()
+function displayWeatherEffects($widget)
 {
     const currentWeather = getWeather(new Date())
+    $widget.children('.nerthus__widget-image')
+        .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png)')
+
+    const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
+    $widget.children('nerthus__widget-desc')
+        .text(weatherDescriptions[currentWeather.name][descId])
+
     clearEffects()
     if (isCurrentMapOutdoor())
     {
@@ -232,21 +239,7 @@ function startChangeTimer($widget)
     const timeout = date - new Date()
     setTimeout(function ()
     {
-        const currentWeather = getWeather(new Date())
-        $widget.children('.nerthus__widget-image')
-            .css('background-image', FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png')
-
-        const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
-        $widget.children('nerthus__widget-desc')
-            .text(weatherDescriptions[currentWeather.name][descId])
-
-        clearEffects()
-        if (isCurrentMapOutdoor())
-        {
-            if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
-            if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
-        }
-
+        displayWeatherEffects($widget)
         startChangeTimer($widget)
     }, timeout)
 }
@@ -263,7 +256,7 @@ export function initWeather()
             weatherDescriptions[currentWeather.name][descId]
         )
 
-        loadOnEveryMap(displayWeatherEffects)
+        loadOnEveryMap(displayWeatherEffects, $widget)
 
         startChangeTimer($widget)
         for (let i = 0; i < 20; i++)

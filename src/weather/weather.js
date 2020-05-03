@@ -320,13 +320,14 @@ export function initWeather()
         loadOnEveryMap(displayWeatherEffects, $widget)
         startChangeTimer($widget)
 
-
-        for (let i = 0; i < 20; i++)
-        {
-            let date = new Date().getTime()
-            date += 1000 * 60 * 60 * i
-            let newDate = new Date(date)
-            console.log(getWeather(newDate))
-        }
+        loadOnEveryMap(function() {
+            for (let i = 0; i < 20; i++)
+            {
+                let date = new Date().getTime()
+                date += 1000 * 60 * 60 * i
+                let newDate = new Date(date)
+                console.log(getWeather(newDate))
+            }
+        })
     }
 }

@@ -172,9 +172,15 @@ export function initTips()
     }
     else
     {
-        $('#hero').attr('tip', createPlayerTip(hero))
+        g.loadQueue.push({
+            fun: function ()
+            {
+                console.log('changedherotip')
+                $('#hero').attr('tip', createPlayerTip(hero))
 
-        g.tips.other = createPlayerTip
-        g.tips.npc = createNpcTip
+                g.tips.other = createPlayerTip
+                g.tips.npc = createNpcTip
+            }
+        })
     }
 }

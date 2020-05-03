@@ -7,7 +7,7 @@ const loadQueue = []
  */
 export function loadOnEveryMap(fun, args)
 {
-    fun(args)
+    if (INTERFACE === 'NI' || map.id !== -1) fun(args)
     loadQueue.push([fun, args])
 }
 
@@ -33,23 +33,25 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
     }
     else
     {
-        // Observe map change if user have some kind of fast map switcher (e.g. 'Szybsze przechodzenie' by Adi Wilk)
-        let previousMapId = -1
+        // Handle Szybsze ładowanie gry by Priv
+        const oldParseInput = window._g
+        window._g = function (data)
+        {
+            if (data.includes('initlvl=4')) loadNewMapQueue()
 
-        window.map.__loaded = window.map.loaded
-        Object.defineProperty(window.map, 'loaded', {
+            return oldParseInput.apply(this, arguments)
+        }
+
+        // Handle Szybsze przechodzenie by Adi Wilk
+        window.g.chat.__parsers = window.g.chat.parsers
+        Object.defineProperty(window.g.chat, 'parsers', {
             set(val)
             {
-                console.log('New map loaded')
-                this.__loaded = val
-                if (previousMapId !== window.map.id)
-                {
-                    loadNewMapQueue(window.map.id)
-                    previousMapId = window.map.id
-                }
+                this.__parsers = val
+                if (val.length === 0) loadNewMapQueue()
                 return val
             },
-            get() { return this.__loaded }
+            get() { return this.__parsers }
         })
     }
 }

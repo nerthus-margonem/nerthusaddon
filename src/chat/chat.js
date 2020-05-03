@@ -1,5 +1,6 @@
 import {checkPermissionLvl} from '../permissions'
 import {initChatDrunkenness} from './drunkenness'
+import {loadOnEveryMap} from '../game-integration/loaders'
 
 const commandsMap = {}
 const commandsPublicMap = {}
@@ -112,7 +113,10 @@ export function initChatMgr()
     }
     else
     {
-        g.chat.parsers.push(run)
+        loadOnEveryMap(function ()
+        {
+            g.chat.parsers.push(run)
+        })
     }
     initChatDrunkenness()
 }

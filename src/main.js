@@ -69,5 +69,5 @@ if (INTERFACE === 'NI')
 }
 else
 {
-    g.loadQueue.push({'fun': start})
+    start()
 }

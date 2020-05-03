@@ -82,7 +82,6 @@ export function displayRain(opacity)
         if (rainInterval) clearInterval(rainInterval)
         rainInterval = setInterval(function ()
         {
-            console.log(currentFrame.rain)
             currentFrame.rain += 1
             if (currentFrame.rain === 3) currentFrame.rain = 0
         }, 100)

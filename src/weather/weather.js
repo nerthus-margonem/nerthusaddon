@@ -112,8 +112,9 @@ function getCurrentRegionCharacteristic(date) // todo naming???
     let currentMapClimate
     if (INTERFACE === 'NI')
     {
-        for (const mapId in Engine.map.gateways)
+        for (let mapId in Engine.map.gateways.townnames)
         {
+            mapId = parseInt(mapId)
             const mapClimate = getMapsClimate(mapId)
             if (mapClimate && gatewaysIds.indexOf(mapId) < 0)
             {

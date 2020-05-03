@@ -32,7 +32,8 @@ function getDarknessNiObject(opacity)
         {
             return 950 // Darkness bellow lights but above everything else
         },
-        update: function () {}
+        update: function () {},
+        d: {}
     }
 }
 

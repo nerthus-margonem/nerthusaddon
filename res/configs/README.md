@@ -26,5 +26,4 @@ outdoor contains map ids that will be parsed as outdoor maps regardless of their
 ------
 
 This file contains information of which custom map to use in place (or rather, on top of) normal one.
-Maps in 
- 
+Maps in

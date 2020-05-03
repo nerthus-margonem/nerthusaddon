@@ -287,7 +287,7 @@ function displayWeatherEffects($widget)
             .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png)')
 
         const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
-        $widget.children('nerthus__widget-desc')
+        $widget.children('.nerthus__widget-desc')
             .text(weatherDescriptions[currentWeather.name][descId])
 
         clearEffects()
@@ -316,17 +316,11 @@ export function initWeather()
 {
     if (settings.weather)
     {
-        const currentWeather = getWeather(new Date())
-        const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
-        const $widget = addWidget(
-            'weather',
-            FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png',
-            weatherDescriptions[currentWeather.name][descId]
-        )
-
+        const $widget = addWidget('weather')
         loadOnEveryMap(displayWeatherEffects, $widget)
-
         startChangeTimer($widget)
+
+
         for (let i = 0; i < 20; i++)
         {
             let date = new Date().getTime()

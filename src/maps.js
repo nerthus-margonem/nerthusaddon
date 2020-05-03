@@ -5,7 +5,7 @@ import {resolveNerthusUrl} from './utility-functions'
 
 export const MAP_PRIORITY = {CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0}
 
-let currentTopMap
+const currentMapImage = new Image()
 
 let customMapNoIdUrl
 const customMapsUrls = {}
@@ -59,11 +59,10 @@ function applyMapChange(mapId)
         mapImage.src = resolveNerthusUrl(customMapNoIdUrl)
     else if (basicMapUrl)
         mapImage.src = resolveNerthusUrl(basicMapUrl)
-    else
-        return
 
-    currentTopMap = mapImage
-    if (INTERFACE !== 'NI')
+    currentMapImage.src = mapImage.src
+
+    if (INTERFACE !== 'NI' && mapImage.src)
         $('#ground').css('background-image', 'url(' + mapImage.src + ')')
 }
 
@@ -78,10 +77,10 @@ function startMapChanging()
         tmpMapDraw.call(Engine.map, canvasRenderingContext)
 
         //draw new maps on top of map
-        if (currentTopMap.complete)
+        if (currentMapImage.complete)
         {
             canvasRenderingContext.drawImage(
-                currentTopMap,
+                currentMapImage,
                 0 - Engine.map.offset[0],
                 0 - Engine.map.offset[1])
 

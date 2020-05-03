@@ -107,14 +107,24 @@ function getCurrentRegionCharacteristic(date) // todo naming???
     let humidity = 0
     let cloudiness = 0
     let temperature = 0
+    const adjacentClimates = []
+    const gatewaysIds = []
+    let currentMapClimate
     if (INTERFACE === 'NI')
     {
-
+        for (const mapId in Engine.map.gateways)
+        {
+            const mapClimate = getMapsClimate(mapId)
+            if (mapClimate && gatewaysIds.indexOf(mapId) < 0)
+            {
+                adjacentClimates.push(mapClimate)
+                gatewaysIds.push(mapId)
+            }
+        }
+        currentMapClimate = getMapsClimate(Engine.map.d.id)
     }
     else
     {
-        const adjacentClimates = []
-        const gatewaysIds = []
         for (let mapId in g.gwIds)
         {
             if (typeof g.gw[g.gwIds[mapId]] !== 'undefined') // some fast map switchers don't reset g.gwIds
@@ -128,45 +138,45 @@ function getCurrentRegionCharacteristic(date) // todo naming???
                 }
             }
         }
+        currentMapClimate = getMapsClimate(map.id)
+    }
 
-        const currentMapClimate = getMapsClimate(map.id)
-        let adjacentHumidity = 0
-        let adjacentCloudiness = 0
-        let adjacentTemperature = 0
-        const adjacentAmount = adjacentClimates.length
+    let adjacentHumidity = 0
+    let adjacentCloudiness = 0
+    let adjacentTemperature = 0
+    const adjacentAmount = adjacentClimates.length
 
-        if (adjacentAmount === 0 && !currentMapClimate && !isCurrentMapOutdoor()) return false
-        else if (adjacentAmount > 0)
+    if (adjacentAmount === 0 && !currentMapClimate && !isCurrentMapOutdoor()) return false
+    else if (adjacentAmount > 0)
+    {
+        for (let i = 0; i < adjacentAmount; i++)
         {
-            for (let i = 0; i < adjacentAmount; i++)
-            {
-                adjacentHumidity += getClimateHumidity(date, adjacentClimates[i])
-                adjacentCloudiness += getClimateCloudiness(date, adjacentClimates[i])
-                adjacentTemperature += getClimateTemperature(date, adjacentClimates[i])
-            }
-            adjacentHumidity /= adjacentAmount
-            adjacentCloudiness /= adjacentAmount
-            adjacentTemperature /= adjacentAmount
+            adjacentHumidity += getClimateHumidity(date, adjacentClimates[i])
+            adjacentCloudiness += getClimateCloudiness(date, adjacentClimates[i])
+            adjacentTemperature += getClimateTemperature(date, adjacentClimates[i])
+        }
+        adjacentHumidity /= adjacentAmount
+        adjacentCloudiness /= adjacentAmount
+        adjacentTemperature /= adjacentAmount
 
-            if (currentMapClimate)
-            {
-                humidity = 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity
-                cloudiness = 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness
-                temperature = 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
-            }
-            else
-            {
-                humidity = adjacentHumidity
-                cloudiness = adjacentCloudiness
-                temperature = adjacentTemperature
-            }
+        if (currentMapClimate)
+        {
+            humidity = 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity
+            cloudiness = 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness
+            temperature = 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
         }
         else
         {
-            humidity = getClimateHumidity(date, currentMapClimate)
-            cloudiness = getClimateCloudiness(date, currentMapClimate)
-            temperature = getClimateTemperature(date, currentMapClimate)
+            humidity = adjacentHumidity
+            cloudiness = adjacentCloudiness
+            temperature = adjacentTemperature
         }
+    }
+    else
+    {
+        humidity = getClimateHumidity(date, currentMapClimate)
+        cloudiness = getClimateCloudiness(date, currentMapClimate)
+        temperature = getClimateTemperature(date, currentMapClimate)
     }
 
     return {

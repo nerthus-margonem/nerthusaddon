@@ -1,14 +1,39 @@
 import {addToNiDrawList} from '../game-integration/loaders'
 import {coordsToId} from '../utility-functions'
 
-function getDarknessNiObject(opacity)
+const rainFrames = []
+const snowFrames = []
+if (INTERFACE === 'NI')
 {
+    for (let i = 0; i < 3; i++)
+    {
+        rainFrames[i] = new Image()
+        rainFrames[i].src = FILE_PREFIX + `res/img/weather/rain-frame-${i}.png`
+    }
+
+    for (let i = 0; i < 5; i++)
+    {
+        snowFrames[i] = new Image()
+        snowFrames[i].src = FILE_PREFIX + `res/img/weather/snow-frame-${i}.png`
+    }
+}
+const currentFrame = {
+    'rain': 0,
+    'snow': 0
+}
+let rainInterval
+let snowInterval
+
+function getWeatherNiObject(type, opacity)
+{
+    let frames
+    if (type === 'rain') frames = rainFrames
+    else if (type === 'snow') frames = snowFrames
+
     return {
         draw: function (e)
         {
-            const name = nerthus.worldEdit.currentWeatherEffects[i][0]
-            const opacity = nerthus.worldEdit.currentWeatherEffects[i][1]
-            const img = nerthus.worldEdit.weatherImages[name][nerthus.worldEdit.weatherCurrentFrameNumbers[name] + 1]
+            const img = frames[currentFrame[type]]
 
             //check if img has been loaded correctly to not stop entire game in case of error
             if (img.complete && img.naturalWidth !== 0)
@@ -24,28 +49,13 @@ function getDarknessNiObject(opacity)
                 e.fillStyle = style
                 e.globalAlpha = alpha
             }
-
-            const style = e.fillStyle
-            e.fillStyle = '#000'
-            e.globalAlpha = opacity
-            e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
-            e.globalAlpha = 1.0
-            e.fillStyle = style
         },
         getOrder: function ()
         {
-            return 940 // Darkness bellow lights but above everything else
+            return 930
         },
-        update: function (e) { console.log(e)},
-        frame: 0,
-        frames: [
-            {delay: 100},
-            {delay: 100},
-            {delay: 100},
-            {delay: 100}
-        ],
-        frameAmount: 4,
-        activeFrame: 0
+        update: function () {},
+        d: {}
     }
 }
 
@@ -54,7 +64,10 @@ export function clearEffects()
 {
     if (INTERFACE === 'NI')
     {
-
+        Engine.npcs.updateData({
+            [coordsToId(-1, -1)]: {del: true},
+            [coordsToId(-1, -2)]: {del: true}
+        })
     }
     else
     {
@@ -66,7 +79,14 @@ export function displayRain(opacity)
 {
     if (INTERFACE === 'NI')
     {
-        addToNiDrawList(getDarknessNiObject(opacity), coordsToId(-1, -1))
+        if (rainInterval) clearInterval(rainInterval)
+        rainInterval = setInterval(function ()
+        {
+            console.log(currentFrame.rain)
+            currentFrame.rain += 1
+            if (currentFrame.rain === 3) currentFrame.rain = 0
+        }, 100)
+        addToNiDrawList(getWeatherNiObject('rain', opacity), coordsToId(-1, -1))
     }
     else
     {
@@ -85,7 +105,13 @@ export function displaySnow(opacity)
 {
     if (INTERFACE === 'NI')
     {
-
+        if (snowInterval) clearInterval(snowInterval)
+        snowInterval = setInterval(function ()
+        {
+            currentFrame.snow += 1
+            if (currentFrame.snow === 5) currentFrame.snow = 0
+        }, 400)
+        addToNiDrawList(getWeatherNiObject('snow', opacity), coordsToId(-1, -2))
     }
     else
     {

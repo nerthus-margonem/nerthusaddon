@@ -78,7 +78,7 @@ function startMapChanging()
         tmpMapDraw.call(Engine.map, canvasRenderingContext)
 
         //draw new maps on top of map
-        if (currentTopMap)
+        if (currentTopMap.complete)
         {
             canvasRenderingContext.drawImage(
                 currentTopMap,

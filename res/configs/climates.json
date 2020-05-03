@@ -77,5 +77,23 @@
       "warm-swamp": [0, 0, 0, 0],
       "witches": [0, 0, 0, 0]
     }
+  },
+  "seeds": {
+    "default": 1,
+    "altepetl": 2,
+    "andarum": 3,
+    "cold": 4,
+    "cold-swamp": 5,
+    "desert": 6,
+    "karka-han": 7,
+    "mythar": 8,
+    "mythar-north-forest": 9,
+    "nithal": 10,
+    "north": 11,
+    "south": 12,
+    "torneg": 13,
+    "tuzmer": 14,
+    "warm-swamp": 15,
+    "witches": 16
   }
 }

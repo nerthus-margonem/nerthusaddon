@@ -7,6 +7,36 @@ import {default as climates} from '../../res/configs/climates.json'
 import {isCurrentMapOutdoor} from '../utility-functions'
 import {loadOnEveryMap} from '../game-integration/loaders'
 
+const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
+
+const climateNoises = {
+    [CHARACTERISTIC.HUMIDITY]: {},
+    [CHARACTERISTIC.CLOUDINESS]: {},
+    [CHARACTERISTIC.TEMPERATURE]: {}
+}
+
+function getClimateNoise(climate, type)
+{
+    if (!climate) climate = 'default'
+    if (!climateNoises[type][climate])
+    {
+        let multiplier
+        switch (type)
+        {
+            case CHARACTERISTIC.HUMIDITY:
+                multiplier = 42
+                break
+            case CHARACTERISTIC.CLOUDINESS:
+                multiplier = 666
+                break
+            case CHARACTERISTIC.TEMPERATURE:
+                multiplier = 2020
+                break
+        }
+        climateNoises[type][climate] = new Simple1DNoise(climates.seeds[climate] * multiplier)
+    }
+    return climateNoises[type][climate]
+}
 
 function getMapsClimate(mapId)
 {
@@ -30,29 +60,27 @@ function getClimateVariation(characteristic, date, climate)
         characteristic[climate][secondSeason] * ((day / 90) - firstSeason)
 }
 
-const cloudinessNoise = new Simple1DNoise(2020)
-
 function getClimateCloudiness(date, climate)
 {
     const pointInTime = date.getTime() / 3600000
 
-    const ret = cloudinessNoise.getVal(pointInTime) * getClimateVariation(climates.characteristics.cloudiness, date, climate)
+    const ret = getClimateNoise(climate, CHARACTERISTIC.CLOUDINESS).getVal(pointInTime) *
+        getClimateVariation(climates.characteristics.cloudiness, date, climate)
+
     return ret > 1 ? 1 : ret
 }
-
-const humidityNoise = new Simple1DNoise(420)
 
 function getClimateHumidity(date, climate)
 {
     const pointInTime = date.getTime() / 3600000
 
-    const ret = humidityNoise.getVal(pointInTime) * getClimateVariation(climates.characteristics.humidity, date, climate)
+    const ret = getClimateNoise(climate, CHARACTERISTIC.HUMIDITY).getVal(pointInTime) *
+        getClimateVariation(climates.characteristics.humidity, date, climate)
+
     return ret > 1 ? 1 : ret
 }
 
-const temperatureNoise = new Simple1DNoise(666)
-
-function getGlobalTemperature(date)
+function getGlobalTemperature(date, climate)
 {
     const month = date.getUTCMonth()
     const day = date.getUTCDate()
@@ -63,7 +91,7 @@ function getGlobalTemperature(date)
     const dayTemperature = 15 * Math.sin(0.52 * x - 1.5) + 9
 
     const pointInTime = date.getTime() / 3600000
-    const hourTemperatureChange = temperatureNoise.getVal(pointInTime) * 14 - 7
+    const hourTemperatureChange = getClimateNoise(climate, CHARACTERISTIC.TEMPERATURE).getVal(pointInTime) * 14 - 7
 
     return dayTemperature + hourTemperatureChange
 }
@@ -71,11 +99,14 @@ function getGlobalTemperature(date)
 
 function getClimateTemperature(date, climate)
 {
-    return getGlobalTemperature(date) + getClimateVariation(climates.characteristics.temperature, date, climate)
+    return getGlobalTemperature(date, climate) + getClimateVariation(climates.characteristics.temperature, date, climate)
 }
 
 function getCurrentRegionCharacteristic(date) // todo naming???
 {
+    let humidity = 0
+    let cloudiness = 0
+    let temperature = 0
     if (INTERFACE === 'NI')
     {
 
@@ -119,26 +150,29 @@ function getCurrentRegionCharacteristic(date) // todo naming???
 
             if (currentMapClimate)
             {
-                return {
-                    'humidity': 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity,
-                    'cloudiness': 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness,
-                    'temperature': 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
-                }
+                humidity = 0.5 * getClimateHumidity(date, currentMapClimate) + 0.5 * adjacentHumidity
+                cloudiness = 0.5 * getClimateCloudiness(date, currentMapClimate) + 0.5 * adjacentCloudiness
+                temperature = 0.5 * getClimateTemperature(date, currentMapClimate) + 0.5 * adjacentTemperature
             }
             else
             {
-                return {
-                    'humidity': adjacentHumidity,
-                    'cloudiness': adjacentCloudiness,
-                    'temperature': adjacentTemperature
-                }
+                humidity = adjacentHumidity
+                cloudiness = adjacentCloudiness
+                temperature = adjacentTemperature
             }
         }
-        else return {
-                'humidity': getClimateHumidity(date, currentMapClimate),
-                'cloudiness': getClimateCloudiness(date, currentMapClimate),
-                'temperature': getClimateTemperature(date, currentMapClimate)
-            }
+        else
+        {
+            humidity = getClimateHumidity(date, currentMapClimate)
+            cloudiness = getClimateCloudiness(date, currentMapClimate)
+            temperature = getClimateTemperature(date, currentMapClimate)
+        }
+    }
+
+    return {
+        [CHARACTERISTIC.HUMIDITY]: humidity,
+        [CHARACTERISTIC.CLOUDINESS]: cloudiness,
+        [CHARACTERISTIC.TEMPERATURE]: temperature
     }
 }
 

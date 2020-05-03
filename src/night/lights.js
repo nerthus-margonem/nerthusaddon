@@ -19,7 +19,8 @@ function getLightNiObject(img, x, y)
         {
             return 1000 // Lights always on top
         },
-        update: function () {}
+        update: function () {},
+        d: {}
     }
 }
 

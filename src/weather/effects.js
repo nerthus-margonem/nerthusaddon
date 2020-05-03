@@ -1,6 +1,9 @@
 import {addToNiDrawList} from '../game-integration/loaders'
 import {coordsToId} from '../utility-functions'
 
+const rainEffectId = coordsToId(-1, -1)
+const snowEffectId = coordsToId(-1, -2)
+
 const rainFrames = []
 const snowFrames = []
 if (INTERFACE === 'NI')
@@ -55,7 +58,8 @@ function getWeatherNiObject(type, opacity)
             return 930
         },
         update: function () {},
-        d: {}
+        d: {},
+        updateDATA: function () {}
     }
 }
 
@@ -64,10 +68,8 @@ export function clearEffects()
 {
     if (INTERFACE === 'NI')
     {
-        Engine.npcs.updateData({
-            [coordsToId(-1, -1)]: {del: true},
-            [coordsToId(-1, -2)]: {del: true}
-        })
+        if (Engine.npcs.getById(rainEffectId)) Engine.npcs.updateData({[rainEffectId]: {del: true}})
+        if (Engine.npcs.getById(snowEffectId)) Engine.npcs.updateData({[snowEffectId]: {del: true}})
     }
     else
     {
@@ -85,7 +87,7 @@ export function displayRain(opacity)
             currentFrame.rain += 1
             if (currentFrame.rain === 3) currentFrame.rain = 0
         }, 100)
-        addToNiDrawList(getWeatherNiObject('rain', opacity), coordsToId(-1, -1))
+        addToNiDrawList(getWeatherNiObject('rain', opacity), rainEffectId)
     }
     else
     {
@@ -110,7 +112,7 @@ export function displaySnow(opacity)
             currentFrame.snow += 1
             if (currentFrame.snow === 5) currentFrame.snow = 0
         }, 400)
-        addToNiDrawList(getWeatherNiObject('snow', opacity), coordsToId(-1, -2))
+        addToNiDrawList(getWeatherNiObject('snow', opacity), snowEffectId)
     }
     else
     {

@@ -23,12 +23,11 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
 {
     if (INTERFACE === 'NI')
     {
-        // Load map queue when new map file is provided (Engine.map.d contains current data at that point)
-        const mapUpdate = Engine.map.onUpdate.file
-        Engine.map.onUpdate.file = function (new_v, old_v)
+        const updateData = Engine.map.gateways.updateData
+        Engine.map.gateways.updateData = function (d, townnames)
         {
-            mapUpdate.call(Engine.map.onUpdate, new_v, old_v)
-            loadNewMapQueue(Engine.map.d.id)
+            updateData.call(Engine.map.gateways, d, townnames)
+            loadNewMapQueue()
         }
     }
     else

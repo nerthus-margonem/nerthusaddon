@@ -25,7 +25,6 @@ function handleChatObj(ch)
 
             return callback(ch)
         }
-        return true
     }
     return true
 }

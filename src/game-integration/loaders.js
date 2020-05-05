@@ -10,7 +10,6 @@ export function loadOnEveryMap(fun, args)
     if (INTERFACE === 'NI' || map.id !== -1) fun(args)
     loadQueue.push([fun, args])
 }
-
 function loadNewMapQueue()
 {
     for (const i in loadQueue)
@@ -34,9 +33,9 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
     {
         // Handle Szybsze ładowanie gry by Priv
         const oldParseInput = window._g
-        window._g = function (data)
+        window._g = function (task, callback, payload)
         {
-            if (data.includes('initlvl=4')) loadNewMapQueue()
+            if (task.includes('initlvl=4')) loadNewMapQueue()
 
             return oldParseInput.apply(this, arguments)
         }

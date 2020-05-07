@@ -10,6 +10,7 @@ export function loadOnEveryMap(fun, args)
     if (INTERFACE === 'NI' || map.id !== -1) fun(args)
     loadQueue.push([fun, args])
 }
+
 function loadNewMapQueue()
 {
     for (const i in loadQueue)

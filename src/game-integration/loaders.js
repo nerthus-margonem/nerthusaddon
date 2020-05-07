@@ -34,7 +34,7 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
     {
         // Handle Szybsze ładowanie gry by Priv
         const oldParseInput = window._g
-        window._g = function (task, callback, payload)
+        window._g = function (task)
         {
             if (task.includes('initlvl=4')) loadNewMapQueue()
 

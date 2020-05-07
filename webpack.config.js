@@ -2,50 +2,48 @@ const webpack = require('webpack')
 const path = require('path')
 const childProcess = require('child_process')
 
+const npcMapList = childProcess.execSync('ls res/configs/npcs').toString().match(/(\d*)*\.json/g)
+const lightMapList = childProcess.execSync('ls res/configs/night-lights').toString().match(/(\d*)*\.json/g)
+
+const availableMapFiles = {
+    npc: npcMapList.map(item => parseInt(item)),
+    lights: lightMapList.map(item => parseInt(item))
+}
+
 const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString()
 
-const availableMapFiles = {}
-
-const npcMapList = childProcess.execSync('ls res/configs/npcs').toString().match(/(\d*)*\.json/g)
-availableMapFiles.npc = npcMapList.map(item => parseInt(item))
-
-const lightMapList = childProcess.execSync('ls res/configs/night-lights').toString().match(/(\d*)*\.json/g)
-availableMapFiles.lights = lightMapList.map(item => parseInt(item))
-
-const SI = new webpack.DefinePlugin({
-    INTERFACE: JSON.stringify('SI'),
+const CONSTANTS = new webpack.DefinePlugin({
     FILE_PREFIX: JSON.stringify('http://localhost/nerthusaddon/'),
     //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
     AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
-    OTHER: JSON.stringify(commitHash)
-})
-
-const NI = new webpack.DefinePlugin({
-    INTERFACE: JSON.stringify('NI'),
-    FILE_PREFIX: JSON.stringify('http://localhost/nerthusaddon/'),
-    AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles)
-    //FILE_PREFIX: JSON.stringify('http://cdn.jsdelivr.net/gh/akrzyz/nerthusaddon' + commitHash + '/'),
+    COMMIT_HASH: JSON.stringify(commitHash)
 })
 
 module.exports = [
     {
-        name: 'NI_production',
+        name: 'NI-development',
         mode: 'development',
         entry: './src/main.js',
         output: {
             path: path.resolve(__dirname, 'dist/'),
             filename: 'nerthus-addon-NI.js'
         },
-        plugins: [NI]
+        plugins: [
+            CONSTANTS,
+            new webpack.DefinePlugin({INTERFACE: `'NI'`})
+        ]
     },
     {
-        name: 'SI_production',
+        name: 'SI-development',
         mode: 'development',
         entry: './src/main.js',
         output: {
             path: path.resolve(__dirname, 'dist/'),
             filename: 'nerthus-addon-SI.js'
         },
-        plugins: [SI]
+        plugins: [
+            CONSTANTS,
+            new webpack.DefinePlugin({INTERFACE: `'SI'`})
+        ]
     }
 ]

@@ -85,7 +85,7 @@ export function turnLightsOn()
         resetLights()
         console.log('tried lights')
         if (AVAILABLE_MAP_FILES.lights.includes(map.id))
-            $.getJSON(FILE_PREFIX + 'res/configs/night-lights/map_' + map.id + '.json', addLights)
+            $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + map.id + '.json', addLights)
         else console.log('lights not loaded - no file')
     }
 }

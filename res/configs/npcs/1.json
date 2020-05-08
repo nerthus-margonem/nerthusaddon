@@ -26,21 +26,21 @@
     "name": "Duch",
     "x": "38",
     "y": "57",
-    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost6.gif",
+    "url": "/obrazki/npc/tru/tri_ghost6.gif",
     "date": "30.10-4.11"
   },
   {
     "name": "Duch",
     "x": "53",
     "y": "75",
-    "url": "https://www.margonem.pl/obrazki/npc/tru/tri_ghost4.gif",
+    "url": "/obrazki/npc/tru/tri_ghost4.gif",
     "date": "30.10-4.11"
   },
   {
     "name": "Kartka porwana przez wiatr",
     "x": "49",
     "y": "79",
-    "url": "https://margonem.pl/obrazki/itemy/pap/pap40.gif",
+    "url": "/obrazki/itemy/pap/pap40.gif",
     "collision": true,
     "time": "18-6",
     "dialog": {

@@ -76,28 +76,32 @@ function sys(ch)
     return ch
 }
 
-//
-// function map(ch)
-// {
-//     const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
-//     const map_url = cmd[0]
-//     const map_id = cmd[1]
-//     if (map_id)
-//         nerthus.worldEdit.changeMap(map_url, 2, map_id)
-//     else
-//         nerthus.worldEdit.changeMap(map_url, 1)
-//
-//     return false
-// }
-//
-// function resetMap(ch)
-// {
-//     const map_id = ch.t.split(" ").slice(1).join(" ")
-//     nerthus.worldEdit.changeMap("", 2, map_id)
-//
-//     return false
-// }
-//
+
+function map(ch)
+{
+    const cmd = ch.t.split(' ').slice(1).join(' ').split(',')
+    const mapUrl = cmd[0]
+    const mapId = cmd[1]
+    if (mapId)
+        addToMapChangelist(mapUrl, 2, mapId)
+    else
+        addToMapChangelist(mapUrl, 1)
+
+    applyCurrentMapChange()
+
+    return false
+}
+
+function resetMap(ch)
+{
+    const mapId = ch.t.split(' ').slice(1).join(' ')
+
+    removeFromMapChangelist(2, mapId)
+    applyCurrentMapChange()
+
+    return false
+}
+
 // function light(ch)
 // {
 //     let opacity = ch.t.split(" ")[1]
@@ -181,6 +185,8 @@ const narratorCommands = {
     'dial3': dial3,
     'dial666': dial666,
     'sys': sys,
+    'map': map,
+    'resetMap': resetMap,
     'addGraf': addGraf,
     'delGraf': delGraf
 }

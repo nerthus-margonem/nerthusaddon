@@ -52,9 +52,8 @@ function deploy(npc)
         }
         default:
         {
-            const tip = npc.tip ? npc.tip : '<b>' + npc.name + '</b>'
+            const tip = typeof npc.tip === 'string' ? npc.tip : '<b>' + npc.name + '</b>'
             const customNpc = new CustomNpc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
-
             return addNpc(customNpc)
         }
     }

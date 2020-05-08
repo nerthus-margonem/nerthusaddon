@@ -1,4 +1,8 @@
 import {registerChatCommand} from './chat'
+import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from '../maps'
+import {addNpc, addNpcToList} from '../npc/npc-actions/add'
+import {Npc} from '../npc/npc'
+import {removeNpc} from '../npc/npc-actions/remove'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -107,33 +111,37 @@ function sys(ch)
 //
 //     return false
 // }
-//
-// function addGraf(ch)
-// {  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
-//     const cmd = ch.t.split(" ").slice(1).join(" ").split(",")
-//     const x = parseInt(cmd[0])
-//     const y = parseInt(cmd[1])
-//     const _url = cmd[2]
-//     const name = cmd[3]
-//     const isCol = parseInt(cmd[4]) > 0
-//     const map_id = cmd[5]
-//
-//     nerthus.worldEdit.addNpc(x, y, _url, name, isCol, map_id)
-//
-//     return false
-// }
-//
-// function delGraf(ch)
-// {
-//     const cmd = ch.t.split(" ")[1].split(",")
-//     const x = parseInt(cmd[0])
-//     const y = parseInt(cmd[1])
-//     const map_id = cmd[2]
-//
-//     nerthus.worldEdit.deleteNpc(x, y, map_id)
-//
-//     return false
-// }
+
+
+function addGraf(ch)
+{
+    //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
+    const cmd = ch.t.split(' ').slice(1).join(' ').split(',')
+    const x = parseInt(cmd[0])
+    const y = parseInt(cmd[1])
+    const url = cmd[2]
+    const name = cmd[3]
+    const isCol = parseInt(cmd[4]) > 0
+    const mapId = parseInt(cmd[5])
+
+
+    addNpcToList(new Npc(x, y, url, `<b>${name}</b>`, isCol), mapId)
+
+    return false
+}
+
+function delGraf(ch)
+{
+    const cmd = ch.t.split(' ')[1].split(',')
+    const x = parseInt(cmd[0])
+    const y = parseInt(cmd[1])
+    const mapId = parseInt(cmd[2])
+
+    removeNpc(x, y, mapId)
+
+    return false
+}
+
 //
 //  function hide(ch)
 // {

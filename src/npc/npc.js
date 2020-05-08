@@ -81,20 +81,14 @@ function loadNpcs()
 {
     if (INTERFACE === 'NI')
     {
-        if (Engine.map.d.id === undefined)
-            setTimeout(loadNpcs, 500)
-        else
-        {
-            if (AVAILABLE_MAP_FILES.npc.includes(Engine.map.d.id))
-                loadNpcsFromFile(FILE_PREFIX + 'res/configs/npcs/map_' + Engine.map.d.id + '.json')
-        }
+        if (AVAILABLE_MAP_FILES.npc.includes(Engine.map.d.id))
+            loadNpcsFromFile(FILE_PREFIX + 'res/configs/npcs/map_' + Engine.map.d.id + '.json')
     }
     else
     {
         if (AVAILABLE_MAP_FILES.npc.includes(map.id))
             loadNpcsFromFile(FILE_PREFIX + 'res/configs/npcs/map_' + map.id + '.json')
     }
-
 }
 
 

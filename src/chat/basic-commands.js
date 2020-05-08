@@ -170,7 +170,7 @@ function me(ch)
     return ch
 }
 
-const map = {
+const narratorCommands = {
     'nar': nar1,
     'nar1': nar1,
     'nar2': nar2,
@@ -180,16 +180,18 @@ const map = {
     'dial2': dial2,
     'dial3': dial3,
     'dial666': dial666,
-    'sys': sys
+    'sys': sys,
+    'addGraf': addGraf,
+    'delGraf': delGraf
 }
-const publicMap = {
+const publicCommands = {
     'me': me
 }
 
 export function initBasicChatCommands()
 {
-    for (const cmd in map)
-        registerChatCommand(cmd, map[cmd], false)
-    for (const cmd in publicMap)
-        registerChatCommand(cmd, publicMap[cmd], true)
+    for (const cmd in narratorCommands)
+        registerChatCommand(cmd, narratorCommands[cmd], false)
+    for (const cmd in publicCommands)
+        registerChatCommand(cmd, publicCommands[cmd], true)
 }

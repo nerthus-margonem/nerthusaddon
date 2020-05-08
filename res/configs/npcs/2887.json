@@ -3,7 +3,7 @@
     "name": "Wysłannik Nerthusa",
     "x": "55",
     "y": "33",
-    "url": "#img/npc/wyslannik.gif",
+    "url": "#res/img/npc/wyslannik.gif",
     "collision": true,
     "dialog": {
       "0": [

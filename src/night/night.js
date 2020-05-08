@@ -10,10 +10,16 @@ import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 function timeToOpacity(time)
 {
     const hour = time.getHours()
-    if (hour <= 4) return 0.8
-    if (hour >= 21) return 0.6
-    if (hour >= 18) return 0.3
-    return 0
+    let opacity
+    if (hour < 12)
+        opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1
+    else
+        opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1
+
+    if (opacity < 0.3) opacity = 0.3
+    else if (opacity > 1) opacity = 1
+
+    return 1 - opacity
 }
 
 function getDarknessNiObject(opacity)

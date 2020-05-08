@@ -6,6 +6,10 @@ import {addNpc} from './npc-actions/add'
 import {initNpcDialog} from './dialog'
 import {coordsToId} from '../utility-functions'
 
+export const customNpcs = {
+    default: []
+}
+
 function resolveUrl(url)
 {
     if (url.startsWith('#'))
@@ -13,7 +17,7 @@ function resolveUrl(url)
     return url
 }
 
-function CustomNpc(x, y, url, nick, collision, dialog)
+export function Npc(x, y, url, nick, collision, dialog)
 {
     this.x = parseInt(x)
     this.y = parseInt(y)
@@ -53,7 +57,7 @@ function deploy(npc)
         default:
         {
             const tip = typeof npc.tip === 'string' ? npc.tip : '<b>' + npc.name + '</b>'
-            const customNpc = new CustomNpc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
+            const customNpc = new Npc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
             return addNpc(customNpc)
         }
     }
@@ -73,12 +77,23 @@ function loadNpcs()
     {
         if (AVAILABLE_MAP_FILES.npc.includes(Engine.map.d.id))
             loadNpcsFromFile(FILE_PREFIX + 'res/configs/npcs/' + Engine.map.d.id + '.json')
+
+        for (const npcId in customNpcs[Engine.map.d.id])
+        {
+            addNpc(customNpcs[Engine.map.d.id][npcId])
+        }
     }
     else
     {
         if (AVAILABLE_MAP_FILES.npc.includes(map.id))
             loadNpcsFromFile(FILE_PREFIX + 'res/configs/npcs/' + map.id + '.json')
+
+        for (const npcId in customNpcs[map.id])
+        {
+            addNpc(customNpcs[map.id][npcId])
+        }
     }
+    customNpcs.default.forEach(addNpc)
 }
 
 

@@ -1,5 +1,8 @@
 import {removeCollision, setCollision} from './collision'
 import {addDialogToDialogList, openDialog} from '../dialog'
+import {customNpcs} from '../npc'
+import {coordsToId} from '../../utility-functions'
+import {removeNpc} from './remove'
 
 // nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
 // {
@@ -153,5 +156,28 @@ export function addNpc(npc)
         if (npc.collision)
             setCollision(npc.x, npc.y)
         return $npc
+    }
+}
+
+/**
+ * Function adds new NPC to the list and displays him,
+ * or replaces NPC on the same coordinates and same map
+ * @param npc
+ * @param mapId
+ */
+export function addNpcToList(npc, mapId)
+{
+    if (!customNpcs[mapId]) customNpcs[mapId] = {}
+    if (customNpcs[mapId][npc.id]) removeNpc(npc.x, npc.y, mapId)
+    customNpcs[mapId][npc.id] = npc
+    if (INTERFACE === 'NI')
+    {
+        if (Engine.map.d.id === mapId)
+            addNpc(npc)
+    }
+    else
+    {
+        if (map.id === mapId)
+            addNpc(npc)
     }
 }

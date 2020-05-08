@@ -60,15 +60,6 @@ function deploy(npc)
     }
 }
 
-function resetNpcs()
-{
-    if (INTERFACE === 'SI')
-    {
-        $('.nerthus-npc').remove()
-    }
-}
-
-
 function loadNpcsFromFile(url)
 {
     $.getJSON(url, function (npcs)
@@ -97,7 +88,10 @@ export function initNpcManager()
     initNpcDialog()
     loadOnEveryMap(function ()
     {
-        resetNpcs()
+        if (INTERFACE === 'SI')
+        {
+            $('.nerthus-npc').remove()
+        }
         loadNpcs()
     })
 }

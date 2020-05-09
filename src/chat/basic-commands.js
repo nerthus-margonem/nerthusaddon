@@ -1,6 +1,6 @@
 import {registerChatCommand} from './chat'
 import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from '../maps'
-import {addNpc, addNpcToList} from '../npc/npc-actions/add'
+import {addNpcToList} from '../npc/npc-actions/add'
 import {Npc} from '../npc/npc'
 import {removeNpc} from '../npc/npc-actions/remove'
 

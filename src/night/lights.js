@@ -75,8 +75,8 @@ export function turnLightsOn()
             setTimeout(turnLightsOn, 500)
         else
         {
-            if (AVAILABLE_MAP_FILES.lights.includes(Engine.map.d.id)) //TODO don't repeat this long list
-                $.getJSON(FILE_PREFIX + 'res/configs/night-lights/map_' + Engine.map.d.id + '.json', addLights)
+            if (AVAILABLE_MAP_FILES.lights.includes(Engine.map.d.id))
+                $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + Engine.map.d.id + '.json', addLights)
             else console.log('lights not loaded - no file')
         }
     }

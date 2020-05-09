@@ -3,6 +3,7 @@ import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from
 import {addNpcToList} from '../npc/npc-actions/add'
 import {Npc} from '../npc/npc'
 import {removeNpc} from '../npc/npc-actions/remove'
+import {changeLight, checkAndApplyNight} from '../night/night'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -102,19 +103,22 @@ function resetMap(ch)
     return false
 }
 
-// function light(ch)
-// {
-//     let opacity = ch.t.split(" ")[1]
-//     if(typeof opacity === "undefined")
-//         nerthus.night.dim()
-//     else
-//     {
-//         opacity = opacity.replace(",",".")
-//         nerthus.worldEdit.changeLight(1 - opacity)
-//     }
-//
-//     return false
-// }
+function light(ch)
+{
+    const arr = ch.t.split(' ')
+    arr.shift()
+    if (arr.length === 0) checkAndApplyNight() // if no arguments
+    else
+    {
+        const argArr = arr.join(' ').split(',')
+        let opacity = argArr[0].trim()
+        const color = argArr[1].trim()
+        opacity = parseFloat(opacity.replace(',', '.'))
+        changeLight(1 - opacity, color)
+    }
+
+    return false
+}
 
 
 function addGraf(ch)
@@ -187,6 +191,7 @@ const narratorCommands = {
     'sys': sys,
     'map': map,
     'resetMap': resetMap,
+    'light': light,
     'addGraf': addGraf,
     'delGraf': delGraf
 }

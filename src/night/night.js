@@ -22,13 +22,13 @@ function timeToOpacity(time)
     return 1 - opacity
 }
 
-function getDarknessNiObject(opacity)
+function getDarknessNiObject(opacity, color)
 {
     return {
         draw: function (e)
         {
             const style = e.fillStyle
-            e.fillStyle = '#000'
+            e.fillStyle = color
             e.globalAlpha = opacity
             e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
             e.globalAlpha = 1.0
@@ -44,10 +44,10 @@ function getDarknessNiObject(opacity)
     }
 }
 
-function changeLight(opacity)
+export function changeLight(opacity, color = '#000')
 {
     if (INTERFACE === 'NI')
-        addToNiDrawList(getDarknessNiObject(opacity), coordsToId(-1, -1))
+        addToNiDrawList(getDarknessNiObject(opacity, color), coordsToId(-1, -1))
     else
     {
         let $night = $('#nerthus-night')
@@ -58,28 +58,25 @@ function changeLight(opacity)
             height: map.y * 32,
             width: map.x * 32,
             zIndex: map.y * 2 + 11,
-            opacity: opacity
+            opacity: opacity,
+            'background-color': color
         })
     }
 }
 
-function dim(opacity)
+export function checkAndApplyNight()
 {
-    if (isCurrentMapOutdoor())
-        changeLight(opacity)
-    else
-        changeLight(0)
-}
-
-function checkAndApplyNight()
-{
-    if (settings['night'])
+    if (settings.night)
     {
         const date = new Date()
         const dimValue = timeToOpacity(date)
         if (dimValue)
         {
-            dim(dimValue)
+            if (isCurrentMapOutdoor())
+                changeLight(dimValue)
+            else
+                changeLight(0)
+
             turnLightsOn()
         }
     }

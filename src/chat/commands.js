@@ -4,6 +4,7 @@ import {addNpcToList} from '../npc/npc-actions/add'
 import {Npc} from '../npc/npc'
 import {removeNpc} from '../npc/npc-actions/remove'
 import {changeLight, checkAndApplyNight} from '../night/night'
+import {hideGameNpc} from '../npc/npc-actions/hide'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -150,16 +151,16 @@ function delGraf(ch)
     return false
 }
 
-//
-//  function hide(ch)
-// {
-//     const cmd = ch.t.split(" ")[1].split(",")
-//     const id = parseInt(cmd[0])
-//
-//     nerthus.worldEdit.hideGameNpc(id)
-//
-//     return false
-// }
+
+function hide(ch)
+{
+    const cmd = ch.t.split(' ')[1]
+    const id = parseInt(cmd)
+
+    hideGameNpc(id)
+
+    return false
+}
 //
 // function weather(ch)
 // {
@@ -193,7 +194,8 @@ const narratorCommands = {
     'resetMap': resetMap,
     'light': light,
     'addGraf': addGraf,
-    'delGraf': delGraf
+    'delGraf': delGraf,
+    'hide': hide
 }
 const publicCommands = {
     'me': me

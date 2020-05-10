@@ -1,5 +1,7 @@
 import {settings} from '../../settings'
 
+export const customHiddenNpcs = []
+
 export function isNpcHidable(npc)
 {
     if (INTERFACE === 'NI')
@@ -10,6 +12,8 @@ export function isNpcHidable(npc)
 
 export function hideGameNpc(id, always)
 {
+    if (!customHiddenNpcs.includes(id)) customHiddenNpcs.push(id)
+
     if (INTERFACE === 'NI')
     {
         if (always || settings.hideNpcs)
@@ -21,7 +25,7 @@ export function hideGameNpc(id, always)
                     // Remove in this fashion (instead of just calling .delete()
                     // because we don't want to unset collisions when hiding
                     API.callEvent('removeNpc', newNpc)
-                    Engine.npcs.removeOne(newNpc.d.id)
+                    if (Engine.npcs.getById(newNpc.d.id)) Engine.npcs.removeOne(newNpc.d.id)
                     Engine.emotions.removeAllFromSourceId(newNpc.d.id)
 
                     // Run only once

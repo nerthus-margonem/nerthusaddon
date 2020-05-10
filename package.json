@@ -36,7 +36,8 @@
     "coverage-raport-text-lcov": "nyc report --reporter=text-lcov",
     "push-coverage-raport": "nyc report --reporter=text-lcov | coveralls",
     "clean-coverage": "rm -rf ./coverage ./.nyc_output",
-    "build": "npx webpack"
+    "build": "npx webpack",
+    "update-version": "git rev-parse --short HEAD > version"
   },
   "repository": {
     "type": "git",

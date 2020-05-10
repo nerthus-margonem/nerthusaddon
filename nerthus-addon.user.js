@@ -9,15 +9,15 @@
 
 (function ()
 {
-    function start()
+    function start(version)
     {
         const arr = /interface=(..)/.exec(document.cookie)
         if (arr)
         {
             const gameInterface = arr[1]
             let src
-            if (gameInterface === 'ni') src = 'https://akrzyz.github.io/nerthusaddon/dist/nerthus-addon-NI.js'
-            else if (gameInterface === 'si') src = 'https://akrzyz.github.io/nerthusaddon/dist/nerthus-addon-SI.js'
+            if (gameInterface === 'ni') src = 'https://akrzyz.github.io/nerthusaddon/dist/nerthus-addon-NI.js?v=' + version
+            else if (gameInterface === 'si') src = 'https://akrzyz.github.io/nerthusaddon/dist/nerthus-addon-SI.js?v=' + version
             else
             {
                 const errorMsg =
@@ -37,5 +37,8 @@
         }
         else setTimeout(start, 500)
     }
-    start()
+    $.get('https://raw.githubusercontent.com/KrisAphalon/nerthusaddon/webpack/version', function (version)
+    {
+        start(version)
+    })
 })()

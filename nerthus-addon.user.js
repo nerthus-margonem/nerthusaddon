@@ -16,8 +16,8 @@
         {
             const gameInterface = arr[1]
             let src
-            if (gameInterface === 'ni') src = 'https://akrzyz.github.io/nerthusaddon/dist/nerthus-addon-NI.js?v=' + version
-            else if (gameInterface === 'si') src = 'https://akrzyz.github.io/nerthusaddon/dist/nerthus-addon-SI.js?v=' + version
+            if (gameInterface === 'ni') src = 'https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon/dist/nerthus-addon-NI.js?v=' + version
+            else if (gameInterface === 'si') src = 'https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon/dist/nerthus-addon-SI.js?v=' + version
             else
             {
                 const errorMsg =

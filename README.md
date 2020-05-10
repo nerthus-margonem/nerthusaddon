@@ -24,7 +24,7 @@ Installation
 FAQ
 ------
 ##### How to update addon to newest version?
-  - Addon should automatically update to newest version available
+  - Addon should automatically update to the newest version available
   - If that's not the case, put in console `delete localStorage.nerthus` and refresh the page
 
 ##### How to test changes in game?

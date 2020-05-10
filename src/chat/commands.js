@@ -20,7 +20,6 @@ function nar1(ch)
     return ch
 }
 
-
 function nar2(ch)
 {
     ch.s = 'nar2'
@@ -69,7 +68,6 @@ function dial666(ch)
     return ch
 }
 
-
 function sys(ch)
 {
     ch.s = 'sys_comm'
@@ -77,7 +75,6 @@ function sys(ch)
     ch.t = ch.t.replace(/^\*sys /, '')
     return ch
 }
-
 
 function map(ch)
 {
@@ -121,7 +118,6 @@ function light(ch)
     return false
 }
 
-
 function addGraf(ch)
 {
     //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
@@ -132,7 +128,6 @@ function addGraf(ch)
     const name = cmd[3]
     const isCol = parseInt(cmd[4]) > 0
     const mapId = parseInt(cmd[5])
-
 
     addNpcToList(new Npc(x, y, url, `<b>${name}</b>`, isCol), mapId)
 
@@ -151,7 +146,6 @@ function delGraf(ch)
     return false
 }
 
-
 function hide(ch)
 {
     const cmd = ch.t.split(' ')[1]
@@ -161,7 +155,7 @@ function hide(ch)
 
     return false
 }
-//
+
 // function weather(ch)
 // {
 //     var weather_id = parseInt(ch.t.split(" ")[1])

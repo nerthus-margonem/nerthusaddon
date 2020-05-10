@@ -37,8 +37,6 @@
         }
         else setTimeout(start, 500)
     }
-    $.get('https://raw.githubusercontent.com/KrisAphalon/nerthusaddon/webpack/version', function (version)
-    {
-        start(version)
-    })
+
+    $.get('https://raw.githubusercontent.com/KrisAphalon/nerthusaddon/webpack/version', start)
 })()

@@ -5,6 +5,7 @@ import {Npc} from '../npc/npc'
 import {removeNpc} from '../npc/npc-actions/remove'
 import {changeLight, checkAndApplyNight} from '../night/night'
 import {hideGameNpc} from '../npc/npc-actions/hide'
+import {setWeather} from '../weather/weather'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -156,14 +157,13 @@ function hide(ch)
     return false
 }
 
-// function weather(ch)
-// {
-//     var weather_id = parseInt(ch.t.split(" ")[1])
-//     nerthus_weather_bard_id = weather_id
-//     nerthus.weather.set_weather(weather_id)
-//
-//     return false
-// }
+function weather(ch)
+{
+    const weatherName = ch.t.split(' ')[1]
+    setWeather(weatherName)
+
+    return false
+}
 
 function me(ch)
 {
@@ -189,7 +189,8 @@ const narratorCommands = {
     'light': light,
     'addGraf': addGraf,
     'delGraf': delGraf,
-    'hide': hide
+    'hide': hide,
+    'weather': weather
 }
 const publicCommands = {
     'me': me

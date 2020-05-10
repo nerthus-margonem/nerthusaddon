@@ -110,7 +110,7 @@ function light(ch)
     {
         const argArr = arr.join(' ').split(',')
         let opacity = argArr[0].trim()
-        const color = argArr[1].trim()
+        const color = argArr[1] ? argArr[1].trim() : '#000'
         opacity = parseFloat(opacity.replace(',', '.'))
         changeLight(1 - opacity, color)
     }

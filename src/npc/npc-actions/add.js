@@ -1,7 +1,6 @@
 import {removeCollision, setCollision} from './collision'
 import {addDialogToDialogList, openDialog} from '../dialog'
 import {customNpcs} from '../npc'
-import {coordsToId} from '../../utility-functions'
 import {removeNpc} from './remove'
 
 // nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)

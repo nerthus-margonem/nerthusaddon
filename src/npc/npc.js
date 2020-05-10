@@ -1,6 +1,6 @@
 import {isNpcDeployable} from './npc-time'
 import {loadOnEveryMap} from '../game-integration/loaders'
-import {hideGameNpc, isNpcHidable} from './npc-actions/hide'
+import {customHiddenNpcs, hideGameNpc, isNpcHidable} from './npc-actions/hide'
 import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
 import {initNpcDialog} from './dialog'
@@ -107,5 +107,6 @@ export function initNpcManager()
             $('.nerthus-npc').remove()
         }
         loadNpcs()
+        customHiddenNpcs.forEach(hideGameNpc)
     })
 }

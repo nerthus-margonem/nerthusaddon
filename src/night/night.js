@@ -3,6 +3,10 @@ import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {turnLightsOn} from './lights'
 import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 
+let opacityChange = 0
+let currentOpacity = 0
+let currentColor = '#000'
+
 /**
  * @param time - Date
  * @returns {number}
@@ -44,8 +48,15 @@ function getDarknessNiObject(opacity, color)
     }
 }
 
-export function changeLight(opacity, color = '#000')
+export function changeLight(opacity = timeToOpacity(new Date()), color = '#000', forced)
 {
+    currentOpacity = opacity
+    currentColor = color
+
+    if (color === '#000' && !forced) opacity = opacity + opacityChange
+    if (opacity > 1) opacity = 1
+    else if (opacity < 0) opacity = 0
+
     if (INTERFACE === 'NI')
         addToNiDrawList(getDarknessNiObject(opacity, color), coordsToId(-1, -1))
     else
@@ -75,11 +86,21 @@ export function checkAndApplyNight()
             if (isCurrentMapOutdoor())
                 changeLight(dimValue)
             else
-                changeLight(0)
+                changeLight(-1)
 
             turnLightsOn()
         }
     }
+}
+
+export function setOpacityChange(newOpacityChange)
+{
+    if (!newOpacityChange) newOpacityChange = 0
+    else if (newOpacityChange > 1) newOpacityChange = 1
+    else if (newOpacityChange < -1) newOpacityChange = -1
+
+    opacityChange = newOpacityChange
+    changeLight(currentOpacity, currentColor)
 }
 
 export function initNightManager()

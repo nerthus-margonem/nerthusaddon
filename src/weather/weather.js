@@ -6,6 +6,7 @@ import {clearEffects, displayRain, displaySnow} from './effects'
 import {default as climates} from '../../res/configs/climates.json'
 import {isCurrentMapOutdoor} from '../utility-functions'
 import {loadOnEveryMap} from '../game-integration/loaders'
+import {setOpacityChange} from '../night/night'
 
 const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
 
@@ -219,6 +220,17 @@ const SNOW_STRENGTH = {
     'snow-storm': 1
 }
 
+const CLOUDS_STRENGTH = {
+    'day-cloud-small': 0.1,
+    'rain-light': 0.1,
+    'day-cloud-big': 0.15,
+    'day-rain': 0.15,
+    'rain': 0.15,
+    'day-storm': 0.15,
+    'overcast': 0.2,
+    'storm': 0.2
+}
+
 
 export function getWeather(date)
 {
@@ -279,7 +291,11 @@ export function getWeather(date)
 function displayWeatherEffects(weather = getWeather(new Date()))
 {
     clearEffects()
-    if (weather === 'indoor') $widget.css('display', 'none')
+    if (weather === 'indoor')
+    {
+        $widget.css('display', 'none')
+        setOpacityChange(0)
+    }
     else
     {
         $widget.css('display', 'flex')
@@ -295,6 +311,7 @@ function displayWeatherEffects(weather = getWeather(new Date()))
             if (weather.rainStrength) displayRain(weather.rainStrength)
             if (weather.snowStrength) displaySnow(weather.snowStrength)
         }
+        setOpacityChange(CLOUDS_STRENGTH[weather.name.replace('night', 'day')])
     }
 }
 
@@ -352,7 +369,8 @@ export function initWeather()
         loadOnEveryMap(displayWeatherEffects)
         startChangeTimer()
 
-        loadOnEveryMap(function() {
+        loadOnEveryMap(function ()
+        {
             for (let i = 0; i < 20; i++)
             {
                 let date = new Date().getTime()

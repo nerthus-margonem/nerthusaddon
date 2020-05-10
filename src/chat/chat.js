@@ -1,4 +1,4 @@
-import {checkPermissionLvl} from '../permissions'
+import {hasNarrationRights} from '../permissions'
 import {initChatDrunkenness} from './drunkenness'
 import {loadOnEveryMap} from '../game-integration/loaders'
 
@@ -14,10 +14,10 @@ function fixUrl(text)
 function handleChatObj(ch)
 {
     // change message by directly editing object passed as reference
-    const cmd = fetch_cmd(ch)
+    const cmd = fetchCmd(ch)
     if (cmd)
     {
-        const callback = fetch_callback(cmd, ch)
+        const callback = fetchCallback(cmd, ch)
         if (callback)
         {
             ch.t = fixUrl(ch.t)
@@ -47,7 +47,7 @@ function editNiMsg($msg, ch)
 }
 
 
-function fetch_cmd(ch)
+function fetchCmd(ch)
 {
     if (ch.t[0] === '*')
     {
@@ -58,9 +58,9 @@ function fetch_cmd(ch)
     }
 }
 
-function fetch_callback(cmd, ch)
+function fetchCallback(cmd, ch)
 {
-    if (commandsMap[cmd] && checkPermissionLvl(ch.n))
+    if (commandsMap[cmd] && hasNarrationRights(ch.n))
         return commandsMap[cmd]
     else
         return commandsPublicMap[cmd]

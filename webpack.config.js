@@ -13,7 +13,7 @@ const availableMapFiles = {
 const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString()
 
 const CONSTANTS = new webpack.DefinePlugin({
-    FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon' + commitHash + '/'),
+    FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon@' + commitHash + '/'),
     AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
     COMMIT_HASH: JSON.stringify(commitHash)
 })

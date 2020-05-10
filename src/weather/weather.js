@@ -15,6 +15,9 @@ const climateNoises = {
     [CHARACTERISTIC.TEMPERATURE]: {}
 }
 
+let $widget
+
+
 function getClimateNoise(climate, type)
 {
     if (!climate) climate = 'default'
@@ -273,34 +276,62 @@ export function getWeather(date)
     else return 'indoor'
 }
 
-function displayWeatherEffects($widget)
+function displayWeatherEffects(weather = getWeather(new Date()))
 {
-    const currentWeather = getWeather(new Date())
-    if (currentWeather === 'indoor')
-    {
-        $widget.css('display', 'none')
-        clearEffects()
-    }
+    clearEffects()
+    if (weather === 'indoor') $widget.css('display', 'none')
     else
     {
         $widget.css('display', 'flex')
             .children('.nerthus__widget-image')
-            .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + currentWeather.name + '.png)')
+            .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + weather.name + '.png)')
 
-        const descId = Math.floor(Math.random() * weatherDescriptions[currentWeather.name].length)
+        const descId = Math.floor(Math.random() * weatherDescriptions[weather.name].length)
         $widget.children('.nerthus__widget-desc')
-            .text(weatherDescriptions[currentWeather.name][descId])
+            .text(weatherDescriptions[weather.name][descId])
 
-        clearEffects()
         if (isCurrentMapOutdoor())
         {
-            if (currentWeather.rainStrength) displayRain(currentWeather.rainStrength)
-            if (currentWeather.snowStrength) displaySnow(currentWeather.snowStrength)
+            if (weather.rainStrength) displayRain(weather.rainStrength)
+            if (weather.snowStrength) displaySnow(weather.snowStrength)
         }
     }
 }
 
-function startChangeTimer($widget)
+export function setWeather(weatherName)
+{
+    if (INTERFACE === 'NI')
+    {
+        Engine.weather.onClear()
+    }
+    else
+    {
+        window.clearWeather()
+    }
+    if (['fish', 'light', 'latern', 'bat'].includes(weatherName))
+    {
+        $widget.css('display', 'none')
+        clearEffects()
+
+        if (INTERFACE === 'NI')
+        {
+            const uppercaseWeatherName = weatherName.charAt(0).toUpperCase() + weatherName.slice(1)
+            Engine.weather.createWeather(uppercaseWeatherName)
+        }
+        else
+        {
+            window.changeWeather(weatherName)
+        }
+    }
+    else if (weatherDescriptions[weatherName]) displayWeatherEffects({
+        name: weatherName,
+        rainStrength: RAIN_STRENGTH[weatherName],
+        snowStrength: SNOW_STRENGTH[weatherName]
+    })
+    else displayWeatherEffects()
+}
+
+function startChangeTimer()
 {
     const date = new Date()
     const hour = Math.floor((date.getUTCHours()) + 1)
@@ -308,8 +339,8 @@ function startChangeTimer($widget)
     const timeout = date - new Date()
     setTimeout(function ()
     {
-        displayWeatherEffects($widget)
-        startChangeTimer($widget)
+        displayWeatherEffects()
+        startChangeTimer()
     }, timeout)
 }
 
@@ -317,9 +348,9 @@ export function initWeather()
 {
     if (settings.weather)
     {
-        const $widget = addWidget('weather')
-        loadOnEveryMap(displayWeatherEffects, $widget)
-        startChangeTimer($widget)
+        $widget = addWidget('weather')
+        loadOnEveryMap(displayWeatherEffects)
+        startChangeTimer()
 
         loadOnEveryMap(function() {
             for (let i = 0; i < 20; i++)

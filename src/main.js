@@ -1,5 +1,5 @@
 import {initChatMgr} from './chat/chat'
-import {initBasicChatCommands} from './chat/basic-commands'
+import {initBasicChatCommands} from './chat/commands'
 import {loadSettings} from './settings'
 import {initPanel} from './interface/panel'
 import {addBasicStyles} from './interface/css-manager'

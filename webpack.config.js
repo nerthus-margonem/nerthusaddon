@@ -10,7 +10,7 @@ const availableMapFiles = {
     lights: lightMapList.map(item => parseInt(item))
 }
 
-const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString()
+const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString().replace('\n', '')
 
 const CONSTANTS = new webpack.DefinePlugin({
     FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon@' + commitHash + '/'),

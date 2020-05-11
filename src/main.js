@@ -14,6 +14,8 @@ import {initWeather} from './weather/weather'
 
 function start()
 {
+    console.log(FILE_PREFIX)
+    console.log(COMMIT_HASH)
     addBasicStyles()
     loadSettings()
 

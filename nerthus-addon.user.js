@@ -30,6 +30,9 @@
 
             if (src)
             {
+                let logText = 'Nerthus addon version: ' + version
+                if (gameInterface === 'si') logText = '<span style="color:lime">' + logText + '</span>'
+                window.log(logText)
                 const script = document.createElement('script')
                 script.src = src
                 document.head.appendChild(script)

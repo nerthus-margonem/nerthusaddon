@@ -5,7 +5,7 @@ import {Npc} from '../npc/npc'
 import {removeNpc} from '../npc/npc-actions/remove'
 import {changeLight, checkAndApplyNight} from '../night/night'
 import {hideGameNpc} from '../npc/npc-actions/hide'
-import {setWeather} from '../weather/weather'
+import {forceSetWeather} from '../weather/weather'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -160,7 +160,7 @@ function hide(ch)
 function weather(ch)
 {
     const weatherName = ch.t.split(' ')[1]
-    setWeather(weatherName)
+    forceSetWeather(weatherName)
 
     return false
 }

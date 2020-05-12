@@ -2,6 +2,7 @@ import {removeCollision, setCollision} from './collision'
 import {addDialogToDialogList, openDialog} from '../dialog'
 import {customNpcs} from '../npc'
 import {removeNpc} from './remove'
+import {callEvent} from '../../API'
 
 // nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
 // {
@@ -179,4 +180,5 @@ export function addNpcToList(npc, mapId)
         if (map.id === mapId)
             addNpc(npc)
     }
+    callEvent('addTemporaryNpc', {npc: npc, mapId: mapId})
 }

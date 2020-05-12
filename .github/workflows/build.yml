@@ -21,8 +21,6 @@ jobs:
       run: npm i
     - name: run build
       run: npm run-script build
-    - name: update version
-      run: npm run-script update-version
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"

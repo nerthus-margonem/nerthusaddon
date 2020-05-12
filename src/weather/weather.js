@@ -7,8 +7,10 @@ import {default as climates} from '../../res/configs/climates.json'
 import {isCurrentMapOutdoor} from '../utility-functions'
 import {loadOnEveryMap} from '../game-integration/loaders'
 import {setOpacityChange} from '../night/night'
+import {callEvent} from '../API'
 
 const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
+const GAME_WEATHERS = Object.freeze(['fish', 'light', 'latern', 'bat'])
 
 const climateNoises = {
     [CHARACTERISTIC.HUMIDITY]: {},
@@ -17,6 +19,7 @@ const climateNoises = {
 }
 
 let $widget
+
 
 
 function getClimateNoise(climate, type)
@@ -285,16 +288,31 @@ export function getWeather(date)
             cloudiness: characteristics.cloudiness
         }
     }
-    else return 'indoor'
+    else return {name: 'indoor'}
 }
 
 function displayWeatherEffects(weather = getWeather(new Date()))
 {
     clearEffects()
-    if (weather === 'indoor')
+    if (weather.name === 'indoor')
     {
         $widget.css('display', 'none')
         setOpacityChange(0)
+    }
+    else if (GAME_WEATHERS.includes(weather.name))
+    {
+        $widget.css('display', 'none')
+        setOpacityChange(0)
+
+        if (INTERFACE === 'NI')
+        {
+            const uppercaseWeatherName = weather.name.charAt(0).toUpperCase() + weather.name.slice(1)
+            Engine.weather.createWeather(uppercaseWeatherName)
+        }
+        else
+        {
+            window.changeWeather(weather.name)
+        }
     }
     else
     {
@@ -313,9 +331,11 @@ function displayWeatherEffects(weather = getWeather(new Date()))
         }
         setOpacityChange(CLOUDS_STRENGTH[weather.name.replace('night', 'day')])
     }
+
+    callEvent('setWeather', weather)
 }
 
-export function setWeather(weatherName)
+export function forceSetWeather(weatherName)
 {
     if (INTERFACE === 'NI')
     {
@@ -325,26 +345,15 @@ export function setWeather(weatherName)
     {
         window.clearWeather()
     }
-    if (['fish', 'light', 'latern', 'bat'].includes(weatherName))
-    {
-        $widget.css('display', 'none')
-        clearEffects()
 
-        if (INTERFACE === 'NI')
-        {
-            const uppercaseWeatherName = weatherName.charAt(0).toUpperCase() + weatherName.slice(1)
-            Engine.weather.createWeather(uppercaseWeatherName)
-        }
-        else
-        {
-            window.changeWeather(weatherName)
-        }
+    if (GAME_WEATHERS.includes(weatherName) || weatherDescriptions[weatherName])
+    {
+        displayWeatherEffects({
+            name: weatherName,
+            rainStrength: RAIN_STRENGTH[weatherName],
+            snowStrength: SNOW_STRENGTH[weatherName]
+        })
     }
-    else if (weatherDescriptions[weatherName]) displayWeatherEffects({
-        name: weatherName,
-        rainStrength: RAIN_STRENGTH[weatherName],
-        snowStrength: SNOW_STRENGTH[weatherName]
-    })
     else displayWeatherEffects()
 }
 

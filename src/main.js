@@ -11,11 +11,12 @@ import {initTips} from './game-integration/tips'
 import {initWidgets} from './widgets'
 import {initZodiac} from './zodiac'
 import {initWeather} from './weather/weather'
+import {callEvent, initAPI} from './API'
 
 function start()
 {
-    console.log(FILE_PREFIX)
-    console.log(COMMIT_HASH)
+    initAPI()
+
     addBasicStyles()
     loadSettings()
 
@@ -37,7 +38,8 @@ function start()
     initBasicChatCommands()
 
     initPanel()
-    console.log('Nerthus addon fully loaded')
+
+    callEvent('loaded')
 }
 
 if (INTERFACE === 'NI')

@@ -3,9 +3,11 @@ import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {turnLightsOn} from './lights'
 import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 
-let opacityChange = 0
-let currentOpacity = 0
-let currentColor = '#000'
+export const lightParameters = {
+    opacity: 0,
+    color: '#000',
+    opacityChange: 0
+}
 
 /**
  * @param time - Date
@@ -50,10 +52,10 @@ function getDarknessNiObject(opacity, color)
 
 export function changeLight(opacity = timeToOpacity(new Date()), color = '#000', forced)
 {
-    currentOpacity = opacity
-    currentColor = color
+    lightParameters.opacity = opacity
+    lightParameters.color = color
 
-    if (color === '#000' && !forced) opacity = opacity + opacityChange
+    if (color === '#000' && !forced) opacity = opacity + lightParameters.opacityChange
     if (opacity > 1) opacity = 1
     else if (opacity < 0) opacity = 0
 
@@ -99,8 +101,8 @@ export function setOpacityChange(newOpacityChange)
     else if (newOpacityChange > 1) newOpacityChange = 1
     else if (newOpacityChange < -1) newOpacityChange = -1
 
-    opacityChange = newOpacityChange
-    changeLight(currentOpacity, currentColor)
+    lightParameters.opacityChange = newOpacityChange
+    changeLight(lightParameters.opacity, lightParameters.color)
 }
 
 export function initNightManager()

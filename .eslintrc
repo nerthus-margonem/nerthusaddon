@@ -16,6 +16,7 @@
     "API": "readonly",
     "chatScroll": "readonly",
     "log": "readonly",
+    "error": "readonly",
     "FILE_PREFIX": "readonly",
     "AVAILABLE_MAP_FILES": "readonly",
     "CFG": "readonly",

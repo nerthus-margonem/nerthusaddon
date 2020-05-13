@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nerthus Addon
 // @namespace    http://www.margonem.pl/
-// @version      3.0 Beta 2
+// @version      3.0 Beta 3
 // @description  Addon for Nerthus
 // @author       Aldi, Kris Aphalon
 // @match        http://nerthus.margonem.pl/
@@ -24,7 +24,7 @@
                     'Nerthus addon couldn\'t detect your interface. ' +
                     'Try restarting your game or cleaning cookies. ' +
                     'If this error persists, submit a bug on Nerthus\'s forum.'
-                window.error(errorMsg)
+                error(errorMsg)
                 console.error(errorMsg)
             }
 
@@ -32,7 +32,7 @@
             {
                 let logText = 'Nerthus addon version: ' + version
                 if (gameInterface === 'si') logText = '<span style="color:lime">' + logText + '</span>'
-                window.log(logText)
+                log(logText)
                 const script = document.createElement('script')
                 script.src = src
                 document.head.appendChild(script)

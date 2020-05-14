@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nerthus Addon
 // @namespace    http://www.margonem.pl/
-// @version      3.0 Beta 3
+// @version      3.0 Beta 5
 // @description  Addon for Nerthus
 // @author       Aldi, Kris Aphalon
 // @match        http://nerthus.margonem.pl/
@@ -41,5 +41,5 @@
         else setTimeout(start, 500)
     }
 
-    $.get('https://raw.githubusercontent.com/KrisAphalon/nerthusaddon/webpack/version', start)
+    $.get('https://raw.githubusercontent.com/KrisAphalon/nerthusaddon/production/version', start)
 })()

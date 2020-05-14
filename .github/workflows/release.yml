@@ -48,5 +48,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: "production"
         force: true
+        tags: true
       env:
         CI: true

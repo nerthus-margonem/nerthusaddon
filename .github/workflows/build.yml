@@ -33,7 +33,8 @@ jobs:
     - name: Add dist directory
       run: git add -f dist
     - name: Change tag
-      run: git tag -fa "${GITHUB_REF}"
+      run: |
+        git tag -fa "${GITHUB_REF}" -m "Relase: ${GITHUB_REF}"
     - name: Commit files
       run: |
         git commit -m "Release: ${GITHUB_REF}" | echo

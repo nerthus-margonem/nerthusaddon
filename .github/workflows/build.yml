@@ -27,7 +27,7 @@ jobs:
     - name: Run build
       run: npm run-script build
     - name: Add dist directory
-      run: git add -f /dist
+      run: git add -f dist
     - name: Change tag
       run: git tag -fa "${GITHUB_REF}"
     - name: Commit files

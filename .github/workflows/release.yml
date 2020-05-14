@@ -27,7 +27,7 @@ jobs:
       run: npm i
     - name: Checkout and rebase to production
       run: |
-        LAST_BRANCH=${git rev-parse --abbrev-ref HEAD}
+        LAST_BRANCH=$(git rev-parse --abbrev-ref HEAD)
         git checkout production
         git rebase $LAST_BRANCH
     - name: Run build

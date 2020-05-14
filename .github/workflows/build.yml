@@ -19,10 +19,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: npm i
-    - name: Delete old release files
-      run: git branch -D production
     - name: Checkout to production
-      run: git checkout -b production
+      run: git checkout -B production
     - name: Run build
       run: npm run-script build
     - name: Add dist directory

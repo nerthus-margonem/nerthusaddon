@@ -1,4 +1,4 @@
-name: Build
+name: Release
 
 on: 
   release:
@@ -32,12 +32,14 @@ jobs:
       run: npm run-script build
     - name: Add dist directory
       run: git add -f dist
-    - name: Change tag
-      run: |
-        git tag -fa "${GITHUB_REF}" -m "Relase: ${GITHUB_REF}"
+    - name: Update version
+      run: GITHUB_REF > version
     - name: Commit files
       run: |
         git commit -m "Release: ${GITHUB_REF}" | echo
+    - name: Change tag
+      run: |
+        git tag -fa "${GITHUB_REF}" -m "Relase: ${GITHUB_REF}"
     - name: Push changes
       uses: ad-m/github-push-action@v0.5.0
       with:

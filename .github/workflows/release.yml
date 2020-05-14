@@ -7,7 +7,8 @@ on:
 
 jobs:
   build:
-
+        with:
+      repo-token: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,7 +24,8 @@ jobs:
     - name: Set up credentials
       run: |
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action" 
+        git config --local user.name "GitHub Action"
+        GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
     - name: Install dependencies
       run: npm i
     - name: Checkout to production
@@ -48,11 +50,4 @@ jobs:
         git push --set-upstream origin ${GITHUB_REF#*/*/}
         hub release create ${GITHUB_REF#*/*/}
     - name: Push changes
-      uses: ad-m/github-push-action@v0.5.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: "production"
-        force: true
-        tags: true
-      env:
-        CI: true
+      run: git push --set-upstream origin production --force --tags

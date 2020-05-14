@@ -25,10 +25,8 @@ jobs:
         git config --local user.name "GitHub Action"
     - name: Install dependencies
       run: npm i
-    - name: Checkout and rebase to production
-      run: |
-        git checkout production
-        git rebase webpack
+    - name: Checkout to production
+      run: git checkout -B production
     - name: Run build
       run: npm run-script build
     - name: Add dist directory

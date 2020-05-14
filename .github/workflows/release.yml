@@ -35,6 +35,7 @@ jobs:
     - name: Update version
       run: |
         echo "${GITHUB_REF}" > version
+        git add version
     - name: Commit files
       run: |
         git commit -m "Release: ${GITHUB_REF}" | echo

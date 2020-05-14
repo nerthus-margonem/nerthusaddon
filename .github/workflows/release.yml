@@ -27,9 +27,8 @@ jobs:
       run: npm i
     - name: Checkout and rebase to production
       run: |
-        LAST_BRANCH=$(git branch --show-current)
         git checkout production
-        git rebase $LAST_BRANCH
+        git rebase webpack
     - name: Run build
       run: npm run-script build
     - name: Add dist directory

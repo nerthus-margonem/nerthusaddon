@@ -33,7 +33,8 @@ jobs:
     - name: Add dist directory
       run: git add -f dist
     - name: Update version
-      run: $GITHUB_REF > version
+      run: |
+        echo "${GITHUB_REF}" > version
     - name: Commit files
       run: |
         git commit -m "Release: ${GITHUB_REF}" | echo

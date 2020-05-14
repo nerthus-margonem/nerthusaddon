@@ -34,14 +34,14 @@ jobs:
       run: git add -f dist
     - name: Update version
       run: |
-        echo "${GITHUB_REF}" > version
+        echo "${GITHUB_REF#*/*/}" > version
         git add version
     - name: Commit files
       run: |
-        git commit -m "Release: ${GITHUB_REF}" | echo
+        git commit -m "Release: ${GITHUB_REF#*/*/}" | echo
     - name: Change tag
       run: |
-        git tag -fa "${GITHUB_REF}" -m "Relase: ${GITHUB_REF}"
+        git tag -fa "${GITHUB_REF#*/*/}" -m "Relase: ${GITHUB_REF#*/*/}"
     - name: Push changes
       uses: ad-m/github-push-action@v0.5.0
       with:

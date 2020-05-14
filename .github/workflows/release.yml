@@ -47,6 +47,7 @@ jobs:
         git push --set-upstream origin ${GITHUB_REF#*/*/}
         hub release create ${GITHUB_REF#*/*/}
       env:
+        GITHUB_USER: <ORG>
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push changes
       run: git push --set-upstream origin production --force --tags

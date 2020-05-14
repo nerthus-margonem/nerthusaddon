@@ -25,8 +25,11 @@ jobs:
         git config --local user.name "GitHub Action"
     - name: Install dependencies
       run: npm i
-    - name: Checkout to production
-      run: git checkout -B production
+    - name: Checkout and rebase to production
+      run: |
+        LAST_BRANCH=${git rev-parse --abbrev-ref HEAD}
+        git checkout production
+        git rebase $LAST_BRANCH
     - name: Run build
       run: npm run-script build
     - name: Add dist directory

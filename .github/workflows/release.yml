@@ -23,7 +23,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
     - name: Install dependencies
       run: npm i
     - name: Checkout to production
@@ -47,5 +46,7 @@ jobs:
         hub release delete ${GITHUB_REF#*/*/}
         git push --set-upstream origin ${GITHUB_REF#*/*/}
         hub release create ${GITHUB_REF#*/*/}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push changes
       run: git push --set-upstream origin production --force --tags

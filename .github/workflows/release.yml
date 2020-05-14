@@ -44,7 +44,9 @@ jobs:
         git tag -d ${GITHUB_REF#*/*/}
         git tag -f -a "${GITHUB_REF#*/*/}" -m "Relase: ${GITHUB_REF#*/*/}"
         git push --set-upstream origin :${GITHUB_REF#*/*/}
+        hub release delete ${GITHUB_REF#*/*/}
         git push --set-upstream origin ${GITHUB_REF#*/*/}
+        hub release create ${GITHUB_REF#*/*/}
     - name: Push changes
       uses: ad-m/github-push-action@v0.5.0
       with:

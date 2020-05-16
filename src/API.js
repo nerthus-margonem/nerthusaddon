@@ -5,7 +5,7 @@ import {changeLight, lightParameters} from './night/night'
 
 /*
  Event names:
- - setWeather
+ - displayWeather
  - addTemporaryNpc
  - removeTemporaryNpc
  - loaded

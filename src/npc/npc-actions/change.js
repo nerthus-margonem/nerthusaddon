@@ -11,7 +11,7 @@ export function changeGameNpc(npc)
                 newNpc.sprite = img
                 Object.defineProperty(newNpc, 'sprite', {
                     get() {return img},
-                    set() {return img}
+                    set() {}
                 })
 
                 // Run only once

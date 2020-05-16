@@ -48,7 +48,6 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
             {
                 this.__parsers = val
                 if (val.length === 0) loadNewMapQueue()
-                return val
             },
             get() { return this.__parsers }
         })

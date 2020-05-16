@@ -20,7 +20,9 @@ const climateNoises = {
 
 let $widget
 
-let forcedWeather = ''
+const forcedWeathers = {
+    default: ''
+}
 
 
 function getClimateNoise(climate, type)
@@ -292,71 +294,81 @@ export function getWeather(date)
     else return {name: 'indoor'}
 }
 
-function displayWeatherEffects(weather = getWeather(new Date()))
+export function displayWeather(weatherName = getWeather(new Date()).name)
 {
+    const startingWeatherName = weatherName
+    if (forcedWeathers.default) weatherName = forcedWeathers.default
+    if (INTERFACE === 'NI')
+    {
+        if (forcedWeathers[Engine.map.d.id]) weatherName = forcedWeathers[Engine.map.d.id]
+    }
+    else
+    {
+        if (forcedWeathers[map.id]) weatherName = forcedWeathers[map.id]
+    }
+
+    // if the weather is forced, clear special effects
+    if (startingWeatherName !== weatherName)
+    {
+        if (INTERFACE === 'NI')
+        {
+            Engine.weather.onClear()
+        }
+        else
+        {
+            window.clearWeather()
+        }
+    }
+
     clearEffects()
-    if (weather.name === 'indoor')
+    if (weatherName === 'indoor')
     {
         $widget.css('display', 'none')
         setOpacityChange(0)
     }
-    else if (GAME_WEATHERS.includes(weather.name))
+    else if (GAME_WEATHERS.includes(weatherName))
     {
         $widget.css('display', 'none')
         setOpacityChange(0)
 
         if (INTERFACE === 'NI')
         {
-            const uppercaseWeatherName = weather.name.charAt(0).toUpperCase() + weather.name.slice(1)
+            const uppercaseWeatherName = weatherName.charAt(0).toUpperCase() + weatherName.slice(1)
             Engine.weather.createWeather(uppercaseWeatherName)
         }
         else
         {
-            window.changeWeather(weather.name)
+            window.changeWeather(weatherName)
         }
     }
     else
     {
         $widget.css('display', 'flex')
             .children('.nerthus__widget-image')
-            .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + weather.name + '.png)')
+            .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + weatherName + '.png)')
 
-        const descId = Math.floor(Math.random() * weatherDescriptions[weather.name].length)
+        const descId = Math.floor(Math.random() * weatherDescriptions[weatherName].length)
         $widget.children('.nerthus__widget-desc')
-            .text(weatherDescriptions[weather.name][descId])
+            .text(weatherDescriptions[weatherName][descId])
 
         if (isCurrentMapOutdoor())
         {
-            if (weather.rainStrength) displayRain(weather.rainStrength)
-            if (weather.snowStrength) displaySnow(weather.snowStrength)
+            if (RAIN_STRENGTH[weatherName]) displayRain(RAIN_STRENGTH[weatherName])
+            if (SNOW_STRENGTH[weatherName]) displaySnow(SNOW_STRENGTH[weatherName])
         }
-        setOpacityChange(CLOUDS_STRENGTH[weather.name.replace('night', 'day')])
+        setOpacityChange(CLOUDS_STRENGTH[weatherName.replace('night', 'day')])
     }
 
-    callEvent('setWeather', weather)
+    callEvent('displayWeather', weatherName)
 }
 
-export function forceSetWeather(weatherName)
+export function setForcedWeather(weatherName, mapId = 'default')
 {
-    forcedWeather = weatherName
-    if (INTERFACE === 'NI')
+    if (!weatherName || weatherName === 'reset') forcedWeathers[mapId] = ''
+    else if (GAME_WEATHERS.includes(weatherName) || weatherDescriptions[weatherName])
     {
-        Engine.weather.onClear()
+        forcedWeathers[mapId] = weatherName
     }
-    else
-    {
-        window.clearWeather()
-    }
-
-    if (GAME_WEATHERS.includes(weatherName) || weatherDescriptions[weatherName])
-    {
-        displayWeatherEffects({
-            name: weatherName,
-            rainStrength: RAIN_STRENGTH[weatherName],
-            snowStrength: SNOW_STRENGTH[weatherName]
-        })
-    }
-    else displayWeatherEffects()
 }
 
 function startChangeTimer()
@@ -367,7 +379,7 @@ function startChangeTimer()
     const timeout = date - new Date()
     setTimeout(function ()
     {
-        if (!forcedWeather) displayWeatherEffects()
+        displayWeather()
         startChangeTimer()
     }, timeout)
 }
@@ -377,7 +389,7 @@ export function initWeather()
     if (settings.weather)
     {
         $widget = addWidget('weather')
-        loadOnEveryMap(displayWeatherEffects)
+        loadOnEveryMap(displayWeather)
         startChangeTimer()
 
         loadOnEveryMap(function ()

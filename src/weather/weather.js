@@ -20,6 +20,7 @@ const climateNoises = {
 
 let $widget
 
+let forcedWeather = ''
 
 
 function getClimateNoise(climate, type)
@@ -337,6 +338,7 @@ function displayWeatherEffects(weather = getWeather(new Date()))
 
 export function forceSetWeather(weatherName)
 {
+    forcedWeather = weatherName
     if (INTERFACE === 'NI')
     {
         Engine.weather.onClear()
@@ -365,7 +367,7 @@ function startChangeTimer()
     const timeout = date - new Date()
     setTimeout(function ()
     {
-        displayWeatherEffects()
+        if (!forcedWeather) displayWeatherEffects()
         startChangeTimer()
     }, timeout)
 }

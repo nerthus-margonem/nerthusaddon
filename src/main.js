@@ -34,8 +34,8 @@ function start()
     initWeather()
     initZodiac()
 
-    initChatMgr()
     initBasicChatCommands()
+    initChatMgr()
 
     initPanel()
 

@@ -43,19 +43,18 @@ function addLights(lights)
         {
             const lightTypeSize = LIGHT_TYPE_SIZES[lights[i].type]
             $('<div />')
+                .addClass('nerthus__night-light')
                 .css({
                     background: 'url(' + getLightTypeUrl(lights[i].type) + ')',
                     width: lightTypeSize,
                     height: lightTypeSize,
                     zIndex: map.y * 2 + 12,
-                    position: 'absolute',
                     left: lights[i].x,
-                    top: lights[i].y,
-                    pointerEvents: 'none'
+                    top: lights[i].y
                 })
-                .addClass('nerthus__night-light')
                 .attr('type', lights[i].type)
                 .appendTo('#ground')
+                .css('opacity', '1')
         }
     }
 }

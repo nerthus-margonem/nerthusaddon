@@ -2,6 +2,7 @@ import {checkPermissionLvl, hasNarrationRights} from './permissions'
 import {customNpcs} from './npc/npc'
 import {getWeather} from './weather/weather'
 import {changeLight, lightParameters} from './night/night'
+import {turnLightsOn} from './night/lights'
 
 /*
  Event names:
@@ -38,7 +39,8 @@ export function initAPI()
         },
         night: {
             changeLight: changeLight,
-            lightParameters: lightParameters
+            lightParameters: lightParameters,
+            turnLightsOn: turnLightsOn
         },
         npcList: customNpcs
     }

@@ -296,7 +296,6 @@ export function getWeather(date)
 
 export function displayWeather(weatherName = getWeather(new Date()).name)
 {
-    const startingWeatherName = weatherName
     if (forcedWeathers.default) weatherName = forcedWeathers.default
     if (INTERFACE === 'NI')
     {
@@ -305,19 +304,6 @@ export function displayWeather(weatherName = getWeather(new Date()).name)
     else
     {
         if (forcedWeathers[map.id]) weatherName = forcedWeathers[map.id]
-    }
-
-    // if the weather is forced, clear special effects
-    if (startingWeatherName !== weatherName)
-    {
-        if (INTERFACE === 'NI')
-        {
-            Engine.weather.onClear()
-        }
-        else
-        {
-            window.clearWeather()
-        }
     }
 
     clearEffects()
@@ -347,9 +333,13 @@ export function displayWeather(weatherName = getWeather(new Date()).name)
             .children('.nerthus__widget-image')
             .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + weatherName + '.png)')
 
-        const descId = Math.floor(Math.random() * weatherDescriptions[weatherName].length)
-        $widget.children('.nerthus__widget-desc')
-            .text(weatherDescriptions[weatherName][descId])
+        if (weatherDescriptions[weatherName])
+        {
+            const descId = Math.floor(Math.random() * weatherDescriptions[weatherName].length)
+            $widget.children('.nerthus__widget-desc')
+                .text(weatherDescriptions[weatherName][descId])
+        }
+
 
         if (isCurrentMapOutdoor())
         {

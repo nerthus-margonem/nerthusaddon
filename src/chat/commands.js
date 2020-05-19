@@ -6,6 +6,7 @@ import {removeNpc} from '../npc/npc-actions/remove'
 import {changeLight, checkAndApplyNight} from '../night/night'
 import {hideGameNpc} from '../npc/npc-actions/hide'
 import {displayWeather, setForcedWeather} from '../weather/weather'
+import {clearEffects} from '../weather/effects'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -161,6 +162,7 @@ function weather(ch)
 {
     const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(ch.t)
     setForcedWeather(weatherArr[1], weatherArr[2])
+    clearEffects(true)
     displayWeather()
 
     return false

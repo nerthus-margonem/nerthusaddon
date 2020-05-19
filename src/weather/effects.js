@@ -64,16 +64,19 @@ function getWeatherNiObject(type, opacity)
 }
 
 
-export function clearEffects()
+export function clearEffects(clearGameEffects)
 {
     if (INTERFACE === 'NI')
     {
         if (Engine.npcs.getById(rainEffectId)) Engine.npcs.updateData({[rainEffectId]: {del: true}})
         if (Engine.npcs.getById(snowEffectId)) Engine.npcs.updateData({[snowEffectId]: {del: true}})
+
+        if (clearGameEffects) Engine.weather.onClear()
     }
     else
     {
         $('.nerthus-weather').remove()
+        if (clearGameEffects) window.clearWeather()
     }
 }
 

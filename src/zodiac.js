@@ -1,6 +1,7 @@
 import {addWidget} from './widgets'
 import {default as zodiacDescriptions} from '../res/descriptions/zodiac.json'
 import {settings} from './settings'
+import {addSettingToPanel} from './interface/panel'
 
 /**
  * Zodiac sign dates in format: month: [name, end day]
@@ -38,24 +39,34 @@ export function getZodiacSign(day, month)
 
 export function initZodiac()
 {
-    if (settings.zodiac)
-    {
-        const date = new Date()
-        const currentSign = getZodiacSign(date.getUTCDate(), date.getUTCMonth())
-        const $widget = addWidget(
-            'zodiac',
-            FILE_PREFIX + 'res/img/zodiac/' + currentSign + '.png',
-            zodiacDescriptions[currentSign][0]
-        )
-        $widget.children('.nerthus__widget-image')
-            .css('cursor', 'pointer')
-            .click(function ()
-            {
-                const $desc = $widget.children('.nerthus__widget-desc')
-                if ($desc.text() === zodiacDescriptions[currentSign][0])
-                    $desc.text(zodiacDescriptions[currentSign][1])
-                else
-                    $desc.text(zodiacDescriptions[currentSign][0])
-            })
-    }
+    const date = new Date()
+    const currentSign = getZodiacSign(date.getUTCDate(), date.getUTCMonth())
+    const $widget = addWidget(
+        'zodiac',
+        FILE_PREFIX + 'res/img/zodiac/' + currentSign + '.png',
+        zodiacDescriptions[currentSign][0]
+    )
+    $widget.children('.nerthus__widget-image')
+        .css('cursor', 'pointer')
+        .click(function ()
+        {
+            const $desc = $widget.children('.nerthus__widget-desc')
+            if ($desc.text() === zodiacDescriptions[currentSign][0])
+                $desc.text(zodiacDescriptions[currentSign][1])
+            else
+                $desc.text(zodiacDescriptions[currentSign][0])
+        })
+
+    if (settings.zodiac) $widget.css('display', 'flex')
+    else $widget.css('display', 'none')
+
+    addSettingToPanel(
+        'zodiac',
+        'Widget znaku zodiaku',
+        'Pokazuje lub ukrywa widget w lewym górnym rogu mapy.',
+        function ()
+        {
+            if (settings.zodiac) $widget.css('display', 'flex')
+            else $widget.css('display', 'none')
+        })
 }

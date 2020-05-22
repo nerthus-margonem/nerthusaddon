@@ -102,7 +102,6 @@ export function displayRain(opacity)
             })
             .appendTo('#ground')
     }
-
 }
 
 export function displaySnow(opacity)
@@ -126,5 +125,18 @@ export function displaySnow(opacity)
                 opacity: opacity ? opacity : 1
             })
             .appendTo('#ground')
+    }
+}
+
+export function displayGameWeather(name)
+{
+    if (INTERFACE === 'NI')
+    {
+        const uppercaseWeatherName = name.charAt(0).toUpperCase() + name.slice(1)
+        Engine.weather.createWeather(uppercaseWeatherName)
+    }
+    else
+    {
+        window.changeWeather(name)
     }
 }

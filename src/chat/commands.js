@@ -3,10 +3,11 @@ import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from
 import {addNpcToList} from '../npc/npc-actions/add'
 import {Npc} from '../npc/npc'
 import {removeNpc} from '../npc/npc-actions/remove'
-import {changeLight, checkAndApplyNight} from '../night/night'
+import {applyCurrentNight, setForcedParameters} from '../night/night'
 import {hideGameNpc} from '../npc/npc-actions/hide'
 import {displayWeather, setForcedWeather} from '../weather/weather'
 import {clearEffects} from '../weather/effects'
+import {settings} from '../settings'
 
 function makeDialogTextWithSpeaker(str)
 {
@@ -107,15 +108,18 @@ function light(ch)
 {
     const arr = ch.t.split(' ')
     arr.shift()
-    if (arr.length === 0) checkAndApplyNight() // if no arguments
+    if (arr.length === 0) setForcedParameters(-1, '#000') // if no arguments
     else
     {
         const argArr = arr.join(' ').split(',')
         let opacity = argArr[0].trim()
         const color = argArr[1] ? argArr[1].trim() : '#000'
+        const mapId = argArr[2] ? argArr[2].trim() : 'default'
         opacity = parseFloat(opacity.replace(',', '.'))
-        changeLight(1 - opacity, color, true)
+        setForcedParameters(1 - opacity, color, mapId)
     }
+
+    applyCurrentNight()
 
     return false
 }
@@ -162,7 +166,7 @@ function weather(ch)
 {
     const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(ch.t)
     setForcedWeather(weatherArr[1], weatherArr[2])
-    clearEffects(true)
+    if (settings.weatherEffects) clearEffects(true)
     displayWeather()
 
     return false

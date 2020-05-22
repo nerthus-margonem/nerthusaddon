@@ -3,19 +3,7 @@ import {saveSetting, settings} from '../settings'
 let $elm = $()
 const defaultPosition = [6, 'top-right']
 
-const settingsTranslations = {
-    'night': 'Pory dnia i nocy',
-    'weather': 'Efekty pogodowe',
-    'zodiac': 'Znaki zodiaku',
-    'hideNpcs': 'Ukrywanie NPCów'
-}
-
-function translate_option(name)
-{
-    if (settingsTranslations[name])
-        return settingsTranslations[name]
-    return name
-}
+const settingsList = []
 
 /**
  * Contains functions that return strings that are representations of elements
@@ -40,34 +28,10 @@ constructElement.buttonGroup = function (groupData)
     return buttonGroup.join('')
 }
 
-constructElement.settingCheckbox = function (optionName)
+constructElement.settings = function ()
 {
-    const checked = settings[optionName] ? ' checked' : ''
     return (
-        '<label class="setting-label">' +
-        '<span class="setting-label-text">' + translate_option(optionName) + '</span>' +
-        '<input class="setting-checkbox" name="' + optionName + '" type="checkbox"' + checked + '>' +
-        '<span class="checkbox-outline">' +
-        '<span class="checkmark">' +
-        '<div class="checkmark-stem"></div>' +
-        '<div class="checkmark-kick"></div>' +
-        '</span>' +
-        '</span>' +
-        '</label>'
-    )
-}
-
-constructElement.settings = function (options)
-{
-    const settingsList = []
-    for (const option in options)
-        settingsList.push(this.settingCheckbox(option))
-    const settings = settingsList.join('')
-
-    return (
-        '<div class="top-box">' +
-        settings +
-        '</div>' +
+        '<div class="top-box"></div>' +
         '<div class="bottom-box">' +
         '<button class="button text-button save-button">Zapisz</button>' +
         '<button class="button text-button cancel-button">Anuluj</button>' +
@@ -123,20 +87,24 @@ function createPanel(data, hidden)
         const buttonGroupLeft = constructElement.buttonGroup(data.leftPanel)
         const buttonGroupCenter = constructElement.buttonGroup(data.centerPanel)
         const buttonGroupRight = constructElement.buttonGroup(data.rightPanel)
-        const settingsElement = constructElement.settings(settings)
+        const settingsElement = constructElement.settings()
 
         $elm = $(constructElement.panel(buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settingsElement))
         const defaultPanel = $elm.find('.default-panel')
-        const settingsPanel = $elm.find('.settings-panel')
+        const $settingsPanel = $elm.find('.settings-panel')
         const panelName = $elm.find('.panel-name')
+
+        $settingsPanel.find('.top-box').append(settingsList)
+
+
         $elm.find('.nerthus-settings-button')
             .click(function ()
             {
                 defaultPanel.toggleClass('hidden')
-                settingsPanel.toggleClass('hidden')
+                $settingsPanel.toggleClass('hidden')
                 const $this = $(this)
                 $this.toggleClass('back-to-default')
-                if (settingsPanel.hasClass('hidden'))
+                if ($settingsPanel.hasClass('hidden'))
                 {
                     $this.attr({'tip': 'Ustawienia', 'data-tip': 'Ustawienia'})
                         .children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
@@ -155,7 +123,7 @@ function createPanel(data, hidden)
             {
                 $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
                 defaultPanel.removeClass('hidden')
-                settingsPanel.addClass('hidden')
+                $settingsPanel.addClass('hidden')
             }).end()
             .find('.save-button')
             .click(function ()
@@ -163,7 +131,7 @@ function createPanel(data, hidden)
                 saveSettings()
                 $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
                 defaultPanel.removeClass('hidden')
-                settingsPanel.addClass('hidden')
+                $settingsPanel.addClass('hidden')
             }).end()
 
         $elm
@@ -226,6 +194,38 @@ function create_button_ni()
         Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
     }
     else setTimeout(create_button_ni, 500)
+}
+
+export function addSettingToPanel(settingName, translation, tip, callback)
+{
+    let tipAttr
+    if (INTERFACE === 'NI')
+    {
+        tipAttr = 'data-tip'
+    }
+    else
+    {
+        tipAttr = 'tip'
+    }
+
+    const checked = settings[settingName] ? ' checked' : ''
+
+    const $setting = $(`
+<label class="setting-label">
+    <span class="setting-label-text" ${tipAttr}="${tip}">${translation}</span>
+    <input class="setting-checkbox" name="${settingName}" type="checkbox" ${checked}>
+    <span class="checkbox-outline">
+        <span class="checkmark">
+        <div class="checkmark-stem"></div>
+        <div class="checkmark-kick"></div>
+    </span>
+    </span>
+</label>
+`)
+        .change(function (e) { saveSetting(settingName, e.target.checked) })
+        .change(callback)
+
+    settingsList.push($setting.get()[0]) // SI uses jquery 1.4, therefore we can't append array of jquery elements
 }
 
 export function initPanel()

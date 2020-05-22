@@ -1,13 +1,11 @@
 import {settings} from '../settings'
 import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
-import {turnLightsOn} from './lights'
+import {lightsOn, resetLights, turnLightsOn} from './lights'
 import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
+import {addSettingToPanel} from '../interface/panel'
 
-export const lightParameters = {
-    opacity: 0,
-    color: '#000',
-    opacityChange: 0
-}
+let opacityChange = 0
+const forcedParameters = {}
 
 /**
  * @param time - Date
@@ -15,18 +13,23 @@ export const lightParameters = {
  */
 function timeToOpacity(time)
 {
-    const hour = time.getHours()
-    let opacity
-    if (hour < 12)
-        opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1
-    else
-        opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1
+    if (settings.night)
+    {
+        const hour = time.getHours()
+        let opacity
+        if (hour < 12)
+            opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1
+        else
+            opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1
 
-    if (opacity < 0.3) opacity = 0.3
-    else if (opacity > 1) opacity = 1
+        if (opacity < 0.3) opacity = 0.3
+        else if (opacity > 1) opacity = 1
 
-    return 1 - opacity
+        return 1 - opacity
+    }
+    return 0
 }
+
 
 function getDarknessNiObject(opacity, color)
 {
@@ -50,12 +53,45 @@ function getDarknessNiObject(opacity, color)
     }
 }
 
-export function changeLight(opacity = timeToOpacity(new Date()), color = '#000', forced)
+export function setForcedParameters(opacity, color, mapId = 'default')
 {
-    lightParameters.opacity = opacity
-    lightParameters.color = color
+    if (!opacity || opacity === 'reset') forcedParameters[mapId] = ''
+    else forcedParameters[mapId] = {
+        opacity: opacity,
+        color: color
+    }
+}
 
-    if (color === '#000' && !forced) opacity = opacity + lightParameters.opacityChange
+function getCurrentForcedParameters()
+{
+    let parameters = {
+        opacity: -1,
+        color: '#000'
+    }
+    if (forcedParameters.default) parameters = forcedParameters.default
+    if (INTERFACE === 'NI')
+    {
+        if (forcedParameters[Engine.map.d.id]) parameters = forcedParameters[Engine.map.d.id]
+    }
+    else
+    {
+        if (forcedParameters[map.id]) parameters = forcedParameters[map.id]
+    }
+    return parameters
+}
+
+function getCurrentNaturalOpacity()
+{
+    if (!isCurrentMapOutdoor()) return 0
+
+    let opacity = timeToOpacity(new Date())
+    opacity = opacity + opacityChange
+
+    return opacity
+}
+
+export function changeLight(opacity = getCurrentNaturalOpacity(), color = '#000')
+{
     if (opacity > 1) opacity = 1
     else if (opacity < 0) opacity = 0
 
@@ -77,22 +113,24 @@ export function changeLight(opacity = timeToOpacity(new Date()), color = '#000',
     }
 }
 
-export function checkAndApplyNight()
-{
-    if (settings.night)
-    {
-        const date = new Date()
-        const dimValue = timeToOpacity(date)
-        if (dimValue)
-        {
-            if (isCurrentMapOutdoor())
-                changeLight(dimValue)
-            else
-                changeLight(-1)
 
-            turnLightsOn()
-        }
+export function applyCurrentNight()
+{
+    let opacity = getCurrentNaturalOpacity()
+    let color = '#000'
+
+    const currentForcedParameters = getCurrentForcedParameters()
+    if (currentForcedParameters.opacity !== -1)
+    {
+        opacity = currentForcedParameters.opacity
+        color = currentForcedParameters.color
     }
+
+    if (opacity <= 0.2) resetLights()
+    else if (opacity > 0.2 && !lightsOn) turnLightsOn()
+
+
+    changeLight(opacity, color)
 }
 
 export function setOpacityChange(newOpacityChange)
@@ -101,11 +139,19 @@ export function setOpacityChange(newOpacityChange)
     else if (newOpacityChange > 1) newOpacityChange = 1
     else if (newOpacityChange < -1) newOpacityChange = -1
 
-    lightParameters.opacityChange = newOpacityChange
-    changeLight(lightParameters.opacity, lightParameters.color)
+    opacityChange = newOpacityChange
+    applyCurrentNight()
 }
 
 export function initNightManager()
 {
-    loadOnEveryMap(checkAndApplyNight)
+    loadOnEveryMap(resetLights)
+    loadOnEveryMap(applyCurrentNight)
+
+    addSettingToPanel(
+        'night',
+        'Pory dnia i nocy',
+        'Ściemnianie mapy w zależności od pory dnia.',
+        applyCurrentNight
+    )
 }

@@ -2,12 +2,13 @@ import {settings} from '../settings'
 import {Simple1DNoise} from './noise'
 import {addWidget} from '../widgets'
 import {default as weatherDescriptions} from '../../res/descriptions/weather.json'
-import {clearEffects, displayRain, displaySnow} from './effects'
+import {clearEffects, displayGameWeather, displayRain, displaySnow} from './effects'
 import {default as climates} from '../../res/configs/climates.json'
 import {isCurrentMapOutdoor} from '../utility-functions'
 import {loadOnEveryMap} from '../game-integration/loaders'
 import {setOpacityChange} from '../night/night'
 import {callEvent} from '../API'
+import {addSettingToPanel} from '../interface/panel'
 
 const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
 const GAME_WEATHERS = Object.freeze(['fish', 'light', 'latern', 'bat'])
@@ -237,6 +238,21 @@ const CLOUDS_STRENGTH = {
     'storm': 0.2
 }
 
+function getCurrentForcedWeather()
+{
+    let weatherName = ''
+    if (forcedWeathers.default) weatherName = forcedWeathers.default
+    if (INTERFACE === 'NI')
+    {
+        if (forcedWeathers[Engine.map.d.id]) weatherName = forcedWeathers[Engine.map.d.id]
+    }
+    else
+    {
+        if (forcedWeathers[map.id]) weatherName = forcedWeathers[map.id]
+    }
+    return weatherName
+}
+
 
 export function getWeather(date)
 {
@@ -296,17 +312,18 @@ export function getWeather(date)
 
 export function displayWeather(weatherName = getWeather(new Date()).name)
 {
-    if (forcedWeathers.default) weatherName = forcedWeathers.default
-    if (INTERFACE === 'NI')
+    const forcedWeatherName = getCurrentForcedWeather()
+    if (forcedWeatherName)
     {
-        if (forcedWeathers[Engine.map.d.id]) weatherName = forcedWeathers[Engine.map.d.id]
+        weatherName = forcedWeatherName
+        if (settings.weatherEffects) clearEffects(true)
     }
     else
     {
-        if (forcedWeathers[map.id]) weatherName = forcedWeathers[map.id]
+        if (settings.weatherEffects) clearEffects()
     }
 
-    clearEffects()
+
     if (weatherName === 'indoor')
     {
         $widget.css('display', 'none')
@@ -317,36 +334,34 @@ export function displayWeather(weatherName = getWeather(new Date()).name)
         $widget.css('display', 'none')
         setOpacityChange(0)
 
-        if (INTERFACE === 'NI')
-        {
-            const uppercaseWeatherName = weatherName.charAt(0).toUpperCase() + weatherName.slice(1)
-            Engine.weather.createWeather(uppercaseWeatherName)
-        }
-        else
-        {
-            window.changeWeather(weatherName)
-        }
+        if (settings.weatherEffects) displayGameWeather(weatherName)
     }
     else
     {
-        $widget.css('display', 'flex')
-            .children('.nerthus__widget-image')
-            .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + weatherName + '.png)')
-
-        if (weatherDescriptions[weatherName])
+        if (settings.weather)
         {
-            const descId = Math.floor(Math.random() * weatherDescriptions[weatherName].length)
-            $widget.children('.nerthus__widget-desc')
-                .text(weatherDescriptions[weatherName][descId])
+            $widget.css('display', 'flex')
+            $widget.children('.nerthus__widget-image')
+                .css('background-image', 'url(' + FILE_PREFIX + 'res/img/weather/icons/' + weatherName + '.png)')
+
+            if (weatherDescriptions[weatherName])
+            {
+                const descId = Math.floor(Math.random() * weatherDescriptions[weatherName].length)
+                $widget.children('.nerthus__widget-desc')
+                    .text(weatherDescriptions[weatherName][descId])
+            }
         }
 
-
-        if (isCurrentMapOutdoor())
+        if (settings.weatherEffects)
         {
-            if (RAIN_STRENGTH[weatherName]) displayRain(RAIN_STRENGTH[weatherName])
-            if (SNOW_STRENGTH[weatherName]) displaySnow(SNOW_STRENGTH[weatherName])
+            const dayWeatherName = weatherName.replace('night', 'day')
+            if (isCurrentMapOutdoor())
+            {
+                if (RAIN_STRENGTH[dayWeatherName]) displayRain(RAIN_STRENGTH[dayWeatherName])
+                if (SNOW_STRENGTH[dayWeatherName]) displaySnow(SNOW_STRENGTH[dayWeatherName])
+            }
+            setOpacityChange(CLOUDS_STRENGTH[dayWeatherName])
         }
-        setOpacityChange(CLOUDS_STRENGTH[weatherName.replace('night', 'day')])
     }
 
     callEvent('displayWeather', weatherName)
@@ -376,21 +391,41 @@ function startChangeTimer()
 
 export function initWeather()
 {
-    if (settings.weather)
-    {
-        $widget = addWidget('weather')
-        loadOnEveryMap(displayWeather)
-        startChangeTimer()
+    $widget = addWidget('weather')
+    if (!settings.weather) $widget.css('display', 'none')
 
-        loadOnEveryMap(function ()
+    loadOnEveryMap(displayWeather)
+    startChangeTimer()
+
+    loadOnEveryMap(function ()
+    {
+        for (let i = 0; i < 20; i++)
         {
-            for (let i = 0; i < 20; i++)
-            {
-                let date = new Date().getTime()
-                date += 1000 * 60 * 60 * i
-                let newDate = new Date(date)
-                console.log(getWeather(newDate))
-            }
+            let date = new Date().getTime()
+            date += 1000 * 60 * 60 * i
+            const newDate = new Date(date)
+            console.log(getWeather(newDate))
+        }
+    })
+
+    addSettingToPanel(
+        'weather',
+        'Widget pogody',
+        'Pokazuje lub ukrywa widget w lewym górnym rogu mapy.',
+        function ()
+        {
+            if (!settings.weather) $widget.css('display', 'none')
+            displayWeather()
         })
-    }
+
+    addSettingToPanel(
+        'weatherEffects',
+        'Efekty pogodowe',
+        'Pokazuje lub ukrywa efekty pogodowe z dodatku.',
+        function ()
+        {
+            if (!settings.weatherEffects) setOpacityChange(0)
+            clearEffects(getCurrentForcedWeather() !== '')
+            displayWeather()
+        })
 }

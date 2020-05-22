@@ -5,6 +5,7 @@ import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
 import {initNpcDialog} from './dialog'
 import {coordsToId} from '../utility-functions'
+import {addSettingToPanel} from '../interface/panel'
 
 export const customNpcs = {
     default: []
@@ -109,4 +110,13 @@ export function initNpcManager()
         loadNpcs()
         customHiddenNpcs.forEach(hideGameNpc)
     })
+
+    addSettingToPanel(
+        'hideNpcs',
+        'Ukrywanie NPCów',
+        'Ukrywa NPCów ustawionych przez dodatek oraz przez specjalną komendę dostępną dla narratorów. (wymaga resetu gry)',
+        function ()
+        {
+            // TODO
+        })
 }

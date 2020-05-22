@@ -1,4 +1,10 @@
-export const settings = {'night': true, 'weather': true, 'zodiac': true, 'hideNpcs': false}
+export const settings = {
+    night: true,
+    weather: true,
+    weatherEffects: true,
+    zodiac: true,
+    hideNpcs: false
+}
 
 export function saveSetting(name, value)
 {

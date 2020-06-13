@@ -6,7 +6,7 @@ import {testNightLights} from './suites/configs/night-lights'
 
 function init()
 {
-    global.resetWindow = function ()
+    function resetWindow()
     {
         global.$ = cheerio.load('')
         global.window = {}
@@ -14,10 +14,8 @@ function init()
     }
 
     global.Image = function () {this.src = ''}
-
-    global.navigator = {
-        userAgent: 'node.js'
-    }
+    global.navigator = {userAgent: 'node.js'}
+    global.resetWindow = resetWindow
 
     resetWindow()
 }

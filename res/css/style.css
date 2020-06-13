@@ -1,29 +1,21 @@
 /* Chat colors */
-.me, .me .priv-in-general-span { color: #f70 !important }
+.me { color: #f70 !important }
 
-.sys_comm, .sys_comm .priv-in-general-span { color: #f33 !important }
+.sys_comm { color: #f33 !important }
 
-.nar, .nar .priv-in-general-span { color: lightblue !important }
+.nar { color: lightblue !important }
 
-.nar2, .nar2 .priv-in-general-span { color: #D6A2FF !important }
+.nar2 { color: #D6A2FF !important }
 
-.nar3, .nar3 .priv-in-general-span { color: #00CED1 !important }
+.nar3 { color: #00CED1 !important }
 
-.dial1, .dial1 .priv-in-general-span { color: #33CC66 !important }
+.dial1 { color: #33CC66 !important }
 
-.dial2, .dial2 .priv-in-general-span { color: #CC9966 !important }
+.dial2 { color: #CC9966 !important }
 
-.dial3, .dial3 .priv-in-general-span { color: #D3D3D3 !important }
+.dial3 { color: #D3D3D3 !important }
 
-.dial666, .dial666 .priv-in-general-span { color: #FF66FF !important }
-
-/* Fix for NI and strange behavior when changing tabs  */
-.me .nick, .sys_comm .nick,
-.nar .nick, .nar2 .nick, .nar3 .nick,
-.dial1 .nick, .dial2 .nick, .dial3 .nick, .dial666 .nick {
-    display: none;
-}
-
+.dial666 { color: #FF66FF !important }
 
 /* Weather */
 .nerthus-weather {
@@ -113,11 +105,11 @@
 /* Panel */
 #nerthus-panel {
     animation: fade 0.5s;
-    border-image: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftempest.margonem.pl%2Fimg%2Fgui%2Ftmp%2Fwindow-frame.png) 32 20 repeat; /* ../img/gui/tmp/window-frame.png */
+    border-image: url(http://tempest.margonem.pl/img/gui/tmp/window-frame.png) 32 20 repeat;
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
-    cursor: url(../img/gui/cursor/1.png), url(../img/gui/cursor/1.cur), auto;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/1.png), url(http://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
     left: calc(50% - 204px);
     pointer-events: auto;
     position: fixed;
@@ -129,7 +121,7 @@
 
 #nerthus-panel > .background {
     background-color: #f1deaa;
-    background-image: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftempest.margonem.pl%2Fimg%2Fgui%2Fcontent-redleather.jpg); /* ../img/gui/content-redleather.jpg */
+    background-image: url(http://tempest.margonem.pl/img/gui/content-redleather.jpg);
 }
 
 /* Panel - nav */
@@ -143,7 +135,7 @@
 }
 
 #nerthus-panel .header-label {
-    background: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftempest.margonem.pl%2Fimg%2Fgui%2Fdialogue%2Fdialogi-naglowek.png); /* ../img/gui/dialogue/dialogi-naglowek.png */
+    background: url(http://tempest.margonem.pl/img/gui/dialogue/dialogi-naglowek.png);
     display: inline-block;
     height: 28px;
     margin: 0 auto;
@@ -152,7 +144,7 @@
 
 #nerthus-panel .header-label > .right-decor,
 #nerthus-panel .header-label > .left-decor {
-    background: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ftempest.margonem.pl%2Fimg%2Fgui%2Fdialogue%2Fdialogi.png) -38px -2px; /* ../img/gui/dialogue/dialogi-naglowek.png */
+    background: url(http://tempest.margonem.pl/img/gui/dialogue/dialogi.png) -38px -2px;
     height: 28px;
     left: -52px;
     position: absolute;
@@ -177,35 +169,30 @@
 }
 
 #nerthus-panel > .close-decor {
-    /* ../img/gui/buttony.png -380px -55px; */
-    background-image: url('data:image/png;base64,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');
-    height: 51px;
+    background: url(http://tempest.margonem.pl/img/gui/buttony.png?v=5) -380px -55px;
+    height: 52px;
     pointer-events: none;
     position: absolute;
     right: -15px;
-    top: -34px;
+    top: -35px;
     width: 51px;
 }
 
 #nerthus-panel .close-button {
-    /* ../img/gui/buttony.png -263px -79px; */
-    background-color: transparent;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAmVBMVEUGBgYmJiZDQ0MbGxseHh4gICAqKioREREUFBRKSkojIyNBQUE5OTk8PDwxMTEuLi5HR0c2NjZNTU0YGBg+Pj7HxsWpp6VSUlIKCgrc2thoaGhlZWXm5OPPzcq9vLu4uLZeXl7S0c/BwL+ko5+bmZd9fX3Y1tTV1NDMyse/vbytra2vraqqqqmioqGem5iamJWGhYOEg4FYWFhz/846AAABJ0lEQVQY023QV3LFIAwFUIqETQfj7tdLet//4oLf2MlHcgeQ5sAHI6JL8ifckh5AdIdpHKdxmsbD4StQDj0hilZS6yArmZeuZWU5ksys05qxqqs6GRjTVSVUZiqZNdbUTIZQRxNNx26c1YV9dDF6s9cuSkZvbJxvjw3lnJ42T9SZhZ0T/rJtUjoNrRfOLuw9BXi7b5pNiyi8+WGBRdkOm31ZKCHiwkJQKMrn47ArCxTC/XLC3bZthwY59StTinS3PRfl+a7JrV8Z8fXxnRc9vzy8gFpZIRefqsxRHw4UXRgReeIAwFMCQLW+Bg6cI84FAMzMvbImY+JrRM1onjcYzYKUIW/J9DzjOE+wUC5f1FazfNTW2ijKzABFTv5GyuXWIRByJf/k+g025BKYzhUieAAAAABJRU5ErkJggg==');
-    background-position-y: -22px;
-    background-repeat: no-repeat;
+    background: url(http://tempest.margonem.pl/img/gui/buttony.png?v=5) -263px -79px;
     border: 0;
-    cursor: url(../img/gui/cursor/5.png), url(../img/gui/cursor/5.cur), pointer;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     height: 22px;
     padding: 0;
     pointer-events: auto;
     position: absolute;
     right: 3px;
-    top: 2px;
+    top: 3px;
     width: 22px;
 }
 
 #nerthus-panel .close-button:hover {
-    background-position-y: 0;
+    background-position: -286px -79px;
 }
 
 /* Panel - body */
@@ -238,7 +225,7 @@
     box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
     box-sizing: border-box;
     color: #E6D6BF;
-    cursor: url(../img/gui/cursor/5.png), url(../img/gui/cursor/5.cur), pointer;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     display: inline-block;
     height: 42px;
     line-height: 34px;
@@ -358,7 +345,7 @@
 }
 
 #nerthus-panel .setting-label-text {
-    cursor: url(../img/gui/cursor/5.png), url(../img/gui/cursor/5.cur), pointer;;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;;
     left: 25px;
     line-height: 28px;
     position: relative;
@@ -372,7 +359,7 @@
     border: 2px solid #6e644b;
     border-radius: 2px;
     box-sizing: border-box;
-    cursor: url(../img/gui/cursor/5.png), url(../img/gui/cursor/5.cur), pointer;;
+    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;;
     display: inline-block;
     height: 18px;
     left: 0;

@@ -112,7 +112,7 @@
 /* Panel */
 #nerthus-panel {
     animation: fade 0.5s;
-    border-image: url(http://tempest.margonem.pl/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-image: url(http://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
@@ -128,7 +128,7 @@
 
 #nerthus-panel > .background {
     background-color: #f1deaa;
-    background-image: url(http://tempest.margonem.pl/img/gui/content-redleather.jpg);
+    background-image: url(http://cronus.margonem.com/img/gui/content-redleather.jpg);
 }
 
 /* Panel - nav */
@@ -142,7 +142,7 @@
 }
 
 #nerthus-panel .header-label {
-    background: url(http://tempest.margonem.pl/img/gui/dialogue/dialogi-naglowek.png);
+    background: url(http://cronus.margonem.com/img/gui/dialogue/dialogi-naglowek.png);
     display: inline-block;
     height: 28px;
     margin: 0 auto;
@@ -151,7 +151,7 @@
 
 #nerthus-panel .header-label > .right-decor,
 #nerthus-panel .header-label > .left-decor {
-    background: url(http://tempest.margonem.pl/img/gui/dialogue/dialogi.png) -38px -2px;
+    background: url(http://cronus.margonem.com/img/gui/dialogue/dialogi.png) -38px -2px;
     height: 28px;
     left: -52px;
     position: absolute;
@@ -176,7 +176,7 @@
 }
 
 #nerthus-panel > .close-decor {
-    background: url(http://tempest.margonem.pl/img/gui/buttony.png?v=5) -380px -55px;
+    background: url(http://cronus.margonem.com/img/gui/buttony.png?v=5) -380px -55px;
     height: 52px;
     pointer-events: none;
     position: absolute;
@@ -186,7 +186,7 @@
 }
 
 #nerthus-panel .close-button {
-    background: url(http://tempest.margonem.pl/img/gui/buttony.png?v=5) -263px -79px;
+    background: url(http://cronus.margonem.com/img/gui/buttony.png?v=5) -263px -79px;
     border: 0;
     cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     height: 22px;

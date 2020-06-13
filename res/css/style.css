@@ -1,21 +1,28 @@
 /* Chat colors */
-.me { color: #f70 !important }
+.me, .me .priv-in-general-span { color: #f70 !important }
 
-.sys_comm { color: #f33 !important }
+.sys_comm, .sys_comm .priv-in-general-span { color: #f33 !important }
 
-.nar { color: lightblue !important }
+.nar, .nar .priv-in-general-span { color: lightblue !important }
 
-.nar2 { color: #D6A2FF !important }
+.nar2, .nar2 .priv-in-general-span { color: #D6A2FF !important }
 
-.nar3 { color: #00CED1 !important }
+.nar3, .nar3 .priv-in-general-span { color: #00CED1 !important }
 
-.dial1 { color: #33CC66 !important }
+.dial1, .dial1 .priv-in-general-span { color: #33CC66 !important }
 
-.dial2 { color: #CC9966 !important }
+.dial2, .dial2 .priv-in-general-span { color: #CC9966 !important }
 
-.dial3 { color: #D3D3D3 !important }
+.dial3, .dial3 .priv-in-general-span { color: #D3D3D3 !important }
 
-.dial666 { color: #FF66FF !important }
+.dial666, .dial666 .priv-in-general-span { color: #FF66FF !important }
+
+/* Fix for NI and strange behavior when changing tabs  */
+.me .nick, .sys_comm .nick,
+.nar .nick, .nar2 .nick, .nar3 .nick,
+.dial1 .nick, .dial2 .nick, .dial3 .nick, .dial666 .nick {
+    display: none;
+}
 
 /* Weather */
 .nerthus-weather {

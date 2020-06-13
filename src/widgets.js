@@ -2,11 +2,12 @@ let $widgetsContainer
 
 export function addWidget(name, imageUrl, description)
 {
+    const style = imageUrl ? `style="background-image: url(${imageUrl})"` : ''
     return $(
-        '<div id="' + name + '-widget" class="nerthus__widget">' +
-        '<div class="nerthus__widget-image" style="background-image: url(' + imageUrl + ')"></div>' +
-        '<div class="nerthus__widget-desc">' + description + '</div>' +
-        '</div>'
+        `<div id="' + name + '-widget" class="nerthus__widget">
+            <div class="nerthus__widget-image" ${style}"></div>
+            <div class="nerthus__widget-desc">${description}</div>
+        </div>`
     ).appendTo($widgetsContainer)
 }
 

@@ -1,5 +1,5 @@
 import sinon from 'sinon'
-import * as expect from 'expect.js'
+import expect from 'expect.js'
 
 export function testMaps()
 {

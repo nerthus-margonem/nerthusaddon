@@ -1,9 +1,9 @@
 name: Release
 
-on: 
+on:
   release:
-    types: 
-    - published
+    types:
+      - published
 
 jobs:
   build:
@@ -14,50 +14,50 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Set up credentials
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+      - name: Set up credentials
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
-    - name: Install dependencies
-      run: npm i
+      - name: Install dependencies
+        run: npm i
 
-    - name: Checkout to production
-      run: git checkout -B production
+      - name: Checkout to production
+        run: git checkout -B production
 
-    - name: Update version
-      run: |
-        echo "${GITHUB_REF#*/*/}" > version
-        git add version
+      - name: Update version
+        run: |
+          echo "${GITHUB_REF#*/*/}" > version
+          git add -f version
 
-    - name: Run build
-      run: npm run-script build
+      - name: Run build
+        run: npm run-script build
 
-    - name: Add dist directory
-      run: git add -f dist
+      - name: Add dist directory
+        run: git add -f dist
 
-    - name: Commit files
-      run: |
-        git commit -m "Release: ${GITHUB_REF#*/*/}" | echo
+      - name: Commit files
+        run: |
+          git commit -m "Release: ${GITHUB_REF#*/*/}" | echo
 
-    - name: Change tag
-      run: |
-        git tag -d ${GITHUB_REF#*/*/}
-        git tag -f -a "${GITHUB_REF#*/*/}" -m "Relase: ${GITHUB_REF#*/*/}"
-        git push --set-upstream origin :${GITHUB_REF#*/*/}
-        hub release delete ${GITHUB_REF#*/*/}
-        git push --set-upstream origin ${GITHUB_REF#*/*/}
-        hub release create ${GITHUB_REF#*/*/} -m "Relase: ${GITHUB_REF#*/*/}"
-      env:
-        GITHUB_USER: <ORG>
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Change tag
+        run: |
+          git tag -d ${GITHUB_REF#*/*/}
+          git tag -f -a "${GITHUB_REF#*/*/}" -m "Relase: ${GITHUB_REF#*/*/}"
+          git push --set-upstream origin :${GITHUB_REF#*/*/}
+          hub release delete ${GITHUB_REF#*/*/}
+          git push --set-upstream origin ${GITHUB_REF#*/*/}
+          hub release create ${GITHUB_REF#*/*/} -m "Relase: ${GITHUB_REF#*/*/}"
+        env:
+          GITHUB_USER: <ORG>
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Push changes
-      run: git push --set-upstream origin production --force --tags
+      - name: Push changes
+        run: git push --set-upstream origin production --force --tags

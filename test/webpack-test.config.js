@@ -29,6 +29,20 @@ module.exports = {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
-
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        'presets': ['@babel/preset-env'],
+                        'plugins': ['@babel/plugin-transform-modules-commonjs']
+                    }
+                }
+            }
+        ]
+    },
     devtool: 'inline-cheap-module-source-map'
 }

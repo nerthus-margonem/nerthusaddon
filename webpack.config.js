@@ -29,7 +29,7 @@ module.exports = [
         },
         plugins: [
             CONSTANTS,
-            new webpack.DefinePlugin({INTERFACE: `'NI'`})
+            new webpack.DefinePlugin({INTERFACE: JSON.stringify('NI')})
         ]
     },
     {
@@ -42,7 +42,7 @@ module.exports = [
         },
         plugins: [
             CONSTANTS,
-            new webpack.DefinePlugin({INTERFACE: `'SI'`})
+            new webpack.DefinePlugin({INTERFACE: JSON.stringify('SI')})
         ]
     }
 ]

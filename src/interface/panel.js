@@ -1,6 +1,6 @@
 import {saveSetting, settings} from '../settings'
 
-const ELEMENT_TO_ATTACH_TO = INTERFACE === 'ni' ? 'body' : '#centerbox2'
+const ELEMENT_TO_ATTACH_TO = INTERFACE === 'NI' ? 'body' : '#centerbox2'
 
 let $elm = $()
 const defaultPosition = [6, 'top-right']

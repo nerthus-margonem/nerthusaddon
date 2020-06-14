@@ -9,7 +9,7 @@ export function setCollision(x, y)
 export function removeCollision(x, y)
 {
     if (INTERFACE === 'NI')
-        Engine.map.col.unset(x, y, 2)
+        Engine.map.col.set(x, y, 0) // using set because unset has a bug when loading too quickly
     else
         delete g.npccol[x + 256 * y]
 }

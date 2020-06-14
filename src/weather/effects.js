@@ -1,5 +1,6 @@
 import {addToNiDrawList} from '../game-integration/loaders'
 import {coordsToId} from '../utility-functions'
+import {clearLightnings} from './lightnings'
 
 const rainEffectId = coordsToId(-1, -1)
 const snowEffectId = coordsToId(-1, -2)
@@ -78,6 +79,7 @@ export function clearEffects(clearGameEffects)
         $('.nerthus-weather').remove()
         if (clearGameEffects) window.clearWeather()
     }
+    clearLightnings()
 }
 
 export function displayRain(opacity)

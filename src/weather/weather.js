@@ -9,6 +9,7 @@ import {loadOnEveryMap} from '../game-integration/loaders'
 import {setOpacityChange} from '../night/night'
 import {callEvent} from '../API'
 import {addSettingToPanel} from '../interface/panel'
+import {addLightnings, displayLightnings} from './lightnings'
 
 const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
 const GAME_WEATHERS = Object.freeze(['fish', 'light', 'latern', 'bat'])
@@ -238,6 +239,12 @@ const CLOUDS_STRENGTH = {
     'storm': 0.2
 }
 
+const LIGHTNING = {
+    'storm': true,
+    'day-storm': true,
+    'snow-storm': true
+}
+
 function getCurrentForcedWeather()
 {
     let weatherName = ''
@@ -359,6 +366,7 @@ export function displayWeather(weatherName = getWeather(new Date()).name)
             {
                 if (RAIN_STRENGTH[dayWeatherName]) displayRain(RAIN_STRENGTH[dayWeatherName])
                 if (SNOW_STRENGTH[dayWeatherName]) displaySnow(SNOW_STRENGTH[dayWeatherName])
+                if (LIGHTNING[dayWeatherName]) displayLightnings()
             }
             setOpacityChange(CLOUDS_STRENGTH[dayWeatherName])
         }

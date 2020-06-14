@@ -15,7 +15,7 @@ const constructElement = {}
 constructElement.button = function (data)
 {
     return (
-        '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '" data-tip="' + data.name + '">' +
+        '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '">' +
         '<img src="' + FILE_PREFIX + 'res/img/panel/' + data.icon + '" alt="' + data.name + '">' +
         '</a>'
     )
@@ -53,7 +53,7 @@ constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGro
         '</div>' +
         '</div>' +
         '<div class="close-decor">' +
-        '<button class="close-button" />' +
+        '<button class="close-button" tip="Zamknij"/>' +
         '</div>' +
         '<div class="background">' +
         '<div class="default-panel">' +
@@ -69,7 +69,7 @@ constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGro
         '<div class="settings-panel hidden">' +
         settings +
         '</div>' +
-        '<button class="button nerthus-settings-button" tip="Ustawienia" data-tip="Ustawienia">' +
+        '<button class="button nerthus-settings-button" tip="Ustawienia">' +
         '<img src="' + FILE_PREFIX + 'res/img/panel/settings.png' + '" alt="Ustawienia">' +
         '</button>' +
         '</div>' +
@@ -98,7 +98,6 @@ function createPanel(data, hidden)
 
         $settingsPanel.find('.top-box').append(settingsList)
 
-
         $elm.find('.nerthus-settings-button')
             .click(function ()
             {
@@ -108,14 +107,18 @@ function createPanel(data, hidden)
                 $this.toggleClass('back-to-default')
                 if ($settingsPanel.hasClass('hidden'))
                 {
-                    $this.attr({'tip': 'Ustawienia', 'data-tip': 'Ustawienia'})
-                        .children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
+                    if (INTERFACE === 'NI') $this.tip('Ustawienia')
+                    else $this.attr('tip', 'Ustawienia')
+
+                    $this.children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
                     panelName.text('Panel Nerthusa')
                 }
                 else
                 {
-                    $this.attr({'tip': 'Powrót', 'data-tip': 'Powrót'})
-                        .children().attr('src', FILE_PREFIX + 'res/img/panel/settings-back.png')
+                    if (INTERFACE === 'NI') $this.tip('Powrót')
+                    else $this.attr('tip', 'Powrót')
+
+                    $this.children().attr('src', FILE_PREFIX + 'res/img/panel/settings-back.png')
                     panelName.text('Panel Nerthusa - ustawienia')
                 }
             })
@@ -155,6 +158,15 @@ function createPanel(data, hidden)
                     lock.remove('nerthus-panel-drag')
                 }
             })
+
+        if (INTERFACE === 'NI')
+        {
+            $('[tip]', $elm).each(function ()
+            {
+                const $this = $(this)
+                $this.tip($this.attr('tip'))
+            })
+        }
     }
 }
 
@@ -200,21 +212,11 @@ function create_button_ni()
 
 export function addSettingToPanel(settingName, translation, tip, callback)
 {
-    let tipAttr
-    if (INTERFACE === 'NI')
-    {
-        tipAttr = 'data-tip'
-    }
-    else
-    {
-        tipAttr = 'tip'
-    }
-
     const checked = settings[settingName] ? ' checked' : ''
 
     const $setting = $(`
 <label class="setting-label">
-    <span class="setting-label-text" ${tipAttr}="${tip}">${translation}</span>
+    <span class="setting-label-text" tip="${tip}">${translation}</span>
     <input class="setting-checkbox" name="${settingName}" type="checkbox" ${checked}>
     <span class="checkbox-outline">
         <span class="checkmark">

@@ -5,7 +5,7 @@ import {callEvent} from '../../API'
 
 export function removeNpc(x, y, mapId)
 {
-    if (customNpcs[mapId][coordsToId(x, y)]) delete customNpcs[mapId][coordsToId(x, y)]
+    if (customNpcs[mapId] && customNpcs[mapId][coordsToId(x, y)]) delete customNpcs[mapId][coordsToId(x, y)]
     if (INTERFACE === 'NI')
     {
         if (typeof mapId === 'undefined' || mapId === Engine.map.d.id)

@@ -1,5 +1,7 @@
 import {saveSetting, settings} from '../settings'
 
+const ELEMENT_TO_ATTACH_TO = INTERFACE === 'ni' ? 'body' : '#centerbox2'
+
 let $elm = $()
 const defaultPosition = [6, 'top-right']
 
@@ -42,7 +44,7 @@ constructElement.settings = function ()
 constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settings)
 {
     return (
-        '<div id="nerthus-panel">' +
+        '<div id="nerthus-main-panel" class="nerthus-panel">' +
         '<div class="header-label-positioner">' +
         '<div class="header-label">' +
         '<div class="left-decor"></div>' +
@@ -82,7 +84,7 @@ constructElement.icon = function ()
 
 function createPanel(data, hidden)
 {
-    if (!$elm.parent || !$elm.parent('body').length)
+    if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length)
     {
         const buttonGroupLeft = constructElement.buttonGroup(data.leftPanel)
         const buttonGroupCenter = constructElement.buttonGroup(data.centerPanel)
@@ -139,8 +141,8 @@ function createPanel(data, hidden)
                 visibility: hidden ? 'hidden' : 'visible',
                 opacity: 0
             })
-            .appendTo('body')
-            .css('opacity', hidden ? '0' : '1') // change opacity after appending to body for nice animation
+            .appendTo(ELEMENT_TO_ATTACH_TO)
+            .css('opacity', hidden ? '0' : '1') // change opacity after appending to ELEMENT_TO_ATTACH_TO for nice animation
             .draggable({
                 start: function ()
                 {
@@ -158,7 +160,7 @@ function createPanel(data, hidden)
 
 function preloadPanel()
 {
-    if (!$elm.parent || !$elm.parent('body').length)
+    if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length)
         $.getJSON(FILE_PREFIX + 'res/configs/panel-links.json', function (data)
         {
             createPanel(data, true)
@@ -167,7 +169,7 @@ function preloadPanel()
 
 function togglePanel()
 {
-    if (!$elm.parent || !$elm.parent('body').length)
+    if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length)
         $.getJSON(FILE_PREFIX + 'res/configs/panel-links.json', createPanel)
     else if ($elm.css('visibility') === 'visible')
         $elm.css({visibility: 'hidden', opacity: '0'})

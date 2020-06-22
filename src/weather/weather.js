@@ -116,6 +116,7 @@ function getClimateTemperature(date, climate)
 
 function getCurrentRegionCharacteristic(date) // todo naming???
 {
+    if (!isCurrentMapOutdoor()) return false
     let humidity = 0
     let cloudiness = 0
     let temperature = 0
@@ -159,7 +160,7 @@ function getCurrentRegionCharacteristic(date) // todo naming???
     let adjacentTemperature = 0
     const adjacentAmount = adjacentClimates.length
 
-    if (adjacentAmount === 0 && !currentMapClimate && !isCurrentMapOutdoor()) return false
+    if (adjacentAmount === 0 && !currentMapClimate) return false
     else if (adjacentAmount > 0)
     {
         for (let i = 0; i < adjacentAmount; i++)

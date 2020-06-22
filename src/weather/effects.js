@@ -2,8 +2,8 @@ import {addToNiDrawList} from '../game-integration/loaders'
 import {coordsToId} from '../utility-functions'
 import {clearLightnings} from './lightnings'
 
-const rainEffectId = coordsToId(-1, -1)
-const snowEffectId = coordsToId(-1, -2)
+const rainEffectId = coordsToId(-1, -10)
+const snowEffectId = coordsToId(-1, -20)
 
 const rainFrames = []
 const snowFrames = []

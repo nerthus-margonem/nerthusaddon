@@ -107,30 +107,48 @@ export function initLightManager()
         $style.appendTo('head')
 
         const $lightManager = $(`
-<div id="nerthus-light-manager" class="nerthus-panel">
-    <div class="header-label-positioner">
-        <div class="header-label">
-            <div class="left-decor"></div>
-            <div class="right-decor"></div>
-            <span class="panel-name">Narzędzia światła</span>
+<div id="nerthus-light-manager-wrapper">
+    <div id="nerthus-light-manager" class="nerthus-panel">
+        <div class="header-label-positioner">
+            <div class="header-label">
+                <div class="left-decor"></div>
+                <div class="right-decor"></div>
+                <span class="panel-name">Narzędzia światła</span>
+            </div>
+        </div>
+        <div class="close-decor">
+            <button class="close-button"></button>
+        </div>
+        <div class="background">
+            <a id="nerthus-light-manager-toggle-lights" class="button" tip="Pokaż światła">
+                <img src="${FILE_PREFIX}res/img/panel/sun.png">
+            </a>
+            <a id="nerthus-light-manager-toggle-mousemove" class="button" tip="Zablokuj chodzenie myszką">
+                <img src="${FILE_PREFIX}res/img/panel/mouse.png">
+            </a>
+            <a id="nerthus-light-manager-toggle-border" class="button" tip="Przełącz obramowanie świateł">
+                <img src="${FILE_PREFIX}res/img/panel/border.png">
+            </a>
+            <a id="nerthus-light-manager-save" class="button" tip="Pobierz dane o światłach">
+                <img src="${FILE_PREFIX}res/img/panel/download.png">
+            </a>
         </div>
     </div>
-    <div class="close-decor">
-        <button class="close-button"></button>
-    </div>
-    <div class="background">
-        <a id="nerthus-light-manager-toggle-lights" class="button" tip="Pokaż światła">
-            <img src="${FILE_PREFIX}res/img/panel/sun.png">
-        </a>
-        <a id="nerthus-light-manager-toggle-mousemove" class="button" tip="Zablokuj chodzenie myszką">
-            <img src="${FILE_PREFIX}res/img/panel/mouse.png">
-        </a>
-        <a id="nerthus-light-manager-toggle-border" class="button" tip="Przełącz obramowanie świateł">
-            <img src="${FILE_PREFIX}res/img/panel/border.png">
-        </a>
-        <a id="nerthus-light-manager-save" class="button" tip="Pobierz dane o światłach">
-            <img src="${FILE_PREFIX}res/img/panel/download.png">
-        </a>
+    <div class="subpanel nerthus-panel">
+        <div class="background">
+            <a id="nerthus-light-manager-add-s" class="button" tip="Dodaj małe światło">
+                S
+            </a>
+            <a id="nerthus-light-manager-add-m" class="button" tip="Dodaj średnie światło">
+                M
+            </a>
+            <a id="nerthus-light-manager-add-l" class="button" tip="Dodaj duże światło">
+                L
+            </a>
+            <a id="nerthus-light-manager-add-xl" class="button" tip="Dodaj bardzo duże światło">
+                XL
+            </a>    
+        </div> 
     </div>
 </div>
     `.replace(/\n| {2}/g, ''))
@@ -165,7 +183,7 @@ export function initLightManager()
             .appendTo('#centerbox2')
             .css('position', 'absolute')
 
-        $lightManager.find('.close-button').click(function()
+        $lightManager.find('.close-button').click(function ()
         {
             $lightManager.remove()
             $borderStyle.text('')

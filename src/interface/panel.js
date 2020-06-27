@@ -45,7 +45,7 @@ constructElement.settings = function ()
 constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settings)
 {
     let lightManagerButton = ''
-    if(INTERFACE === 'SI')
+    if (INTERFACE === 'SI')
     {
         lightManagerButton = '<button id="light-manager-button" class="button nerthus-settings-button" tip="Narzędzia edycji świateł">'
     }
@@ -90,6 +90,21 @@ constructElement.icon = function ()
     return '<img id="nerthus-shield" src="' + FILE_PREFIX + 'res/img/widget-icon.gif" tip="Nerthus" alt="Nerthus panel">'
 }
 
+function closePanel($elm)
+{
+    $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
+    $elm.find('.default-panel').removeClass('hidden')
+    $elm.find('.settings-panel').addClass('hidden')
+
+    const $settingsButton = $elm.find('#settings-button')
+    if (INTERFACE === 'NI') $settingsButton.tip('Ustawienia')
+    else $settingsButton.attr('tip', 'Ustawienia')
+
+    $settingsButton.children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
+
+    $elm.find('.panel-name').text('Panel Nerthusa')
+}
+
 function createPanel(data, hidden)
 {
     if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length)
@@ -100,16 +115,16 @@ function createPanel(data, hidden)
         const settingsElement = constructElement.settings()
 
         $elm = $(constructElement.panel(buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settingsElement))
-        const defaultPanel = $elm.find('.default-panel')
+        const $defaultPanel = $elm.find('.default-panel')
         const $settingsPanel = $elm.find('.settings-panel')
-        const panelName = $elm.find('.panel-name')
+        const $panelName = $elm.find('.panel-name')
 
         $settingsPanel.find('.top-box').append(settingsList)
 
         $elm.find('#settings-button')
             .click(function ()
             {
-                defaultPanel.toggleClass('hidden')
+                $defaultPanel.toggleClass('hidden')
                 $settingsPanel.toggleClass('hidden')
                 const $this = $(this)
                 $this.toggleClass('back-to-default')
@@ -119,7 +134,7 @@ function createPanel(data, hidden)
                     else $this.attr('tip', 'Ustawienia')
 
                     $this.children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
-                    panelName.text('Panel Nerthusa')
+                    $panelName.text('Panel Nerthusa')
                 }
                 else
                 {
@@ -127,24 +142,20 @@ function createPanel(data, hidden)
                     else $this.attr('tip', 'Powrót')
 
                     $this.children().attr('src', FILE_PREFIX + 'res/img/panel/settings-back.png')
-                    panelName.text('Panel Nerthusa - ustawienia')
+                    $panelName.text('Panel Nerthusa - ustawienia')
                 }
             })
             .end()
             .find('.close-button, .cancel-button, .ok-button')
             .click(function ()
             {
-                $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
-                defaultPanel.removeClass('hidden')
-                $settingsPanel.addClass('hidden')
+                closePanel($elm)
             }).end()
             .find('.save-button')
             .click(function ()
             {
                 saveSettings()
-                $elm.css({visibility: 'hidden', opacity: '0'}) // reset opacity as we're still holding reference
-                defaultPanel.removeClass('hidden')
-                $settingsPanel.addClass('hidden')
+                closePanel($elm)
             }).end()
             .find('#light-manager-button')
             .click(initLightManager).end()

@@ -117,7 +117,7 @@ export function initLightManager()
             </div>
         </div>
         <div class="close-decor">
-            <button class="close-button"></button>
+            <button class="close-button" tip="Zamknij"></button>
         </div>
         <div class="background">
             <a id="nerthus-light-manager-toggle-lights" class="button" tip="Pokaż światła">

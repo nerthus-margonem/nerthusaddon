@@ -138,7 +138,6 @@ export function initLightManager()
 
         const $toggleMouseMove = $lightManager.find('#nerthus-light-manager-toggle-mousemove')
         $toggleMouseMove.click(toggleMouseMove)
-        console.warn('can move with mouse: ' + (hero.opt & 64))
         if (hero.opt & 64) $toggleMouseMove.addClass('blue')
 
         $lightManager.find('#nerthus-light-manager-toggle-border').click(toggleBorder)

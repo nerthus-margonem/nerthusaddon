@@ -1,4 +1,5 @@
 import {lightsOn, turnLightsOn} from './lights'
+import {applyCurrentNight} from './night'
 
 const $style = $('<style>')
 
@@ -163,5 +164,13 @@ export function initLightManager()
             })
             .appendTo('#centerbox2')
             .css('position', 'absolute')
+
+        $lightManager.find('.close-button').click(function()
+        {
+            $lightManager.remove()
+            $borderStyle.text('')
+            $lightHider.text('')
+            applyCurrentNight()
+        })
     }
 }

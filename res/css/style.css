@@ -428,6 +428,10 @@
     width: 6px;
 }
 
+.nerthus-panel #light-manager-button {
+    left: 5px;
+}
+
 #nerthus-main-panel .setting-checkbox:checked + .checkbox-outline {
     background-color: #6e644b;
 }

@@ -1,4 +1,5 @@
 import {saveSetting, settings} from '../settings'
+import {initLightManager} from '../night/light-manager'
 
 const ELEMENT_TO_ATTACH_TO = INTERFACE === 'NI' ? 'body' : '#centerbox2'
 
@@ -43,6 +44,12 @@ constructElement.settings = function ()
 
 constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGroupRight, settings)
 {
+    let lightManagerButton = ''
+    if(INTERFACE === 'SI')
+    {
+        lightManagerButton = '<button id="light-manager-button" class="button nerthus-settings-button" tip="Narzędzia edycji świateł">'
+    }
+
     return (
         '<div id="nerthus-main-panel" class="nerthus-panel">' +
         '<div class="header-label-positioner">' +
@@ -69,7 +76,8 @@ constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGro
         '<div class="settings-panel hidden">' +
         settings +
         '</div>' +
-        '<button class="button nerthus-settings-button" tip="Ustawienia">' +
+        lightManagerButton +
+        '<button id="settings-button" class="button nerthus-settings-button" tip="Ustawienia">' +
         '<img src="' + FILE_PREFIX + 'res/img/panel/settings.png' + '" alt="Ustawienia">' +
         '</button>' +
         '</div>' +
@@ -98,7 +106,7 @@ function createPanel(data, hidden)
 
         $settingsPanel.find('.top-box').append(settingsList)
 
-        $elm.find('.nerthus-settings-button')
+        $elm.find('#settings-button')
             .click(function ()
             {
                 defaultPanel.toggleClass('hidden')
@@ -138,6 +146,8 @@ function createPanel(data, hidden)
                 defaultPanel.removeClass('hidden')
                 $settingsPanel.addClass('hidden')
             }).end()
+            .find('#light-manager-button')
+            .click(initLightManager).end()
 
         $elm
             .css({

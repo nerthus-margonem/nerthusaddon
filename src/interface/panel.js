@@ -158,7 +158,11 @@ function createPanel(data, hidden)
                 closePanel($elm)
             }).end()
             .find('#light-manager-button')
-            .click(initLightManager).end()
+            .click(function ()
+            {
+                initLightManager()
+                closePanel($elm)
+            }).end()
 
         $elm
             .css({

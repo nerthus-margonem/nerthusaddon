@@ -56,10 +56,12 @@ function toggleBorder()
     if ($borderStyle.text() === '')
     {
         $borderStyle.text('#ground > .nerthus__night-light {border: 1px solid yellow}')
+        $('#nerthus-light-manager-toggle-border').addClass('blue')
     }
     else
     {
         $borderStyle.text('')
+        $('#nerthus-light-manager-toggle-border').removeClass('blue')
     }
 }
 
@@ -140,7 +142,9 @@ export function initLightManager()
         $toggleMouseMove.click(toggleMouseMove)
         if (hero.opt & 64) $toggleMouseMove.addClass('blue')
 
-        $lightManager.find('#nerthus-light-manager-toggle-border').click(toggleBorder)
+        $borderStyle.text('#ground > .nerthus__night-light {border: 1px solid yellow}')
+        $lightManager.find('#nerthus-light-manager-toggle-border').addClass('blue').click(toggleBorder)
+
         $lightManager.find('#nerthus-light-manager-save').click(downloadLog)
 
 

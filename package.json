@@ -6,7 +6,12 @@
   "directories": {
     "test": "test"
   },
-  "browserslist": "> 0.25%, not dead",
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not IE_Mob 11",
+    "firefox 52"
+  ],
   "dependencies": {
     "jquery": "3.3.1"
   },

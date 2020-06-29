@@ -30,7 +30,22 @@ module.exports = [
         plugins: [
             CONSTANTS,
             new webpack.DefinePlugin({INTERFACE: JSON.stringify('NI')})
-        ]
+        ],
+        module: {
+            rules: [
+                {
+                    test: /\.m?js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                            plugins: ['@babel/plugin-transform-runtime']
+                        }
+                    }
+                }
+            ]
+        }
     },
     {
         name: 'SI-development',
@@ -43,6 +58,21 @@ module.exports = [
         plugins: [
             CONSTANTS,
             new webpack.DefinePlugin({INTERFACE: JSON.stringify('SI')})
-        ]
+        ],
+        module: {
+            rules: [
+                {
+                    test: /\.m?js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                            plugins: ['@babel/plugin-transform-runtime']
+                        }
+                    }
+                }
+            ]
+        }
     }
 ]

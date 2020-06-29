@@ -9,7 +9,7 @@ import {loadOnEveryMap} from '../game-integration/loaders'
 import {setOpacityChange} from '../night/night'
 import {callEvent} from '../API'
 import {addSettingToPanel} from '../interface/panel'
-import {addLightnings, displayLightnings} from './lightnings'
+import {displayLightnings} from './lightnings'
 
 const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
 const GAME_WEATHERS = Object.freeze(['fish', 'light', 'latern', 'bat'])

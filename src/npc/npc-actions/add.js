@@ -4,81 +4,6 @@ import {customNpcs} from '../npc'
 import {removeNpc} from './remove'
 import {callEvent} from '../../API'
 
-// nerthus.worldEdit.addNpc_ni = function (x, y, url, name, collision, map_id)
-// {
-//     this.npcs.push([x, y, url, name, collision, map_id])
-//     if (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id)
-//         this.paintNpc_ni(x, y, url, name, collision, map_id)
-// }
-//
-// nerthus.worldEdit.paintNpc_ni = function (x, y, url, name, collision, map_id)
-// {
-//     const exp = /(.*\/)(?!.*\/)((.*)\.(.*))/
-//     const match = exp.exec(url)
-//
-//     const id = this.coordsToId(x, y)
-//     let data = {}
-//     data[id] = {
-//         actions: 0,
-//         grp: 0,
-//         nick: name === "" ? "Bez nazwy" : name,
-//         type: name === "" ? 4 : 0,
-//         wt: 0,
-//         x: x,
-//         y: y
-//     }
-//     console.log(data)
-//     if (match[4] === "gif")
-//     {
-//         data[id].icon = url
-//         const npath = CFG.npath
-//         CFG.npath = ""
-//         Engine.npcs.updateData(data)
-//         CFG.npath = npath
-//     }
-//     else
-//     {
-//         data[id].icon = "obj/cos.gif"
-//         Engine.npcs.updateData(data)
-//         const image = new Image()
-//         image.src = url
-//
-//         const _x = 32 * x + 16 - Math.floor(image.width / 2)
-//         const _y = 32 * y + 32 - image.height
-//         const obj = {
-//             image: image,
-//             x: _x,
-//             y: _y,
-//             id: id,
-//             map_id: map_id
-//         }
-//         // Engine.npcs.check().push({
-//         //     draw: function(ctx) {
-//         //
-//         //     }
-//         // })
-//     }
-//
-//
-//     if (collision && (typeof map_id === "undefined" || parseInt(map_id) === Engine.map.d.id))
-//         this.addCollision_ni(x, y)
-//     else
-//         this.deleteCollision_ni(x, y, 2) //apparently NI adds default collision when adding NPC
-// }
-
-
-// nerthus.worldEdit.readdNpcList_ni = function ()
-// {
-//     this.npcs.forEach(function (npc)
-//     {
-//         console.log(npc)
-//         console.log(parseInt(npc[5]))
-//         console.log(Engine.map.d.id)
-//         if (typeof npc[5] === "undefined" || parseInt(npc[5]) === Engine.map.d.id)
-//             nerthus.worldEdit.paintNpc_ni(npc[0], npc[1], npc[2], npc[3], npc[4], npc[5])
-//     })
-// }
-
 function createClickWrapper(npc, clickHandler)
 {
     return function (event)
@@ -101,6 +26,27 @@ export function addNpc(npc)
         CFG.npath = ''
         Engine.npcs.updateData(data)
         CFG.npath = npath
+
+        // Fix for png/jpg npcs
+        if (!npc.icon.endsWith('gif'))
+        {
+            const gameNpc = Engine.npcs.getById(npc.id)
+            gameNpc.staticAnimation = true
+
+            const img = new Image()
+            img.onload = function ()
+            {
+                gameNpc.afterFetch({
+                    img: npc.icon,
+                    frames: 1,
+                    hdr: {
+                        width: this.width,
+                        height: this.height
+                    }
+                }, '', npc)
+            }
+            img.src = npc.icon
+        }
 
         if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog)
 

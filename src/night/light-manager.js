@@ -1,4 +1,4 @@
-import {lightsOn, turnLightsOn} from './lights'
+import {addSingleLight, lightsOn, turnLightsOn} from './lights'
 import {applyCurrentNight} from './night'
 import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
 
@@ -15,6 +15,7 @@ function startEditingLights()
     addCustomStyle('light-pointer-events', '.nerthus__night-light {pointer-events: all !important}')
 
     $('#ground').dblclick(removeTargetLight)
+    $('.nerthus__night-light').draggable()
 }
 
 function stopEditingLights()
@@ -25,6 +26,7 @@ function stopEditingLights()
     applyCurrentNight()
 
     $('#ground').unbind('dblclick', removeTargetLight)
+    $('.nerthus__night-light').draggable('disable')
 }
 
 function toggleLights()
@@ -51,6 +53,15 @@ function toggleBorder()
 {
     toggleCustomStyle('light-border', '#ground > .nerthus__night-light {border: 1px solid yellow}')
     $('#nerthus-light-manager-toggle-border').toggleClass('blue')
+}
+
+function addLight(lightType)
+{
+    if (INTERFACE === 'SI')
+    {
+        const $light = addSingleLight(lightType, hero.x * 32, hero.y * 32)
+        $light.draggable()
+    }
 }
 
 function downloadLog()
@@ -147,6 +158,10 @@ export function initLightManager()
 
         $lightManager.find('#nerthus-light-manager-save').click(downloadLog)
 
+        $lightManager.find('#nerthus-light-manager-add-s').click(addLight.bind(null, 'S'))
+        $lightManager.find('#nerthus-light-manager-add-m').click(addLight.bind(null, 'M'))
+        $lightManager.find('#nerthus-light-manager-add-l').click(addLight.bind(null, 'L'))
+        $lightManager.find('#nerthus-light-manager-add-xl').click(addLight.bind(null, 'XL'))
 
         $lightManager
             .draggable({

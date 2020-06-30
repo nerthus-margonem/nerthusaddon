@@ -34,41 +34,47 @@ function getLightNiObject(img, x, y)
     }
 }
 
-function addLights(lights)
+export function addSingleLight(lightType, x, y)
+{
+    if (INTERFACE === 'NI')
+    {
+        const id = coordsToId(x, y)
+        const image = new Image()
+        image.onload = addToNiDrawList.bind(
+            null,
+            getLightNiObject(image, x, y),
+            id
+        )
+        image.src = getLightTypeUrl(lightType)
+        lightNpcs.push(id)
+        return id
+    }
+    else
+    {
+        const lightTypeSize = LIGHT_TYPE_SIZES[lightType]
+        return $('<div />')
+            .addClass('nerthus__night-light')
+            .css({
+                background: 'url(' + getLightTypeUrl(lightType) + ')',
+                width: lightTypeSize,
+                height: lightTypeSize,
+                zIndex: map.y * 2 + 12,
+                left: x,
+                top: y
+            })
+            .attr('type', lightType)
+            .appendTo('#ground')
+            .css('opacity', '1')
+    }
+}
+
+export function addLights(lights)
 {
     if (settings.night)
     {
         for (const i in lights)
         {
-            if (INTERFACE === 'NI')
-            {
-                const id = coordsToId(lights[i].x, lights[i].y)
-                const image = new Image()
-                image.onload = addToNiDrawList.bind(
-                    null,
-                    getLightNiObject(image, lights[i].x, lights[i].y),
-                    id
-                )
-                image.src = getLightTypeUrl(lights[i].type)
-                lightNpcs.push(id)
-            }
-            else
-            {
-                const lightTypeSize = LIGHT_TYPE_SIZES[lights[i].type]
-                $('<div />')
-                    .addClass('nerthus__night-light')
-                    .css({
-                        background: 'url(' + getLightTypeUrl(lights[i].type) + ')',
-                        width: lightTypeSize,
-                        height: lightTypeSize,
-                        zIndex: map.y * 2 + 12,
-                        left: lights[i].x,
-                        top: lights[i].y
-                    })
-                    .attr('type', lights[i].type)
-                    .appendTo('#ground')
-                    .css('opacity', '1')
-            }
+            addSingleLight(lights[i].type, lights[i].x, lights[i].y)
         }
     }
 }

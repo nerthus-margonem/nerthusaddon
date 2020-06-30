@@ -36,9 +36,9 @@ FAQ
   - Tests use [mocha](https://mochajs.org/) and [expect](https://github.com/Automattic/expect.js/)
   
 ##### How to introduce changes to game?
-  - Push source changes to `master` branch. Automatic builds should build dist code.
-  - Create new tag using [releases interface](https://github.com/akrzyz/nerthusaddon/releases). Try to use semantic versioning.
-  - Change [version](version) file to have a tag you just created ("Tag version") inside of it.
+  - Push source changes to `master` branch.
+  - Create new release using [releases interface](https://github.com/akrzyz/nerthusaddon/releases). Try to use semantic versioning.
+  - Github actions should now automatically update the production branch with your build.
   - Changes to [nerthus-addon.user.js](nerthus-addon.user.js) require manual update on [server command site](http://serwery.margonem.pl/)
 
 ##### How to deliver changes?

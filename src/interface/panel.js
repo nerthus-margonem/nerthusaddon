@@ -47,7 +47,11 @@ constructElement.panel = function (buttonGroupLeft, buttonGroupCenter, buttonGro
     let lightManagerButton = ''
     if (INTERFACE === 'SI')
     {
-        lightManagerButton = '<button id="light-manager-button" class="button nerthus-settings-button" tip="Narzędzia edycji świateł">'
+        lightManagerButton = `
+<button id="light-manager-button" class="button nerthus-settings-button" tip="Narzędzia edycji świateł">
+    <img src="${FILE_PREFIX}res/img/panel/stars.png" alt="Narzędzia edycji świateł">
+</button>
+`
     }
 
     return (

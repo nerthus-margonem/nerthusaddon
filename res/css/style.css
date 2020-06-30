@@ -430,6 +430,7 @@
 
 .nerthus-panel #light-manager-button {
     left: 5px;
+    padding-top: 5px;
 }
 
 #nerthus-main-panel .setting-checkbox:checked + .checkbox-outline {
@@ -531,4 +532,8 @@
 
 #nerthus-light-manager .header-label-positioner {
     z-index: 498;
+}
+
+.settings-panel.hidden + #light-manager-button {
+    display: none;
 }

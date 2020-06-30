@@ -101,6 +101,7 @@ function closePanel($elm)
     else $settingsButton.attr('tip', 'Ustawienia')
 
     $settingsButton.children().attr('src', FILE_PREFIX + 'res/img/panel/settings.png')
+    $settingsButton.removeClass('back-to-default')
 
     $elm.find('.panel-name').text('Panel Nerthusa')
 }

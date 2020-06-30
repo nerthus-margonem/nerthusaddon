@@ -1,29 +1,31 @@
 import {lightsOn, turnLightsOn} from './lights'
 import {applyCurrentNight} from './night'
+import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
 
-const $style = $('<style>')
-
-function removeLight($light)
+function removeTargetLight(e)
 {
-
-}
-
-function startEditingLigths()
-{
-    $style.text('.nerthus__night-light { pointer-events: all !important }')
-
-    $('.nerthus__night-light').each(function ()
+    if (e.target.classList.contains('nerthus__night-light'))
     {
-        const $self = $(this)
-        $self.dblclick(function ()
-        {
-            $self.delete()
-        })
-
-    })
+        $(e.target).remove()
+    }
 }
 
-const $lightHider = $('<style>').appendTo('head')
+function startEditingLights()
+{
+    addCustomStyle('light-pointer-events', '.nerthus__night-light {pointer-events: all !important}')
+
+    $('#ground').dblclick(removeTargetLight)
+}
+
+function stopEditingLights()
+{
+    removeCustomStyle('light-hider')
+    removeCustomStyle('light-border')
+    removeCustomStyle('light-pointer-events')
+    applyCurrentNight()
+
+    $('#ground').unbind('dblclick', removeTargetLight)
+}
 
 function toggleLights()
 {
@@ -32,15 +34,10 @@ function toggleLights()
         turnLightsOn()
         $('#nerthus-light-manager-toggle-lights').addClass('blue')
     }
-    else if ($lightHider.text() === '')
-    {
-        $lightHider.text('#ground > .nerthus__night-light {display: none !important}')
-        $('#nerthus-light-manager-toggle-lights').removeClass('blue')
-    }
     else
     {
-        $lightHider.text('')
-        $('#nerthus-light-manager-toggle-lights').addClass('blue')
+        toggleCustomStyle('light-hider', '#ground > .nerthus__night-light {display: none !important}')
+        $('#nerthus-light-manager-toggle-lights').toggleClass('blue')
     }
 }
 
@@ -50,25 +47,10 @@ function toggleMouseMove()
     $('#nerthus-light-manager-toggle-mousemove').toggleClass('blue')
 }
 
-const $borderStyle = $('<style>').appendTo('head')
-
 function toggleBorder()
 {
-    if ($borderStyle.text() === '')
-    {
-        $borderStyle.text('#ground > .nerthus__night-light {border: 1px solid yellow}')
-        $('#nerthus-light-manager-toggle-border').addClass('blue')
-    }
-    else
-    {
-        $borderStyle.text('')
-        $('#nerthus-light-manager-toggle-border').removeClass('blue')
-    }
-}
-
-function stopEditingLights()
-{
-    $style.text('')
+    toggleCustomStyle('light-border', '#ground > .nerthus__night-light {border: 1px solid yellow}')
+    $('#nerthus-light-manager-toggle-border').toggleClass('blue')
 }
 
 function downloadLog()
@@ -104,8 +86,7 @@ export function initLightManager()
 {
     if (INTERFACE === 'SI')
     {
-        $style.appendTo('head')
-
+        startEditingLights()
         const $lightManager = $(`
 <div id="nerthus-light-manager-wrapper">
     <div id="nerthus-light-manager" class="nerthus-panel">
@@ -161,7 +142,7 @@ export function initLightManager()
         $toggleMouseMove.click(toggleMouseMove)
         if (hero.opt & 64) $toggleMouseMove.addClass('blue')
 
-        $borderStyle.text('#ground > .nerthus__night-light {border: 1px solid yellow}')
+        addCustomStyle('light-border', '#ground > .nerthus__night-light {border: 1px solid yellow}')
         $lightManager.find('#nerthus-light-manager-toggle-border').addClass('blue').click(toggleBorder)
 
         $lightManager.find('#nerthus-light-manager-save').click(downloadLog)
@@ -186,9 +167,7 @@ export function initLightManager()
         $lightManager.find('.close-button').click(function ()
         {
             $lightManager.remove()
-            $borderStyle.text('')
-            $lightHider.text('')
-            applyCurrentNight()
+            stopEditingLights()
         })
     }
 }

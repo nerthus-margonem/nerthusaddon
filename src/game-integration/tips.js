@@ -175,7 +175,6 @@ export function initTips()
         g.loadQueue.push({
             fun: function ()
             {
-                console.log('changedherotip')
                 $('#hero').attr('tip', createPlayerTip(hero))
 
                 g.tips.other = createPlayerTip

@@ -406,17 +406,6 @@ export function initWeather()
     loadOnEveryMap(displayWeather)
     startChangeTimer()
 
-    loadOnEveryMap(function ()
-    {
-        for (let i = 0; i < 20; i++)
-        {
-            let date = new Date().getTime()
-            date += 1000 * 60 * 60 * i
-            const newDate = new Date(date)
-            console.log(getWeather(newDate))
-        }
-    })
-
     addSettingToPanel(
         'weather',
         'Widget pogody',

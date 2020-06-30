@@ -132,10 +132,11 @@ function addGraf(ch)
     const y = parseInt(cmd[1])
     const url = cmd[2]
     const name = cmd[3]
+    const nick = name ? `<b>${name}</b>` : ''
     const isCol = parseInt(cmd[4]) > 0
     const mapId = parseInt(cmd[5])
 
-    addNpcToList(new Npc(x, y, url, `<b>${name}</b>`, isCol), mapId)
+    addNpcToList(new Npc(x, y, url, nick, isCol), mapId)
 
     return false
 }

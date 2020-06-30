@@ -285,11 +285,13 @@
     top: 0;
 }
 
-.nerthus-panel .button:hover:before {
+.nerthus-panel .button:hover:before,
+.nerthus-panel#nerthus-main-panel .button.nerthus-settings-button:hover:before {
     box-shadow: inset 0 0 1px 1px #909090a6;
 }
 
-.nerthus-panel .button:hover {
+.nerthus-panel .button:hover,
+.nerthus-panel#nerthus-main-panel .button.nerthus-settings-button:hover {
     background-image: linear-gradient(to top, #101010, #434343);
 }
 

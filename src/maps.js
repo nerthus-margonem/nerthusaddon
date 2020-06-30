@@ -2,6 +2,7 @@ import {loadOnEveryMap} from './game-integration/loaders'
 import {getCurrentSeason} from './time'
 import {default as basicMapsUrls} from '../res/configs/maps.json'
 import {resolveNerthusUrl} from './utility-functions'
+import {changeCustomStyle, removeCustomStyle} from './interface/css-manager'
 
 export const MAP_PRIORITY = {CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0}
 
@@ -62,8 +63,14 @@ function applyMapChange(mapId)
 
     currentMapImage.src = mapImage.src
 
-    if (INTERFACE !== 'NI' && mapImage.src)
-        $('#ground').css('background-image', 'url(' + mapImage.src + ')')
+    if (INTERFACE === 'SI')
+    {
+        // this way it's more robust than simply changing element's style
+        if (mapImage.src)
+            changeCustomStyle('map-background-image', `#ground {background-image: url(${mapImage.src}) !important}`)
+        else
+            removeCustomStyle('map-background-image')
+    }
 }
 
 

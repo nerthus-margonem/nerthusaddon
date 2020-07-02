@@ -23,13 +23,18 @@ export function addNpc(npc)
         data[npc.id] = npc
 
         const npath = CFG.npath
+        const npcIcon = npc.icon
+        // Change the npc.icon so that game's GifReader doesn't try to read png/jpg and error
+        if (!npcIcon.endsWith('gif')) npc.icon = npath + 'obj/cos.gif'
+
         CFG.npath = ''
         Engine.npcs.updateData(data)
         CFG.npath = npath
 
         // Fix for png/jpg npcs
-        if (!npc.icon.endsWith('gif'))
+        if (!npcIcon.endsWith('gif'))
         {
+            npc.icon = npcIcon
             const gameNpc = Engine.npcs.getById(npc.id)
             gameNpc.staticAnimation = true
 
@@ -37,15 +42,16 @@ export function addNpc(npc)
             img.onload = function ()
             {
                 gameNpc.afterFetch({
-                    img: npc.icon,
+                    img: npcIcon,
                     frames: 1,
                     hdr: {
                         width: this.width,
                         height: this.height
                     }
                 }, '', npc)
+                gameNpc.afterFetch = function () {}
             }
-            img.src = npc.icon
+            img.src = npcIcon
         }
 
         if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog)

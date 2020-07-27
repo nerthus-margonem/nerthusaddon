@@ -11,12 +11,12 @@ Installation
   - For other servers, check instruction at the bottom of this section.
 ##### Both game interfaces:
   - Install [Tampermonkey](https://www.tampermonkey.net/) or similar browser extension that allows for external scripts.
-  - Head to [install page](https://akrzyz.github.io/nerthusaddon/nerthus-addon.user.js) and click install.
+  - Head to [install page](https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@production/nerthus-addon.user.js) and click install.
   - Installation should work regardless of interface type.
   - If you're using this installation method with an old game interface, type `gadblock on` in the game's console
   to disallow it from loading basic version.
 ##### If you want to test addon outside of Nerthus server:
-  - While in game, type in a console: `$.getScript('https://akrzyz.github.io/nerthusaddon/nerthus-addon.user.js')`
+  - While in game, type in a console: `$.getScript('https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@production/nerthus-addon.user.js')`
   - Addon should now load and work until the page reload (new interface) or map change (old interface)
  
 FAQ
@@ -37,7 +37,7 @@ FAQ
   
 ##### How to introduce changes to game?
   - Push source changes to `master` branch.
-  - Create new release using [releases interface](https://github.com/akrzyz/nerthusaddon/releases). Try to use semantic versioning.
+  - Create new release using [releases interface](https://github.com/nerthus-margonem/nerthusaddon/releases). Try to use semantic versioning.
   - Github actions should now automatically update the production branch with your build.
   - Changes to [nerthus-addon.user.js](nerthus-addon.user.js) require manual update on [server command site](http://serwery.margonem.pl/)
 

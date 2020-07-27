@@ -48,12 +48,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akrzyz/nerthusaddon.git"
+    "url": "git+https://github.com/nerthus-margonem/nerthusaddon.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akrzyz/nerthusaddon/issues"
+    "url": "https://github.com/nerthus-margonem/nerthusaddon/issues"
   },
-  "homepage": "https://github.com/akrzyz/nerthusaddon#readme"
+  "homepage": "https://github.com/nerthus-margonem/nerthusaddon#readme"
 }

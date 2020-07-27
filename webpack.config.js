@@ -13,7 +13,7 @@ const availableMapFiles = {
 const version = childProcess.execSync('cat version').toString().replace('\n', '')
 
 const CONSTANTS = new webpack.DefinePlugin({
-    FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon@' + version + '/'),
+    FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@' + version + '/'),
     AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
     VERSION: JSON.stringify(version)
 })

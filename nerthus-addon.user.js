@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Nerthus Addon
 // @namespace    http://www.margonem.pl/
-// @version      3.0 Beta 7
+// @version      3.0.0
 // @description  Addon for Nerthus
 // @author       Aldi, Kris Aphalon
 // @match        http://nerthus.margonem.pl/
@@ -16,8 +16,8 @@
         {
             const gameInterface = arr[1]
             let src
-            if (gameInterface === 'ni') src = 'https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon@' + version + '/dist/nerthus-addon-NI.js'
-            else if (gameInterface === 'si') src = 'https://cdn.jsdelivr.net/gh/krisaphalon/nerthusaddon@' + version + '/dist/nerthus-addon-SI.js'
+            if (gameInterface === 'ni') src = 'https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@' + version + '/dist/nerthus-addon-NI.js'
+            else if (gameInterface === 'si') src = 'https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@' + version + '/dist/nerthus-addon-SI.js'
             else
             {
                 const errorMsg =
@@ -41,5 +41,5 @@
         else setTimeout(start, 500)
     }
 
-    $.get('https://raw.githubusercontent.com/KrisAphalon/nerthusaddon/production/version', start)
+    $.get('https://raw.githubusercontent.com/nerthus-margonem/nerthusaddon/production/version', start)
 })()

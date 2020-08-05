@@ -96,7 +96,8 @@ function shuffleMessage(msg)
 function commandContainsDrinkingAlcohol(command)
 {
     const match = command.match(/^moveitem.*id=(\d+)/)
-    if (match)
+    // st=1 means that it is eaten and not dropped or destroyed.
+    if (match && command.includes('&st=1'))
     {
         let item
         if (INTERFACE === 'NI')
@@ -132,6 +133,8 @@ export function initChatDrunkenness()
         {
             intoxicationLvl += 10
             if (intoxicationLvl > 100) intoxicationLvl = 100
+
+            localStorage.setItem('nerthus-intoxication-lvl', intoxicationLvl)
 
             if (!decayTimerID)
                 decayTimerID = setInterval(decayTimerHandler, 10000)

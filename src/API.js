@@ -3,6 +3,9 @@ import {customNpcs} from './npc/npc'
 import {getWeather} from './weather/weather'
 import {applyCurrentNight, changeLight} from './night/night'
 import {turnLightsOn} from './night/lights'
+import {addNpc, addNpcToList} from './npc/npc-actions/add'
+import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from './maps'
+import {hideGameNpc} from './npc/npc-actions/hide'
 
 /*
  Event names:
@@ -42,7 +45,18 @@ export function initAPI()
             applyCurrentNight: applyCurrentNight,
             turnLightsOn: turnLightsOn
         },
-        npcList: customNpcs
+        npcList: customNpcs,
+        npc: {
+            npcList: customNpcs,
+            addNpc: addNpc,
+            addNpcToList: addNpcToList,
+            hideGameNpc: hideGameNpc
+        },
+        map: {
+            addToMapChangelist: addToMapChangelist,
+            removeFromMapChangelist: removeFromMapChangelist,
+            applyCurrentMapChange: applyCurrentMapChange
+        }
     }
     window.nerthus.addCallbackToEvent('loaded', function ()
     {

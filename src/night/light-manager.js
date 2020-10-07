@@ -1,4 +1,4 @@
-import {addSingleLight, lightsOn, turnLightsOn} from './lights'
+import {addSingleLight, lightsOn, resetLights, turnLightsOn} from "./lights"
 import {applyCurrentNight} from './night'
 import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
 
@@ -64,6 +64,12 @@ function addLight(lightType)
     }
 }
 
+function deleteAllLights()
+{
+    resetLights()
+    $('#nerthus-light-manager-wrapper #nerthus-light-manager-toggle-lights').removeClass('blue')
+}
+
 function downloadLog()
 {
     const arr = []
@@ -112,11 +118,14 @@ export function initLightManager()
             <button class="close-button" tip="Zamknij"></button>
         </div>
         <div class="background">
-            <a id="nerthus-light-manager-toggle-lights" class="button" tip="Pokaż światła">
+            <a id="nerthus-light-manager-toggle-lights" class="button" tip="Pokaż (lub ukryj) światła">
                 <img src="${FILE_PREFIX}res/img/panel/sun.png">
             </a>
             <a id="nerthus-light-manager-toggle-mousemove" class="button" tip="Zablokuj chodzenie myszką">
                 <img src="${FILE_PREFIX}res/img/panel/mouse.png">
+            </a>
+            <a id="nerthus-light-manager-delete-all" class="button" tip="Usuń wszystkie światła z mapy">
+                <img src="${FILE_PREFIX}res/img/panel/trash.png">
             </a>
             <a id="nerthus-light-manager-toggle-border" class="button" tip="Przełącz obramowanie świateł">
                 <img src="${FILE_PREFIX}res/img/panel/border.png">
@@ -152,6 +161,8 @@ export function initLightManager()
         const $toggleMouseMove = $lightManager.find('#nerthus-light-manager-toggle-mousemove')
         $toggleMouseMove.click(toggleMouseMove)
         if (hero.opt & 64) $toggleMouseMove.addClass('blue')
+
+        $lightManager.find('#nerthus-light-manager-delete-all').click(deleteAllLights)
 
         addCustomStyle('light-border', '#ground > .nerthus__night-light {border: 1px solid yellow}')
         $lightManager.find('#nerthus-light-manager-toggle-border').addClass('blue').click(toggleBorder)

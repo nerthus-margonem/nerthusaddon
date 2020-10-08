@@ -289,12 +289,12 @@ export function getWeather(date)
 
         if (characteristics.temperature < -3)
             weather = weather
-                .replace('rain', 'snow')
+                .replace(/^rain(-light)?$/, 'snow')
                 .replace(/^storm$/, 'snow-storm')
                 .replace(/^day-storm$/, 'day-snow')
         else if (characteristics.temperature < 5)
             weather = weather
-                .replace('rain', 'rain-with-snow')
+                .replace(/^rain(-light)?$/, 'rain-with-snow')
                 .replace(/^day-storm$/, 'day-rain-with-snow')
 
         let rain = 0

@@ -67,7 +67,13 @@ function applyMapChange(mapId)
     {
         // this way it's more robust than simply changing element's style
         if (mapImage.src)
-            changeCustomStyle('map-background-image', `#ground {background-image: url(${mapImage.src}) !important}`)
+            changeCustomStyle(
+                'map-background-image',
+                `#ground {
+                    background-image: url(${mapImage.src}) !important; 
+                    background-color: transparent !important;
+                }`
+            )
         else
             removeCustomStyle('map-background-image')
     }

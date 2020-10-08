@@ -72,7 +72,7 @@ function applyMapChange(mapId)
                 `#ground {
                     background-image: url(${mapImage.src}) !important; 
                     background-color: transparent !important;
-                }`
+                }`.replace(/ /g,'')
             )
         else
             removeCustomStyle('map-background-image')

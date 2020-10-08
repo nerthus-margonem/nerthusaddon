@@ -75,7 +75,10 @@ export function testMaps()
                     expect(changeCustomStyle.calledOnce).to.be(true)
                     expect(removeCustomStyle.called).to.be(false)
                     expect(changeCustomStyle.calledWith(
-                        'map-background-image', `#ground {background-image: url(${resolveNerthusUrl()}) !important}`
+                        'map-background-image', `#ground {
+                            background-image: url(${resolveNerthusUrl()}) !important; 
+                            background-color: transparent !important;
+                        }`.replace(/ /g,'')
                     )).to.be(true)
                 }
             })
@@ -105,7 +108,10 @@ export function testMaps()
                     expect(changeCustomStyle.calledOnce).to.be(true)
                     expect(removeCustomStyle.called).to.be(false)
                     expect(changeCustomStyle.calledWith(
-                        'map-background-image', `#ground {background-image: url(${resolveNerthusUrl()}) !important}`
+                        'map-background-image', `#ground {
+                            background-image: url(${resolveNerthusUrl()}) !important; 
+                            background-color: transparent !important;
+                        }`.replace(/ /g,'')
                     )).to.be(true)
                 }
             })
@@ -136,7 +142,10 @@ export function testMaps()
                     expect(changeCustomStyle.calledOnce).to.be(true)
                     expect(removeCustomStyle.called).to.be(false)
                     expect(changeCustomStyle.calledWith(
-                        'map-background-image', `#ground {background-image: url(${customResolveNerthusUrl('season-map-url')}) !important}`
+                        'map-background-image', `#ground {
+                            background-image: url(${customResolveNerthusUrl('season-map-url')}) !important; 
+                            background-color: transparent !important;
+                        }`.replace(/ /g,'')
                     )).to.be(true)
                 }
             })

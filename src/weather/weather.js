@@ -217,6 +217,8 @@ const WEATHER_TABLE =
 const RAIN_STRENGTH = {
     'rain-light': 0.5,
     'day-rain': 0.6,
+    'day-rain-with-snow': 0.6,
+    'rain-with-snow': 0.8,
     'day-storm': 1,
     'rain': 0.9,
     'storm': 1
@@ -225,6 +227,7 @@ const RAIN_STRENGTH = {
 const SNOW_STRENGTH = {
     'day-snow': 1,
     'day-rain-with-snow': 1,
+    'rain-with-snow': 1,
     'snow': 1,
     'snow-storm': 1
 }

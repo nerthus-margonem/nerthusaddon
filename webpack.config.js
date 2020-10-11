@@ -20,7 +20,7 @@ const CONSTANTS = new webpack.DefinePlugin({
 
 module.exports = [
     {
-        name: 'NI-development',
+        name: 'NI-production',
         mode: 'production',
         entry: './src/main.js',
         output: {
@@ -48,7 +48,7 @@ module.exports = [
         }
     },
     {
-        name: 'SI-development',
+        name: 'SI-production',
         mode: 'production',
         entry: './src/main.js',
         output: {

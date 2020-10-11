@@ -12,6 +12,7 @@
     "574": "/obrazki/miasta/zima-nithal.png"
   },
   "default": {
+    "2": "#res/img/maps/Torneg.png",
     "8": "#res/img/maps/Zniszczone Opactwo.png",
     "290": "#res/img/maps/Opactwo.png",
     "291": "#res/img/maps/Opactwo p.1.png",

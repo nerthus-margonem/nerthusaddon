@@ -27,7 +27,6 @@
     "expect.js": "^0.3.1",
     "inject-loader": "^4.0.1",
     "mocha": "^8.1.3",
-    "mochapack": "^2.0.3",
     "nyc": "^15.1.0",
     "sinon": "^9.2.0",
     "webpack": "^5.0.0",
@@ -35,9 +34,9 @@
     "webpack-node-externals": "^2.5.2"
   },
   "scripts": {
-    "test": "mochapack --webpack-config ./test/webpack-test.config.js ./test/main.js",
-    "test-leaks": "mochapack --check-leaks --webpack-config ./test/webpack-test.config.js ./test/main.js",
-    "test-coverage": "nyc --reporter=text --reporter=text-lcov mochapack --webpack-config ./test/webpack-test.config.js ./test/main.js",
+    "test": "webpack --config ./test/webpack-test.config.js --entry ./test/main.js --output-path ./test-dist && mocha ./test-dist/main.js && rm -rf ./test-dist",
+    "test-leaks": "webpack --config ./test/webpack-test.config.js ./test/main.js --entry ./test/main.js --output-path ./test-dist && mocha --check-leaks ./test-dist/main.js && rm -rf ./test-dist",
+    "test-coverage": "webpack --config ./test/webpack-test.config.js --entry ./test/main.js --output-path ./test-dist && nyc --reporter=text --reporter=text-lcov mocha ./test-dist/main.js && rm -rf ./test-dist",
     "test-code-quality": "eslint src/*",
     "coverage-raport-text": "nyc report --reporter=text",
     "coverage-raport-text-lcov": "nyc report --reporter=text-lcov",

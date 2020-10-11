@@ -1,4 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/akrzyz/nerthusaddon/badge.svg?branch=master)](https://coveralls.io/github/akrzyz/nerthusaddon?branch=master)
+![Tests Status](https://github.com/nerthus-margonem/nerthusaddon/workflows/Tests/badge.svg?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/nerthus-margonem/nerthusaddon/badge.svg?branch=main)](https://coveralls.io/github/akrzyz/nerthusaddon?branch=master)
 
 Nerthus Addon
 ======

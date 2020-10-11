@@ -1,4 +1,4 @@
-import {addSingleLight, lightsOn, resetLights, turnLightsOn} from "./lights"
+import {addSingleLight, lightsOn, resetLights, turnLightsOn} from './lights'
 import {applyCurrentNight} from './night'
 import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
 

@@ -207,7 +207,7 @@ function getCurrentRegionCharacteristic(date) // todo naming???
  * @type {string[][]}
  */
 const WEATHER_TABLE =
-    [   //   15%             20%               25%           40%
+    [   //   20%             25%               25%           30%
         ['clear-day', 'day-cloud-small', 'day-cloud-big', 'overcast'  ], // 25%
         ['clear-day', 'day-cloud-small', 'day-cloud-big', 'rain-light'], // 25%
         ['clear-day', 'day-cloud-small', 'day-rain'     , 'rain'      ], // 25%
@@ -277,9 +277,9 @@ export function getWeather(date)
         }
 
         let cloudinessPart
-        if (characteristics.cloudiness <= 0.15) cloudinessPart = 0
-        else if (characteristics.cloudiness <= 0.35) cloudinessPart = 1
-        else if (characteristics.cloudiness <= 0.60) cloudinessPart = 2
+        if (characteristics.cloudiness <= 0.2) cloudinessPart = 0
+        else if (characteristics.cloudiness <= 0.55) cloudinessPart = 1
+        else if (characteristics.cloudiness <= 0.70) cloudinessPart = 2
         else cloudinessPart = 3
 
         let humidityPart

@@ -103,7 +103,7 @@ function getGlobalTemperature(date, climate)
     const dayTemperature = 15 * Math.sin(0.52 * x - 1.5) + 9
 
     const pointInTime = date.getTime() / 3600000
-    const hourTemperatureChange = getClimateNoise(climate, CHARACTERISTIC.TEMPERATURE).getVal(pointInTime) * 14 - 7
+    const hourTemperatureChange = getClimateNoise(climate, CHARACTERISTIC.TEMPERATURE).getVal(pointInTime) * 10 - 5
 
     return dayTemperature + hourTemperatureChange
 }

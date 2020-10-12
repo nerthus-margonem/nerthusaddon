@@ -4,11 +4,88 @@ const expect = require('expect.js')
 describe('zodiac', function ()
 {
     const inject = require('inject-loader!../../src/zodiac')
+    const injectors = {
+        widgets: {
+            addWidget: sinon.fake.returns(
+                $('<div><div class="nerthus__widget-image"></div></div>').appendTo('body')
+            )
+        },
+        zodiacJson: {
+            'sign': ['main-description', 'back-description']
+        },
+        settings: {settings: {zodiac: true}},
+        panel: {addSettingToPanel: sinon.fake()}
+    }
+
     const module = inject({
-        './widgets': {addWidget: sinon.fake()},
-        '../res/descriptions/zodiac.json': sinon.fake(),
-        './settings': {settings: {zodiac: true}},
-        './interface/panel': {addSettingToPanel: sinon.fake()}
+        './widgets': injectors.widgets,
+        '../res/descriptions/zodiac.json': injectors.zodiacJson,
+        './settings': injectors.settings,
+        './interface/panel': injectors.panel
+    })
+
+    describe('ZODIAC_SIGN_START_DAY', function ()
+    {
+        it('should exist', function ()
+        {
+            expect(typeof module.ZODIAC_SIGN_START_DAY !== 'undefined').to.be.ok()
+        })
+        it('should have 13 signs', function ()
+        {
+            expect(module.ZODIAC_SIGN_START_DAY.length).to.be.equal(13)
+        })
+    })
+
+    describe('initZodiac()', function ()
+    {
+        const getZodiacSign = module.getZodiacSign
+        before(function ()
+        {
+            delete injectors.zodiacJson['sign']
+            for (let i = 0; i < module.ZODIAC_SIGN_START_DAY.length; i++)
+            {
+                injectors.zodiacJson[module.ZODIAC_SIGN_START_DAY[i][0]] = ['main-description', 'back-description']
+            }
+
+            module.getZodiacSign = () => 'sign'
+        })
+        after(function ()
+        {
+            injectors.zodiacJson['sign'] = ['main-description', 'back-description']
+            for (let i = 0; i < module.ZODIAC_SIGN_START_DAY.length; i++)
+            {
+                delete injectors.zodiacJson[module.ZODIAC_SIGN_START_DAY[i][0]]
+            }
+
+            module.getZodiacSign = getZodiacSign
+        })
+
+        afterEach(function()
+        {
+            injectors.settings.settings.zodiac = true
+        })
+
+        it('should initialize without error', function ()
+        {
+            expect(module.initZodiac()).to.not.fail()
+        })
+
+        it('should return jQuery object', function ()
+        {
+            expect(module.initZodiac() instanceof jQuery).to.be.ok()
+        })
+
+        it('should not be invisible with settings.zodiac = true', function ()
+        {
+            injectors.settings.settings.zodiac = true
+            expect(module.initZodiac().css('display') === 'none').to.not.be.ok()
+        })
+
+        it('should be invisible with settings.zodiac = false', function ()
+        {
+            injectors.settings.settings.zodiac = false
+            expect(module.initZodiac().css('display') === 'none').to.be.ok()
+        })
     })
 
     describe('getZodiacSign()', function ()

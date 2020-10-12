@@ -6,7 +6,7 @@ import {addSettingToPanel} from './interface/panel'
 /**
  * Zodiac sign dates in format: month: [name, end day]
  */
-const ZODIAC_SIGN_START_DAY = [
+export const ZODIAC_SIGN_START_DAY = [
     ['capricorn', 19],
     ['aquarius', 18],
     ['pisces', 20],
@@ -29,9 +29,6 @@ const ZODIAC_SIGN_START_DAY = [
  */
 export function getZodiacSign(day, month)
 {
-    if (month === 11 && day < ZODIAC_SIGN_START_DAY[0][1])
-        return ZODIAC_SIGN_START_DAY[0][0]
-    else
         return (day > ZODIAC_SIGN_START_DAY[month][1])
             ? ZODIAC_SIGN_START_DAY[month + 1][0]
             : ZODIAC_SIGN_START_DAY[month][0]
@@ -69,4 +66,6 @@ export function initZodiac()
             if (settings.zodiac) $widget.css('display', 'flex')
             else $widget.css('display', 'none')
         })
+
+    return $widget
 }

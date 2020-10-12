@@ -1,6 +1,6 @@
-import expect from 'expect.js'
-import * as path from 'path'
-import * as fs from 'fs'
+const expect = require('expect.js')
+const path = require('path')
+const fs = require('fs')
 
 const LIGHTS_DIR = './res/configs/night-lights'
 
@@ -20,27 +20,25 @@ function checkLight(light)
 
 function checkFileWithLights(filename)
 {
-    let file = fs.readFileSync(path.join(LIGHTS_DIR, filename))
-    let lights = JSON.parse(file)
+    const file = fs.readFileSync(path.join(LIGHTS_DIR, filename))
+    const lights = JSON.parse(file.toString())
     expect(lights).to.be.an(typeof ([]))
     lights.forEach(light => checkLight(light))
 }
 
-export function testNightLights()
+
+describe('Night lights config files', function ()
 {
-    describe('Night lights config files', function ()
+    const files = fs.readdirSync(LIGHTS_DIR)
+    for (let i = 0; i < files.length; i++)
     {
-        const files = fs.readdirSync(LIGHTS_DIR)
-        for (let i = 0; i < files.length; i++)
+        const filename = files[i]
+        describe('File: ' + filename, function ()
         {
-            const filename = files[i]
-            describe('File: ' + filename, function ()
+            it('should have correct structure', function ()
             {
-                it('should have correct structure', function ()
-                {
-                    checkFileWithLights(filename)
-                })
+                checkFileWithLights(filename)
             })
-        }
-    })
-}
+        })
+    }
+})

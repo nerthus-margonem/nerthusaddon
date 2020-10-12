@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const path = require('path')
 
 const nodeExternals = require('webpack-node-externals')
 //const commitHash = childProcess.execSync('git rev-parse --short HEAD').toString()

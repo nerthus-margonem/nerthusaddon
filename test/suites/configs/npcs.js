@@ -1,6 +1,6 @@
-import expect from 'expect.js'
-import * as path from 'path'
-import * as fs from 'fs'
+const expect = require('expect.js')
+const path = require('path')
+const fs = require('fs')
 
 const NPC_DIR = './res/configs/npcs'
 
@@ -76,27 +76,24 @@ function checkDialogSet(dialog)
 function checkFileWithNpcs(filename)
 {
     const file = fs.readFileSync(path.join(NPC_DIR, filename))
-    const npcs = JSON.parse(file)
+    const npcs = JSON.parse(file.toString())
     expect(npcs).to.be.an(typeof ([]))
     npcs.forEach(npc => checkNpc(npc))
 }
 
 
-export function testNpcsFiles()
+describe('NPCs config files', function ()
 {
-    describe('NPCs config files', function ()
+    const files = fs.readdirSync(NPC_DIR)
+    for (let i = 0; i < files.length; i++)
     {
-        const files = fs.readdirSync(NPC_DIR)
-        for (let i = 0; i < files.length; i++)
+        const filename = files[i]
+        describe('File: ' + filename, function ()
         {
-            const filename = files[i]
-            describe('File: ' + filename, function ()
+            it('should have correct structure', function ()
             {
-                it('should have correct structure', function ()
-                {
-                    checkFileWithNpcs(filename)
-                })
+                checkFileWithNpcs(filename)
             })
-        }
-    })
-}
+        })
+    }
+})

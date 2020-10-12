@@ -1,211 +1,159 @@
-import sinon from 'sinon'
-import expect from 'expect.js'
+const sinon = require('sinon')
+const expect = require('expect.js')
 
-export function testMaps()
+describe('maps', function ()
 {
-    describe('maps', function ()
+    let $mapImage
+    
+    const injectors = {
+        loaders: {
+            loadOnEveryMap: sinon.fake()
+        },
+        time: {
+            getCurrentSeason: sinon.fake.returns('current-season')
+        },
+        mapsJson: {
+            'default': {},
+            'current-season': {1: 'map-url'}
+        },
+        utilityFunctions: {
+            resolveNerthusUrl: sinon.fake.returns('resolved-url')
+        },
+        cssManager: {
+            changeCustomStyle: sinon.fake(),
+            removeCustomStyle: sinon.fake()
+        }
+    }
+    const inject = require('inject-loader!../../src/maps')
+    const module = inject({
+        './game-integration/loaders': injectors.loaders,
+        './time': injectors.time,
+        '../res/configs/maps.json': injectors.mapsJson,
+        './utility-functions': injectors.utilityFunctions,
+        './interface/css-manager': injectors.cssManager
+    })
+    describe('applyCurrentMapChange()', function ()
     {
-        let $mapImage
-
-        const loadOnEveryMap = sinon.fake()
-        const resolveNerthusUrl = sinon.fake.returns('resolved-url')
-        const getCurrentSeason = sinon.fake.returns('current-season')
-        const inject = require('inject-loader!babel-loader!../../src/maps')
-
-        describe('applyCurrentMapChange()', function ()
+        beforeEach(function ()
         {
-            beforeEach(function ()
-            {
-                window.map = {
-                    id: 1
-                }
-                $mapImage = $('<div id="ground"></div>').appendTo('body')
-            })
-            afterEach(resetWindow)
-            it('should not change anything when no custom map defined', function ()
-            {
-                const changeCustomStyle = sinon.fake()
-                const removeCustomStyle = sinon.fake()
-                const maps = inject({
-                    './game-integration/loaders': {loadOnEveryMap},
-                    './time': {getCurrentSeason},
-                    '../res/configs/maps.json': {
-                        'default': {},
-                        'current-season': {1: 'map-url'}
-                    },
-                    './utility-functions': {resolveNerthusUrl},
-                    './interface/css-manager': {
-                        changeCustomStyle,
-                        removeCustomStyle
-                    }
-                })
+            window.map = {
+                id: 1
+            }
+            $mapImage = $('<div id="ground"></div>').appendTo('body')
 
-                window.map.id = 0
-                maps.applyCurrentMapChange()
-                if (INTERFACE === 'SI')
-                {
-                    expect(changeCustomStyle.called).to.be(false)
-                    expect(removeCustomStyle.calledOnce).to.be(true)
-                    expect(removeCustomStyle.calledWith('map-background-image')).to.be(true)
-                }
-            })
+            injectors.cssManager.changeCustomStyle = sinon.fake()
+            injectors.cssManager.removeCustomStyle = sinon.fake()
 
-            it('should change map when there is custom map in current season', function ()
+            injectors.mapsJson['default'] = {}
+            injectors.mapsJson['current-season'] = {1: 'map-url'}
+            delete injectors.mapsJson['other-season']
+
+            injectors.utilityFunctions.resolveNerthusUrl = sinon.fake.returns('resolved-url')
+        })
+        afterEach(resetWindow)
+        it('should not change anything when no custom map defined', function ()
+        {
+            window.map.id = 0
+            module.applyCurrentMapChange()
+            if (INTERFACE === 'SI')
             {
-                const changeCustomStyle = sinon.fake()
-                const removeCustomStyle = sinon.fake()
-                const maps = inject({
-                    './game-integration/loaders': {loadOnEveryMap},
-                    './time': {getCurrentSeason},
-                    '../res/configs/maps.json': {
-                        'default': {},
-                        'current-season': {1: 'map-url'}
-                    },
-                    './utility-functions': {resolveNerthusUrl},
-                    './interface/css-manager': {
-                        changeCustomStyle,
-                        removeCustomStyle
-                    }
-                })
-                window.map.id = 1
+                expect(injectors.cssManager.changeCustomStyle.called).to.be(false)
+                expect(injectors.cssManager.removeCustomStyle.calledOnce).to.be(true)
+                expect(injectors.cssManager.removeCustomStyle.calledWith('map-background-image')).to.be(true)
+            }
+        })
 
-                maps.applyCurrentMapChange()
-                if (INTERFACE === 'SI')
-                {
-                    expect(changeCustomStyle.calledOnce).to.be(true)
-                    expect(removeCustomStyle.called).to.be(false)
-                    expect(changeCustomStyle.calledWith(
-                        'map-background-image', `#ground {
-                            background-image: url(${resolveNerthusUrl()}) !important; 
+        it('should change map when there is custom map in current season', function ()
+        {
+            window.map.id = 1
+
+            module.applyCurrentMapChange()
+            if (INTERFACE === 'SI')
+            {
+                expect(injectors.cssManager.changeCustomStyle.calledOnce).to.be(true)
+                expect(injectors.cssManager.removeCustomStyle.called).to.be(false)
+                expect(injectors.cssManager.changeCustomStyle.calledWith(
+                    'map-background-image', `#ground {
+                            background-image: url(${injectors.utilityFunctions.resolveNerthusUrl()}) !important;
                             background-color: transparent !important;
-                        }`.replace(/ /g,'')
-                    )).to.be(true)
-                }
-            })
+                        }`.replace(/ /g, '')
+                )).to.be(true)
+            }
+        })
 
-            it('should change map when there is custom map in default', function ()
+        it('should change map when there is custom map in default', function ()
+        {
+            window.map.id = 1
+
+            module.applyCurrentMapChange()
+            if (INTERFACE === 'SI')
             {
-                const changeCustomStyle = sinon.fake()
-                const removeCustomStyle = sinon.fake()
-                const maps = inject({
-                    './game-integration/loaders': {loadOnEveryMap},
-                    './time': {getCurrentSeason},
-                    '../res/configs/maps.json': {
-                        'default': {1: 'map-url'},
-                        'current-season': {}
-                    },
-                    './utility-functions': {resolveNerthusUrl},
-                    './interface/css-manager': {
-                        changeCustomStyle,
-                        removeCustomStyle
-                    }
-                })
-                window.map.id = 1
-
-                maps.applyCurrentMapChange()
-                if (INTERFACE === 'SI')
-                {
-                    expect(changeCustomStyle.calledOnce).to.be(true)
-                    expect(removeCustomStyle.called).to.be(false)
-                    expect(changeCustomStyle.calledWith(
-                        'map-background-image', `#ground {
-                            background-image: url(${resolveNerthusUrl()}) !important; 
+                expect(injectors.cssManager.changeCustomStyle.calledOnce).to.be(true)
+                expect(injectors.cssManager.removeCustomStyle.called).to.be(false)
+                expect(injectors.cssManager.changeCustomStyle.calledWith(
+                    'map-background-image', `#ground {
+                            background-image: url(${injectors.utilityFunctions.resolveNerthusUrl()}) !important;
                             background-color: transparent !important;
-                        }`.replace(/ /g,'')
-                    )).to.be(true)
-                }
-            })
+                        }`.replace(/ /g, '')
+                )).to.be(true)
+            }
+        })
 
-            it('should load season map when both default and season maps are defined', function ()
+        it('should load season map when both default and season maps are defined', function ()
+        {
+            const customResolveNerthusUrl = (str) => str
+            injectors.mapsJson['default'] = {1: 'default-map-url'}
+            injectors.mapsJson['current-season'] = {1: 'season-map-url'}
+
+            injectors.utilityFunctions.resolveNerthusUrl = customResolveNerthusUrl
+
+            window.map.id = 1
+
+            module.applyCurrentMapChange()
+            if (INTERFACE === 'SI')
             {
-                const customResolveNerthusUrl = (str) => str
-                const changeCustomStyle = sinon.fake()
-                const removeCustomStyle = sinon.fake()
-                const maps = inject({
-                    './game-integration/loaders': {loadOnEveryMap},
-                    './time': {getCurrentSeason},
-                    '../res/configs/maps.json': {
-                        'default': {1: 'default-map-url'},
-                        'current-season': {1: 'season-map-url'}
-                    },
-                    './utility-functions': {resolveNerthusUrl: customResolveNerthusUrl},
-                    './interface/css-manager': {
-                        changeCustomStyle,
-                        removeCustomStyle
-                    }
-                })
-                window.map.id = 1
-
-                maps.applyCurrentMapChange()
-                if (INTERFACE === 'SI')
-                {
-                    expect(changeCustomStyle.calledOnce).to.be(true)
-                    expect(removeCustomStyle.called).to.be(false)
-                    expect(changeCustomStyle.calledWith(
-                        'map-background-image', `#ground {
-                            background-image: url(${customResolveNerthusUrl('season-map-url')}) !important; 
+                expect(injectors.cssManager.changeCustomStyle.calledOnce).to.be(true)
+                expect(injectors.cssManager.removeCustomStyle.called).to.be(false)
+                expect(injectors.cssManager.changeCustomStyle.calledWith(
+                    'map-background-image', `#ground {
+                            background-image: url(${customResolveNerthusUrl('season-map-url')}) !important;
                             background-color: transparent !important;
-                        }`.replace(/ /g,'')
-                    )).to.be(true)
-                }
-            })
+                        }`.replace(/ /g, '')
+                )).to.be(true)
+            }
+        })
 
-            it('should not change map when there is custom map but not in current season', function ()
+        it('should not change map when there is custom map but not in current season', function ()
+        {
+            injectors.mapsJson['default'] = {}
+            injectors.mapsJson['current-season'] = {}
+            injectors.mapsJson['other-season'] = {1: 'season-map-url'}
+
+            window.map.id = 1
+
+            module.applyCurrentMapChange()
+            if (INTERFACE === 'SI')
             {
-                const changeCustomStyle = sinon.fake()
-                const removeCustomStyle = sinon.fake()
-                const maps = inject({
-                    './game-integration/loaders': {loadOnEveryMap},
-                    './time': {getCurrentSeason},
-                    '../res/configs/maps.json': {
-                        'default': {},
-                        'current-season': {},
-                        'other-season': {1: 'map-url'}
-                    },
-                    './utility-functions': {resolveNerthusUrl},
-                    './interface/css-manager': {
-                        changeCustomStyle,
-                        removeCustomStyle
-                    }
-                })
-                window.map.id = 1
+                expect(injectors.cssManager.changeCustomStyle.called).to.be(false)
+                expect(injectors.cssManager.removeCustomStyle.calledOnce).to.be(true)
+                expect(injectors.cssManager.removeCustomStyle.calledWith('map-background-image')).to.be(true)
+            }
+        })
 
-                maps.applyCurrentMapChange()
-                if (INTERFACE === 'SI')
-                {
-                    expect(changeCustomStyle.called).to.be(false)
-                    expect(removeCustomStyle.calledOnce).to.be(true)
-                    expect(removeCustomStyle.calledWith('map-background-image')).to.be(true)
-                }
-            })
+        it('should not change map when there is custom map but wrong id', function ()
+        {
+            injectors.mapsJson['default'] = {}
+            injectors.mapsJson['current-season'] = {2: 'map-url'}
 
-            it('should not change map when there is custom map but wrong id', function ()
+            window.map.id = 1
+
+            module.applyCurrentMapChange()
+            if (INTERFACE === 'SI')
             {
-                const changeCustomStyle = sinon.fake()
-                const removeCustomStyle = sinon.fake()
-                const maps = inject({
-                    './game-integration/loaders': {loadOnEveryMap},
-                    './time': {getCurrentSeason},
-                    '../res/configs/maps.json': {
-                        'default': {},
-                        'current-season': {2: 'map-url'}
-                    },
-                    './utility-functions': {resolveNerthusUrl},
-                    './interface/css-manager': {
-                        changeCustomStyle,
-                        removeCustomStyle
-                    }
-                })
-                window.map.id = 1
-
-                maps.applyCurrentMapChange()
-                if (INTERFACE === 'SI')
-                {
-                    expect(changeCustomStyle.called).to.be(false)
-                    expect(removeCustomStyle.calledOnce).to.be(true)
-                    expect(removeCustomStyle.calledWith('map-background-image')).to.be(true)
-                }
-            })
+                expect(injectors.cssManager.changeCustomStyle.called).to.be(false)
+                expect(injectors.cssManager.removeCustomStyle.calledOnce).to.be(true)
+                expect(injectors.cssManager.removeCustomStyle.calledWith('map-background-image')).to.be(true)
+            }
         })
     })
-}
+})

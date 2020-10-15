@@ -26,6 +26,11 @@
       "icon": "globe.png",
       "name": "Wieści z krainy",
       "url": "https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!379&ithint=file%2cdocx&app=Word&authkey=!ACPJmB0G1S8y9tU"
+    },
+    {
+      "icon": "discord.png",
+      "name": "Nieoficjalny serwer Discord zrzeszający graczy fabularnych",
+      "url": "https://DISCORD_URL/SYJREDg"
     }
   ],
   "rightPanel": [

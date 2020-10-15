@@ -15,6 +15,9 @@ const constructElement = {}
 
 constructElement.button = function (data)
 {
+    // Guard against github crawler bots
+    data.url = data.url.replace('DISCORD_URL', 'discord.gg')
+    
     return (
         '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '">' +
         '<img src="' + FILE_PREFIX + 'res/img/panel/' + data.icon + '" alt="' + data.name + '">' +

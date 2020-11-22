@@ -45,13 +45,17 @@ function validateDate(npc)
         return true
 
     const begin = parseStrToDate(npc.date.split('-')[0])
+    const now = new Date()
     const end = parseStrToDate(npc.date.split('-')[1])
 
-    const now = new Date()
     if (begin > end)
-        begin.setTime(begin.getTime() - 31556952000) //1 year prior, for winter dates for example 21.11-20.03
-
-    return begin <= now && now <= end
+    {
+        return begin <= now || now <= end
+    }
+    else
+    {
+        return begin <= now && now <= end
+    }
 }
 
 export function isNpcDeployable(npc)

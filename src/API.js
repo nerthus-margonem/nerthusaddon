@@ -1,5 +1,5 @@
 import {checkPermissionLvl, hasNarrationRights} from './permissions'
-import {customNpcs} from './npc/npc'
+import {customNpcs, loadNpcsFromFile} from './npc/npc'
 import {getWeather} from './weather/weather'
 import {applyCurrentNight, changeLight} from './night/night'
 import {turnLightsOn} from './night/lights'
@@ -50,7 +50,8 @@ export function initAPI()
             npcList: customNpcs,
             addNpc: addNpc,
             addNpcToList: addNpcToList,
-            hideGameNpc: hideGameNpc
+            hideGameNpc: hideGameNpc,
+            loadNpcsFromFile: loadNpcsFromFile
         },
         map: {
             addToMapChangelist: addToMapChangelist,

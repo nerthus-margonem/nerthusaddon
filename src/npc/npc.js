@@ -64,7 +64,7 @@ function deploy(npc)
     }
 }
 
-function loadNpcsFromFile(url)
+export function loadNpcsFromFile(url)
 {
     $.getJSON(url, function (npcs)
     {

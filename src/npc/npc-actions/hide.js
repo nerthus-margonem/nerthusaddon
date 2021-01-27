@@ -10,14 +10,38 @@ export function isNpcHidable(npc)
         return npc.lvl === 0 || npc.lvl + 13 < hero.lvl
 }
 
+let hidingStarted = false
+
+function startHidingNpcs()
+{
+    const oldUpdateNpc = Engine.miniMapController.handHeldMiniMapController.updateNpc
+    Engine.miniMapController.handHeldMiniMapController.updateNpc = function (npcData)
+    {
+        for (let i in npcData)
+        {
+            if (!npcData[i] || !npcData[i].id || customHiddenNpcs.includes(Number(npcData[i].id)))
+            {
+                delete npcData[i]
+            }
+        }
+        return oldUpdateNpc.call(Engine.miniMapController.handHeldMiniMapController, npcData)
+    }
+}
+
 export function hideGameNpc(id, always)
 {
-    if (!customHiddenNpcs.includes(id)) customHiddenNpcs.push(id)
-
     if (INTERFACE === 'NI')
     {
+        if (!hidingStarted)
+        {
+            hidingStarted = true
+            startHidingNpcs()
+        }
+
         if (always || settings.hideNpcs)
         {
+            if (!customHiddenNpcs.includes(id)) customHiddenNpcs.push(id)
+
             const callback = function (newNpc)
             {
                 if (newNpc.d && newNpc.d.id === id.toString())
@@ -27,7 +51,6 @@ export function hideGameNpc(id, always)
                     API.callEvent('removeNpc', newNpc)
                     if (Engine.npcs.getById(newNpc.d.id)) Engine.npcs.removeOne(newNpc.d.id)
                     Engine.emotions.removeAllFromSourceId(newNpc.d.id)
-
                     // Run only once
                     // setTimeout so that it removes itself after all NPCs are checked by API,
                     // otherwise it would throw error
@@ -44,6 +67,9 @@ export function hideGameNpc(id, always)
             $style = $('<style id="nerthus-npc-hiding"></style>').appendTo('head')
 
         if (always || settings.hideNpcs)
+        {
+            if (!customHiddenNpcs.includes(id)) customHiddenNpcs.push(id)
             $style.append('#npc' + id + '{display: none}')
+        }
     }
 }

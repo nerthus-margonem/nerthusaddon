@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Nerthus Addon
 // @namespace    http://www.margonem.pl/
-// @version      3.0.0
+// @version      3.1.0
 // @description  Addon for Nerthus
 // @author       Aldi, Kris Aphalon
 // @match        http://nerthus.margonem.pl/
+// @match        https://nerthus.margonem.pl/
 // ==/UserScript==
 
 (function ()

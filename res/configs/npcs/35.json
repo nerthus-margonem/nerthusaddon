@@ -1,5 +1,12 @@
 [
   {
+    "name": "Gabinet Przemian Estetycznych",
+    "x": "70",
+    "y": "23",
+    "url": "#res/img/npc/szyld.gif",
+    "collision": false
+  },
+  {
     "type": "change",
     "id": 112480,
     "newUrl": "/obrazki/npc/map/zima-tuja1.gif",

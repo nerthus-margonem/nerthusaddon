@@ -8,13 +8,13 @@
     "collision": false
   },
   {
-  "name": "Dach",
-  "tip": "",
-  "x": "83",
-  "y": "39",
-  "url": "#res/img/npc/wooden-roof2.gif",
-  "collision": false
-},
+    "name": "Dach",
+    "tip": "",
+    "x": "83",
+    "y": "39",
+    "url": "#res/img/npc/wooden-roof2.gif",
+    "collision": false
+  },
   {
     "type": "delete",
     "id": 147029,

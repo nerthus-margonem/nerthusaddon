@@ -22,6 +22,8 @@ export function addNpc(npc)
         const data = {}
         data[npc.id] = npc
 
+        const collisionBefore = Engine.map.col.check(npc.x, npc.y)
+
         const cdnUrl = window.cdnUrl
         const npath = CFG.npath
         const npcIcon = npc.icon
@@ -51,17 +53,23 @@ export function addNpc(npc)
                         height: this.height
                     }
                 }, '', npc)
-                gameNpc.afterFetch = function () {}
+                gameNpc.afterFetch = function ()
+                {
+                }
             }
             img.src = npcIcon
         }
 
         if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog)
 
-        if (npc.collision)
-            setCollision(npc.x, npc.y)
-        else
-            removeCollision(npc.x, npc.y)
+        if (!collisionBefore)
+        {
+            if (npc.collision)
+                setCollision(npc.x, npc.y)
+            else
+                removeCollision(npc.x, npc.y)
+        }
+
         return data
     }
     else

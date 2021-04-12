@@ -26,7 +26,7 @@ export function addNpc(npc)
         const npath = CFG.npath
         const npcIcon = npc.icon
         // Change the npc.icon so that game's GifReader doesn't try to read png/jpg and error
-        if (!npc.icon.startsWith('/') && !npcIcon.endsWith('gif')) npc.icon = 'image_proxy.php?a=' + npc.icon + '&x=' // hack the url
+        if (!npc.icon.startsWith('/') && npcIcon.endsWith('gif')) npc.icon = 'image_proxy.php?a=' + npc.icon + '&x=' // hack the url
         window.cdnUrl = ''
         CFG.npath = ''
         Engine.npcs.updateData(data)

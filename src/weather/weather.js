@@ -63,7 +63,7 @@ function getClimateVariation(characteristic, date, climate)
     if (!characteristic[climate]) climate = 'default'
 
     const now = new Date()
-    const start = new Date(now.getFullYear(), 3, 20) // start of spring
+    const start = new Date(now.getFullYear(), 2, 20) // start of spring
     if (start > now) start.setUTCFullYear(now.getFullYear() - 1)
     const day = Math.ceil((now - start) / (1000 * 60 * 60 * 24))
     const firstSeason = Math.floor(day / 90)

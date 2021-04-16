@@ -305,5 +305,26 @@
     "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
+  },
+  {
+    "name": "Wory do jeziora",
+    "x": "57",
+    "y": "73",
+    "url": "#res/img/npc/graffiti1.gif",
+    "collision": true
+  },
+  {
+    "name": "Finezjusz Wielkim Poetą Był",
+    "x": "53",
+    "y": "73",
+    "url": "#res/img/npc/graffiti2.gif",
+    "collision": true
+  },
+  {
+    "name": "Anward był niewinny",
+    "x": "34",
+    "y": "9",
+    "url": "#res/img/npc/graffiti3.gif",
+    "collision": true
   }
 ]

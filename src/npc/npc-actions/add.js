@@ -23,41 +23,38 @@ export function addNpc(npc)
         data[npc.id] = npc
 
         const collisionBefore = Engine.map.col.check(npc.x, npc.y)
-
-        const cdnUrl = window.cdnUrl
-        const npath = CFG.npath
         const npcIcon = npc.icon
-        // Change the npc.icon so that game's GifReader doesn't try to read png/jpg and error
-        if (!npc.icon.startsWith('/') && npcIcon.endsWith('gif')) npc.icon = 'image_proxy.php?a=' + npc.icon + '&x=' // hack the url
-        window.cdnUrl = ''
-        CFG.npath = ''
-        Engine.npcs.updateData(data)
-        CFG.npath = npath
-        window.cdnUrl = cdnUrl
 
-        // Fix for png/jpg npcs
-        if (!npcIcon.endsWith('gif'))
+        if (npcIcon.endsWith('gif'))
         {
-            npc.icon = npcIcon
-            const gameNpc = Engine.npcs.getById(npc.id)
-            gameNpc.staticAnimation = true
-
-            const img = new Image()
-            img.onload = function ()
-            {
-                gameNpc.afterFetch({
-                    img: npcIcon,
-                    frames: 1,
-                    hdr: {
-                        width: this.width,
-                        height: this.height
-                    }
-                }, '', npc)
-                gameNpc.afterFetch = function ()
-                {
-                }
-            }
-            img.src = npcIcon
+            const baseCdnUrl = window.cdnUrl
+            window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x=' // hack the url
+            Engine.npcs.updateData(data)
+            window.cdnUrl = baseCdnUrl
+        }
+        else
+        {
+            // Fix for png/jpg npcs
+            // npc.icon = npcIcon
+            // const gameNpc = Engine.npcs.getById(npc.id)
+            // gameNpc.staticAnimation = true
+            //
+            // const img = new Image()
+            // img.onload = function ()
+            // {
+            //     gameNpc.afterFetch({
+            //         img: npcIcon,
+            //         frames: 1,
+            //         hdr: {
+            //             width: this.width,
+            //             height: this.height
+            //         }
+            //     }, '', npc)
+            //     gameNpc.afterFetch = function ()
+            //     {
+            //     }
+            // }
+            // img.src = npcIcon
         }
 
         if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog)

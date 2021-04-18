@@ -34,27 +34,33 @@ export function addNpc(npc)
         }
         else
         {
-            // Fix for png/jpg npcs
-            // npc.icon = npcIcon
-            // const gameNpc = Engine.npcs.getById(npc.id)
-            // gameNpc.staticAnimation = true
-            //
-            // const img = new Image()
-            // img.onload = function ()
-            // {
-            //     gameNpc.afterFetch({
-            //         img: npcIcon,
-            //         frames: 1,
-            //         hdr: {
-            //             width: this.width,
-            //             height: this.height
-            //         }
-            //     }, '', npc)
-            //     gameNpc.afterFetch = function ()
-            //     {
-            //     }
-            // }
-            // img.src = npcIcon
+            npc.icon = 'mas/nic32x32.gif'
+            Engine.npcs.updateData(data)
+            npc.icon = npcIcon
+
+            const gameNpc = Engine.npcs.getById(npc.id)
+            gameNpc.staticAnimation = true
+
+            const img = new Image()
+            img.onload = function ()
+            {
+                gameNpc.sprite = img
+
+                const oldBeforeOnLoad = gameNpc.beforeOnload
+                gameNpc.beforeOnload = function ()
+                {
+                    return oldBeforeOnLoad({
+                        img: npcIcon,
+                        frames: 1,
+                        hdr: {
+                            width: img.width,
+                            height: img.height
+                        }
+                    }, img, npc)
+                }
+                gameNpc.beforeOnload()
+            }
+            img.src = npcIcon
         }
 
         if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog)

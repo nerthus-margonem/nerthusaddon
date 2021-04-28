@@ -2,8 +2,18 @@ import {default as lvlNames} from '../../res/configs/lvl-names'
 import {default as vips} from '../../res/configs/vips'
 import {checkPermissionLvl, PERMISSION_LVL} from '../permissions'
 
-const RANK_NAMES = ['Kreator', 'Uber Miszcz Gry', 'Miszcz Gry', 'Strażnik Słowa', 'Tkacz Słów', 'Trubadur', 'Piewca Słowa', 'Radny']
-const RANKS = {NONE: -1, ADM: 0, SMG: 1, MG: 2, MC: 3, SMC: 4, NARRATOR: 5, NARRATOR_MC: 6, COUNCILOR: 7}
+const RANK_NAMES = [
+    'Kreator',
+    'Uber Miszcz Gry',
+    'Miszcz Gry',
+    'Strażnik Słowa',
+    'Tkacz Słów',
+    'Trubadur',
+    'Piewca Słowa',
+    'Radny',
+    'Namiestnik'
+]
+const RANKS = {NONE: -1, ADM: 0, SMG: 1, MG: 2, MC: 3, SMC: 4, NARRATOR: 5, NARRATOR_MC: 6, COUNCILOR: 7, NAMIESTNIK: 8}
 const RIGHTS = {ADM: 1, MG: 2, SMG: 16}
 
 function rights2rank(rights)
@@ -30,6 +40,9 @@ function getRankNameOf(player)
             break
         case PERMISSION_LVL.COUNCILOR:
             rank = RANKS.COUNCILOR
+            break
+        case PERMISSION_LVL.NAMIESTNIK:
+            rank = RANKS.NAMIESTNIK
             break
     }
     return rank === RANKS.NONE ? '' : RANK_NAMES[rank]

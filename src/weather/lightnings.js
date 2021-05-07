@@ -60,9 +60,9 @@ function fillNpcZone()
         }
         if (customNpcs[map.id])
         {
-            for (const npc of customNpcs[map.id])
+            for (const npcId in customNpcs[map.id])
             {
-                addToZone(npc.x, npc.y)
+                addToZone(customNpcs[map.id][npcId].x, customNpcs[map.id][npcId].y)
             }
         }
     }

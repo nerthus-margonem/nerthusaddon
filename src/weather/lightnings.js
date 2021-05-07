@@ -46,9 +46,9 @@ function fillNpcZone()
         }
         if (customNpcs[Engine.map.d.id])
         {
-            for (const npc of customNpcs[Engine.map.d.id])
+            for (const npcId in customNpcs[Engine.map.d.id])
             {
-                addToZone(npc.x, npc.y)
+                addToZone(customNpcs[Engine.map.d.id][npcId].x, customNpcs[Engine.map.d.id][npcId].y)
             }
         }
     }

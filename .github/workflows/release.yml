@@ -49,12 +49,15 @@ jobs:
 
       - name: Change tag
         run: |
+          RELEASE_TITLE=$(hub release show "${GITHUB_REF#*/*/}" -f %t)
+          RELEASE_DESC=$(hub release show "${GITHUB_REF#*/*/}" -f %b)
+          
           git tag -d ${GITHUB_REF#*/*/}
-          git tag -f -a "${GITHUB_REF#*/*/}" -m "Release: ${GITHUB_REF#*/*/}"
+          git tag -f -a "${GITHUB_REF#*/*/}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
           git push --set-upstream origin :${GITHUB_REF#*/*/}
           hub release delete ${GITHUB_REF#*/*/}
           git push --set-upstream origin ${GITHUB_REF#*/*/}
-          hub release create ${GITHUB_REF#*/*/} -m "Release: ${GITHUB_REF#*/*/}"
+          hub release create ${GITHUB_REF#*/*/} -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
         env:
           GITHUB_USER: <ORG>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

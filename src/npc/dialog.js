@@ -182,6 +182,7 @@ function displayDialog(npcId, npcNick, npcMessage, playerReplies)//(message, rep
         else
         {
             $dialWin.addClass('is-open')
+            $('.h_content', $dialWin).text(npcNick)
             $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).empty().append(innerDial)
         }
 

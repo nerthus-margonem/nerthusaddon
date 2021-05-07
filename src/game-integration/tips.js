@@ -145,7 +145,7 @@ function getNpcDanger(npc)
 
 function createNpcTip(npc)
 {
-    let tip = '<b>' + npc.nick + '</b>'
+    let tip = '<b>' + window.htmlspecialchars(window.parseBasicBB(npc.nick, false)) + '</b>'
     if (npc.type === 4)
         return tip
 

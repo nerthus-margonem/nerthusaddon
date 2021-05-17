@@ -215,11 +215,17 @@ function preloadPanel()
 function togglePanel()
 {
     if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length)
-        $.getJSON(FILE_PREFIX + 'res/configs/panel-links.json', createPanel)
-    else if ($elm.css('visibility') === 'visible')
-        $elm.css({visibility: 'hidden', opacity: '0'})
-    else
-        $elm.css({visibility: 'visible', opacity: '1'})
+    {
+        return $.getJSON(
+            FILE_PREFIX + 'res/configs/panel-links.json',
+            (data) => createPanel(data, false)
+        )
+    }
+
+    if ($elm.css('visibility') === 'visible')
+        return $elm.css({visibility: 'hidden', opacity: '0'})
+
+    $elm.css({visibility: 'visible', opacity: '1'})
 }
 
 function saveSettings()

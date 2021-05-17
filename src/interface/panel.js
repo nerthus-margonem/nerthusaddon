@@ -17,7 +17,7 @@ constructElement.button = function (data)
 {
     // Guard against github crawler bots
     data.url = data.url.replace('DISCORD_URL', 'discord.gg')
-    
+
     return (
         '<a href="' + data.url + '" target="_blank" class="button" tip="' + data.name + '">' +
         '<img src="' + FILE_PREFIX + 'res/img/panel/' + data.icon + '" alt="' + data.name + '">' +
@@ -231,14 +231,14 @@ function saveSettings()
 
 function create_button_ni()
 {
-    if (Engine.interfaceStart && Object.keys(Engine.interface.getDefaultWidgetSet()).includes('nerthus'))
+    if (Engine.interfaceStart && Object.keys(Engine.widgetManager.getDefaultWidgetSet()).includes('nerthus'))
     {
         let nerthusPos = defaultPosition
 
-        const serverStoragePos = Engine.serverStorage.get(Engine.interface.getPathToHotWidgetVersion())
+        const serverStoragePos = Engine.serverStorage.get(Engine.widgetManager.getPathToHotWidgetVersion())
         if (serverStoragePos && serverStoragePos.nerthus) nerthusPos = serverStoragePos.nerthus
 
-        Engine.interface.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
+        Engine.widgetManager.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
     }
     else setTimeout(create_button_ni, 500)
 }
@@ -271,7 +271,7 @@ export function initPanel()
     {
         const addNerthusToDefaultWidgetSet = function ()
         {
-            Engine.interface.addKeyToDefaultWidgetSet(
+            Engine.widgetManager.addKeyToDefaultWidgetSet(
                 'nerthus',
                 defaultPosition[0],
                 defaultPosition[1],
@@ -288,15 +288,15 @@ export function initPanel()
             '}' +
             '</style>'
         )
-        const addWidgetButtons = Engine.interface.addWidgetButtons
-        Engine.interface.addWidgetButtons = function (additionalBarHide)
+        const addWidgetButtons = Engine.widgetManager.addWidgetButtons
+        Engine.widgetManager.addWidgetButtons = function (additionalBarHide)
         {
-            addWidgetButtons.call(Engine.interface, additionalBarHide)
+            addWidgetButtons.call(Engine.widgetManager, additionalBarHide)
             addNerthusToDefaultWidgetSet()
             create_button_ni()
 
             // Only add Nerthus button once, then return to default function
-            Engine.interface.addWidgetButtons = addWidgetButtons
+            Engine.widgetManager.addWidgetButtons = addWidgetButtons
         }
 
         // If interface was already initialised, add Nerthus button manually (as addWidgetButtons already ran)

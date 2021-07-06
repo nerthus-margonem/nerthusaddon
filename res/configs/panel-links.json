@@ -25,7 +25,7 @@
     {
       "icon": "globe.png",
       "name": "Wieści z krainy",
-      "url": "https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!379&ithint=file%2cdocx&app=Word&authkey=!ACPJmB0G1S8y9tU"
+      "url": "https://nerthus-margonem.gitlab.io/nar/wiki/Informacje/Wie%C5%9Bci%20z%20krainy/"
     },
     {
       "icon": "discord.png",
@@ -37,7 +37,7 @@
     {
       "icon": "su.png",
       "name": "System Umiejętności",
-      "url": "https://1drv.ms/w/s!Agjaf7jYdI6AglC8nPXxId1Rgmxh"
+      "url": "https://nerthus-margonem.gitlab.io/nar/wiki/Mechanika/System%20Umiej%C4%99tno%C5%9Bci/\n"
     },
     {
       "icon": "pricetag.png",
@@ -47,12 +47,12 @@
     {
       "icon": "sm.png",
       "name": "System Magii",
-      "url": "https://drive.google.com/file/d/1Kso0Wser_XLUkP8ctQlde1BHmjET_8wT/view"
+      "url": "https://nerthus-margonem.gitlab.io/nar/wiki/Mechanika/System%20Magii/System%20Magii/"
     },
     {
       "icon": "kosmos.png",
       "name": "Podstawy mechaniki rdzenia kosmosu",
-      "url": "https://drive.google.com/file/d/19a_8at2OGe5sN6R7eHU_pPz8uFFHKxVF/view"
+      "url": "https://nerthus-margonem.gitlab.io/nar/wiki/Mechanika/System%20Magii/Rdze%C5%84%20Kosmosu/"
     }
   ]
 }

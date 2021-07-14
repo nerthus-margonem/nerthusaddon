@@ -18,6 +18,7 @@ function makeDialogTextWithSpeaker(str)
 function nar1(ch)
 {
     ch.s = 'nar'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = ch.t.replace(/^\*nar1? /, '')
     return ch
@@ -26,6 +27,7 @@ function nar1(ch)
 function nar2(ch)
 {
     ch.s = 'nar2'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = ch.t.replace(/^\*nar2 /, '')
     return ch
@@ -34,6 +36,7 @@ function nar2(ch)
 function nar3(ch)
 {
     ch.s = 'nar3'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = ch.t.replace(/^\*nar3 /, '')
     return ch
@@ -42,6 +45,7 @@ function nar3(ch)
 function dial1(ch)
 {
     ch.s = 'dial1'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
@@ -50,6 +54,7 @@ function dial1(ch)
 function dial2(ch)
 {
     ch.s = 'dial2'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
@@ -58,6 +63,7 @@ function dial2(ch)
 function dial3(ch)
 {
     ch.s = 'dial3'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
@@ -66,6 +72,7 @@ function dial3(ch)
 function dial666(ch)
 {
     ch.s = 'dial666'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = makeDialogTextWithSpeaker(ch.t)
     return ch
@@ -74,6 +81,7 @@ function dial666(ch)
 function sys(ch)
 {
     ch.s = 'sys_comm'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = ch.t.replace(/^\*sys /, '')
     return ch
@@ -176,6 +184,7 @@ function weather(ch)
 function me(ch)
 {
     ch.s = 'me'
+    ch.nick = ch.n
     ch.n = ''
     ch.t = ch.t.replace(/^\*me /, '')
     return ch

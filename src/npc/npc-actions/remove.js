@@ -11,7 +11,12 @@ export function removeNpc(x, y, mapId)
         if (typeof mapId === 'undefined' || mapId === Engine.map.d.id)
         {
             const id = coordsToId(x, y)
-            if (Engine.npcs.getById(id)) Engine.npcs.removeOne(id)
+            const npc = Engine.npcs.getById(id)
+            if (npc)
+            {
+                npc.delete()
+                setTimeout(Engine.map.createCollisionMap, 100) // Fix for wonky collisions
+            }
         }
     }
     else

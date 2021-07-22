@@ -13,10 +13,8 @@ export function removeCollision(x, y)
 {
     if (INTERFACE === 'NI')
     {
-        if (Engine.map.col.check(x, y))
-        {
-            Engine.map.col.set(x, y, 0) // using set because unset has a bug when loading too quickly
-        }
+        Engine.map.col.unset(x, y, 2)
+        Engine.map.createCollisionMap()
     }
     else
     {

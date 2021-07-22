@@ -15,7 +15,7 @@ export function removeNpc(x, y, mapId)
             if (npc)
             {
                 npc.delete()
-                setTimeout(Engine.map.createCollisionMap, 100) // Fix for wonky collisions
+                Engine.map.col.setStaticColsCache()
             }
         }
     }

@@ -14,6 +14,9 @@ export function removeNpc(x, y, mapId)
             const npc = Engine.npcs.getById(id)
             if (npc)
             {
+                // fix for when npc is somehow loaded without collision
+                if (!npc.mapColSet) npc.mapColSet = [npc.d.x, npc.d.y]
+
                 npc.delete()
                 Engine.map.col.setStaticColsCache()
             }

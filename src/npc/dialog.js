@@ -142,49 +142,14 @@ function displayDialog(npcId, npcNick, npcMessage, playerReplies)//(message, rep
 {
     if (INTERFACE === 'NI')
     {
+        // create fake dialog that we can then modify
+        Engine.communication.dispatcher.on_d(
+            ['0', npcNick, '-1', '1', 'NPC Talk', '', '2', 'Option', '-1']
+        )
+
         const innerDial = parseInnerDialog(npcMessage, playerReplies)
-
-        let $dialWin = $('.dialogue-window')
-        if ($dialWin.length === 0)
-        {
-            const dial =
-                '<div class="dialogue-window">' +
-                '<div class="background">' +
-                '<div class="upper-left"></div>' +
-                '<div class="upper-right"></div>' +
-                '<div class="top"></div>' +
-                '<div class="left"></div>' +
-                '<div class="right"></div>' +
-                '<div class="bottom"></div>' +
-                '</div>' +
-                '<div class="content">' +
-                '<div class="inner scroll-wrapper scrollable">' +
-                '<div class="scroll-pane">' +
-                innerDial +
-                '</ul></div>' +
-                '<div class="scrollbar-wrapper">' +
-                '<div class="background" style="pointer-events: none;"></div>' +
-                '<div class="arrow-up"></div>' +
-                '<div class="arrow-down"></div>' +
-                '<div class="track">' +
-                '<div class="handle ui-draggable ui-draggable-handle" style="top: 0;"></div>' +
-                '</div></div></div></div>' +
-                '<header><div class="h_content">' + npcNick + '</div></header>' +
-                '</div>'
-            $dialWin = $(dial).appendTo('.bottom.positioner')
-            $('.scroll-wrapper', $dialWin).addScrollBar({track: true})
-
-            setTimeout(function ()
-            {
-                $dialWin.addClass('is-open')
-            }, 10) //NI animation
-        }
-        else
-        {
-            $dialWin.addClass('is-open')
-            $('.h_content', $dialWin).text(npcNick)
-            $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).empty().append(innerDial)
-        }
+        const $dialWin = $('.dialogue-window')
+        $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).empty().append(innerDial)
 
         $('.content .inner.scroll-wrapper .scroll-pane .answers .answer', $dialWin)
             .each(function (index) {addEventToAnswer(this, $dialWin, playerReplies, index, npcId)})
@@ -203,7 +168,8 @@ function closeDialog()
 {
     if (INTERFACE === 'NI')
     {
-        $('.dialogue-window').removeClass('is-open')
+        //$('.dialogue-window').removeClass('is-open')
+        Engine.dialogue.finish()
         Engine.lock.remove('nerthus-dialog')
     }
     else
@@ -247,7 +213,7 @@ export function initNpcDialog()
         window._g = function (task, callback, payload)
         {
             const id = checkDialog(task)
-            if (id) openDialog(id, 0)
+            if (id) return openDialog(id, 0)
             __g(task, callback, payload)
         }
     }

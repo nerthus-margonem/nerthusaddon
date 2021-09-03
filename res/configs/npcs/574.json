@@ -86,5 +86,11 @@
     "y": "32",
     "url": "/obrazki/npc/map/zim-prost3b.gif",
     "date": "22.11-20.03"
+  },
+  {
+    "name": "MD to WUR",
+    "x": "83",
+    "y": "44",
+    "url": "#res/img/npc/graffiti4.gif"
   }
 ]

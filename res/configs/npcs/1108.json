@@ -1,0 +1,73 @@
+[
+  {
+    "type": "delete",
+    "id": 145886,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145903,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145902,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145900,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145729,
+    "lvl": 13
+  },
+  {
+    "type": "delete",
+    "id": 145728,
+    "lvl": 13
+  },
+  {
+    "type": "delete",
+    "id": 98918,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 87981,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 87978,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 87978,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 87978,
+    "lvl": 15
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "25",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "26",
+    "y": "38",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  }
+]

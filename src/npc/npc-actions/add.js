@@ -28,7 +28,11 @@ export function addNpc(npc)
         if (npcIcon.endsWith('gif'))
         {
             const baseCdnUrl = window.cdnUrl
-            window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x=' // hack the url
+            console.log(npcIcon)
+            // hack the url
+            if (npcIcon.startsWith('/')) window.cdnUrl = '/image_proxy.php?a=https://micc.garmory-cdn.cloud' + npc.icon + '&x='
+            else window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x='
+
             Engine.npcs.updateData(data)
             window.cdnUrl = baseCdnUrl
         }
@@ -77,9 +81,10 @@ export function addNpc(npc)
     }
     else
     {
+        const icon = npc.icon.startsWith('/') ? `https://micc.garmory-cdn.cloud${npc.icon}` : npc.icon
         const $npc = $('<div id="npc' + npc.id + '" class="npc nerthus-npc"></div>')
             .css({
-                backgroundImage: 'url(' + npc.icon + ')',
+                backgroundImage: 'url(' + icon + ')',
                 zIndex: npc.y * 2 + 9,
                 left: npc.x * 32,
                 top: npc.y * 32 - 16,
@@ -104,7 +109,7 @@ export function addNpc(npc)
                 height: height - (wat > 8 ? ((wat - 8) * 4) : 0)
             })
         }
-        img.src = npc.icon
+        img.src = icon
         $npc.appendTo('#base')
         if (npc.nick)
             $npc.attr({

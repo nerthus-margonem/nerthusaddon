@@ -28,7 +28,6 @@ export function addNpc(npc)
         if (npcIcon.endsWith('gif'))
         {
             const baseCdnUrl = window.cdnUrl
-            console.log(npcIcon)
             // hack the url
             if (npcIcon.startsWith('/')) window.cdnUrl = '/image_proxy.php?a=https://micc.garmory-cdn.cloud' + npc.icon + '&x='
             else window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x='

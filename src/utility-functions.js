@@ -13,8 +13,9 @@ export function coordsToId(x, y)
     return 50000000 + (x * 1000) + y
 }
 
-export function resolveNerthusUrl(url)
+export function resolveUrl(url)
 {
+    if (url.startsWith('/')) url = 'https://micc.garmory-cdn.cloud' + url
     return url.replace(/^#/, FILE_PREFIX)
 }
 

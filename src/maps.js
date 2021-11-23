@@ -1,7 +1,7 @@
 import {loadOnEveryMap} from './game-integration/loaders'
 import {getCurrentSeason} from './time'
 import {default as basicMapsUrls} from '../res/configs/maps.json'
-import {resolveNerthusUrl} from './utility-functions'
+import {resolveUrl} from './utility-functions'
 import {changeCustomStyle, removeCustomStyle} from './interface/css-manager'
 
 export const MAP_PRIORITY = {CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0}
@@ -55,11 +55,11 @@ function applyMapChange(mapId)
 
     const basicMapUrl = getBasicMapUrl(mapId)
     if (customMapsUrls[mapId])
-        mapImage.src = resolveNerthusUrl(customMapsUrls[mapId])
+        mapImage.src = resolveUrl(customMapsUrls[mapId])
     else if (customMapNoIdUrl)
-        mapImage.src = resolveNerthusUrl(customMapNoIdUrl)
+        mapImage.src = resolveUrl(customMapNoIdUrl)
     else if (basicMapUrl)
-        mapImage.src = resolveNerthusUrl(basicMapUrl)
+        mapImage.src = resolveUrl(basicMapUrl)
 
     currentMapImage.src = mapImage.src
 

@@ -4,19 +4,13 @@ import {customHiddenNpcs, hideGameNpc, isNpcHidable} from './npc-actions/hide'
 import {changeGameNpc} from './npc-actions/change'
 import {addNpc} from './npc-actions/add'
 import {initNpcDialog} from './dialog'
-import {coordsToId} from '../utility-functions'
+import {coordsToId, resolveUrl} from '../utility-functions'
 import {addSettingToPanel} from '../interface/panel'
 
 export const customNpcs = {
     default: []
 }
 
-function resolveUrl(url)
-{
-    if (url.startsWith('#'))
-        return FILE_PREFIX + url.slice(1)
-    return url
-}
 
 export function Npc(x, y, url, nick, collision, dialog)
 {

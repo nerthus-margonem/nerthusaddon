@@ -1,3 +1,5 @@
+import {resolveUrl} from '../../utility-functions'
+
 export function changeGameNpc(npc)
 {
     if (INTERFACE === 'NI')
@@ -7,7 +9,7 @@ export function changeGameNpc(npc)
             if (newNpc.d && newNpc.d.id === npc.id.toString())
             {
                 const img = new Image()
-                img.src = npc.newUrl
+                img.src = resolveUrl(npc.newUrl)
                 newNpc.sprite = img
                 Object.defineProperty(newNpc, 'sprite', {
                     get() {return img},
@@ -30,7 +32,7 @@ export function changeGameNpc(npc)
 
         $style.append('#npc' + npc.id + '{' +
             'background-repeat: no-repeat;' +
-            'background-image: url(' + npc.newUrl + ') !important;' +
+            'background-image: url(' + resolveUrl(npc.newUrl) + ') !important;' +
             '}')
     }
 }

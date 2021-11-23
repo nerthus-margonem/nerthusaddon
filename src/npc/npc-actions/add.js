@@ -80,10 +80,9 @@ export function addNpc(npc)
     }
     else
     {
-        const icon = npc.icon.startsWith('/') ? `https://micc.garmory-cdn.cloud${npc.icon}` : npc.icon
         const $npc = $('<div id="npc' + npc.id + '" class="npc nerthus-npc"></div>')
             .css({
-                backgroundImage: 'url(' + icon + ')',
+                backgroundImage: 'url(' + npc.icon + ')',
                 zIndex: npc.y * 2 + 9,
                 left: npc.x * 32,
                 top: npc.y * 32 - 16,
@@ -108,7 +107,7 @@ export function addNpc(npc)
                 height: height - (wat > 8 ? ((wat - 8) * 4) : 0)
             })
         }
-        img.src = icon
+        img.src = npc.icon
         $npc.appendTo('#base')
         if (npc.nick)
             $npc.attr({

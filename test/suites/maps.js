@@ -4,7 +4,7 @@ const expect = require('expect.js')
 describe('maps', function ()
 {
     let $mapImage
-    
+
     const injectors = {
         loaders: {
             loadOnEveryMap: sinon.fake()
@@ -17,7 +17,7 @@ describe('maps', function ()
             'current-season': {1: 'map-url'}
         },
         utilityFunctions: {
-            resolveNerthusUrl: sinon.fake.returns('resolved-url')
+            resolveUrl: sinon.fake.returns('resolved-url')
         },
         cssManager: {
             changeCustomStyle: sinon.fake(),
@@ -48,7 +48,7 @@ describe('maps', function ()
             injectors.mapsJson['current-season'] = {1: 'map-url'}
             delete injectors.mapsJson['other-season']
 
-            injectors.utilityFunctions.resolveNerthusUrl = sinon.fake.returns('resolved-url')
+            injectors.utilityFunctions.resolveUrl = sinon.fake.returns('resolved-url')
         })
         afterEach(resetWindow)
         it('should not change anything when no custom map defined', function ()
@@ -74,7 +74,7 @@ describe('maps', function ()
                 expect(injectors.cssManager.removeCustomStyle.called).to.be(false)
                 expect(injectors.cssManager.changeCustomStyle.calledWith(
                     'map-background-image', `#ground {
-                            background-image: url(${injectors.utilityFunctions.resolveNerthusUrl()}) !important;
+                            background-image: url(${injectors.utilityFunctions.resolveUrl()}) !important;
                             background-color: transparent !important;
                         }`.replace(/ /g, '')
                 )).to.be(true)
@@ -92,7 +92,7 @@ describe('maps', function ()
                 expect(injectors.cssManager.removeCustomStyle.called).to.be(false)
                 expect(injectors.cssManager.changeCustomStyle.calledWith(
                     'map-background-image', `#ground {
-                            background-image: url(${injectors.utilityFunctions.resolveNerthusUrl()}) !important;
+                            background-image: url(${injectors.utilityFunctions.resolveUrl()}) !important;
                             background-color: transparent !important;
                         }`.replace(/ /g, '')
                 )).to.be(true)
@@ -101,11 +101,11 @@ describe('maps', function ()
 
         it('should load season map when both default and season maps are defined', function ()
         {
-            const customResolveNerthusUrl = (str) => str
+            const customResolveUrl = (str) => str
             injectors.mapsJson['default'] = {1: 'default-map-url'}
             injectors.mapsJson['current-season'] = {1: 'season-map-url'}
 
-            injectors.utilityFunctions.resolveNerthusUrl = customResolveNerthusUrl
+            injectors.utilityFunctions.resolveUrl = customResolveUrl
 
             window.map.id = 1
 
@@ -116,7 +116,7 @@ describe('maps', function ()
                 expect(injectors.cssManager.removeCustomStyle.called).to.be(false)
                 expect(injectors.cssManager.changeCustomStyle.calledWith(
                     'map-background-image', `#ground {
-                            background-image: url(${customResolveNerthusUrl('season-map-url')}) !important;
+                            background-image: url(${customResolveUrl('season-map-url')}) !important;
                             background-color: transparent !important;
                         }`.replace(/ /g, '')
                 )).to.be(true)

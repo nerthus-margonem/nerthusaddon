@@ -84,7 +84,7 @@ function getCurrentNaturalOpacity()
 
 export function changeLight(opacity = getCurrentNaturalOpacity(), color = '#000')
 {
-    opacity = Math.max(Math.min(0, opacity), 1)
+    opacity = Math.min(Math.max(0, opacity), 1)
 
     if (INTERFACE === 'NI')
     {

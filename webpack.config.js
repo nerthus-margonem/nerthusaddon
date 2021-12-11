@@ -29,7 +29,10 @@ module.exports = [
         },
         plugins: [
             CONSTANTS,
-            new webpack.DefinePlugin({INTERFACE: JSON.stringify('NI')})
+            new webpack.DefinePlugin({
+                INTERFACE: JSON.stringify('NI'),
+                CURRENT_MAP_ID: 'Engine.map.d.id'
+            })
         ],
         module: {
             rules: [
@@ -57,7 +60,10 @@ module.exports = [
         },
         plugins: [
             CONSTANTS,
-            new webpack.DefinePlugin({INTERFACE: JSON.stringify('SI')})
+            new webpack.DefinePlugin({
+                INTERFACE: JSON.stringify('SI'),
+                CURRENT_MAP_ID: 'map.id'
+            })
         ],
         module: {
             rules: [

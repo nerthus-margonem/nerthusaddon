@@ -59,15 +59,3 @@ export function addDraggable($elm)
         }
     })
 }
-
-export function getCurrentMapId()
-{
-    if (INTERFACE === 'NI')
-    {
-        return Engine.map.d.id
-    }
-    else
-    {
-        return map.id
-    }
-}

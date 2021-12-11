@@ -1,7 +1,7 @@
 import {settings} from '../settings'
 import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {lightsOn, resetLights, turnLightsOn} from './lights'
-import {coordsToId, getCurrentMapId, isCurrentMapOutdoor} from '../utility-functions'
+import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 import {addSettingToPanel} from '../interface/panel'
 
 let opacityChange = 0
@@ -66,7 +66,7 @@ function getCurrentForcedParameters()
         opacity: -1,
         color: '#000'
     }
-    if (forcedParameters[getCurrentMapId()]) parameters = forcedParameters[getCurrentMapId()]
+    if (forcedParameters[CURRENT_MAP_ID]) parameters = forcedParameters[CURRENT_MAP_ID]
     else if (forcedParameters.default) parameters = forcedParameters.default
 
     return parameters

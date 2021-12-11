@@ -12,6 +12,7 @@
     "Engine": "readonly",
     "g": "readonly",
     "INTERFACE": "readonly",
+    "CURRENT_MAP_ID": "readonly",
     "map": "readonly",
     "$": "readonly",
     "API": "readonly",

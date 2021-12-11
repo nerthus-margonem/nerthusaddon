@@ -1,5 +1,5 @@
 import {addToNiDrawList} from '../game-integration/loaders'
-import {coordsToId, getCurrentMapId} from '../utility-functions'
+import {coordsToId} from '../utility-functions'
 import {settings} from '../settings'
 
 const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
@@ -103,9 +103,9 @@ export function turnLightsOn()
         return
     }
 
-    if (AVAILABLE_MAP_FILES.lights.includes(getCurrentMapId()))
+    if (AVAILABLE_MAP_FILES.lights.includes(CURRENT_MAP_ID))
     {
-        $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + getCurrentMapId() + '.json', addLights)
+        $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + CURRENT_MAP_ID + '.json', addLights)
     }
     else
     {

@@ -32,7 +32,8 @@ export function isMapOutdoor(map)
     )
 }
 
-export function isCurrentMapOutdoor() {
+export function isCurrentMapOutdoor()
+{
     if (INTERFACE === 'NI')
     {
         return isMapOutdoor(Engine.map.d)
@@ -40,5 +41,33 @@ export function isCurrentMapOutdoor() {
     else
     {
         return isMapOutdoor(map)
+    }
+}
+
+export function addDraggable($elm)
+{
+    $elm.draggable({
+        start()
+        {
+            const lock = window.g ? window.g.lock : window.Engine.lock
+            lock.add('nerthus-panel-drag')
+        },
+        stop()
+        {
+            const lock = window.g ? window.g.lock : window.Engine.lock
+            lock.remove('nerthus-panel-drag')
+        }
+    })
+}
+
+export function getCurrentMapId()
+{
+    if (INTERFACE === 'NI')
+    {
+        return Engine.map.d.id
+    }
+    else
+    {
+        return map.id
     }
 }

@@ -1,5 +1,5 @@
 import {addToNiDrawList} from '../game-integration/loaders'
-import {coordsToId} from '../utility-functions'
+import {coordsToId, getCurrentMapId} from '../utility-functions'
 import {settings} from '../settings'
 
 const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
@@ -40,11 +40,7 @@ export function addSingleLight(lightType, x, y)
     {
         const id = coordsToId(x, y)
         const image = new Image()
-        image.onload = addToNiDrawList.bind(
-            null,
-            getLightNiObject(image, x, y),
-            id
-        )
+        image.onload = addToNiDrawList.bind(null, getLightNiObject(image, x, y), id)
         image.src = getLightTypeUrl(lightType)
         lightNpcs.push(id)
         return id
@@ -52,8 +48,7 @@ export function addSingleLight(lightType, x, y)
     else
     {
         const lightTypeSize = LIGHT_TYPE_SIZES[lightType]
-        return $('<div />')
-            .addClass('nerthus__night-light')
+        return $('<div class="nerthus__night-light" />')
             .css({
                 background: 'url(' + getLightTypeUrl(lightType) + ')',
                 width: lightTypeSize,
@@ -102,22 +97,20 @@ export function resetLights()
 export function turnLightsOn()
 {
     resetLights()
-    if (INTERFACE === 'NI')
+    if (INTERFACE === 'NI' && typeof Engine.map.d.id === 'undefined')
     {
-        if (typeof Engine.map.d.id === 'undefined')
-            setTimeout(turnLightsOn, 500)
-        else
-        {
-            if (AVAILABLE_MAP_FILES.lights.includes(Engine.map.d.id))
-                $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + Engine.map.d.id + '.json', addLights)
-            else console.log('lights not loaded - no file')
-        }
+        setTimeout(turnLightsOn, 500)
+        return
+    }
+
+    if (AVAILABLE_MAP_FILES.lights.includes(getCurrentMapId()))
+    {
+        $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + getCurrentMapId() + '.json', addLights)
     }
     else
     {
-        if (AVAILABLE_MAP_FILES.lights.includes(map.id))
-            $.getJSON(FILE_PREFIX + 'res/configs/night-lights/' + map.id + '.json', addLights)
-        else console.log('lights not loaded - no file')
+        console.log('lights not loaded - no file')
     }
+
     lightsOn = true
 }

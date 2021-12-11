@@ -39,17 +39,9 @@ function fillNpcZone()
     npcZone = {}
     if (INTERFACE === 'NI')
     {
-        const npcs = Engine.npcs.getDrawableList()
-        for (const npc of npcs)
+        for (const npc of Engine.npcs.getDrawableList())
         {
             if (npc.d && !isNaN(npc.d.x)) addToZone(npc.d.x, npc.d.y)
-        }
-        if (customNpcs[Engine.map.d.id])
-        {
-            for (const npcId in customNpcs[Engine.map.d.id])
-            {
-                addToZone(customNpcs[Engine.map.d.id][npcId].x, customNpcs[Engine.map.d.id][npcId].y)
-            }
         }
     }
     else
@@ -58,12 +50,13 @@ function fillNpcZone()
         {
             addToZone(g.npc[id].x, g.npc[id].y)
         }
-        if (customNpcs[map.id])
+    }
+
+    if (customNpcs[CURRENT_MAP_ID])
+    {
+        for (const npcId in customNpcs[CURRENT_MAP_ID])
         {
-            for (const npcId in customNpcs[map.id])
-            {
-                addToZone(customNpcs[map.id][npcId].x, customNpcs[map.id][npcId].y)
-            }
+            addToZone(customNpcs[CURRENT_MAP_ID][npcId].x, customNpcs[CURRENT_MAP_ID][npcId].y)
         }
     }
 
@@ -77,16 +70,6 @@ function addLightningToChunk(chunkX, chunkY, tries = 0)
 {
     if (tries > 3) return
 
-    let mapId
-    if (INTERFACE === 'NI')
-    {
-        mapId = Engine.map.d.id
-    }
-    else
-    {
-        mapId = map.id
-    }
-
     const minX = chunkX * CHUNK_SIZE
     const maxX = (chunkX * CHUNK_SIZE) + CHUNK_SIZE
     const minY = chunkY * CHUNK_SIZE
@@ -94,7 +77,7 @@ function addLightningToChunk(chunkX, chunkY, tries = 0)
 
     const date = new Date()
     date.setMinutes(0, 0, 0)
-    const seed = Number(date) + ((chunkX + 1) * (chunkY + 1) * mapId) + tries
+    const seed = Number(date) + ((chunkX + 1) * (chunkY + 1) * CURRENT_MAP_ID) + tries
 
     const x = Math.floor(pseudoRandom(seed) * ((maxX + 1) - minX)) + minX
     const y = Math.floor(pseudoRandom(seed + 1) * ((maxY + 1) - minY)) + minY
@@ -109,25 +92,21 @@ function addLightningToChunk(chunkX, chunkY, tries = 0)
 
 export function clearLightnings()
 {
-    if (INTERFACE === 'NI')
+    for (const npcData of lightningNpcs)
     {
-        for (const npcObj of lightningNpcs)
+        if (INTERFACE === 'NI')
         {
-            for (let id in npcObj)
+            for (let id in npcData)
             {
-                removeNpc(npcObj[id].x, npcObj[id].y)
+                removeNpc(npcData[id].x, npcData[id].y)
             }
         }
-        lightningNpcs.splice(0, lightningNpcs.length)
-    }
-    else
-    {
-        for (const $npc of lightningNpcs)
+        else
         {
-            $npc.remove()
+            npcData.remove()
         }
-        lightningNpcs.splice(0, lightningNpcs.length)
     }
+    lightningNpcs.splice(0)
 }
 
 export function displayLightnings()

@@ -201,7 +201,7 @@ function lang(ch)
     const notAllowed = /[^a-ząćęłńóśźż]/gi
     const tip = cmd[0].toLowerCase().replace(notAllowed, '')
     cmd.shift() // remove tip
-    
+
     ch.t = `*${cmd.join(',').trim()}*`
 
     // add language tip after message is added to the page

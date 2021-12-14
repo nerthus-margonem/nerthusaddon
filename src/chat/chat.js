@@ -20,8 +20,9 @@ function handleChatObj(ch)
         const callback = fetchCallback(cmd, ch)
         if (callback)
         {
+            const notAllowed = /[<>]/gi
             ch.t = fixUrl(ch.t)
-            log('[' + ch.k + '] ' + ch.n + ' -> ' + ch.t) //[which tab] author -> command //TODO
+            log(`[${ch.k}] ${ch.n} -> ${ch.t}`.replace(notAllowed, '')) //[which tab] author -> command //TODO
 
             return callback(ch)
         }

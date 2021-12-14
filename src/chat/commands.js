@@ -198,7 +198,7 @@ function lang(ch)
     ch.t = ch.t.replace(/^\*lang /, '') // remove *lang
     const cmd = ch.t.split(',')
 
-    const notAllowed = /[^a-ząćęłńóśźż]/gi
+    const notAllowed = /[^a-ząćęłńóśźż -]/gi
     const tip = cmd[0].toLowerCase().replace(notAllowed, '')
     cmd.shift() // remove tip
 

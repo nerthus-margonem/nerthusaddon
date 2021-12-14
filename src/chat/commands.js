@@ -197,8 +197,11 @@ function lang(ch)
     ch.s = 'lang'
     ch.t = ch.t.replace(/^\*lang /, '') // remove *lang
     const cmd = ch.t.split(',')
-    const tip = cmd[0].toLowerCase()
+
+    const notAllowed = /[^a-ząćęłńóśźż]/gi
+    const tip = cmd[0].toLowerCase().replace(notAllowed, '')
     cmd.shift() // remove tip
+    
     ch.t = `*${cmd.join(',').trim()}*`
 
     // add language tip after message is added to the page

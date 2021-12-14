@@ -43,7 +43,10 @@ function editNiMsg($msg, ch)
         else
             text.remove()
     }
-    $msg.children().eq(0).contents().eq(0).replaceWith(ch.n)
+    if (!ch.n) $msg.children().eq(0).contents().eq(0).replaceWith('')
+
+    // jQuery way doesn't allow to easily search for object later
+    $msg[0].setAttribute('data-ts', ch.ts)
 }
 
 
@@ -116,6 +119,14 @@ export function initChatMgr()
         {
             g.chat.parsers.push(run)
         })
+
+        const oldDisplayChatMsg = window.displayChatMsg
+        window.displayChatMsg = function ($el, obj)
+        {
+            // jQuery way doesn't allow to easily search for object later
+            $el[0].setAttribute('data-ts', obj.ts)
+            return oldDisplayChatMsg($el, obj)
+        }
     }
     initChatDrunkenness()
 }

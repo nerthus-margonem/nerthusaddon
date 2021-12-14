@@ -190,6 +190,38 @@ function me(ch)
     return ch
 }
 
+function lang(ch)
+{
+    if (ch.t.split(',').length < 2) return ch // early return incorrect input
+
+    ch.s = 'lang'
+    ch.t = ch.t.replace(/^\*lang /, '') // remove *lang
+    const cmd = ch.t.split(',')
+    const tip = cmd[0].toLowerCase()
+    cmd.shift() // remove tip
+    ch.t = `*${cmd.join(',').trim()}*`
+
+    // add language tip after message is added to the page
+    setTimeout(function ()
+    {
+        if (INTERFACE === 'NI')
+        {
+            const elm = document.querySelector(`[data-ts="${ch.ts}"] span:last-of-type`)
+            if (!elm) return
+            $(elm).tip(`Język wiadomości: ${tip}`)
+        }
+        else
+        {
+            const elm = document.querySelector(`[data-ts="${ch.ts}"] .chatmsg`)
+            if (!elm) return
+            elm.setAttribute('tip', `Język wiadomości: ${tip}`)
+        }
+
+    }, 0)
+
+    return ch
+}
+
 const narratorCommands = {
     'nar': nar1,
     'nar1': nar1,
@@ -210,7 +242,8 @@ const narratorCommands = {
     'weather': weather
 }
 const publicCommands = {
-    'me': me
+    'me': me,
+    'lang': lang
 }
 
 export function initBasicChatCommands()

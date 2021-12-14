@@ -5,17 +5,19 @@
 
 .nar, .nar .priv-in-general-span { color: lightblue !important }
 
-.nar2, .nar2 .priv-in-general-span { color: #D6A2FF !important }
+.nar2, .nar2 .priv-in-general-span { color: #d6a2ff !important }
 
-.nar3, .nar3 .priv-in-general-span { color: #00CED1 !important }
+.nar3, .nar3 .priv-in-general-span { color: #00ced1 !important }
 
-.dial1, .dial1 .priv-in-general-span { color: #33CC66 !important }
+.dial1, .dial1 .priv-in-general-span { color: #3c6 !important }
 
-.dial2, .dial2 .priv-in-general-span { color: #CC9966 !important }
+.dial2, .dial2 .priv-in-general-span { color: #c96 !important }
 
-.dial3, .dial3 .priv-in-general-span { color: #D3D3D3 !important }
+.dial3, .dial3 .priv-in-general-span { color: #d3d3d3 !important }
 
-.dial666, .dial666 .priv-in-general-span { color: #FF66FF !important }
+.dial666, .dial666 .priv-in-general-span { color: #f6f !important }
+
+.lang:not(.nick), .lang .priv-in-general-span { color: #dde0ff !important }
 
 /* Fix for NI and strange behavior when changing tabs  */
 .me .nick, .sys_comm .nick,
@@ -80,7 +82,7 @@
 
 .nerthus__widget .nerthus__widget-desc {
     align-items: center;
-    color: #F0F8FF;
+    color: #f0f8ff;
     display: flex;
     font: bold 14px Georgia;
     margin-left: 5px;
@@ -244,7 +246,7 @@
     border-radius: 4px;
     box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
     box-sizing: border-box;
-    color: #E6D6BF;
+    color: #e6d6bf;
     cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     display: inline-block;
     height: 42px;

@@ -60,7 +60,8 @@ function getWeatherNiObject(type, opacity)
         },
         update: function () {},
         d: {},
-        updateDATA: function () {}
+        updateDATA: function () {},
+        alwaysDraw: true
     }
 }
 

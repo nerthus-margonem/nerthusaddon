@@ -127,11 +127,11 @@
 /* Panel */
 .nerthus-panel {
     animation: fade 0.5s;
-    border-image: url(http://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-image: url(https://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
-    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/1.png), url(http://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1.png), url(https://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
     left: calc(50% - 204px);
     pointer-events: auto;
     position: fixed;
@@ -143,7 +143,7 @@
 
 .nerthus-panel > .background {
     background-color: #f1deaa;
-    background-image: url(http://cronus.margonem.com/img/gui/content-redleather.jpg);
+    background-image: url(https://cronus.margonem.com/img/gui/content-redleather.jpg);
 }
 
 /* Panel - nav */
@@ -157,7 +157,7 @@
 }
 
 .nerthus-panel .header-label {
-    background: url(http://cronus.margonem.com/img/gui/dialogue/dialogi-naglowek.png);
+    background: url(https://cronus.margonem.com/img/gui/dialogue/dialogi-naglowek.png);
     display: inline-block;
     height: 28px;
     margin: 0 auto;
@@ -166,7 +166,7 @@
 
 .nerthus-panel .header-label > .right-decor,
 .nerthus-panel .header-label > .left-decor {
-    background: url(http://cronus.margonem.com/img/gui/dialogue/dialogi.png) -38px -2px;
+    background: url(https://cronus.margonem.com/img/gui/dialogue/dialogi.png) -38px -2px;
     height: 28px;
     left: -52px;
     position: absolute;
@@ -191,7 +191,7 @@
 }
 
 .nerthus-panel > .close-decor {
-    background: url(http://cronus.margonem.com/img/gui/buttony.png?v=5) -380px -55px;
+    background: url(https://cronus.margonem.com/img/gui/buttony.png?v=5) -380px -55px;
     height: 52px;
     pointer-events: none;
     position: absolute;
@@ -201,9 +201,9 @@
 }
 
 .nerthus-panel .close-button {
-    background: url(http://cronus.margonem.com/img/gui/buttony.png?v=5) -263px -79px;
+    background: url(https://cronus.margonem.com/img/gui/buttony.png?v=5) -263px -79px;
     border: 0;
-    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     height: 22px;
     padding: 0;
     pointer-events: auto;
@@ -247,7 +247,7 @@
     box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
     box-sizing: border-box;
     color: #e6d6bf;
-    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     display: inline-block;
     height: 42px;
     line-height: 34px;
@@ -377,7 +377,7 @@
 }
 
 #nerthus-main-panel .setting-label-text {
-    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     left: 25px;
     line-height: 28px;
     position: relative;
@@ -391,7 +391,7 @@
     border: 2px solid #6e644b;
     border-radius: 2px;
     box-sizing: border-box;
-    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/5.png), url(http://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
     display: inline-block;
     height: 18px;
     left: 0;
@@ -471,7 +471,7 @@
 }
 
 #nerthus-light-manager {
-    border-image: url(http://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-image: url(https://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     height: 50px;
@@ -497,11 +497,11 @@
 
 .subpanel {
     animation: fade 0.5s;
-    border-image: url(http://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-image: url(https://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
-    cursor: url(http://nerthus.margonem.pl/img/gui/cursor/1.png), url(http://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1.png), url(https://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
     height: 40px;
     left: calc(50% - 120px);
     pointer-events: auto;

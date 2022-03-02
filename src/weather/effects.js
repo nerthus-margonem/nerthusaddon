@@ -108,7 +108,7 @@ export function displayRain(opacity)
         $('<div class="nerthus-weather"/>')
             .css({
                 backgroundImage: 'url(' + FILE_PREFIX + 'res/img/weather/rain.gif)',
-                zIndex: map.y * 2 + 9,
+                zIndex: map.y * 2 + 10,
                 opacity: opacity ? opacity : 1
             })
             .appendTo('#ground')
@@ -132,7 +132,7 @@ export function displaySnow(opacity)
         $('<div class="nerthus-weather"/>')
             .css({
                 backgroundImage: 'url(' + FILE_PREFIX + 'res/img/weather/snow.gif)',
-                zIndex: map.y * 2 + 9,
+                zIndex: map.y * 2 + 10,
                 opacity: opacity ? opacity : 1
             })
             .appendTo('#ground')

@@ -83,7 +83,7 @@ export function addNpc(npc)
         const $npc = $('<div id="npc' + npc.id + '" class="npc nerthus-npc"></div>')
             .css({
                 backgroundImage: 'url(' + npc.icon + ')',
-                zIndex: npc.y * 2 + 9,
+                zIndex: npc.y * 2 + 10,
                 left: npc.x * 32,
                 top: npc.y * 32 - 16,
                 pointerEvents: npc.type === 4 ? 'none' : 'auto'

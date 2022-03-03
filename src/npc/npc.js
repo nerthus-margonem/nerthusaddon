@@ -27,7 +27,7 @@ export function Npc(x, y, url, nick, collision, dialog)
     this.update = function(){}
     this.actions = 0
     this.grp = 0
-    this.wt = 0
+    this.wt = this.type === 4 ? 1 : 0
 
     this.collision = collision
     this.dialog = dialog

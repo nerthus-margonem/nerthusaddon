@@ -135,5 +135,37 @@
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "collision": false,
     "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142663,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142664,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142665,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142666,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "dach",
+    "tip": "",
+    "x": "55",
+    "y": "34",
+    "url": "/obrazki/npc/map/zim-dach-kh.gif",
+    "date": "22.11-20.03"
   }
 ]

@@ -1,0 +1,90 @@
+[
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "83",
+    "y": "56",
+    "url": "/obrazki/npc/map/zim-choin-duza3.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "78",
+    "y": "55",
+    "url": "/obrazki/npc/map/zim-choin-sred1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna mała",
+    "tip": "",
+    "x": "61",
+    "y": "60",
+    "url": "/obrazki/npc/map/zim-sosn-duz1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "proste",
+    "tip": "",
+    "x": "53",
+    "y": "51",
+    "url": "/obrazki/npc/map/zim-prost2a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 182048,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "41",
+    "y": "60",
+    "url": "/obrazki/npc/map/zim-choin-mala2b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 134390,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 185759,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 182046,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "proste",
+    "tip": "",
+    "x": "17",
+    "y": "28",
+    "url": "/obrazki/npc/map/zim-prost2b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 182043,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare lewe",
+    "tip": "",
+    "x": "29",
+    "y": "19",
+    "url": "/obrazki/npc/map/zim-szare7-lew1.gif",
+    "date": "22.11-20.03"
+  }
+]

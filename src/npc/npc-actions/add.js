@@ -27,13 +27,29 @@ export function addNpc(npc)
 
         if (npcIcon.endsWith('gif'))
         {
-            const baseCdnUrl = window.cdnUrl
-            // hack the url
-            if (npcIcon.startsWith('/')) window.cdnUrl = '/image_proxy.php?a=https://micc.garmory-cdn.cloud' + npc.icon + '&x='
-            else window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x='
+            if (npcIcon.startsWith('https://micc.garmory-cdn.cloud/obrazki/npc/'))
+            {
+                data[npc.id].icon = npcIcon.substring(43)
+                Engine.npcs.updateData(data)
+            }
+            else if (npcIcon.startsWith('https://micc.garmory-cdn.cloud/obrazki/'))
+            {
+                const aNpath = window.CFG.r_npath
+                const regex = /^https:\/\/micc\.garmory-cdn\.cloud\/obrazki\/(.+?)\//
+                const arr = regex.exec(npcIcon)
+                window.CFG.r_npath = `/obrazki/${arr[1]}/`
+                data[npc.id].icon = npcIcon.replace(regex, '')
 
-            Engine.npcs.updateData(data)
-            window.cdnUrl = baseCdnUrl
+                Engine.npcs.updateData(data)
+                window.CFG.r_npath = aNpath
+            }
+            else
+            {
+                const baseCdnUrl = window.cdnUrl
+                window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x='
+                Engine.npcs.updateData(data)
+                window.cdnUrl = baseCdnUrl
+            }
         }
         else
         {

@@ -46,18 +46,7 @@ jobs:
       - name: Commit files
         run: |
           git commit -m "Release: ${GITHUB_REF#*/*/}" | echo
-
-      - name: Change tag
-        run: |
-          RELEASE_TITLE=$(hub release show "${GITHUB_REF#*/*/}" -f %t)
-          RELEASE_DESC=$(hub release show "${GITHUB_REF#*/*/}" -f %b)
-          
-          git tag -f -a "${GITHUB_REF#*/*/}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
           git push --set-upstream origin :${GITHUB_REF#*/*/}
-          hub release edit "${GITHUB_REF#*/*/}" --draft=false
-        env:
-          GITHUB_USER: <ORG>
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push changes
         run: git push --set-upstream origin production --force --tags

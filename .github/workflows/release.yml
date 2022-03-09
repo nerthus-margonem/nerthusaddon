@@ -60,4 +60,6 @@ jobs:
           git commit -m "Release: ${GITHUB_REF#*/*/}" | echo
 
       - name: Push changes
-        run: git push --set-upstream origin production --force
+        run: |
+          git push --set-upstream origin production --force
+          git push "${GITHUB_REF#*/*/}"

@@ -49,4 +49,4 @@ jobs:
           git push --set-upstream origin :${GITHUB_REF#*/*/}
 
       - name: Push changes
-        run: git push --set-upstream origin production --force
+        run: git push --set-upstream origin production

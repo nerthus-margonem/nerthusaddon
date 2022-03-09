@@ -43,6 +43,18 @@ jobs:
       - name: Add dist directory
         run: git add -f dist
 
+      # We need to change tag, so that it points to the newest build.
+      # Since that's how we do cache busting on cdn
+      - name: Change tag
+        run: |
+          RELEASE_TITLE=$(hub release show "${GITHUB_REF#*/*/}" -f %t)
+          RELEASE_DESC=$(hub release show "${GITHUB_REF#*/*/}" -f %b)
+          
+          git tag -f -a "${GITHUB_REF#*/*/}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
+        env:
+          GITHUB_USER: <ORG>
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Commit files
         run: |
           git commit -m "Release: ${GITHUB_REF#*/*/}" | echo

@@ -91,8 +91,8 @@ function sys(ch)
 function map(ch)
 {
     const cmd = ch.t.split(' ').slice(1).join(' ').split(',')
-    const mapUrl = cmd[0]
-    const mapId = cmd[1]
+    const mapUrl = sanitizeText(cmd[0])
+    const mapId = parseInt(cmd[1])
     if (mapId)
         addToMapChangelist(mapUrl, 2, mapId)
     else
@@ -105,7 +105,7 @@ function map(ch)
 
 function resetMap(ch)
 {
-    const mapId = ch.t.split(' ').slice(1).join(' ')
+    const mapId = parseInt(ch.t.split(' ').slice(1).join(' '))
 
     removeFromMapChangelist(2, mapId)
     applyCurrentMapChange()

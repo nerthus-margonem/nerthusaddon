@@ -59,3 +59,10 @@ export function addDraggable($elm)
         }
     })
 }
+
+export function sanitizeText(text)
+{
+    const element = document.createElement('div')
+    element.innerText = text
+    return element.innerHTML
+}

@@ -1,3 +1,4 @@
+import {sanitizeText} from '../utility-functions'
 import {registerChatCommand} from './chat'
 import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from '../maps'
 import {addNpcToList} from '../npc/npc-actions/add'
@@ -138,8 +139,8 @@ function addGraf(ch)
     const cmd = ch.t.split(' ').slice(1).join(' ').split(',')
     const x = parseInt(cmd[0])
     const y = parseInt(cmd[1])
-    const url = cmd[2]
-    const name = cmd[3]
+    const url = sanitizeText(cmd[2])
+    const name = sanitizeText(cmd[3])
     const nick = name ? `<b>${name}</b>` : ''
     const isCol = parseInt(cmd[4]) > 0
     const mapId = parseInt(cmd[5])

@@ -1,4 +1,5 @@
 import {hasNarrationRights} from '../permissions'
+import {sanitizeText} from '../utility-functions'
 import {initChatDrunkenness} from './drunkenness'
 import {loadOnEveryMap} from '../game-integration/loaders'
 
@@ -20,9 +21,8 @@ function handleChatObj(ch)
         const callback = fetchCallback(cmd, ch)
         if (callback)
         {
-            const notAllowed = /[<>]/gi
             ch.t = fixUrl(ch.t)
-            log(`[${ch.k}] ${ch.n} -> ${ch.t}`.replace(notAllowed, '')) //[which tab] author -> command //TODO
+            log(sanitizeText(`[${ch.k}] ${ch.n} -> ${ch.t}`)) //[which tab] author -> command
 
             return callback(ch)
         }

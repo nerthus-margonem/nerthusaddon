@@ -47,7 +47,8 @@ function getDarknessNiObject(opacity, color)
         },
         update: function () {},
         d: {},
-        updateDATA: function () {}
+        updateDATA: function () {},
+        alwaysDraw: true
     }
 }
 

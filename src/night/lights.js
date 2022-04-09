@@ -2,7 +2,7 @@ import {addToNiDrawList} from '../game-integration/loaders'
 import {coordsToId} from '../utility-functions'
 import {settings} from '../settings'
 
-const LIGHT_TYPE_SIZES = {S: '64px', M: '96px', L: '160px', XL: '192px'}
+const LIGHT_TYPE_SIZES = {S: 64, M: 96, L: 160, XL: 192}
 
 export let lightsOn = false
 
@@ -17,7 +17,7 @@ function getLightTypeUrl(lightType)
     return FILE_PREFIX + 'res/img/night-lights/' + lightType + '.png'
 }
 
-function getLightNiObject(img, x, y)
+function getLightNiObject(img, x, y, lightTypeSize)
 {
     return {
         draw: function (e)
@@ -30,29 +30,32 @@ function getLightNiObject(img, x, y)
         },
         update: function () {},
         d: {},
-        updateDATA: function () {}
+        updateDATA: function () {},
+        rx: (x + lightTypeSize / 2) / 32,
+        ry: (y + lightTypeSize / 2) / 32
     }
 }
 
 export function addSingleLight(lightType, x, y)
 {
+    const lightTypeSize = LIGHT_TYPE_SIZES[lightType]
+
     if (INTERFACE === 'NI')
     {
         const id = coordsToId(x, y)
         const image = new Image()
-        image.onload = addToNiDrawList.bind(null, getLightNiObject(image, x, y), id)
+        image.onload = addToNiDrawList.bind(null, getLightNiObject(image, x, y, lightTypeSize), id)
         image.src = getLightTypeUrl(lightType)
         lightNpcs.push(id)
         return id
     }
     else
     {
-        const lightTypeSize = LIGHT_TYPE_SIZES[lightType]
         return $('<div class="nerthus__night-light" />')
             .css({
                 background: 'url(' + getLightTypeUrl(lightType) + ')',
-                width: lightTypeSize,
-                height: lightTypeSize,
+                width: lightTypeSize + 'px',
+                height: lightTypeSize + 'px',
                 zIndex: map.y * 2 + 12,
                 left: x,
                 top: y

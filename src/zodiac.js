@@ -29,9 +29,9 @@ export const ZODIAC_SIGN_START_DAY = [
  */
 export function getZodiacSign(day, month)
 {
-        return (day > ZODIAC_SIGN_START_DAY[month][1])
-            ? ZODIAC_SIGN_START_DAY[month + 1][0]
-            : ZODIAC_SIGN_START_DAY[month][0]
+    return (day > ZODIAC_SIGN_START_DAY[month][1])
+        ? ZODIAC_SIGN_START_DAY[month + 1][0]
+        : ZODIAC_SIGN_START_DAY[month][0]
 }
 
 export function initZodiac()

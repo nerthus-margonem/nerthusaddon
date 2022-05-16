@@ -144,7 +144,7 @@
   },
   {
     "name": "Drewniana rzeźba",
-    "x": "52",
+    "x": "53",
     "y": "21",
     "url": "#res/img/npc/rzezba.gif",
     "collision": true,
@@ -311,9 +311,9 @@
   },
   {
     "name": "Pochodnie",
-    "x": "53",
+    "x": "54",
     "y": "21",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "url": "#res/img/npc/pochodnia-haw04.gif",
     "dialog": {
       "0": [
         "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
@@ -325,7 +325,7 @@
     "name": "Pochodnie",
     "x": "48",
     "y": "25",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "url": "#res/img/npc/pochodnia-haw04.gif",
     "time": "20-6",
     "dialog": {
       "0": [
@@ -338,7 +338,7 @@
     "name": "Pochodnie",
     "x": "68",
     "y": "43",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "url": "#res/img/npc/pochodnia-haw04.gif",
     "time": "20-6",
     "dialog": {
       "0": [
@@ -351,7 +351,7 @@
     "name": "Pochodnie",
     "x": "59",
     "y": "36",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw04.gif",
+    "url": "#res/img/npc/pochodnia-haw04.gif",
     "time": "20-6",
     "dialog": {
       "0": [
@@ -362,9 +362,9 @@
   },
   {
     "name": "Pochodnia",
-    "x": "51",
+    "x": "52",
     "y": "21",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "url": "#res/img/npc/pochodnia-haw03.gif",
     "dialog": {
       "0": [
         "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
@@ -376,7 +376,7 @@
     "name": "Pochodnia",
     "x": "70",
     "y": "37",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "url": "#res/img/npc/pochodnia-haw03.gif",
     "time": "20-6",
     "dialog": {
       "0": [
@@ -389,7 +389,7 @@
     "name": "Pochodnia",
     "x": "50",
     "y": "40",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "url": "#res/img/npc/pochodnia-haw03.gif",
     "time": "20-6",
     "dialog": {
       "0": [
@@ -402,7 +402,7 @@
     "name": "Pochodnia",
     "x": "40",
     "y": "24",
-    "url": "http://emargo.pl/margonem/obrazki/npc/obj/pochodnia-haw03.gif",
+    "url": "#res/img/npc/pochodnia-haw03.gif",
     "time": "20-6",
     "dialog": {
       "0": [

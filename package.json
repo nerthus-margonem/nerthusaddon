@@ -1,6 +1,6 @@
 {
   "name": "nerthusaddon",
-  "version": "3.14.0",
+  "version": "3.15.0",
   "description": "Addon for Nerthus server in game [Margonem](https://www.margonem.pl/)",
   "main": "/src/main.js",
   "directories": {
@@ -13,7 +13,8 @@
     "firefox 52"
   ],
   "dependencies": {
-    "jquery": "3.6.0"
+    "jquery": "3.6.0",
+    "omggif": "^1.0.10"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -31,8 +32,7 @@
     "sinon": "^14.0.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
-    "webpack-node-externals": "^3.0.0",
-    "omggif": "^1.0.10"
+    "webpack-node-externals": "^3.0.0"
   },
   "scripts": {
     "test": "npm run build-test && mocha ./test-dist/main.js && npm run clean-after-test",

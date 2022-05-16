@@ -1,3 +1,4 @@
+import {GifReader} from 'omggif'
 import {default as exceptionMaps} from '../res/configs/map-exceptions.json'
 
 /**
@@ -65,4 +66,27 @@ export function sanitizeText(text)
     const element = document.createElement('div')
     element.innerText = text
     return element.innerHTML
+}
+
+
+export function decodeGif(data)
+{
+    const reader = new GifReader(data)
+
+    const decoded = {
+        frameDelays: [],
+        frameData: [],
+        width: reader.width,
+        height: reader.height
+    }
+    for (let i = 0; i < reader.numFrames(); i++)
+    {
+        const {delay} = reader.frameInfo(i)
+        decoded.frameDelays[i] = {delay}
+
+        const frameData = new Uint8ClampedArray(reader.width * reader.height * 4)
+        reader.decodeAndBlitFrameRGBA(i, frameData)
+        decoded.frameData[i] = frameData
+    }
+    return decoded
 }

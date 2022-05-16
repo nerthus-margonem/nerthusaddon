@@ -1,8 +1,9 @@
-import {removeCollision, setCollision} from './collision'
+import {callEvent} from '../../API'
+import {decodeGif} from '../../utility-functions'
 import {addDialogToDialogList, openDialog} from '../dialog'
 import {customNpcs} from '../npc'
+import {removeCollision, setCollision} from './collision'
 import {removeNpc} from './remove'
-import {callEvent} from '../../API'
 
 function createClickWrapper(npc, clickHandler)
 {
@@ -45,10 +46,38 @@ export function addNpc(npc)
             }
             else
             {
-                const baseCdnUrl = window.cdnUrl
-                window.cdnUrl = '/image_proxy.php?a=' + npc.icon + '&x='
+                data[npc.id].icon = 'mas/nic32x32.gif'
                 Engine.npcs.updateData(data)
-                window.cdnUrl = baseCdnUrl
+                fetch(npcIcon)
+                    .then(response => response.arrayBuffer())
+                    .then(buffer => new Uint8Array(buffer))
+                    .then(array => decodeGif(array))
+                    .then(decoded =>
+                    {
+                        const canvas = document.createElement('canvas')
+                        canvas.width = decoded.width
+                        canvas.height = decoded.height * decoded.frameData.length
+                        const ctx = canvas.getContext('2d')
+                        for (let i = 0; i < decoded.frameData.length; i++)
+                        {
+                            const img = new ImageData(decoded.frameData[i], decoded.width, decoded.height)
+                            ctx.putImageData(img, 0, i * decoded.height)
+                        }
+
+                        // Update everything by hand
+                        const createdNpc = Engine.npcs.getById(npc.id)
+                        createdNpc.sprite = new Image()
+                        createdNpc.sprite.src = canvas.toDataURL()
+                        createdNpc.fw = decoded.width
+                        createdNpc.fh = decoded.height
+                        createdNpc.halffw = decoded.width / 2
+                        createdNpc.halffh = decoded.height / 2
+                        createdNpc.frameAmount = decoded.frameData.length
+                        createdNpc.frames = decoded.frameDelays
+                        createdNpc.updateCollider()
+                        createdNpc.beforeOnload = function () {} // force not updating image anymore
+                    })
+                    .catch((err) => console.error(`Error while fetching NPC ${npcIcon}`, err))
             }
         }
         else

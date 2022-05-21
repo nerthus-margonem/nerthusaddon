@@ -10,9 +10,9 @@ export function addCustomStyle(styleName, styleContent)
 {
     if (!styles[styleName])
     {
+        const oldStyleTextLength = $style.text().length
         $style.append(styleContent)
-
-        styles[styleName] = styleContent
+        styles[styleName] = $style.text().substring(oldStyleTextLength)
     }
 }
 

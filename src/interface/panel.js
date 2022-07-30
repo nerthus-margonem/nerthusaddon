@@ -1,5 +1,6 @@
 import {saveSetting, settings} from '../settings'
 import {initLightManager} from '../night/light-manager'
+import {addDraggable} from '../utility-functions'
 
 const ELEMENT_TO_ATTACH_TO = INTERFACE === 'NI' ? 'body' : '#centerbox2'
 
@@ -179,18 +180,8 @@ function createPanel(data, hidden)
             })
             .appendTo(ELEMENT_TO_ATTACH_TO)
             .css('opacity', hidden ? '0' : '1') // change opacity after appending to ELEMENT_TO_ATTACH_TO for nice animation
-            .draggable({
-                start: function ()
-                {
-                    const lock = window.g ? window.g.lock : window.Engine.lock
-                    lock.add('nerthus-panel-drag')
-                },
-                stop: function ()
-                {
-                    const lock = window.g ? window.g.lock : window.Engine.lock
-                    lock.remove('nerthus-panel-drag')
-                }
-            })
+
+        addDraggable($elm, '.header-label-positioner')
 
         if (INTERFACE === 'NI')
         {

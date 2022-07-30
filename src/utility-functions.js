@@ -45,9 +45,10 @@ export function isCurrentMapOutdoor()
     }
 }
 
-export function addDraggable($elm)
+export function addDraggable($elm, handle = false)
 {
     $elm.draggable({
+        handle,
         start()
         {
             const lock = window.g ? window.g.lock : window.Engine.lock

@@ -149,7 +149,6 @@
 /* Panel - nav */
 .nerthus-panel > .header-label-positioner {
     left: 10px;
-    pointer-events: none;
     position: absolute;
     right: 10px;
     text-align: center;

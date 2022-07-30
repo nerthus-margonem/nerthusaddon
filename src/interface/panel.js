@@ -235,7 +235,7 @@ function saveSettings()
 }
 
 
-function create_button_ni()
+function createButtonNI()
 {
     if (Engine.interfaceStart && Object.keys(Engine.widgetManager.getDefaultWidgetSet()).includes('nerthus'))
     {
@@ -245,8 +245,9 @@ function create_button_ni()
         if (serverStoragePos && serverStoragePos.nerthus) nerthusPos = serverStoragePos.nerthus
 
         Engine.widgetManager.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
+        Engine.widgetManager.setEnableDraggingButtonsWidget(false)
     }
-    else setTimeout(create_button_ni, 500)
+    else setTimeout(createButtonNI, 500)
 }
 
 export function addSettingToPanel(settingName, translation, tip, callback)
@@ -299,7 +300,7 @@ export function initPanel()
         {
             addWidgetButtons.call(Engine.widgetManager, additionalBarHide)
             addNerthusToDefaultWidgetSet()
-            create_button_ni()
+            createButtonNI()
 
             // Only add Nerthus button once, then return to default function
             Engine.widgetManager.addWidgetButtons = addWidgetButtons
@@ -309,7 +310,7 @@ export function initPanel()
         if (Engine.interfaceStart)
         {
             addNerthusToDefaultWidgetSet()
-            create_button_ni()
+            createButtonNI()
         }
     }
     else

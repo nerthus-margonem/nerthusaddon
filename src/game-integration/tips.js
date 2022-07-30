@@ -71,6 +71,22 @@ function createPlayerTip(player)
     return tip
 }
 
+function getPlayerBuffSection(player)
+{
+    let buffs = ''
+    const bless = player.d.is_blessed ? '<div class="bless"></div>' : ''
+    const mute = player.d.attr & 1 ? '<div class="mute"></div>' : ''
+    const kB = player.d.vip === '1' ? '<div class="k-b"></div>' : ''
+    const warn = player.d.attr & 2 ? '<div class="warn"></div>' : ''
+    const line = player.d.clan ? '<div class="line"></div>' : ''
+    const wanted = player.d.wanted ? '<div class="wanted-i"></div>' : ''
+    if (bless !== '' || mute !== '' || kB !== '' || warn !== '' || wanted !== '')
+    {
+        buffs = `<div class="buffs-wrapper">${line}${wanted}${bless}${mute}${kB}${warn}</div>`
+    }
+    return buffs
+}
+
 function parseTip(player)
 {
     if (INTERFACE === 'NI')
@@ -95,17 +111,7 @@ function parseTip(player)
         const title = getTitle(player.d)
         tip += '<div class="clan-in-tip">' + title + '</div>'
 
-        let buffs = ''
-        const line = player.d.clan ? '<div class="line"></div>' : ''
-        const wanted = player.d.wanted ? '<div class="wanted-i"></div>' : ''
-        const bless = player.d.ble ? '<div class="bless"></div>' : ''
-        const mute = player.d.attr & 1 ? '<div class="mute"></div>' : ''
-        const kB = player.d.vip === '1' ? '<div class="k-b"></div>' : ''
-        const warn = player.d.attr & 2 ? '<div class="warn"></div>' : ''
-
-        if (bless !== '' || mute !== '' || kB !== '' || warn !== '' || wanted !== '')
-            buffs = '<div class="buffs-wrapper">' + line + wanted + bless + mute + kB + warn + '</div>'
-        tip += buffs
+        tip += getPlayerBuffSection(player)
 
         return tip
     }

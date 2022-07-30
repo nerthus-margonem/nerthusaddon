@@ -3,22 +3,22 @@
     {
       "icon": "forum.png",
       "name": "Forum",
-      "url": "https://www.margonem.pl/?task=forum&show=topics&id=33"
+      "url": "https://forum.margonem.pl/?task=forum&show=topics&id=33"
     },
     {
       "icon": "rules.png",
       "name": "Regulamin i zbiór zasad",
-      "url": "https://www.margonem.pl/?task=forum&show=posts&id=424036"
+      "url": "https://forum.margonem.pl/?task=forum&show=posts&id=424036"
     },
     {
       "icon": "green.png",
       "name": "Poradnik dla początkujących",
-      "url": "https://www.margonem.pl/?task=forum&show=posts&id=505201"
+      "url": "https://forum.margonem.pl/?task=forum&show=posts&id=505201"
     },
     {
       "icon": "troll.png",
       "name": "Biuletyn",
-      "url": "https://www.margonem.pl/?task=forum&show=posts&id=512181"
+      "url": "https://forum.margonem.pl/?task=forum&show=posts&id=512181"
     }
   ],
   "centerPanel": [

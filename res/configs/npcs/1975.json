@@ -40,5 +40,36 @@
         "Koniec ->END"
       ]
     }
+  },
+  {
+    "name": "Choinka",
+    "tip": "",
+    "x": "61",
+    "y": "29",
+    "url": "/obrazki/npc/map/choinka-m-gora.gif"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "21",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "22",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "23",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
   }
 ]

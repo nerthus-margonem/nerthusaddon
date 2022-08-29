@@ -75,7 +75,7 @@ export function addNpc(npc)
                         createdNpc.frameAmount = decoded.frameData.length
                         createdNpc.frames = decoded.frameDelays
                         createdNpc.leftPosMod = data[npc.id].type > 3 && !(createdNpc.fw % 64) ? -16 : 0
-                        createdNpc.updateCollider()
+                        if (data[npc.id].type !== 4) createdNpc.updateCollider()
                         createdNpc.beforeOnload = function () {} // force not updating image anymore
                     })
                     .catch((err) => console.error(`Error while fetching NPC ${npcIcon}`, err))

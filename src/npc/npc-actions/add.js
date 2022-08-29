@@ -74,6 +74,7 @@ export function addNpc(npc)
                         createdNpc.halffh = decoded.height / 2
                         createdNpc.frameAmount = decoded.frameData.length
                         createdNpc.frames = decoded.frameDelays
+                        createdNpc.leftPosMod = data[npc.id].type > 3 && !(createdNpc.fw % 64) ? -16 : 0
                         createdNpc.updateCollider()
                         createdNpc.beforeOnload = function () {} // force not updating image anymore
                     })

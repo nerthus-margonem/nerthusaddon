@@ -1,7 +1,7 @@
+import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
 import {addDraggable} from '../utility-functions'
 import {addSingleLight, lightsOn, resetLights, turnLightsOn} from './lights'
 import {applyCurrentNight} from './night'
-import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
 
 const lightManagerHtml = `
 <div id="nerthus-light-manager-wrapper">
@@ -135,8 +135,16 @@ function downloadLog()
         }
         arr.push(obj)
     })
+
+    // Properly format lights data
+    const json = JSON.stringify(arr, null, 2)
+            .replaceAll(/\{\n {4}/g, '{')
+            .replaceAll(/\n {2}}/g, '}')
+            .replaceAll(/,\n {3}/g, ',')
+        + '\n'
+
     const a = window.document.createElement('a')
-    a.href = window.URL.createObjectURL(new window.Blob([JSON.stringify(arr, null, 2)], {type: 'text/json'}))
+    a.href = window.URL.createObjectURL(new window.Blob([json], {type: 'text/json'}))
     if (INTERFACE === 'NI')
     {
         a.download = '' + Engine.map.d.id + '.json'

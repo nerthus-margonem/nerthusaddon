@@ -1,11 +1,11 @@
-import {isNpcDeployable} from './npc-time'
 import {loadOnEveryMap} from '../game-integration/loaders'
-import {customHiddenNpcs, hideGameNpc, isNpcHidable} from './npc-actions/hide'
-import {changeGameNpc} from './npc-actions/change'
-import {addNpc} from './npc-actions/add'
-import {initNpcDialog} from './dialog'
-import {coordsToId, resolveUrl} from '../utility-functions'
 import {addSettingToPanel} from '../interface/panel'
+import {coordsToId, resolveUrl} from '../utility-functions'
+import {initNpcDialog} from './dialog'
+import {addNpc} from './npc-actions/add'
+import {changeGameNpc} from './npc-actions/change'
+import {customHiddenNpcs, hideGameNpc, isNpcHidable} from './npc-actions/hide'
+import {isNpcDeployable} from './npc-time'
 
 export const customNpcs = {
     default: []
@@ -24,7 +24,7 @@ export function Npc(x, y, url, nick, collision, dialog)
 
     this.icon = resolveUrl(url)
 
-    this.update = function(){}
+    this.update = function () {}
     this.actions = 0
     this.grp = 0
     this.wt = this.type === 4 ? 1 : 0
@@ -104,6 +104,9 @@ export function initNpcManager()
         if (INTERFACE === 'SI')
         {
             $('.nerthus-npc').remove()
+
+            // fixes strange reference error in SI engine
+            if (typeof window.groupId === 'undefined') window.groupId = null
         }
         loadNpcs()
         customHiddenNpcs.forEach(hideGameNpc)

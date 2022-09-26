@@ -1,6 +1,13 @@
 import {GifReader} from 'omggif'
 import {default as exceptionMaps} from '../res/configs/map-exceptions.json'
 
+export const GIF_FRAME_DISPOSAL = {
+    NON_SPECIFIED: 0,
+    DO_NOT_DISPOSE: 1,
+    RESTORE_TO_BACKGROUND: 2,
+    RESTORE_TO_PREVIOUS: 3
+}
+
 /**
  * Function that takes coordinates and turns them to nerthus-specific ID.
  * NI requires such id in several cases, and really big number makes sure,
@@ -77,13 +84,15 @@ export function decodeGif(data)
     const decoded = {
         frameDelays: [],
         frameData: [],
+        frameDisposal: [],
         width: reader.width,
         height: reader.height
     }
     for (let i = 0; i < reader.numFrames(); i++)
     {
-        const {delay} = reader.frameInfo(i)
+        const {delay, disposal} = reader.frameInfo(i)
         decoded.frameDelays[i] = {delay}
+        decoded.frameDisposal[i] = disposal
 
         const frameData = new Uint8ClampedArray(reader.width * reader.height * 4)
         reader.decodeAndBlitFrameRGBA(i, frameData)

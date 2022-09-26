@@ -1,5 +1,5 @@
 import {callEvent} from '../../API'
-import {decodeGif} from '../../utility-functions'
+import {decodeGif, GIF_FRAME_DISPOSAL} from '../../utility-functions'
 import {addDialogToDialogList, openDialog} from '../dialog'
 import {customNpcs} from '../npc'
 import {removeCollision, setCollision} from './collision'
@@ -58,10 +58,42 @@ export function addNpc(npc)
                         canvas.width = decoded.width
                         canvas.height = decoded.height * decoded.frameData.length
                         const ctx = canvas.getContext('2d')
-                        for (let i = 0; i < decoded.frameData.length; i++)
+
+                        const backgroundImg = new ImageData(decoded.frameData[0], decoded.width, decoded.height)
+                        ctx.putImageData(backgroundImg, 0, 0)
+
+                        for (let i = 1; i < decoded.frameData.length; i++)
                         {
+                            const frameCanvas = document.createElement('canvas')
+                            frameCanvas.width = decoded.width
+                            frameCanvas.height = decoded.height
+                            const frameCtx = frameCanvas.getContext('2d')
+
                             const img = new ImageData(decoded.frameData[i], decoded.width, decoded.height)
-                            ctx.putImageData(img, 0, i * decoded.height)
+                            frameCtx.putImageData(img, 0, 0)
+
+                            switch (decoded.frameDisposal[i - 1])
+                            {
+                                case GIF_FRAME_DISPOSAL.NON_SPECIFIED:
+                                case GIF_FRAME_DISPOSAL.DO_NOT_DISPOSE:
+                                    ctx.drawImage(
+                                        canvas,
+                                        0, (i - 1) * decoded.height, decoded.width, decoded.height,
+                                        0, i * decoded.height, decoded.width, decoded.height
+                                    )
+                                    break
+                                case GIF_FRAME_DISPOSAL.RESTORE_TO_BACKGROUND:
+                                case GIF_FRAME_DISPOSAL.RESTORE_TO_PREVIOUS:
+                                    // As per specification, "if decoder is not capable of saving an area of a graphic
+                                    // marked as restore To Previous, it is recommended that a decoder restore to
+                                    // the background color."
+                                    // Due to lack of popularity of this type of disposal and problems with
+                                    // implementing a solution (since we're working backwards),
+                                    // this disposal will remain partially broken
+                                    // (besides, main game doesn't even support different frame disposals)
+                                    ctx.putImageData(backgroundImg, 0, i * decoded.height)
+                            }
+                            ctx.drawImage(frameCanvas, 0, i * decoded.height)
                         }
 
                         // Update everything by hand

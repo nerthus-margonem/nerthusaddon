@@ -42,7 +42,7 @@
     "name": "Dalassa",
     "x": "63",
     "y": "33",
-    "url": "/obrazki/npc/kob/doryda.gif",
+    "url": "#res/img/npc/Dalassa.gif",
     "collision": true,
     "date": "21.9-30.9",
     "dialog": {

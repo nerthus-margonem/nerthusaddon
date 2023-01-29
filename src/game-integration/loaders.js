@@ -32,15 +32,6 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
     }
     else
     {
-        // Handle Szybsze ładowanie gry by Priv
-        const oldParseInput = window._g
-        window._g = function (task)
-        {
-            if (task.includes('initlvl=4')) loadNewMapQueue()
-
-            return oldParseInput.apply(this, arguments)
-        }
-
         // Handle Szybsze przechodzenie by Adi Wilk
         window.g.chat.__parsers = window.g.chat.parsers
         Object.defineProperty(window.g.chat, 'parsers', {

@@ -32,6 +32,15 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
     }
     else
     {
+        map.__id = map.id
+        Object.defineProperty(map, 'id', {
+            set(val)
+            {
+                this.__id = val
+                setTimeout(loadNewMapQueue, 0)
+            },
+            get() { return this.__id }
+        })
         // Handle Szybsze przechodzenie by Adi Wilk
         window.g.chat.__parsers = window.g.chat.parsers
         Object.defineProperty(window.g.chat, 'parsers', {

@@ -78,34 +78,6 @@
   },
   {
     "type": "change",
-    "id": 237815,
-    "newUrl": "/obrazki/npc/map/zim-dach-zam1-pr1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 237814,
-    "newUrl": "/obrazki/npc/map/zim-dach-zam1-sk-l1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 237816,
-    "newUrl": "/obrazki/npc/map/zim-dach-zam1-pr1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 237817,
-    "newUrl": "/obrazki/npc/map/zim-dach-zam1-sk-p1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
     "id": 237823,
     "newUrl": "/obrazki/npc/map/zim-dach-zam1-pr1.gif",
     "lvl": 0,
@@ -292,6 +264,164 @@
     "type": "change",
     "id": 237648,
     "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237646,
+    "newUrl": "/obrazki/npc/map/zim-d-go2-2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 237651,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "drzewo zima",
+    "tip": "",
+    "x": "10",
+    "y": "42",
+    "url": "/obrazki/npc/map/zim-d-go2-1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237708,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237706,
+    "newUrl": "/obrazki/npc/map/zim-d-gs2-1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237707,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237709,
+    "newUrl": "/obrazki/npc/map/zim-d-go2-2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237710,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237712,
+    "newUrl": "/obrazki/npc/map/zim-d-gs2-1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237643,
+    "newUrl": "/obrazki/npc/map/zima-dach-blach2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237711,
+    "newUrl": "/obrazki/npc/map/zim-d-gs2-1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237713,
+    "newUrl": "/obrazki/npc/map/zim-d-go2-2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237714,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237718,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237719,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237717,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237716,
+    "newUrl": "/obrazki/npc/map/zim-d-gm1-1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 237715,
+    "newUrl": "/obrazki/npc/map/zim-d-gd1-1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "thuzal roof",
+    "tip": "",
+    "x": "77",
+    "y": "23",
+    "url": "#res/img/npc/thuzal-roof.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 237814,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 237815,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 237816,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 237817,
     "lvl": 0,
     "date": "22.11-20.03"
   }

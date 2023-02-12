@@ -8,9 +8,144 @@
   },
   {
     "name": "Przejście",
-    "tip": "Siedziba Leśnego Bractwa",
+    "tip": "Dawna Siedziba Leśnego Bractwa",
     "x": "34",
     "y": "6",
-    "url": "/img/exit.png"
+    "url": "https://nerthus.margonem.pl/img/exit.png"
+  },
+  {
+    "type": "delete",
+    "id": 225727,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 259525,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225726,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225725,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225735,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225741,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225734,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225733,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225732,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225730,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225729,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225731,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225739,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225740,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225737,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225724,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225738,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225738,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 98121,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 225746,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225753,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 144028,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225750,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225744,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225749,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 144027,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 259526,
+    "lvl": 0
   }
 ]

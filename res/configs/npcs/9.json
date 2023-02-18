@@ -424,5 +424,12 @@
     "newUrl": "/obrazki/npc/map/zim-szare1-lew2.gif",
     "lvl": 0,
     "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 156918,
+    "newUrl": "/obrazki/npc/map/zima-dach-blach3.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
   }
 ]

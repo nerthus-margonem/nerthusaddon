@@ -431,5 +431,12 @@
     "newUrl": "/obrazki/npc/map/zima-dach-blach3.gif",
     "lvl": 0,
     "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 160588,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
   }
 ]

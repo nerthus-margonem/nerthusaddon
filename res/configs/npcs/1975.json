@@ -31,8 +31,8 @@
   },
   {
     "name": "Zaburzona aura",
-    "x": "11",
-    "y": "30",
+    "x": "9",
+    "y": "28",
     "url": "/obrazki/npc/obj/magic_dust1.gif",
     "dialog": {
       "0": [
@@ -71,5 +71,35 @@
     "y": "23",
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 145490,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145276,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145277,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145243,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145242,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145244,
+    "lvl": 0
   }
 ]

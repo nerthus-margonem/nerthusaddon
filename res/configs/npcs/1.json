@@ -831,5 +831,47 @@
     "y": "9",
     "url": "#res/img/npc/graffiti3.gif",
     "collision": true
+  },
+  {
+    "type": "change",
+    "id": 203300,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "change",
+    "id": 203306,
+    "newUrl": "#res/img/npc/black-wall-corner-right.gif",
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "change",
+    "id": 203305,
+    "newUrl": "#res/img/npc/black-wall-corner-left.gif",
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "change",
+    "id": 203302,
+    "newUrl": "#res/img/npc/black-wall-corner-right.gif",
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "change",
+    "id": 203301,
+    "newUrl": "#res/img/npc/black-wall-corner-left.gif",
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "change",
+    "id": 203300,
+    "newUrl": "#res/img/npc/black-ithan-gate.gif",
+    "lvl": 0,
+    "date": "21.03-21.11"
   }
 ]

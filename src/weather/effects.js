@@ -73,12 +73,10 @@ export function clearEffects(clearGameEffects)
         if (Engine.npcs.getById(rainEffectId))
         {
             Engine.npcs.removeOne(rainEffectId)
-            Engine.wraiths.removeOne('n' + rainEffectId)
         }
         if (Engine.npcs.getById(snowEffectId))
         {
             Engine.npcs.removeOne(snowEffectId)
-            Engine.wraiths.removeOne('n' + snowEffectId)
         }
 
         if (clearGameEffects) Engine.weather.onClear()

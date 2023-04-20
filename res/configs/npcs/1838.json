@@ -19,7 +19,7 @@
         "Nie lubię plotek. ->END"
       ],
       "2": [
-        "Owszem, mam tu prawdziwe skarby. Unikalne rękopisy, niepowtarzalne notatki. Historie spisane przez autorów, dzienniki, studium na temat magii. Co cię interesuje?",
+        "Owszem, mam tu prawdziwe skarby. Unikalne rękopisy, niepowtarzalne notatki. Historie spisane przez autorów, dzienniki, studium na temat magii. Co Cię interesuje?",
         "Chciałbym przejrzeć dokumenty na temat magii. ->6",
         "Interesują mnie rękopisy i opowieści. ->7",
         "Dziękuję, może innym razem. ->END"
@@ -40,8 +40,10 @@
         "Mam tu kilka prac Mistrzowskich oraz Arcymistrzowskich. Muszę jednak zaznaczyć, że to bardzo zaawansowana magia. Często opisane tu zaklęcia są rzeczami rewolucyjnymi, dlatego nie próbuj ich wykorzystywać, jeśli nie posiadasz odpowiedniej mocy. Nie biorę odpowiedzialności za skutki twoich działań. Pozycje dotyczące którego zagadnienia mam przynieść?",
         "Ewokacji. ->8",
         "Poznania. ->9",
+        "Odrzucenia. ->19",
         "Przywrócenia. ->10",
         "Przemiany. ->16",
+        "Zaklinania ->22",
         "Zniszczenia. ->11",
         "Mam już wszystko, dziękuję. ->END"
       ],
@@ -98,6 +100,24 @@
       "18": [
         "Mam jedną pracę, autorstwa Daelina Finglorë Midavena, o zastosowaniu magii przemiany do wzmacniania naturalnych procesów w ciele. Bardzo praktyczna <a href='https://drive.google.com/file/d/1H6twUENRnNkmn2nHPRmNFS2CNN6ERa9I/view' target='_blank'>pozycja</a>, jestem pewna, że Cię zainteresuje.",
         "Na pewno się przyda, dziękuję. ->END"
+      ],
+      "19": [
+          "Odrzucenie poziom Mistrzowski czy Arcymistrzowski?",
+          "Mistrzowski. ->20",
+          "Arcymistrzowski. ->21",
+          "Interesuje mnie jednak coś innego. ->6"
+      ],
+      "20": [
+        "Mam dwie pozycje. Pierwsza, <a href='http://noc.ugu.pl/books/md_m_odrzucenie.pdf' target='_blank'>pięknie oprawiona praca</a> autorstwa Materiosa Dragoniusa powinna zawierać to, czego szukasz. <a href='https://drive.google.com/file/d/14qU5zaiPpJ_R_o9r2WjtUuKycCE3569v/view' target='_blank'>Druga praca</a>, autorstwa Magrosa Thornosa, jest nieco skromniejsza w formie, ale niech Cię to nie zwiedzie. Obie są równie bogate w treści.",
+        "Obie lektury warte przeczytania. Bardzo dziękuję. ->END"
+      ],
+      "21": [
+        "Mam w posiadaniu kolejną pracę autorstwa Materiosa Dragoniusa. Równie dobrze oprawiona co poprzednia, tym razem zawiera znacznie bardziej teoretyczne zapiski. Niemniej jednak na pewno będzie <a href='http://noc.ugu.pl/books/md_am_odrzucenie.pdf' target='_blank'>wartą lekturą</a>.",
+        "Nawet jeżeli nie przyda się do praktycznych zastosowań, to myślę, że nieco wiedzy teoretycznej mi nie zaszkodzi. ->END"
+      ],
+      "22": [
+        "Na temat zaklinania mam tylko jedną książkę, ale jest chyba najobszerniejszą pozycją, z jaką się spotkałam. Napisała ją elfka Riveth Midaven. Proszę, <a href='http://noc.ugu.pl/books/riveth_am_zaklinanie.pdf' target='_blank'>oto ona</a>.",
+        "Długowieczność elfów zapewne sprzyja długości pisanych przez nich prac. ->END"
       ]
     }
   }

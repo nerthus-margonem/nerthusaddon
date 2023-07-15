@@ -84,7 +84,7 @@
     align-items: center;
     color: #f0f8ff;
     display: flex;
-    font: bold 14px Georgia;
+    font: bold 14px Georgia, serif;
     margin-left: 5px;
     opacity: 0;
     pointer-events: none;
@@ -294,10 +294,6 @@
 .nerthus-panel .button:hover,
 .nerthus-panel#nerthus-main-panel .button.nerthus-settings-button:hover {
     background-image: linear-gradient(to top, #101010, #434343);
-}
-
-#nerthus-main-panel #button-group-center {
-    padding-top: 30px;
 }
 
 #nerthus-main-panel #button-group-left:before,
@@ -512,7 +508,7 @@
 }
 
 .subpanel .button {
-    font-family: monospace, monospace;
+    font-family: monospace;
     font-size: 16px;
     height: 32px;
     width: 32px;
@@ -520,13 +516,6 @@
 
 .subpanel .button:nth-of-type(4) {
     padding-left: 2px;
-}
-
-.subpanel .button {
-    font-family: monospace, monospace;
-    font-size: 16px;
-    height: 32px;
-    width: 32px;
 }
 
 #nerthus-light-manager .close-decor {

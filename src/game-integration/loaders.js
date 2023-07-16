@@ -59,3 +59,9 @@ export function addToNiDrawList(preparedObject, id)
     const npcList = Engine.npcs.check()
     npcList[id] = preparedObject
 }
+
+export function removeFromNiDrawList(id)
+{
+    const npcList = Engine.npcs.check()
+    delete npcList[id]
+}

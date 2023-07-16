@@ -21,7 +21,7 @@ export function addNpc(npc)
     if (INTERFACE === 'NI')
     {
         const data = {}
-        data[npc.id] = npc
+        data[npc.id] = {...npc}
 
         const collisionBefore = Engine.map.col.check(npc.x, npc.y)
         const npcIcon = npc.icon

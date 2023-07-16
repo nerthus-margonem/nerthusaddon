@@ -83,13 +83,17 @@ export function addNpc(npc)
                                     )
                                     break
                                 case GIF_FRAME_DISPOSAL.RESTORE_TO_BACKGROUND:
+                                    // Apparently most browsers just clear to transparency,
+                                    // so we'll do the same for now (so just do nothing here).
+                                    // Besides, NPCs in game should have transparent background
+                                    break
                                 case GIF_FRAME_DISPOSAL.RESTORE_TO_PREVIOUS:
                                     // As per specification, "if decoder is not capable of saving an area of a graphic
                                     // marked as restore To Previous, it is recommended that a decoder restore to
                                     // the background color."
                                     // Due to lack of popularity of this type of disposal and problems with
                                     // implementing a solution (since we're working backwards),
-                                    // this disposal will remain partially broken
+                                    // this disposal will probably remain partially broken
                                     // (besides, main game doesn't even support different frame disposals)
                                     ctx.putImageData(backgroundImg, 0, i * decoded.height)
                             }

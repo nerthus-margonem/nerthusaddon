@@ -1,13 +1,13 @@
 /* Chat colors */
-.me, .me .priv-in-general-span { color: #f70 !important }
+.special-style-2, .me .priv-in-general-span { color: #f70 !important }
 
 .sys_comm, .sys_comm .priv-in-general-span { color: #f33 !important }
 
-.nar, .nar .priv-in-general-span { color: lightblue !important }
+.special-style-nerthus-nar1, .nar .priv-in-general-span { color: lightblue !important }
 
-.nar2, .nar2 .priv-in-general-span { color: #d6a2ff !important }
+.special-style-nerthus-nar2, .nar2 .priv-in-general-span { color: #d6a2ff !important }
 
-.nar3, .nar3 .priv-in-general-span { color: #00ced1 !important }
+.special-style-nerthus-nar3, .nar3 .priv-in-general-span { color: #00ced1 !important }
 
 .dial1, .dial1 .priv-in-general-span { color: #3c6 !important }
 

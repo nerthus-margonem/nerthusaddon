@@ -16,31 +16,31 @@ function makeDialogTextWithSpeaker(str)
     return '«' + str[0] + '» ' + str.slice(1).join(',')
 }
 
-function nar1(ch)
+function nar1(msg)
 {
-    ch.s = 'nar'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = ch.t.replace(/^\*nar1? /, '')
-    return ch
+    msg.style = 'nerthus-nar1'
+    msg.nick = msg.authorBusinessCard.getNick()
+    msg.authorBusinessCard = null
+    msg.text = msg.text.replace(/^\*nar1? /, '')
+    return msg
 }
 
-function nar2(ch)
+function nar2(msg)
 {
-    ch.s = 'nar2'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = ch.t.replace(/^\*nar2 /, '')
-    return ch
+    msg.style = 'nerthus-nar2'
+    msg.nick = msg.authorBusinessCard.getNick()
+    msg.authorBusinessCard = null
+    msg.text = msg.text.replace(/^\*nar2 /, '')
+    return msg
 }
 
-function nar3(ch)
+function nar3(msg)
 {
-    ch.s = 'nar3'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = ch.t.replace(/^\*nar3 /, '')
-    return ch
+    msg.style = 'nerthus-nar3'
+    msg.nick = msg.authorBusinessCard.getNick()
+    msg.authorBusinessCard = null
+    msg.text = msg.text.replace(/^\*nar3 /, '')
+    return msg
 }
 
 function dial1(ch)
@@ -182,13 +182,13 @@ function weather(ch)
     return false
 }
 
-function me(ch)
+function me(msg)
 {
-    ch.s = 'me'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = ch.t.replace(/^\*me /, '')
-    return ch
+    msg.style = 2 // 2 is special style for regular `/me`
+    msg.nick = msg.authorBusinessCard.getNick()
+    msg.authorBusinessCard = null
+    msg.text = msg.text.replace(/^\*me /, '')
+    return msg
 }
 
 function lang(ch)

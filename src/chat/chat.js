@@ -1,7 +1,7 @@
+import {loadOnEveryMap} from '../game-integration/loaders'
 import {hasNarrationRights} from '../permissions'
 import {sanitizeText} from '../utility-functions'
 import {initChatDrunkenness} from './drunkenness'
-import {loadOnEveryMap} from '../game-integration/loaders'
 
 const commandsMap = {}
 const commandsPublicMap = {}
@@ -51,23 +51,23 @@ function editNiMsg($msg, ch)
 }
 
 
-function fetchCmd(ch)
+function fetchCmd(chatMessageData)
 {
-    if (ch.t[0] === '*')
+    if (chatMessageData.text[0] === '*')
     {
-        const command = RegExp(/^\*(\S+)/).exec(ch.t)
+        const command = /^\*(\S+)/.exec(chatMessageData.text)
         //fixes bug with /dice, and presumably '* text' messages
         if (command)
             return command[1]
     }
 }
 
-function fetchCallback(cmd, ch)
+function fetchCallback(command, msg)
 {
-    if (commandsMap[cmd] && hasNarrationRights(ch.n))
-        return commandsMap[cmd]
+    if (commandsMap[command] && hasNarrationRights(msg.authorBusinessCard.getNick()))
+        return commandsMap[command]
     else
-        return commandsPublicMap[cmd]
+        return commandsPublicMap[command]
 }
 
 function run(arg)
@@ -96,6 +96,47 @@ function run(arg)
     }
 }
 
+function parseMessage(chatMessageData)
+{
+    // change message by directly editing object passed as reference
+    const command = fetchCmd(chatMessageData)
+    if (command)
+    {
+        const callback = fetchCallback(command, chatMessageData)
+        if (callback)
+        {
+            chatMessageData.text = fixUrl(chatMessageData.text)
+            log(sanitizeText(
+                `[${chatMessageData.channel}] ${chatMessageData.authorBusinessCard.getNick()} -> ${chatMessageData.text}`
+            )) // [which tab] author -> command
+
+            return callback(chatMessageData)
+        }
+    }
+    return true
+}
+
+
+function createProxyOnChatMessage()
+{
+    const oldChatMessage = window.ChatMessage
+    window.ChatMessage = class ChatMessage extends oldChatMessage
+    {
+        constructor()
+        {
+            super()
+            this.oldInit = this.init
+            this.init = this.newInit
+        }
+
+        newInit(data)
+        {
+            parseMessage(data)
+            return this.oldInit(...arguments)
+        }
+    }
+}
+
 
 export function initChatMgr()
 {
@@ -116,18 +157,7 @@ export function initChatMgr()
     }
     else
     {
-        loadOnEveryMap(function ()
-        {
-            g.chat.parsers.push(run)
-        })
-
-        const oldDisplayChatMsg = window.displayChatMsg
-        window.displayChatMsg = function ($el, obj)
-        {
-            // jQuery way doesn't allow to easily search for object later
-            $el[0].setAttribute('data-ts', obj.ts)
-            return oldDisplayChatMsg($el, obj)
-        }
+        loadOnEveryMap(createProxyOnChatMessage)
     }
     initChatDrunkenness()
 }

@@ -120,6 +120,8 @@ function commandContainsDrinkingAlcohol(command)
 
 export function initChatDrunkenness()
 {
+    return false // Temporarily turned off
+
     const savedIntoxicationLvl = localStorage.getItem('nerthus-intoxication-lvl')
     if (savedIntoxicationLvl)
         intoxicationLvl = parseInt(savedIntoxicationLvl)

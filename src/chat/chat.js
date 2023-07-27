@@ -1,4 +1,3 @@
-import {loadOnEveryMap} from '../game-integration/loaders'
 import {hasNarrationRights} from '../permissions'
 import {sanitizeText} from '../utility-functions'
 import {initChatDrunkenness} from './drunkenness'
@@ -157,7 +156,7 @@ export function initChatMgr()
     }
     else
     {
-        loadOnEveryMap(createProxyOnChatMessage)
+        createProxyOnChatMessage()
     }
     initChatDrunkenness()
 }

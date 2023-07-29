@@ -1,21 +1,23 @@
 /* Chat colors */
-.special-style-2, .me .priv-in-general-span { color: #f70 !important }
+
+/* style of *me */
+.special-style-2 { color: #f70 !important }
 
 .sys_comm, .sys_comm .priv-in-general-span { color: #f33 !important }
 
-.special-style-nerthus-nar1, .nar .priv-in-general-span { color: lightblue !important }
+.special-style-nerthus-nar1 { color: lightblue !important }
 
-.special-style-nerthus-nar2, .nar2 .priv-in-general-span { color: #d6a2ff !important }
+.special-style-nerthus-nar2 { color: #d6a2ff !important }
 
-.special-style-nerthus-nar3, .nar3 .priv-in-general-span { color: #00ced1 !important }
+.special-style-nerthus-nar3 { color: #00ced1 !important }
 
-.dial1, .dial1 .priv-in-general-span { color: #3c6 !important }
+.wrapper-special-style-nerthus-dial1 { color: #3c6 !important }
 
-.dial2, .dial2 .priv-in-general-span { color: #c96 !important }
+.wrapper-special-style-nerthus-dial2 { color: #c96 !important }
 
-.dial3, .dial3 .priv-in-general-span { color: #d3d3d3 !important }
+.wrapper-special-style-nerthus-dial3 { color: #d3d3d3 !important }
 
-.dial666, .dial666 .priv-in-general-span { color: #f6f !important }
+.wrapper-special-style-nerthus-dial666 { color: #f6f !important }
 
 .lang:not(.nick), .lang .priv-in-general-span { color: #dde0ff !important }
 
@@ -26,6 +28,14 @@
     display: none;
 }
 
+
+/* Disable clicking on dial Nick */
+.wrapper-special-style-nerthus-dial1 .author-section,
+.wrapper-special-style-nerthus-dial2 .author-section,
+.wrapper-special-style-nerthus-dial3 .author-section,
+.wrapper-special-style-nerthus-dial666 .author-section {
+    pointer-events: none;
+}
 
 /* Default cursor on SI */
 #centerbox2 > .nerthus-panel {

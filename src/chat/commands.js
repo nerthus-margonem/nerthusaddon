@@ -1,19 +1,24 @@
-import {sanitizeText} from '../utility-functions'
-import {registerChatCommand} from './chat'
 import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from '../maps'
-import {addNpcToList} from '../npc/npc-actions/add'
-import {Npc} from '../npc/npc'
-import {removeNpc} from '../npc/npc-actions/remove'
 import {applyCurrentNight, setForcedParameters} from '../night/night'
+import {Npc} from '../npc/npc'
+import {addNpcToList} from '../npc/npc-actions/add'
 import {hideGameNpc} from '../npc/npc-actions/hide'
-import {displayWeather, setForcedWeather} from '../weather/weather'
-import {clearEffects} from '../weather/effects'
+import {removeNpc} from '../npc/npc-actions/remove'
 import {settings} from '../settings'
+import {sanitizeText} from '../utility-functions'
+import {clearEffects} from '../weather/effects'
+import {displayWeather, setForcedWeather} from '../weather/weather'
+import {registerChatCommand} from './chat'
 
-function makeDialogTextWithSpeaker(str)
+function getAuthorBusinessCardProxy(businessCard, newAuthorNick)
 {
-    str = str.split(' ').slice(1).join(' ').split(',')
-    return '«' + str[0] + '» ' + str.slice(1).join(',')
+    return new Proxy(businessCard, {
+        get(target, prop)
+        {
+            if (prop === 'getNick') return () => newAuthorNick
+            return Reflect.get(...arguments)
+        }
+    })
 }
 
 function nar1(msg)
@@ -43,40 +48,44 @@ function nar3(msg)
     return msg
 }
 
-function dial1(ch)
+function dial1(msg)
 {
-    ch.s = 'dial1'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = makeDialogTextWithSpeaker(ch.t)
-    return ch
+    msg.style = 'nerthus-dial1'
+    msg.nick = msg.authorBusinessCard.getNick()
+    const [author, ...messageParts] = msg.text.split(' ').slice(1).join(' ').split(',')
+    msg.authorBusinessCard = getAuthorBusinessCardProxy(msg.authorBusinessCard, author)
+    msg.text = messageParts.join(',')
+    return msg
 }
 
-function dial2(ch)
+function dial2(msg)
 {
-    ch.s = 'dial2'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = makeDialogTextWithSpeaker(ch.t)
-    return ch
+    msg.style = 'nerthus-dial2'
+    msg.nick = msg.authorBusinessCard.getNick()
+    const [author, ...messageParts] = msg.text.split(' ').slice(1).join(' ').split(',')
+    msg.authorBusinessCard = getAuthorBusinessCardProxy(msg.authorBusinessCard, author)
+    msg.text = messageParts.join(',')
+    return msg
 }
 
-function dial3(ch)
+function dial3(msg)
 {
-    ch.s = 'dial3'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = makeDialogTextWithSpeaker(ch.t)
-    return ch
+    msg.style = 'nerthus-dial3'
+    msg.nick = msg.authorBusinessCard.getNick()
+    const [author, ...messageParts] = msg.text.split(' ').slice(1).join(' ').split(',')
+    msg.authorBusinessCard = getAuthorBusinessCardProxy(msg.authorBusinessCard, author)
+    msg.text = messageParts.join(',')
+    return msg
 }
 
-function dial666(ch)
+function dial666(msg)
 {
-    ch.s = 'dial666'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = makeDialogTextWithSpeaker(ch.t)
-    return ch
+    msg.style = 'nerthus-dial666'
+    msg.nick = msg.authorBusinessCard.getNick()
+    const [author, ...messageParts] = msg.text.split(' ').slice(1).join(' ').split(',')
+    msg.authorBusinessCard = getAuthorBusinessCardProxy(msg.authorBusinessCard, author)
+    msg.text = messageParts.join(',')
+    return msg
 }
 
 function sys(ch)

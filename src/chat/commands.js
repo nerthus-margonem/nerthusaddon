@@ -88,13 +88,13 @@ function dial666(msg)
     return msg
 }
 
-function sys(ch)
+function sys(msg)
 {
-    ch.s = 'sys_comm'
-    ch.nick = ch.n
-    ch.n = ''
-    ch.t = ch.t.replace(/^\*sys /, '')
-    return ch
+    msg.style = 'nerthus-sys'
+    msg.nick = msg.authorBusinessCard.getNick()
+    msg.authorBusinessCard = null
+    msg.text = msg.text.replace(/^\*sys /, '')
+    return msg
 }
 
 function map(ch)

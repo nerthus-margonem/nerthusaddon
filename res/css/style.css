@@ -3,7 +3,7 @@
 /* style of *me */
 .special-style-2 { color: #f70 !important }
 
-.sys_comm, .sys_comm .priv-in-general-span { color: #f33 !important }
+.special-style-nerthus-sys { color: #f33 !important; font-weight: bold }
 
 .special-style-nerthus-nar1 { color: lightblue !important }
 

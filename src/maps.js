@@ -1,8 +1,8 @@
-import {loadOnEveryMap} from './game-integration/loaders'
-import {getCurrentSeason} from './time'
 import {default as basicMapsUrls} from '../res/configs/maps.json'
-import {resolveUrl} from './utility-functions'
+import {loadOnEveryMap} from './game-integration/loaders'
 import {changeCustomStyle, removeCustomStyle} from './interface/css-manager'
+import {getCurrentSeason} from './time'
+import {resolveUrl} from './utility-functions'
 
 export const MAP_PRIORITY = {CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0}
 
@@ -72,7 +72,7 @@ function applyMapChange(mapId)
                 `#ground {
                     background-image: url(${mapImage.src}) !important; 
                     background-color: transparent !important;
-                }`.replace(/ /g,'')
+                }`.replace(/ /g, '')
             )
         else
             removeCustomStyle('map-background-image')
@@ -90,7 +90,7 @@ function startMapChanging()
         tmpMapDraw.call(Engine.map, canvasRenderingContext)
 
         //draw new maps on top of map
-        if (currentMapImage.complete)
+        if (currentMapImage.complete && currentMapImage.naturalWidth !== 0)
         {
             canvasRenderingContext.drawImage(
                 currentMapImage,

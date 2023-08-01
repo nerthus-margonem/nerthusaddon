@@ -10,6 +10,8 @@ import {clearEffects} from '../weather/effects'
 import {displayWeather, setForcedWeather} from '../weather/weather'
 import {registerChatCommand} from './chat'
 
+const BLOCKED_CHANNELS = ['TRADE', 'GLOBAL']
+
 function getAuthorBusinessCardProxy(businessCard, newAuthorNick)
 {
     return new Proxy(businessCard, {
@@ -97,24 +99,32 @@ function sys(msg)
     return msg
 }
 
-function map(ch)
+function map(msg)
 {
-    const cmd = ch.t.split(' ').slice(1).join(' ').split(',')
+    msg.style = 'nerthus-command'
+    const cmd = msg.text.split(' ').slice(1).join(' ').split(',')
     const mapUrl = sanitizeText(cmd[0])
     const mapId = parseInt(cmd[1])
     if (mapId)
+    {
         addToMapChangelist(mapUrl, 2, mapId)
+    }
+    else if (BLOCKED_CHANNELS.includes(msg.channel))
+    {
+        // Do not change everyone's map on global or trade
+        return
+    }
     else
+    {
         addToMapChangelist(mapUrl, 1)
-
+    }
     applyCurrentMapChange()
-
-    return false
 }
 
-function resetMap(ch)
+function resetMap(msg)
 {
-    const mapId = parseInt(ch.t.split(' ').slice(1).join(' '))
+    msg.style = 'nerthus-command'
+    const mapId = parseInt(msg.text.split(' ').slice(1).join(' '))
 
     removeFromMapChangelist(2, mapId)
     applyCurrentMapChange()
@@ -122,14 +132,21 @@ function resetMap(ch)
     return false
 }
 
-function light(ch)
+function light(msg)
 {
-    const arr = ch.t.split(' ')
+    msg.style = 'nerthus-command'
+    const arr = msg.text.split(' ')
     arr.shift()
+    const argArr = arr.join(' ').split(',')
+    if (BLOCKED_CHANNELS.includes(msg.channel) && (arr.length === 0 || !argArr[2]))
+    {
+        // Do not change everyone's light on global or trade
+        return
+    }
+
     if (arr.length === 0) setForcedParameters(-1, '#000') // if no arguments
     else
     {
-        const argArr = arr.join(' ').split(',')
         let opacity = argArr[0].trim()
         const color = argArr[1] ? argArr[1].trim() : '#000'
         const mapId = argArr[2] ? argArr[2].trim() : 'default'
@@ -142,10 +159,11 @@ function light(ch)
     return false
 }
 
-function addGraf(ch)
+function addGraf(msg)
 {
+    msg.style = 'nerthus-command'
     //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
-    const cmd = ch.t.split(' ').slice(1).join(' ').split(',')
+    const cmd = msg.text.split(' ').slice(1).join(' ').split(',')
     const x = parseInt(cmd[0])
     const y = parseInt(cmd[1])
     const url = sanitizeText(cmd[2])
@@ -154,26 +172,38 @@ function addGraf(ch)
     const isCol = parseInt(cmd[4]) > 0
     const mapId = parseInt(cmd[5])
 
-    addNpcToList(new Npc(x, y, url, nick, isCol), mapId)
+    if (BLOCKED_CHANNELS.includes(msg.channel) && !mapId)
+    {
+        // Do not add graphic on global or trade
+        return
+    }
 
+    addNpcToList(new Npc(x, y, url, nick, isCol), mapId)
     return false
 }
 
-function delGraf(ch)
+function delGraf(msg)
 {
-    const cmd = ch.t.split(' ')[1].split(',')
+    msg.style = 'nerthus-command'
+    const cmd = msg.text.split(' ')[1].split(',')
     const x = parseInt(cmd[0])
     const y = parseInt(cmd[1])
     const mapId = parseInt(cmd[2])
 
-    removeNpc(x, y, mapId)
+    if (BLOCKED_CHANNELS.includes(msg.channel) && !mapId)
+    {
+        // Do not add graphic on global or trade
+        return
+    }
 
+    removeNpc(x, y, mapId)
     return false
 }
 
-function hide(ch)
+function hide(msg)
 {
-    const cmd = ch.t.split(' ')[1]
+    msg.style = 'nerthus-command'
+    const cmd = msg.text.split(' ')[1]
     const id = parseInt(cmd)
 
     hideGameNpc(id)
@@ -181,9 +211,18 @@ function hide(ch)
     return false
 }
 
-function weather(ch)
+function weather(msg)
 {
-    const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(ch.t)
+    msg.style = 'nerthus-command'
+    const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(msg.text)
+    if (!weatherArr) return false
+
+    if (BLOCKED_CHANNELS.includes(msg.channel))
+    {
+        // Do not change weather on global or trade
+        return
+    }
+
     setForcedWeather(weatherArr[1], weatherArr[2])
     if (settings.weatherEffects) clearEffects(true)
     displayWeather()

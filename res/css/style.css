@@ -21,6 +21,8 @@
 
 .lang:not(.nick), .lang .priv-in-general-span { color: #dde0ff !important }
 
+.wrapper-special-style-nerthus-command { display: none !important }
+
 /* Fix for NI and strange behavior when changing tabs  */
 .me .nick, .sys_comm .nick,
 .nar .nick, .nar2 .nick, .nar3 .nick,

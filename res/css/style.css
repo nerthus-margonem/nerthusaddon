@@ -19,7 +19,7 @@
 
 .wrapper-special-style-nerthus-dial666 { color: #f6f !important }
 
-.lang:not(.nick), .lang .priv-in-general-span { color: #dde0ff !important }
+.wrapper-special-style-nerthus-lang .message-section { color: #dde0ff !important }
 
 .wrapper-special-style-nerthus-command { display: none !important }
 

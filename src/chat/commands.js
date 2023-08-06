@@ -239,39 +239,32 @@ function me(msg)
     return msg
 }
 
-function lang(ch)
+function lang(msg)
 {
-    if (ch.t.split(',').length < 2) return ch // early return incorrect input
+    console.log(msg)
+    if (msg.text.split(',').length < 2) return msg // early return incorrect input
 
-    ch.s = 'lang'
-    ch.t = ch.t.replace(/^\*lang /, '') // remove *lang
-    const cmd = ch.t.split(',')
+    msg.style = `nerthus-lang nerthus-lang-ts-${msg.ts}`
+    msg.text = msg.text.replace(/^\*lang /, '') // remove *lang
+    const cmd = msg.text.split(',')
 
     const notAllowed = /[^a-ząćęłńóśźż -]/gi
     const tip = cmd[0].toLowerCase().replace(notAllowed, '')
     cmd.shift() // remove tip
 
-    ch.t = `*${cmd.join(',').trim()}*`
+    msg.text = `*${cmd.join(',').trim()}*`
 
     // add language tip after message is added to the page
     setTimeout(function ()
     {
-        if (INTERFACE === 'NI')
+        const elements = Array.from(document.querySelectorAll(`.nerthus-lang-ts-${msg.ts} .message-part`))
+        for (const element of elements)
         {
-            const elm = document.querySelector(`[data-ts="${ch.ts}"] span:last-of-type`)
-            if (!elm) return
-            $(elm).tip(`Język wiadomości: ${tip}`)
+            $(element).tip(`Język wiadomości: ${tip}`)
         }
-        else
-        {
-            const elm = document.querySelector(`[data-ts="${ch.ts}"] .chatmsg`)
-            if (!elm) return
-            elm.setAttribute('tip', `Język wiadomości: ${tip}`)
-        }
-
     }, 0)
 
-    return ch
+    return msg
 }
 
 const narratorCommands = {

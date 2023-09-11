@@ -21,7 +21,7 @@
       "2": [
         "Owszem, mam tu prawdziwe skarby. Unikalne rękopisy, niepowtarzalne notatki. Historie spisane przez autorów, dzienniki, studium na temat magii. Co Cię interesuje?",
         "Chciałbym przejrzeć dokumenty na temat magii. ->6",
-        "Interesują mnie rękopisy na temat umiejętności fizycznych. ->7",
+        "Interesują mnie opowieści i rękopisy na temat umiejętności fizycznych. ->7",
         "Dziękuję, może innym razem. ->END"
       ],
       "3": [
@@ -49,11 +49,11 @@
         "Mam już wszystko, dziękuję. ->END"
       ],
       "7": [
-        "Mam tu przede wszystkim pamiętniki, sporo osób chce zostawić po sobie i swoim życiu ślad, ale jest też kilka legend, opowiadań czy traktatów. Proszę, na przykład sierżantka Riveth napiasała <a href='https://docs.google.com/document/d/1ayye2emCfLh3CGg3nK6r0BzOetfyjT_69I-mayGWkgk/edit?usp=sharing' target='_blank'>pracę</a> o kamuflażach. Można ją nawet przeoczyć, hehe.",
+        "Mam tu przede wszystkim pamiętniki, sporo osób chce zostawić po sobie i swoim życiu ślad, ale jest też kilka legend, opowiadań czy traktatów. Proszę, na przykład sierżantka Riveth napisała <a href='https://docs.google.com/document/d/1ayye2emCfLh3CGg3nK6r0BzOetfyjT_69I-mayGWkgk/edit?usp=sharing' target='_blank'>pracę</a> o kamuflażach. Pisana małym drukiem, łatwo ją przeoczyć pomiędzy innymi egzemplarzami.",
         "Znam już je wszystkie, przyjdę innym razem. ->END"
       ],
       "8": [
-        "Mam zapiski dotyczące zarówno podstawowych zagadnień jak i bardziej mrocznych arkan . Yao Shasamo rozpisał się w <a href='https://drive.google.com/file/u/2/d/1HMuosFEfuK2-F1rQGZ_I0FLfZh2LnTq6/view?usp=sharing/view' target='_blank'>tym</a> dokumencie, oraz tym <a href='https://drive.google.com/file/u/2/d/1QOPQiFyWotvHDBdh8Da0_6-OYT2HomLN/view?usp=sharing' target='_blank'>załączniku</a>. Laliemm Raagha w swoich badaniach zajmowała się za to nekromancją... To nie jest dziedzina dla każdego, ale jeżeli szukasz odpowiedzi, to może znajdziesz je <a href='https://drive.google.com/file/d/17U0aFRLVtt7GZWM9tXV9GFQpXCKpTNwT/view' target='_blank'>tutaj</a>. Jest także praca niesławnego Nurosena, o <a href=' https://drive.google.com/file/d/1hlWukwOHhIn2QAtvKNVLmaE4brbx4OJO/view?usp=sharing' target='_blank'>tutaj</a>.",
+        "Mam zapiski dotyczące zarówno podstawowych zagadnień, jak i bardziej mrocznych arkan. Yao Shasamo rozpisał się w <a href='https://drive.google.com/file/u/2/d/1HMuosFEfuK2-F1rQGZ_I0FLfZh2LnTq6/view?usp=sharing/view' target='_blank'>tym</a> dokumencie oraz tym <a href='https://drive.google.com/file/u/2/d/1QOPQiFyWotvHDBdh8Da0_6-OYT2HomLN/view?usp=sharing' target='_blank'>załączniku</a>. Laliemm Raagha w swoich badaniach zajmowała się za to nekromancją... To nie jest dziedzina dla każdego, ale jeżeli szukasz odpowiedzi, to może znajdziesz je <a href='https://drive.google.com/file/d/17U0aFRLVtt7GZWM9tXV9GFQpXCKpTNwT/view' target='_blank'>tutaj</a>. Jest także praca niesławnego Nurosena, o <a href='https://drive.google.com/file/d/1hlWukwOHhIn2QAtvKNVLmaE4brbx4OJO/view?usp=sharing' target='_blank'>tutaj</a>.",
         "Dziękuję, Mair. ->END"
       ],
       "9": [
@@ -77,7 +77,7 @@
         "To mnie satysfakcjonuje, dziękuję. ->END"
       ],
       "13": [
-        "Readrer ukończył swoje badania tworząc kolejną pracę. W końcu udało mu się do nich dotrzeć, chociaż nie wiem czy było warto. Sam oceń <a href='https://drive.google.com/file/d/19jXW3f1KT03w0GPhS3gjx-l4sPuj60ot/view?usp=sharing' target=_blank'>ich jakość</a>. Naturalnie, swoje badania dokończyła także Lorrie, a <a href='https://drive.google.com/file/d/1N8rig8vkko1YhASleicIvKF6EMdCUOr-/view?usp=sharing' target=_blank'>tutaj</a> możesz zaczerpnąć z niej mądrości. ",
+        "Readrer ukończył swoje badania,tworząc kolejną pracę. W końcu udało mu się do nich dotrzeć, chociaż nie wiem, czy było warto. Sam oceń <a href='https://drive.google.com/file/d/19jXW3f1KT03w0GPhS3gjx-l4sPuj60ot/view?usp=sharing' target=_blank'>ich jakość</a>. Naturalnie, swoje badania dokończyła także Lorrie, a <a href='https://drive.google.com/file/d/1N8rig8vkko1YhASleicIvKF6EMdCUOr-/view?usp=sharing' target=_blank'>tutaj</a> możesz zaczerpnąć z niej mądrości. ",
         "Szkoda. ->END"
       ],
       "14": [
@@ -95,11 +95,11 @@
         "Interesuje mnie jednak coś innego. ->6"
       ],
       "17": [
-        "Mam tu jedne zapiski autorstwa drowa, ale nie dotyczą ona ściśle Magii, tylko Psioniki. Trochę trudno je <a href='https://drive.google.com/file/d/1AqeMR8GPA6yrqHLCXYGMbVHzUHWiRqbP/view' target='_blank'>rozczytać</a>, ale z całą pewnością są warte tego trudu. Do tego znalazłam jeszcze <a href='https://drive.google.com/file/d/1cRwI_vdrk7-LEfezD7p8ajHYcE6ucWCd/view?usp=sharing' target='_blank'>pracę</a> Daelina Finglorë Midavena dotyczącą permanentnej przemiany martwych przedmiotów. O, jeszcze te <a href='https://drive.google.com/file/d/17MgVAEV2Mhk3PTW6egZzZYpf4ZvaZsRi/view?usp=sharing' target='_blank'>notatki</a> Astratasa, może Cię zainteresują.",
+        "Mam tu jedne zapiski autorstwa drowa, ale nie dotyczą ona ściśle Magii, tylko Psioniki. Trochę trudno je <a href='https://drive.google.com/file/d/1AqeMR8GPA6yrqHLCXYGMbVHzUHWiRqbP/view' target='_blank'>rozczytać</a>, ale z całą pewnością są warte tego trudu. Do tego znalazłam jeszcze <a href='https://drive.google.com/file/d/1cRwI_vdrk7-LEfezD7p8ajHYcE6ucWCd/view?usp=sharing' target='_blank'>pracę</a> Daelina Finglorë Midavena dotyczącą permanentnej przemiany martwych przedmiotów. O, są jeszcze te <a href='https://drive.google.com/file/d/17MgVAEV2Mhk3PTW6egZzZYpf4ZvaZsRi/view?usp=sharing' target='_blank'>notatki</a> Astratasa, może Cię zainteresują.",
         "Pismo tego pierwszego przypomina pajęczynę, ale i tak dziękuję. ->END"
       ],
       "18": [
-        "Mam jedną pracę, autorstwa Daelina Finglorë Midavena, o zastosowaniu magii przemiany do wzmacniania naturalnych procesów w ciele. Bardzo praktyczna <a href='https://drive.google.com/file/d/1H6twUENRnNkmn2nHPRmNFS2CNN6ERa9I/view' target='_blank'>pozycja</a>, jestem pewna, że Cię zainteresuje. Do tego jest jeszcze Glieve ze swoją <a href='https://drive.google.com/file/d/1_KRL1Y4uKbt37OEtEUM-eBOOT8MueHhb/view' target='_blank'>pracą</a>.",
+        "Mam jedną pracę, autorstwa Daelina Finglorë Midavena, o zastosowaniu magii przemiany do wzmacniania naturalnych procesów w ciele. Bardzo praktyczna <a href='https://drive.google.com/file/d/1H6twUENRnNkmn2nHPRmNFS2CNN6ERa9I/view' target='_blank'>pozycja</a>, jestem pewna, że Cię zainteresuje. Do tego jest jeszcze Glieve ze swoją <a href='https://drive.google.com/file/d/1_KRL1Y4uKbt37OEtEUM-eBOOT8MueHhb/view' target='_blank'>pracą</a> na temat transmutacji istot żywych.",
         "Na pewno się przyda, dziękuję. ->END"
       ],
       "19": [
@@ -109,11 +109,11 @@
         "Interesuje mnie jednak coś innego. ->6"
       ],
       "20": [
-        "Mam trzy pozycje. Pierwsza, <a href='http://noc.ugu.pl/books/md_m_odrzucenie.pdf' target='_blank'>pięknie oprawiona praca</a> autorstwa Materiosa Dragoniusa powinna zawierać to, czego szukasz. <a href='https://drive.google.com/file/d/14qU5zaiPpJ_R_o9r2WjtUuKycCE3569v/view' target='_blank'>Druga praca</a>, autorstwa Magrosa Thornosa, jest nieco skromniejsza w formie, ale niech Cię to nie zwiedzie. Trzecia, trochę podniszczona z racji na wiek, ale nadal czytelna, <a href='https://drive.google.com/file/d/1U5eT3VOTPL08DOY6yumspqT01CAN0yck/view' target='_blank'>zerknij</a> . Autorem był niejaki Mysver.",
+        "Mam trzy pozycje. Pierwsza, <a href='http://noc.ugu.pl/books/md_m_odrzucenie.pdf' target='_blank'>pięknie oprawiona praca</a> autorstwa Materiosa Dragoniusa powinna zawierać to, czego szukasz. <a href='https://drive.google.com/file/d/14qU5zaiPpJ_R_o9r2WjtUuKycCE3569v/view' target='_blank'>Druga praca</a>, autorstwa Magrosa Thornosa, jest nieco skromniejsza w formie, ale niech Cię to nie zwiedzie. Trzecia, trochę podniszczona z racji na wiek, ale nadal czytelna, <a href='https://drive.google.com/file/d/1U5eT3VOTPL08DOY6yumspqT01CAN0yck/view' target='_blank'>znajduje się tutaj</a>. Jej autorem był niejaki Mysver.",
         "Wszystkie lektury warte przeczytania. Bardzo dziękuję. ->END"
       ],
       "21": [
-        "Mam w posiadaniu kolejne prace autorstwa Materiosa Dragoniusa oraz Magrosa Thornosa, zresztą podobno konsultowali ze sobą swoje doświadczenia. Równie dobrze oprawiona co poprzednia, tym razem zawiera znacznie bardziej teoretyczne zapiski. Niemniej jednak na pewno nocarskie prace zawsze będą <a href='http://noc.ugu.pl/books/md_am_odrzucenie.pdf' target='_blank'>wartą lekturą</a>. Na całe szczęście "Kłaczek" prezentował o wiele bardziej praktyczne podejście w swojej <a href='https://docs.google.com/document/d/1xuEBSUVpe_pAnjqDe8_THRVv8VHzwMN_i51Nm3M7z1o/edit#heading=h.yq03fatd2pn7' target='_blank'>pracy</a>.",
+        "Mam w posiadaniu kolejne prace autorstwa Materiosa Dragoniusa oraz Magrosa Thornosa. Zresztą, podobno konsultowali ze sobą swoje doświadczenia. Praca Materiosa, równie dobrze oprawiona co jego poprzednia publikacja, tym razem zawiera znacznie bardziej teoretyczne zapiski. Niemniej jednak na pewno nocarskie prace zawsze będą <a href='http://noc.ugu.pl/books/md_am_odrzucenie.pdf' target='_blank'>wartą lekturą</a>. Na całe szczęście „Kłaczek” prezentował o wiele bardziej praktyczne podejście w swojej <a href='https://docs.google.com/document/d/1xuEBSUVpe_pAnjqDe8_THRVv8VHzwMN_i51Nm3M7z1o/edit#heading=h.yq03fatd2pn7' target='_blank'>pracy</a>.",
         "Ach tak, magia teoretyczna. Pewnie zamyka kota w pudełku z barier. Zobaczymy co na to ten drugi... ->END"
       ],
       "22": [

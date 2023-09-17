@@ -121,6 +121,7 @@ function parseInnerDialog(npcMessage, playerReplies)
             '<span class="answer-text">' + (i + 1) + '. ' + playerReplies[i].text + '</span>' +
             '</li>'
     }
+    innerDial += '</ul>'
     return innerDial
 }
 

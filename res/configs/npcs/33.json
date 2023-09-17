@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Statua mistrza areny",
+    "x": "35",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-ekikechi.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego tropiciela. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,9791922#char_22642,nerthus' target=_blank' style='color: #FFEA00 !important'>Ekikechi</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Statua mistrza areny",
+    "x": "36",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-chatelet.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego paladyna. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,2838938#char_21636,nerthus' target=_blank' style='color: #FFEA00 !important'>Chatelet</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Statua mistrza areny",
+    "x": "37",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-petronelia.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego maga. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,4072356#char_20182,nerthus' target=_blank' style='color: #FFEA00 !important'>Petronelia</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  }
+]

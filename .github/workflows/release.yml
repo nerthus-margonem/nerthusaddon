@@ -27,7 +27,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Install dependencies
-        run: npm i
+        run: npm clean-install --legacy-peer-deps
 
       - name: Checkout to production
         run: git checkout -B production

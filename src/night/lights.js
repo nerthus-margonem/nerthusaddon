@@ -56,7 +56,7 @@ export function addSingleLight(lightType, x, y)
                 background: 'url(' + getLightTypeUrl(lightType) + ')',
                 width: lightTypeSize + 'px',
                 height: lightTypeSize + 'px',
-                zIndex: map.y * 2 + 12,
+                zIndex: map.y * 2 + 13,
                 left: x,
                 top: y
             })

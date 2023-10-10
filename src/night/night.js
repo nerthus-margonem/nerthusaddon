@@ -100,7 +100,7 @@ export function changeLight(opacity = getCurrentNaturalOpacity(), color = '#000'
     $night.css({
         height: map.y * 32,
         width: map.x * 32,
-        zIndex: map.y * 2 + 11,
+        zIndex: map.y * 2 + 12,
         opacity: opacity,
         'background-color': color
     })

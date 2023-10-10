@@ -725,5 +725,41 @@
     "y": "88",
     "url": "#res/img/npc/rock-pile.gif",
     "date": "21.03-21.11"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "33",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-szkielet1b.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "31",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-kosci5b.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "43",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-kosci5a.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "48",
+    "y": "41",
+    "url": "/obrazki/npc/map/tri-kosci4a.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "47",
+    "y": "41",
+    "url": "/obrazki/npc/map/tri-szkielet1a.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "50",
+    "y": "53",
+    "url": "/obrazki/npc/map/tri-kosci4b.gif"
   }
 ]

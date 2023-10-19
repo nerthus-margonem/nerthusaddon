@@ -23,11 +23,11 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
 {
     if (INTERFACE === 'NI')
     {
-        const updateData = Engine.map.gateways.updateData
-        Engine.map.gateways.updateData = function (d, townnames)
+        const hideLoaderSplash = Engine.map.hideLoaderSplash
+        Engine.map.hideLoaderSplash = function ()
         {
-            updateData.call(Engine.map.gateways, d, townnames)
             loadNewMapQueue()
+            hideLoaderSplash.call(Engine.map)
         }
     }
     else

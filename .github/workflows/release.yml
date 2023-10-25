@@ -34,7 +34,7 @@ jobs:
 
       - name: Update version
         run: |
-          echo "${GITHUB_REF#*/*/}" > version
+          echo "$GITHUB_REF" > version
           git add -f version
 
       - name: Run build
@@ -45,16 +45,16 @@ jobs:
 
       - name: Commit files
         run: |
-          git commit -m "Release: ${GITHUB_REF#*/*/}" | echo
+          git commit -m "Release: $GITHUB_REF" | echo
 
       # We need to change the tag, so that it points to the newest build.
       # Since that's how we do cache busting on cdn
       - name: Change tag
         run: |
-          RELEASE_TITLE=$(gh release view "${GITHUB_REF#*/*/}" --json name --template "{{.name}}")
-          RELEASE_DESC=$(gh release view "${GITHUB_REF#*/*/}" --json body --template "{{.body}}")
+          RELEASE_TITLE=$(gh release view "$GITHUB_REF" --json name --template "{{.name}}")
+          RELEASE_DESC=$(gh release view "$GITHUB_REF" --json body --template "{{.body}}")
 
-          git tag -f -a "${GITHUB_REF#*/*/}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
+          git tag -f -a "$GITHUB_REF" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
         env:
           GITHUB_USER: <ORG>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,4 +62,4 @@ jobs:
       - name: Push changes
         run: |
           git push --set-upstream origin production --force
-          git push origin "${GITHUB_REF#*/*/}" --force
+          git push origin "$GITHUB_REF" --force

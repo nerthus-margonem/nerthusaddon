@@ -891,5 +891,18 @@
     "newUrl": "#res/img/npc/black-ithan-gate.gif",
     "lvl": 0,
     "date": "21.03-21.11"
+  },
+  {
+    "type": "change",
+    "id": 267586,
+    "newUrl": "/obrazki/npc/map/drzew-such4.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Demony Witamy",
+    "x": "44",
+    "y": "73",
+    "url": "/obrazki/npc/mas/nic64x64.gif",
+    "collision": false
   }
 ]

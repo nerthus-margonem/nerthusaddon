@@ -861,36 +861,31 @@
     "type": "change",
     "id": 147618,
     "newUrl": "#res/img/npc/black-wall-corner-right.gif",
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "change",
     "id": 147617,
     "newUrl": "#res/img/npc/black-wall-corner-left.gif",
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "change",
     "id": 147616,
     "newUrl": "#res/img/npc/black-wall-corner-right.gif",
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "change",
     "id": 147615,
     "newUrl": "#res/img/npc/black-wall-corner-left.gif",
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "change",
     "id": 203300,
     "newUrl": "#res/img/npc/black-ithan-gate.gif",
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "change",
@@ -904,5 +899,41 @@
     "y": "73",
     "url": "/obrazki/npc/mas/nic64x64.gif",
     "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "21",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "56",
+    "y": "80",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "56",
+    "y": "81",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "52",
+    "y": "75",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "date": "22.11-20.03"
   }
 ]

@@ -32,7 +32,7 @@ function timeToOpacity(time)
 function getDarknessNiObject(opacity, color)
 {
     return {
-        draw: function (e)
+        draw(e)
         {
             const style = e.fillStyle
             e.fillStyle = color
@@ -41,14 +41,20 @@ function getDarknessNiObject(opacity, color)
             e.globalAlpha = 1.0
             e.fillStyle = style
         },
-        getOrder: function ()
+        getOrder()
         {
             return 950 // Darkness bellow lights but above everything else
         },
-        update: function () {},
+        update() {},
         d: {},
-        updateDATA: function () {},
-        alwaysDraw: true
+        updateDATA() {},
+        alwaysDraw: true,
+        getFollowController()
+        {
+            return {
+                checkFollowGlow: () => false
+            }
+        }
     }
 }
 

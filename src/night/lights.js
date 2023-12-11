@@ -20,19 +20,25 @@ function getLightTypeUrl(lightType)
 function getLightNiObject(img, x, y, lightTypeSize)
 {
     return {
-        draw: function (e)
+        draw(e)
         {
             e.drawImage(img, x - Engine.map.offset[0], y - Engine.map.offset[1])
         },
-        getOrder: function ()
+        getOrder()
         {
             return 1000 // Lights always on top
         },
-        update: function () {},
+        update() {},
         d: {},
-        updateDATA: function () {},
+        updateDATA() {},
         rx: (x + lightTypeSize / 2) / 32,
-        ry: (y + lightTypeSize / 2) / 32
+        ry: (y + lightTypeSize / 2) / 32,
+        getFollowController()
+        {
+            return {
+                checkFollowGlow: () => false
+            }
+        }
     }
 }
 

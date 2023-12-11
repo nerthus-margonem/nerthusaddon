@@ -35,7 +35,7 @@ function getWeatherNiObject(type, opacity)
     else if (type === 'snow') frames = snowFrames
 
     return {
-        draw: function (e)
+        draw(e)
         {
             const img = frames[currentFrame[type]]
 
@@ -54,14 +54,20 @@ function getWeatherNiObject(type, opacity)
                 e.globalAlpha = alpha
             }
         },
-        getOrder: function ()
+        getOrder()
         {
             return 930
         },
-        update: function () {},
+        update() {},
         d: {},
-        updateDATA: function () {},
-        alwaysDraw: true
+        updateDATA() {},
+        alwaysDraw: true,
+        getFollowController()
+        {
+            return {
+                checkFollowGlow: () => false
+            }
+        }
     }
 }
 

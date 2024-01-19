@@ -27,8 +27,7 @@
     "x": "11",
     "y": "4",
     "url": "/obrazki/npc/map/kom_ogien06.gif",
-    "collision": true,
-    "background": true
+    "collision": true
   },
   {
     "name": "Puszek",

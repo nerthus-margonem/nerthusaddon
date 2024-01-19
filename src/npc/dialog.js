@@ -108,7 +108,7 @@ function removeScroll()
 
 function parseInnerDialog(npcMessage, playerReplies)
 {
-    let innerDial = '<p class="npc-message">' + npcMessage + '</p><ul class="answers">'
+    let innerDial = '<ul class="answers">'
     const repliesLen = playerReplies.length
     for (let i = 0; i < repliesLen; i++)
     {
@@ -145,7 +145,7 @@ function displayDialog(npcId, npcNick, npcMessage, playerReplies)//(message, rep
     {
         // create fake dialog that we can then modify
         Engine.communication.dispatcher.on_d(
-            ['0', npcNick, '-1', '1', 'NPC Talk', '', '2', 'Option', '-1']
+            ['0', npcNick, '-1', '1', npcMessage, '', '2', 'Option', '-1']
         )
 
         const innerDial = parseInnerDialog(npcMessage, playerReplies)

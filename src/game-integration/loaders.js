@@ -1,3 +1,4 @@
+let currentLoadedMapId = -1
 const loadQueue = []
 
 /**
@@ -7,12 +8,21 @@ const loadQueue = []
  */
 export function loadOnEveryMap(fun, args)
 {
-    if (INTERFACE === 'NI' || map.id !== -1) fun(args)
+    if (currentLoadedMapId !== -1) fun(args)
     loadQueue.push([fun, args])
 }
 
 function loadNewMapQueue()
 {
+    if (INTERFACE === 'NI')
+    {
+        currentLoadedMapId = Engine.map.d.id
+    }
+    else
+    {
+        currentLoadedMapId = map.id
+    }
+
     for (const i in loadQueue)
     {
         loadQueue[i][0](loadQueue[i][1])
@@ -23,15 +33,20 @@ export function initiateGameIntegrationLoaders() //TODO bug: sometimes long load
 {
     if (INTERFACE === 'NI')
     {
+        currentLoadedMapId = Engine.map.d.id
         const hideLoaderSplash = Engine.map.hideLoaderSplash
         Engine.map.hideLoaderSplash = function ()
         {
-            loadNewMapQueue()
+            if (Engine.map.d.id !== currentLoadedMapId)
+            {
+                loadNewMapQueue()
+            }
             hideLoaderSplash.call(Engine.map)
         }
     }
     else
     {
+        currentLoadedMapId = map.id
         map.__id = map.id
         Object.defineProperty(map, 'id', {
             set(val)

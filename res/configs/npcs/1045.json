@@ -22,6 +22,15 @@
     "collision": true
   },
   {
+    "name": "Kominek",
+    "tip": "",
+    "x": "11",
+    "y": "4",
+    "url": "/obrazki/npc/map/kom_ogien06.gif",
+    "collision": true,
+    "background": true
+  },
+  {
     "name": "Puszek",
     "x": "13",
     "y": "10",
@@ -105,6 +114,14 @@
     "tip": "",
     "x": "5",
     "y": "12",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "10",
+    "y": "4",
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   }

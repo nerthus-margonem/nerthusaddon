@@ -1,8 +1,8 @@
-import {settings} from '../settings'
 import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
-import {lightsOn, resetLights, turnLightsOn} from './lights'
-import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 import {addSettingToPanel} from '../interface/panel'
+import {settings} from '../settings'
+import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
+import {lightsOn, resetLights, turnLightsOn} from './lights'
 
 let opacityChange = 0
 const forcedParameters = {}

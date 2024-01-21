@@ -1,11 +1,11 @@
-import {checkPermissionLvl, hasNarrationRights} from './permissions'
-import {customNpcs, loadNpcsFromFile} from './npc/npc'
-import {getWeather} from './weather/weather'
-import {applyCurrentNight, changeLight} from './night/night'
-import {turnLightsOn} from './night/lights'
-import {addNpc, addNpcToList} from './npc/npc-actions/add'
 import {addToMapChangelist, applyCurrentMapChange, removeFromMapChangelist} from './maps'
+import {turnLightsOn} from './night/lights'
+import {applyCurrentNight, changeLight} from './night/night'
+import {customNpcs, loadNpcsFromFile} from './npc/npc'
+import {addNpc, addNpcToList} from './npc/npc-actions/add'
 import {hideGameNpc} from './npc/npc-actions/hide'
+import {checkPermissionLvl, hasNarrationRights} from './permissions'
+import {getWeather} from './weather/weather'
 
 /*
  Event names:

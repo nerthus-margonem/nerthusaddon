@@ -1,15 +1,15 @@
-import {settings} from '../settings'
-import {Simple1DNoise} from './noise'
-import {addWidget} from '../widgets'
-import {default as weatherDescriptions} from '../../res/descriptions/weather.json'
-import {clearEffects, displayGameWeather, displayRain, displaySnow} from './effects'
 import {default as climates} from '../../res/configs/climates.json'
-import {isCurrentMapOutdoor} from '../utility-functions'
-import {loadOnEveryMap} from '../game-integration/loaders'
-import {setOpacityChange} from '../night/night'
+import {default as weatherDescriptions} from '../../res/descriptions/weather.json'
 import {callEvent} from '../API'
+import {loadOnEveryMap} from '../game-integration/loaders'
 import {addSettingToPanel} from '../interface/panel'
+import {setOpacityChange} from '../night/night'
+import {settings} from '../settings'
+import {isCurrentMapOutdoor} from '../utility-functions'
+import {addWidget} from '../widgets'
+import {clearEffects, displayGameWeather, displayRain, displaySnow} from './effects'
 import {displayLightnings} from './lightnings'
+import {Simple1DNoise} from './noise'
 
 const CHARACTERISTIC = Object.freeze({HUMIDITY: 'humidity', CLOUDINESS: 'cloudiness', TEMPERATURE: 'temperature'})
 const GAME_WEATHERS = Object.freeze(['fish', 'light', 'latern', 'bat'])

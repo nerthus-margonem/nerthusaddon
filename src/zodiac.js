@@ -1,7 +1,7 @@
-import {addWidget} from './widgets'
 import {default as zodiacDescriptions} from '../res/descriptions/zodiac.json'
-import {settings} from './settings'
 import {addSettingToPanel} from './interface/panel'
+import {settings} from './settings'
+import {addWidget} from './widgets'
 
 /**
  * Zodiac sign dates in format: month: [name, end day]

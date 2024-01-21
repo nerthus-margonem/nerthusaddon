@@ -1,5 +1,5 @@
-import {saveSetting, settings} from '../settings'
 import {initLightManager} from '../night/light-manager'
+import {saveSetting, settings} from '../settings'
 import {addDraggable} from '../utility-functions'
 
 const ELEMENT_TO_ATTACH_TO = INTERFACE === 'NI' ? 'body' : '#centerbox2'

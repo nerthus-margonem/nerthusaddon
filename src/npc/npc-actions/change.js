@@ -21,7 +21,8 @@ export function changeGameNpc(npc)
                     const beforeOnload = newNpc.beforeOnload
                     newNpc.beforeOnload = function (data, img, npc)
                     {
-                        if (npc.icon === icon) {
+                        if (npc.icon === icon)
+                        {
                             beforeOnload.call(newNpc, ...arguments)
                         }
                     }

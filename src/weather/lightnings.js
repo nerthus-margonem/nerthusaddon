@@ -1,7 +1,7 @@
-import {pseudoRandom} from '../utility-functions'
-import {addNpc} from '../npc/npc-actions/add'
 import {customNpcs, Npc} from '../npc/npc'
+import {addNpc} from '../npc/npc-actions/add'
 import {removeNpc} from '../npc/npc-actions/remove'
+import {pseudoRandom} from '../utility-functions'
 
 const lightningUrls = [
     '/obrazki/npc/oev/piorun1.gif',

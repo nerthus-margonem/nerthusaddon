@@ -1,6 +1,6 @@
 import {addToNiDrawList} from '../game-integration/loaders'
-import {coordsToId} from '../utility-functions'
 import {settings} from '../settings'
+import {coordsToId} from '../utility-functions'
 
 const LIGHT_TYPE_SIZES = {S: 64, M: 96, L: 160, XL: 192}
 

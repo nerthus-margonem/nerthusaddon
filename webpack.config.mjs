@@ -1,6 +1,12 @@
-const webpack = require('webpack')
-const path = require('path')
-const childProcess = require('child_process')
+import * as childProcess from 'child_process'
+import yaml from 'js-yaml'
+import * as path from 'path'
+import {dirname} from 'path'
+import {fileURLToPath} from 'url'
+import webpack from 'webpack'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 
 const npcMapList = childProcess.execSync('ls res/configs/npcs').toString().match(/(\d*)*\.json/g)
 const lightMapList = childProcess.execSync('ls res/configs/night-lights').toString().match(/(\d*)*\.json/g)
@@ -17,11 +23,10 @@ const CONSTANTS = new webpack.DefinePlugin({
     AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
     VERSION: JSON.stringify(version)
 })
-
-module.exports = [
+export default [
     {
         name: 'NI-production',
-        mode: 'production',
+        mode: 'development',
         entry: './src/main.js',
         output: {
             path: path.resolve(__dirname, 'dist/'),
@@ -46,13 +51,20 @@ module.exports = [
                             plugins: ['@babel/plugin-transform-runtime']
                         }
                     }
+                },
+                {
+                    test: /\.yaml$/i,
+                    type: 'json',
+                    parser: {
+                        parse: yaml.load
+                    }
                 }
             ]
         }
     },
     {
         name: 'SI-production',
-        mode: 'production',
+        mode: 'development',
         entry: './src/main.js',
         output: {
             path: path.resolve(__dirname, 'dist/'),
@@ -76,6 +88,13 @@ module.exports = [
                             presets: ['@babel/preset-env'],
                             plugins: ['@babel/plugin-transform-runtime']
                         }
+                    }
+                },
+                {
+                    test: /\.yaml$/i,
+                    type: 'json',
+                    parser: {
+                        parse: yaml.load
                     }
                 }
             ]

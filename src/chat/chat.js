@@ -24,7 +24,7 @@ function fetchCmd(chatMessageData)
 
 function fetchCallback(command, msg)
 {
-    if (commandsMap[command] && hasNarrationRights(msg.authorBusinessCard.getNick()))
+    if (commandsMap[command] && hasNarrationRights(msg.authorBusinessCard.getAcc()))
         return commandsMap[command]
     else
         return commandsPublicMap[command]

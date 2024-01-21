@@ -30,7 +30,7 @@ function getRankNameOf(player)
     let rank = RANKS.NONE
     if (player.rights) rank = rights2rank(player.rights)
 
-    switch (checkPermissionLvl(player.nick))
+    switch (checkPermissionLvl(player.account))
     {
         case PERMISSION_LVL.NARRATOR:
             if (rank === RANKS.MC)
@@ -92,7 +92,7 @@ function parseTip(player)
     if (INTERFACE === 'NI')
     {
         let tip = ''
-        const rank = getRankNameOf(player)
+        const rank = getRankNameOf(player.d)
         if (rank)
             tip += '<div class="rank">' + rank + '</div>'
 

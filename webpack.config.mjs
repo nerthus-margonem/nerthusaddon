@@ -26,7 +26,7 @@ const CONSTANTS = new webpack.DefinePlugin({
 export default [
     {
         name: 'NI-production',
-        mode: 'development',
+        mode: 'production',
         entry: './src/main.js',
         output: {
             path: path.resolve(__dirname, 'dist/'),
@@ -64,7 +64,7 @@ export default [
     },
     {
         name: 'SI-production',
-        mode: 'development',
+        mode: 'production',
         entry: './src/main.js',
         output: {
             path: path.resolve(__dirname, 'dist/'),

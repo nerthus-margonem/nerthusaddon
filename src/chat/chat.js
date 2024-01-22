@@ -40,9 +40,13 @@ function parseMessage(chatMessageData)
         if (callback)
         {
             chatMessageData.text = fixUrl(chatMessageData.text)
+            let nick = chatMessageData.authorBusinessCard.getNick()
+            if (chatMessageData.receiverBusinessCard) {
+                nick += ' -> ' + chatMessageData.receiverBusinessCard.getNick()
+            }
             log(sanitizeText(
-                `[${chatMessageData.channel}] ${chatMessageData.authorBusinessCard.getNick()} -> ${chatMessageData.text}`
-            )) // [which tab] author -> command
+                `[${chatMessageData.channel}] (${nick}): ${chatMessageData.text}`
+            )) // [which tab] (author -> receiver): command
 
             return callback(chatMessageData)
         }

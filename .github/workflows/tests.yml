@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm clean-install --legacy-peer-deps
+      - run: npm clean-install
       - run: npm run test-coverage
       - run: npm run coverage-raport-text
       - run: mkdir coverage

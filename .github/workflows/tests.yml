@@ -18,13 +18,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm clean-install
-      - run: npm run test-coverage
-      - run: npm run coverage-raport-text
-      - run: mkdir coverage
-      - run: npm run coverage-raport-text-lcov > coverage/lcov.info
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          CI: true
+      - run: npm run test

@@ -1,4 +1,4 @@
-This directory contains main configs of the addon.
+This directory contains the main configs of the addon.
 This file will list what each file or directory represents and how to edit it.
 
 # Directories
@@ -8,9 +8,9 @@ This file will list what each file or directory represents and how to edit it.
 Contains files used to determine where to place the night lights on the map.
 Files are in the \[map id\].json format.
 
-Each file contains array of objects that have three properties:
- - `x`: amount of pixels from the left border of the map to the left border of light
- - `y`: amount of pixels from the top border of the map to the top border of light
+Each file contains an array of objects that have three properties:
+ - `x`: number of pixels from the left border of the map to the left border of light
+ - `y`: number of pixels from the top border of the map to the top border of light
  - `type`: type of light, currently it's size. It can be: `S`, `M`, `L`, or `XL`.
  
 #### npcs
@@ -18,7 +18,7 @@ Each file contains array of objects that have three properties:
 Contains files used to determine npc modifications on the map.
 Files are in the \[map id\].json format.
 
-Each file contains array of objects that can be of three types:
+Each file contains an array of objects that can be of three types:
  - adding new npc - object without property `type`
  - hiding existing npc - `type` set to `delete`
  - changing existing npc - `type` set to `change`
@@ -48,7 +48,7 @@ Removing elements would make high lvls have the same name - last element.
 
 #### map-exceptions
 
-Contains ids of maps that are wrongly categorised by the game's code.
+Contains ids of maps that are wrongly categorized by the game's code.
 
 indoor contains map ids that will be parsed as indoor maps regardless of their config.
 outdoor contains map ids that will be parsed as outdoor maps regardless of their config.
@@ -57,7 +57,7 @@ outdoor contains map ids that will be parsed as outdoor maps regardless of their
 
 Contains information of which custom map to use in place (or rather, on top of) normal one.
 
-If there is a key in current season equal to maps id, it's value is the new map url used.
+If there is a key in the current season equal to maps id, its value is the new map url used.
 If not, `default` is checked in similar fashion.
  
 #### panel-links
@@ -66,8 +66,8 @@ Contains information about links to resources found in an addon's panel.
 
 #### permissions
 
-Contains information about usernames with special roles on the server
+Contains information about account ids of users with special roles on the server.
 
 #### vips
 
-Contains list of character ids with special description under their game tip.
+Contains a list of character ids with special description under their game tip.

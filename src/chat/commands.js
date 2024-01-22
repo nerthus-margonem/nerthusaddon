@@ -23,11 +23,24 @@ function getAuthorBusinessCardProxy(businessCard, newAuthorNick)
     })
 }
 
+function hideMessageIdentity(msg)
+{
+    msg.authorBusinessCard = new Proxy({}, {
+        get: () => () => ''
+    })
+    if (msg.receiverBusinessCard)
+    {
+        msg.receiverBusinessCard = new Proxy({}, {
+            get: () => () => ''
+        })
+    }
+}
+
 function nar1(msg)
 {
     msg.style = 'nerthus-nar1'
     msg.nick = msg.authorBusinessCard.getNick()
-    msg.authorBusinessCard.getNick = () => ''
+    hideMessageIdentity(msg)
     msg.text = msg.text.replace(/^\*nar1? /, '')
     return msg
 }
@@ -36,7 +49,7 @@ function nar2(msg)
 {
     msg.style = 'nerthus-nar2'
     msg.nick = msg.authorBusinessCard.getNick()
-    msg.authorBusinessCard.getNick = () => ''
+    hideMessageIdentity(msg)
     msg.text = msg.text.replace(/^\*nar2 /, '')
     return msg
 }
@@ -45,7 +58,7 @@ function nar3(msg)
 {
     msg.style = 'nerthus-nar3'
     msg.nick = msg.authorBusinessCard.getNick()
-    msg.authorBusinessCard.getNick = () => ''
+    hideMessageIdentity(msg)
     msg.text = msg.text.replace(/^\*nar3 /, '')
     return msg
 }
@@ -94,7 +107,7 @@ function sys(msg)
 {
     msg.style = 'nerthus-sys'
     msg.nick = msg.authorBusinessCard.getNick()
-    msg.authorBusinessCard.getNick = () => ''
+    hideMessageIdentity(msg)
     msg.text = msg.text.replace(/^\*sys /, '')
     return msg
 }
@@ -234,7 +247,7 @@ function me(msg)
 {
     msg.style = 2 // 2 is special style for regular `/me`
     msg.nick = msg.authorBusinessCard.getNick()
-    msg.authorBusinessCard.getNick = () => ''
+    hideMessageIdentity(msg)
     msg.text = msg.text.replace(/^\*me /, '')
     return msg
 }

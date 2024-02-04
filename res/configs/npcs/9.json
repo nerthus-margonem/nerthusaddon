@@ -70,64 +70,20 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 156905,
-    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258317,
-    "newUrl": "/obrazki/npc/map/zim-szare3-lew1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258318,
-    "newUrl": "/obrazki/npc/map/zim-szare1-praw1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156903,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
+    "type": "delete",
     "id": 228064,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 156905,
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
     "type": "delete",
     "id": 156890,
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156906,
-    "newUrl": "/obrazki/npc/map/zim-prost2a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156907,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258319,
-    "newUrl": "/obrazki/npc/map/zim-sosn-duz1a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -144,17 +100,14 @@
     "lvl": 0
   },
   {
-    "name": "szare lewe",
-    "tip": "",
-    "x": "60",
-    "y": "42",
-    "url": "/obrazki/npc/map/zim-szare1-lew1.gif",
+    "type": "delete",
+    "id": 156893,
+    "lvl": 0,
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 156893,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "type": "delete",
+    "id": 243453,
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -171,73 +124,9 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 258341,
-    "newUrl": "/obrazki/npc/map/zim-szare3-praw2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258337,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 258340,
     "lvl": 0
-  },
-  {
-    "name": "sosna duża",
-    "tip": "",
-    "x": "54",
-    "y": "85",
-    "url": "/obrazki/npc/map/zim-sosn-duz1a.gif",
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258336,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258335,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156920,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258338,
-    "newUrl": "/obrazki/npc/map/zim-szare1-praw2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258339,
-    "newUrl": "/obrazki/npc/map/zim-szare2-praw1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 162339,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
   },
   {
     "type": "delete",
@@ -245,73 +134,9 @@
     "lvl": 0
   },
   {
-    "name": "szare lewe",
-    "tip": "",
-    "x": "36",
-    "y": "90",
-    "url": "/obrazki/npc/map/zim-szare1-lew1.gif",
-    "date": "22.11-20.03"
-  },
-  {
     "type": "change",
     "id": 156897,
     "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 162334,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156900,
-    "newUrl": "/obrazki/npc/map/zim-szare4-lew1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156911,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258324,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258325,
-    "newUrl": "/obrazki/npc/map/zim-sosn-duz2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258329,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258326,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258333,
-    "newUrl": "/obrazki/npc/map/zim-prost3a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -322,101 +147,14 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 258332,
-    "newUrl": "/obrazki/npc/map/zim-sosn-duz1a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258328,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "name": "choinka mała",
-    "tip": "",
-    "x": "14",
-    "y": "73",
-    "url": "/obrazki/npc/map/zim-choin-mala1b.gif",
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 258331,
     "lvl": 0
   },
   {
-    "name": "sosna duża",
-    "tip": "",
-    "x": "10",
-    "y": "67",
-    "url": "/obrazki/npc/map/zim-sosn-duz3b.gif",
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258330,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258327,
-    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258322,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258321,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "name": "choinka średnia",
-    "tip": "",
-    "x": "14",
-    "y": "51",
-    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 156913,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258334,
-    "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 80526,
     "lvl": 8,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 258323,
-    "newUrl": "/obrazki/npc/map/zim-szare1-lew2.gif",
-    "lvl": 0,
     "date": "22.11-20.03"
   },
   {
@@ -442,14 +180,12 @@
   {
     "type": "delete",
     "id": 258318,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 156903,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -460,32 +196,27 @@
   {
     "type": "delete",
     "id": 258317,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 156906,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 156907,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258319,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 169040,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -502,50 +233,42 @@
   {
     "type": "delete",
     "id": 258341,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258337,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258336,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258335,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 162339,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258339,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258338,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 156920,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -562,20 +285,17 @@
   {
     "type": "delete",
     "id": 156888,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 162334,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 156900,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -592,92 +312,77 @@
   {
     "type": "delete",
     "id": 156911,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258325,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258324,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258329,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258333,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258326,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258332,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258328,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258330,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258327,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 156913,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258334,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258323,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258322,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 258321,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",

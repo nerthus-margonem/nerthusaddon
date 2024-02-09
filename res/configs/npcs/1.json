@@ -959,7 +959,8 @@
     "type": "change",
     "id": 267571,
     "newUrl": "/obrazki/npc/map/zim-choin-mala2b.gif",
-    "lvl": 0
+    "lvl": 0,
+    "date": "22.11-20.03"
   },
   {
     "type": "delete",

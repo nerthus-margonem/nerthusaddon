@@ -179,8 +179,8 @@
     "name": "choinka",
     "tip": "",
     "x": "40",
-    "y": "64",
-    "url": "/obrazki/npc/map/zim-sosn-mal3a.gif",
+    "y": "63",
+    "url": "/obrazki/npc/map/zim-sosn-mal2a.gif",
     "date": "22.11-20.03"
   },
   {
@@ -891,7 +891,8 @@
     "type": "change",
     "id": 267586,
     "newUrl": "/obrazki/npc/map/drzew-such4.gif",
-    "lvl": 0
+    "lvl": 0,
+    "date": "21.03-21.11"
   },
   {
     "name": "Demony Witamy",
@@ -934,6 +935,96 @@
     "y": "75",
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267586,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267599,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267600,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 267571,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala2b.gif",
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 267584,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267571,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267576,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche proste",
+    "tip": "",
+    "x": "59",
+    "y": "75",
+    "url": "/obrazki/npc/map/zim-prost4a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna duża",
+    "tip": "",
+    "x": "60",
+    "y": "73",
+    "url": "/obrazki/npc/map/zim-sosn-duz3b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "52",
+    "y": "78",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267564,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267598,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267597,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 267596,
+    "lvl": 0,
     "date": "22.11-20.03"
   }
 ]

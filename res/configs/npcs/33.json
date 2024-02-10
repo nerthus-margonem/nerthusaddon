@@ -20,8 +20,27 @@
     "name": "Statua mistrza areny",
     "x": "36",
     "y": "63",
+    "url": "#res/img/npc/statue-of-chatelet-grass.gif",
+    "collision": true,
+    "date": "21.03-21.11",
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego paladyna. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,2838938#char_21636,nerthus' target=_blank' style='color: #FFEA00 !important'>Chatelet</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Statua mistrza areny",
+    "x": "36",
+    "y": "63",
     "url": "#res/img/npc/statue-of-chatelet.gif",
     "collision": true,
+    "date": "22.11-20.03",
     "dialog": {
       "0": [
         "Kamienna statua przedstawiająca potężnego paladyna. Pod spodem tabliczka z napisem:",

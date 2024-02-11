@@ -141,7 +141,10 @@ export function displayGameWeather(name)
     if (INTERFACE === 'NI')
     {
         const uppercaseWeatherName = name.charAt(0).toUpperCase() + name.slice(1)
-        Engine.weather.createWeather(uppercaseWeatherName)
+
+        Engine.weather.setMapSize()
+        if (!Engine.weather.mapSize) return
+        Engine.weather.createObjects(uppercaseWeatherName, {})
     }
     else
     {

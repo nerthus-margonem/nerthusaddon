@@ -38,7 +38,9 @@ function getLightNiObject(img, x, y, lightTypeSize)
             return {
                 checkFollowGlow: () => false
             }
-        }
+        },
+        getNick() { return '' },
+        getId() { return -1 }
     }
 }
 

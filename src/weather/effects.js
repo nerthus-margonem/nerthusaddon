@@ -67,7 +67,9 @@ function getWeatherNiObject(type, opacity)
             return {
                 checkFollowGlow: () => false
             }
-        }
+        },
+        getNick() { return '' },
+        getId() { return -1 }
     }
 }
 

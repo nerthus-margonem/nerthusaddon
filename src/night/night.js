@@ -54,7 +54,9 @@ function getDarknessNiObject(opacity, color)
             return {
                 checkFollowGlow: () => false
             }
-        }
+        },
+        getNick() { return '' },
+        getId() { return -1 }
     }
 }
 

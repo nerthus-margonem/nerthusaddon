@@ -40,7 +40,8 @@ function getLightNiObject(img, x, y, lightTypeSize)
             }
         },
         getNick() { return '' },
-        getId() { return -1 }
+        getId() { return -1 },
+        drawNickOrTip() {}
     }
 }
 

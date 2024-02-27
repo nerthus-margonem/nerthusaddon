@@ -69,7 +69,8 @@ function getWeatherNiObject(type, opacity)
             }
         },
         getNick() { return '' },
-        getId() { return -1 }
+        getId() { return -1 },
+        drawNickOrTip() {}
     }
 }
 

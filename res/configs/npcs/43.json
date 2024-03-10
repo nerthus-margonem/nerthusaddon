@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Mistrzyni Kultystów",
+    "x": "12",
+    "y": "12",
+    "url": "#res/img/npc/great-cultist-priestess.gif",
+    "collision": true
+  }
+]

@@ -5,5 +5,11 @@
     "y": "12",
     "url": "#res/img/npc/great-cultist-priestess.gif",
     "collision": true
+  },
+  {
+    "type": "change",
+    "id": 56369,
+    "newUrl": "#res/img/npc/ghosts/ghost-great-cultist.gif",
+    "lvl": 0
   }
 ]

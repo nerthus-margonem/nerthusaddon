@@ -181,7 +181,11 @@ function addGraf(msg)
     const y = parseInt(cmd[1])
     const url = sanitizeText(cmd[2])
     const name = sanitizeText(cmd[3])
-    const nick = name ? `<b>${name}</b>` : ''
+    let nick = name ?? ''
+    if (INTERFACE === 'SI')
+    {
+        nick = `<b>${nick}</b>`
+    }
     const isCol = parseInt(cmd[4]) > 0
     const mapId = parseInt(cmd[5])
 

@@ -194,7 +194,7 @@ export function addNpc(npc)
         if (npc.nick)
             $npc.attr({
                 ctip: 't_npc',
-                tip: npc.nick
+                tip: `<b>${npc.nick}</b>`
             })
 
         if (npc.dialog)

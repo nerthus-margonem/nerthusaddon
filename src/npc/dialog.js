@@ -157,9 +157,9 @@ function displayDialog(npcId, npcNick, npcMessage, playerReplies)//(message, rep
     }
     else
     {
-        $('#dlgin .message').empty().append('<h4>' + npcNick + '</h4>' + npcMessage)
+        $('#dlgin .message').empty().append('<h4><b>' + npcNick + '</b></h4>' + npcMessage)
         const $replies = $('#dlgin .replies').empty()
-        $replies.append.apply($replies, playerReplies.map(composeReply))
+        $replies.append(...playerReplies.map(composeReply))
         addScroll()
         $('#dialog').show()
     }

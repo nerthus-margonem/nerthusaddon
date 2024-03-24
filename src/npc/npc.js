@@ -51,10 +51,7 @@ function deploy(npc)
         }
         default:
         {
-            let tip
-            if (typeof npc.tip === 'string') tip = npc.tip
-            else if (INTERFACE === 'NI') tip = npc.name
-            else tip = '<b>' + npc.name + '</b>'
+            const tip = npc.tip ?? npc.name
 
             const customNpc = new Npc(npc.x, npc.y, npc.url, tip, npc.collision, npc.dialog)
             return addNpc(customNpc)

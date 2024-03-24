@@ -852,13 +852,6 @@
   },
   {
     "type": "change",
-    "id": 203300,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
-    "lvl": 0,
-    "date": "21.03-21.11"
-  },
-  {
-    "type": "change",
     "id": 147618,
     "newUrl": "#res/img/npc/black-wall-corner-right.gif",
     "lvl": 0

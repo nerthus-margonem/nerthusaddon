@@ -1,17 +1,17 @@
 [
-    {
-        "type": "delete",
-        "id": 144420,
-        "lvl": 0
-    },
-    {
-        "type": "delete",
-        "id": 144435,
-        "lvl": 0
-    },
-    {
-        "type": "delete",
-        "id": 144436,
-        "lvl": 0
-    }
+  {
+    "type": "delete",
+    "id": 144420,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 144435,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 144436,
+    "lvl": 0
+  }
 ]

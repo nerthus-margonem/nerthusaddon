@@ -1,4 +1,5 @@
 import {resolveUrl} from '../../utility-functions'
+import {updateNpcWithCustomGifImage, updateNpcWithGameImage} from '../update-npc-image'
 
 export function changeGameNpc(npc)
 {
@@ -10,23 +11,29 @@ export function changeGameNpc(npc)
             {
                 const img = new Image()
                 img.src = resolveUrl(npc.newUrl)
-
-                if (img.src.endsWith('gif') && img.src.startsWith('https://micc.garmory-cdn.cloud/obrazki/npc/'))
+                if (img.src.endsWith('gif'))
                 {
-                    const icon = img.src.substring(43)
-                    Object.defineProperty(newNpc.d, 'icon', {
-                        get() {return icon},
-                        set() {}
-                    })
-                    const beforeOnload = newNpc.beforeOnload
-                    newNpc.beforeOnload = function (data, img, npc)
+                    if (img.src.startsWith('https://micc.garmory-cdn.cloud/obrazki/npc/'))
                     {
-                        if (npc.icon === icon)
-                        {
-                            beforeOnload.call(newNpc, ...arguments)
-                        }
+                        const icon = img.src.substring(43)
+                        updateNpcWithGameImage(newNpc, icon)
                     }
-                    setTimeout(() => Engine.npcs.updateData({[newNpc.d.id]: newNpc.d}), 1)
+                    else if (img.src.startsWith('https://micc.garmory-cdn.cloud/obrazki/'))
+                    {
+                        const aNpath = window.CFG.r_npath
+                        const regex = /^https:\/\/micc\.garmory-cdn\.cloud\/obrazki\/(.+?)\//
+                        const arr = regex.exec(img.src)
+                        window.CFG.r_npath = `/obrazki/${arr[1]}/`
+                        const icon = img.src.substring(43)
+
+                        updateNpcWithGameImage(newNpc, icon)
+
+                        window.CFG.r_npath = aNpath
+                    }
+                    else
+                    {
+                        updateNpcWithCustomGifImage(Engine.npcs.getById(npc.id), img.src)
+                    }
                 }
                 else
                 {

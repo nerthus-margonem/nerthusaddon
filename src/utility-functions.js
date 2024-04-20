@@ -88,15 +88,48 @@ export function decodeGif(data)
         width: reader.width,
         height: reader.height
     }
+    let oldFrame = new Uint8ClampedArray(reader.width * reader.height * 4)
     for (let i = 0; i < reader.numFrames(); i++)
     {
-        const {delay, disposal} = reader.frameInfo(i)
-        decoded.frameDelays[i] = {delay}
-        decoded.frameDisposal[i] = disposal
+        const frameInfo = reader.frameInfo(i)
+        decoded.frameDelays[i] = frameInfo.delay
+        decoded.frameDisposal[i] = frameInfo.disposal
 
-        const frameData = new Uint8ClampedArray(reader.width * reader.height * 4)
-        reader.decodeAndBlitFrameRGBA(i, frameData)
-        decoded.frameData[i] = frameData
+        // Draw a frame on top of old frame
+        const frame = new Uint8ClampedArray(oldFrame)
+        reader.decodeAndBlitFrameRGBA(i, frame)
+        decoded.frameData[i] = frame
+
+        // Dispose drawn frame for next draw
+        switch (decoded.frameDisposal[i])
+        {
+            case GIF_FRAME_DISPOSAL.NON_SPECIFIED:
+            case GIF_FRAME_DISPOSAL.DO_NOT_DISPOSE:
+            {
+                oldFrame = frame
+                break
+            }
+            case GIF_FRAME_DISPOSAL.RESTORE_TO_BACKGROUND:
+            {
+                // Copy the frame and clear the area it painted to transparency
+                oldFrame = new Uint8ClampedArray(frame)
+                for (let i = frameInfo.x; i < frameInfo.x + frameInfo.width; i++)
+                {
+                    for (let j = frameInfo.y; j < frameInfo.y + frameInfo.height; j++)
+                    {
+                        for (let k = 0; k < 4; k++)
+                        {
+                            oldFrame[4 * i + 4 * (j * reader.width) + k] = 0
+                        }
+                    }
+                }
+                break
+            }
+            case GIF_FRAME_DISPOSAL.RESTORE_TO_PREVIOUS:
+            {
+                oldFrame = new Uint8ClampedArray(oldFrame)
+            }
+        }
     }
     return decoded
 }

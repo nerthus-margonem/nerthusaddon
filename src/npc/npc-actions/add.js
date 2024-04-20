@@ -1,9 +1,9 @@
 import {callEvent} from '../../API'
-import {decodeGif, GIF_FRAME_DISPOSAL} from '../../utility-functions'
 import {addDialogToDialogList, openDialog} from '../dialog'
 import {customNpcs} from '../npc'
 import {removeCollision, setCollision} from './collision'
 import {removeNpc} from './remove'
+import {updateNpcWithCustomGifImage} from '../update-npc-image'
 
 function createClickWrapper(npc, clickHandler)
 {
@@ -48,73 +48,7 @@ export function addNpc(npc)
             {
                 data[npc.id].icon = 'mas/nic32x32.gif'
                 Engine.npcs.updateData(data)
-                fetch(npcIcon)
-                    .then(response => response.arrayBuffer())
-                    .then(buffer => new Uint8Array(buffer))
-                    .then(array => decodeGif(array))
-                    .then(decoded =>
-                    {
-                        const canvas = document.createElement('canvas')
-                        canvas.width = decoded.width
-                        canvas.height = decoded.height * decoded.frameData.length
-                        const ctx = canvas.getContext('2d')
-
-                        const backgroundImg = new ImageData(decoded.frameData[0], decoded.width, decoded.height)
-                        ctx.putImageData(backgroundImg, 0, 0)
-
-                        for (let i = 1; i < decoded.frameData.length; i++)
-                        {
-                            const frameCanvas = document.createElement('canvas')
-                            frameCanvas.width = decoded.width
-                            frameCanvas.height = decoded.height
-                            const frameCtx = frameCanvas.getContext('2d')
-
-                            const img = new ImageData(decoded.frameData[i], decoded.width, decoded.height)
-                            frameCtx.putImageData(img, 0, 0)
-
-                            switch (decoded.frameDisposal[i - 1])
-                            {
-                                case GIF_FRAME_DISPOSAL.NON_SPECIFIED:
-                                case GIF_FRAME_DISPOSAL.DO_NOT_DISPOSE:
-                                    ctx.drawImage(
-                                        canvas,
-                                        0, (i - 1) * decoded.height, decoded.width, decoded.height,
-                                        0, i * decoded.height, decoded.width, decoded.height
-                                    )
-                                    break
-                                case GIF_FRAME_DISPOSAL.RESTORE_TO_BACKGROUND:
-                                    // Apparently most browsers just clear to transparency,
-                                    // so we'll do the same for now (so just do nothing here).
-                                    // Besides, NPCs in game should have transparent background
-                                    break
-                                case GIF_FRAME_DISPOSAL.RESTORE_TO_PREVIOUS:
-                                    // As per specification, "if decoder is not capable of saving an area of a graphic
-                                    // marked as restore To Previous, it is recommended that a decoder restore to
-                                    // the background color."
-                                    // Due to lack of popularity of this type of disposal and problems with
-                                    // implementing a solution (since we're working backwards),
-                                    // this disposal will probably remain partially broken
-                                    // (besides, main game doesn't even support different frame disposals)
-                                    ctx.putImageData(backgroundImg, 0, i * decoded.height)
-                            }
-                            ctx.drawImage(frameCanvas, 0, i * decoded.height)
-                        }
-
-                        // Update everything by hand
-                        const createdNpc = Engine.npcs.getById(npc.id)
-                        createdNpc.sprite = new Image()
-                        createdNpc.sprite.src = canvas.toDataURL()
-                        createdNpc.fw = decoded.width
-                        createdNpc.fh = decoded.height
-                        createdNpc.halffw = decoded.width / 2
-                        createdNpc.halffh = decoded.height / 2
-                        createdNpc.frameAmount = decoded.frameData.length
-                        createdNpc.frames = decoded.frameDelays
-                        createdNpc.leftPosMod = data[npc.id].type > 3 && !(createdNpc.fw % 64) ? -16 : 0
-                        if (data[npc.id].type !== 4) createdNpc.updateCollider()
-                        createdNpc.beforeOnload = function () {} // force not updating image anymore
-                    })
-                    .catch((err) => console.error(`Error while fetching NPC ${npcIcon}`, err))
+                updateNpcWithCustomGifImage(Engine.npcs.getById(npc.id), npcIcon)
             }
         }
         else

@@ -22,6 +22,8 @@ export function addNpc(npc)
     {
         const data = {}
         data[npc.id] = {...npc}
+        data[npc.id].id = Number(npc.id)
+        data[npc.id].tpl = Number(npc.id)
 
         const collisionBefore = Engine.map.col.check(npc.x, npc.y)
         const npcIcon = npc.icon
@@ -30,7 +32,10 @@ export function addNpc(npc)
         {
             if (npcIcon.startsWith('https://micc.garmory-cdn.cloud/obrazki/npc/'))
             {
-                data[npc.id].icon = npcIcon.substring(43)
+                data[npc.id].icon = {
+                    special: npcIcon.substring(43)
+                }
+                Engine.npcTplManager.updateData([data[npc.id]])
                 Engine.npcs.updateData(data)
             }
             else if (npcIcon.startsWith('https://micc.garmory-cdn.cloud/obrazki/'))
@@ -39,14 +44,20 @@ export function addNpc(npc)
                 const regex = /^https:\/\/micc\.garmory-cdn\.cloud\/obrazki\/(.+?)\//
                 const arr = regex.exec(npcIcon)
                 window.CFG.r_npath = `/obrazki/${arr[1]}/`
-                data[npc.id].icon = npcIcon.replace(regex, '')
 
+                data[npc.id].icon = {
+                    special: npcIcon.replace(regex, '')
+                }
+                Engine.npcTplManager.updateData([data[npc.id]])
                 Engine.npcs.updateData(data)
                 window.CFG.r_npath = aNpath
             }
             else
             {
-                data[npc.id].icon = 'mas/nic32x32.gif'
+                data[npc.id].icon = {
+                    special: 'mas/nic32x32.gif'
+                }
+                Engine.npcTplManager.updateData([data[npc.id]])
                 Engine.npcs.updateData(data)
                 updateNpcWithCustomGifImage(Engine.npcs.getById(npc.id), npcIcon)
             }

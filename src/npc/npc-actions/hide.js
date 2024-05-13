@@ -44,7 +44,7 @@ export function hideGameNpc(id, always)
 
             const callback = function (newNpc)
             {
-                if (newNpc.d && newNpc.d.id === id.toString())
+                if (newNpc.d && newNpc.d.id === id)
                 {
                     // Run only once
                     // setTimeout so that it removes itself after all NPCs are checked by API,

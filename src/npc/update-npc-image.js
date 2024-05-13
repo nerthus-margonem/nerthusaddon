@@ -58,5 +58,5 @@ export function updateNpcWithGameImage(npc, imgUrl)
             beforeOnload.call(npc, ...arguments)
         }
     }
-    setTimeout(() => Engine.npcs.updateData({[npc.d.id]: npc.d}), 1)
+    setTimeout(() => Engine.npcs.updateData([npc.d]), 1)
 }

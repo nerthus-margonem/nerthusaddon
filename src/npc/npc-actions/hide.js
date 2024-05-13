@@ -17,13 +17,7 @@ function startHidingNpcs()
     const oldUpdateNpc = Engine.miniMapController.handHeldMiniMapController.updateNpc
     Engine.miniMapController.handHeldMiniMapController.updateNpc = function (npcData)
     {
-        for (let i in npcData)
-        {
-            if (!npcData[i] || !npcData[i].id || customHiddenNpcs.includes(Number(npcData[i].id)))
-            {
-                delete npcData[i]
-            }
-        }
+        npcData = npcData.filter((npc) => !customHiddenNpcs.includes(npc.id))
         return oldUpdateNpc.call(Engine.miniMapController.handHeldMiniMapController, npcData)
     }
 }

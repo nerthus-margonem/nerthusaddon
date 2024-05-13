@@ -36,7 +36,7 @@ export function addNpc(npc)
                     special: npcIcon.substring(43)
                 }
                 Engine.npcTplManager.updateData([data[npc.id]])
-                Engine.npcs.updateData(data)
+                Engine.npcs.updateData([data[npc.id]])
             }
             else if (npcIcon.startsWith('https://micc.garmory-cdn.cloud/obrazki/'))
             {
@@ -49,7 +49,7 @@ export function addNpc(npc)
                     special: npcIcon.replace(regex, '')
                 }
                 Engine.npcTplManager.updateData([data[npc.id]])
-                Engine.npcs.updateData(data)
+                Engine.npcs.updateData([data[npc.id]])
                 window.CFG.r_npath = aNpath
             }
             else
@@ -58,14 +58,14 @@ export function addNpc(npc)
                     special: 'mas/nic32x32.gif'
                 }
                 Engine.npcTplManager.updateData([data[npc.id]])
-                Engine.npcs.updateData(data)
+                Engine.npcs.updateData([data[npc.id]])
                 updateNpcWithCustomGifImage(Engine.npcs.getById(npc.id), npcIcon)
             }
         }
         else
         {
             npc.icon = 'mas/nic32x32.gif'
-            Engine.npcs.updateData(data)
+            Engine.npcs.updateData([data[npc.id]])
             npc.icon = npcIcon
 
             const gameNpc = Engine.npcs.getById(npc.id)

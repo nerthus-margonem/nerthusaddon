@@ -150,7 +150,8 @@ function displayDialog(npcId, npcNick, npcMessage, playerReplies)//(message, rep
 
         const innerDial = parseInnerDialog(npcMessage, playerReplies)
         const $dialWin = $('.dialogue-window')
-        $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).empty().append(innerDial)
+        $('.npc-message', $dialWin).html(npcMessage)
+        $('.content .inner.scroll-wrapper .scroll-pane', $dialWin).html(innerDial)
 
         $('.content .inner.scroll-wrapper .scroll-pane .answers .answer', $dialWin)
             .each(function (index) {addEventToAnswer(this, $dialWin, playerReplies, index, npcId)})

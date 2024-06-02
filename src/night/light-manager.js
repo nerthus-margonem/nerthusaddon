@@ -138,10 +138,9 @@ function downloadLog()
 
     // Properly format lights data
     const json = JSON.stringify(arr, null, 2)
-            .replaceAll(/\{\n {4}/g, '{')
-            .replaceAll(/\n {2}}/g, '}')
-            .replaceAll(/,\n {3}/g, ',')
-        + '\n'
+        .replaceAll(/\{\n {4}/g, '{')
+        .replaceAll(/\n {2}}/g, '}')
+        .replaceAll(/,\n {3}/g, ',') + '\n'
 
     const a = window.document.createElement('a')
     a.href = window.URL.createObjectURL(new window.Blob([json], {type: 'text/json'}))

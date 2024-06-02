@@ -39,7 +39,7 @@ function shuffleMessage(msg)
     {
         case 10:
         case 9:
-            msg = '/me bełkota coś niezrozumiale.'
+            msg = '/lm bełkota coś niezrozumiale.'
             break
         case 8:
             msg = shuffleArray(msg.split(' ')).join(' ')
@@ -118,10 +118,16 @@ function commandContainsDrinkingAlcohol(command)
     return false
 }
 
+function commandContainsNormalTalk(task, payload)
+{
+    return task.startsWith('chat&channel=local')
+        && !task.endsWith('&style=me')
+        && payload?.c
+        && !payload.c.startsWith('*')
+}
+
 export function initChatDrunkenness()
 {
-    return false // Temporarily turned off
-
     const savedIntoxicationLvl = localStorage.getItem('nerthus-intoxication-lvl')
     if (savedIntoxicationLvl)
         intoxicationLvl = parseInt(savedIntoxicationLvl)
@@ -141,24 +147,17 @@ export function initChatDrunkenness()
             if (!decayTimerID)
                 decayTimerID = setInterval(decayTimerHandler, 10000)
         }
-        __g(task, callback, payload)
-    }
+        if (commandContainsNormalTalk(task, payload))
+        {
+            payload.c = shuffleMessage(payload.c)
+            if (payload.c.startsWith('/lm '))
+            {
+                arguments[0] += '&style=me'
+                payload.c = payload.c.substring(4)
+            }
+        }
 
-    if (INTERFACE === 'NI')
-    {
-        const _chatSendMsg = Engine.chat.sendMessage
-        Engine.chat.sendMessage = function (msg)
-        {
-            _chatSendMsg.call(Engine.chat, shuffleMessage(msg))
-        }
-    }
-    else
-    {
-        const _chatSendMsg = window.chatSendMsg
-        window.chatSendMsg = function (msg)
-        {
-            _chatSendMsg(shuffleMessage(msg))
-        }
+        __g(...arguments)
     }
 }
 

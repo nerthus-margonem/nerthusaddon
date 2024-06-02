@@ -3,7 +3,8 @@ export const settings = {
     weather: true,
     weatherEffects: true,
     zodiac: true,
-    hideNpcs: false
+    hideNpcs: false,
+    drunkenness: true,
 }
 
 export function saveSetting(name, value)

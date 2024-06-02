@@ -1,3 +1,6 @@
+import {addSettingToPanel} from '../interface/panel'
+import {settings} from '../settings'
+
 let intoxicationLvl = 0
 let decayTimerID = null
 
@@ -128,6 +131,13 @@ function commandContainsNormalTalk(task, payload)
 
 export function initChatDrunkenness()
 {
+    addSettingToPanel(
+        'drunkenness',
+        'Upojenie alkoholowe',
+        'Po wypiciu napojów alkoholowych postać zaczyna coraz bardziej bełkotać.',
+        () => {}
+    )
+
     const savedIntoxicationLvl = localStorage.getItem('nerthus-intoxication-lvl')
     if (savedIntoxicationLvl)
         intoxicationLvl = parseInt(savedIntoxicationLvl)
@@ -137,6 +147,11 @@ export function initChatDrunkenness()
     const __g = _g
     window._g = function (task, callback, payload)
     {
+        if (!settings.drunkenness)
+        {
+            return __g(...arguments)
+        }
+
         if (commandContainsDrinkingAlcohol(task))
         {
             intoxicationLvl += 10
@@ -157,7 +172,7 @@ export function initChatDrunkenness()
             }
         }
 
-        __g(...arguments)
+        return __g(...arguments)
     }
 }
 

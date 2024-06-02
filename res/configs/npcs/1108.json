@@ -69,5 +69,95 @@
     "y": "38",
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 57342,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 87930,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145947,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145963,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145964,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145965,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145966,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145967,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145970,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145976,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145981,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145982,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145987,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145988,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 254417,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 261032,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 261033,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 261034,
+    "lvl": 0
   }
 ]

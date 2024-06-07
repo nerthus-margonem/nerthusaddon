@@ -280,7 +280,10 @@ function lang(msg)
 
     msg.text = `*${cmd.join(',').trim()}*`
 
-    // add language tip after message is added to the page
+    // for external addon usage
+    msg.tip = tip
+
+    // add language tip after the message is added to the page
     setTimeout(function ()
     {
         const elements = Array.from(document.querySelectorAll(`.nerthus-lang-ts-${msg.ts} .message-part`))

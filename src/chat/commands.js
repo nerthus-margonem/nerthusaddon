@@ -63,6 +63,15 @@ function nar3(msg)
     return msg
 }
 
+function nar6(msg)
+{
+    msg.style = 'nerthus-nar-rainbow'
+    msg.nick = msg.authorBusinessCard.getNick()
+    hideMessageIdentity(msg)
+    msg.text = msg.text.replace(/^\*nar6 /, '')
+    return msg
+}
+
 function dial1(msg)
 {
     msg.style = 'nerthus-dial1'
@@ -289,6 +298,7 @@ const narratorCommands = {
     'nar1': nar1,
     'nar2': nar2,
     'nar3': nar3,
+    'nar6': nar6,
     'dial': dial1,
     'dial1': dial1,
     'dial2': dial2,

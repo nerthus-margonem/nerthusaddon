@@ -12,8 +12,8 @@
 .special-style-nerthus-nar3 { color: #00ced1 !important }
 
 .special-style-nerthus-nar-rainbow {
-    background-clip: text;
-    background-image: linear-gradient(90deg, red, orange, yellow, green, blue, violet);
+    background-clip: text !important;
+    background-image: linear-gradient(90deg, red, orange, yellow, green, blue, violet) !important;
     color: #FFF6 !important;
     display: block;
 }
@@ -26,7 +26,7 @@
 
 .wrapper-special-style-nerthus-dial666 { color: #f6f !important }
 
-.wrapper-special-style-nerthus-lang .message-section { color: #dde0ff !important }
+.message-part.special-style-nerthus-lang { color: #dde0ff !important }
 
 .wrapper-special-style-nerthus-command { display: none !important }
 

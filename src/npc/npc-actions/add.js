@@ -24,6 +24,7 @@ export function addNpc(npc)
         data[npc.id] = {...npc}
         data[npc.id].id = Number(npc.id)
         data[npc.id].tpl = Number(npc.id)
+        data[npc.id].warrior_type = npc.nick ? 0 : 1
 
         const collisionBefore = Engine.map.col.check(npc.x, npc.y)
         const npcIcon = npc.icon

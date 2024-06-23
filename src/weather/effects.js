@@ -2,57 +2,74 @@ import {addToNiDrawList, removeFromNiDrawList} from '../game-integration/loaders
 import {coordsToId} from '../utility-functions'
 import {clearLightnings} from './lightnings'
 
-const rainEffectId = coordsToId(-1, -10)
-const snowEffectId = coordsToId(-1, -20)
-
-const rainFrames = []
-const snowFrames = []
+const rainEffect = {
+    id: coordsToId(-1, -10),
+    frames: [],
+    frameTime: 100,
+    cache: [],
+    cacheMapId: -1
+}
+const snowEffect = {
+    id: coordsToId(-1, -20),
+    frames: [],
+    frameTime: 400,
+    cache: [],
+    cacheMapId: -1
+}
 if (INTERFACE === 'NI')
 {
     for (let i = 0; i < 3; i++)
     {
-        rainFrames[i] = new Image()
-        rainFrames[i].src = FILE_PREFIX + `res/img/weather/rain-frame-${i}.png`
+        rainEffect.frames[i] = new Image()
+        rainEffect.frames[i].src = FILE_PREFIX + `res/img/weather/rain-frame-${i}.png`
     }
 
     for (let i = 0; i < 5; i++)
     {
-        snowFrames[i] = new Image()
-        snowFrames[i].src = FILE_PREFIX + `res/img/weather/snow-frame-${i}.png`
+        snowEffect.frames[i] = new Image()
+        snowEffect.frames[i].src = FILE_PREFIX + `res/img/weather/snow-frame-${i}.png`
     }
 }
-const currentFrame = {
-    'rain': 0,
-    'snow': 0
-}
-let rainInterval
-let snowInterval
 
-function getWeatherNiObject(type, opacity)
+function cacheWeatherCanvas(effect, force = false)
 {
-    let frames
-    if (type === 'rain') frames = rainFrames
-    else if (type === 'snow') frames = snowFrames
+    if (INTERFACE === 'SI')
+    {
+        return
+    }
 
+    if (!force && effect.cacheMapId === Engine.map.d.id)
+    {
+        return
+    }
+    effect.cacheMapId = Engine.map.d.id
+    effect.cache = []
+    for (const frameImg of effect.frames)
+    {
+        const canvas = document.createElement('canvas')
+        canvas.width = Engine.map.width
+        canvas.height = Engine.map.height
+        const ctx = canvas.getContext('2d')
+        ctx.fillStyle = ctx.createPattern(frameImg, 'repeat')
+        ctx.fillRect(0, 0, Engine.map.width, Engine.map.height)
+        effect.cache.push(canvas)
+    }
+}
+
+function getWeatherNiObject(effect, opacity)
+{
     return {
         draw(e)
         {
-            const img = frames[currentFrame[type]]
-
-            //check if img has been loaded correctly to not stop entire game in case of error
-            if (img.complete && img.naturalWidth !== 0)
+            const cachedCanvas = effect.cache[Math.floor(Date.now() / effect.frameTime) % effect.frames.length]
+            if (!cachedCanvas)
             {
-                const pattern = e.createPattern(img, 'repeat')
-                const style = e.fillStyle
-                const alpha = e.globalAlpha
-                e.fillStyle = pattern
-                e.globalAlpha = opacity
-                e.translate(0 - Engine.map.offset[0], 0 - Engine.map.offset[1])
-                e.fillRect(0, 0, Engine.map.width, Engine.map.height)
-                e.translate(Engine.map.offset[0], Engine.map.offset[1])
-                e.fillStyle = style
-                e.globalAlpha = alpha
+                return
             }
+            const alpha = e.globalAlpha
+            e.globalAlpha = opacity
+            e.drawImage(cachedCanvas, Math.floor(-Engine.map.offset[0]), Math.floor(-Engine.map.offset[1]))
+            e.globalAlpha = alpha
         },
         getOrder()
         {
@@ -80,8 +97,8 @@ export function clearEffects(clearGameEffects)
 {
     if (INTERFACE === 'NI')
     {
-        removeFromNiDrawList(rainEffectId)
-        removeFromNiDrawList(snowEffectId)
+        removeFromNiDrawList(rainEffect.id)
+        removeFromNiDrawList(snowEffect.id)
         if (clearGameEffects) Engine.weather.onClear()
     }
     else
@@ -92,17 +109,12 @@ export function clearEffects(clearGameEffects)
     clearLightnings()
 }
 
-export function displayRain(opacity)
+export function displayRain(opacity = 1)
 {
     if (INTERFACE === 'NI')
     {
-        if (rainInterval) clearInterval(rainInterval)
-        rainInterval = setInterval(function ()
-        {
-            currentFrame.rain += 1
-            if (currentFrame.rain === 3) currentFrame.rain = 0
-        }, 100)
-        addToNiDrawList(getWeatherNiObject('rain', opacity), rainEffectId)
+        cacheWeatherCanvas(rainEffect)
+        addToNiDrawList(getWeatherNiObject(rainEffect, opacity), rainEffect.id)
     }
     else
     {
@@ -110,23 +122,18 @@ export function displayRain(opacity)
             .css({
                 backgroundImage: 'url(' + FILE_PREFIX + 'res/img/weather/rain.gif)',
                 zIndex: map.y * 2 + 10,
-                opacity: opacity ? opacity : 1
+                opacity: opacity
             })
             .appendTo('#ground')
     }
 }
 
-export function displaySnow(opacity)
+export function displaySnow(opacity = 1)
 {
     if (INTERFACE === 'NI')
     {
-        if (snowInterval) clearInterval(snowInterval)
-        snowInterval = setInterval(function ()
-        {
-            currentFrame.snow += 1
-            if (currentFrame.snow === 5) currentFrame.snow = 0
-        }, 400)
-        addToNiDrawList(getWeatherNiObject('snow', opacity), snowEffectId)
+        cacheWeatherCanvas(snowEffect)
+        addToNiDrawList(getWeatherNiObject(snowEffect, opacity), snowEffect.id)
     }
     else
     {
@@ -134,7 +141,7 @@ export function displaySnow(opacity)
             .css({
                 backgroundImage: 'url(' + FILE_PREFIX + 'res/img/weather/snow.gif)',
                 zIndex: map.y * 2 + 10,
-                opacity: opacity ? opacity : 1
+                opacity: opacity
             })
             .appendTo('#ground')
     }

@@ -11,7 +11,7 @@ const rainEffect = {
         height: 0,
         frameData: []
     },
-    frameTime: 100,
+    frameTime: 120,
     cache: [],
     cacheMapId: -1
 }

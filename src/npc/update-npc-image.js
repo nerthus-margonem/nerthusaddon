@@ -1,4 +1,4 @@
-import {decodeGif} from '../utility-functions'
+import {decodeGif} from '../decodeGif'
 
 /**
  *

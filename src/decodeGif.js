@@ -7,6 +7,14 @@ export const GIF_FRAME_DISPOSAL = {
     RESTORE_TO_PREVIOUS: 3
 }
 
+export function decodeGifFromUrl(url)
+{
+    return fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(buffer => new Uint8Array(buffer))
+        .then(array => decodeGif(array))
+}
+
 export function decodeGif(data)
 {
     const reader = new GifReader(data)

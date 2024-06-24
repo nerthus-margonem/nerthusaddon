@@ -1,59 +1,80 @@
 import {addToNiDrawList, removeFromNiDrawList} from '../game-integration/loaders'
 import {coordsToId} from '../utility-functions'
 import {clearLightnings} from './lightnings'
+import {decodeGifFromUrl} from '../decodeGif'
 
 const rainEffect = {
     id: coordsToId(-1, -10),
-    frames: [],
+    url: FILE_PREFIX + 'res/img/weather/rain.gif',
+    frames: {
+        width: 0,
+        height: 0,
+        frameData: []
+    },
     frameTime: 100,
     cache: [],
     cacheMapId: -1
 }
 const snowEffect = {
     id: coordsToId(-1, -20),
-    frames: [],
+    url: FILE_PREFIX + 'res/img/weather/snow.gif',
+    frames: {
+        width: 0,
+        height: 0,
+        frameData: []
+    },
     frameTime: 400,
     cache: [],
     cacheMapId: -1
 }
-if (INTERFACE === 'NI')
-{
-    for (let i = 0; i < 3; i++)
-    {
-        rainEffect.frames[i] = new Image()
-        rainEffect.frames[i].src = FILE_PREFIX + `res/img/weather/rain-frame-${i}.png`
-    }
 
-    for (let i = 0; i < 5; i++)
-    {
-        snowEffect.frames[i] = new Image()
-        snowEffect.frames[i].src = FILE_PREFIX + `res/img/weather/snow-frame-${i}.png`
-    }
-}
-
-function cacheWeatherCanvas(effect, force = false)
+async function cacheWeatherCanvas(effect, force = false)
 {
     if (INTERFACE === 'SI')
     {
-        return
+        return true
     }
-
     if (!force && effect.cacheMapId === Engine.map.d.id)
     {
-        return
+        return true
     }
+
     effect.cacheMapId = Engine.map.d.id
     effect.cache = []
-    for (const frameImg of effect.frames)
+
+    if (!effect.frames.frameData.length)
+    {
+        try
+        {
+            effect.frames = await decodeGifFromUrl(effect.url)
+            // Variable frame time is not supported yet.
+            // Frame delay value is 10 times lower than frame time ms
+            effect.frameTime = effect.frames.frameDelays[0] * 10
+        } catch (err)
+        {
+            console.error('Error decoding gif from url while caching weather canvas: ', err)
+            return false
+        }
+    }
+    for (const frameData of effect.frames.frameData)
     {
         const canvas = document.createElement('canvas')
         canvas.width = Engine.map.width
         canvas.height = Engine.map.height
         const ctx = canvas.getContext('2d')
-        ctx.fillStyle = ctx.createPattern(frameImg, 'repeat')
+
+        const imgData = new ImageData(frameData, effect.frames.width, effect.frames.height)
+        const imgCanvas = document.createElement('canvas')
+        imgCanvas.width = effect.frames.width
+        imgCanvas.height = effect.frames.height
+        const imgCtx = imgCanvas.getContext('2d')
+        imgCtx.putImageData(imgData, 0, 0)
+
+        ctx.fillStyle = ctx.createPattern(imgCanvas, 'repeat')
         ctx.fillRect(0, 0, Engine.map.width, Engine.map.height)
         effect.cache.push(canvas)
     }
+    return true
 }
 
 function getWeatherNiObject(effect, opacity)
@@ -61,7 +82,7 @@ function getWeatherNiObject(effect, opacity)
     return {
         draw(e)
         {
-            const cachedCanvas = effect.cache[Math.floor(Date.now() / effect.frameTime) % effect.frames.length]
+            const cachedCanvas = effect.cache[Math.floor(Date.now() / effect.frameTime) % effect.frames.frameData.length]
             if (!cachedCanvas)
             {
                 return
@@ -114,13 +135,16 @@ export function displayRain(opacity = 1)
     if (INTERFACE === 'NI')
     {
         cacheWeatherCanvas(rainEffect)
+        // We can't wait for caching to add the object,
+        // because it can be removed by the next chat command
+        // parsed when entering the map with existing commands
         addToNiDrawList(getWeatherNiObject(rainEffect, opacity), rainEffect.id)
     }
     else
     {
         $('<div class="nerthus-weather"/>')
             .css({
-                backgroundImage: 'url(' + FILE_PREFIX + 'res/img/weather/rain.gif)',
+                backgroundImage: `url(${rainEffect.url})`,
                 zIndex: map.y * 2 + 10,
                 opacity: opacity
             })
@@ -133,13 +157,16 @@ export function displaySnow(opacity = 1)
     if (INTERFACE === 'NI')
     {
         cacheWeatherCanvas(snowEffect)
+        // We can't wait for caching to add the object,
+        // because it can be removed by the next chat command
+        // parsed when entering the map with existing commands
         addToNiDrawList(getWeatherNiObject(snowEffect, opacity), snowEffect.id)
     }
     else
     {
         $('<div class="nerthus-weather"/>')
             .css({
-                backgroundImage: 'url(' + FILE_PREFIX + 'res/img/weather/snow.gif)',
+                backgroundImage: `url(${snowEffect.url})`,
                 zIndex: map.y * 2 + 10,
                 opacity: opacity
             })

@@ -65,7 +65,11 @@ export function addNpc(npc)
         }
         else
         {
-            npc.icon = 'mas/nic32x32.gif'
+            npc.icon = {
+                special: 'mas/nic32x32.gif'
+            }
+            data[npc.id].icon = npc.icon
+            Engine.npcTplManager.updateData([data[npc.id]])
             Engine.npcs.updateData([data[npc.id]])
             npc.icon = npcIcon
 

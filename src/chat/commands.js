@@ -36,6 +36,15 @@ function hideMessageIdentity(msg)
     }
 }
 
+function nar0(msg)
+{
+    msg.style = 'nerthus-nar0'
+    msg.nick = msg.authorBusinessCard.getNick()
+    hideMessageIdentity(msg)
+    msg.text = msg.text.replace(/^\*nar0? /, '')
+    return msg
+}
+
 function nar1(msg)
 {
     msg.style = 'nerthus-nar1'
@@ -318,7 +327,8 @@ const narratorCommands = {
 }
 const publicCommands = {
     'me': me,
-    'lang': lang
+    'lang': lang,
+    'nar0': nar0
 }
 
 export function initBasicChatCommands()

@@ -81,6 +81,16 @@ function nar6(msg)
     return msg
 }
 
+function dial0(msg)
+{
+    msg.style = 'nerthus-dial0'
+    msg.nick = msg.authorBusinessCard.getNick()
+    const [author, ...messageParts] = msg.text.split(' ').slice(1).join(' ').split(',')
+    msg.authorBusinessCard = getAuthorBusinessCardProxy(msg.authorBusinessCard, author)
+    msg.text = messageParts.join(',')
+    return msg
+}
+
 function dial1(msg)
 {
     msg.style = 'nerthus-dial1'
@@ -328,7 +338,8 @@ const narratorCommands = {
 const publicCommands = {
     'me': me,
     'lang': lang,
-    'nar0': nar0
+    'nar0': nar0,
+    'dial0': dial0
 }
 
 export function initBasicChatCommands()

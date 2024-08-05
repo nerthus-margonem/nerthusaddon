@@ -20,6 +20,8 @@
     display: block;
 }
 
+.wrapper-special-style-nerthus-dial0 { color: #8ed58e !important }
+
 .wrapper-special-style-nerthus-dial1 { color: #3c6 !important }
 
 .wrapper-special-style-nerthus-dial2 { color: #c96 !important }
@@ -41,6 +43,7 @@
 
 
 /* Disable clicking on dial Nick */
+.wrapper-special-style-nerthus-dial0 .author-section,
 .wrapper-special-style-nerthus-dial1 .author-section,
 .wrapper-special-style-nerthus-dial2 .author-section,
 .wrapper-special-style-nerthus-dial3 .author-section,

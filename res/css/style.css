@@ -34,14 +34,6 @@
 
 .wrapper-special-style-nerthus-command { display: none !important }
 
-/* Fix for NI and strange behavior when changing tabs  */
-.me .nick, .sys_comm .nick,
-.nar .nick, .nar2 .nick, .nar3 .nick,
-.dial1 .nick, .dial2 .nick, .dial3 .nick, .dial666 .nick {
-    display: none;
-}
-
-
 /* Disable clicking on dial Nick */
 .wrapper-special-style-nerthus-dial0 .author-section,
 .wrapper-special-style-nerthus-dial1 .author-section,

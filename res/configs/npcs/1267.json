@@ -1,0 +1,596 @@
+[
+  {
+    "type": "change",
+    "id": 27617,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 70597,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 70598,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 254970,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 254973,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 261561,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 261562,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 264223,
+    "newUrl": "#res/img/npc/ghosts/ghost-fula-gula.gif",
+    "lvl": 25
+  },
+  {
+    "type": "change",
+    "id": 27570,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 27609,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 70341,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 70349,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 70353,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 70358,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 70361,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 70453,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 254976,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 261554,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 261558,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264199,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264200,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264201,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264204,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264210,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264212,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264218,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264221,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 264224,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-gula.gif",
+    "lvl": 30
+  },
+  {
+    "type": "change",
+    "id": 27621,
+    "newUrl": "#res/img/npc/ghosts/ghost-furu-mulu.gif",
+    "lvl": 31
+  },
+  {
+    "type": "change",
+    "id": 254975,
+    "newUrl": "#res/img/npc/ghosts/ghost-furu-mulu.gif",
+    "lvl": 31
+  },
+  {
+    "type": "change",
+    "id": 254977,
+    "newUrl": "#res/img/npc/ghosts/ghost-furu-mulu.gif",
+    "lvl": 31
+  },
+  {
+    "type": "change",
+    "id": 254978,
+    "newUrl": "#res/img/npc/ghosts/ghost-furu-mulu.gif",
+    "lvl": 31
+  },
+  {
+    "type": "change",
+    "id": 254981,
+    "newUrl": "#res/img/npc/ghosts/ghost-furu-mulu.gif",
+    "lvl": 31
+  },
+  {
+    "type": "change",
+    "id": 264222,
+    "newUrl": "#res/img/npc/ghosts/ghost-furu-mulu.gif",
+    "lvl": 31
+  },
+  {
+    "type": "change",
+    "id": 27586,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 27615,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 70458,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 70460,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 70461,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 254968,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 254972,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 254983,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 261552,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 264211,
+    "newUrl": "#res/img/npc/ghosts/ghost-bulu-mulu.gif",
+    "lvl": 29
+  },
+  {
+    "type": "change",
+    "id": 27600,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70325,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70326,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70330,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70332,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70336,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70339,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70346,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70350,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70351,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 70352,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 254969,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 254971,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 254974,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 254982,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 261566,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 262516,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 264202,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 264205,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 264207,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 264215,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 264216,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 264219,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-gula.gif",
+    "lvl": 26
+  },
+  {
+    "type": "change",
+    "id": 27577,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 254965,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 254967,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 254979,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 261550,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 261557,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 261559,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 261560,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 262517,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 264209,
+    "newUrl": "#res/img/npc/ghosts/ghost-dida-gula.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 27605,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 27612,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 27620,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 70331,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 70343,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 70344,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 70454,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 70455,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 70459,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 254961,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 254962,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 261565,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264203,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264206,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264208,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264213,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264214,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264217,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 264220,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-mulu.gif",
+    "lvl": 27
+  },
+  {
+    "type": "change",
+    "id": 207916,
+    "newUrl": "#res/img/npc/ghosts/ghost-zulu-furla.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 261553,
+    "newUrl": "#res/img/npc/ghosts/ghost-nuna-furla.gif",
+    "lvl": 28
+  },
+  {
+    "type": "change",
+    "id": 207915,
+    "newUrl": "#res/img/npc/ghosts/ghost-mula-furla.gif",
+    "lvl": 28
+  }
+]

@@ -6,4 +6,4 @@ coverage/*
 .htaccess
 dist/*
 version
-.vs/
+.vs/*

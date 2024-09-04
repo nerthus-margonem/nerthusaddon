@@ -153,7 +153,7 @@
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
-    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1.png), url(https://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1n.png), url(https://nerthus.margonem.pl/img/gui/cursor/1n.cur), auto;
     left: calc(50% - 204px);
     pointer-events: auto;
     position: fixed;
@@ -224,7 +224,7 @@
 .nerthus-panel .close-button {
     background: url(https://cronus.margonem.com/img/gui/buttony.png?v=5) -263px -79px;
     border: 0;
-    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
     height: 22px;
     padding: 0;
     pointer-events: auto;
@@ -268,7 +268,7 @@
     box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
     box-sizing: border-box;
     color: #e6d6bf;
-    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
     display: inline-block;
     height: 42px;
     line-height: 34px;
@@ -397,7 +397,7 @@
 }
 
 #nerthus-main-panel .setting-label-text {
-    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
     left: 25px;
     line-height: 28px;
     position: relative;
@@ -411,7 +411,7 @@
     border: 2px solid #6e644b;
     border-radius: 2px;
     box-sizing: border-box;
-    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5.png), url(https://nerthus.margonem.pl/img/gui/cursor/5.cur), pointer;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
     display: inline-block;
     height: 18px;
     left: 0;
@@ -520,7 +520,7 @@
     border-style: solid;
     border-width: 34px 13px 10px 13px;
     color: #000;
-    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1.png), url(https://nerthus.margonem.pl/img/gui/cursor/1.cur), auto;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1n.png), url(https://nerthus.margonem.pl/img/gui/cursor/1n.cur), auto;
     height: 40px;
     left: calc(50% - 120px);
     pointer-events: auto;

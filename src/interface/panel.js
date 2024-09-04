@@ -228,12 +228,12 @@ function saveSettings()
 
 function createButtonNI()
 {
-    if (Engine.interfaceStart && Object.keys(Engine.widgetManager.getDefaultWidgetSet()).includes('nerthus'))
+    if (Object.keys(Engine.widgetManager.getDefaultWidgetSet()).includes('nerthus'))
     {
         let nerthusPos = defaultPosition
 
         const serverStoragePos = Engine.serverStorage.get(Engine.widgetManager.getPathToHotWidgetVersion())
-        if (serverStoragePos && serverStoragePos.nerthus) nerthusPos = serverStoragePos.nerthus
+        if (serverStoragePos?.nerthus) nerthusPos = serverStoragePos.nerthus
 
         Engine.widgetManager.createOneWidget('nerthus', {nerthus: nerthusPos}, true, [])
         Engine.widgetManager.setEnableDraggingButtonsWidget(false)
@@ -286,22 +286,23 @@ export function initPanel()
             '}' +
             '</style>'
         )
-        const addWidgetButtons = Engine.widgetManager.addWidgetButtons
-        Engine.widgetManager.addWidgetButtons = function (additionalBarHide)
-        {
-            addWidgetButtons.call(Engine.widgetManager, additionalBarHide)
-            addNerthusToDefaultWidgetSet()
-            createButtonNI()
 
-            // Only add Nerthus button once, then return to default function
-            Engine.widgetManager.addWidgetButtons = addWidgetButtons
-        }
-
-        // If interface was already initialised, add Nerthus button manually (as addWidgetButtons already ran)
+        // If the interface was already initialized, add Nerthus button manually (as afterUnlock already ran)
         if (Engine.interfaceStart)
         {
             addNerthusToDefaultWidgetSet()
             createButtonNI()
+            return
+        }
+
+        const afterUnlock = Engine.interface.afterUnlock
+        Engine.interface.afterUnlock = function ()
+        {
+            afterUnlock.call(Engine.interface, ...arguments)
+            addNerthusToDefaultWidgetSet()
+            createButtonNI()
+
+            Engine.interface.afterUnlock = afterUnlock
         }
     }
     else

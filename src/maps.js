@@ -79,29 +79,35 @@ function applyMapChange(mapId)
     }
 }
 
-
-function startMapChanging()
-{
-    //manipulation of map
-    const tmpMapDraw = Engine.map.draw
-    Engine.map.draw = function (canvasRenderingContext)
-    {
-        //draw normal map
-        tmpMapDraw.call(Engine.map, canvasRenderingContext)
-
-        //draw new maps on top of map
-        if (currentMapImage.complete && currentMapImage.naturalWidth !== 0)
-        {
-            canvasRenderingContext.drawImage(
-                currentMapImage,
-                0 - Engine.map.offset[0],
-                0 - Engine.map.offset[1])
-
-            //draw goMark (red X on ground that shows you where you've clicked)
-            if (Engine.map.goMark)
-                Engine.map.drawGoMark(canvasRenderingContext)
-        }
+ function overrideFunction (func, callback) {
+  return (...args) => {
+    try {
+      callback(...args);
     }
+    catch (e) {
+      if (e.message === 'stop') {
+        return;
+      }
+      console.error(e);
+    }
+    return func(...args);
+  };
+}
+
+function startMapChanging () {
+  Engine.map.drawImage = overrideFunction(
+    Engine.map.drawImage.bind(Engine.map),
+    (canvas) => {
+      if (currentMapImage.complete && currentMapImage.naturalWidth !== 0) {
+        canvas.drawImage(
+          currentMapImage,
+          0 - Engine.map.offset[0],
+          0 - Engine.map.offset[1],
+        );
+        throw new Error('stop');
+      },
+    },
+  );
 }
 
 

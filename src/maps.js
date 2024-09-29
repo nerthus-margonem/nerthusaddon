@@ -82,24 +82,19 @@ function applyMapChange(mapId)
 
 function startMapChanging()
 {
-    //manipulation of map
-    const tmpMapDraw = Engine.map.draw
-    Engine.map.draw = function (canvasRenderingContext)
+    const tmpMapDrawImage = Engine.map.drawImage
+    Engine.map.drawImage = function (ctx)
     {
-        //draw normal map
-        tmpMapDraw.call(Engine.map, canvasRenderingContext)
+        // draw a normal game map
+        tmpMapDrawImage.call(Engine.map, ...arguments)
 
-        //draw new maps on top of map
+        // draw new maps on top of the game map
         if (currentMapImage.complete && currentMapImage.naturalWidth !== 0)
         {
-            canvasRenderingContext.drawImage(
+            ctx.drawImage(
                 currentMapImage,
                 0 - Engine.map.offset[0],
                 0 - Engine.map.offset[1])
-
-            //draw goMark (red X on ground that shows you where you've clicked)
-            if (Engine.map.goMark)
-                Engine.map.drawGoMark(canvasRenderingContext)
         }
     }
 }

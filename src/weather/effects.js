@@ -106,6 +106,7 @@ function getWeatherNiObject(effect, opacity)
                 checkFollowGlow: () => false
             }
         },
+        isIconInvisible() { return false },
         getNick() { return '' },
         getId() { return -1 },
         drawNickOrTip() {},

@@ -55,6 +55,7 @@ function getDarknessNiObject(opacity, color)
                 checkFollowGlow: () => false
             }
         },
+        isIconInvisible() { return false },
         getNick() { return '' },
         getId() { return -1 },
         drawNickOrTip() {},

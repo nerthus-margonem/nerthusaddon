@@ -1,10 +1,9 @@
-import * as childProcess from 'child_process'
 import yaml from 'js-yaml'
+import fs from 'node:fs'
 import * as path from 'path'
 import {dirname} from 'path'
 import {fileURLToPath} from 'url'
 import webpack from 'webpack'
-import fs from 'node:fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -17,7 +16,16 @@ const lights = fs.readdirSync('res/configs/night-lights')
     .map(filename => filename.substring(0, filename.length - 5))
     .map(filename => parseInt(filename))
 
-const version = childProcess.execSync('cat version').toString().replace('\n', '')
+let version = 'local'
+try
+{
+    const versionFile = fs.readFileSync('version')
+    version = versionFile.toString().trim()
+    console.log(`Building version ${version}`)
+} catch
+{
+    console.warn('No version file detected, defaulting to "local"')
+}
 
 const CONSTANTS = new webpack.DefinePlugin({
     FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@' + version + '/'),

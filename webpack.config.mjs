@@ -4,23 +4,24 @@ import * as path from 'path'
 import {dirname} from 'path'
 import {fileURLToPath} from 'url'
 import webpack from 'webpack'
+import fs from 'node:fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-
-const npcMapList = childProcess.execSync('ls res/configs/npcs').toString().match(/(\d*)*\.json/g)
-const lightMapList = childProcess.execSync('ls res/configs/night-lights').toString().match(/(\d*)*\.json/g)
-
-const availableMapFiles = {
-    npc: npcMapList.map(item => parseInt(item)),
-    lights: lightMapList.map(item => parseInt(item))
-}
+const npc = fs.readdirSync('res/configs/npcs')
+    .filter(filename => filename.endsWith('.json'))
+    .map(filename => filename.substring(0, filename.length - 5))
+    .map(filename => parseInt(filename))
+const lights = fs.readdirSync('res/configs/night-lights')
+    .filter(filename => filename.endsWith('.json'))
+    .map(filename => filename.substring(0, filename.length - 5))
+    .map(filename => parseInt(filename))
 
 const version = childProcess.execSync('cat version').toString().replace('\n', '')
 
 const CONSTANTS = new webpack.DefinePlugin({
     FILE_PREFIX: JSON.stringify('https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@' + version + '/'),
-    AVAILABLE_MAP_FILES: JSON.stringify(availableMapFiles),
+    AVAILABLE_MAP_FILES: JSON.stringify({npc, lights}),
     VERSION: JSON.stringify(version)
 })
 export default [

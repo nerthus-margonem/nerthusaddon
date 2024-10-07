@@ -39,6 +39,7 @@ function getLightNiObject(img, x, y, lightTypeSize)
                 checkFollowGlow: () => false
             }
         },
+        isIconInvisible() { return false },
         getNick() { return '' },
         getId() { return -1 },
         drawNickOrTip() {},

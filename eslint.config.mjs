@@ -28,7 +28,10 @@ const buildGlobals = {
     INTERFACE: 'readonly',
     CURRENT_MAP_ID: 'readonly',
     FILE_PREFIX: 'readonly',
-    AVAILABLE_MAP_FILES: 'readonly'
+    // userscript globals
+    NI_VERSION_URL: 'readonly',
+    SI_VERSION_URL: 'readonly',
+    VERSION_URL: 'readonly'
 }
 
 

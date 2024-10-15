@@ -3,7 +3,7 @@ const expect = require('expect.js')
 
 describe('zodiac', function ()
 {
-    const inject = require('inject-loader!../../src/zodiac')
+    const inject = require('inject-loader!../../src/app/zodiac')
     const injectors = {
         widgets: {
             addWidget: sinon.fake.returns(

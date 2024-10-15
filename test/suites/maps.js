@@ -24,7 +24,7 @@ describe('maps', function ()
             removeCustomStyle: sinon.fake()
         }
     }
-    const inject = require('inject-loader!../../src/maps')
+    const inject = require('inject-loader!../../src/app/maps')
     const module = inject({
         './game-integration/loaders': injectors.loaders,
         './time': injectors.time,

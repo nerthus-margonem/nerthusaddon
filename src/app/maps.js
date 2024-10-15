@@ -1,5 +1,5 @@
-import {changeCustomStyle, removeCustomStyle} from '/src/interface/css-manager'
-import {default as basicMapsUrls} from '../res/configs/maps.json'
+import {changeCustomStyle, removeCustomStyle} from './interface/css-manager'
+import {default as basicMapsUrls} from '../../res/configs/maps.json'
 import {loadOnEveryMap} from './game-integration/loaders'
 import {getCurrentSeason} from './time'
 import {resolveUrl} from './utility-functions'

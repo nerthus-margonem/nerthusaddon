@@ -1,4 +1,4 @@
-import {default as zodiacDescriptions} from '../res/descriptions/zodiac.json'
+import {default as zodiacDescriptions} from '../../res/descriptions/zodiac.json'
 import {addSettingToPanel} from './interface/panel'
 import {settings} from './settings'
 import {addWidget} from './widgets'

@@ -1,4 +1,4 @@
-import {default as exceptionMaps} from '../res/configs/map-exceptions.json'
+import {default as exceptionMaps} from '../../res/configs/map-exceptions.json'
 
 /**
  * Function that takes coordinates and turns them to nerthus-specific ID.

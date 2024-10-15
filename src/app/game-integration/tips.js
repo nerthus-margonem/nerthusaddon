@@ -1,5 +1,5 @@
-import {default as lvlNames} from '../../res/configs/lvl-names'
-import {default as vips} from '../../res/configs/vips'
+import {default as lvlNames} from '../../../res/configs/lvl-names.json'
+import {default as vips} from '../../../res/configs/vips.json'
 import {checkPermissionLvl, PERMISSION_LVL} from '../permissions'
 
 const RANK_NAMES = [

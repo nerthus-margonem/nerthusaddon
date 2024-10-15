@@ -39,6 +39,15 @@ jobs:
 
       - name: Run build
         run: npm run-script build
+        env:
+          NODE_ENV: ${{ vars.NODE_ENV }}
+          VERSION_URL: ${{ vars.VERSION_URL }}
+          DIST_URL: ${{ vars.DIST_URL }}
+          USERSCRIPT_NAME: ${{ vars.USERSCRIPT_NAME }}
+          USERSCRIPT_ICON_URL: ${{ vars.USERSCRIPT_ICON_URL }}
+          USERSCRIPT_FILENAME: ${{ vars.USERSCRIPT_FILENAME }}
+          NI_FILENAME: ${{ vars.NI_FILENAME }}
+          SI_FILENAME: ${{ vars.SI_FILENAME }}
 
       - name: Add dist directory
         run: git add -f dist
@@ -47,14 +56,14 @@ jobs:
         run: |
           git commit -m "Release: ${{ github.event.release.tag_name }}" | echo
 
-      # We need to change the tag, so that it points to the newest build.
+      # We need to add a new tag, so that it points to the newest build.
       # Since that's how we do cache busting on cdn
       - name: Change tag
         run: |
           RELEASE_TITLE=$(gh release view "${{ github.event.release.tag_name }}" --json name --template "{{.name}}")
           RELEASE_DESC=$(gh release view "${{ github.event.release.tag_name }}" --json body --template "{{.body}}")
 
-          git tag -f -a "${{ github.event.release.tag_name }}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
+          git tag -f -a "releases/${{ github.event.release.tag_name }}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
         env:
           GITHUB_USER: <ORG>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,4 +71,4 @@ jobs:
       - name: Push changes
         run: |
           git push --set-upstream origin production --force
-          git push origin "${{ github.event.release.tag_name }}" --force
+          git push origin "releases/${{ github.event.release.tag_name }}" --force

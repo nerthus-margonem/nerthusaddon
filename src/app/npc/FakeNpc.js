@@ -13,7 +13,7 @@ export class FakeNpc
     constructor(order, drawFunc, alwaysDraw = true)
     {
         this.order = order
-        //this.draw = drawFunc
+        this.draw = drawFunc
         this.alwaysDraw = alwaysDraw
     }
 

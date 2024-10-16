@@ -60,8 +60,10 @@ async function cacheWeatherCanvas(effect, force = false)
     for (const frameData of effect.frames.frameData)
     {
         const canvas = document.createElement('canvas')
-        canvas.width = Engine.map.width
-        canvas.height = Engine.map.height
+        // Caching can happen before Engine.map.width and Engine.map.height are calculated,
+        // but Engine.map.d will always be present
+        canvas.width = Engine.map.d.x * 32
+        canvas.height = Engine.map.d.y * 32
         const ctx = canvas.getContext('2d')
 
         const imgData = new ImageData(frameData, effect.frames.width, effect.frames.height)
@@ -72,7 +74,7 @@ async function cacheWeatherCanvas(effect, force = false)
         imgCtx.putImageData(imgData, 0, 0)
 
         ctx.fillStyle = ctx.createPattern(imgCanvas, 'repeat')
-        ctx.fillRect(0, 0, Engine.map.width, Engine.map.height)
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         effect.cache.push(canvas)
     }
     return true

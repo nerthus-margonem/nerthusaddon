@@ -1,7 +1,8 @@
+import {decodeGifFromUrl} from '../decodeGif'
 import {addToNiDrawList, removeFromNiDrawList} from '../game-integration/loaders'
+import {FakeNpc} from '../npc/FakeNpc'
 import {coordsToId} from '../utility-functions'
 import {clearLightnings} from './lightnings'
-import {decodeGifFromUrl} from '../decodeGif'
 
 const rainEffect = {
     id: coordsToId(-1, -10),
@@ -79,39 +80,18 @@ async function cacheWeatherCanvas(effect, force = false)
 
 function getWeatherNiObject(effect, opacity)
 {
-    return {
-        draw(e)
+    return new FakeNpc(930, (ctx) =>
+    {
+        const cachedCanvas = effect.cache[Math.floor(Date.now() / effect.frameTime) % effect.frames.frameData.length]
+        if (!cachedCanvas)
         {
-            const cachedCanvas = effect.cache[Math.floor(Date.now() / effect.frameTime) % effect.frames.frameData.length]
-            if (!cachedCanvas)
-            {
-                return
-            }
-            const alpha = e.globalAlpha
-            e.globalAlpha = opacity
-            e.drawImage(cachedCanvas, Math.floor(-Engine.map.offset[0]), Math.floor(-Engine.map.offset[1]))
-            e.globalAlpha = alpha
-        },
-        getOrder()
-        {
-            return 930
-        },
-        update() {},
-        d: {},
-        updateDATA() {},
-        alwaysDraw: true,
-        getFollowController()
-        {
-            return {
-                checkFollowGlow: () => false
-            }
-        },
-        isIconInvisible() { return false },
-        getNick() { return '' },
-        getId() { return -1 },
-        drawNickOrTip() {},
-        getKind() { return null }
-    }
+            return
+        }
+        const alpha = ctx.globalAlpha
+        ctx.globalAlpha = opacity
+        ctx.drawImage(cachedCanvas, Math.floor(-Engine.map.offset[0]), Math.floor(-Engine.map.offset[1]))
+        ctx.globalAlpha = alpha
+    })
 }
 
 

@@ -1,4 +1,5 @@
 import {addToNiDrawList} from '../game-integration/loaders'
+import {FakeNpc} from '../npc/FakeNpc'
 import {settings} from '../settings'
 import {coordsToId} from '../utility-functions'
 
@@ -19,32 +20,13 @@ function getLightTypeUrl(lightType)
 
 function getLightNiObject(img, x, y, lightTypeSize)
 {
-    return {
-        draw(e)
-        {
-            e.drawImage(img, x - Engine.map.offset[0], y - Engine.map.offset[1])
-        },
-        getOrder()
-        {
-            return 1000 // Lights always on top
-        },
-        update() {},
-        d: {},
-        updateDATA() {},
-        rx: (x + lightTypeSize / 2) / 32,
-        ry: (y + lightTypeSize / 2) / 32,
-        getFollowController()
-        {
-            return {
-                checkFollowGlow: () => false
-            }
-        },
-        isIconInvisible() { return false },
-        getNick() { return '' },
-        getId() { return -1 },
-        drawNickOrTip() {},
-        getKind() { return null }
-    }
+    const fakeNpc = new FakeNpc(1000, (ctx) =>
+    {
+        ctx.drawImage(img, x - Engine.map.offset[0], y - Engine.map.offset[1])
+    }, false)
+    fakeNpc.rx = (x + lightTypeSize / 2) / 32
+    fakeNpc.ry = (y + lightTypeSize / 2) / 32
+    return fakeNpc
 }
 
 export function addSingleLight(lightType, x, y)

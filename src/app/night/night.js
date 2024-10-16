@@ -1,5 +1,6 @@
 import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
 import {addSettingToPanel} from '../interface/panel'
+import {FakeNpc} from '../npc/FakeNpc'
 import {settings} from '../settings'
 import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
 import {lightsOn, resetLights, turnLightsOn} from './lights'
@@ -31,36 +32,15 @@ function timeToOpacity(time)
 
 function getDarknessNiObject(opacity, color)
 {
-    return {
-        draw(e)
-        {
-            const style = e.fillStyle
-            e.fillStyle = color
-            e.globalAlpha = opacity
-            e.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
-            e.globalAlpha = 1.0
-            e.fillStyle = style
-        },
-        getOrder()
-        {
-            return 950 // Darkness bellow lights but above everything else
-        },
-        update() {},
-        d: {},
-        updateDATA() {},
-        alwaysDraw: true,
-        getFollowController()
-        {
-            return {
-                checkFollowGlow: () => false
-            }
-        },
-        isIconInvisible() { return false },
-        getNick() { return '' },
-        getId() { return -1 },
-        drawNickOrTip() {},
-        getKind() { return null }
-    }
+    return new FakeNpc(950, (ctx) =>
+    {
+        const style = ctx.fillStyle
+        ctx.fillStyle = color
+        ctx.globalAlpha = opacity
+        ctx.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
+        ctx.globalAlpha = 1.0
+        ctx.fillStyle = style
+    })
 }
 
 export function setForcedParameters(opacity, color, mapId = 'default')

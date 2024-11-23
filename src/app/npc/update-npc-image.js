@@ -62,5 +62,8 @@ export function updateNpcWithGameImage(npc, imgUrl)
             special: imgUrl
         }
         Engine.npcs.updateData([npc.d])
+        Object.defineProperty(npc.d, 'icon', {
+            get() {return imgUrl}, set() {}
+        })
     }, 1)
 }

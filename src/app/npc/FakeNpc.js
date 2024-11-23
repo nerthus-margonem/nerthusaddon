@@ -9,6 +9,7 @@ export class FakeNpc
     order = 0
     d = {}
     alwaysDraw = true
+    canvasObjectType = 'FAKE_NPC'
 
     constructor(order, drawFunc, alwaysDraw = true)
     {

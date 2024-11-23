@@ -48,9 +48,6 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl)
 
 export function updateNpcWithGameImage(npc, imgUrl)
 {
-    Object.defineProperty(npc.d, 'icon', {
-        get() {return imgUrl}, set() {}
-    })
     const beforeOnload = npc.beforeOnload
     npc.beforeOnload = function (data, img, npc)
     {
@@ -59,5 +56,11 @@ export function updateNpcWithGameImage(npc, imgUrl)
             beforeOnload.call(npc, ...arguments)
         }
     }
-    setTimeout(() => Engine.npcs.updateData([npc.d]), 1)
+    setTimeout(() =>
+    {
+        npc.d.icon = {
+            special: imgUrl
+        }
+        Engine.npcs.updateData([npc.d])
+    }, 1)
 }

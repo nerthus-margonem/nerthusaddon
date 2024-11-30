@@ -1,6 +1,6 @@
 {
   "name": "nerthusaddon",
-  "version": "6.0.10",
+  "version": "6.0.11",
   "description": "Addon for the Nerthus server in game [Margonem](https://www.margonem.pl/)",
   "main": "/src/main.js",
   "directories": {
@@ -70,5 +70,6 @@
   "bugs": {
     "url": "https://github.com/nerthus-margonem/nerthusaddon/issues"
   },
-  "homepage": "https://github.com/nerthus-margonem/nerthusaddon#readme"
+  "homepage": "https://github.com/nerthus-margonem/nerthusaddon#readme",
+  "license": "MIT"
 }

@@ -11,8 +11,9 @@ export class FakeNpc
     alwaysDraw = true
     canvasObjectType = 'FAKE_NPC'
 
-    constructor(order, drawFunc, alwaysDraw = true)
+    constructor(id, order, drawFunc, alwaysDraw = true)
     {
+        this.d.id = id
         this.order = order
         this.draw = drawFunc
         this.alwaysDraw = alwaysDraw
@@ -49,4 +50,6 @@ export class FakeNpc
     drawNickOrTip() {}
 
     getKind() { return undefined }
+
+    clearDataToDraw() {}
 }

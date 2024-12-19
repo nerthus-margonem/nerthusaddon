@@ -20,7 +20,7 @@ function getLightTypeUrl(lightType)
 
 function getLightNiObject(img, x, y, lightTypeSize)
 {
-    const fakeNpc = new FakeNpc(1000, (ctx) =>
+    const fakeNpc = new FakeNpc(coordsToId(x, y), 1000, (ctx) =>
     {
         ctx.drawImage(img, x - Engine.map.offset[0], y - Engine.map.offset[1])
     }, false)

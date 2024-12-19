@@ -7,6 +7,7 @@ import {lightsOn, resetLights, turnLightsOn} from './lights'
 
 let opacityChange = 0
 const forcedParameters = {}
+const DARKNESS_OBJECT_NI_ID = coordsToId(-1, -1)
 
 /**
  * @param time - Date
@@ -32,7 +33,7 @@ function timeToOpacity(time)
 
 function getDarknessNiObject(opacity, color)
 {
-    return new FakeNpc(950, (ctx) =>
+    return new FakeNpc(DARKNESS_OBJECT_NI_ID, 950, (ctx) =>
     {
         const style = ctx.fillStyle
         ctx.fillStyle = color
@@ -80,7 +81,7 @@ export function changeLight(opacity = getCurrentNaturalOpacity(), color = '#000'
 
     if (INTERFACE === 'NI')
     {
-        addToNiDrawList(getDarknessNiObject(opacity, color), coordsToId(-1, -1))
+        addToNiDrawList(getDarknessNiObject(opacity, color), DARKNESS_OBJECT_NI_ID)
         return
     }
 

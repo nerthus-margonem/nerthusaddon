@@ -82,7 +82,7 @@ async function cacheWeatherCanvas(effect, force = false)
 
 function getWeatherNiObject(effect, opacity)
 {
-    return new FakeNpc(930, (ctx) =>
+    return new FakeNpc(effect.id, 930, (ctx) =>
     {
         const cachedCanvas = effect.cache[Math.floor(Date.now() / effect.frameTime) % effect.frames.frameData.length]
         if (!cachedCanvas)

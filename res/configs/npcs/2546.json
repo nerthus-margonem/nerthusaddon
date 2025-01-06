@@ -202,5 +202,21 @@
     "y": "57",
     "url": "#res/img/npc/hedge-right.gif",
     "collision": false
+  },
+  {
+    "name": "Wodospad góra",
+    "tip": "",
+    "x": "58",
+    "y": "59",
+    "url": "/obrazki/npc/map/wodospad1-gora.gif",
+    "collision": false
+  },
+  {
+    "name": "Wodospad dół",
+    "tip": "",
+    "x": "58",
+    "y": "60",
+    "url": "/obrazki/npc/map/wodospad3-dol.gif",
+    "collision": false
   }
 ]

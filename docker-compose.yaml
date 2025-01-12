@@ -1,0 +1,28 @@
+services:
+  web-development:
+    profiles: [development]
+    build:
+      context: .
+      target: development
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+  web-production:
+    profiles: [production]
+    build:
+      context: .
+      target: production
+    # If you want to debug production profile,
+    # you can use `--profile production --watch`
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json

@@ -1,6 +1,6 @@
 services:
   web-development:
-    profiles: [development]
+    profiles: [ development ]
     build:
       context: .
       target: development
@@ -11,7 +11,7 @@ services:
         source: .
         target: /app
   web-production:
-    profiles: [production]
+    profiles: [ production ]
     build:
       context: .
       target: production

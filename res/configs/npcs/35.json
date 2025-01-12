@@ -173,5 +173,21 @@
     "id": 16624,
     "newUrl": "#res/img/npc/ghosts/ghost-hergat.gif",
     "lvl": 0
+  },
+  {
+    "name": "Przejście",
+    "tip": "Sierociniec w Karka-han",
+    "x": "29",
+    "y": "38",
+    "url": "https://nerthus.margonem.pl/img/exit.png",
+    "collision": false
+  },
+  {
+    "name": "Przejście",
+    "tip": "Sierociniec w Karka-han",
+    "x": "30",
+    "y": "38",
+    "url": "https://nerthus.margonem.pl/img/exit.png",
+    "collision": false
   }
 ]

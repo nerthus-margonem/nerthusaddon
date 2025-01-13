@@ -1,15 +1,70 @@
 [
   {
-    "name": "Mistrzyni Kultystów",
-    "x": "12",
-    "y": "12",
-    "url": "#res/img/npc/great-cultist-priestess.gif",
-    "collision": true
-  },
-  {
     "type": "change",
     "id": 56369,
     "newUrl": "#res/img/npc/ghosts/ghost-great-cultist.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 56367,
+    "newUrl": "#res/img/npc/ghosts/ghost-cultist.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 12663,
+    "newUrl": "#res/img/npc/ghosts/ghost-cultist.gif",
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 221853,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 221854,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 56012,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 56011,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 56013,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 56014,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 221851,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 221852,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 56005,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 56006,
     "lvl": 0
   }
 ]

@@ -783,5 +783,17 @@
     "newUrl": "/obrazki/npc/map/z-dach-dech1-s1l1.gif",
     "lvl": 0,
     "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 9947,
+    "newUrl": "#res/img/npc/ghosts/ghost-cultist.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 9948,
+    "newUrl": "#res/img/npc/ghosts/ghost-cultist.gif",
+    "lvl": 0
   }
 ]

@@ -1,3 +1,4 @@
+import CopyPlugin from 'copy-webpack-plugin'
 import {configDotenv} from 'dotenv'
 import yaml from 'js-yaml'
 import fs from 'node:fs'
@@ -168,6 +169,12 @@ export default [
             new webpack.DefinePlugin({
                 INTERFACE: JSON.stringify('NI'),
                 CURRENT_MAP_ID: 'Engine.map.d.id'
+            }),
+            new CopyPlugin({
+                patterns: [
+                    {from: 'res', to: 'res'},
+                    'LICENSE'
+                ]
             })
         ],
         module: {
@@ -188,6 +195,8 @@ export default [
                 INTERFACE: JSON.stringify('SI'),
                 CURRENT_MAP_ID: 'map.id'
             })
+            // While SI also needs the copied resources directory,
+            // we don't include the CopyPlugin here since that would copy it 2 times
         ],
         module: {
             rules

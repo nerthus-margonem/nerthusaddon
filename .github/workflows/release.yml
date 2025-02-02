@@ -42,9 +42,7 @@ jobs:
         run: npm run-script build
         env:
           NODE_ENV: ${{ vars.NODE_ENV }}
-          VERSION_URL: ${{ vars.VERSION_URL }}
           DIST_URL: ${{ vars.DIST_URL }}
-          BASE_URL: ${{ vars.BASE_URL }}
           USERSCRIPT_NAME: ${{ vars.USERSCRIPT_NAME }}
           USERSCRIPT_ICON_URL: ${{ vars.USERSCRIPT_ICON_URL }}
           USERSCRIPT_FILENAME: ${{ vars.USERSCRIPT_FILENAME }}

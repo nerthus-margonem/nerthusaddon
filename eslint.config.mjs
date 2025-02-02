@@ -31,7 +31,6 @@ const buildGlobals = {
     // userscript globals
     NI_VERSION_URL: 'readonly',
     SI_VERSION_URL: 'readonly',
-    VERSION_URL: 'readonly',
     VERSION: 'readonly'
 }
 

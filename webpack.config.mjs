@@ -31,7 +31,7 @@ function getVersion()
 const CONSTANTS = new webpack.DefinePlugin({
     FILE_PREFIX: webpack.DefinePlugin.runtimeValue(() =>
     {
-        return JSON.stringify(globalThis.process.env.BASE_URL.replace('$VERSION', getVersion()))
+        return JSON.stringify(globalThis.process.env.DIST_URL.replace('$VERSION', getVersion()))
     }, {
         fileDependencies: [
             path.resolve(__dirname, 'version')
@@ -146,7 +146,6 @@ export default [
         },
         plugins: [
             new webpack.DefinePlugin({
-                VERSION_URL: JSON.stringify(globalThis.process.env.VERSION_URL),
                 NI_VERSION_URL: JSON.stringify(globalThis.process.env.DIST_URL + globalThis.process.env.NI_FILENAME),
                 SI_VERSION_URL: JSON.stringify(globalThis.process.env.DIST_URL + globalThis.process.env.SI_FILENAME)
             }),

@@ -1,3 +1,4 @@
+import CopyPlugin from 'copy-webpack-plugin'
 import {configDotenv} from 'dotenv'
 import yaml from 'js-yaml'
 import fs from 'node:fs'
@@ -30,7 +31,7 @@ function getVersion()
 const CONSTANTS = new webpack.DefinePlugin({
     FILE_PREFIX: webpack.DefinePlugin.runtimeValue(() =>
     {
-        return JSON.stringify(globalThis.process.env.BASE_URL.replace('$VERSION', getVersion()))
+        return JSON.stringify(globalThis.process.env.DIST_URL.replace('$VERSION', getVersion()))
     }, {
         fileDependencies: [
             path.resolve(__dirname, 'version')
@@ -145,7 +146,6 @@ export default [
         },
         plugins: [
             new webpack.DefinePlugin({
-                VERSION_URL: JSON.stringify(globalThis.process.env.VERSION_URL),
                 NI_VERSION_URL: JSON.stringify(globalThis.process.env.DIST_URL + globalThis.process.env.NI_FILENAME),
                 SI_VERSION_URL: JSON.stringify(globalThis.process.env.DIST_URL + globalThis.process.env.SI_FILENAME)
             }),
@@ -168,6 +168,12 @@ export default [
             new webpack.DefinePlugin({
                 INTERFACE: JSON.stringify('NI'),
                 CURRENT_MAP_ID: 'Engine.map.d.id'
+            }),
+            new CopyPlugin({
+                patterns: [
+                    {from: 'res', to: 'res'},
+                    'LICENSE'
+                ]
             })
         ],
         module: {
@@ -188,6 +194,8 @@ export default [
                 INTERFACE: JSON.stringify('SI'),
                 CURRENT_MAP_ID: 'map.id'
             })
+            // While SI also needs the copied resources directory,
+            // we don't include the CopyPlugin here since that would copy it 2 times
         ],
         module: {
             rules

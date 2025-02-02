@@ -9,9 +9,21 @@ import {initMapsManager} from './app/maps'
 import {initNightManager} from './app/night/night'
 import {initNpcManager} from './app/npc/npc'
 import {loadSettings} from './app/settings'
+import {sanitizeText} from './app/utility-functions'
 import {initWeather} from './app/weather/weather'
 import {initWidgets} from './app/widgets'
 import {initZodiac} from './app/zodiac'
+
+const logText = sanitizeText('Nerthus addon version: ' + VERSION)
+if (INTERFACE === 'NI')
+{
+    log(logText)
+}
+else
+{
+    log(`<span style="color:lime">${logText}</span>`)
+}
+
 
 function start()
 {

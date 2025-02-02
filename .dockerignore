@@ -1,0 +1,16 @@
+.tern-project
+node_modules
+.idea
+dist
+.nyc_output
+coverage
+.vs
+
+.htaccess
+.dockerignore
+.gitignore
+.env
+.env.example
+version
+Dockerfile
+docker-compose.yaml

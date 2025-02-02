@@ -1,0 +1,555 @@
+/* Chat colors */
+
+/* style of *me */
+.special-style-2 { color: #f70 !important }
+
+.special-style-nerthus-sys { color: #f33 !important; font-weight: bold }
+
+.special-style-nerthus-nar0 { color: #ccffcc !important }
+
+.special-style-nerthus-nar1 { color: lightblue !important }
+
+.special-style-nerthus-nar2 { color: #d6a2ff !important }
+
+.special-style-nerthus-nar3 { color: #00ced1 !important }
+
+.special-style-nerthus-nar-rainbow {
+    background-clip: text !important;
+    background-image: linear-gradient(90deg, red, orange, yellow, green, blue, violet) !important;
+    color: #FFF6 !important;
+    display: block;
+}
+
+.wrapper-special-style-nerthus-dial0 { color: #8ed58e !important }
+
+.wrapper-special-style-nerthus-dial1 { color: #3c6 !important }
+
+.wrapper-special-style-nerthus-dial2 { color: #c96 !important }
+
+.wrapper-special-style-nerthus-dial3 { color: #d3d3d3 !important }
+
+.wrapper-special-style-nerthus-dial666 { color: #f6f !important }
+
+.message-part.special-style-nerthus-lang { color: #dde0ff !important }
+
+.wrapper-special-style-nerthus-command { display: none !important }
+
+/* Disable clicking on dial Nick */
+.wrapper-special-style-nerthus-dial0 .author-section,
+.wrapper-special-style-nerthus-dial1 .author-section,
+.wrapper-special-style-nerthus-dial2 .author-section,
+.wrapper-special-style-nerthus-dial3 .author-section,
+.wrapper-special-style-nerthus-dial666 .author-section {
+    pointer-events: none;
+}
+
+/* Default cursor on SI */
+#centerbox2 > .nerthus-panel {
+    cursor: auto;
+}
+
+#centerbox2 > .nerthus-panel .close-button,
+#centerbox2 > .nerthus-panel .button,
+#centerbox2 > #nerthus-main-panel .setting-label-text,
+#centerbox2 > #nerthus-main-panel .checkbox-outline {
+    cursor: pointer;
+}
+
+/* Weather */
+.nerthus-weather {
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+
+/* Widgets */
+#nerthus-widgets-container {
+    pointer-events: none;
+    position: absolute;
+    width: 512px;
+    z-index: 300;
+}
+
+.layer.interface-layer > #nerthus-widgets-container {
+    top: 60px;
+}
+
+.chat-size-0 #nerthus-widgets-container {
+    margin-left: 5px;
+}
+
+.chat-size-1 #nerthus-widgets-container {
+    margin-left: 260px;
+}
+
+.chat-size-2 #nerthus-widgets-container {
+    margin-left: 515px;
+}
+
+.nerthus__widget {
+    display: flex;
+    opacity: 0.8;
+    pointer-events: none;
+    z-Index: 300;
+}
+
+.nerthus__widget .nerthus__widget-image {
+    display: block;
+    height: 55px;
+    margin: 5px;
+    pointer-events: all;
+    width: 55px;
+}
+
+.nerthus__widget .nerthus__widget-desc {
+    align-items: center;
+    color: #f0f8ff;
+    display: flex;
+    font: bold 14px Georgia, serif;
+    margin-left: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .195s ease-in;
+    width: 410px;
+}
+
+.nerthus__widget:hover .nerthus__widget-desc {
+    opacity: 0.8;
+    transition: .225s ease-out;
+}
+
+/* Night */
+#nerthus-night {
+    background-color: black;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.nerthus__night-light {
+    opacity: 0; /* for transition */
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Shield */
+#nerthus-shield {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#nerthus-shield:hover {
+    opacity: 0.6;
+}
+
+/* Panel */
+.nerthus-panel {
+    animation: fade 0.5s;
+    border-image: url(https://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-style: solid;
+    border-width: 34px 13px 10px 13px;
+    color: #000;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1n.png), url(https://nerthus.margonem.pl/img/gui/cursor/1n.cur), auto;
+    left: calc(50% - 204px);
+    pointer-events: auto;
+    position: fixed;
+    top: calc(50% - 150px);
+    transition: opacity 0.35s ease-in-out;
+    width: 380px;
+    z-index: 499;
+}
+
+.nerthus-panel > .background {
+    background-color: #f1deaa;
+    background-image: url(https://cronus.margonem.com/img/gui/content-redleather.jpg);
+}
+
+/* Panel - nav */
+.nerthus-panel > .header-label-positioner {
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: -35px;
+}
+
+.nerthus-panel .header-label {
+    background: url(https://cronus.margonem.com/img/gui/dialogue/dialogi-naglowek.png);
+    display: inline-block;
+    height: 28px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.nerthus-panel .header-label > .right-decor,
+.nerthus-panel .header-label > .left-decor {
+    background: url(https://cronus.margonem.com/img/gui/dialogue/dialogi.png) -38px -2px;
+    height: 28px;
+    left: -52px;
+    position: absolute;
+    top: 0;
+    width: 52px;
+}
+
+.nerthus-panel .header-label > .right-decor {
+    background-position: -91px -2px;
+    left: auto;
+    right: -52px;
+}
+
+.nerthus-panel .header-label > span {
+    color: #f5f5dc;
+    line-height: 28px;
+    text-align: center;
+}
+
+.nerthus-panel .panel-name {
+    transition: width 0.35s ease-in-out;
+}
+
+.nerthus-panel > .close-decor {
+    background: url(https://cronus.margonem.com/img/gui/buttony.png?v=5) -380px -55px;
+    height: 52px;
+    pointer-events: none;
+    position: absolute;
+    right: -15px;
+    top: -35px;
+    width: 51px;
+}
+
+.nerthus-panel .close-button {
+    background: url(https://cronus.margonem.com/img/gui/buttony.png?v=5) -263px -79px;
+    border: 0;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
+    height: 22px;
+    padding: 0;
+    pointer-events: auto;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 22px;
+}
+
+.nerthus-panel .close-button:hover {
+    background-position: -286px -79px;
+}
+
+/* Panel - body */
+#nerthus-main-panel .hidden {
+    display: none;
+}
+
+#nerthus-main-panel .top-box {
+    display: flex;
+    height: 150px;
+    justify-content: space-around;
+}
+
+#nerthus-main-panel .button-group {
+    border: 1px solid #d8c28d;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    height: 110px;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    padding-top: 10px;
+    width: 110px;
+}
+
+.nerthus-panel .button {
+    background-image: linear-gradient(to top, #12210d, #396b29);
+    border: 1px solid #0c0d0d;
+    border-radius: 4px;
+    box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
+    box-sizing: border-box;
+    color: #e6d6bf;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
+    display: inline-block;
+    height: 42px;
+    line-height: 34px;
+    position: relative;
+    width: 42px;
+}
+
+.nerthus-panel .button.blue {
+    background-image: linear-gradient(to top, #081522, #1d4873);
+}
+
+.nerthus-panel .button.blue:not(:hover)::before {
+    box-shadow: inset 0 0 1px 1px #5594d4a6;
+}
+
+.nerthus-panel .button:before {
+    backface-visibility: hidden;
+    border-radius: 4px;
+    bottom: 3px;
+    box-shadow: inset 0 0 1px 1px #7ec568a6;
+    content: '';
+    left: 3px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    transform: translateZ(0);
+}
+
+.nerthus-panel .button:after {
+    border-radius: 3px;
+    bottom: 0;
+    box-shadow: 0 1px 0 1px #0c0d0d;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.nerthus-panel .button:hover:before,
+.nerthus-panel#nerthus-main-panel .button.nerthus-settings-button:hover:before {
+    box-shadow: inset 0 0 1px 1px #909090a6;
+}
+
+.nerthus-panel .button:hover,
+.nerthus-panel#nerthus-main-panel .button.nerthus-settings-button:hover {
+    background-image: linear-gradient(to top, #101010, #434343);
+}
+
+#nerthus-main-panel #button-group-left:before,
+#nerthus-main-panel #button-group-right:before,
+#nerthus-main-panel #button-group-center:before {
+    position: absolute;
+    top: 10px;
+}
+
+#nerthus-main-panel #button-group-left::before {
+    content: 'Forum';
+}
+
+#nerthus-main-panel #button-group-right::before {
+    content: 'Systemy';
+}
+
+#nerthus-main-panel #button-group-center:before {
+    content: 'Aktualności';
+}
+
+
+#nerthus-main-panel .bottom-box {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+}
+
+#nerthus-main-panel .text-button {
+    border-radius: 6px;
+    height: 28px;
+    line-height: 24px;
+    margin-top: 10px;
+    text-align: center;
+    width: 74px;
+}
+
+#nerthus-main-panel .text-button::before,
+#nerthus-main-panel .text-button::after {
+    content: unset;
+}
+
+#nerthus-main-panel .nerthus-settings-button {
+    background-image: linear-gradient(to top, #081522, #1d4873);
+    bottom: 6px;
+    box-shadow: inset 0 0 1px 1px #cecece, inset 0 0 0 3px #0c0d0d;
+    height: 35px;
+    padding: 2px 0 0 0;
+    position: absolute;
+    right: 5px;
+    width: 35px;
+}
+
+#nerthus-main-panel .nerthus-settings-button:not(.back-to-default):not(:hover)::before {
+    box-shadow: inset 0 0 1px 1px #5594d4a6;
+}
+
+#nerthus-main-panel .nerthus-settings-button.back-to-default:not(:hover) {
+    background-image: linear-gradient(to top, #12210d, #396b29);
+}
+
+
+/* Panel - settings */
+#nerthus-main-panel .settings-panel > .top-box {
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    height: 200px;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+#nerthus-main-panel .setting-label {
+    align-items: center;
+    cursor: unset;
+    display: flex;
+    min-height: 24px;
+    position: relative;
+    width: 155px;
+}
+
+#nerthus-main-panel .setting-label-text {
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
+    left: 25px;
+    line-height: 28px;
+    position: relative;
+}
+
+#nerthus-main-panel .setting-checkbox {
+    display: none;
+}
+
+#nerthus-main-panel .checkbox-outline {
+    border: 2px solid #6e644b;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
+    display: inline-block;
+    height: 18px;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 18px;
+    z-index: 2;
+}
+
+.checkmark {
+    display: none;
+    height: 22px;
+    left: -4px;
+    pointer-events: none;
+    position: relative;
+    top: -2px;
+    transform: rotate(45deg);
+    width: 22px;
+}
+
+.checkmark-stem {
+    background-color: #f1dfa8;
+    height: 13px;
+    left: 10px;
+    position: absolute;
+    top: 2px;
+    width: 2px;
+}
+
+.checkmark-kick {
+    background-color: #f1dfa8;
+    height: 2px;
+    left: 5px;
+    position: absolute;
+    top: 13px;
+    width: 6px;
+}
+
+.nerthus-panel #light-manager-button {
+    left: 5px;
+    padding-top: 5px;
+}
+
+#nerthus-main-panel .setting-checkbox:checked + .checkbox-outline {
+    background-color: #6e644b;
+}
+
+#nerthus-main-panel .setting-checkbox:checked + .checkbox-outline .checkmark {
+    display: inline-block;
+}
+
+#nerthus-main-panel .settings-panel .save-button {
+    margin-right: 30px;
+}
+
+#nerthus-main-panel .settings-panel .cancel-button {
+    margin-left: 30px;
+}
+
+#nerthus-main-panel .settings-panel .cancel-button:not(:hover) {
+    background-image: linear-gradient(to top, #310b0b, #831f1f);
+}
+
+#nerthus-main-panel .settings-panel .cancel-button:not(:hover)::before {
+    box-shadow: inset 0 0 1px 1px #da6161a6;
+}
+
+#nerthus-light-manager-wrapper {
+    left: calc(50% - 141px);
+    position: absolute;
+    right: 228px;
+    top: calc(50% - 100px);
+    width: 300px;
+    z-index: 500;
+}
+
+#nerthus-light-manager {
+    border-image: url(https://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-style: solid;
+    border-width: 34px 13px 10px 13px;
+    height: 50px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 240px;
+    z-index: 500;
+}
+
+#nerthus-light-manager-wrapper .background {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-around;
+}
+
+#nerthus-light-manager-wrapper .button {
+    font-weight: bold;
+    text-align: center;
+}
+
+.subpanel {
+    animation: fade 0.5s;
+    border-image: url(https://cronus.margonem.com/img/gui/tmp/window-frame.png) 32 20 repeat;
+    border-style: solid;
+    border-width: 34px 13px 10px 13px;
+    color: #000;
+    cursor: url(https://nerthus.margonem.pl/img/gui/cursor/1n.png), url(https://nerthus.margonem.pl/img/gui/cursor/1n.cur), auto;
+    height: 40px;
+    left: calc(50% - 120px);
+    pointer-events: auto;
+    position: absolute;
+    top: 58px;
+    transition: opacity 0.35s ease-in-out;
+    width: 180px;
+    z-index: 498;
+}
+
+.subpanel .button {
+    font-family: monospace;
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+}
+
+.subpanel .button:nth-of-type(4) {
+    padding-left: 2px;
+}
+
+#nerthus-light-manager .close-decor {
+    z-index: 497;
+}
+
+#nerthus-light-manager .header-label-positioner {
+    z-index: 498;
+}
+
+.settings-panel.hidden + #light-manager-button {
+    display: none;
+}

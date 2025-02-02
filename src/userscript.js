@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         $USERSCRIPT_NAME
 // @namespace    http://www.margonem.pl/
-// @version      4.0.0
+// @version      5.0.0
 // @description  Addon for the Nerthus game server in Margonem
 // @author       Kris Aphalon, Aldi
 // @match        https://nerthus.margonem.pl/
@@ -10,7 +10,7 @@
 
 (function ()
 {
-    function start(version)
+    function start()
     {
         const gameInterface = document.cookie
             .split('; ')
@@ -19,11 +19,10 @@
 
         if (!gameInterface)
         {
-            setTimeout(() => start(version), 500)
+            setTimeout(() => start(), 500)
             return
         }
 
-        let logText = 'Nerthus addon version: ' + version
         let src
         switch (gameInterface)
         {
@@ -35,7 +34,6 @@
             case 'si':
             {
                 src = SI_VERSION_URL
-                logText = `<span style="color:lime">${logText}</span>`
                 break
             }
             default:
@@ -49,18 +47,11 @@
                 return
             }
         }
-        this.log?.(logText)
 
         const script = document.createElement('script')
-        script.src = src.replace('$VERSION', version)
+        script.src = src
         document.head.appendChild(script)
     }
 
-    fetch(VERSION_URL)
-        .then((res) => res.text())
-        .then(start)
-        .catch((error) =>
-        {
-            console.error('Unable to load nerthus addon: ', error)
-        })
+    start()
 })()

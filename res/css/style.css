@@ -48,6 +48,11 @@
     cursor: auto;
 }
 
+/* Hide chat commercials */
+.chat-COMMERCIAL-message {
+    display: none;
+}
+
 #centerbox2 > .nerthus-panel .close-button,
 #centerbox2 > .nerthus-panel .button,
 #centerbox2 > #nerthus-main-panel .setting-label-text,

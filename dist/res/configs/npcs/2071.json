@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Strażnicy niosący skrzynię",
+    "x": "25",
+    "y": "7",
+    "url": "#res/img/npc/soldiers-with-chest.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "[ Widzisz dwójkę strażników, którzy wyraźnie nie radzą sobie z wniesieniem mebla w dalszą część murów miejskich. ]",
+        "Dalej ->1"
+      ],
+      "1": [
+        "No jak w lewo.",
+        "Dalej ->2"
+      ],
+      "2": [
+        "No leewwooo.",
+        "Dalej ->3"
+      ],
+      "3": [
+        "ALE TU ŚCIANA JEST!",
+        "Dalej ->4"
+      ],
+      "4": [
+        "Aha.",
+        "Przepraszam? ->5"
+      ],
+      "5": [
+        "[ Strażnicy zatrzymali się i obejrzeli na Ciebie ]<br>Eee, Obywatelu, co tu robicie?",
+        "Zwiedzam po prostu, nie wiedziałem, że mury w Werbin są tak rozbudowane, wydawały się jakieś mniejsze kiedyś... ->6",
+        "A nic, nic, zmykam już.. ->END"
+      ],
+      "6": [
+        "No kiedyś były, fakt, ale za Rothe je powiększono. Ech, kiedyś to były czasy. Teraz to nie ma czasów.<br>Chwała Aneli, inaczej to byśmy zostali zadeptani przez orków.",
+        "Dalej ->7"
+      ],
+      "7": [
+        "Dobra tam, barykada i rów wystarczył.",
+        "Dalej ->8"
+      ],
+      "8": [
+        "Ta i poświęcenie parudziesięciu chłopców...",
+        "Dalej ->9"
+      ],
+      "9": [
+        "Ale wytrzymaliśmy! I to przeciwko Czarnej Gwardii! Dobrze, że Rudzielec z nami był.",
+        "Dalej ->10"
+      ],
+      "10": [
+        "[ Strażnicy pogrążyli się chwilę w zadumie, stojąc jak kołki z meblem w poprzek drogi. Po chwili jeden ze strażników ocknął się i krzyknął na Ciebie. ]",
+        "Dalej ->11"
+      ],
+      "11": [
+        "Sio! Prowadzona jest tutaj kluczowa operacja dla tutejszego wojska i nas rozpraszasz! Zmiataj, bo Cię zamknę z goblinem!",
+        "[ Uciekam na zewnątrz ] ->END",
+        "[ Uciekam w głąb murów ] ->END"
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "id": 135470,
+    "lvl": 0
+  },
+  {
+    "name": "Stojąca pochodnia",
+    "tip": "",
+    "x": "35",
+    "y": "4",
+    "url": "/obrazki/npc/map/pochodnia1_stojac.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "19",
+    "y": "5",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "20",
+    "y": "5",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "21",
+    "y": "5",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "brąz1-róg-prawy",
+    "tip": "",
+    "x": "30",
+    "y": "8",
+    "url": "/obrazki/npc/map/braz-rog-p.gif",
+    "collision": false
+  }
+]

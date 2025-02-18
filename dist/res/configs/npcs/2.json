@@ -1,0 +1,1604 @@
+[
+  {
+    "name": "Duch",
+    "x": "53",
+    "y": "17",
+    "url": "/obrazki/npc/tru/tri_ghost6.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "name": "Duch",
+    "x": "63",
+    "y": "53",
+    "url": "/obrazki/npc/tru/tri_ghost5.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "name": "Duch",
+    "x": "53",
+    "y": "75",
+    "url": "/obrazki/npc/tru/tri_ghost4.gif",
+    "date": "30.10-4.11"
+  },
+  {
+    "type": "delete",
+    "id": 162316,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Część szklarni",
+    "tip": "",
+    "x": "35",
+    "y": "17",
+    "url": "#res/img/npc/torneg-glasshouse.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "20",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Krzak góra",
+    "tip": "",
+    "x": "4",
+    "y": "20",
+    "url": "#res/img/npc/krzak-gora.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "44",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "44",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 162312,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Drzewo góra",
+    "tip": "",
+    "x": "37",
+    "y": "63",
+    "url": "/obrazki/npc/map/drzew1-gora3.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Choinka góra",
+    "tip": "",
+    "x": "54",
+    "y": "61",
+    "url": "/obrazki/npc/map/choinka-up.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "75",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Palisada południe",
+    "tip": "",
+    "x": "85",
+    "y": "64",
+    "url": "#res/img/npc/torneg-palisade-south.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Palisada wschód",
+    "tip": "",
+    "x": "93",
+    "y": "17",
+    "url": "#res/img/npc/torneg-palisade-east.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "94",
+    "y": "15",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "95",
+    "y": "55",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "95",
+    "y": "54",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "95",
+    "y": "48",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "94",
+    "y": "48",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Wieżyczka góra",
+    "tip": "",
+    "x": "51",
+    "y": "62",
+    "url": "#res/img/npc/watchtower-top.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Wieżyczka dół",
+    "tip": "",
+    "x": "51",
+    "y": "64",
+    "url": "#res/img/npc/watchtower-bot.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "50",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "51",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "date": "21.03-21.11",
+    "collision": true
+  },
+  {
+    "name": "Stefan",
+    "x": "51",
+    "y": "44",
+    "url": "#res/img/npc/wyslannik.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Witaj #NAME w krainie Nerthusa. Wyglądasz, jakbyś przybył z daleka. Usiądź, odpocznij. Jeśli potrzebujesz pomocy w dalszej podróży, trafiłeś do dobrej osoby!",
+        "Czym jest Nerthus? ->1",
+        "Czym jest gra fabularna? ->7",
+        "W prawym górnym rogu widzę tarczę z literą „N”, co to? ->22",
+        "Mam problem z odnalezieniem się tu fabularnie. Co zrobić? ->26",
+        "Wiem już wszystko.  ->END"
+      ],
+      "1": [
+        "Nerthus jest to jedyny świat fabularny Margonem oparty na klimacie fantasy. Poznasz tutaj wiele ciekawych osobowości, a także przeżyjesz nowe, nieznane historie — oczywiście, jeśli odważysz się w nie zanurzyć.",
+        "Czym różni się świat fabularny od zwykłych i prywatnych? ->2",
+        "Czy mogę tu spotkać jakieś nadzwyczajne atrakcje? ->3",
+        "Chciałbym grać jak na innych serwerach. Czy spotkają mnie jakieś niespodzianki? ->4",
+        "Kto zarządza światem Nerthus? ->5",
+        "Czy na forum znajdę jakieś informacje o Nerthusie? ->6",
+        "Chciałbym zapytać o coś jeszcze. ->0",
+        "Wiem już wszystko.  ->END"
+      ],
+      "2": [
+        "Na tym świecie obowiązuje ścisła etykieta pisania na chacie ogólnym. Stosowany jest język klimatyczny, oparty na zwrotach znanych w RPG. Słowa takie jak “ded”, “exp”, są niedopuszczalne. Gracze odgrywają też specjalne postaci, na podstawie stworzonych Kart. Spójrz na <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=424036\" target=\"_blank\">ten</a> pergamin.",
+        "Chciałbym zapytać o coś jeszcze. ->1",
+        "Wiem już wszystko.  ->END"
+      ],
+      "3": [
+        "Nerthus skrywa wiele sekretów. Część z nich zobaczysz gołym okiem — sam spostrzeżesz, że Stary Zamek nie jest już ruiną. O tych i innych zmianach przeczytasz <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=500225\" target=\"_blank\">tutaj</a>.",
+        "Chcę zapytać o coś jeszcze. ->1",
+        "Wiem już wszystko.  ->END"
+      ],
+      "4": [
+        "Na świecie Nerthus można grać w taki sam sposób, jak na pozostałych światach; walczyć z tytanami, pokonywać herosów, masę elit i wykonywać zadania dla mieszkańców krainy. Ten rodzaj rozgrywki określany jest mianem mechanicznej i nie ma wpływu na fabularne oblicze świata. Obie formy są dostępne dla wszystkich. Wszak nie jednemu ciągłe czekanie na pojawienie się elity może się znudzić i z chęcią wyruszyłby na niebezpieczną wyprawę w nieznane. Niektórzy z pewnością po całym dniu spędzonym na rozmowach na jednym z miejskich placów, będą chcieli znaleźć chwilę odpoczynku, próbując wyrwać potworom jakąś legendę.",
+        "Chciałbym zapytać o coś jeszcze. ->1",
+        "Wiem już wszystko. ->END"
+      ],
+      "5": [
+        "Nad światem Nerthus pieczę sprawuje administracja poprzez zarządcę, którym jest Morry Myio, ale w ręce graczy zostało oddane sporo rang i funkcji, które ułatwiają rozgrywkę. W naszej krainie oprócz znanych z innych serwerów Moderatorów Chatu natknąć się możesz na Trubadurów, zwanych też bardami i narratorami, a także Radnych. Trubadurzy to osoby, które za pomocą specjalnych komend mogą opisywać czynności i wypowiedzi NPC, a także wszelkie reakcje otoczenia. Radni natomiast nadzorują przebieg rozgrywki fabularnej, w tym pracę narratorów, sprawdzają prawidłowość kart postaci, wprowadzają systemy ułatwiające rozgrywkę. Do ich obowiązków należy również rozstrzyganie sporów, wyjaśnianie spraw, które wzbudzają kontrowersję, a także decydowanie, kto się pojawi na naszym świecie poprzez rekrutację forumową. Wszyscy gracze sprawujący rangi wypisani zostali w <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=512183\" target=\"_blank\"> tym</a> temacie. <br>",
+        "Chciałbym zapytać o coś jeszcze. ->1",
+        "Wiem już wszystko.  ->END"
+      ],
+      "6": [
+        "Dla graczy posiadających postać na naszym świecie został przeznaczony cały dział <a href=\"https://forum.margonem.pl/?task=forum&show=topics&id=33\" target=\"_blank\">na forum</a>. Znajdziesz tam Regulamin Nerthusa, temat do pogawędek, informacje o naszym nerthusowym dodatku, biuletyn, na którym można zgłaszać graczy nieprzestrzegających regulaminu pisania na chacie, a także dwa tematy do wystawiania ofert handlu — do kupna i sprzedaży. Ponadto znajduje się tam temat Rady, w którym zwykle ukazują się zmiany dotyczące rozgrywki fabularnej, temat zawierający informacje o naszej fabularnej walucie, questach serwerowych oraz innych niespodziankach i sporo tematów rekrutacyjnych klanów i organizacji. Oczywiście nasz dział oferuje wiele innych niespodzianek, o czym z pewnością się przekonasz.",
+        "Chciałbym zapytać o coś jeszcze. ->1",
+        "Wiem już wszystko.  ->END"
+      ],
+      "7": [
+        "RP — skrót od Role Play, w tłumaczeniu odgrywanie ról. Granie w gry RP jest właśnie jak odgrywanie roli niczym aktor w teatrze. Nie ma jednak ustalonego scenariusza, a każda osoba odgrywa swoją postać tak, jak chce, stosując się do wytycznych stworzonych przez nią w swojej Karcie Postaci. Gry RP mają różną formę i zasady, w zależności od różnych czynników takich jak systemy, miejsca, w jakim są one grane czy nawet towarzystwo. Na Nerthusie —  świecie i jednocześnie systemie, w którym dzieje się tu akcja nie jest inaczej. Rozgrywka jest tu prowadzona za pomocą czatu w grze, przy pomocy różnorakich komend, aby lepiej opisać zachowanie swojej postaci. Sama gra przypomina trochę wspólne pisanie opowiadania, w którym każdy z uczestniczących graczy jest bohaterem.",
+        "Jak stworzyć Kartę Postaci? ->8",
+        "Mam już Kartę Postaci. Co teraz?  ->14",
+        "Czy pomiędzy Nerthusem a fabułą Margonem są jakieś różnice? ->21",
+        "Chciałbym zapytać o coś jeszcze.  ->0",
+        "Wiem już wszystko.  ->END"
+      ],
+      "8": [
+        "Szczegółowy lub skrócony opis tworzenia karty postaci można znaleźć w tym <a href=\"https://docs.google.com/document/d/1Q1wwx9xYghsnQoWr6SMdRa-bwy7OAMhLFM6TCB3X-ik/edit?usp=sharing\" target=\"_blank\"> pliku.</a>",
+        "O czym muszę pamiętać podczas jej kreowania? ->9",
+        "Czy Karta Postaci musi spełnić jakieś specjalne wymagania? ->10",
+        "Mam problem z wymyśleniem postaci, co zrobić? ->11",
+        "Jakie umiejętności powinienem sobie dobrać?  ->12",
+        "Napisałem już kartę postaci, co z nią zrobić? ->13",
+        "Chciałbym zapytać o coś jeszcze.  ->7",
+        "Wiem już wszystko.  ->END"
+      ],
+      "9": [
+        "Należy pamiętać, że na początku Twojej drogi nie możesz stworzyć potężnej postaci. Będzie się ona rozwijać wraz z Twoją rozgrywką. Tyczy się to zarówno umiejętności, jak i posiadanego ekwipunku, pieniędzy, a także statusu społecznego. Postaraj się także zachować logikę podczas tworzenia, małe dziewczynki wymachujące wielkimi toporami bojowymi nie będą tu mile widziane. Oczywiście możesz dać się ponieść wyobraźni, ale dodając do tego odpowiednie uzasadnienie. Najlepiej stworzyć postać, którą będzie Ci się przyjemnie odgrywać — nie sugeruj się innymi graczami.<br><br>Poza wyobraźnią duży wkład będzie też mieć wiedza poza grą. Zielarz na ogół powinien znać wygląd roślin oraz ich zastosowanie. Dlatego też lepiej nie tworzyć postaci zajmujących się dziedzinami, których nie lubisz. ",
+        "Chciałbym zapytać o coś jeszcze. ->8",
+        "Wiem już wszystko.  ->END"
+      ],
+      "10": [
+        "Główne ograniczenia co do karty postaci to początkowa ilość punktów, posiadany ekwipunek oraz rasa. <br><br> Nowi gracze mają do dyspozycji 15 punktów na start, gdzie 3 powinny zostać przeznaczone na specjalizację odgrywanej rasy (więcej w <a href=\"https://nerthus.pl/Mechanika/System%20Umiej%C4%99tno%C5%9Bci/\" target=\"_blank\">Systemie Umiejętności</a> i w <a href=\"https://drive.google.com/file/d/1WuT4klKQY_kXXvU_P2TGov5izU3ZtEWp/view\" target=\"_blank\">Spisie Ras</a>). Przy czym podczas ich rozdawania należy pamiętać o uwzględnianiu poprzednich poziomów zaawansowania (wbrew pozorom umiejętność zaawansowana 3/5 kosztuje 6 punktów, gdyż wcześniej gracz musiał jeszcze wydać punkty na poziomy kolejno podstawowego 1/5 i adepta 2/5).<br><br> Ekwipunek, tak jak zawsze na początku trudnej podróży, nie jest zbyt rozbudowany. Zapełnij go najważniejszymi rzeczami — stalową bronią, prostą zbroją, a także kilkoma przydatnymi przedmiotami, jak np. krzesiwo. Potężne artefakty zdobędziesz dopiero podczas gry. <br><br> Rasy podzielone zostały na standardowe i niestandardowe. Chcąc grać rasą niestandardową, należy odegrać specjalną sesję sprawdzającą (więcej w <a href=\"https://drive.google.com/file/d/1WuT4klKQY_kXXvU_P2TGov5izU3ZtEWp/view\" target=\"_blank\">Spisie Ras</a>).",
+        "Chciałbym zapytać o coś jeszcze. ->8",
+        "Wiem już wszystko.  ->END"
+      ],
+      "11": [
+        "Tworzenie postaci w rp jest bardzo podobne do kreowania postaci literackiej. Musi się ona wpasowywać w istniejącą już fabułę (czyli w tym przypadku kowboje, roboty i wszelkie byty poza fantastyką odpadają). Można też spróbować zainspirować się zdjęciem, artem lub poczytać opisy interesującej Cię rasy. Najlepiej tworzyć bohaterów, których z przyjemnością będzie Ci się odgrywać lub takich, których umiejętności opierają się na Twoich zainteresowaniach. Każda postać powinna mieć jakąś historię. Nawet jeśli nie wpiszesz jej w swojej karcie, podczas gry jakiś gracz może się o nią zapytać. Stworzenie takiej opowieści pozwoli Ci na zbudowanie wielu wątków coraz bardziej rozwijającej bohatera oraz nada mu cechy ludzkie, dzięki czemu łatwiej będzie Ci się w nią wczuć. ",
+        "Chciałbym zapytać o coś jeszcze. ->8",
+        "Wiem już wszystko.  ->END"
+      ],
+      "12": [
+        "Dobierając umiejętności, pamiętaj, że to jedynie początek Twojej przygody, a z czasem Twoja postać będzie miała wiele okazji się rozwinąć. Najlepiej wybrać dziedziny, które lubisz i nie będziesz miał problemu z opisywaniem ich. Pamiętaj przy tym, aby dobrze wpasowywały się w wykreowaną przez Ciebie postać. Należy przy tym myśleć przyszłościowo, w końcu Twój bohater będzie musiał poradzić sobie w tym niebezpiecznym świecie. ",
+        "Chciałbym zapytać o coś jeszcze.  ->8",
+        "Wiem już wszystko.  ->END"
+      ],
+      "13": [
+        "Po stworzeniu Karty Postaci należy zgłosić się do któregokolwiek z radnych (lista aktualnych radnych jest dostępna <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=512183\" target=\"_blank\">w temacie na forum</a>), aby została ona zaakceptowana. Następnie powinna zostać ona gdzieś opublikowana. Najlepszym miejscem na kartę postaci jest twój profil. Dzięki temu jest łatwo dostępna dla innych graczy i osób funkcyjnych, a jednocześnie jest zawsze pod ręką, gdyby zaistniała konieczność wprowadzenia zmian, które wraz z rozwojem postaci będą nieuniknione. W końcu nie jest trudno podczas ciężkich starć uszkodzić swój pancerz, czy też podczas długiej podróży spożyć cały prowiant. Z pewnością twoja postać zdobędzie nowe umiejętności, których stan będziesz musiał aktualizować.",
+        "Chciałbym zapytać o coś jeszcze. ->8",
+        "Wiem już wszystko.  ->END"
+      ],
+      "14": [
+        "Przed Tobą najlepsze! Ruszaj na szlak i spotkaj innych podróżników. Razem możecie udać się na wyprawy, które poprowadzi dla Was narrator.",
+        "Jakie działania mogę wykonywać samemu, a do których potrzebny mi narrator? ->15",
+        "Jak zapisywać się na sesje? ->16",
+        "W jaki sposób najlepiej rozwijać swoją postać? ->17",
+        "Jak wygląda fabularne rozporządzanie pieniędzmi? ->18",
+        "Jakich rzeczy nie mogę robić? ->19",
+        "Czym są organizacje? ->20",
+        "Jak najłatwiej skontaktować się z radnymi? ->27",
+        "Chciałbym zapytać o coś jeszcze. ->7",
+        "Wiem już wszystko.  ->END"
+      ],
+      "15": [
+        "Do wszelkich działań, które wprowadzają zmiany w fabule, wymagana jest obecność narratora, którego rolą jest opisywanie reakcji otoczenia. Dlatego też chcąc podpalić czyjś dom lub zawalczyć z silnym potworem terroryzującym miasto niezbędna będzie jego obecność. Samemu można przeprowadzać interakcje z innymi graczami, prowadzić treningi lub proste działania niewpływające w większym stopniu na otoczenie. ",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ],
+      "16": [
+        "Możesz zgłosić się do <a href=\"https://nerthus.pl/Informacje/Narratorzy/\" target=\"_blank\">narratorów</a>, bądź też śledzić ogłoszenia w <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=456873\" target=\"_blank\">tym</a> temacie.",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ],
+      "17": [
+        "Trening czyni mistrza! Twoja postać podejmuje różne działania poprzez komendy /me i *me. Dzięki nim możesz prowadzić treningi, czy też wchodzić w interakcje z innymi graczami. Aby rozwijać postać o dodatkowe punkty, należy dowód (w postaci screena lub logów z chatu) podesłać któremuś z Radnych bądź narratorów. Alternatywną drogą jest udział w sesjach fabularnych.",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ],
+      "18": [
+        "Na Nerthusie posiadamy specjalną walutę zwaną kogami. Jeśli napiszesz do któregoś z radnych, z pewnością dadzą ci jakąś kwotę na start, chociaż nie będzie ona zbyt wielka. <br>Nasza postać oczywiście musi na siebie jakoś zarabiać. Można to robić poprzez pracę dla innego gracza, NPC bądź sprzedając poszczególne przedmioty lub usługi. Kupno dzieje się analogicznie. Większość przedmiotów zwykłych zawartych w cenniku można nabyć poprzez wysłanie narratorowi odpowiedniej kwoty. Te rzadsze wymagają sesji.",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ],
+      "19": [
+        "Torturowanie jest surowo zakazane na świecie Nerthus. Tak samo jak zabijanie postaci gracza, poważne jej okaleczanie oraz wpływanie na umysł bez jego zgody. <br> Ważne jest także wystrzeganie się herosowania i metagamingu. Herosowanie to odgrywanie czynności znacząco wykraczające poza umiejętności naszej postaci, przykładowo pokonanie kilku doświadczonych strażników jednym ciosem miecza. Metagaming z kolei jest wykorzystywaniem informacji spoza gry w grze. Należy do tego zarówno zwracanie się do konkretnej osoby jej imieniem, podczas gdy nigdy Ci się nie przedstawiała, jak i przykładowo sytuacja, w której gracz “zupełnie przypadkiem” znajduje kryjówkę innego gracza, podczas gdy nie miał możliwości się o niej dowiedzieć. ",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ],
+      "20": [
+        "Organizacje to fabularne stowarzyszenia analogiczne do klanów. Skupiają one osoby, którym w rozgrywce fabularnej przyświeca podobny cel. Na forum Nerthusa znaleźć można wiele tematów zawierających informacje o przeróżnych organizacjach, niektórych chętnych do przyjęcia w swe szeregi niedoświadczonych poszukiwaczy przygód. Można też oczywiście założyć własną. Należy wówczas dostarczyć Radzie odpowiednie na jej temat informacje. Trzeba pamiętać, że jedna osoba może być założycielem wyłącznie jednej organizacji.",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ],
+      "21": [
+        "Od powstania Nerthusa minęło sporo czasu, więc można zauważyć sporo zmian w porównaniu do innych światów. Widać je głównie podczas interakcji z NPC. Sam zauważysz, że nad niektórymi miastami władzę sprawują gracze. Nie spotkasz także burmistrza Karka-han, gdyż… no, ale tego najlepiej niech dowie się już Twoja postać w grze.<br><br>Większość ogólnych zmian jest zawartych w <a href=\"https://nerthus.pl/%C5%9Awiat%20gry/Wie%C5%9Bci%20z%20krainy/\" target=\"_blank\">Wieściach z krainy</a>.",
+        "Chciałbym zapytać o coś jeszcze. ->7",
+        "Wiem już wszystko.  ->END"
+      ],
+      "22": [
+        "Jest to Tarcza Nerthusa, rdzeń dodatku globalnego. Znajdziesz pod nim najważniejsze tematy, a także możliwości włączenia pogody, zodiaku, czy cyklu dnia i nocy.",
+        "Jakich komend na czacie mogę używać? ->23",
+        "Co to za linki w tarczy i do czego służą w rozgrywce? ->24",
+        "Nie podobają mi się wizualne zmiany wprowadzane przez dodatek. Jak to wyłączyć? ->25",
+        "Chciałbym zapytać o coś jeszcze. ->0",
+        "Wiem już wszystko.  ->END"
+      ],
+      "23": [
+        "Masz dostęp do dwóch rodzajów komend: /me i *me. Pierwsza wywołuje pomarańczowy opis rozpoczęty Twoim nickiem, drugi zaś nie. Służą one do opisywania czynności Twojej postaci podczas rozgrywki fabularnej.",
+        "Chciałbym zapytać o coś jeszcze. ->22",
+        "Wiem już wszystko.  ->END"
+      ],
+      "24": [
+        "-<a href=\"https://forum.margonem.pl/?task=forum&show=topics&id=33\" target=\"_blank\"> Forum</a> — link do działu na forum dedykowanego Nerthusowi. <br>-<a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=424036\" target=\"_blank\"> Regulamin i zbiór zasad</a>. <br>-<a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=505201\" target=\"_blank\"> Poradnik dla początkujących</a> — temat ułatwiający wdrożeniu się w rozgrywkę fabularną.<br>-<a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=512181\" target=\"_blank\"> Biuletyn</a> — temat służący do zgłaszania graczy za nieklimatyczne słownictwo na czacie ogólnym.<br>-<a href=\"https://nerthus.pl/%C5%9Awiat%20gry/Wie%C5%9Bci%20z%20krainy/\" target=\"_blank\"> Wieści z krainy</a> — spis wszelkich zmian w fabule i lokacjach.<br>-<a href=\"https://nerthus.pl/discord\" target=\"_blank\"> Discord</a> — nieoficjalny serwer Discord zrzeszający graczy fabularnych. <br>-<a href=\"https://nerthus.pl/Mechanika/System%20Umiej%C4%99tno%C5%9Bci/\" target=\"_blank\"> System umiejętności</a> — dokument przedstawiający umiejętności możliwe dla graczy fabularnych.<br>-<a href=\"https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!343&ithint=file%2cxlsx&app=Excel&authkey=!AAL9d-j3fr_9aag\" target=\"_blank\"> Cennik Nerthusa</a> — spis większości przedmiotów możliwych do kupienia fabularnie za walutę serwerową.<br>-<a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=264553\" target=\"_blank\"> Informacje o dodatku</a> — temat zawierający informacje o wszelkich funkcjach wprowadzanych poprzez dodatek.<br>-<a href=\"https://nerthus.pl/Mechanika/System%20Magii/System%20Magii/\" target=\"_blank\"> System magii</a> — dokument przedstawiający magię dla graczy fabularnych. <br>-<a href=\"https://nerthus.pl/Mechanika/System%20Magii/Rdze%C5%84%20Kosmosu/\" target=\"_blank\"> Podstawy mechaniki rdzenia kosmosu</a> — jest to element Systemu Magii, który rozszerza rdzeń Kosmosu. Stosują go magowie. Aktualny znak zodiaku widoczny jest pod pogodą. ",
+        "Chciałbym zapytać o coś jeszcze. ->22",
+        "Wiem już wszystko.  ->END"
+      ],
+      "25": [
+        "Aby wyłączyć dodatek na SI wpisz \"gadblock on\" w konsoli. Aby wyłączyć dodatek na NI wpisz \"Engine.globalAddons.setVisibleOfTurnOnOffAddonButton(true)\" w konsoli i kliknij przycisk, który się pojawi. Opcja wyłączenia pojedynczych elementów, jak pogoda, zodiak oraz dzień i noc dostępna jest w ustawieniach tarczy. ",
+        "Chciałbym zapytać o coś jeszcze. ->22",
+        "Wiem już wszystko.  ->END"
+      ],
+      "26": [
+        "Nie martw się, początki bywają trudne. Na szczęście znam osoby, które z chęcią udzielą Ci pomocy. Proszę, zapisałem <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=505201&ps=0#post42849377\" target=\"_blank\">tutaj</a> ich imiona. Możesz też przybyć na <a href=\"https://nerthus.pl/discord\" target=\"_blank\"> Discord</a> dedykowany Nerthusowi — znajdziesz tutaj wspaniałą kompanię, a także potrzebną pomoc.",
+        "Chciałbym zapytać o coś jeszcze. ->0",
+        "Wiem już wszystko.  ->END"
+      ],
+      "27": [
+        "Oficjalne sposoby komunikacji z radą to skrzynka w grze lub ten <a href=\"https://forum.margonem.pl/?task=forum&show=posts&id=511264\" target=\"_blank\"> temat na forum</a>. Istnieje także Discord usprawniający kontakt z radą, na który zapraszam <a href=\"https://nerthus.pl/discord\" target=\"_blank\"> tutaj</a>.",
+        "Chciałbym zapytać o coś jeszcze. ->14",
+        "Wiem już wszystko.  ->END"
+      ]
+    }
+  },
+  {
+    "type": "change",
+    "id": 253983,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253880,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253973,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253991,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253893,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 254001,
+    "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253964,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna duża",
+    "tip": "",
+    "x": "51",
+    "y": "11",
+    "url": "/obrazki/npc/map/zim-sosn-duz2b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253978,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253873,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253972,
+    "newUrl": "/obrazki/npc/map/zim-szare4-lew1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253872,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253896,
+    "newUrl": "/obrazki/npc/map/zim-szare3-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253984,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253874,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253996,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "33",
+    "y": "9",
+    "url": "/obrazki/npc/map/zim-choin-sred1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253970,
+    "newUrl": "/obrazki/npc/map/zim-szare13-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253981,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare prawe",
+    "tip": "",
+    "x": "37",
+    "y": "15",
+    "url": "/obrazki/npc/map/zim-szare13-praw1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253982,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253895,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253886,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka mała",
+    "tip": "",
+    "x": "9",
+    "y": "13",
+    "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 254000,
+    "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253878,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253871,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253994,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253902,
+    "newUrl": "/obrazki/npc/map/zim-szare1-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253887,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253960,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "12",
+    "y": "21",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253879,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253971,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253885,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253892,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253998,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz4a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253891,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253980,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253969,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253967,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253870,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253961,
+    "newUrl": "/obrazki/npc/map/zim-szare1-praw2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253999,
+    "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253968,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253963,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253992,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253900,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "15",
+    "y": "56",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253901,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253979,
+    "newUrl": "/obrazki/npc/map/zim-szare2-lew1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253884,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253990,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253989,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna mała",
+    "tip": "",
+    "x": "24",
+    "y": "48",
+    "url": "/obrazki/npc/map/zim-sosn-mal2b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna mała",
+    "tip": "",
+    "x": "25",
+    "y": "47",
+    "url": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253974,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253881,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253875,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253876,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253899,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253988,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253897,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka mała",
+    "tip": "",
+    "x": "58",
+    "y": "56",
+    "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253882,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "66",
+    "y": "56",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253907,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253997,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253888,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253987,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253903,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "76",
+    "y": "62",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253995,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "80",
+    "y": "63",
+    "url": "/obrazki/npc/map/zim-choin-sred1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253966,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253894,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253890,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253993,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253965,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253985,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka mała",
+    "tip": "",
+    "x": "72",
+    "y": "45",
+    "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 254002,
+    "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253975,
+    "newUrl": "/obrazki/npc/map/zim-choin-sred1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253906,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253898,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253883,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza3.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253976,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253977,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253877,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253962,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253889,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253905,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 253904,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253986,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 254003,
+    "newUrl": "/obrazki/npc/map/zim-prost3b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 129369,
+    "newUrl": "/obrazki/npc/mas/nic32x32.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253909,
+    "newUrl": "#res/img/npc/zim-mostek-lewy.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253913,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253914,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253915,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253916,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253917,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253911,
+    "newUrl": "#res/img/npc/zim-mostek-prawy.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253910,
+    "newUrl": "#res/img/npc/zim-mostek-lewy.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253918,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253919,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253920,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253921,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253922,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253923,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253924,
+    "newUrl": "#res/img/npc/zim-mostek-srodek.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 253912,
+    "newUrl": "#res/img/npc/zim-mostek-prawy.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 263696,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263686,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263687,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263691,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263697,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263700,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263711,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263703,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263701,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263705,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263706,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263710,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263708,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263706,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263692,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263689,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263688,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253975,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253898,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263698,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253932,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253929,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253988,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253987,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253996,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253928,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253931,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253970,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253874,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253893,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253991,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 254001,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253893,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253984,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253982,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 254005,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253871,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253994,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253892,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253980,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253979,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253989,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253990,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253987,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263699,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263693,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263694,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263704,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263707,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263709,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263695,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263690,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 253930,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 263702,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 129980,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "67",
+    "y": "6",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "90",
+    "y": "7",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "69",
+    "y": "22",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "88",
+    "y": "59",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "61",
+    "y": "53",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "48",
+    "y": "58",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "36",
+    "y": "43",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "55",
+    "y": "27",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "52",
+    "y": "17",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "46",
+    "y": "8",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "51",
+    "y": "3",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "21",
+    "y": "14",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "28",
+    "y": "18",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "9",
+    "y": "41",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "28",
+    "y": "48",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Pochodnia",
+    "tip": "",
+    "x": "44",
+    "y": "35",
+    "url": "/obrazki/npc/map/pochodnia-ogien.gif",
+    "date": "21.03-21.11"
+  }
+]

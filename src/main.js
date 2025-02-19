@@ -1,6 +1,7 @@
 import {callEvent, initAPI} from './app/API'
 import {initChatMgr} from './app/chat/chat'
 import {initBasicChatCommands} from './app/chat/commands'
+import {initHideChatCommercials} from './app/chat/hide-chat-commercials'
 import {initiateGameIntegrationLoaders} from './app/game-integration/loaders'
 import {initTips} from './app/game-integration/tips'
 import {addBasicStyles} from './app/interface/css-manager'
@@ -46,6 +47,7 @@ function start()
     initWeather()
     initZodiac()
 
+    initHideChatCommercials()
     initBasicChatCommands()
     initChatMgr()
 

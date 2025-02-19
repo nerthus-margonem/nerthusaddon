@@ -48,11 +48,6 @@
     cursor: auto;
 }
 
-/* Hide chat commercials */
-.chat-COMMERCIAL-message {
-    display: none;
-}
-
 #centerbox2 > .nerthus-panel .close-button,
 #centerbox2 > .nerthus-panel .button,
 #centerbox2 > #nerthus-main-panel .setting-label-text,
@@ -404,7 +399,7 @@
 #nerthus-main-panel .setting-label-text {
     cursor: url(https://nerthus.margonem.pl/img/gui/cursor/5n.png), url(https://nerthus.margonem.pl/img/gui/cursor/5n.cur), pointer;
     left: 25px;
-    line-height: 28px;
+    line-height: 1.25rem;
     position: relative;
 }
 

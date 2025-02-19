@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Cela z goblinem",
+    "x": "29",
+    "y": "25",
+    "url": "/obrazki/npc/mas/nic64x64.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "[ W dosyć małej i obskurnej celi widzisz siedzącego na stołku goblina. Jest jedynie w przepasce i nie wygląda jak okaz zdrowia. Jego ciało jest wątłe nawet jak na goblina, a co dziwne ma nawet niechlujny zarost, którego nie kojarzysz u innych przedstawicieli tego gatunku. Goblin nie wydaje się na Ciebie reagować. ]<br>Co robisz?",
+        "Przyglądam się bliżej goblinowi. ->1",
+        "Przyglądam się dokładniej celi. ->2",
+        "Rozglądam się dookoła. ->3",
+        "Odchodzę ->END"
+      ],
+      "1": [
+        "[ Widzisz paręnaście blizn, dawno zabliźnionych, chociaż na tym wątłym ciele wybijających się od zgniłozielonej skóry. Goblin buja się na stołku, jest wyraźnie pod wpływem, nie wiesz niestety czego. Nie kontaktuje i chyba nawet jest do końca świadomy Twojej obecności. Oczy ma zamglone. ]",
+        "[ Krzykiem ] Ej, goblinie! ->7",
+        "Powrót ->0"
+      ],
+      "2": [
+        "[ Cela jest dosyć mała. Jest to właściwie wnęka w ścianie, która odznacza się niezbyt dokładnym wykonaniem. Widzisz, że jest to stosunkowo nowy fragment muru. Kratowanie jest lekko krzywe. Klepisko celi jest kamienne, ale leży na nim warstwa ziemi z gruzem i żwirem. Nie jest to ani komfortowe, ani nie chroni przed zimnem, wręcz je potęguje.<br>Oprócz tego w celi jest prycza, wyraźnie brudna, oraz dół w ziemi. Możesz domyślić się, do czego służy, chociaż po zapachu nie jesteś w stanie wyróżnić, co cuchnie tutaj najbardziej. Na ścianie wiszą kajdany, chyba za duże na goblina. ]",
+        "Powrót ->0"
+      ],
+      "3": [
+        "[ Chaos murów. Beczki, skrzynie, stojaki z bronią i pancerzami. Śmieci i cenne przedmioty strategiczne. Jedynym wyróżniającym się elementem jest ładny, choć archaiczny stoliczek z podejrzanie eleganckim kompletem herbacianym. Kojarzy Ci się z jakiegoś powodu z Nithal... ]",
+        "Badam zastawę. ->4",
+        "Powrót ->0"
+      ],
+      "4": [
+        "[ Imbryk jest do połowy pusty, lub też do połowy pełny. W każdym razie już sam zapach ziół sprawia, że lekko kręci Ci się w głowie. ]<br>Co robisz?",
+        "Nalewam sobie herbaty i zaczynam pić. ->5",
+        "Lepiej nie ruszać, to pewnie jakaś trucizna. ->END"
+      ],
+      "5": [
+        "[ Kolor herbaty jest nieco ciemny, mętny. Jest to raczej wina wielokrotnego zaparzania, lub kamienistej wody. Smak jest bogaty, jednak nie masz czasu na docenienie wachlarza dłużej niż parę sekund. Padasz na ziemię, sufit wiruje. ]",
+        "Dalej ->6"
+      ],
+      "6": [
+        "[ Budzisz się po nieokreślonym odstępie czasowym. Twoje ciało znajduje się na posadzce, zaraz obok imbryka z diabelską herbatką. Czujesz się obolały, a wszystkie twoje mięśnie są jakby z waty. Chwiejnie wstajesz, podtrzymując się ręką pobliskiego stolika. By nikt nie zauważył twojej chwili słabości, czym prędzej zaczynasz kuśtykać w kierunku wyjścia. ]",
+        "Zapamiętać, nigdy więcej herbatek w dusznych lochach. ->END"
+      ],
+      "7": [
+        "[ Goblin wydaje się reagować na głośny dźwięk, niekoniecznie znaczenie. ]",
+        "[ Krzykiem ] Halo! Pobudka! Jak masz na imię? Co tu robisz!? ->8",
+        "Lepiej zostawić go w spokoju, jeszcze się rzuci na kraty czy opluje mnie czymś. ->END"
+      ],
+      "8": [
+        "[ Goblin wybudził się na chwilę i spojrzał na Ciebie. Zaczął coś bełkotać. ]",
+        "Dalej ->9"
+      ],
+      "9": [
+        "Eemm... Nur-... -sen... Pomóż... Zapłacę...",
+        "Dalej ->10"
+      ],
+      "10": [
+        "Nuro-...-seeeeenn...",
+        "Dalej ->11"
+      ],
+      "11": [
+        "[ Bełkot po chwili ustąpił jęknięciom i odgłosom snu. ]<br>Co robisz?",
+        "Odchodzę. I tak nic od niego nie wyciągnę. ->END"
+      ]
+    }
+  }
+]

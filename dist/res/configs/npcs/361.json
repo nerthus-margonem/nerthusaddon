@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Drzewo totemów",
+    "x": "24",
+    "y": "7",
+    "url": "/obrazki/npc/map/tri-drzew-tot2.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "[ Upiorne drzewo stoi na skraju urwiska. Na gałęziach wiszą kości i amulety poruszane chłodnymi podmuchami wiatru. Ciężko powiedzieć czy to sprawka kultystów czy może kogoś jeszcze innego. Na pewno nie wygląda przyjaźnie, roztacza dookoła siebie złowrogą aurę. ]",
+        "Ludzkie kości...? ->1",
+        "[ W milczeniu sięgasz do jednego z zawieszonych przedmiotów. ] ->2",
+        "Lepiej nie podchodzić... ->END"
+      ],
+      "1": [
+        "[ Nikt nie odpowiedział. Za to pojawiło się wrażenie bycia obserwowanym. ]",
+        "Lepiej stąd iść zanim to ja zawisnę na jednej z gałęzi. ->END"
+      ],
+      "2": [
+        "[ Powieszona za szyję laleczka nie ma twarzy. Ubrana jest w łachmaniastą sukienkę, a do rączki ma przyczepiony kawałek zaostrzonej kości. Wbija Ci się w palec i wtedy słyszysz cichy szept. ]",
+        "Dalej ->END"
+      ],
+      "3": [
+        "Trzynaście... Spalone, utopione, uduszone, warstwą ziemi przygniecione.",
+        "Kto został zamordowany? ->4"
+      ],
+      "4": [
+        "[ Coś w tutejszej atmosferze się zmieniło. Nie wiadomo dokładnie co, ale lepiej się stąd wynosić. ]",
+        "Koniec. ->END"
+      ]
+    }
+  }
+]

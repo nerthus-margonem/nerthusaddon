@@ -403,13 +403,6 @@
   },
   {
     "type": "change",
-    "id": 253893,
-    "newUrl": "/obrazki/npc/map/zim-choin-mala2a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
     "id": 254001,
     "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
     "lvl": 0,
@@ -436,10 +429,17 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 253873,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "54",
+    "y": "7",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
   {
@@ -450,10 +450,17 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 253872,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "45",
+    "y": "6",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
   {
@@ -471,19 +478,6 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 253874,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "delete",
-    "id": 253996,
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
     "name": "choinka średnia",
     "tip": "",
     "x": "33",
@@ -492,24 +486,9 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 253970,
-    "newUrl": "/obrazki/npc/map/zim-szare13-praw1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 253981,
     "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "name": "szare prawe",
-    "tip": "",
-    "x": "37",
-    "y": "15",
-    "url": "/obrazki/npc/map/zim-szare13-praw1.gif",
     "date": "22.11-20.03"
   },
   {
@@ -555,21 +534,8 @@
   },
   {
     "type": "change",
-    "id": 253871,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "delete",
-    "id": 253994,
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
     "id": 253902,
-    "newUrl": "/obrazki/npc/map/zim-szare1-praw1.gif",
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -658,10 +624,17 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 253870,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "4",
+    "y": "46",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
   {
@@ -679,9 +652,8 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 253968,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -713,6 +685,14 @@
     "date": "22.11-20.03"
   },
   {
+    "name": "szare lewe",
+    "tip": "",
+    "x": "33",
+    "y": "63",
+    "url": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "date": "22.11-20.03"
+  },
+  {
     "type": "delete",
     "id": 253901,
     "lvl": 0,
@@ -729,18 +709,6 @@
     "type": "change",
     "id": 253884,
     "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "delete",
-    "id": 253990,
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "delete",
-    "id": 253989,
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -775,17 +743,47 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 253875,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "name": "choinka duża",
+    "tip": "",
+    "x": "53",
+    "y": "39",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
     "id": 253876,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "34",
+    "y": "62",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare lewe",
+    "tip": "",
+    "x": "72",
+    "y": "62",
+    "url": "/obrazki/npc/map/zim-szare3-lew3.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "78",
+    "y": "62",
+    "url": "/obrazki/npc/map/zim-choin-duza3.gif",
     "date": "22.11-20.03"
   },
   {
@@ -850,38 +848,15 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 253987,
-    "newUrl": "/obrazki/npc/map/zim-sosn-duz2a.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 253903,
     "lvl": 0,
     "date": "22.11-20.03"
   },
   {
-    "name": "choinka duża",
-    "tip": "",
-    "x": "76",
-    "y": "62",
-    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 253995,
     "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "name": "choinka średnia",
-    "tip": "",
-    "x": "80",
-    "y": "63",
-    "url": "/obrazki/npc/map/zim-choin-sred1.gif",
     "date": "22.11-20.03"
   },
   {
@@ -939,21 +914,16 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
-    "id": 253975,
-    "newUrl": "/obrazki/npc/map/zim-choin-sred1.gif",
-    "lvl": 0,
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "67",
+    "y": "40",
+    "url": "/obrazki/npc/map/zim-choin-sred1.gif",
     "date": "22.11-20.03"
   },
   {
     "type": "delete",
     "id": 253906,
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "delete",
-    "id": 253898,
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -979,10 +949,17 @@
     "date": "22.11-20.03"
   },
   {
-    "type": "change",
+    "type": "delete",
     "id": 253877,
-    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
     "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "85",
+    "y": "31",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
   {
@@ -1205,12 +1182,6 @@
   },
   {
     "type": "delete",
-    "id": 263706,
-    "lvl": 0,
-    "date": "21.03-21.11"
-  },
-  {
-    "type": "delete",
     "id": 263710,
     "lvl": 0,
     "date": "21.03-21.11"
@@ -1248,14 +1219,12 @@
   {
     "type": "delete",
     "id": 253975,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 253898,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -1284,14 +1253,12 @@
   {
     "type": "delete",
     "id": 253987,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 253996,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -1308,20 +1275,12 @@
   {
     "type": "delete",
     "id": 253970,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 253874,
-    "lvl": 0,
-    "date": "21.03-21.11"
-  },
-  {
-    "type": "delete",
-    "id": 253893,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -1338,8 +1297,7 @@
   {
     "type": "delete",
     "id": 253893,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -1362,14 +1320,12 @@
   {
     "type": "delete",
     "id": 253871,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 253994,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -1392,20 +1348,12 @@
   {
     "type": "delete",
     "id": 253989,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 253990,
-    "lvl": 0,
-    "date": "21.03-21.11"
-  },
-  {
-    "type": "delete",
-    "id": 253987,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",

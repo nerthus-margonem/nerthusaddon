@@ -1,6 +1,6 @@
 {
   "name": "nerthusaddon",
-  "version": "8.1.2",
+  "version": "8.2.0",
   "description": "Addon for the Nerthus server in game [Margonem](https://www.margonem.pl/)",
   "main": "/src/main.js",
   "directories": {

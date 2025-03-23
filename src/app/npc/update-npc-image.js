@@ -36,7 +36,7 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl)
             npc.fh = decoded.height
             npc.halffw = decoded.width / 2
             npc.halffh = decoded.height / 2
-            npc.frameAmount = decoded.frameData.length
+            npc.frameAmount = 1 // this is not the length of npc.frames
             npc.frames = decoded.frameDelays.map((delay) => ({delay}))
             npc.leftPosMod = npc.d.type > 3 && !(npc.fw % 64) ? -16 : 0
             if (npc.d.type !== 4) npc.updateCollider()

@@ -92,10 +92,29 @@ function loadNpcs()
     customNpcs.default.forEach(addNpc)
 }
 
+function handleChangedNpcsOnMinimap() {
+    if (INTERFACE === 'NI')
+    {
+        const oldCreateNpcIcon = window.createNpcIcon
+        window.createNpcIcon = function (_1, _2, url)
+        {
+            // Replace urls with custom sufix to be only that sufix,
+            // so that the minimap will show the correct image
+            if (url.includes('?nerthus-icon='))
+            {
+                arguments[2] = url.replace(/^.*?nerthus-icon=/, '')
+            }
+            return oldCreateNpcIcon.apply(window, arguments)
+        }
+    }
+}
+
 
 export function initNpcManager()
 {
     initNpcDialog()
+    handleChangedNpcsOnMinimap()
+
     loadOnEveryMap(function ()
     {
         if (INTERFACE === 'SI')

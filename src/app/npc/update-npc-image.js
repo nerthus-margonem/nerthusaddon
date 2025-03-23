@@ -31,6 +31,10 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl)
 
             // Update everything by hand
             npc.sprite = new Image()
+
+            // set the icon so the game will cache this new image
+            // and won't try to display the olf one if there are multiple NPCs with the same icon
+            npc.d.icon = `${npc.d.icon}?nerthus-icon=${encodeURI(gifIconUrl)}`
             npc.sprite.src = canvas.toDataURL()
             npc.fw = decoded.width
             npc.fh = decoded.height

@@ -251,17 +251,22 @@ const LIGHTNING = {
 
 function getCurrentForcedWeather()
 {
-    let weatherName = ''
-    if (forcedWeathers.default) weatherName = forcedWeathers.default
-    if (INTERFACE === 'NI')
+    const forcedWeatherForCurrentMap = getCurrentForcedWeatherForMap(
+        INTERFACE === 'NI' ? Engine.map.d.id : map.id
+    )
+
+    return forcedWeatherForCurrentMap
+        ?? forcedWeathers.default
+        ?? ''
+}
+
+function getCurrentForcedWeatherForMap(mapId)
+{
+    if (forcedWeathers[mapId])
     {
-        if (forcedWeathers[Engine.map.d.id]) weatherName = forcedWeathers[Engine.map.d.id]
+        return forcedWeathers[mapId]
     }
-    else
-    {
-        if (forcedWeathers[map.id]) weatherName = forcedWeathers[map.id]
-    }
-    return weatherName
+    return undefined
 }
 
 
@@ -366,7 +371,12 @@ export function displayWeather(weatherName = getWeather(new Date()).name)
         if (settings.weatherEffects)
         {
             const dayWeatherName = weatherName.replace('night', 'day')
-            if (isCurrentMapOutdoor())
+            // Display weather effects if the map is outside,
+            // or the effect was forced (with the current map id)
+            const forcedWeatherForCurrentMap = getCurrentForcedWeatherForMap(
+                INTERFACE === 'NI' ? Engine.map.d.id : map.id
+            )
+            if (isCurrentMapOutdoor() || forcedWeatherForCurrentMap)
             {
                 if (RAIN_STRENGTH[dayWeatherName]) displayRain(RAIN_STRENGTH[dayWeatherName])
                 if (SNOW_STRENGTH[dayWeatherName]) displaySnow(SNOW_STRENGTH[dayWeatherName])

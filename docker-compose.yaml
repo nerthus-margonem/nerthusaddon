@@ -9,8 +9,6 @@ services:
         - USERSCRIPT_NAME=${USERSCRIPT_NAME:?error}
         - USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL:?error}
         - USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME:?error}
-        - NI_FILENAME=${NI_FILENAME:?error}
-        - SI_FILENAME=${SI_FILENAME:?error}
     ports:
       - "8080:80"
     # If you want to debug production profile,
@@ -41,8 +39,6 @@ services:
       - USERSCRIPT_NAME=${USERSCRIPT_NAME:-'DEV Nerthus Addon'}
       - USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL:-${DIST_URL}res/img/widget-icon.gif}
       - USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME:-nerthus-addon.user.js}
-      - NI_FILENAME=${NI_FILENAME:-nerthus-addon-NI.js}
-      - SI_FILENAME=${SI_FILENAME:-nerthus-addon-SI.js}
     volumes:
       - type: bind
         source: .

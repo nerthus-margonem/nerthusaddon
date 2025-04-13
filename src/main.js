@@ -22,8 +22,6 @@ if (INTERFACE === "NI") {
   log(`<span style="color:lime">${logText}</span>`);
 }
 
-console.log("dev!");
-
 function start() {
   initAPI();
 

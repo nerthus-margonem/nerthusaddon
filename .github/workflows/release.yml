@@ -46,8 +46,6 @@ jobs:
           USERSCRIPT_NAME: ${{ vars.USERSCRIPT_NAME }}
           USERSCRIPT_ICON_URL: ${{ vars.USERSCRIPT_ICON_URL }}
           USERSCRIPT_FILENAME: ${{ vars.USERSCRIPT_FILENAME }}
-          NI_FILENAME: ${{ vars.NI_FILENAME }}
-          SI_FILENAME: ${{ vars.SI_FILENAME }}
 
       - name: Add dist directory
         run: git add -f dist

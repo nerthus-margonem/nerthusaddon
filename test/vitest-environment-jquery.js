@@ -15,9 +15,12 @@ export default {
         </html>
         `;
     const jsdom = new JSDOM(testHTML);
-    global.window = jsdom.window;
-    global.Image = jsdom.window.Image;
-    global.$ = global.jQuery = jQuery(window);
+    globalThis.window = jsdom.window;
+    globalThis.Image = jsdom.window.Image;
+    globalThis.$ = globalThis.jQuery = jQuery(window);
+
+    globalThis.FILE_PREFIX = "";
+    globalThis.INTERFACE = "SI";
 
     return {
       teardown() {

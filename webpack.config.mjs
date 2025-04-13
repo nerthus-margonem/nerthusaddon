@@ -148,10 +148,10 @@ export default [
     plugins: [
       new webpack.DefinePlugin({
         NI_VERSION_URL: JSON.stringify(
-          globalThis.process.env.DIST_URL + globalThis.process.env.NI_FILENAME,
+          globalThis.process.env.DIST_URL + "nerthus-addon-NI.js",
         ),
         SI_VERSION_URL: JSON.stringify(
-          globalThis.process.env.DIST_URL + globalThis.process.env.SI_FILENAME,
+          globalThis.process.env.DIST_URL + "nerthus-addon-SI.js",
         ),
       }),
       new ReplaceTextPlugin({
@@ -166,7 +166,7 @@ export default [
     entry: "./src/main.js",
     output: {
       path: path.resolve(__dirname, "dist/"),
-      filename: globalThis.process.env.NI_FILENAME,
+      filename: "nerthus-addon-NI.js",
     },
     plugins: [
       CONSTANTS,
@@ -188,7 +188,7 @@ export default [
     entry: "./src/main.js",
     output: {
       path: path.resolve(__dirname, "dist/"),
-      filename: globalThis.process.env.SI_FILENAME,
+      filename: "nerthus-addon-SI.js",
     },
     plugins: [
       CONSTANTS,

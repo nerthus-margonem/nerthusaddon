@@ -1,18 +1,15 @@
-suite("Weather")
+suite("Weather");
 
-before(function()
-{
-    nerthus = {}
-    nerthus.defer = function(){}
-    nerthus.options = {}
+before(function () {
+  nerthus = {};
+  nerthus.defer = function () {};
+  nerthus.options = {};
 
-    expect = require("expect.js")
-    require("../../NN_pogoda.js")
-})
+  expect = require("expect.js");
+  require("../../NN_pogoda.js");
+});
 
-test("dummy", function()
-{
-})
+test("dummy", function () {});
 
 /*
 //weather slot stats
@@ -120,5 +117,3 @@ nerthus.season = function()
     Date = _date
 })
 */
-
-

@@ -11,19 +11,13 @@
         "[ Podchodzę. ] ->1",
         "[ Zostawiam zmarłą w spokoju. ] ->END"
       ],
-      "1": [
-        "Zastraszona, wzgardzona, w Noc Duchów powieszona",
-        "Dalej ->2"
-      ],
+      "1": ["Zastraszona, wzgardzona, w Noc Duchów powieszona", "Dalej ->2"],
       "2": [
         "Zastraszona, wzgardzona, na wieki uwięziona",
         "[ Słucham dalej. ] ->3",
         "[ Odchodzę. ] ->END"
       ],
-      "3": [
-        "Zastraszona, wzgardzona, w Noc Duchów powieszona",
-        "Dalej ->4"
-      ],
+      "3": ["Zastraszona, wzgardzona, w Noc Duchów powieszona", "Dalej ->4"],
       "4": [
         "Zastraszony, wzgardzony, w Noc Duchów powieszony?",
         "Nie, nie. Ja nie jestem duchem! ->3",

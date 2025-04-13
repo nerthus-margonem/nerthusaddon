@@ -1,6 +1,6 @@
 services:
   web-production:
-    profiles: [ production ]
+    profiles: [production]
     build:
       context: .
       target: production
@@ -30,7 +30,7 @@ services:
           target: /etc/nginx/conf.d/default.conf
 
   web-development:
-    profiles: [ development ]
+    profiles: [development]
     build:
       context: .
       target: development

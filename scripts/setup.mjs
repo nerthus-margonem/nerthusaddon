@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs from "node:fs";
 
-fs.cpSync('.env.example', '.env')
-fs.writeFileSync('version', 'local')
+fs.cpSync(".env.example", ".env");
+fs.writeFileSync("version", "local");

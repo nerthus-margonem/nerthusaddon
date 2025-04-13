@@ -1,7 +1,11 @@
-import {addCustomStyle, removeCustomStyle, toggleCustomStyle} from '../interface/css-manager'
-import {addDraggable} from '../utility-functions'
-import {addSingleLight, lightsOn, resetLights, turnLightsOn} from './lights'
-import {applyCurrentNight} from './night'
+import {
+  addCustomStyle,
+  removeCustomStyle,
+  toggleCustomStyle,
+} from "../interface/css-manager";
+import { addDraggable } from "../utility-functions";
+import { addSingleLight, lightsOn, resetLights, turnLightsOn } from "./lights";
+import { applyCurrentNight } from "./night";
 
 const lightManagerHtml = `
 <div id="nerthus-light-manager-wrapper">
@@ -51,145 +55,159 @@ const lightManagerHtml = `
         </div> 
     </div>
 </div>
-`
+`;
 
-function removeTargetLight(e)
-{
-    if (e.target.classList.contains('nerthus__night-light'))
-    {
-        $(e.target).remove()
-    }
+function removeTargetLight(e) {
+  if (e.target.classList.contains("nerthus__night-light")) {
+    $(e.target).remove();
+  }
 }
 
-function startEditingLights()
-{
-    addCustomStyle('light-pointer-events', '.nerthus__night-light {pointer-events: all !important}')
+function startEditingLights() {
+  addCustomStyle(
+    "light-pointer-events",
+    ".nerthus__night-light {pointer-events: all !important}",
+  );
 
-    $('#ground').dblclick(removeTargetLight)
-    $('.nerthus__night-light').draggable()
+  $("#ground").dblclick(removeTargetLight);
+  $(".nerthus__night-light").draggable();
 }
 
-function stopEditingLights()
-{
-    removeCustomStyle('light-hider')
-    removeCustomStyle('light-border')
-    removeCustomStyle('light-pointer-events')
-    applyCurrentNight()
+function stopEditingLights() {
+  removeCustomStyle("light-hider");
+  removeCustomStyle("light-border");
+  removeCustomStyle("light-pointer-events");
+  applyCurrentNight();
 
-    $('#ground').unbind('dblclick', removeTargetLight)
-    $('.nerthus__night-light').draggable('disable')
+  $("#ground").unbind("dblclick", removeTargetLight);
+  $(".nerthus__night-light").draggable("disable");
 }
 
-function toggleLights()
-{
-    if (!lightsOn)
-    {
-        turnLightsOn()
-        $('#nerthus-light-manager-toggle-lights').addClass('blue')
-    }
-    else
-    {
-        toggleCustomStyle('light-hider', '#ground > .nerthus__night-light {display: none !important}')
-        $('#nerthus-light-manager-toggle-lights').toggleClass('blue')
-    }
+function toggleLights() {
+  if (!lightsOn) {
+    turnLightsOn();
+    $("#nerthus-light-manager-toggle-lights").addClass("blue");
+  } else {
+    toggleCustomStyle(
+      "light-hider",
+      "#ground > .nerthus__night-light {display: none !important}",
+    );
+    $("#nerthus-light-manager-toggle-lights").toggleClass("blue");
+  }
 }
 
-function toggleMouseMove()
-{
-    hero.opt ^= 64
-    $('#nerthus-light-manager-toggle-mousemove').toggleClass('blue')
+function toggleMouseMove() {
+  hero.opt ^= 64;
+  $("#nerthus-light-manager-toggle-mousemove").toggleClass("blue");
 }
 
-function toggleBorder()
-{
-    toggleCustomStyle('light-border', '#ground > .nerthus__night-light {border: 1px solid yellow}')
-    $('#nerthus-light-manager-toggle-border').toggleClass('blue')
+function toggleBorder() {
+  toggleCustomStyle(
+    "light-border",
+    "#ground > .nerthus__night-light {border: 1px solid yellow}",
+  );
+  $("#nerthus-light-manager-toggle-border").toggleClass("blue");
 }
 
-function addLight(lightType)
-{
-    if (INTERFACE === 'SI')
-    {
-        const $light = addSingleLight(lightType, hero.x * 32, hero.y * 32)
-        $light.draggable()
-    }
+function addLight(lightType) {
+  if (INTERFACE === "SI") {
+    const $light = addSingleLight(lightType, hero.x * 32, hero.y * 32);
+    $light.draggable();
+  }
 }
 
-function deleteAllLights()
-{
-    resetLights()
-    $('#nerthus-light-manager-wrapper #nerthus-light-manager-toggle-lights').removeClass('blue')
+function deleteAllLights() {
+  resetLights();
+  $(
+    "#nerthus-light-manager-wrapper #nerthus-light-manager-toggle-lights",
+  ).removeClass("blue");
 }
 
-function downloadLog()
-{
-    const arr = []
-    $('.nerthus__night-light').each(function ()
-    {
-        const $this = $(this)
-        const pos = $this.position()
-        const obj = {
-            x: parseInt(pos.left),
-            y: parseInt(pos.top),
-            type: $this.attr('type')
-        }
-        arr.push(obj)
-    })
+function downloadLog() {
+  const arr = [];
+  $(".nerthus__night-light").each(function () {
+    const $this = $(this);
+    const pos = $this.position();
+    const obj = {
+      x: parseInt(pos.left),
+      y: parseInt(pos.top),
+      type: $this.attr("type"),
+    };
+    arr.push(obj);
+  });
 
-    // Properly format lights data
-    const json = JSON.stringify(arr, null, 2)
-        .replaceAll(/\{\n {4}/g, '{')
-        .replaceAll(/\n {2}}/g, '}')
-        .replaceAll(/,\n {3}/g, ',') + '\n'
+  // Properly format lights data
+  const json =
+    JSON.stringify(arr, null, 2)
+      .replaceAll(/\{\n {4}/g, "{")
+      .replaceAll(/\n {2}}/g, "}")
+      .replaceAll(/,\n {3}/g, ",") + "\n";
 
-    const a = window.document.createElement('a')
-    a.href = window.URL.createObjectURL(new window.Blob([json], {type: 'text/json'}))
-    if (INTERFACE === 'NI')
-    {
-        a.download = '' + Engine.map.d.id + '.json'
-    }
-    else
-    {
-        a.download = '' + map.id + '.json'
-    }
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
+  const a = window.document.createElement("a");
+  a.href = window.URL.createObjectURL(
+    new window.Blob([json], { type: "text/json" }),
+  );
+  if (INTERFACE === "NI") {
+    a.download = "" + Engine.map.d.id + ".json";
+  } else {
+    a.download = "" + map.id + ".json";
+  }
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
-export function initLightManager()
-{
-    if (INTERFACE === 'NI') return
+export function initLightManager() {
+  if (INTERFACE === "NI") return;
 
-    startEditingLights()
-    const $lightManager = $(lightManagerHtml)
+  startEditingLights();
+  const $lightManager = $(lightManagerHtml);
 
-    const $toggleLights = $lightManager.find('#nerthus-light-manager-toggle-lights')
-    $toggleLights.click(toggleLights)
-    if (lightsOn) $toggleLights.addClass('blue')
+  const $toggleLights = $lightManager.find(
+    "#nerthus-light-manager-toggle-lights",
+  );
+  $toggleLights.click(toggleLights);
+  if (lightsOn) $toggleLights.addClass("blue");
 
-    const $toggleMouseMove = $lightManager.find('#nerthus-light-manager-toggle-mousemove')
-    $toggleMouseMove.click(toggleMouseMove)
-    if (hero.opt & 64) $toggleMouseMove.addClass('blue')
+  const $toggleMouseMove = $lightManager.find(
+    "#nerthus-light-manager-toggle-mousemove",
+  );
+  $toggleMouseMove.click(toggleMouseMove);
+  if (hero.opt & 64) $toggleMouseMove.addClass("blue");
 
-    $lightManager.find('#nerthus-light-manager-delete-all').click(deleteAllLights)
+  $lightManager
+    .find("#nerthus-light-manager-delete-all")
+    .click(deleteAllLights);
 
-    addCustomStyle('light-border', '#ground > .nerthus__night-light {border: 1px solid yellow}')
-    $lightManager.find('#nerthus-light-manager-toggle-border').addClass('blue').click(toggleBorder)
+  addCustomStyle(
+    "light-border",
+    "#ground > .nerthus__night-light {border: 1px solid yellow}",
+  );
+  $lightManager
+    .find("#nerthus-light-manager-toggle-border")
+    .addClass("blue")
+    .click(toggleBorder);
 
-    $lightManager.find('#nerthus-light-manager-save').click(downloadLog)
+  $lightManager.find("#nerthus-light-manager-save").click(downloadLog);
 
-    $lightManager.find('#nerthus-light-manager-add-s').click(addLight.bind(null, 'S'))
-    $lightManager.find('#nerthus-light-manager-add-m').click(addLight.bind(null, 'M'))
-    $lightManager.find('#nerthus-light-manager-add-l').click(addLight.bind(null, 'L'))
-    $lightManager.find('#nerthus-light-manager-add-xl').click(addLight.bind(null, 'XL'))
+  $lightManager
+    .find("#nerthus-light-manager-add-s")
+    .click(addLight.bind(null, "S"));
+  $lightManager
+    .find("#nerthus-light-manager-add-m")
+    .click(addLight.bind(null, "M"));
+  $lightManager
+    .find("#nerthus-light-manager-add-l")
+    .click(addLight.bind(null, "L"));
+  $lightManager
+    .find("#nerthus-light-manager-add-xl")
+    .click(addLight.bind(null, "XL"));
 
-    addDraggable($lightManager)
-    $lightManager.appendTo('#centerbox2').css('position', 'absolute')
+  addDraggable($lightManager);
+  $lightManager.appendTo("#centerbox2").css("position", "absolute");
 
-    $lightManager.find('.close-button').click(function ()
-    {
-        $lightManager.remove()
-        stopEditingLights()
-    })
+  $lightManager.find(".close-button").click(function () {
+    $lightManager.remove();
+    stopEditingLights();
+  });
 }

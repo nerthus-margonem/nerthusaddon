@@ -49,14 +49,8 @@
         "[ Goblin wybudził się na chwilę i spojrzał na Ciebie. Zaczął coś bełkotać. ]",
         "Dalej ->9"
       ],
-      "9": [
-        "Eemm... Nur-... -sen... Pomóż... Zapłacę...",
-        "Dalej ->10"
-      ],
-      "10": [
-        "Nuro-...-seeeeenn...",
-        "Dalej ->11"
-      ],
+      "9": ["Eemm... Nur-... -sen... Pomóż... Zapłacę...", "Dalej ->10"],
+      "10": ["Nuro-...-seeeeenn...", "Dalej ->11"],
       "11": [
         "[ Bełkot po chwili ustąpił jęknięciom i odgłosom snu. ]<br>Co robisz?",
         "Odchodzę. I tak nic od niego nie wyciągnę. ->END"

@@ -1,12 +1,11 @@
-import jQuery from 'jquery'
-import {JSDOM} from 'jsdom'
+import jQuery from "jquery";
+import { JSDOM } from "jsdom";
 
 export default {
-    name: 'jquery',
-    transformMode: 'ssr',
-    async setup()
-    {
-        const testHTML = `
+  name: "jquery",
+  transformMode: "ssr",
+  async setup() {
+    const testHTML = `
         <!DOCTYPE html>
         <html>
         <head>
@@ -14,17 +13,16 @@ export default {
         </head>
         <body></body>
         </html>
-        `
-        const jsdom = new JSDOM(testHTML)
-        global.window = jsdom.window
-        global.Image = jsdom.window.Image
-        global.$ = global.jQuery = jQuery(window)
+        `;
+    const jsdom = new JSDOM(testHTML);
+    global.window = jsdom.window;
+    global.Image = jsdom.window.Image;
+    global.$ = global.jQuery = jQuery(window);
 
-        return {
-            teardown()
-            {
-                window.close()
-            }
-        }
-    }
-}
+    return {
+      teardown() {
+        window.close();
+      },
+    };
+  },
+};

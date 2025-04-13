@@ -47,9 +47,9 @@ It's structured as an object with properties:
 - `maps`: where for each climate name key there is an array with map ids on which this climate is present.
 - `characteristics`: containing three objects each having climate names with an array
   of \[spring, summer, autumn, winter\] season's changes to defaults. Changes between seasons are gradual.
-    - `cloudines`: defaults are multiplied by season's value
-    - `humidity`: defaults are multiplied by season's value
-    - `temperature`: season's value is added to defaults
+  - `cloudines`: defaults are multiplied by season's value
+  - `humidity`: defaults are multiplied by season's value
+  - `temperature`: season's value is added to defaults
 - `seeds`: seeds for pseudo random calculations for a particular season.
 
 #### lvl-names

@@ -1,120 +1,108 @@
-suite("night")
+suite("night");
 
-before(function ()
-{
-    WorldEdit = {}
+before(function () {
+  WorldEdit = {};
 
+  nerthus = {};
+  nerthus.options = {};
+  nerthus.addon = {};
+  nerthus.addon.fileUrl = function (url) {
+    return "URL-" + url;
+  };
+  nerthus.defer = function () {};
 
-    nerthus = {}
-    nerthus.options = {}
-    nerthus.addon = {}
-    nerthus.addon.fileUrl = function (url)
-    {
-        return "URL-" + url
-    }
-    nerthus.defer = function ()
-    {
-    }
+  nerthus.worldEdit = {
+    lightTypes: {},
+    changeLight: function (opacity) {
+      WorldEdit.changeLight = opacity;
+    },
+  };
 
-    nerthus.worldEdit = {
-        lightTypes: {},
-        changeLight: function (opacity)
-        {
-            WorldEdit.changeLight = opacity
-        }
-    }
+  Engine = {
+    map: {
+      d: {
+        mainid: 0,
+      },
+    },
+  };
 
-    Engine = {
-        map: {
-            d: {
-                mainid: 0
-            }
-        }
-    }
+  map = {
+    mainid: 0,
+  };
 
-    map = {
-        mainid: 0
-    }
+  expect = require("expect.js");
+  require("../NN_night.js");
+});
+after(function () {
+  delete map;
+  delete Engine;
 
-    expect = require("expect.js")
-    require("../NN_night.js")
-})
-after(function ()
-{
-    delete map
-    delete Engine
+  delete WorldEdit;
+  delete nerthus;
 
-    delete WorldEdit
-    delete nerthus
+  delete expect;
+});
 
-    delete expect
-})
+afterEach(function () {
+  nerthus.worldEdit.lightTypes = {};
+});
 
-afterEach(function ()
-{
-    nerthus.worldEdit.lightTypes = {}
-})
+test("add light type", function () {
+  nerthus.night.lights.types.add("type", "10px");
 
-test("add light type", function ()
-{
-    nerthus.night.lights.types.add("type", "10px")
+  let lightTypes = {
+    type: {
+      url: "URL-/img/night_light_type.png",
+      width: "10px",
+      height: "10px",
+    },
+  };
+  expect(nerthus.worldEdit.lightTypes).to.eql(lightTypes);
+});
 
-    let lightTypes = {
-        type: {
-            url: "URL-/img/night_light_type.png",
-            width: "10px",
-            height: "10px"
-        }
-    }
-    expect(nerthus.worldEdit.lightTypes).to.eql(lightTypes)
-})
+test("add light type when another is present", function () {
+  nerthus.worldEdit.lightTypes = {
+    type1: {
+      url: "URL-/img/night_light_type1.png",
+      width: "10px",
+      height: "10px",
+    },
+    type2: {
+      url: "URL-/img/night_light_type2.png",
+      width: "20px",
+      height: "20px",
+    },
+  };
+  nerthus.night.lights.types.add("type3", "30px");
 
-test("add light type when another is present", function ()
-{
-    nerthus.worldEdit.lightTypes = {
-        type1: {
-            url: "URL-/img/night_light_type1.png",
-            width: "10px",
-            height: "10px"
-        },
-        type2: {
-            url: "URL-/img/night_light_type2.png",
-            width: "20px",
-            height: "20px"
-        }
-    }
-    nerthus.night.lights.types.add("type3", "30px")
+  let lightTypes = {
+    type1: {
+      url: "URL-/img/night_light_type1.png",
+      width: "10px",
+      height: "10px",
+    },
+    type2: {
+      url: "URL-/img/night_light_type2.png",
+      width: "20px",
+      height: "20px",
+    },
+    type3: {
+      url: "URL-/img/night_light_type3.png",
+      width: "30px",
+      height: "30px",
+    },
+  };
+  expect(nerthus.worldEdit.lightTypes).to.eql(lightTypes);
+});
 
-    let lightTypes = {
-        type1: {
-            url: "URL-/img/night_light_type1.png",
-            width: "10px",
-            height: "10px"
-        },
-        type2: {
-            url: "URL-/img/night_light_type2.png",
-            width: "20px",
-            height: "20px"
-        },
-        type3: {
-            url: "URL-/img/night_light_type3.png",
-            width: "30px",
-            height: "30px"
-        }
-    }
-    expect(nerthus.worldEdit.lightTypes).to.eql(lightTypes)
-})
+test("NI: Light when map is outdoor one", function () {
+  Engine.map.d.mainid = 0;
+  nerthus.night.dim_ni(0.4);
+  expect(WorldEdit.changeLight).to.equal(0.4);
+});
 
-test("NI: Light when map is outdoor one", function ()
-{
-    Engine.map.d.mainid = 0
-    nerthus.night.dim_ni(0.4)
-    expect(WorldEdit.changeLight).to.equal(0.4)
-})
-
-test("NI: Light when map is indoor one", function ()
-{
-    Engine.map.d.mainid = 1
-    nerthus.night.dim_ni(0.4)
-    expect(WorldEdit.changeLight).to.equal(0)
-})
+test("NI: Light when map is indoor one", function () {
+  Engine.map.d.mainid = 1;
+  nerthus.night.dim_ni(0.4);
+  expect(WorldEdit.changeLight).to.equal(0);
+});

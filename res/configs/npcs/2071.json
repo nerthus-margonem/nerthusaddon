@@ -10,22 +10,10 @@
         "[ Widzisz dwójkę strażników, którzy wyraźnie nie radzą sobie z wniesieniem mebla w dalszą część murów miejskich. ]",
         "Dalej ->1"
       ],
-      "1": [
-        "No jak w lewo.",
-        "Dalej ->2"
-      ],
-      "2": [
-        "No leewwooo.",
-        "Dalej ->3"
-      ],
-      "3": [
-        "ALE TU ŚCIANA JEST!",
-        "Dalej ->4"
-      ],
-      "4": [
-        "Aha.",
-        "Przepraszam? ->5"
-      ],
+      "1": ["No jak w lewo.", "Dalej ->2"],
+      "2": ["No leewwooo.", "Dalej ->3"],
+      "3": ["ALE TU ŚCIANA JEST!", "Dalej ->4"],
+      "4": ["Aha.", "Przepraszam? ->5"],
       "5": [
         "[ Strażnicy zatrzymali się i obejrzeli na Ciebie ]<br>Eee, Obywatelu, co tu robicie?",
         "Zwiedzam po prostu, nie wiedziałem, że mury w Werbin są tak rozbudowane, wydawały się jakieś mniejsze kiedyś... ->6",
@@ -35,14 +23,8 @@
         "No kiedyś były, fakt, ale za Rothe je powiększono. Ech, kiedyś to były czasy. Teraz to nie ma czasów.<br>Chwała Aneli, inaczej to byśmy zostali zadeptani przez orków.",
         "Dalej ->7"
       ],
-      "7": [
-        "Dobra tam, barykada i rów wystarczył.",
-        "Dalej ->8"
-      ],
-      "8": [
-        "Ta i poświęcenie parudziesięciu chłopców...",
-        "Dalej ->9"
-      ],
+      "7": ["Dobra tam, barykada i rów wystarczył.", "Dalej ->8"],
+      "8": ["Ta i poświęcenie parudziesięciu chłopców...", "Dalej ->9"],
       "9": [
         "Ale wytrzymaliśmy! I to przeciwko Czarnej Gwardii! Dobrze, że Rudzielec z nami był.",
         "Dalej ->10"

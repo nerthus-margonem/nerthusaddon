@@ -4,52 +4,60 @@
  *
  * Used for adding custom draws into the renderer pipeline on NI
  */
-export class FakeNpc
-{
-    order = 0
-    d = {}
-    alwaysDraw = true
-    canvasObjectType = 'FAKE_NPC'
+export class FakeNpc {
+  order = 0;
+  d = {};
+  alwaysDraw = true;
+  canvasObjectType = "FAKE_NPC";
 
-    constructor(id, order, drawFunc, alwaysDraw = true)
-    {
-        this.d.id = id
-        this.order = order
-        this.draw = drawFunc
-        this.alwaysDraw = alwaysDraw
-    }
+  constructor(id, order, drawFunc, alwaysDraw = true) {
+    this.d.id = id;
+    this.order = order;
+    this.draw = drawFunc;
+    this.alwaysDraw = alwaysDraw;
+  }
 
-    draw() {}
+  draw() {}
 
-    getOrder()
-    {
-        return this.order
-    }
+  getOrder() {
+    return this.order;
+  }
 
-    update() {}
+  update() {}
 
-    updateDATA() {}
+  updateDATA() {}
 
-    getAlwaysDraw() { return this.alwaysDraw }
+  getAlwaysDraw() {
+    return this.alwaysDraw;
+  }
 
-    setAlwaysDraw(alwaysDraw) { this.alwaysDraw = alwaysDraw }
+  setAlwaysDraw(alwaysDraw) {
+    this.alwaysDraw = alwaysDraw;
+  }
 
-    getFollowController()
-    {
-        return {
-            checkFollowGlow: () => false
-        }
-    }
+  getFollowController() {
+    return {
+      checkFollowGlow: () => false,
+    };
+  }
 
-    isIconInvisible() { return false }
+  isIconInvisible() {
+    return false;
+  }
 
-    getNick() { return '' }
+  getNick() {
+    return "";
+  }
 
-    getId() { return -1 }
+  getId() {
+    return -1;
+  }
 
-    drawNickOrTip() {}
+  drawNickOrTip() {}
 
-    getKind() { return undefined }
+  getKind() {
+    return undefined;
+  }
 
-    clearDataToDraw() {}
+  clearDataToDraw() {}
 }

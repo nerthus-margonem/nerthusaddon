@@ -1,6 +1,5 @@
-function init()
-{
-    const testHTML = `
+function init() {
+  const testHTML = `
         <!DOCTYPE html>
         <html lang="pl">
         <head>
@@ -10,26 +9,27 @@ function init()
             <div></div>
         </body>
         </html>
-    `
-    const {JSDOM} = require('jsdom')
-    const jsdom = new JSDOM(testHTML)
+    `;
+  const { JSDOM } = require("jsdom");
+  const jsdom = new JSDOM(testHTML);
 
-    // Set window and document from jsdom
-    const {window} = jsdom
-    const {document} = window
+  // Set window and document from jsdom
+  const { window } = jsdom;
+  const { document } = window;
 
-    // Also set a global window and document before requiring jQuery
-    global.window = window
-    global.document = document
+  // Also set a global window and document before requiring jQuery
+  global.window = window;
+  global.document = document;
 
-    global.$ = global.jQuery = require('jquery')
+  global.$ = global.jQuery = require("jquery");
 
-
-    global.Image = function () {this.src = ''}
-    global.resetWindow = init
+  global.Image = function () {
+    this.src = "";
+  };
+  global.resetWindow = init;
 }
 
-init()
+init();
 
-const context = require.context('./suites/configs', true, /\.js$/)
-context.keys().forEach(context)
+const context = require.context("./suites/configs", true, /\.js$/);
+context.keys().forEach(context);

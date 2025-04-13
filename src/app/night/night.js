@@ -1,142 +1,135 @@
-import {addToNiDrawList, loadOnEveryMap} from '../game-integration/loaders'
-import {addSettingToPanel} from '../interface/panel'
-import {FakeNpc} from '../npc/FakeNpc'
-import {settings} from '../settings'
-import {coordsToId, isCurrentMapOutdoor} from '../utility-functions'
-import {lightsOn, resetLights, turnLightsOn} from './lights'
+import { addToNiDrawList, loadOnEveryMap } from "../game-integration/loaders";
+import { addSettingToPanel } from "../interface/panel";
+import { FakeNpc } from "../npc/FakeNpc";
+import { settings } from "../settings";
+import { coordsToId, isCurrentMapOutdoor } from "../utility-functions";
+import { lightsOn, resetLights, turnLightsOn } from "./lights";
 
-let opacityChange = 0
-const forcedParameters = {}
-const DARKNESS_OBJECT_NI_ID = coordsToId(-1, -1)
+let opacityChange = 0;
+const forcedParameters = {};
+const DARKNESS_OBJECT_NI_ID = coordsToId(-1, -1);
 
 /**
  * @param time - Date
  * @returns {number}
  */
-function timeToOpacity(time)
-{
-    if (!settings.night) return 0
+function timeToOpacity(time) {
+  if (!settings.night) return 0;
 
-    const hour = time.getHours()
-    let opacity
-    if (hour < 12)
-        opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1
-    else
-        opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1
+  const hour = time.getHours();
+  let opacity;
+  if (hour < 12) opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1;
+  else opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1;
 
-    if (opacity < 0.3) opacity = 0.3
-    else if (opacity > 1) opacity = 1
+  if (opacity < 0.3) opacity = 0.3;
+  else if (opacity > 1) opacity = 1;
 
-    return 1 - opacity
+  return 1 - opacity;
 }
 
-
-function getDarknessNiObject(opacity, color)
-{
-    return new FakeNpc(DARKNESS_OBJECT_NI_ID, 950, (ctx) =>
-    {
-        const style = ctx.fillStyle
-        ctx.fillStyle = color
-        ctx.globalAlpha = opacity
-        ctx.fillRect(0 - Engine.map.offset[0], 0 - Engine.map.offset[1], Engine.map.width, Engine.map.height)
-        ctx.globalAlpha = 1.0
-        ctx.fillStyle = style
-    })
+function getDarknessNiObject(opacity, color) {
+  return new FakeNpc(DARKNESS_OBJECT_NI_ID, 950, (ctx) => {
+    const style = ctx.fillStyle;
+    ctx.fillStyle = color;
+    ctx.globalAlpha = opacity;
+    ctx.fillRect(
+      0 - Engine.map.offset[0],
+      0 - Engine.map.offset[1],
+      Engine.map.width,
+      Engine.map.height,
+    );
+    ctx.globalAlpha = 1.0;
+    ctx.fillStyle = style;
+  });
 }
 
-export function setForcedParameters(opacity, color, mapId = 'default')
-{
-    if (!opacity || opacity === 'reset') forcedParameters[mapId] = ''
-    else forcedParameters[mapId] = {
-        opacity: opacity,
-        color: color
-    }
+export function setForcedParameters(opacity, color, mapId = "default") {
+  if (!opacity || opacity === "reset") forcedParameters[mapId] = "";
+  else
+    forcedParameters[mapId] = {
+      opacity: opacity,
+      color: color,
+    };
 }
 
-function getCurrentForcedParameters()
-{
-    let parameters = {
-        opacity: -1,
-        color: '#000'
-    }
-    if (forcedParameters[CURRENT_MAP_ID]) parameters = forcedParameters[CURRENT_MAP_ID]
-    else if (forcedParameters.default) parameters = forcedParameters.default
+function getCurrentForcedParameters() {
+  let parameters = {
+    opacity: -1,
+    color: "#000",
+  };
+  if (forcedParameters[CURRENT_MAP_ID])
+    parameters = forcedParameters[CURRENT_MAP_ID];
+  else if (forcedParameters.default) parameters = forcedParameters.default;
 
-    return parameters
+  return parameters;
 }
 
-function getCurrentNaturalOpacity()
-{
-    if (!isCurrentMapOutdoor()) return 0
+function getCurrentNaturalOpacity() {
+  if (!isCurrentMapOutdoor()) return 0;
 
-    let opacity = timeToOpacity(new Date())
-    opacity = opacity + opacityChange
+  let opacity = timeToOpacity(new Date());
+  opacity = opacity + opacityChange;
 
-    return opacity
+  return opacity;
 }
 
-export function changeLight(opacity = getCurrentNaturalOpacity(), color = '#000')
-{
-    opacity = Math.min(Math.max(0, opacity), 1)
+export function changeLight(
+  opacity = getCurrentNaturalOpacity(),
+  color = "#000",
+) {
+  opacity = Math.min(Math.max(0, opacity), 1);
 
-    if (INTERFACE === 'NI')
-    {
-        addToNiDrawList(getDarknessNiObject(opacity, color), DARKNESS_OBJECT_NI_ID)
-        return
-    }
+  if (INTERFACE === "NI") {
+    addToNiDrawList(getDarknessNiObject(opacity, color), DARKNESS_OBJECT_NI_ID);
+    return;
+  }
 
-    let $night = $('#nerthus-night')
-    if (!$night.length)
-        $night = $('<div id="nerthus-night"></div>').appendTo('#ground')
+  let $night = $("#nerthus-night");
+  if (!$night.length)
+    $night = $('<div id="nerthus-night"></div>').appendTo("#ground");
 
-    $night.css({
-        height: map.y * 32,
-        width: map.x * 32,
-        zIndex: map.y * 2 + 12,
-        opacity: opacity,
-        'background-color': color
-    })
+  $night.css({
+    height: map.y * 32,
+    width: map.x * 32,
+    zIndex: map.y * 2 + 12,
+    opacity: opacity,
+    "background-color": color,
+  });
 }
 
+export function applyCurrentNight() {
+  let opacity = getCurrentNaturalOpacity();
+  let color = "#000";
 
-export function applyCurrentNight()
-{
-    let opacity = getCurrentNaturalOpacity()
-    let color = '#000'
+  const currentForcedParameters = getCurrentForcedParameters();
+  if (currentForcedParameters.opacity !== -1) {
+    opacity = currentForcedParameters.opacity;
+    color = currentForcedParameters.color;
+  }
 
-    const currentForcedParameters = getCurrentForcedParameters()
-    if (currentForcedParameters.opacity !== -1)
-    {
-        opacity = currentForcedParameters.opacity
-        color = currentForcedParameters.color
-    }
+  if (opacity <= 0.2) resetLights();
+  else if (opacity > 0.2 && !lightsOn) turnLightsOn();
 
-    if (opacity <= 0.2) resetLights()
-    else if (opacity > 0.2 && !lightsOn) turnLightsOn()
-
-
-    changeLight(opacity, color)
+  changeLight(opacity, color);
 }
 
-export function setOpacityChange(newOpacityChange)
-{
-    if (!newOpacityChange) newOpacityChange = 0
-    else if (newOpacityChange > 1) newOpacityChange = 1
-    else if (newOpacityChange < -1) newOpacityChange = -1
+export function setOpacityChange(newOpacityChange) {
+  if (!newOpacityChange) newOpacityChange = 0;
+  else if (newOpacityChange > 1) newOpacityChange = 1;
+  else if (newOpacityChange < -1) newOpacityChange = -1;
 
-    opacityChange = newOpacityChange
-    applyCurrentNight()
+  opacityChange = newOpacityChange;
+  applyCurrentNight();
 }
 
-export function initNightManager()
-{
-    loadOnEveryMap(resetLights)
-    loadOnEveryMap(applyCurrentNight)
+export function initNightManager() {
+  loadOnEveryMap(resetLights);
+  loadOnEveryMap(applyCurrentNight);
 
-    addSettingToPanel(
-        'night',
-        'Pory dnia i nocy',
-        'Ściemnianie mapy w zależności od pory dnia.',
-        applyCurrentNight
-    )
+  addSettingToPanel(
+    "night",
+    "Pory dnia i nocy",
+    "Ściemnianie mapy w zależności od pory dnia.",
+    applyCurrentNight,
+  );
 }

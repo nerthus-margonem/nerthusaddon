@@ -136,10 +136,7 @@
         "Nie, nie, nie. Po prostu... Chciałem być uprzejmy... ->17",
         "Powiedzieć komplement to jak obrazić. Idę szukać kogoś, kto je doceni. ->END"
       ],
-      "18": [
-        "To zachowaj te uprzejmości dla siebie.",
-        "Przepraszam ->END"
-      ]
+      "18": ["To zachowaj te uprzejmości dla siebie.", "Przepraszam ->END"]
     }
   },
   {
@@ -178,15 +175,8 @@
         "Las Dziwów? Głuchy Las!? ->2",
         "Niech płonie. ->END"
       ],
-      "2": [
-        "W przedwieczornej mgle.",
-        "... ->3",
-        "Niech płonie. ->END"
-      ],
-      "3": [
-        "Idzie jesień, ech, jak mi źle!",
-        "Dalej ->4"
-      ],
+      "2": ["W przedwieczornej mgle.", "... ->3", "Niech płonie. ->END"],
+      "3": ["Idzie jesień, ech, jak mi źle!", "Dalej ->4"],
       "4": [
         "[ Twarz kobiety wygląda na przygnębioną. ]",
         "Coś się stało? Wszyscy wokół się bawią. Dlaczego do nich nie dołączysz? ->5",
@@ -237,10 +227,7 @@
         "Jeśli na coś natrafię spróbuję od razu cię o tym poinformować. ->3",
         "Naprawdę powinieneś odpuścić. ->END"
       ],
-      "3": [
-        "Dziękuję, to wiele dla mnie znaczy",
-        "Koniec ->END"
-      ],
+      "3": ["Dziękuję, to wiele dla mnie znaczy", "Koniec ->END"],
       "4": [
         "Mam kilka historii o duchach, idealne na zbliżające się długie, jesienne noce. Uzurpator, zjawa na murach czy może o szwaczce, którą spotkał ciężki los?",
         "Chcę poznać historię Uzurpatora. ->5",
@@ -418,10 +405,7 @@
     "url": "/obrazki/itemy/kon/ark-lamp-zlo.gif",
     "date": "21.9-30.9",
     "dialog": {
-      "0": [
-        "[ Lampion lekko kołysze się na wietrze. ]",
-        "Koniec. ->END"
-      ]
+      "0": ["[ Lampion lekko kołysze się na wietrze. ]", "Koniec. ->END"]
     }
   },
   {
@@ -431,10 +415,7 @@
     "url": "/obrazki/itemy/kon/ark-lamp-zlo.gif",
     "date": "21.9-30.9",
     "dialog": {
-      "0": [
-        "[ Lampion lekko kołysze się na wietrze. ]",
-        "Koniec. ->END"
-      ]
+      "0": ["[ Lampion lekko kołysze się na wietrze. ]", "Koniec. ->END"]
     }
   },
   {
@@ -444,10 +425,7 @@
     "url": "/obrazki/itemy/kon/ark-lamp-zlo.gif",
     "date": "21.9-30.9",
     "dialog": {
-      "0": [
-        "[ Lampion lekko kołysze się na wietrze. ]",
-        "Koniec. ->END"
-      ]
+      "0": ["[ Lampion lekko kołysze się na wietrze. ]", "Koniec. ->END"]
     }
   },
   {

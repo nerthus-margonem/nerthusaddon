@@ -132,8 +132,13 @@ class ReplaceTextPlugin {
   }
 }
 
-export default [
-  {
+function getUserscriptConfig() {
+  if (!globalThis.process.env.USERSCRIPT_NAME) {
+    // If no name is provided, don't build the userscript
+    return undefined;
+  }
+
+  return {
     name: "Userscript",
     mode: "none",
     entry: "./src/userscript.js",
@@ -159,7 +164,11 @@ export default [
         $USERSCRIPT_ICON_URL: globalThis.process.env.USERSCRIPT_ICON_URL,
       }),
     ],
-  },
+  };
+}
+
+export default [
+  getUserscriptConfig(),
   {
     name: "NI-production",
     mode: globalThis.process.env.NODE_ENV,
@@ -203,4 +212,4 @@ export default [
       rules,
     },
   },
-];
+].filter((config) => config);

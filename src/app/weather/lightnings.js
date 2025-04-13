@@ -13,16 +13,22 @@ const lightningUrls = [
 const CHUNK_SIZE = 12;
 /**
  * 2d table of points where NPCs sit as well as 1 step around them.
- * This is so lightning doesn't struck poor NPCs
+ * This is so lightning doesn't strike poor NPCs
  * @type {{}}
  */
 let npcZone = {};
 const lightningNpcs = [];
 
 function addToZone(x, y) {
-  if (x > 0 && !npcZone[x - 1]) npcZone[x - 1] = {};
-  if (!npcZone[x]) npcZone[x] = {};
-  if (!npcZone[x + 1]) npcZone[x + 1] = {};
+  if (x > 0 && !npcZone[x - 1]) {
+    npcZone[x - 1] = {};
+  }
+  if (!npcZone[x]) {
+    npcZone[x] = {};
+  }
+  if (!npcZone[x + 1]) {
+    npcZone[x + 1] = {};
+  }
   for (let i = -1; i < 1; i++) {
     for (let j = -1; j < 1; j++) {
       if (x + i >= 0) npcZone[x + i][y + j] = true;
@@ -34,7 +40,9 @@ function fillNpcZone() {
   npcZone = {};
   if (INTERFACE === "NI") {
     for (const npc of Engine.npcs.getDrawableList()) {
-      if (npc.d && !isNaN(npc.d.x)) addToZone(npc.d.x, npc.d.y);
+      if (npc.d && !isNaN(npc.d.x)) {
+        addToZone(npc.d.x, npc.d.y);
+      }
     }
   } else {
     for (const id in g.npc) {
@@ -57,7 +65,9 @@ function fillNpcZone() {
 }
 
 function addLightningToChunk(chunkX, chunkY, tries = 0) {
-  if (tries > 3) return;
+  if (tries > 3) {
+    return;
+  }
 
   const minX = chunkX * CHUNK_SIZE;
   const maxX = chunkX * CHUNK_SIZE + CHUNK_SIZE;
@@ -72,9 +82,9 @@ function addLightningToChunk(chunkX, chunkY, tries = 0) {
   const x = Math.floor(pseudoRandom(seed) * (maxX + 1 - minX)) + minX;
   const y = Math.floor(pseudoRandom(seed + 1) * (maxY + 1 - minY)) + minY;
 
-  if (npcZone[x] && npcZone[x][y])
+  if (npcZone[x] && npcZone[x][y]) {
     addLightningToChunk(chunkX, chunkY, tries + 1);
-  else {
+  } else {
     const imgId = Math.floor(
       pseudoRandom(seed + chunkX + chunkY) * lightningUrls.length,
     );

@@ -16,7 +16,9 @@ export function addCustomStyle(styleName, styleContent) {
 }
 
 export function changeCustomStyle(styleName, styleContent) {
-  if (styles[styleName]) removeCustomStyle(styleName);
+  if (styles[styleName]) {
+    removeCustomStyle(styleName);
+  }
   addCustomStyle(styleName, styleContent);
 }
 
@@ -30,6 +32,9 @@ export function removeCustomStyle(styleName) {
 }
 
 export function toggleCustomStyle(styleName, styleContent) {
-  if (styles[styleName]) removeCustomStyle(styleName);
-  else addCustomStyle(styleName, styleContent);
+  if (styles[styleName]) {
+    removeCustomStyle(styleName);
+  } else {
+    addCustomStyle(styleName, styleContent);
+  }
 }

@@ -3,9 +3,11 @@ import { settings } from "../../settings";
 export const customHiddenNpcs = [];
 
 export function isNpcHidable(npc) {
-  if (INTERFACE === "NI")
+  if (INTERFACE === "NI") {
     return npc.lvl === 0 || npc.lvl + 13 < Engine.hero.d.lvl;
-  else return npc.lvl === 0 || npc.lvl + 13 < hero.lvl;
+  } else {
+    return npc.lvl === 0 || npc.lvl + 13 < hero.lvl;
+  }
 }
 
 let hidingStarted = false;
@@ -32,7 +34,9 @@ export function hideGameNpc(id, always) {
     }
 
     if (always || settings.hideNpcs) {
-      if (!customHiddenNpcs.includes(id)) customHiddenNpcs.push(id);
+      if (!customHiddenNpcs.includes(id)) {
+        customHiddenNpcs.push(id);
+      }
 
       const callback = function (newNpc) {
         if (newNpc.d && newNpc.d.id === id) {
@@ -50,8 +54,9 @@ export function hideGameNpc(id, always) {
             // event is fired before all the checks and changes
             // for the NPC are made in the game
             API.callEvent("removeNpc", newNpc);
-            if (Engine.npcs.getById(newNpc.d.id))
+            if (Engine.npcs.getById(newNpc.d.id)) {
               Engine.npcs.removeOne(newNpc.d.id);
+            }
             Engine.emotions.removeAllFromSourceId(newNpc.d.id);
           }, 0);
         }
@@ -60,11 +65,14 @@ export function hideGameNpc(id, always) {
     }
   } else {
     let $style = $("#nerthus-npc-hiding");
-    if (!$style.length)
+    if (!$style.length) {
       $style = $('<style id="nerthus-npc-hiding"></style>').appendTo("head");
+    }
 
     if (always || settings.hideNpcs) {
-      if (!customHiddenNpcs.includes(id)) customHiddenNpcs.push(id);
+      if (!customHiddenNpcs.includes(id)) {
+        customHiddenNpcs.push(id);
+      }
       $style.append("#npc" + id + "{display: none}");
     }
   }

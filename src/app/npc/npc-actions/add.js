@@ -1,15 +1,17 @@
 import { callEvent } from "../../API";
 import { addDialogToDialogList, openDialog } from "../dialog";
 import { customNpcs } from "../npc";
+import { updateNpcWithCustomGifImage } from "../update-npc-image";
 import { removeCollision, setCollision } from "./collision";
 import { removeNpc } from "./remove";
-import { updateNpcWithCustomGifImage } from "../update-npc-image";
 
 function createClickWrapper(npc, clickHandler) {
   return function (event) {
-    if (Math.abs(npc.x - hero.x) > 1 || Math.abs(npc.y - hero.y) > 1)
+    if (Math.abs(npc.x - hero.x) > 1 || Math.abs(npc.y - hero.y) > 1) {
       hero.mClick(event);
-    else clickHandler();
+    } else {
+      clickHandler();
+    }
   };
 }
 
@@ -89,7 +91,9 @@ export function addNpc(npc) {
       img.src = npcIcon;
     }
 
-    if (npc.dialog) addDialogToDialogList(npc.id, npc.nick, npc.dialog);
+    if (npc.dialog) {
+      addDialogToDialogList(npc.id, npc.nick, npc.dialog);
+    }
 
     if (!collisionBefore) {
       if (npc.collision) setCollision(npc.x, npc.y);
@@ -120,7 +124,9 @@ export function addNpc(npc) {
         (npc.type > 3 && !(width % 64) ? -16 : 0);
       const wpos = Math.round(this.x) + Math.round(this.y) * 256;
       let wat;
-      if (map.water && map.water[wpos]) wat = map.water[wpos] / 4;
+      if (map.water && map.water[wpos]) {
+        wat = map.water[wpos] / 4;
+      }
       $npc.css({
         left: tmpLeft,
         top: npc.y * 32 + 32 - height + (wat > 8 ? 0 : 0),
@@ -141,7 +147,9 @@ export function addNpc(npc) {
       $npc.click(createClickWrapper(npc, openDialog.bind(null, npc.id, 0)));
     }
 
-    if (npc.collision) setCollision(npc.x, npc.y);
+    if (npc.collision) {
+      setCollision(npc.x, npc.y);
+    }
     return $npc;
   }
 }
@@ -153,13 +161,21 @@ export function addNpc(npc) {
  * @param mapId
  */
 export function addNpcToList(npc, mapId) {
-  if (!customNpcs[mapId]) customNpcs[mapId] = {};
-  if (customNpcs[mapId][npc.id]) removeNpc(npc.x, npc.y, mapId);
+  if (!customNpcs[mapId]) {
+    customNpcs[mapId] = {};
+  }
+  if (customNpcs[mapId][npc.id]) {
+    removeNpc(npc.x, npc.y, mapId);
+  }
   customNpcs[mapId][npc.id] = npc;
   if (INTERFACE === "NI") {
-    if (Engine.map.d.id === mapId) addNpc(npc);
+    if (Engine.map.d.id === mapId) {
+      addNpc(npc);
+    }
   } else {
-    if (map.id === mapId) addNpc(npc);
+    if (map.id === mapId) {
+      addNpc(npc);
+    }
   }
   callEvent("addTemporaryNpc", { npc: npc, mapId: mapId });
 }

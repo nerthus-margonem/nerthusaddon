@@ -25,7 +25,9 @@ export function saveSetting(name, value) {
 export function loadSettings() {
   if (localStorage.nerthus_options) {
     const loadedSettings = JSON.parse(localStorage.nerthus_options);
-    for (const opt in loadedSettings) settings[opt] = loadedSettings[opt];
+    for (const opt in loadedSettings) {
+      settings[opt] = loadedSettings[opt];
+    }
   }
   return settings;
 }

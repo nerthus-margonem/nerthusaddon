@@ -34,29 +34,29 @@ export function initAPI() {
       callbacks[eventName].push(func);
     },
     permissions: {
-      checkPermissionLvl: checkPermissionLvl,
-      hasNarrationRights: hasNarrationRights,
+      checkPermissionLvl,
+      hasNarrationRights,
     },
     weather: {
-      getWeather: getWeather,
+      getWeather,
     },
     night: {
-      changeLight: changeLight,
-      applyCurrentNight: applyCurrentNight,
-      turnLightsOn: turnLightsOn,
+      changeLight,
+      applyCurrentNight,
+      turnLightsOn,
     },
     npcList: customNpcs,
     npc: {
       npcList: customNpcs,
-      addNpc: addNpc,
-      addNpcToList: addNpcToList,
-      hideGameNpc: hideGameNpc,
-      loadNpcsFromFile: loadNpcsFromFile,
+      addNpc,
+      addNpcToList,
+      hideGameNpc,
+      loadNpcsFromFile,
     },
     map: {
-      addToMapChangelist: addToMapChangelist,
-      removeFromMapChangelist: removeFromMapChangelist,
-      applyCurrentMapChange: applyCurrentMapChange,
+      addToMapChangelist,
+      removeFromMapChangelist,
+      applyCurrentMapChange,
     },
   };
   window.nerthus.addCallbackToEvent("loaded", function () {
@@ -65,6 +65,6 @@ export function initAPI() {
 }
 
 /*
-  If something is missing in API and you would want to use it,
+  If something is missing in the API and you would want to use it,
   feel free to open an issue
  */

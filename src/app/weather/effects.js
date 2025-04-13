@@ -51,7 +51,7 @@ async function cacheWeatherCanvas(effect, force = false) {
       effect.frameTime = effect.frames.frameDelays[0] * 10;
     } catch (err) {
       console.error(
-        "Error decoding gif from url while caching weather canvas: ",
+        "Error decoding GIF from url while caching weather canvas: ",
         err,
       );
       return false;
@@ -108,10 +108,14 @@ export function clearEffects(clearGameEffects) {
   if (INTERFACE === "NI") {
     removeFromNiDrawList(rainEffect.id);
     removeFromNiDrawList(snowEffect.id);
-    if (clearGameEffects) Engine.weather.onClear();
+    if (clearGameEffects) {
+      Engine.weather.onClear();
+    }
   } else {
     $(".nerthus-weather").remove();
-    if (clearGameEffects) window.clearWeather();
+    if (clearGameEffects) {
+      window.clearWeather();
+    }
   }
   clearLightnings();
 }
@@ -157,8 +161,9 @@ export function displayGameWeather(name) {
     const uppercaseWeatherName = name.charAt(0).toUpperCase() + name.slice(1);
 
     Engine.weather.setMapSize();
-    if (!Engine.weather.mapSize) return;
-    Engine.weather.createObjects(uppercaseWeatherName, {});
+    if (Engine.weather.mapSize) {
+      Engine.weather.createObjects(uppercaseWeatherName, {});
+    }
   } else {
     window.changeWeather(name);
   }

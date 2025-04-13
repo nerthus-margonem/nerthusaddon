@@ -56,8 +56,9 @@ export function changeGameNpc(npc) {
     API.addCallbackToEvent("newNpc", callback);
   } else {
     let $style = $("#nerthus-npc-changing");
-    if (!$style.length)
+    if (!$style.length) {
       $style = $('<style id="nerthus-npc-changing" />').appendTo("head");
+    }
 
     $style.append(
       "#npc" +

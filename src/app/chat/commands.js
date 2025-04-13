@@ -19,7 +19,9 @@ const BLOCKED_CHANNELS = ["TRADE", "GLOBAL"];
 function getAuthorBusinessCardProxy(businessCard, newAuthorNick) {
   return new Proxy(businessCard, {
     get(target, prop) {
-      if (prop === "getNick") return () => newAuthorNick;
+      if (prop === "getNick") {
+        return () => newAuthorNick;
+      }
       return Reflect.get(...arguments);
     },
   });
@@ -209,9 +211,10 @@ function light(msg) {
     return;
   }
 
-  if (arr.length === 0)
-    setForcedParameters(-1, "#000"); // if no arguments
-  else {
+  if (arr.length === 0) {
+    // if no arguments
+    setForcedParameters(-1, "#000");
+  } else {
     let opacity = argArr[0].trim();
     const color = argArr[1] ? argArr[1].trim() : "#000";
     const mapId = argArr[2] ? argArr[2].trim() : "default";
@@ -277,7 +280,9 @@ function hide(msg) {
 function weather(msg) {
   msg.style = "nerthus-command";
   const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(msg.text);
-  if (!weatherArr) return false;
+  if (!weatherArr) {
+    return false;
+  }
 
   if (BLOCKED_CHANNELS.includes(msg.channel)) {
     // Do not change weather on global or trade
@@ -285,7 +290,9 @@ function weather(msg) {
   }
 
   setForcedWeather(weatherArr[1], weatherArr[2]);
-  if (settings.weatherEffects) clearEffects(true);
+  if (settings.weatherEffects) {
+    clearEffects(true);
+  }
   displayWeather();
 
   return false;
@@ -301,7 +308,10 @@ function me(msg) {
 
 function lang(msg) {
   console.log(msg);
-  if (msg.text.split(",").length < 2) return msg; // early return incorrect input
+  if (msg.text.split(",").length < 2) {
+    // early return incorrect input
+    return msg;
+  }
 
   msg.style = `nerthus-lang nerthus-lang-ts-${msg.ts}`;
   msg.text = msg.text.replace(/^\*lang /, ""); // remove *lang
@@ -331,34 +341,36 @@ function lang(msg) {
 
 const narratorCommands = {
   nar: nar1,
-  nar1: nar1,
-  nar2: nar2,
-  nar3: nar3,
-  nar6: nar6,
+  nar1,
+  nar2,
+  nar3,
+  nar6,
   dial: dial1,
-  dial1: dial1,
-  dial2: dial2,
-  dial3: dial3,
-  dial666: dial666,
-  sys: sys,
-  map: map,
-  resetMap: resetMap,
-  light: light,
-  addGraf: addGraf,
-  delGraf: delGraf,
-  hide: hide,
-  weather: weather,
+  dial1,
+  dial2,
+  dial3,
+  dial666,
+  sys,
+  map,
+  resetMap,
+  light,
+  addGraf,
+  delGraf,
+  hide,
+  weather,
 };
 const publicCommands = {
-  me: me,
-  lang: lang,
-  nar0: nar0,
-  dial0: dial0,
+  me,
+  lang,
+  nar0,
+  dial0,
 };
 
 export function initBasicChatCommands() {
-  for (const cmd in narratorCommands)
+  for (const cmd in narratorCommands) {
     registerChatCommand(cmd, narratorCommands[cmd], false);
-  for (const cmd in publicCommands)
+  }
+  for (const cmd in publicCommands) {
     registerChatCommand(cmd, publicCommands[cmd], true);
+  }
 }

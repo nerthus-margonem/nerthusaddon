@@ -158,7 +158,9 @@ function downloadLog() {
 }
 
 export function initLightManager() {
-  if (INTERFACE === "NI") return;
+  if (INTERFACE === "NI") {
+    return;
+  }
 
   startEditingLights();
   const $lightManager = $(lightManagerHtml);
@@ -167,13 +169,17 @@ export function initLightManager() {
     "#nerthus-light-manager-toggle-lights",
   );
   $toggleLights.click(toggleLights);
-  if (lightsOn) $toggleLights.addClass("blue");
+  if (lightsOn) {
+    $toggleLights.addClass("blue");
+  }
 
   const $toggleMouseMove = $lightManager.find(
     "#nerthus-light-manager-toggle-mousemove",
   );
   $toggleMouseMove.click(toggleMouseMove);
-  if (hero.opt & 64) $toggleMouseMove.addClass("blue");
+  if (hero.opt & 64) {
+    $toggleMouseMove.addClass("blue");
+  }
 
   $lightManager
     .find("#nerthus-light-manager-delete-all")

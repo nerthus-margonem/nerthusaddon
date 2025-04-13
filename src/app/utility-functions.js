@@ -13,7 +13,9 @@ export function coordsToId(x, y) {
 }
 
 export function resolveUrl(url) {
-  if (url.startsWith("/")) url = "https://micc.garmory-cdn.cloud" + url;
+  if (url.startsWith("/")) {
+    url = "https://micc.garmory-cdn.cloud" + url;
+  }
   return url.replace(/^#/, FILE_PREFIX);
 }
 

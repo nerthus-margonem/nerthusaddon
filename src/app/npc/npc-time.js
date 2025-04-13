@@ -1,10 +1,14 @@
 function validateTime(npc) {
-  if (!npc.time) return true;
+  if (!npc.time) {
+    return true;
+  }
 
   const start = parseTimeStrToDate(npc.time.split("-")[0]);
   const end = parseTimeStrToDate(npc.time.split("-")[1]);
   const now = new Date();
-  if (start > end) return start <= now || now <= end;
+  if (start > end) {
+    return start <= now || now <= end;
+  }
   return start <= now && now <= end;
 }
 
@@ -16,7 +20,9 @@ function parseTimeStrToDate(timeStr) {
 }
 
 function validateDays(npc) {
-  if (!npc.days) return true;
+  if (!npc.days) {
+    return true;
+  }
 
   const day_of_week = new Date().getDay();
   return npc.days.indexOf(day_of_week) > -1;
@@ -34,7 +40,9 @@ function parseStrToDate(date_str) {
 }
 
 function validateDate(npc) {
-  if (!npc.date) return true;
+  if (!npc.date) {
+    return true;
+  }
 
   const begin = parseStrToDate(npc.date.split("-")[0]);
   const now = new Date();

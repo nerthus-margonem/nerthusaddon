@@ -1,6 +1,7 @@
 export function setCollision(x, y) {
-  if (INTERFACE === "NI") Engine.map.col.set(x, y, 2);
-  else {
+  if (INTERFACE === "NI") {
+    Engine.map.col.set(x, y, 2);
+  } else {
     map.nodes.changeCollision(x, y, true);
     g.npccol[x + 256 * y] = true;
   }

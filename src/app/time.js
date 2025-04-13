@@ -21,9 +21,17 @@ export function getCurrentSeason() {
   const AUTUMN_BEGIN = makeStartDate(23, 9);
   const WINTER_BEGIN = makeStartDate(22, 11); //long winter
 
-  if (date >= WINTER_BEGIN) return SEASON.WINTER;
-  if (date >= AUTUMN_BEGIN) return SEASON.AUTUMN;
-  if (date >= SUMMER_BEGIN) return SEASON.SUMMER;
-  if (date >= SPRING_BEGIN) return SEASON.SPRING;
+  if (date >= WINTER_BEGIN) {
+    return SEASON.WINTER;
+  }
+  if (date >= AUTUMN_BEGIN) {
+    return SEASON.AUTUMN;
+  }
+  if (date >= SUMMER_BEGIN) {
+    return SEASON.SUMMER;
+  }
+  if (date >= SPRING_BEGIN) {
+    return SEASON.SPRING;
+  }
   return SEASON.WINTER;
 }

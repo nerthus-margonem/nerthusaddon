@@ -28,21 +28,34 @@ const RANKS = {
 const RIGHTS = { ADM: 1, MG: 2, SMG: 16 };
 
 function rights2rank(rights) {
-  if (rights & RIGHTS.ADM) return RANKS.ADM;
-  if (rights & RIGHTS.SMG) return RANKS.SMG;
-  if (rights & RIGHTS.MG) return RANKS.MG;
-  if (rights) return RANKS.MC;
+  if (rights & RIGHTS.ADM) {
+    return RANKS.ADM;
+  }
+  if (rights & RIGHTS.SMG) {
+    return RANKS.SMG;
+  }
+  if (rights & RIGHTS.MG) {
+    return RANKS.MG;
+  }
+  if (rights) {
+    return RANKS.MC;
+  }
   return RANKS.NONE;
 }
 
 function getRankNameOf(player) {
   let rank = RANKS.NONE;
-  if (player.rights) rank = rights2rank(player.rights);
+  if (player.rights) {
+    rank = rights2rank(player.rights);
+  }
 
   switch (checkPermissionLvl(player.account)) {
     case PERMISSION_LVL.NARRATOR:
-      if (rank === RANKS.MC) rank = RANKS.NARRATOR_MC;
-      else rank = RANKS.NARRATOR;
+      if (rank === RANKS.MC) {
+        rank = RANKS.NARRATOR_MC;
+      } else {
+        rank = RANKS.NARRATOR;
+      }
       break;
     case PERMISSION_LVL.COUNCILOR:
       rank = RANKS.COUNCILOR;
@@ -56,11 +69,14 @@ function getRankNameOf(player) {
 
 function getTitle(player) {
   const title = vips[parseInt(player.id)];
-  if (title) return title;
-  if (player.lvl)
+  if (title) {
+    return title;
+  }
+  if (player.lvl) {
     return lvlNames[
       Math.min(lvlNames.length - 1, (parseInt(player.lvl) - 1) >> 3)
     ];
+  }
   return "";
 }
 
@@ -124,26 +140,40 @@ function parseTip(player) {
 }
 
 function getNpcTypeName(worldType) {
-  if (worldType > 99) return "tytan";
-  if (worldType > 79) return "heros";
-  if (worldType > 29) return "elita III";
-  if (worldType > 19) return "elita II";
-  if (worldType > 9) return "elita";
+  if (worldType > 99) {
+    return "tytan";
+  }
+  if (worldType > 79) {
+    return "heros";
+  }
+  if (worldType > 29) {
+    return "elita III";
+  }
+  if (worldType > 19) {
+    return "elita II";
+  }
+  if (worldType > 9) {
+    return "elita";
+  }
   return "";
 }
 
 function getNpcDanger(npc) {
-  if (npc.type === 2 || npc.type === 3) {
-    const lvlDiff = npc.lvl - hero.lvl;
-    if (lvlDiff < -13)
-      return { style: 'style="color:#888"', str: "Niewarty uwagi" };
-    if (lvlDiff > 19)
-      return { style: 'style="color:#f50"', str: "Potężny przeciwnik" };
-    if (lvlDiff > 9)
-      return { style: 'style="color:#ff0"', str: "Poważny rywal" };
-    return { style: "", str: "Zwykły przeciwnik" };
+  if (![2, 3].includes(npc.type)) {
+    return { style: "", str: "" };
   }
-  return { style: "", str: "" };
+
+  const lvlDiff = npc.lvl - hero.lvl;
+  if (lvlDiff < -13) {
+    return { style: 'style="color:#888"', str: "Niewarty uwagi" };
+  }
+  if (lvlDiff > 19) {
+    return { style: 'style="color:#f50"', str: "Potężny przeciwnik" };
+  }
+  if (lvlDiff > 9) {
+    return { style: 'style="color:#ff0"', str: "Poważny rywal" };
+  }
+  return { style: "", str: "Zwykły przeciwnik" };
 }
 
 function createNpcTip(npc) {
@@ -151,12 +181,16 @@ function createNpcTip(npc) {
     "<b>" +
     window.htmlspecialchars(window.parseBasicBB(npc.nick, false)) +
     "</b>";
-  if (npc.type === 4) return tip;
+  if (npc.type === 4) {
+    return tip;
+  }
 
   const type = getNpcTypeName(npc.wt);
   tip += type ? "<i>" + type + "</i>" : "";
 
-  if (npc.type <= 0) return tip;
+  if (npc.type <= 0) {
+    return tip;
+  }
 
   const danger = getNpcDanger(npc);
   const grp = npc.grp ? ", w grupie" : "";
@@ -170,13 +204,15 @@ export function initTips() {
     Engine.others.getDrawableList = function () {
       const list = othersDrawableList();
       for (const i in list) {
-        if (list[i].isPlayer) list[i].tip[0] = parseTip(list[i], false);
+        if (list[i].isPlayer) {
+          list[i].tip[0] = parseTip(list[i]);
+        }
       }
       return list;
     };
 
     Engine.hero.createStrTip = function () {
-      return parseTip(Engine.hero, true);
+      return parseTip(Engine.hero);
     };
     Engine.hero.tip[0] = Engine.hero.createStrTip();
   } else {

@@ -14,7 +14,9 @@ function fetchCmd(chatMessageData) {
   if (chatMessageData.text[0] === "*") {
     const command = /^\*(\S+)/.exec(chatMessageData.text);
     //fixes bug with /dice, and presumably '* text' messages
-    if (command) return command[1];
+    if (command) {
+      return command[1];
+    }
   }
 }
 
@@ -22,32 +24,35 @@ function fetchCallback(command, msg) {
   if (
     commandsMap[command] &&
     hasNarrationRights(msg.authorBusinessCard.getAcc())
-  )
+  ) {
     return commandsMap[command];
-  else return commandsPublicMap[command];
+  }
+  return commandsPublicMap[command];
 }
 
 function parseMessage(chatMessageData) {
-  // change message by directly editing object passed as reference
+  // change the message by editing the object passed as reference directly
   const command = fetchCmd(chatMessageData);
-  if (command) {
-    const callback = fetchCallback(command, chatMessageData);
-    if (callback) {
-      chatMessageData.text = fixUrl(chatMessageData.text);
-      let nick = chatMessageData.authorBusinessCard.getNick();
-      if (chatMessageData.receiverBusinessCard) {
-        nick += " -> " + chatMessageData.receiverBusinessCard.getNick();
-      }
-      log(
-        sanitizeText(
-          `[${chatMessageData.channel}] (${nick}): ${chatMessageData.text}`,
-        ),
-      ); // [which tab] (author -> receiver): command
-
-      return callback(chatMessageData);
-    }
+  if (!command) {
+    return true;
   }
-  return true;
+  const callback = fetchCallback(command, chatMessageData);
+  if (!callback) {
+    return true;
+  }
+  chatMessageData.text = fixUrl(chatMessageData.text);
+  let nick = chatMessageData.authorBusinessCard.getNick();
+  if (chatMessageData.receiverBusinessCard) {
+    nick += " -> " + chatMessageData.receiverBusinessCard.getNick();
+  }
+  // [which tab] (author -> receiver): command
+  log(
+    sanitizeText(
+      `[${chatMessageData.channel}] (${nick}): ${chatMessageData.text}`,
+    ),
+  );
+
+  return callback(chatMessageData);
 }
 
 function initParseNerthusCommandsProxy() {
@@ -72,6 +77,9 @@ export function initChatMgr() {
 }
 
 export function registerChatCommand(name, func, isPublic) {
-  if (isPublic) commandsPublicMap[name] = func;
-  else commandsMap[name] = func;
+  if (isPublic) {
+    commandsPublicMap[name] = func;
+  } else {
+    commandsMap[name] = func;
+  }
 }

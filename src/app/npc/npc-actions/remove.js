@@ -1,11 +1,12 @@
-import { removeCollision } from "./collision";
+import { callEvent } from "../../API";
 import { coordsToId } from "../../utility-functions";
 import { customNpcs } from "../npc";
-import { callEvent } from "../../API";
+import { removeCollision } from "./collision";
 
 export function removeNpc(x, y, mapId) {
-  if (customNpcs[mapId] && customNpcs[mapId][coordsToId(x, y)])
+  if (customNpcs[mapId]?.[coordsToId(x, y)]) {
     delete customNpcs[mapId][coordsToId(x, y)];
+  }
   if (INTERFACE === "NI") {
     if (typeof mapId === "undefined" || mapId === Engine.map.d.id) {
       const id = coordsToId(x, y);
@@ -19,8 +20,9 @@ export function removeNpc(x, y, mapId) {
       }
     }
   } else {
-    if (typeof mapId === "undefined" || parseInt(mapId) === map.id)
+    if (typeof mapId === "undefined" || parseInt(mapId) === map.id) {
       $("#npc" + coordsToId(x, y)).remove();
+    }
   }
   removeCollision(x, y);
   callEvent("removeTemporaryNpc", { x: x, y: y, mapId: mapId });

@@ -15,7 +15,7 @@ const settingsList = [];
 const constructElement = {};
 
 constructElement.button = function (data) {
-  // Guard against github crawler bots
+  // Guard against GitHub crawler bots
   data.url = data.url.replace("DISCORD_URL", "discord.gg");
 
   return (
@@ -38,7 +38,9 @@ constructElement.button = function (data) {
 constructElement.buttonGroup = function (groupData) {
   const buttonGroup = [];
   const len = groupData.length;
-  for (let i = 0; i < len; i++) buttonGroup.push(this.button(groupData[i]));
+  for (let i = 0; i < len; i++) {
+    buttonGroup.push(this.button(groupData[i]));
+  }
   return buttonGroup.join("");
 };
 
@@ -61,10 +63,10 @@ constructElement.panel = function (
   let lightManagerButton = "";
   if (INTERFACE === "SI") {
     lightManagerButton = `
-<button id="light-manager-button" class="button nerthus-settings-button" tip="Narzędzia edycji świateł">
-    <img src="${FILE_PREFIX}res/img/panel/stars.png" alt="Narzędzia edycji świateł">
-</button>
-`;
+      <button id="light-manager-button" class="button nerthus-settings-button" tip="Narzędzia edycji świateł">
+          <img src="${FILE_PREFIX}res/img/panel/stars.png" alt="Narzędzia edycji świateł">
+      </button>
+    `;
   }
 
   return (
@@ -125,8 +127,11 @@ function closePanel($elm) {
   $elm.find(".settings-panel").addClass("hidden");
 
   const $settingsButton = $elm.find("#settings-button");
-  if (INTERFACE === "NI") $settingsButton.tip("Ustawienia");
-  else $settingsButton.attr("tip", "Ustawienia");
+  if (INTERFACE === "NI") {
+    $settingsButton.tip("Ustawienia");
+  } else {
+    $settingsButton.attr("tip", "Ustawienia");
+  }
 
   $settingsButton
     .children()
@@ -137,94 +142,103 @@ function closePanel($elm) {
 }
 
 function createPanel(data, hidden) {
-  if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length) {
-    const buttonGroupLeft = constructElement.buttonGroup(data.leftPanel);
-    const buttonGroupCenter = constructElement.buttonGroup(data.centerPanel);
-    const buttonGroupRight = constructElement.buttonGroup(data.rightPanel);
-    const settingsElement = constructElement.settings();
+  if ($elm.parent && $elm.parent(ELEMENT_TO_ATTACH_TO).length) {
+    return;
+  }
+  const buttonGroupLeft = constructElement.buttonGroup(data.leftPanel);
+  const buttonGroupCenter = constructElement.buttonGroup(data.centerPanel);
+  const buttonGroupRight = constructElement.buttonGroup(data.rightPanel);
+  const settingsElement = constructElement.settings();
 
-    $elm = $(
-      constructElement.panel(
-        buttonGroupLeft,
-        buttonGroupCenter,
-        buttonGroupRight,
-        settingsElement,
-      ),
-    );
-    const $defaultPanel = $elm.find(".default-panel");
-    const $settingsPanel = $elm.find(".settings-panel");
-    const $panelName = $elm.find(".panel-name");
+  $elm = $(
+    constructElement.panel(
+      buttonGroupLeft,
+      buttonGroupCenter,
+      buttonGroupRight,
+      settingsElement,
+    ),
+  );
+  const $defaultPanel = $elm.find(".default-panel");
+  const $settingsPanel = $elm.find(".settings-panel");
+  const $panelName = $elm.find(".panel-name");
 
-    $settingsPanel.find(".top-box").append(settingsList);
+  $settingsPanel.find(".top-box").append(settingsList);
 
-    $elm
-      .find("#settings-button")
-      .click(function () {
-        $defaultPanel.toggleClass("hidden");
-        $settingsPanel.toggleClass("hidden");
-        const $this = $(this);
-        $this.toggleClass("back-to-default");
-        if ($settingsPanel.hasClass("hidden")) {
-          if (INTERFACE === "NI") $this.tip("Ustawienia");
-          else $this.attr("tip", "Ustawienia");
-
-          $this
-            .children()
-            .attr("src", FILE_PREFIX + "res/img/panel/settings.png");
-          $panelName.text("Panel Nerthusa");
+  $elm
+    .find("#settings-button")
+    .click(function () {
+      $defaultPanel.toggleClass("hidden");
+      $settingsPanel.toggleClass("hidden");
+      const $this = $(this);
+      $this.toggleClass("back-to-default");
+      if ($settingsPanel.hasClass("hidden")) {
+        if (INTERFACE === "NI") {
+          $this.tip("Ustawienia");
         } else {
-          if (INTERFACE === "NI") $this.tip("Powrót");
-          else $this.attr("tip", "Powrót");
-
-          $this
-            .children()
-            .attr("src", FILE_PREFIX + "res/img/panel/settings-back.png");
-          $panelName.text("Panel Nerthusa - ustawienia");
+          $this.attr("tip", "Ustawienia");
         }
-      })
-      .end()
-      .find(".close-button, .cancel-button, .ok-button")
-      .click(function () {
-        closePanel($elm);
-      })
-      .end()
-      .find(".save-button")
-      .click(function () {
-        saveSettings();
-        closePanel($elm);
-      })
-      .end()
-      .find("#light-manager-button")
-      .click(function () {
-        initLightManager();
-        closePanel($elm);
-      })
-      .end();
 
-    $elm
-      .css({
-        visibility: hidden ? "hidden" : "visible",
-        opacity: 0,
-      })
-      .appendTo(ELEMENT_TO_ATTACH_TO)
-      .css("opacity", hidden ? "0" : "1"); // change opacity after appending to ELEMENT_TO_ATTACH_TO for nice animation
+        $this
+          .children()
+          .attr("src", FILE_PREFIX + "res/img/panel/settings.png");
+        $panelName.text("Panel Nerthusa");
+      } else {
+        if (INTERFACE === "NI") {
+          $this.tip("Powrót");
+        } else {
+          $this.attr("tip", "Powrót");
+        }
 
-    addDraggable($elm, ".header-label-positioner");
+        $this
+          .children()
+          .attr("src", FILE_PREFIX + "res/img/panel/settings-back.png");
+        $panelName.text("Panel Nerthusa - ustawienia");
+      }
+    })
+    .end()
+    .find(".close-button, .cancel-button, .ok-button")
+    .click(function () {
+      closePanel($elm);
+    })
+    .end()
+    .find(".save-button")
+    .click(function () {
+      saveSettings();
+      closePanel($elm);
+    })
+    .end()
+    .find("#light-manager-button")
+    .click(function () {
+      initLightManager();
+      closePanel($elm);
+    })
+    .end();
 
-    if (INTERFACE === "NI") {
-      $("[tip]", $elm).each(function () {
-        const $this = $(this);
-        $this.tip($this.attr("tip"));
-      });
-    }
+  $elm
+    .css({
+      visibility: hidden ? "hidden" : "visible",
+      opacity: 0,
+    })
+    .appendTo(ELEMENT_TO_ATTACH_TO)
+    .css("opacity", hidden ? "0" : "1"); // change opacity after appending to ELEMENT_TO_ATTACH_TO for nice animation
+
+  addDraggable($elm, ".header-label-positioner");
+
+  if (INTERFACE === "NI") {
+    $("[tip]", $elm).each(function () {
+      const $this = $(this);
+      $this.tip($this.attr("tip"));
+    });
   }
 }
 
 function preloadPanel() {
-  if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length)
-    $.getJSON(FILE_PREFIX + "res/configs/panel-links.json", function (data) {
-      createPanel(data, true);
-    });
+  if ($elm.parent && $elm.parent(ELEMENT_TO_ATTACH_TO).length) {
+    return;
+  }
+  $.getJSON(FILE_PREFIX + "res/configs/panel-links.json", function (data) {
+    createPanel(data, true);
+  });
 }
 
 function togglePanel() {
@@ -234,8 +248,9 @@ function togglePanel() {
     );
   }
 
-  if ($elm.css("visibility") === "visible")
+  if ($elm.css("visibility") === "visible") {
     return $elm.css({ visibility: "hidden", opacity: "0" });
+  }
 
   $elm.css({ visibility: "visible", opacity: "1" });
 }
@@ -249,46 +264,51 @@ function saveSettings() {
 
 function createButtonNI() {
   if (
-    Object.keys(Engine.widgetManager.getDefaultWidgetSet()).includes("nerthus")
+    !Object.keys(Engine.widgetManager.getDefaultWidgetSet()).includes("nerthus")
   ) {
-    let nerthusPos = defaultPosition;
+    setTimeout(createButtonNI, 500);
+    return;
+  }
 
-    const serverStoragePos = Engine.serverStorage.get(
-      Engine.widgetManager.getPathToHotWidgetVersion(),
-    );
-    if (serverStoragePos?.nerthus) nerthusPos = serverStoragePos.nerthus;
+  let nerthusPos = defaultPosition;
 
-    Engine.widgetManager.createOneWidget(
-      "nerthus",
-      { nerthus: nerthusPos },
-      true,
-      [],
-    );
-    Engine.widgetManager.setEnableDraggingButtonsWidget(false);
-  } else setTimeout(createButtonNI, 500);
+  const serverStoragePos = Engine.serverStorage.get(
+    Engine.widgetManager.getPathToHotWidgetVersion(),
+  );
+  if (serverStoragePos?.nerthus) {
+    nerthusPos = serverStoragePos.nerthus;
+  }
+
+  Engine.widgetManager.createOneWidget(
+    "nerthus",
+    { nerthus: nerthusPos },
+    true,
+    [],
+  );
+  Engine.widgetManager.setEnableDraggingButtonsWidget(false);
 }
 
 export function addSettingToPanel(settingName, translation, tip, callback) {
   const checked = settings[settingName] ? " checked" : "";
 
   const $setting = $(`
-<label class="setting-label">
-    <span class="setting-label-text" tip="${tip}">${translation}</span>
-    <input class="setting-checkbox" name="${settingName}" type="checkbox" ${checked}>
-    <span class="checkbox-outline">
-        <span class="checkmark">
-        <div class="checkmark-stem"></div>
-        <div class="checkmark-kick"></div>
-    </span>
-    </span>
-</label>
-`)
+      <label class="setting-label">
+          <span class="setting-label-text" tip="${tip}">${translation}</span>
+          <input class="setting-checkbox" name="${settingName}" type="checkbox" ${checked}>
+          <span class="checkbox-outline">
+              <span class="checkmark">
+              <div class="checkmark-stem"></div>
+              <div class="checkmark-kick"></div>
+          </span>
+          </span>
+      </label>
+    `)
     .change(function (e) {
       saveSetting(settingName, e.target.checked);
     })
     .change(callback);
 
-  settingsList.push($setting.get()[0]); // SI uses jquery 1.4, therefore we can't append array of jquery elements
+  settingsList.push($setting);
 }
 
 export function initPanel() {

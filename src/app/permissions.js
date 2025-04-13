@@ -14,11 +14,18 @@ export const PERMISSION_LVL = {
 };
 
 export function checkPermissionLvl(accountId) {
-  if (permissions.namiestnik.includes(accountId))
+  if (permissions.namiestnik.includes(accountId)) {
     return PERMISSION_LVL.NAMIESTNIK;
-  if (permissions.radny.includes(accountId)) return PERMISSION_LVL.COUNCILOR;
-  if (permissions.narrator.includes(accountId)) return PERMISSION_LVL.NARRATOR;
-  if (permissions.special.includes(accountId)) return PERMISSION_LVL.SPECIAL;
+  }
+  if (permissions.radny.includes(accountId)) {
+    return PERMISSION_LVL.COUNCILOR;
+  }
+  if (permissions.narrator.includes(accountId)) {
+    return PERMISSION_LVL.NARRATOR;
+  }
+  if (permissions.special.includes(accountId)) {
+    return PERMISSION_LVL.SPECIAL;
+  }
   return PERMISSION_LVL.DEFAULT;
 }
 

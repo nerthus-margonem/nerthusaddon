@@ -9,10 +9,13 @@ export function Simple1DNoise(seed) {
 
   function Random(seed) {
     this._seed = seed % 2147483647;
-    if (this._seed <= 0) this._seed += 2147483646;
+    if (this._seed <= 0) {
+      this._seed += 2147483646;
+    }
 
     this.next = function next() {
-      return (this._seed = (this._seed * 16807) % 2147483647);
+      this._seed = (this._seed * 16807) % 2147483647;
+      return this._seed;
     };
     this.getFloat = function () {
       return (this.next() - 1) / 2147483646;
@@ -20,7 +23,9 @@ export function Simple1DNoise(seed) {
   }
 
   const rand = new Random(seed);
-  for (let i = 0; i < MAX_VERTICES; ++i) r.push(rand.getFloat());
+  for (let i = 0; i < MAX_VERTICES; ++i) {
+    r.push(rand.getFloat());
+  }
 
   function getVal(x) {
     const scaledX = x * scale;
@@ -38,9 +43,9 @@ export function Simple1DNoise(seed) {
 
   /**
    * Linear interpolation function.
-   * @param a The lower integer value
-   * @param b The upper integer value
-   * @param t The value between the two
+   * @param {number} a The lower integer value
+   * @param {number} b The upper integer value
+   * @param {number} t The value between the two
    * @returns {number}
    */
   function lerp(a, b, t) {

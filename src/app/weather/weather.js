@@ -36,7 +36,9 @@ const forcedWeathers = {
 };
 
 function getClimateNoise(climate, type) {
-  if (!climate) climate = "default";
+  if (!climate) {
+    climate = "default";
+  }
   if (!climateNoises[type][climate]) {
     let multiplier;
     switch (type) {
@@ -58,17 +60,24 @@ function getClimateNoise(climate, type) {
 }
 
 function getMapsClimate(mapId) {
-  for (const climateName in climates.maps)
-    if (climates.maps[climateName].indexOf(mapId) >= 0) return climateName;
+  for (const climateName in climates.maps) {
+    if (climates.maps[climateName].indexOf(mapId) >= 0) {
+      return climateName;
+    }
+  }
   return false;
 }
 
 function getClimateVariation(characteristic, date, climate) {
-  if (!characteristic[climate]) climate = "default";
+  if (!characteristic[climate]) {
+    climate = "default";
+  }
 
   const now = new Date();
   const start = new Date(now.getFullYear(), 2, 20); // start of spring
-  if (start > now) start.setUTCFullYear(now.getFullYear() - 1);
+  if (start > now) {
+    start.setUTCFullYear(now.getFullYear() - 1);
+  }
   const day = Math.ceil((now - start) / (1000 * 60 * 60 * 24));
   const firstSeason = Math.floor(day / 90);
   const secondSeason = firstSeason === 3 ? 0 : firstSeason + 1;
@@ -95,7 +104,7 @@ function getClimateHumidity(date, climate) {
     getClimateNoise(climate, CHARACTERISTIC.HUMIDITY).getVal(pointInTime) *
     getClimateVariation(climates.characteristics.humidity, date, climate);
 
-  return ret > 1 ? 1 : ret;
+  return Math.min(ret, 1);
 }
 
 function getGlobalTemperature(date, climate) {
@@ -104,7 +113,7 @@ function getGlobalTemperature(date, climate) {
 
   // f(x) = 15 * Math.sin(0.52 * x - 1.5) + 9 is a graph that resembles average temperature graph in poland
   // https://en.climate-data.org/north-america/united-states-of-america/ohio/poland-137445/#climate-graph
-  const x = month + day / 31; //minor difference in 28 day month probably not noticeable
+  const x = month + day / 31; //minor difference in 28-day month probably not noticeable
   const dayTemperature = 15 * Math.sin(0.52 * x - 1.5) + 9;
 
   const pointInTime = date.getTime() / 3600000;
@@ -125,7 +134,9 @@ function getClimateTemperature(date, climate) {
 
 function getCurrentRegionCharacteristic(date) {
   // todo naming???
-  if (!isCurrentMapOutdoor()) return false;
+  if (!isCurrentMapOutdoor()) {
+    return false;
+  }
   let humidity = 0;
   let cloudiness = 0;
   let temperature = 0;
@@ -162,8 +173,9 @@ function getCurrentRegionCharacteristic(date) {
   let adjacentTemperature = 0;
   const adjacentAmount = adjacentClimates.length;
 
-  if (adjacentAmount === 0 && !currentMapClimate) return false;
-  else if (adjacentAmount > 0) {
+  if (adjacentAmount === 0 && !currentMapClimate) {
+    return false;
+  } else if (adjacentAmount > 0) {
     for (let i = 0; i < adjacentAmount; i++) {
       adjacentHumidity += getClimateHumidity(date, adjacentClimates[i]);
       adjacentCloudiness += getClimateCloudiness(date, adjacentClimates[i]);
@@ -203,7 +215,7 @@ function getCurrentRegionCharacteristic(date) {
 
 /**
  * Table holding names of weathers based on cloudiness and humidity thresholds.
- * First variable (rows) is cloudiness and second (columns) is humidity
+ * The first variable (rows) is cloudiness, and the second (columns) is humidity
  * There should be 52.5% to get a value without any rain if both variables are random.
  * @type {string[][]}
  */
@@ -267,64 +279,85 @@ function getCurrentForcedWeatherForMap(mapId) {
 
 export function getWeather(date) {
   const characteristics = getCurrentRegionCharacteristic(date);
-  if (characteristics) {
-    if (characteristics.temperature > 25) {
-      // really hot, less cloudiness and humidity
-      characteristics.cloudiness *= 0.8;
-      characteristics.humidity *= 0.8;
-    }
+  if (!characteristics) {
+    return { name: "indoor" };
+  }
 
-    let cloudinessPart;
-    if (characteristics.cloudiness <= 0.2) cloudinessPart = 0;
-    else if (characteristics.cloudiness <= 0.55) cloudinessPart = 1;
-    else if (characteristics.cloudiness <= 0.7) cloudinessPart = 2;
-    else cloudinessPart = 3;
+  if (characteristics.temperature > 25) {
+    // really hot, less cloudiness and humidity
+    characteristics.cloudiness *= 0.8;
+    characteristics.humidity *= 0.8;
+  }
 
-    let humidityPart;
-    if (characteristics.humidity <= 0.25) humidityPart = 0;
-    else if (characteristics.humidity <= 0.5) humidityPart = 1;
-    else if (characteristics.humidity <= 0.75) humidityPart = 2;
-    else humidityPart = 3;
+  let cloudinessPart;
+  if (characteristics.cloudiness <= 0.2) {
+    cloudinessPart = 0;
+  } else if (characteristics.cloudiness <= 0.55) {
+    cloudinessPart = 1;
+  } else if (characteristics.cloudiness <= 0.7) {
+    cloudinessPart = 2;
+  } else {
+    cloudinessPart = 3;
+  }
 
-    let weather = WEATHER_TABLE[cloudinessPart][humidityPart];
+  let humidityPart;
+  if (characteristics.humidity <= 0.25) {
+    humidityPart = 0;
+  } else if (characteristics.humidity <= 0.5) {
+    humidityPart = 1;
+  } else if (characteristics.humidity <= 0.75) {
+    humidityPart = 2;
+  } else {
+    humidityPart = 3;
+  }
 
-    if (characteristics.temperature < -3)
-      weather = weather
-        .replace(/^rain(-light)?$/, "snow")
-        .replace(/^storm$/, "snow-storm")
-        .replace(/^day-storm$/, "day-snow");
-    else if (characteristics.temperature < 5)
-      weather = weather
-        .replace(/^rain(-light)?$/, "rain-with-snow")
-        .replace(/^day-storm$/, "day-rain-with-snow");
+  let weather = WEATHER_TABLE[cloudinessPart][humidityPart];
 
-    let rain = 0;
-    if (RAIN_STRENGTH[weather]) rain = RAIN_STRENGTH[weather];
+  if (characteristics.temperature < -3)
+    weather = weather
+      .replace(/^rain(-light)?$/, "snow")
+      .replace(/^storm$/, "snow-storm")
+      .replace(/^day-storm$/, "day-snow");
+  else if (characteristics.temperature < 5)
+    weather = weather
+      .replace(/^rain(-light)?$/, "rain-with-snow")
+      .replace(/^day-storm$/, "day-rain-with-snow");
 
-    let snow = 0;
-    if (SNOW_STRENGTH[weather]) snow = SNOW_STRENGTH[weather];
+  let rain = 0;
+  if (RAIN_STRENGTH[weather]) {
+    rain = RAIN_STRENGTH[weather];
+  }
 
-    if (date.getHours() < 6 || date.getHours() > 20)
-      weather = weather.replace("day", "night");
+  let snow = 0;
+  if (SNOW_STRENGTH[weather]) {
+    snow = SNOW_STRENGTH[weather];
+  }
 
-    return {
-      name: weather,
-      rainStrength: rain,
-      snowStrength: snow,
-      temperature: characteristics.temperature,
-      humidity: characteristics.humidity,
-      cloudiness: characteristics.cloudiness,
-    };
-  } else return { name: "indoor" };
+  if (date.getHours() < 6 || date.getHours() > 20) {
+    weather = weather.replace("day", "night");
+  }
+
+  return {
+    name: weather,
+    rainStrength: rain,
+    snowStrength: snow,
+    temperature: characteristics.temperature,
+    humidity: characteristics.humidity,
+    cloudiness: characteristics.cloudiness,
+  };
 }
 
 export function displayWeather(weatherName = getWeather(new Date()).name) {
   const forcedWeatherName = getCurrentForcedWeather();
   if (forcedWeatherName) {
     weatherName = forcedWeatherName;
-    if (settings.weatherEffects) clearEffects(true);
+    if (settings.weatherEffects) {
+      clearEffects(true);
+    }
   } else {
-    if (settings.weatherEffects) clearEffects();
+    if (settings.weatherEffects) {
+      clearEffects();
+    }
   }
 
   if (weatherName === "indoor") {
@@ -334,7 +367,9 @@ export function displayWeather(weatherName = getWeather(new Date()).name) {
     $widget.css("display", "none");
     setOpacityChange(0);
 
-    if (settings.weatherEffects) displayGameWeather(weatherName);
+    if (settings.weatherEffects) {
+      displayGameWeather(weatherName);
+    }
   } else {
     if (settings.weather) {
       $widget.css("display", "flex");
@@ -367,11 +402,15 @@ export function displayWeather(weatherName = getWeather(new Date()).name) {
         INTERFACE === "NI" ? Engine.map.d.id : map.id,
       );
       if (isCurrentMapOutdoor() || forcedWeatherForCurrentMap) {
-        if (RAIN_STRENGTH[dayWeatherName])
+        if (RAIN_STRENGTH[dayWeatherName]) {
           displayRain(RAIN_STRENGTH[dayWeatherName]);
-        if (SNOW_STRENGTH[dayWeatherName])
+        }
+        if (SNOW_STRENGTH[dayWeatherName]) {
           displaySnow(SNOW_STRENGTH[dayWeatherName]);
-        if (LIGHTNING[dayWeatherName]) displayLightnings();
+        }
+        if (LIGHTNING[dayWeatherName]) {
+          displayLightnings();
+        }
       }
       setOpacityChange(CLOUDS_STRENGTH[dayWeatherName]);
     }
@@ -381,8 +420,9 @@ export function displayWeather(weatherName = getWeather(new Date()).name) {
 }
 
 export function setForcedWeather(weatherName, mapId = "default") {
-  if (!weatherName || weatherName === "reset") forcedWeathers[mapId] = "";
-  else if (
+  if (!weatherName || weatherName === "reset") {
+    forcedWeathers[mapId] = "";
+  } else if (
     GAME_WEATHERS.includes(weatherName) ||
     weatherDescriptions[weatherName]
   ) {
@@ -403,7 +443,9 @@ function startChangeTimer() {
 
 export function initWeather() {
   $widget = addWidget("weather");
-  if (!settings.weather) $widget.css("display", "none");
+  if (!settings.weather) {
+    $widget.css("display", "none");
+  }
 
   loadOnEveryMap(displayWeather);
   startChangeTimer();
@@ -413,7 +455,9 @@ export function initWeather() {
     "Widget pogody",
     "Pokazuje lub ukrywa widget w lewym górnym rogu mapy.",
     function () {
-      if (!settings.weather) $widget.css("display", "none");
+      if (!settings.weather) {
+        $widget.css("display", "none");
+      }
       displayWeather();
     },
   );
@@ -423,7 +467,9 @@ export function initWeather() {
     "Efekty pogodowe",
     "Pokazuje lub ukrywa efekty pogodowe z dodatku.",
     function () {
-      if (!settings.weatherEffects) setOpacityChange(0);
+      if (!settings.weatherEffects) {
+        setOpacityChange(0);
+      }
       clearEffects(getCurrentForcedWeather() !== "");
       displayWeather();
     },

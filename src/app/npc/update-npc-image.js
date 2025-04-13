@@ -44,7 +44,9 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
       npc.frameAmount = 1; // this is not the length of npc.frames
       npc.frames = decoded.frameDelays.map((delay) => ({ delay }));
       npc.leftPosMod = npc.d.type > 3 && !(npc.fw % 64) ? -16 : 0;
-      if (npc.d.type !== 4) npc.updateCollider();
+      if (npc.d.type !== 4) {
+        npc.updateCollider();
+      }
       npc.beforeOnload = function () {}; // force not updating image anymore
       npc.resetActiveFrame(); // reset active frame, so if basic graphic has more frames, it won't crash
     })

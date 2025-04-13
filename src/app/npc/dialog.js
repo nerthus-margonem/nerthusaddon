@@ -58,8 +58,11 @@ function parseReplyRow(reply) {
 }
 
 function parsePlaceholders(text) {
-  if (INTERFACE === "NI") return text.replace("#NAME", Engine.hero.d.nick);
-  else return text.replace("#NAME", hero.nick);
+  if (INTERFACE === "NI") {
+    return text.replace("#NAME", Engine.hero.d.nick);
+  } else {
+    return text.replace("#NAME", hero.nick);
+  }
 }
 
 function parseInnerDialog(npcMessage, playerReplies) {
@@ -69,7 +72,9 @@ function parseInnerDialog(npcMessage, playerReplies) {
     const reply = playerReplies[i];
     let iconClass =
       reply.text.trim() === "Dalej" ? LINE_NEXT_ICON : LINE_OPTION_ICON;
-    if (reply.to === "END") iconClass = EXIT_ICON;
+    if (reply.to === "END") {
+      iconClass = EXIT_ICON;
+    }
 
     innerDial +=
       '<li class="answer dialogue-window-answer ' +
@@ -92,8 +97,11 @@ function parseInnerDialog(npcMessage, playerReplies) {
 function addEventToAnswer(answer, $dialWin, replies, index, id) {
   if (replies[index])
     $(answer).click(function () {
-      if (replies[index].to === "END") closeDialog();
-      else openDialog(id, replies[index].to);
+      if (replies[index].to === "END") {
+        closeDialog();
+      } else {
+        openDialog(id, replies[index].to);
+      }
       $(".scroll-wrapper", $dialWin).trigger("update");
     });
 }
@@ -170,7 +178,9 @@ export function initNpcDialog() {
     const __g = _g;
     window._g = function (task, callback, payload) {
       const id = checkDialog(task);
-      if (id) return openDialog(id, 0);
+      if (id) {
+        return openDialog(id, 0);
+      }
       __g(task, callback, payload);
     };
   }

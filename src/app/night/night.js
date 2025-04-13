@@ -14,15 +14,23 @@ const DARKNESS_OBJECT_NI_ID = coordsToId(-1, -1);
  * @returns {number}
  */
 function timeToOpacity(time) {
-  if (!settings.night) return 0;
+  if (!settings.night) {
+    return 0;
+  }
 
   const hour = time.getHours();
   let opacity;
-  if (hour < 12) opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1;
-  else opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1;
+  if (hour < 12) {
+    opacity = -Math.pow(0.14 * hour - 1.29, 2) + 1;
+  } else {
+    opacity = -Math.pow(0.1 * hour - 1.57, 2) + 1;
+  }
 
-  if (opacity < 0.3) opacity = 0.3;
-  else if (opacity > 1) opacity = 1;
+  if (opacity < 0.3) {
+    opacity = 0.3;
+  } else if (opacity > 1) {
+    opacity = 1;
+  }
 
   return 1 - opacity;
 }
@@ -44,12 +52,14 @@ function getDarknessNiObject(opacity, color) {
 }
 
 export function setForcedParameters(opacity, color, mapId = "default") {
-  if (!opacity || opacity === "reset") forcedParameters[mapId] = "";
-  else
+  if (!opacity || opacity === "reset") {
+    forcedParameters[mapId] = "";
+  } else {
     forcedParameters[mapId] = {
       opacity: opacity,
       color: color,
     };
+  }
 }
 
 function getCurrentForcedParameters() {
@@ -57,15 +67,19 @@ function getCurrentForcedParameters() {
     opacity: -1,
     color: "#000",
   };
-  if (forcedParameters[CURRENT_MAP_ID])
+  if (forcedParameters[CURRENT_MAP_ID]) {
     parameters = forcedParameters[CURRENT_MAP_ID];
-  else if (forcedParameters.default) parameters = forcedParameters.default;
+  } else if (forcedParameters.default) {
+    parameters = forcedParameters.default;
+  }
 
   return parameters;
 }
 
 function getCurrentNaturalOpacity() {
-  if (!isCurrentMapOutdoor()) return 0;
+  if (!isCurrentMapOutdoor()) {
+    return 0;
+  }
 
   let opacity = timeToOpacity(new Date());
   opacity = opacity + opacityChange;
@@ -85,8 +99,9 @@ export function changeLight(
   }
 
   let $night = $("#nerthus-night");
-  if (!$night.length)
+  if (!$night.length) {
     $night = $('<div id="nerthus-night"></div>').appendTo("#ground");
+  }
 
   $night.css({
     height: map.y * 32,
@@ -107,16 +122,23 @@ export function applyCurrentNight() {
     color = currentForcedParameters.color;
   }
 
-  if (opacity <= 0.2) resetLights();
-  else if (opacity > 0.2 && !lightsOn) turnLightsOn();
+  if (opacity <= 0.2) {
+    resetLights();
+  } else if (opacity > 0.2 && !lightsOn) {
+    turnLightsOn();
+  }
 
   changeLight(opacity, color);
 }
 
 export function setOpacityChange(newOpacityChange) {
-  if (!newOpacityChange) newOpacityChange = 0;
-  else if (newOpacityChange > 1) newOpacityChange = 1;
-  else if (newOpacityChange < -1) newOpacityChange = -1;
+  if (!newOpacityChange) {
+    newOpacityChange = 0;
+  } else if (newOpacityChange > 1) {
+    newOpacityChange = 1;
+  } else if (newOpacityChange < -1) {
+    newOpacityChange = -1;
+  }
 
   opacityChange = newOpacityChange;
   applyCurrentNight();

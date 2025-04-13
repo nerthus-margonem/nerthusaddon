@@ -39,7 +39,9 @@ function deploy(npc) {
   if (!isNpcDeployable(npc)) return 1;
   switch (npc.type) {
     case "delete": {
-      if (!isNpcHidable(npc)) return;
+      if (!isNpcHidable(npc)) {
+        return;
+      }
       return hideGameNpc(npc.id, npc.lvl === 0);
     }
     case "change": {
@@ -78,8 +80,9 @@ function loadNpcs() {
       addNpc(customNpcs[Engine.map.d.id][npcId]);
     }
   } else {
-    if (AVAILABLE_MAP_FILES.npc.includes(map.id))
+    if (AVAILABLE_MAP_FILES.npc.includes(map.id)) {
       loadNpcsFromFile(FILE_PREFIX + "res/configs/npcs/" + map.id + ".json");
+    }
 
     for (const npcId in customNpcs[map.id]) {
       addNpc(customNpcs[map.id][npcId]);
@@ -111,7 +114,9 @@ export function initNpcManager() {
       $(".nerthus-npc").remove();
 
       // fixes strange reference error in SI engine
-      if (typeof window.groupId === "undefined") window.groupId = null;
+      if (typeof window.groupId === "undefined") {
+        window.groupId = null;
+      }
     }
     loadNpcs();
     customHiddenNpcs.forEach(hideGameNpc);

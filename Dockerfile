@@ -1,10 +1,11 @@
 FROM node:22-alpine@sha256:e2b39f7b64281324929257d0f8004fb6cb4bf0fdfb9aa8cedb235a766aec31da AS build
 ENV NODE_ENV=production
 
-# Set the version variable
+# Set the version environmental variable
 ARG VERSION
 
-# Install git if the version is not provided (required for geting the version)
+# Install git if the $VERSION is not provided
+# (required later for geting the version through git tags)
 RUN if [ -z "$VERSION" ]; then apk --no-cache add git; fi
 
 # Run as a non-privileged user
@@ -24,11 +25,11 @@ ARG USERSCRIPT_NAME
 ARG USERSCRIPT_ICON_URL
 ARG USERSCRIPT_FILENAME
 
-# Save current version and build the app
+# Save the current version and build the app
 RUN if [ -n "$VERSION" ]; then \
-        echo "$VERSION" > version;  \
-    else  \
-        git describe --tags > version;  \
+        echo "$VERSION" > version; \
+    else \
+        git describe --tags > version; \
     fi && \
     npm run build
 

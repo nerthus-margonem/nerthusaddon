@@ -97,7 +97,8 @@ function toggleLights() {
 }
 
 function toggleMouseMove() {
-  hero.opt ^= 64;
+  const mouseHeroWalkOn = g.settingsOptions.isMouseHeroWalkOn()
+  g.settingsStorage.sendRequest(7, null, !mouseHeroWalkOn);
   $("#nerthus-light-manager-toggle-mousemove").toggleClass("blue");
 }
 
@@ -177,7 +178,7 @@ export function initLightManager() {
     "#nerthus-light-manager-toggle-mousemove",
   );
   $toggleMouseMove.click(toggleMouseMove);
-  if (hero.opt & 64) {
+  if (g.settingsOptions.isMouseHeroWalkOn()) {
     $toggleMouseMove.addClass("blue");
   }
 

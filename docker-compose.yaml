@@ -6,6 +6,7 @@ services:
       target: production
       args:
         - DIST_URL=${DIST_URL:?error}
+        - VERSION=${VERSION}
     ports:
       - "8080:80"
     # If you want to debug production profile,
@@ -34,6 +35,7 @@ services:
         - USERSCRIPT_NAME=${USERSCRIPT_NAME:?error}
         - USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL:?error}
         - USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME:?error}
+        - VERSION=${VERSION}
     ports:
       - "8080:80"
     # If you want to debug production-userscript profile,

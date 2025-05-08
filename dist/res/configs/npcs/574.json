@@ -1,0 +1,112 @@
+[
+  {
+    "type": "change",
+    "id": 187803,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 187802,
+    "newUrl": "/obrazki/npc/map/zim-szare3-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 187801,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 187800,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 187804,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 187805,
+    "newUrl": "/obrazki/npc/map/zim-szare2-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": "57",
+    "y": "36",
+    "url": "/obrazki/npc/map/zim-szare4-lew2.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": "54",
+    "y": "36",
+    "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 187799,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka",
+    "tip": "",
+    "x": "78",
+    "y": "50",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche drzewo",
+    "tip": "",
+    "x": "81",
+    "y": "28",
+    "url": "/obrazki/npc/map/zim-szare4-praw2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche proste",
+    "tip": "",
+    "x": "90",
+    "y": "32",
+    "url": "/obrazki/npc/map/zim-prost3b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 212033,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna mała",
+    "tip": "",
+    "x": "38",
+    "y": "11",
+    "url": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "proste",
+    "tip": "",
+    "x": "11",
+    "y": "23",
+    "url": "/obrazki/npc/map/zim-prost1b.gif",
+    "date": "22.11-20.03"
+  }
+]

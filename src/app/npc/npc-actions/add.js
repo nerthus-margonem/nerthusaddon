@@ -18,20 +18,19 @@ function createClickWrapper(npc, clickHandler) {
 export function addNpc(npc) {
   if (INTERFACE === "NI") {
     const data = {};
+    const id = Number(npc.id);
     data[npc.id] = { ...npc };
-    data[npc.id].id = Number(npc.id);
-    data[npc.id].tpl = Number(npc.id);
+    data[npc.id].id = id;
+    data[npc.id].icon = { id };
+    data[npc.id].tpl = id;
     data[npc.id].warrior_type = npc.nick ? 0 : 1;
 
     const collisionBefore = Engine.map.col.check(npc.x, npc.y);
     const npcIcon = npc.icon;
-
     if (npcIcon.endsWith("gif")) {
       if (npcIcon.startsWith("https://micc.garmory-cdn.cloud/obrazki/npc/")) {
-        data[npc.id].icon = {
-          special: npcIcon.substring(43),
-        };
         Engine.npcTplManager.updateData([data[npc.id]]);
+        Engine.npcIconManager.updateData([{ id, icon: npcIcon.substring(43) }]);
         Engine.npcs.updateData([data[npc.id]]);
       } else if (
         npcIcon.startsWith("https://micc.garmory-cdn.cloud/obrazki/")
@@ -41,26 +40,21 @@ export function addNpc(npc) {
         const arr = regex.exec(npcIcon);
         window.CFG.r_npath = `/obrazki/${arr[1]}/`;
 
-        data[npc.id].icon = {
-          special: npcIcon.replace(regex, ""),
-        };
         Engine.npcTplManager.updateData([data[npc.id]]);
+        Engine.npcIconManager.updateData([
+          { id, icon: npcIcon.replace(regex, "") },
+        ]);
         Engine.npcs.updateData([data[npc.id]]);
         window.CFG.r_npath = aNpath;
       } else {
-        data[npc.id].icon = {
-          special: "mas/nic32x32.gif",
-        };
         Engine.npcTplManager.updateData([data[npc.id]]);
+        Engine.npcIconManager.updateData([{ id, icon: "mas/nic32x32.gif" }]);
         Engine.npcs.updateData([data[npc.id]]);
         updateNpcWithCustomGifImage(Engine.npcs.getById(npc.id), npcIcon);
       }
     } else {
-      npc.icon = {
-        special: "mas/nic32x32.gif",
-      };
-      data[npc.id].icon = npc.icon;
       Engine.npcTplManager.updateData([data[npc.id]]);
+      Engine.npcIconManager.updateData([{ id, icon: "mas/nic32x32.gif" }]);
       Engine.npcs.updateData([data[npc.id]]);
       npc.icon = npcIcon;
 

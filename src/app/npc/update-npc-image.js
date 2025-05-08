@@ -1,4 +1,5 @@
 import { decodeGif } from "../decodeGif";
+import { coordsToId } from "../utility-functions";
 
 /**
  *
@@ -63,9 +64,12 @@ export function updateNpcWithGameImage(npc, imgUrl) {
     }
   };
   setTimeout(() => {
+    const iconId = coordsToId(npc.d.x, npc.d.y);
     npc.d.icon = {
-      special: imgUrl,
+      id: iconId,
     };
+
+    Engine.npcIconManager.updateData([{ id: iconId, icon: imgUrl }]);
     Engine.npcs.updateData([npc.d]);
     Object.defineProperty(npc.d, "icon", {
       get() {

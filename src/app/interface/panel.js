@@ -70,7 +70,7 @@ constructElement.panel = function (
   }
 
   return (
-    '<div id="nerthus-main-panel" class="nerthus-panel">' +
+    '<div id="nerthus-main-panel" class="nerthus-panel border-window">' +
     '<div class="header-label-positioner">' +
     '<div class="header-label">' +
     '<div class="left-decor"></div>' +

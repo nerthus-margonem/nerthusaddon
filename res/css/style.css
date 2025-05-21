@@ -204,8 +204,7 @@
 }
 
 .nerthus-panel > .background {
-  background-color: #f1deaa;
-  background-image: url(https://cronus.margonem.com/img/gui/content-redleather.jpg);
+  background-color: #f1dca7;
 }
 
 /* Panel - nav */
@@ -218,7 +217,15 @@
 }
 
 .nerthus-panel .header-label {
-  background: url(https://cronus.margonem.com/img/gui/dialogue/dialogi-naglowek.png);
+  background: #2e3232;
+  box-shadow:
+    inset 0 1px 0 0 #2e3232,
+    inset 0 2px 0 0 #97a1a5,
+    inset 0 3px 0 0 #697072,
+    inset 0 4px 0 0 #291b13,
+    inset 0 -2px 0 0 #0c0806,
+    inset 0 -3px 0 0 #434849,
+    inset 0 -4px 0 0 #aea1a1;
   display: inline-block;
   height: 28px;
   margin: 0 auto;

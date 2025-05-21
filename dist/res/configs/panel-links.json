@@ -1,0 +1,63 @@
+{
+  "leftPanel": [
+    {
+      "icon": "forum.png",
+      "name": "Forum",
+      "url": "https://forum.margonem.pl/?task=forum&show=topics&id=33"
+    },
+    {
+      "icon": "rules.png",
+      "name": "Regulamin i zbiór zasad",
+      "url": "https://forum.margonem.pl/?task=forum&show=posts&id=424036"
+    },
+    {
+      "icon": "green.png",
+      "name": "Poradnik dla początkujących",
+      "url": "https://forum.margonem.pl/?task=forum&show=posts&id=505201"
+    },
+    {
+      "icon": "troll.png",
+      "name": "Biuletyn",
+      "url": "https://forum.margonem.pl/?task=forum&show=posts&id=516926"
+    }
+  ],
+  "centerPanel": [
+    {
+      "icon": "globe.png",
+      "name": "Wieści z krainy",
+      "url": "https://nerthus.pl/%C5%9Awiat%20gry/Wie%C5%9Bci%20z%20krainy/"
+    },
+    {
+      "icon": "discord.png",
+      "name": "Nieoficjalny serwer Discord Rady, zrzeszający graczy fabularnych",
+      "url": "https://DISCORD_URL/zDcWKfZy8f"
+    },
+    {
+      "icon": "wiki.png",
+      "name": "Kompendium wiedzy o Nerthusie w formie wiki",
+      "url": "https://nerthus.pl/"
+    }
+  ],
+  "rightPanel": [
+    {
+      "icon": "su.png",
+      "name": "System Umiejętności",
+      "url": "https://nerthus.pl/Mechanika/System%20Umiej%C4%99tno%C5%9Bci/"
+    },
+    {
+      "icon": "pricetag.png",
+      "name": "Cennik",
+      "url": "https://onedrive.live.com/view.aspx?resid=808E74D8B87FDA08!343&ithint=file%2cxlsx&app=Excel&authkey=!AAL9d-j3fr_9aag"
+    },
+    {
+      "icon": "sm.png",
+      "name": "System Magii",
+      "url": "https://nerthus.pl/Mechanika/System%20Magii/System%20Magii/"
+    },
+    {
+      "icon": "kosmos.png",
+      "name": "Podstawy mechaniki rdzenia kosmosu",
+      "url": "https://nerthus.pl/Mechanika/System%20Magii/Rdze%C5%84%20Kosmosu/"
+    }
+  ]
+}

@@ -6,15 +6,40 @@ services:
       target: production
       args:
         - DIST_URL=${DIST_URL:?error}
-        - USERSCRIPT_NAME=${USERSCRIPT_NAME:?error}
-        - USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL:?error}
-        - USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME:?error}
-        - NI_FILENAME=${NI_FILENAME:?error}
-        - SI_FILENAME=${SI_FILENAME:?error}
+        - VERSION=${VERSION}
     ports:
       - "8080:80"
     # If you want to debug production profile,
     # you can use `--profile production --watch`
+    develop:
+      watch:
+        - action: rebuild
+          path: ./src
+        - action: rebuild
+          path: ./res
+        - action: rebuild
+          path: package-lock.json
+        - action: rebuild
+          path: ./webpack.config.mjs
+        - action: sync+restart
+          path: nginx.conf
+          target: /etc/nginx/conf.d/default.conf
+
+  web-production-userscript:
+    profiles: [production-userscript]
+    build:
+      context: .
+      target: production
+      args:
+        - DIST_URL=${DIST_URL:?error}
+        - USERSCRIPT_NAME=${USERSCRIPT_NAME:?error}
+        - USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL:?error}
+        - USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME:?error}
+        - VERSION=${VERSION}
+    ports:
+      - "8080:80"
+    # If you want to debug production-userscript profile,
+    # you can use `--profile production-userscript --watch`
     develop:
       watch:
         - action: rebuild
@@ -41,8 +66,6 @@ services:
       - USERSCRIPT_NAME=${USERSCRIPT_NAME:-'DEV Nerthus Addon'}
       - USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL:-${DIST_URL}res/img/widget-icon.gif}
       - USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME:-nerthus-addon.user.js}
-      - NI_FILENAME=${NI_FILENAME:-nerthus-addon-NI.js}
-      - SI_FILENAME=${SI_FILENAME:-nerthus-addon-SI.js}
     volumes:
       - type: bind
         source: .

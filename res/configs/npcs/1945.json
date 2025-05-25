@@ -1,8 +1,100 @@
 [
   {
     "type": "change",
+    "id": 53507,
+    "newUrl": "/obrazki/npc/obj/cos.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 53508,
+    "newUrl": "/obrazki/npc/obj/cos.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
     "id": 75418,
     "newUrl": "/obrazki/npc/obj/cos.gif",
     "lvl": 0
+  },
+  {
+    "name": "Skrzynia",
+    "tip": "",
+    "x": "9",
+    "y": "9",
+    "url": "#res/img/npc/props/chest-top-left.gif",
+    "collision": false
+  },
+  {
+    "name": "Skrzynia",
+    "tip": "",
+    "x": "11",
+    "y": "7",
+    "url": "#res/img/npc/props/chest-with-pickaxe-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Lampa",
+    "tip": "",
+    "x": "6",
+    "y": "9",
+    "url": "#res/img/npc/props/table-with-lamp.gif",
+    "collision": false
+  },
+  {
+    "name": "Krzesło",
+    "tip": "",
+    "x": "10",
+    "y": "7",
+    "url": "#res/img/npc/props/dark-chair-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Krzesło",
+    "tip": "",
+    "x": "9",
+    "y": "8",
+    "url": "#res/img/npc/props/dark-chair-top-facing-right.gif",
+    "collision": false
+  },
+  {
+    "name": "Przyprawy",
+    "tip": "",
+    "x": "4",
+    "y": "8",
+    "url": "#res/img/npc/props/table-spices-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": "5",
+    "y": "10",
+    "url": "#res/img/npc/props/sofa-back-red.gif",
+    "collision": false
+  },
+  {
+    "name": "Świeczka",
+    "tip": "",
+    "x": "10",
+    "y": "10",
+    "url": "/obrazki/npc/map/swieczka01.gif",
+    "collision": false
+  },
+  {
+    "name": "Piecyk",
+    "tip": "Piecyk",
+    "x": "7",
+    "y": "7",
+    "url": "/obrazki/npc/map/piec_ogien03.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "4",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
   }
 ]

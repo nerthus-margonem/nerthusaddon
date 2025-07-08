@@ -16,6 +16,13 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
       const canvas = document.createElement("canvas");
       canvas.width = decoded.width;
       canvas.height = decoded.height * decoded.frameData.length;
+      // If the canvas has 0 in any of the dimensions,
+      // trying to parse it further will produce strange results,
+      // so return early
+      if (canvas.width === 0 || canvas.height === 0) {
+        return;
+      }
+
       const ctx = canvas.getContext("2d");
       for (let i = 0; i < decoded.frameData.length; i++) {
         const frameCanvas = document.createElement("canvas");
@@ -37,7 +44,28 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
       // set the icon so the game will cache this new image
       // and won't try to display the olf one if there are multiple NPCs with the same icon
       npc.d.icon = `${npc.d.icon}?nerthus-icon=${encodeURI(gifIconUrl)}`;
-      npc.sprite.src = canvas.toDataURL();
+
+      // From my testing, this is much faster than src = canvas.toDataURL(),
+      // which was the most processor time spent by the addon
+      // on a map with lots of changed NPCs.
+      // In extreme cases, this can make loading the addon 41% faster
+      // (20 ms difference), or in a different measurement,
+      // taking up to 2-3% less total time spent
+      // when loading the whole game from the page refresh.
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          // This should never happen, barring a browser encoder bug or
+          // a canvas that is 0x0 or too big for the browser
+          console.error(`Image for NPC ${npc.id} could not be changed to blob`);
+          return;
+        }
+        const objectUrl = URL.createObjectURL(blob);
+        npc.sprite.onload = () => {
+          URL.revokeObjectURL(objectUrl);
+        };
+        npc.sprite.src = objectUrl;
+      });
+
       npc.fw = decoded.width;
       npc.fh = decoded.height;
       npc.halffw = decoded.width / 2;

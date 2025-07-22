@@ -472,5 +472,11 @@
     "x": "32",
     "y": "37",
     "url": "/obrazki/npc/map/tri-kosci4b.gif"
+  },
+  {
+    "type": "change",
+    "id": 44124,
+    "newUrl": "#res/img/npc/ghosts/ghost-druid-myszor.gif",
+    "lvl": 0
   }
 ]

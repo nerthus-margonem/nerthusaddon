@@ -339,7 +339,7 @@ export function initPanel() {
 
     $("head").append(
       "<style>" +
-        ".main-buttons-container .widget-button .icon.nerthus {" +
+        ".widget-button .icon.nerthus {" +
         "background-image: url(" +
         FILE_PREFIX +
         "res/img/widget-icon.gif);" +

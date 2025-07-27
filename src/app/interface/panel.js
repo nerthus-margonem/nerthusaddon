@@ -279,12 +279,25 @@ function createButtonNI() {
     nerthusPos = serverStoragePos.nerthus;
   }
 
+  /**
+   *  If the space on which we try to add the widget is taken,
+   * this will contain the name of the widget
+   */
+  const widgetWithoutFreeSlot = [];
+
   Engine.widgetManager.createOneWidget(
     "nerthus",
     { nerthus: nerthusPos },
     true,
-    [],
+    widgetWithoutFreeSlot,
   );
+  if (widgetWithoutFreeSlot.length) {
+    Engine.widgetManager.findPositionToWidgetsWithoutFreeSlot(
+      widgetWithoutFreeSlot,
+      true,
+    );
+  }
+
   Engine.widgetManager.setEnableDraggingButtonsWidget(false);
 }
 

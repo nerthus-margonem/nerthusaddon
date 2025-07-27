@@ -5,7 +5,7 @@ import { addDraggable } from "../utility-functions";
 const ELEMENT_TO_ATTACH_TO = INTERFACE === "NI" ? "body" : "#centerbox2";
 
 let $elm = $();
-const defaultPosition = [6, "top-right"];
+const defaultPosition = [0, "top-right"];
 
 const settingsList = [];
 

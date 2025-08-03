@@ -11,6 +11,7 @@ import { removeNpc } from "../npc/npc-actions/remove";
 import { settings } from "../settings";
 import { sanitizeText } from "../utility-functions";
 import { clearEffects } from "../weather/effects";
+import { clearFog, createFog } from "../weather/fog";
 import { displayWeather, setForcedWeather } from "../weather/weather";
 import { registerChatCommand } from "./chat";
 
@@ -298,6 +299,32 @@ function weather(msg) {
   return false;
 }
 
+function fog(msg) {
+  msg.style = "nerthus-command";
+
+  const cmd = msg.text.split(" ")[1]?.split(",") ?? [];
+  const red = cmd[0] ? parseInt(cmd[0]) : 255;
+  const green = cmd[1] ? parseInt(cmd[1]) : 255;
+  const blue = cmd[2] ? parseInt(cmd[2]) : 255;
+  const alpha = cmd[3] ? parseFloat(cmd[3]) : 0.4;
+  const mapId = cmd[4] ? parseInt(cmd[4]) : undefined;
+
+  createFog({ r: red, g: green, b: blue, a: alpha }, mapId);
+
+  return false;
+}
+
+function clearFogCommand(msg) {
+  msg.style = "nerthus-command";
+
+  const cmd = msg.text.split(" ")[1]?.split(",") ?? [];
+  const mapId = cmd[0] ? parseInt(cmd[0]) : undefined;
+
+  clearFog(mapId);
+
+  return false;
+}
+
 function me(msg) {
   msg.style = 2; // 2 is special style for regular `/me`
   msg.nick = msg.authorBusinessCard.getNick();
@@ -358,6 +385,8 @@ const narratorCommands = {
   delGraf,
   hide,
   weather,
+  fog,
+  clearFog: clearFogCommand,
 };
 const publicCommands = {
   me,

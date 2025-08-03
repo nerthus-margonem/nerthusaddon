@@ -58,3 +58,11 @@ export function sanitizeText(text) {
   element.innerText = text;
   return element.innerHTML;
 }
+
+export function debounce(func, timeout = 100) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), timeout);
+  };
+}

@@ -11,6 +11,7 @@ import { initNightManager } from "./app/night/night";
 import { initNpcManager } from "./app/npc/npc";
 import { loadSettings } from "./app/settings";
 import { sanitizeText } from "./app/utility-functions";
+import { initFog } from "./app/weather/fog";
 import { initWeather } from "./app/weather/weather";
 import { initWidgets } from "./app/widgets";
 import { initZodiac } from "./app/zodiac";
@@ -40,6 +41,7 @@ function start() {
 
   initWidgets();
   initWeather();
+  initFog();
   initZodiac();
 
   initHideChatCommercials();

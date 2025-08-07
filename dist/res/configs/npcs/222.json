@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "14",
+    "y": "42",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "14",
+    "y": "43",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 171418,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 171368,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 171408,
+    "lvl": 0
+  },
+  {
+    "name": "Góra ławki",
+    "tip": "",
+    "x": "28",
+    "y": "54",
+    "url": "#res/img/npc/bench-top.gif",
+    "collision": false
+  },
+  {
+    "type": "delete",
+    "id": 171369,
+    "lvl": 0
+  }
+]

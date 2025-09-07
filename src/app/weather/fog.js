@@ -48,15 +48,15 @@ function displayFog() {
     return;
   }
 
-  const fogColor = fogs.get(Engine.map.d.id) ?? fogs.get("default");
-  if (fogColor === undefined) {
-    return;
-  }
-
   Engine.floatForegroundManager.updateData({
     action: "REMOVE",
     id: NERTHUS_FOG_ID,
   });
+
+  const fogColor = fogs.get(Engine.map.d.id) ?? fogs.get("default");
+  if (fogColor === undefined) {
+    return;
+  }
 
   if (fogColor.a !== 0) {
     Engine.floatForegroundManager.updateData({

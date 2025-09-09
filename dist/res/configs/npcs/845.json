@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "49",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Nagrobek",
+    "x": "5",
+    "y": "50",
+    "url": "#res/img/npc/grave.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "„Żył jak chciał, bo inaczej nie potrafił.”<br><i>„Hann livdi, sum hann vildi, ti hann kundi ikki gera annad.”</i><br><br>Pamięci Kalga Gromruna, 1308–1333",
+        "[ Odchodzę. ] ->END"
+      ]
+    }
+  }
+]

@@ -11,6 +11,7 @@ import { initNightManager } from "./app/night/night";
 import { initNpcManager } from "./app/npc/npc";
 import { loadSettings } from "./app/settings";
 import { sanitizeText } from "./app/utility-functions";
+import { initWaterManager } from "./app/water";
 import { initFog } from "./app/weather/fog";
 import { initWeather } from "./app/weather/weather";
 import { initWidgets } from "./app/widgets";
@@ -34,6 +35,7 @@ function start() {
   initiateGameIntegrationLoaders();
 
   initMapsManager();
+  initWaterManager();
 
   initNpcManager();
 

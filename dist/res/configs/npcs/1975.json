@@ -1,0 +1,330 @@
+[
+  {
+    "name": "Drzewo totemów",
+    "x": "5",
+    "y": "27",
+    "url": "/obrazki/npc/map/tri-drzew-tot3.gif",
+    "dialog": {
+      "0": [
+        "[ Wiedźmie drzewo... Z całą pewnością nie było dziełem zwykłych magów. Unosząca się dookoła niepokojąca energia przenika do szpiku kości. Powiewające na wietrze kości grzechoczą stukając o siebie. ]",
+        "Jak... Jak ktoś mógł to zrobić? ->1",
+        "[ W milczeniu sięgasz do jednego z zawieszonych przedmiotów. ] ->2",
+        "Lepiej nie podchodzić... ->END"
+      ],
+      "1": [
+        "[ Nikt nie odpowiedział. Za to pojawiło się wrażenie bycia obserwowanym. ]",
+        "Lepiej stąd iść zanim to ja zawisnę na jednej z gałęzi. ->END"
+      ],
+      "2": [
+        "[ Mała, szmaciana laleczka patrzy na ciebie pustymi oczami z guzików. Coś ukuło cię w palec, a w głowie rozległ się cichy głos. ]",
+        "Dalej ->END"
+      ],
+      "3": [
+        "Trzynaście... Trzynaście ich było...",
+        "Kogo było trzynaście? ->4"
+      ],
+      "4": [
+        "[ Coś w tutejszej atmosferze się zmieniło. Nie wiadomo dokładnie co, ale lepiej się stąd wynosić. ]",
+        "Koniec. ->END"
+      ]
+    }
+  },
+  {
+    "name": "Zaburzona aura",
+    "x": "9",
+    "y": "28",
+    "url": "/obrazki/npc/obj/magic_dust1.gif",
+    "dialog": {
+      "0": [
+        "[ Kiedyś musiało się tu wydarzyć coś bardzo złego, bo aura magiczna wydaje się spaczona. Przyglądając się uważnie widać, że rośliny w tym miejscu są inne, zmarniałe i pokryte dziwnym, szarawym nalotem przypominającym szron. Aura promieniuje na całe Wrzosowiska czyniąc je miejscem nieprzyjaznym dla ludzi, ale wręcz idealnym do mrocznych rytuałów czy praktyk. ]",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Choinka",
+    "tip": "",
+    "x": "61",
+    "y": "29",
+    "url": "/obrazki/npc/map/choinka-m-gora.gif"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "21",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "22",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "57",
+    "y": "23",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 145490,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145276,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145277,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145243,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145242,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145244,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145473,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145472,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145471,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 146589,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 146588,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 146590,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145386,
+    "lvl": 0
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "34",
+    "y": "6",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "35",
+    "y": "5",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "35",
+    "y": "6",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "30",
+    "y": "6",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "30",
+    "y": "7",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "28",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "27",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "26",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "28",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "27",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "26",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "20",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "19",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "18",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "20",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "19",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "18",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "12",
+    "y": "7",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "12",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "12",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "13",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "14",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "19",
+    "y": "2",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "type": "change",
+    "id": 225293,
+    "newUrl": "/obrazki/npc/obj/cos.gif",
+    "lvl": 0
+  }
+]

@@ -55,8 +55,13 @@ const CONSTANTS = new webpack.DefinePlugin({
         .filter((filename) => filename.endsWith(".json"))
         .map((filename) => filename.substring(0, filename.length - 5))
         .map((filename) => parseInt(filename));
+      const water = fs
+        .readdirSync("res/configs/water")
+        .filter((filename) => filename.endsWith(".json"))
+        .map((filename) => filename.substring(0, filename.length - 5))
+        .map((filename) => parseInt(filename));
 
-      return JSON.stringify({ npc, lights });
+      return JSON.stringify({ npc, lights, water });
     },
     {
       contextDependencies: [

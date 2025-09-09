@@ -844,13 +844,6 @@
     "collision": true
   },
   {
-    "name": "Anward był niewinny",
-    "x": "34",
-    "y": "9",
-    "url": "#res/img/npc/graffiti3.gif",
-    "collision": true
-  },
-  {
     "type": "change",
     "id": 147618,
     "newUrl": "#res/img/npc/black-wall-corner-right.gif",

@@ -592,5 +592,22 @@
     "id": 207915,
     "newUrl": "#res/img/npc/ghosts/tribesman/ghost-mula-furla.gif",
     "lvl": 28
-  }
+  },
+  { "type": "delete", "id": 261054, "lvl": 0 },
+  { "type": "delete", "id": 151443, "lvl": 0 },
+  { "type": "delete", "id": 261053, "lvl": 0 },
+  { "type": "delete", "id": 261052, "lvl": 0 },
+  { "type": "delete", "id": 261051, "lvl": 0 },
+  { "type": "delete", "id": 261050, "lvl": 0 },
+  { "type": "delete", "id": 261049, "lvl": 0 },
+  { "type": "delete", "id": 261047, "lvl": 0 },
+  { "type": "delete", "id": 261045, "lvl": 0 },
+  { "type": "delete", "id": 261048, "lvl": 0 },
+  { "type": "delete", "id": 261046, "lvl": 0 },
+  { "type": "delete", "id": 261044, "lvl": 0 },
+  { "type": "delete", "id": 261039, "lvl": 0 },
+  { "type": "delete", "id": 261043, "lvl": 0 },
+  { "type": "delete", "id": 261040, "lvl": 0 },
+  { "type": "delete", "id": 261042, "lvl": 0 },
+  { "type": "delete", "id": 261041, "lvl": 0 }
 ]

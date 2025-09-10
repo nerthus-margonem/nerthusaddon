@@ -886,5 +886,37 @@
         "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
       ]
     }
-  }
+  },
+  { "type": "delete", "id": 243462, "lvl": 0 },
+  { "type": "delete", "id": 243458, "lvl": 0 },
+  { "type": "delete", "id": 169591, "lvl": 0 },
+  { "type": "delete", "id": 243463, "lvl": 0 },
+  { "type": "delete", "id": 243460, "lvl": 0 },
+  { "type": "delete", "id": 243459, "lvl": 0 },
+  { "type": "delete", "id": 243461, "lvl": 0 },
+  { "type": "delete", "id": 243465, "lvl": 0 },
+  { "type": "delete", "id": 243469, "lvl": 0 },
+  { "type": "delete", "id": 243470, "lvl": 0 },
+  { "type": "delete", "id": 243471, "lvl": 0 },
+  { "type": "delete", "id": 243473, "lvl": 0 },
+  { "type": "delete", "id": 243474, "lvl": 0 },
+  { "type": "delete", "id": 243476, "lvl": 0 },
+  { "type": "delete", "id": 243475, "lvl": 0 },
+  { "type": "delete", "id": 243472, "lvl": 0 },
+  { "type": "delete", "id": 243467, "lvl": 0 },
+  { "type": "delete", "id": 243464, "lvl": 0 },
+  { "type": "delete", "id": 243466, "lvl": 0 },
+  { "type": "delete", "id": 169555, "lvl": 0 },
+  { "type": "delete", "id": 169556, "lvl": 0 },
+  { "type": "delete", "id": 169561, "lvl": 0 },
+  { "type": "delete", "id": 243468, "lvl": 0 },
+  { "type": "delete", "id": 256391, "lvl": 0 },
+  { "type": "delete", "id": 243477, "lvl": 0 },
+  { "type": "delete", "id": 179004, "lvl": 0 },
+  { "type": "delete", "id": 169586, "lvl": 0 },
+  { "type": "delete", "id": 169585, "lvl": 0 },
+  { "type": "delete", "id": 169600, "lvl": 0 },
+  { "type": "delete", "id": 169601, "lvl": 0 },
+  { "type": "delete", "id": 169550, "lvl": 0 },
+  { "type": "delete", "id": 169551, "lvl": 0 }
 ]

@@ -208,5 +208,11 @@
     "type": "delete",
     "id": 260999,
     "lvl": 0
-  }
+  },
+  { "type": "delete", "id": 260949, "lvl": 0 },
+  { "type": "delete", "id": 260951, "lvl": 0 },
+  { "type": "delete", "id": 260947, "lvl": 0 },
+  { "type": "delete", "id": 260948, "lvl": 0 },
+  { "type": "delete", "id": 260946, "lvl": 0 },
+  { "type": "delete", "id": 260993, "lvl": 0 }
 ]

@@ -76,5 +76,21 @@
     "y": "58",
     "url": "#res/img/npc/props/small-trees-1.gif",
     "collision": false
+  },
+  {
+    "name": "sosna duża",
+    "tip": "",
+    "x": "40",
+    "y": "22",
+    "url": "/obrazki/npc/map/such-sosn-duza3b.gif",
+    "collision": false
+  },
+  {
+    "name": "sosna duża",
+    "tip": "",
+    "x": "41",
+    "y": "22",
+    "url": "/obrazki/npc/map/choin-duza1.gif",
+    "collision": false
   }
 ]

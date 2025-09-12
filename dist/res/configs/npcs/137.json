@@ -1,0 +1,14 @@
+[
+  {
+    "type": "change",
+    "id": 52992,
+    "newUrl": "#res/img/npc/ghosts/ghost-farmer.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 52913,
+    "newUrl": "#res/img/npc/ghosts/ghost-baby.gif",
+    "lvl": 0
+  }
+]

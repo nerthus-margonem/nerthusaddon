@@ -1,8 +1,12 @@
 FROM node:22-alpine@sha256:e2b39f7b64281324929257d0f8004fb6cb4bf0fdfb9aa8cedb235a766aec31da AS build
 ENV NODE_ENV=production
 
-# Install git (required for geting the version)
-RUN apk --no-cache add git
+# Set the version environmental variable
+ARG VERSION
+
+# Install git if the $VERSION is not provided
+# (required later for geting the version through git tags)
+RUN if [ -z "$VERSION" ]; then apk --no-cache add git; fi
 
 # Run as a non-privileged user
 USER node
@@ -15,16 +19,18 @@ RUN npm clean-install --omit=dev
 # Copy all files
 COPY --chown=node:node . /app
 
-# Set environmental variables
-ARG DIST_URL=${DIST_URL}
-ARG USERSCRIPT_NAME=${USERSCRIPT_NAME}
-ARG USERSCRIPT_ICON_URL=${USERSCRIPT_ICON_URL}
-ARG USERSCRIPT_FILENAME=${USERSCRIPT_FILENAME}
-ARG NI_FILENAME=${NI_FILENAME}
-ARG SI_FILENAME=${SI_FILENAME}
+# Set the build environmental variables
+ARG DIST_URL
+ARG USERSCRIPT_NAME
+ARG USERSCRIPT_ICON_URL
+ARG USERSCRIPT_FILENAME
 
-# Save current version and build the app
-RUN git describe --tags > version && \
+# Save the current version and build the app
+RUN if [ -n "$VERSION" ]; then \
+        echo "$VERSION" > version; \
+    else \
+        git describe --tags > version; \
+    fi && \
     npm run build
 
 FROM nginx:1.27.3-alpine-slim@sha256:e9d4fe3e963d75580048fa9a860c514312c328f536595022e597d1c4729f073a AS production

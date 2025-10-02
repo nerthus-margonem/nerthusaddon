@@ -163,9 +163,11 @@ function getNpcDanger(npc) {
     return { style: "", str: "" };
   }
 
-  const lvlDiff = npc.lvl - hero.lvl;
-  if (lvlDiff < -13) {
-    return { style: 'style="color:#888"', str: "Niewarty uwagi" };
+  let lvlDiff;
+  if (INTERFACE === "NI") {
+    lvlDiff = npc.lvl - Engine.hero.d.lvl;
+  } else {
+    lvlDiff = npc.lvl - hero.lvl;
   }
   if (lvlDiff > 19) {
     return { style: 'style="color:#f50"', str: "Potężny przeciwnik" };
@@ -173,7 +175,10 @@ function getNpcDanger(npc) {
   if (lvlDiff > 9) {
     return { style: 'style="color:#ff0"', str: "Poważny rywal" };
   }
-  return { style: "", str: "Zwykły przeciwnik" };
+  if (lvlDiff >= -13) {
+    return { style: "", str: "Zwykły przeciwnik" };
+  }
+  return { style: 'style="color:#888"', str: "Niewart uwagi" };
 }
 
 function createNpcTip(npc) {

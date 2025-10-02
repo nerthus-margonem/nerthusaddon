@@ -1,6 +1,8 @@
 import { default as lvlNames } from "../../../res/configs/lvl-names.json";
 import { default as vips } from "../../../res/configs/vips.json";
+import { addSettingToPanel } from "../interface/panel";
 import { checkPermissionLvl, PERMISSION_LVL } from "../permissions";
+import { settings } from "../settings";
 
 const RANK_NAMES = [
   "Kreator",
@@ -233,7 +235,31 @@ function refreshTips() {
   }
 }
 
+function startChangingNpcTips(originalGetNpcTip) {
+  if (INTERFACE === "NI") {
+    Engine.npcs.getTip = function (obj) {
+      const tip = originalGetNpcTip.apply(Engine.npcs, arguments);
+      const npcData = obj.d;
+
+      return replaceNiTip(npcData, tip);
+    };
+  } else {
+    g.tips.npc = createNpcTip;
+  }
+}
+
+function stopChangingNpcTips(originalGetNpcTip) {
+  if (INTERFACE === "NI") {
+    Engine.npcs.getTip = originalGetNpcTip;
+  } else {
+    g.tips.npc = originalGetNpcTip;
+  }
+}
+
 export function initTips() {
+  const originalGetNpcTip =
+    INTERFACE === "NI" ? Engine.npcs.getTip : g.tips.npc;
+
   if (INTERFACE === "NI") {
     const othersDrawableList = Engine.others.getDrawableList;
     Engine.others.getDrawableList = function () {
@@ -251,13 +277,9 @@ export function initTips() {
     };
     Engine.hero.tip[0] = Engine.hero.createStrTip();
 
-    const getTip = Engine.npcs.getTip;
-    Engine.npcs.getTip = function (obj) {
-      const tip = getTip.apply(Engine.npcs, arguments);
-      const npcData = obj.d;
-
-      return replaceNiTip(npcData, tip);
-    };
+    if (settings.changeNpcTips) {
+      startChangingNpcTips(originalGetNpcTip);
+    }
     refreshTips();
   } else {
     g.loadQueue.push({
@@ -265,8 +287,26 @@ export function initTips() {
         $("#hero").attr("tip", createPlayerTip(hero));
 
         g.tips.other = createPlayerTip;
+        if (settings.changeNpcTips) {
+          startChangingNpcTips(originalGetNpcTip);
+        }
         g.tips.npc = createNpcTip;
       },
     });
   }
+
+  addSettingToPanel(
+    "changeNpcTips",
+    "Tekstowe poziomy NPCów",
+    "Zamienia cyfrowe poziomy NPCów w tekstowe odpowiedniki",
+    function () {
+      if (settings.changeNpcTips) {
+        startChangingNpcTips(originalGetNpcTip);
+      } else {
+        stopChangingNpcTips(originalGetNpcTip);
+      }
+
+      refreshTips();
+    },
+  );
 }

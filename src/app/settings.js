@@ -15,6 +15,7 @@ export const settings = {
    * could lead to a player being kicked out in the middle of the fight.)
    */
   hideChatCommercials: false,
+  changeNpcTips: true,
 };
 
 export function saveSetting(name, value) {

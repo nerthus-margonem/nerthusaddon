@@ -184,6 +184,11 @@ function getNpcDanger(npc) {
   return { style: 'style="color:#888"', str: "Niewart uwagi" };
 }
 
+function getDangerHtml(danger, inGroup = false) {
+  const inGroupStr = inGroup ? ", w grupie" : "";
+  return `<span ${danger.style}>${danger.str}${inGroupStr}</span>`;
+}
+
 function createNpcTip(npc) {
   let tip =
     "<b>" +
@@ -206,6 +211,28 @@ function createNpcTip(npc) {
   return tip;
 }
 
+function replaceNiTip(npcData, tip) {
+  if (npcData.type === 4 || npcData.type <= 0) {
+    return tip;
+  }
+
+  const danger = getNpcDanger(npcData);
+  return tip
+    .replace("w grupie", "")
+    .replace(
+      / \(.*\)<\/strong><\/div>(?:<div class="line"><\/div>)?/,
+      `</strong></div><div class="line"></div>${getDangerHtml(danger, npcData.grp)}<br>`,
+    );
+}
+
+function refreshTips() {
+  if (INTERFACE === "NI") {
+    for (const npc of Engine.npcs.getDrawableList()) {
+      npc.createTipFromNpcData?.();
+    }
+  }
+}
+
 export function initTips() {
   if (INTERFACE === "NI") {
     const othersDrawableList = Engine.others.getDrawableList;
@@ -223,6 +250,15 @@ export function initTips() {
       return parseTip(Engine.hero);
     };
     Engine.hero.tip[0] = Engine.hero.createStrTip();
+
+    const getTip = Engine.npcs.getTip;
+    Engine.npcs.getTip = function (obj) {
+      const tip = getTip.apply(Engine.npcs, arguments);
+      const npcData = obj.d;
+
+      return replaceNiTip(npcData, tip);
+    };
+    refreshTips();
   } else {
     g.loadQueue.push({
       fun: function () {

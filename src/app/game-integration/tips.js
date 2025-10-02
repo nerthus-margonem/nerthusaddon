@@ -143,6 +143,9 @@ function getNpcTypeName(worldType) {
   if (worldType > 99) {
     return "tytan";
   }
+  if (worldType > 89) {
+    return "kolos";
+  }
   if (worldType > 79) {
     return "heros";
   }

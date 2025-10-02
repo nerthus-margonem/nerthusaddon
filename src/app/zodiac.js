@@ -1,4 +1,4 @@
-import zodiacDescriptions from "../../res/descriptions/zodiac.json";
+import zodiacDescriptions from "../../res/descriptions/zodiac.json" with { type: "json" };
 import { addSettingToPanel } from "./interface/panel";
 import { settings } from "./settings";
 import { addWidget } from "./widgets";

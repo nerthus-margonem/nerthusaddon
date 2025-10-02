@@ -1,5 +1,5 @@
-import lvlNames from "../../../res/configs/lvl-names.json";
-import vips from "../../../res/configs/vips.json";
+import lvlNames from "../../../res/configs/lvl-names.json" with { type: "json" };
+import vips from "../../../res/configs/vips.json" with { type: "json" };
 import { addSettingToPanel } from "../interface/panel";
 import { checkPermissionLvl, PERMISSION_LVL } from "../permissions";
 import { settings } from "../settings";

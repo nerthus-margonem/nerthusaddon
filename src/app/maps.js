@@ -1,4 +1,4 @@
-import basicMapsUrls from "../../res/configs/maps.json";
+import basicMapsUrls from "../../res/configs/maps.json" with { type: "json" };
 import { loadOnEveryMap } from "./game-integration/loaders";
 import { changeCustomStyle, removeCustomStyle } from "./interface/css-manager";
 import { getCurrentSeason } from "./time";

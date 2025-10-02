@@ -1,5 +1,5 @@
-import climates from "../../../res/configs/climates.json";
-import weatherDescriptions from "../../../res/descriptions/weather.json";
+import climates from "../../../res/configs/climates.json" with { type: "json" };
+import weatherDescriptions from "../../../res/descriptions/weather.json" with { type: "json" };
 import { callEvent } from "../API";
 import { loadOnEveryMap } from "../game-integration/loaders";
 import { addSettingToPanel } from "../interface/panel";

@@ -33,5 +33,10 @@
     "type": "delete",
     "id": 192927,
     "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 192920,
+    "lvl": 0
   }
 ]

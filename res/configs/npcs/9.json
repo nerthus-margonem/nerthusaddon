@@ -391,6 +391,24 @@
     "date": "21.03-21.11"
   },
   {
+    "type": "delete",
+    "id": 330224,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 330225,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 330226,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
     "name": "Wieszak pomiędzy wozami",
     "tip": "",
     "x": "21",
@@ -478,5 +496,19 @@
     "id": 44124,
     "newUrl": "#res/img/npc/ghosts/ghost-druid-myszor.gif",
     "lvl": 0
+  },
+  {
+    "name": "Dym",
+    "tip": "",
+    "x": "59",
+    "y": "11",
+    "url": "/obrazki/npc/map/dym-dlugi-praw.gif"
+  },
+  {
+    "name": "Dym",
+    "tip": "",
+    "x": "62",
+    "y": "38",
+    "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
   }
 ]

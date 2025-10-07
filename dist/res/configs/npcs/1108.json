@@ -1,0 +1,178 @@
+[
+  {
+    "type": "delete",
+    "id": 145903,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145902,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145900,
+    "lvl": 0
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "25",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "26",
+    "y": "38",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 57342,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 87930,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145947,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145963,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145965,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145966,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145967,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145970,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145976,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145981,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145982,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145987,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 145988,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 254417,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 261032,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 261033,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 261034,
+    "lvl": 0
+  },
+  { "type": "delete", "id": 263842, "lvl": 0 },
+  { "type": "delete", "id": 263840, "lvl": 0 },
+  { "type": "delete", "id": 145962, "lvl": 0 },
+  { "type": "delete", "id": 145961, "lvl": 0 },
+  { "type": "delete", "id": 145960, "lvl": 0 },
+  { "type": "delete", "id": 261037, "lvl": 0 },
+  { "type": "delete", "id": 145959, "lvl": 0 },
+  { "type": "delete", "id": 145957, "lvl": 0 },
+  { "type": "delete", "id": 145958, "lvl": 0 },
+  { "type": "delete", "id": 145891, "lvl": 0 },
+  { "type": "delete", "id": 145887, "lvl": 0 },
+  { "type": "delete", "id": 145888, "lvl": 0 },
+  { "type": "delete", "id": 145892, "lvl": 0 },
+  { "type": "delete", "id": 145890, "lvl": 0 },
+  { "type": "delete", "id": 263839, "lvl": 0 },
+  { "type": "delete", "id": 263841, "lvl": 0 },
+  { "type": "delete", "id": 261029, "lvl": 0 },
+  { "type": "delete", "id": 255072, "lvl": 22 },
+  { "type": "delete", "id": 254874, "lvl": 22 },
+  { "type": "delete", "id": 254875, "lvl": 22 },
+  { "type": "delete", "id": 255070, "lvl": 22 },
+  { "type": "delete", "id": 255073, "lvl": 22 },
+  { "type": "delete", "id": 254854, "lvl": 22 },
+  { "type": "delete", "id": 255071, "lvl": 22 },
+  { "type": "delete", "id": 254878, "lvl": 22 },
+  { "type": "delete", "id": 254873, "lvl": 22 },
+  { "type": "delete", "id": 254872, "lvl": 22 },
+  { "type": "delete", "id": 254871, "lvl": 22 },
+  { "type": "delete", "id": 254850, "lvl": 22 },
+  { "type": "delete", "id": 254885, "lvl": 22 },
+  { "type": "delete", "id": 254884, "lvl": 22 },
+  { "type": "delete", "id": 254883, "lvl": 22 },
+  { "type": "delete", "id": 254881, "lvl": 22 },
+  { "type": "delete", "id": 254880, "lvl": 22 },
+  { "type": "delete", "id": 254870, "lvl": 22 },
+  { "type": "delete", "id": 254851, "lvl": 22 },
+  { "type": "delete", "id": 254852, "lvl": 22 },
+  { "type": "delete", "id": 254863, "lvl": 22 },
+  { "type": "delete", "id": 254868, "lvl": 22 },
+  { "type": "delete", "id": 254849, "lvl": 22 },
+  { "type": "delete", "id": 254848, "lvl": 22 },
+  { "type": "delete", "id": 254855, "lvl": 22 },
+  { "type": "delete", "id": 254856, "lvl": 22 },
+  { "type": "delete", "id": 254861, "lvl": 22 },
+  { "type": "delete", "id": 254859, "lvl": 22 },
+  { "type": "delete", "id": 254857, "lvl": 22 },
+  { "type": "delete", "id": 254860, "lvl": 22 },
+  { "type": "delete", "id": 254864, "lvl": 22 },
+  { "type": "delete", "id": 254887, "lvl": 22 },
+  { "type": "delete", "id": 254886, "lvl": 22 },
+  { "type": "delete", "id": 254828, "lvl": 21 },
+  { "type": "delete", "id": 254829, "lvl": 21 },
+  { "type": "delete", "id": 254802, "lvl": 21 },
+  { "type": "delete", "id": 254807, "lvl": 21 },
+  { "type": "delete", "id": 254830, "lvl": 21 },
+  { "type": "delete", "id": 254832, "lvl": 21 },
+  { "type": "delete", "id": 254812, "lvl": 21 },
+  { "type": "delete", "id": 254822, "lvl": 21 },
+  { "type": "delete", "id": 254831, "lvl": 21 },
+  { "type": "delete", "id": 254823, "lvl": 21 }
+]

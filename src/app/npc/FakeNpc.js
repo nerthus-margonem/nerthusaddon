@@ -59,5 +59,9 @@ export class FakeNpc {
     return undefined;
   }
 
-  clearDataToDraw() {}
+  setStaticAnimation() {}
+
+  manageAggressiveEmo() {}
+
+  refreshAggressiveEmo() {}
 }

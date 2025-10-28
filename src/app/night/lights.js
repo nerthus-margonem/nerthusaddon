@@ -1,50 +1,56 @@
-import { addToNiDrawList } from "../game-integration/loaders";
-import { FakeNpc } from "../npc/FakeNpc";
+import {
+  addDrawableToRendering,
+  removeDrawableFromRendering,
+} from "../game-integration/loaders";
+import { Drawable } from "../npc/Drawable";
 import { settings } from "../settings";
-import { coordsToId } from "../utility-functions";
 
 const LIGHT_TYPE_SIZES = { S: 64, M: 96, L: 160, XL: 192 };
 
 export let lightsOn = false;
 
 /**
- * Id of NPC's on NI that hold lights
- * @type {number[]}
+ * Ids of NPCs on NI that hold lights
+ * @type {Drawable[]}
  */
-const lightNpcs = [];
+const lightDrawables = [];
 
 function getLightTypeUrl(lightType) {
   return FILE_PREFIX + "res/img/night-lights/" + lightType + ".png";
 }
 
-function getLightNiObject(img, x, y, lightTypeSize) {
-  const fakeNpc = new FakeNpc(
-    coordsToId(x, y),
-    1000,
-    (ctx) => {
-      ctx.drawImage(img, x - Engine.map.offset[0], y - Engine.map.offset[1]);
-    },
-    false,
-  );
-  fakeNpc.rx = (x + lightTypeSize / 2) / 32;
-  fakeNpc.ry = (y + lightTypeSize / 2) / 32;
-  return fakeNpc;
+/**
+ * @param image {CanvasImageSource}
+ * @param x {number}
+ * @param y {number}
+ * @param lightTypeSize {number}
+ * @return {Drawable}
+ */
+function getLightDrawable(image, x, y, lightTypeSize) {
+  const rx = (x + lightTypeSize / 2) / 32;
+  const ry = (y + lightTypeSize / 2) / 32;
+
+  const drawable = new Drawable();
+  drawable.setDrawOrder(1000);
+  drawable.setCenter(rx, ry);
+  drawable.setDrawFunction((ctx) => {
+    ctx.drawImage(image, x - Engine.map.offset[0], y - Engine.map.offset[1]);
+  });
+
+  return drawable;
 }
 
 export function addSingleLight(lightType, x, y) {
   const lightTypeSize = LIGHT_TYPE_SIZES[lightType];
 
   if (INTERFACE === "NI") {
-    const id = coordsToId(x, y);
-    const image = new Image();
-    image.onload = addToNiDrawList.bind(
-      null,
-      getLightNiObject(image, x, y, lightTypeSize),
-      id,
-    );
+    const image = new Image(lightTypeSize, lightTypeSize);
+    const lightDrawable = getLightDrawable(image, x, y, lightTypeSize);
+
+    image.onload = () => addDrawableToRendering(lightDrawable);
+
     image.src = getLightTypeUrl(lightType);
-    lightNpcs.push(id);
-    return id;
+    lightDrawables.push(lightDrawable);
   } else {
     return $('<div class="nerthus__night-light" />')
       .css({
@@ -71,11 +77,10 @@ export function addLights(lights) {
 
 export function resetLights() {
   if (INTERFACE === "NI") {
-    const npcList = Engine.npcs.check();
-    for (const id of lightNpcs) {
-      delete npcList[id];
+    for (const drawable of lightDrawables) {
+      removeDrawableFromRendering(drawable);
     }
-    lightNpcs.splice(0, lightNpcs.length);
+    lightDrawables.splice(0, lightDrawables.length);
   } else {
     $("#ground .nerthus__night-light").remove();
   }

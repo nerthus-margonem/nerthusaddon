@@ -1,6 +1,9 @@
 let currentLoadedMapId = -1;
 const loadQueue = [];
 
+/** @type { import("../../game.d.ts").Drawable[]} */
+const drawables = [];
+
 /**
  * Executes function immediately, then executes it at every new map load
  * @param fun - function that will be executed
@@ -68,4 +71,24 @@ export function addToNiDrawList(preparedObject, id) {
 export function removeFromNiDrawList(id) {
   const npcList = Engine.npcs.check();
   delete npcList[id];
+}
+
+/** @param preparedObject { import("../../game.d.ts").Drawable } */
+export function addDrawableToRendering(preparedObject) {
+  drawables.push(preparedObject);
+}
+
+/** @param preparedObject { import("../../game.d.ts").Drawable } */
+export function removeDrawableFromRendering(preparedObject) {
+  if (drawables.includes(preparedObject)) {
+    drawables.splice(drawables.indexOf(preparedObject), 1);
+  }
+}
+
+export function startRenderer() {
+  if (INTERFACE === "NI") {
+    API.addCallbackToEvent(Engine.apiData.CALL_DRAW_ADD_TO_RENDERER, () => {
+      Engine.renderer.add(...drawables);
+    });
+  }
 }

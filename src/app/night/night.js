@@ -1,13 +1,18 @@
-import { addToNiDrawList, loadOnEveryMap } from "../game-integration/loaders";
+import {
+  addDrawableToRendering,
+  loadOnEveryMap,
+  removeDrawableFromRendering,
+} from "../game-integration/loaders";
 import { addSettingToPanel } from "../interface/panel";
-import { FakeNpc } from "../npc/FakeNpc";
+import { Drawable } from "../npc/Drawable";
 import { settings } from "../settings";
-import { coordsToId, isCurrentMapOutdoor } from "../utility-functions";
+import { isCurrentMapOutdoor } from "../utility-functions";
 import { lightsOn, resetLights, turnLightsOn } from "./lights";
 
+/** @type {Drawable | undefined} */
+let currentDarknessObject;
 let opacityChange = 0;
 const forcedParameters = {};
-const DARKNESS_OBJECT_NI_ID = coordsToId(-1, -1);
 
 /**
  * @param time - Date
@@ -35,8 +40,11 @@ function timeToOpacity(time) {
   return 1 - opacity;
 }
 
-function getDarknessNiObject(opacity, color) {
-  return new FakeNpc(DARKNESS_OBJECT_NI_ID, 950, (ctx) => {
+function getDarknessDrawable(opacity, color) {
+  const drawable = new Drawable();
+  drawable.alwaysDraw();
+  drawable.setDrawOrder(950);
+  drawable.setDrawFunction((ctx) => {
     const style = ctx.fillStyle;
     ctx.fillStyle = color;
     ctx.globalAlpha = opacity;
@@ -46,9 +54,11 @@ function getDarknessNiObject(opacity, color) {
       Engine.map.width,
       Engine.map.height,
     );
-    ctx.globalAlpha = 1.0;
+    ctx.globalAlpha = 1;
     ctx.fillStyle = style;
   });
+
+  return drawable;
 }
 
 export function setForcedParameters(opacity, color, mapId = "default") {
@@ -94,7 +104,11 @@ export function changeLight(
   opacity = Math.min(Math.max(0, opacity), 1);
 
   if (INTERFACE === "NI") {
-    addToNiDrawList(getDarknessNiObject(opacity, color), DARKNESS_OBJECT_NI_ID);
+    if (currentDarknessObject) {
+      removeDrawableFromRendering(currentDarknessObject);
+    }
+    currentDarknessObject = getDarknessDrawable(opacity, color);
+    addDrawableToRendering(currentDarknessObject);
     return;
   }
 

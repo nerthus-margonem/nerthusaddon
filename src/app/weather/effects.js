@@ -1,14 +1,12 @@
 import { decodeGifFromUrl } from "../decodeGif";
 import {
-  addToNiDrawList,
-  removeFromNiDrawList,
+  addDrawableToRendering,
+  removeDrawableFromRendering,
 } from "../game-integration/loaders";
-import { FakeNpc } from "../npc/FakeNpc";
-import { coordsToId } from "../utility-functions";
+import { Drawable } from "../npc/Drawable";
 import { clearLightnings } from "./lightnings";
 
 const rainEffect = {
-  id: coordsToId(-1, -10),
   url: FILE_PREFIX + "res/img/weather/rain.gif",
   frames: {
     width: 0,
@@ -18,9 +16,9 @@ const rainEffect = {
   frameTime: 120,
   cache: [],
   cacheMapId: -1,
+  opacity: 1,
 };
 const snowEffect = {
-  id: coordsToId(-1, -20),
   url: FILE_PREFIX + "res/img/weather/snow.gif",
   frames: {
     width: 0,
@@ -30,7 +28,11 @@ const snowEffect = {
   frameTime: 400,
   cache: [],
   cacheMapId: -1,
+  opacity: 1,
 };
+
+rainEffect.drawable = getWeatherDrawable(rainEffect);
+snowEffect.drawable = getWeatherDrawable(snowEffect);
 
 async function cacheWeatherCanvas(effect, force = false) {
   if (INTERFACE === "SI") {
@@ -83,8 +85,11 @@ async function cacheWeatherCanvas(effect, force = false) {
   return true;
 }
 
-function getWeatherNiObject(effect, opacity) {
-  return new FakeNpc(effect.id, 930, (ctx) => {
+function getWeatherDrawable(effect) {
+  const drawable = new Drawable();
+  drawable.alwaysDraw();
+  drawable.setDrawOrder(930);
+  drawable.setDrawFunction((ctx) => {
     const cachedCanvas =
       effect.cache[
         Math.floor(Date.now() / effect.frameTime) %
@@ -94,7 +99,7 @@ function getWeatherNiObject(effect, opacity) {
       return;
     }
     const alpha = ctx.globalAlpha;
-    ctx.globalAlpha = opacity;
+    ctx.globalAlpha = effect.opacity;
     ctx.drawImage(
       cachedCanvas,
       Math.floor(-Engine.map.offset[0]),
@@ -102,12 +107,14 @@ function getWeatherNiObject(effect, opacity) {
     );
     ctx.globalAlpha = alpha;
   });
+
+  return drawable;
 }
 
 export function clearEffects(clearGameEffects) {
   if (INTERFACE === "NI") {
-    removeFromNiDrawList(rainEffect.id);
-    removeFromNiDrawList(snowEffect.id);
+    removeDrawableFromRendering(rainEffect.drawable);
+    removeDrawableFromRendering(snowEffect.drawable);
     if (clearGameEffects) {
       Engine.weather.onClear();
     }
@@ -121,12 +128,13 @@ export function clearEffects(clearGameEffects) {
 }
 
 export function displayRain(opacity = 1) {
+  rainEffect.opacity = opacity;
   if (INTERFACE === "NI") {
     cacheWeatherCanvas(rainEffect);
     // We can't wait for caching to add the object,
     // because it can be removed by the next chat command
     // parsed when entering the map with existing commands
-    addToNiDrawList(getWeatherNiObject(rainEffect, opacity), rainEffect.id);
+    addDrawableToRendering(rainEffect.drawable);
   } else {
     $('<div class="nerthus-weather"/>')
       .css({
@@ -139,12 +147,13 @@ export function displayRain(opacity = 1) {
 }
 
 export function displaySnow(opacity = 1) {
+  snowEffect.opacity = opacity;
   if (INTERFACE === "NI") {
     cacheWeatherCanvas(snowEffect);
     // We can't wait for caching to add the object,
     // because it can be removed by the next chat command
     // parsed when entering the map with existing commands
-    addToNiDrawList(getWeatherNiObject(snowEffect, opacity), snowEffect.id);
+    addDrawableToRendering(snowEffect.drawable);
   } else {
     $('<div class="nerthus-weather"/>')
       .css({

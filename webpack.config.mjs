@@ -132,8 +132,13 @@ class ReplaceTextPlugin {
   }
 }
 
-export default [
-  {
+function getUserscriptConfig() {
+  if (!globalThis.process.env.USERSCRIPT_NAME) {
+    // If no name is provided, don't build the userscript
+    return undefined;
+  }
+
+  return {
     name: "Userscript",
     mode: "none",
     entry: "./src/userscript.js",
@@ -148,10 +153,10 @@ export default [
     plugins: [
       new webpack.DefinePlugin({
         NI_VERSION_URL: JSON.stringify(
-          globalThis.process.env.DIST_URL + globalThis.process.env.NI_FILENAME,
+          globalThis.process.env.DIST_URL + "nerthus-addon-NI.js",
         ),
         SI_VERSION_URL: JSON.stringify(
-          globalThis.process.env.DIST_URL + globalThis.process.env.SI_FILENAME,
+          globalThis.process.env.DIST_URL + "nerthus-addon-SI.js",
         ),
       }),
       new ReplaceTextPlugin({
@@ -159,14 +164,18 @@ export default [
         $USERSCRIPT_ICON_URL: globalThis.process.env.USERSCRIPT_ICON_URL,
       }),
     ],
-  },
+  };
+}
+
+export default [
+  getUserscriptConfig(),
   {
     name: "NI-production",
     mode: globalThis.process.env.NODE_ENV,
     entry: "./src/main.js",
     output: {
       path: path.resolve(__dirname, "dist/"),
-      filename: globalThis.process.env.NI_FILENAME,
+      filename: "nerthus-addon-NI.js",
     },
     plugins: [
       CONSTANTS,
@@ -188,7 +197,7 @@ export default [
     entry: "./src/main.js",
     output: {
       path: path.resolve(__dirname, "dist/"),
-      filename: globalThis.process.env.SI_FILENAME,
+      filename: "nerthus-addon-SI.js",
     },
     plugins: [
       CONSTANTS,
@@ -203,4 +212,4 @@ export default [
       rules,
     },
   },
-];
+].filter((config) => config);

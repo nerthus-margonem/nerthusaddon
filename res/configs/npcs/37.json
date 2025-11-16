@@ -157,5 +157,75 @@
     "type": "delete",
     "id": 337919,
     "lvl": 0
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "42",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "6",
+    "y": "39",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "6",
+    "y": "38",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "6",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "4",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "38",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Drzewo w Bramie Północy 1",
+    "tip": "",
+    "x": "6",
+    "y": "43",
+    "url": "#res/img/npc/map-specific/brama-polnocy/1.gif"
+  },
+  {
+    "name": "Dym",
+    "tip": "",
+    "x": "0",
+    "y": "30",
+    "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
   }
 ]

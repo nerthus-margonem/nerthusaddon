@@ -70,7 +70,7 @@ function getRankNameOf(player) {
 }
 
 function getTitle(player) {
-  const title = vips[Number.parseInt(player.account)];
+  const title = vips[player.account];
   if (title) {
     return title;
   }

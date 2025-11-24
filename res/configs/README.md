@@ -84,4 +84,4 @@ Contains information about account ids of users with special roles on the server
 
 #### vips
 
-Contains a list of character ids with special description under their game tip.
+Contains a list of account ids with a special description under their game tip.

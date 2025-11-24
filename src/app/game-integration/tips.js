@@ -1,5 +1,5 @@
 import lvlNames from "../../../res/configs/lvl-names.json" with { type: "json" };
-import vips from "../../../res/configs/vips.json" with { type: "json" };
+import vips from "../../../res/configs/vips.yaml" with { type: "yaml" };
 import { addSettingToPanel } from "../interface/panel";
 import { checkPermissionLvl, PERMISSION_LVL } from "../permissions";
 import { settings } from "../settings";
@@ -70,13 +70,13 @@ function getRankNameOf(player) {
 }
 
 function getTitle(player) {
-  const title = vips[parseInt(player.id)];
+  const title = vips[Number.parseInt(player.account)];
   if (title) {
     return title;
   }
   if (player.lvl) {
     return lvlNames[
-      Math.min(lvlNames.length - 1, (parseInt(player.lvl) - 1) >> 3)
+      Math.min(lvlNames.length - 1, (Number.parseInt(player.lvl) - 1) >> 3)
     ];
   }
   return "";

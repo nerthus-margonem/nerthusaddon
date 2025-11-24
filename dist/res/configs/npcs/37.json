@@ -1,0 +1,231 @@
+[
+  {
+    "name": "Drzwi",
+    "tip": "",
+    "x": "34",
+    "y": "6",
+    "url": "#res/img/npc/drzwi.gif"
+  },
+  {
+    "name": "Przejście",
+    "tip": "Dawna Siedziba Leśnego Bractwa",
+    "x": "34",
+    "y": "6",
+    "url": "https://nerthus.margonem.pl/img/exit.png"
+  },
+  {
+    "type": "delete",
+    "id": 225727,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 259525,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225726,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225725,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225735,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225741,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225734,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225733,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225732,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225730,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225729,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225731,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225739,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225740,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225737,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225724,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225738,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225738,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 98121,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 225746,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225753,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 144028,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225750,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225744,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 225749,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 144027,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 259526,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 263782,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 337919,
+    "lvl": 0
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "42",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "6",
+    "y": "39",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "6",
+    "y": "38",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "6",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "4",
+    "y": "37",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "38",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Drzewo w Bramie Północy 1",
+    "tip": "",
+    "x": "6",
+    "y": "43",
+    "url": "#res/img/npc/map-specific/brama-polnocy/1.gif"
+  },
+  {
+    "name": "Dym",
+    "tip": "",
+    "x": "0",
+    "y": "30",
+    "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
+  }
+]

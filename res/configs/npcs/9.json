@@ -134,13 +134,6 @@
     "lvl": 0
   },
   {
-    "type": "change",
-    "id": 156897,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
     "type": "delete",
     "id": 9622,
     "lvl": 0,
@@ -161,13 +154,6 @@
     "type": "change",
     "id": 156918,
     "newUrl": "/obrazki/npc/map/zima-dach-blach3.gif",
-    "lvl": 0,
-    "date": "22.11-20.03"
-  },
-  {
-    "type": "change",
-    "id": 160588,
-    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "lvl": 0,
     "date": "22.11-20.03"
   },
@@ -300,8 +286,7 @@
   {
     "type": "delete",
     "id": 156897,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
@@ -387,26 +372,22 @@
   {
     "type": "delete",
     "id": 160588,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 330224,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 330225,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "type": "delete",
     "id": 330226,
-    "lvl": 0,
-    "date": "21.03-21.11"
+    "lvl": 0
   },
   {
     "name": "Wieszak pomiędzy wozami",
@@ -510,5 +491,17 @@
     "x": "62",
     "y": "38",
     "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
+  },
+  {
+    "type": "delete",
+    "id": 243455,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 243446,
+    "lvl": 0,
+    "date": "22.11-20.03"
   }
 ]

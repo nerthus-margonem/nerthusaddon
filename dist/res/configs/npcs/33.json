@@ -1,0 +1,922 @@
+[
+  {
+    "name": "Statua mistrza areny",
+    "x": "35",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-ekikechi.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego tropiciela. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,9791922#char_22642,nerthus' target=_blank' style='color: #FFEA00 !important'>Ekikechi</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Statua mistrza areny",
+    "x": "36",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-chatelet-grass.gif",
+    "collision": true,
+    "date": "21.03-21.11",
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego paladyna. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,2838938#char_21636,nerthus' target=_blank' style='color: #FFEA00 !important'>Chatelet</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Statua mistrza areny",
+    "x": "36",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-chatelet.gif",
+    "collision": true,
+    "date": "22.11-20.03",
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego paladyna. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,2838938#char_21636,nerthus' target=_blank' style='color: #FFEA00 !important'>Chatelet</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Statua mistrza areny",
+    "x": "37",
+    "y": "63",
+    "url": "#res/img/npc/statue-of-petronelia.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Kamienna statua przedstawiająca potężnego maga. Pod spodem tabliczka z napisem:",
+        "Dalej ->1"
+      ],
+      "1": [
+        "<span style='display: block; text-align: center'>Zwycięzca I edycji Krwawych Ustawek<br><br><a href='https://www.margonem.pl/profile/view,4072356#char_20182,nerthus' target=_blank' style='color: #FFEA00 !important'>Petronelia</a><br></span>",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "type": "change",
+    "id": 169641,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169630,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "42",
+    "y": "50",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169627,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169650,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169606,
+    "newUrl": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169600,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169602,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169607,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169648,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169624,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 185329,
+    "newUrl": "/obrazki/npc/map/zim-prost2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169647,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169622,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "13",
+    "y": "22",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169646,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169620,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169619,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169644,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche proste",
+    "tip": "",
+    "x": "13",
+    "y": "8",
+    "url": "/obrazki/npc/map/zim-prost2a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169592,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare prawe",
+    "tip": "",
+    "x": "11",
+    "y": "11",
+    "url": "/obrazki/npc/map/zim-szare1-praw1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169621,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169617,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "4",
+    "y": "15",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169616,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz3a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169591,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 185328,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169643,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169666,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169599,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 173394,
+    "newUrl": "/obrazki/npc/map/zim-prost2b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169604,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169645,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka średnia",
+    "tip": "",
+    "x": "32",
+    "y": "18",
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare lewe",
+    "tip": "",
+    "x": "32",
+    "y": "17",
+    "url": "/obrazki/npc/map/zim-szare17-lew2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169649,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169598,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169660,
+    "newUrl": "/obrazki/npc/map/zim-prost3a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169603,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169605,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169608,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169593,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169609,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169610,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169611,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "48",
+    "y": "65",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169656,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna mała",
+    "tip": "",
+    "x": "44",
+    "y": "68",
+    "url": "/obrazki/npc/map/zim-sosn-mal2b.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169623,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169625,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169626,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169594,
+    "newUrl": "/obrazki/npc/map/zim-szare3-praw2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169595,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169653,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169654,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169629,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169655,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 170622,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka mała",
+    "tip": "",
+    "x": "22",
+    "y": "74",
+    "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169596,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "sosna duża",
+    "tip": "",
+    "x": "25",
+    "y": "80",
+    "url": "/obrazki/npc/map/zim-sosn-duz1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169612,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169657,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche proste",
+    "tip": "",
+    "x": "29",
+    "y": "70",
+    "url": "/obrazki/npc/map/zim-prost1a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169613,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169615,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169628,
+    "newUrl": "/obrazki/npc/map/zim-szare13-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169651,
+    "newUrl": "/obrazki/npc/map/zim-szare13-praw2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169635,
+    "newUrl": "/obrazki/npc/map/zim-szare13-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169636,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169638,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "52",
+    "y": "83",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169637,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169658,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche proste",
+    "tip": "",
+    "x": "60",
+    "y": "78",
+    "url": "/obrazki/npc/map/zim-prost2a.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169618,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169614,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "36",
+    "y": "80",
+    "url": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169640,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169639,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169597,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169633,
+    "newUrl": "/obrazki/npc/map/zim-choin-mala1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169634,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1b.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169659,
+    "newUrl": "/obrazki/npc/map/zim-sosn-duz1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169642,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169632,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169631,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169559,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "zima domek",
+    "tip": "",
+    "x": "11",
+    "y": "61",
+    "url": "/obrazki/npc/map/zima-domek.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 169560,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "zima domek",
+    "tip": "",
+    "x": "35",
+    "y": "73",
+    "url": "/obrazki/npc/map/zima-domek.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169601,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169555,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169556,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169557,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169558,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169561,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1l2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169550,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1l1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169551,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1l2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169554,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169553,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1p1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169552,
+    "newUrl": "/obrazki/npc/map/z-dach-dech1-s1l1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 9947,
+    "newUrl": "#res/img/npc/ghosts/ghost-cultist.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 9948,
+    "newUrl": "#res/img/npc/ghosts/ghost-cultist.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Ermosowiec",
+    "x": "29",
+    "y": "47",
+    "url": "#res/img/npc/ermos-cultist.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Słuchajcie, słuchajcie mieszkańcy Margonem! Powiedzcie, czy nie martwicie się o swój los? Czy wróg na pewno nie czyha u bram? Czy nie ma go wśród nas?! Czy potraficie się obronić?",
+        "Dalej ->1"
+      ],
+      "1": [
+        "Witaj człecze, widzę, żeś mądry skoro zatrzymałeś się słuchać. Zaprawdę, bliski jest dzień bitwy! Ermos, nasz najwyższy Pan szykuje nas na sądny dzień. Potwory atakują miasta, bandyci napadają na traktach, demony wzywane na ziemię stąpają po niej twardo jako fakt, a nie jakieś biadania babek, bo skisło im mleko. Zaprawdę, nie warto będzie walczyć pod innym sztandarem niż czerwony. Nie warto, skoro Bóg Wojny może być naszym zbrojnym ramieniem i tarczą! Ale czy Ty jesteś człowiekiem uduchowionym? Masz jakieś wątpliwości? Jeśli tak to jakie? Chętnie pouczę Cię jak żyć tak, aby przeżyć...",
+        "Koniec Świata? Nie no, chyba nie jest aż tak źle...? ->2",
+        "Nic tylko byście wojowali tymi swoimi mieczami i pałkami w pościgu za jakąś fiksacją. Wojna jest straszna! ->3",
+        "Przecież są strażnicy, wojownicy, paladyni. Oni nas nie uchronią? ->4",
+        "Panie, przecież ja to się zajmuję architekturą elancką w kontekście hermeneutycznym, co ja mam wierzyć w takiego brutala? ->5",
+        "Wojna to tylko jeden z aspektów życia, więc dlaczego mam podporządkować wszystko pod nią? ->6",
+        "Ja tam przecież nie wzywam demonów, a w świątyni w ogóle daję na tacę co niedzielę. Jaki ja mam interes w dołączeniu do Ermosa? ->7",
+        "Ja tam wiem swoje... Moi bogowie mnie poprowadzą. ->8",
+        "Nie musisz mnie nawracać. Chwała Ermosowi bracie. ->END",
+        "Eeeeee, zostawiłem bigos na ognisku, muszę iść! ->END",
+        "[ Ignorujesz i idziesz dalej przed siebie. ] ->END",
+        "Phf... Wariat. ->END",
+        "[ Spluwasz pod nogi i odchodzisz. ] ->END"
+      ],
+      "2": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Koniec Świata Nadchodzi!</strong><br><br>Miasta są atakowane, nękane i upadają! Na traktach panoszą się bandyci, co wygryzą Wam z trzewi ostatniego miedziaka. Rządcy nie przejmują się Wami i uciekają, lub pomiatają jak na własnych folwarkach. Demony stąpają po ziemi w biały dzień jak po czeluściach Otchłani. Koniec niewątpliwie jest bliski. Ostatnia Bitwa się zbliża.<br>*A kto Wam w niej nie pomoże najlepiej jak Bóg Wojny?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "3": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Ermos Was obroni.</strong><br><br> Ermos nie walczy tylko po to, by rozlewać krew. Ermos walczy po to, by wymierzona była sprawiedliwość. On podnosi swój miecz po to, by odciąć dłoń podniesioną na jego wyznawców. On wznosi tarczę, kiedy nieprzyjaciel zasłania słońce deszczem strzał. On wyprowadza kontrę, by wymierzyć sprawiedliwość.<br>*Bo któż Was nie obroni lepiej w walce, jak ten który nią rządzi?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "4": [
+        "Proszę, to powinno rozwiać Twe wątpliwości... <br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Czy potrafisz uchronić swoją rodzinę?</strong><br><br>Eder upadło! Zalane, zniszczone, rozgrabione i przejęte przez Armię Demonów. Już rycerz na niewiele się zdał w walce z armią. Nawet cały zastęp paladynów w zbrojach i z magią okupił walki krwią. A Ty w pojedynkę? Co będziesz w stanie zrobić? Co zrobisz kiedy paladynów nie będzie?<br>*Nie wolałbyś, żeby to Bóg Wojny poprowadził Ciebie i Twoich Braci przeciwko demonom?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "5": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Praca, ziemia, stabilność.</strong><br><br>Ermos nie tylko jest Bogiem Wojny, ale również mężem, ojcem. On staje do boju dla córki i żony. On je chroni własną piersią przed wrogiem, stając do walki z mieczem w dłoni. Ale jeśli nie musiałby walczyć, czy nie stanąłby również z kilofem, młotem lub siekierą, po to, by pracować dla swojej rodziny?<br>*Czerwony, ojcowski płaszcz będzie Was chronił, byście Wy mogli bezpiecznie żyć.*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "6": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Któż jak nie Ermos?</strong><br><br>Życie to wojna. Codzienne wstawanie, codzienna praca, codzienne zmienianie rzeczywistości to walka ze światem. Oranie ziemi, kruszenie skał, rąbanie drewna, czym to jest jeśli nie przemocą, jeśli nie pojedynkiem z materią?<br>*Więc skoro życie to wojna, to czyż największym bogiem nie jest Ermos?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "7": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Ermos rozpozna SWOICH.</strong><br><br>Świat pogrążony jest w chaosie tak samo jak pole bitwy. Wróg miesza się z przyjacielem. Formacje załamują się. Szyki chyboczą. Linie obrony pękają pod naporem niekończących się rzeszy. Jednakże wyznawcy Boga Wojny nie lękają się, bo Ermos wygra. Ale w tym chaosie nie oszczędzi nikogo innego, jak tylko tych, którzy noszą jego barwy.<br>*Bo w chaosie bitwy trzeba być pewnym, kto jest przyjacielem, a kto wrogiem.*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "8": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Nie ufajcie fałszywym prorokom!</strong><br><br>Z Chaosu pochodzi zło. Z Chaosu był też Główny Demon, który ze swoimi splugawionymi pomocnikami został strącony przez Ermosa jego Ognistym Mieczem.<br>Nie znaczy to jednak, że Chaos umarł wraz z nim. Wręcz przeciwnie, mnogość demonów wypełzła ze szczątków tamtego, jak szczury żywiące się na trupie.<br>Także demonów, które podszywają się pod bogów, które straszą sobą, jednak nie mówią nic o wybawieniu! Zastawiają na Was pułapkę, więc zastanówcie się, komu ufacie.<br>*Zaufajcie Ermosowi, który ma konkretny sposób na Wasze wybawienie.*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ]
+    }
+  },
+  { "type": "delete", "id": 243462, "lvl": 0 },
+  { "type": "delete", "id": 243458, "lvl": 0 },
+  { "type": "delete", "id": 169591, "lvl": 0 },
+  { "type": "delete", "id": 243463, "lvl": 0 },
+  { "type": "delete", "id": 243460, "lvl": 0 },
+  { "type": "delete", "id": 243459, "lvl": 0 },
+  { "type": "delete", "id": 243461, "lvl": 0 },
+  { "type": "delete", "id": 243465, "lvl": 0 },
+  { "type": "delete", "id": 243469, "lvl": 0 },
+  { "type": "delete", "id": 243470, "lvl": 0 },
+  { "type": "delete", "id": 243471, "lvl": 0 },
+  { "type": "delete", "id": 243473, "lvl": 0 },
+  { "type": "delete", "id": 243474, "lvl": 0 },
+  { "type": "delete", "id": 243476, "lvl": 0 },
+  { "type": "delete", "id": 243475, "lvl": 0 },
+  { "type": "delete", "id": 243472, "lvl": 0 },
+  { "type": "delete", "id": 243467, "lvl": 0 },
+  { "type": "delete", "id": 243464, "lvl": 0 },
+  { "type": "delete", "id": 243466, "lvl": 0 },
+  { "type": "delete", "id": 169555, "lvl": 0 },
+  { "type": "delete", "id": 169556, "lvl": 0 },
+  { "type": "delete", "id": 169561, "lvl": 0 },
+  { "type": "delete", "id": 243468, "lvl": 0 },
+  { "type": "delete", "id": 256391, "lvl": 0 },
+  { "type": "delete", "id": 243477, "lvl": 0 },
+  { "type": "delete", "id": 179004, "lvl": 0 },
+  { "type": "delete", "id": 169586, "lvl": 0 },
+  { "type": "delete", "id": 169585, "lvl": 0 },
+  { "type": "delete", "id": 169600, "lvl": 0 },
+  { "type": "delete", "id": 169601, "lvl": 0 },
+  { "type": "delete", "id": 169550, "lvl": 0 },
+  { "type": "delete", "id": 169551, "lvl": 0 }
+]

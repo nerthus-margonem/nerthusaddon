@@ -1,0 +1,507 @@
+[
+  {
+    "type": "delete",
+    "id": 200173,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 243445,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 162337,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 162338,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 200172,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 256384,
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 156919,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal1a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 258343,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 258344,
+    "newUrl": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 156902,
+    "newUrl": "/obrazki/npc/map/zim-szare2-praw1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 81568,
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 258320,
+    "newUrl": "/obrazki/npc/map/zim-prost3a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 228064,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 156905,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 156890,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 169040,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 156891,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156893,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 243453,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 156894,
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 156912,
+    "newUrl": "/obrazki/npc/map/zim-prost2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 258340,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156898,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 9622,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 258331,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 80526,
+    "lvl": 8,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 156918,
+    "newUrl": "/obrazki/npc/map/zima-dach-blach3.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 200168,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 258318,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156903,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258320,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 258317,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156906,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156907,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258319,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 169040,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156893,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 243453,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 258341,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258337,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258336,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258335,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 162339,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258339,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258338,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156920,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 135289,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 156887,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 156888,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 162334,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156900,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156897,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 66311,
+    "lvl": 0,
+    "date": "21.03-21.11"
+  },
+  {
+    "type": "delete",
+    "id": 156911,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258325,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258324,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258329,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258333,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258326,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258332,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258328,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258330,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258327,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 156913,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258334,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258323,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258322,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 258321,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 160588,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 330224,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 330225,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 330226,
+    "lvl": 0
+  },
+  {
+    "name": "Wieszak pomiędzy wozami",
+    "tip": "",
+    "x": "21",
+    "y": "22",
+    "url": "#res/img/npc/clothes-between-carts.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "26",
+    "y": "23",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Suche drzewo",
+    "tip": "",
+    "x": "35",
+    "y": "46",
+    "url": "#res/img/npc/tree-dry2.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Drzewo okrągłe góra",
+    "tip": "",
+    "x": "34",
+    "y": "47",
+    "url": "/obrazki/npc/map/drzew-okrag-gora.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Stos kamieni",
+    "tip": "",
+    "x": "38",
+    "y": "88",
+    "url": "#res/img/npc/rock-pile.gif",
+    "date": "21.03-21.11"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "33",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-szkielet1b.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "31",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-kosci5b.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "43",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-kosci5a.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "48",
+    "y": "41",
+    "url": "/obrazki/npc/map/tri-kosci4a.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "47",
+    "y": "41",
+    "url": "/obrazki/npc/map/tri-szkielet1a.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "50",
+    "y": "35",
+    "url": "/obrazki/npc/map/tri-kosci4b.gif"
+  },
+  {
+    "name": "Orczy trup",
+    "x": "32",
+    "y": "37",
+    "url": "/obrazki/npc/map/tri-kosci4b.gif"
+  },
+  {
+    "type": "change",
+    "id": 44124,
+    "newUrl": "#res/img/npc/ghosts/ghost-druid-myszor.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Dym",
+    "tip": "",
+    "x": "59",
+    "y": "11",
+    "url": "/obrazki/npc/map/dym-dlugi-praw.gif"
+  },
+  {
+    "name": "Dym",
+    "tip": "",
+    "x": "62",
+    "y": "38",
+    "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
+  },
+  {
+    "type": "delete",
+    "id": 243455,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 243446,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  }
+]

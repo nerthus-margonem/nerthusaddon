@@ -257,6 +257,10 @@ function stopChangingNpcTips(originalGetNpcTip) {
   }
 }
 
+function createStrTipNi() {
+  return parseTip(this);
+}
+
 export function initTips() {
   const originalGetNpcTip =
     INTERFACE === "NI" ? Engine.npcs.getTip : g.tips.npc;
@@ -265,9 +269,10 @@ export function initTips() {
     const othersDrawableList = Engine.others.getDrawableList;
     Engine.others.getDrawableList = function () {
       const list = othersDrawableList();
-      for (const i in list) {
-        if (list[i].isPlayer) {
-          list[i].tip[0] = parseTip(list[i]);
+      for (const other of list) {
+        if (other.isPlayer && other.createStrTip !== createStrTipNi) {
+          other.createStrTip = createStrTipNi;
+          other.tipUpdate();
         }
       }
       return list;

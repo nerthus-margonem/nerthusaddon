@@ -46,10 +46,11 @@ function rights2rank(rights) {
 }
 
 function getRankNameOf(player) {
-  let rank = RANKS.NONE;
-  if (player.rights) {
-    rank = rights2rank(player.rights);
-  }
+  // While almost the same, for some reason
+  // a hero has `uprawnienia` and the other has `rights` instead
+  const rights =
+    typeof player.rights === "number" ? player.rights : player.uprawnienia;
+  let rank = rights2rank(rights);
 
   switch (checkPermissionLvl(player.account)) {
     case PERMISSION_LVL.NARRATOR:

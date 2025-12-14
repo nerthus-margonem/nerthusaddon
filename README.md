@@ -39,10 +39,10 @@ Addon for Nerthus server in game [Margonem](http://www.margonem.pl/) adding many
 - Make sure you have the latest LTS NodeJS installed
 - Clone the repository: `git clone https://github.com/nerthus-margonem/nerthusaddon.git`
 - Go inside the created directory: `cd nerthusaddon`
-- Install the dependencies: `npm install`
+- Install the dependencies: `npm clean-install`
 - Run setup: `npm run dev-setup`
 - Start development server: `npm run dev-start`
-- Install userscript by navigating the browser to http://localhost:8080/dist/nerthus-addon.user.js and clicking install
+- Install userscript by navigating the browser to http://localhost:8080/nerthus-addon.user.js and clicking install
 
 Next time you want to start the server and live reload,
 you only need to type `npm run dev-start` and you will be all set.

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "2",
+    "y": "6",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "2",
+    "y": "9",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Komoda",
+    "tip": "",
+    "x": "4",
+    "y": "11",
+    "url": "#res/img/npc/map-specific/baraki-pokoj-8/1.gif"
+  },
+  {
+    "name": "Świecznik",
+    "tip": "",
+    "x": "7",
+    "y": "11",
+    "url": "#res/img/npc/map-specific/baraki-pokoj-8/2.gif"
+  },
+  {
+    "name": "Kwiaty",
+    "tip": "",
+    "x": "3",
+    "y": "7",
+    "url": "#res/img/npc/map-specific/baraki-pokoj-8/3.gif"
+  }
+]

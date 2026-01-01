@@ -272,11 +272,14 @@ function createButtonNI() {
 
   let nerthusPos = defaultPosition;
 
-  const serverStoragePos = Engine.serverStorage.get(
-    Engine.widgetManager.getPathToHotWidgetVersion(),
-  );
+  const widgetPositionsKey = Engine.widgetManager.getPathToHotWidgetVersion();
+  const serverStoragePos = Engine.serverStorage.get(widgetPositionsKey);
   if (serverStoragePos?.nerthus) {
     nerthusPos = serverStoragePos.nerthus;
+  } else {
+    Engine.serverStorage.sendData({
+      [widgetPositionsKey]: { nerthus: nerthusPos },
+    });
   }
 
   /**

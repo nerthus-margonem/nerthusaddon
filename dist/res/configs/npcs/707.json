@@ -1,0 +1,149 @@
+[
+  { "type": "delete", "id": 181209, "lvl": 0 },
+  { "type": "delete", "id": 263828, "lvl": 0 },
+  { "type": "delete", "id": 263829, "lvl": 0 },
+  { "type": "delete", "id": 181410, "lvl": 0 },
+  { "type": "delete", "id": 181232, "lvl": 0 },
+  { "type": "delete", "id": 181137, "lvl": 0 },
+  { "type": "delete", "id": 181138, "lvl": 0 },
+  { "type": "delete", "id": 181142, "lvl": 0 },
+  { "type": "delete", "id": 181146, "lvl": 0 },
+  { "type": "delete", "id": 181139, "lvl": 0 },
+  { "type": "delete", "id": 181148, "lvl": 0 },
+  { "type": "delete", "id": 181149, "lvl": 0 },
+  { "type": "delete", "id": 181140, "lvl": 0 },
+  { "type": "delete", "id": 181142, "lvl": 0 },
+  { "type": "delete", "id": 181139, "lvl": 0 },
+  { "type": "delete", "id": 181140, "lvl": 0 },
+  { "type": "delete", "id": 181146, "lvl": 0 },
+  { "type": "delete", "id": 181147, "lvl": 0 },
+  { "type": "delete", "id": 181145, "lvl": 0 },
+  { "type": "delete", "id": 181144, "lvl": 0 },
+  { "type": "delete", "id": 181143, "lvl": 0 },
+  { "type": "delete", "id": 181141, "lvl": 0 },
+  { "type": "delete", "id": 181136, "lvl": 0 },
+  { "type": "delete", "id": 181161, "lvl": 0 },
+  { "type": "delete", "id": 181162, "lvl": 0 },
+  { "type": "delete", "id": 181163, "lvl": 0 },
+  { "type": "delete", "id": 181164, "lvl": 0 },
+  { "type": "delete", "id": 181168, "lvl": 0 },
+  { "type": "delete", "id": 181165, "lvl": 0 },
+  { "type": "delete", "id": 181151, "lvl": 0 },
+  { "type": "delete", "id": 181155, "lvl": 0 },
+  { "type": "delete", "id": 181156, "lvl": 0 },
+  { "type": "delete", "id": 263832, "lvl": 0 },
+  { "type": "delete", "id": 263833, "lvl": 0 },
+  { "type": "delete", "id": 263835, "lvl": 0 },
+  {
+    "name": "Drzewa w Ruinach Szabrowników 1",
+    "tip": "",
+    "x": "33",
+    "y": "60",
+    "url": "#res/img/npc/map-specific/ruiny-szabrownikow/1.gif",
+    "collision": false
+  },
+  {
+    "name": "Małe drzewo w krzakach",
+    "tip": "",
+    "x": "62",
+    "y": "61",
+    "url": "#res/img/npc/props/small-dry-tree-in-bush.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "46",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "47",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "48",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Drzewa w Ruinach Szabrowników 2",
+    "tip": "",
+    "x": "56",
+    "y": "62",
+    "url": "#res/img/npc/map-specific/ruiny-szabrownikow/2.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "68",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "69",
+    "y": "61",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "70",
+    "y": "62",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "71",
+    "y": "61",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Drzewa w Ruinach Szabrowników 3",
+    "tip": "",
+    "x": "78",
+    "y": "63",
+    "url": "#res/img/npc/map-specific/ruiny-szabrownikow/3.gif",
+    "collision": false
+  },
+  {
+    "name": "Drzewa w Ruinach Szabrowników 4",
+    "tip": "",
+    "x": "84",
+    "y": "62",
+    "url": "#res/img/npc/map-specific/ruiny-szabrownikow/4.gif",
+    "collision": false
+  },
+  {
+    "name": "Krzak",
+    "tip": "",
+    "x": "89",
+    "y": "62",
+    "url": "#res/img/npc/props/bush-2.gif",
+    "collision": false
+  },
+  {
+    "name": "Małe drzewa",
+    "tip": "",
+    "x": "91",
+    "y": "62",
+    "url": "#res/img/npc/props/small-trees-2.gif",
+    "collision": false
+  }
+]

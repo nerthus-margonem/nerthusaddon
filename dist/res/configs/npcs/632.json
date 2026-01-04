@@ -1,0 +1,96 @@
+[
+  { "type": "delete", "id": 261244, "lvl": 0 },
+  { "type": "delete", "id": 261245, "lvl": 0 },
+  { "type": "delete", "id": 145012, "lvl": 0 },
+  { "type": "delete", "id": 145031, "lvl": 0 },
+  { "type": "delete", "id": 145006, "lvl": 0 },
+  { "type": "delete", "id": 261242, "lvl": 0 },
+  {
+    "name": "Małe drzewa",
+    "tip": "",
+    "x": "61",
+    "y": "27",
+    "url": "#res/img/npc/props/small-trees-2.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "59",
+    "y": "47",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "59",
+    "y": "48",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "61",
+    "y": "63",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "61",
+    "y": "64",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Suche drzewo",
+    "tip": "",
+    "x": "60",
+    "y": "44",
+    "url": "#res/img/npc/props/dry-tree-top.gif",
+    "collision": true
+  },
+  {
+    "name": "Krzak",
+    "tip": "",
+    "x": "63",
+    "y": "60",
+    "url": "#res/img/npc/props/bush-1.gif",
+    "collision": false
+  },
+  {
+    "name": "Krzak",
+    "tip": "",
+    "x": "54",
+    "y": "58",
+    "url": "#res/img/npc/props/bush-2.gif",
+    "collision": false
+  },
+  {
+    "name": "Małe drzewa",
+    "tip": "",
+    "x": "52",
+    "y": "58",
+    "url": "#res/img/npc/props/small-trees-1.gif",
+    "collision": false
+  },
+  {
+    "name": "sosna duża",
+    "tip": "",
+    "x": "40",
+    "y": "22",
+    "url": "/obrazki/npc/map/such-sosn-duza3b.gif",
+    "collision": false
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": "41",
+    "y": "22",
+    "url": "/obrazki/npc/map/choin-duza1.gif",
+    "collision": false
+  }
+]

@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Konie",
+    "tip": "Konie",
+    "x": "6",
+    "y": "2",
+    "collision": true,
+    "url": "/obrazki/npc/dom/konie-woz2.gif"
+  },
+  {
+    "type": "delete",
+    "id": 71591,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 150516,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 135165,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 135167,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 71600,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 333849,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 333846,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 267866,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 267865,
+    "lvl": 15
+  },
+  {
+    "type": "delete",
+    "id": 53885,
+    "lvl": 2
+  }
+]

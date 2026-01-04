@@ -1,6 +1,6 @@
 {
   "name": "nerthusaddon",
-  "version": "11.1.3",
+  "version": "11.2.0",
   "description": "Addon for the Nerthus server in game [Margonem](https://www.margonem.pl/)",
   "main": "/src/main.js",
   "directories": {
@@ -17,7 +17,6 @@
     "@babel/preset-env": "^7.28.5",
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.1",
-    "dotenv": "^17.2.3",
     "jquery": "3.6.0",
     "js-yaml": "^4.1.1",
     "omggif": "^1.0.10",
@@ -33,7 +32,7 @@
     "expect.js": "^0.3.1",
     "exports-loader": "^5.0.0",
     "expose-loader": "^5.0.1",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "http-server": "^14.1.1",
     "imports-loader": "^5.0.0",
     "jsdom": "^27.4.0",

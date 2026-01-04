@@ -1,13 +1,13 @@
 import CopyPlugin from "copy-webpack-plugin";
-import { configDotenv } from "dotenv";
 import yaml from "js-yaml";
 import fs from "node:fs";
 import * as path from "node:path";
+import process from "node:process";
 import { fileURLToPath } from "node:url";
 import webpack from "webpack";
 
 if (fs.existsSync(".env")) {
-  configDotenv();
+  process.loadEnvFile(".env");
 }
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -28,7 +28,7 @@ const CONSTANTS = new webpack.DefinePlugin({
   FILE_PREFIX: webpack.DefinePlugin.runtimeValue(
     () => {
       return JSON.stringify(
-        globalThis.process.env.DIST_URL.replace("$VERSION", getVersion()),
+        process.env.DIST_URL.replace("$VERSION", getVersion()),
       );
     },
     {
@@ -133,7 +133,7 @@ class ReplaceTextPlugin {
 }
 
 function getUserscriptConfig() {
-  if (!globalThis.process.env.USERSCRIPT_NAME) {
+  if (!process.env.USERSCRIPT_NAME) {
     // If no name is provided, don't build the userscript
     return undefined;
   }
@@ -144,7 +144,7 @@ function getUserscriptConfig() {
     entry: "./src/userscript.js",
     output: {
       path: path.resolve(__dirname, "dist/"),
-      filename: globalThis.process.env.USERSCRIPT_FILENAME,
+      filename: process.env.USERSCRIPT_FILENAME,
       module: true,
     },
     experiments: {
@@ -153,15 +153,15 @@ function getUserscriptConfig() {
     plugins: [
       new webpack.DefinePlugin({
         NI_VERSION_URL: JSON.stringify(
-          globalThis.process.env.DIST_URL + "nerthus-addon-NI.js",
+          process.env.DIST_URL + "nerthus-addon-NI.js",
         ),
         SI_VERSION_URL: JSON.stringify(
-          globalThis.process.env.DIST_URL + "nerthus-addon-SI.js",
+          process.env.DIST_URL + "nerthus-addon-SI.js",
         ),
       }),
       new ReplaceTextPlugin({
-        $USERSCRIPT_NAME: globalThis.process.env.USERSCRIPT_NAME,
-        $USERSCRIPT_ICON_URL: globalThis.process.env.USERSCRIPT_ICON_URL,
+        $USERSCRIPT_NAME: process.env.USERSCRIPT_NAME,
+        $USERSCRIPT_ICON_URL: process.env.USERSCRIPT_ICON_URL,
       }),
     ],
   };
@@ -171,7 +171,7 @@ export default [
   getUserscriptConfig(),
   {
     name: "NI-production",
-    mode: globalThis.process.env.NODE_ENV,
+    mode: process.env.NODE_ENV,
     entry: "./src/main.js",
     output: {
       path: path.resolve(__dirname, "dist/"),
@@ -193,7 +193,7 @@ export default [
   },
   {
     name: "SI-production",
-    mode: globalThis.process.env.NODE_ENV,
+    mode: process.env.NODE_ENV,
     entry: "./src/main.js",
     output: {
       path: path.resolve(__dirname, "dist/"),

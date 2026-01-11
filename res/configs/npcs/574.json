@@ -41,8 +41,8 @@
   {
     "name": "",
     "tip": "",
-    "x": "57",
-    "y": "36",
+    "x": 57,
+    "y": 36,
     "url": "/obrazki/npc/map/zim-szare4-lew2.gif",
     "collision": false,
     "date": "22.11-20.03"
@@ -50,8 +50,8 @@
   {
     "name": "",
     "tip": "",
-    "x": "54",
-    "y": "36",
+    "x": 54,
+    "y": 36,
     "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
     "collision": false,
     "date": "22.11-20.03"
@@ -66,24 +66,24 @@
   {
     "name": "choinka",
     "tip": "",
-    "x": "78",
-    "y": "50",
+    "x": 78,
+    "y": 50,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "suche drzewo",
     "tip": "",
-    "x": "81",
-    "y": "28",
+    "x": 81,
+    "y": 28,
     "url": "/obrazki/npc/map/zim-szare4-praw2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "suche proste",
     "tip": "",
-    "x": "90",
-    "y": "32",
+    "x": 90,
+    "y": 32,
     "url": "/obrazki/npc/map/zim-prost3b.gif",
     "date": "22.11-20.03"
   },
@@ -96,16 +96,16 @@
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "38",
-    "y": "11",
+    "x": 38,
+    "y": 11,
     "url": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "proste",
     "tip": "",
-    "x": "11",
-    "y": "23",
+    "x": 11,
+    "y": 23,
     "url": "/obrazki/npc/map/zim-prost1b.gif",
     "date": "22.11-20.03"
   }

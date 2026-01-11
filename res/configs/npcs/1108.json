@@ -17,16 +17,16 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "25",
-    "y": "37",
+    "x": 25,
+    "y": 37,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "26",
-    "y": "38",
+    "x": 26,
+    "y": 38,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },

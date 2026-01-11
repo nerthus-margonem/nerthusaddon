@@ -1,8 +1,8 @@
 [
   {
     "name": "Skrawek kartki",
-    "x": "89",
-    "y": "51",
+    "x": 89,
+    "y": 51,
     "url": "/obrazki/itemy/pap/wydarta.gif",
     "collision": true,
     "time": "18-6",
@@ -81,22 +81,22 @@
   {
     "name": "Tama",
     "tip": "",
-    "x": "35",
-    "y": "36",
+    "x": 35,
+    "y": 36,
     "url": "#res/img/npc/tama.gif"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "4",
-    "y": "88",
+    "x": 4,
+    "y": 88,
     "url": "/obrazki/npc/map/pochodnia1_stojac.gif"
   },
   {
     "name": "Choinka",
     "tip": "",
-    "x": "5",
-    "y": "89",
+    "x": 5,
+    "y": 89,
     "url": "/obrazki/npc/map/choinka-up.gif"
   },
   {

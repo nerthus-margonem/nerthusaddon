@@ -1,8 +1,8 @@
 [
   {
     "name": "Strażnicy niosący skrzynię",
-    "x": "25",
-    "y": "7",
+    "x": 25,
+    "y": 7,
     "url": "#res/img/npc/soldiers-with-chest.gif",
     "collision": true,
     "dialog": {
@@ -48,40 +48,40 @@
   {
     "name": "Stojąca pochodnia",
     "tip": "",
-    "x": "35",
-    "y": "4",
+    "x": 35,
+    "y": 4,
     "url": "/obrazki/npc/map/pochodnia1_stojac.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "19",
-    "y": "5",
+    "x": 19,
+    "y": 5,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "20",
-    "y": "5",
+    "x": 20,
+    "y": 5,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "21",
-    "y": "5",
+    "x": 21,
+    "y": 5,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "brąz1-róg-prawy",
     "tip": "",
-    "x": "30",
-    "y": "8",
+    "x": 30,
+    "y": 8,
     "url": "/obrazki/npc/map/braz-rog-p.gif",
     "collision": false
   }

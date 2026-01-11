@@ -1,8 +1,8 @@
 [
   {
     "name": "Dadoss",
-    "x": "68",
-    "y": "51",
+    "x": 68,
+    "y": 51,
     "url": "/obrazki/npc/eve/hallo15-10w.gif",
     "collision": true,
     "dialog": {
@@ -40,8 +40,8 @@
   },
   {
     "name": "Dalassa",
-    "x": "63",
-    "y": "33",
+    "x": 63,
+    "y": 33,
     "url": "#res/img/npc/Dalassa.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -141,8 +141,8 @@
   },
   {
     "name": "Drewniana rzeźba",
-    "x": "53",
-    "y": "21",
+    "x": 53,
+    "y": 21,
     "url": "#res/img/npc/rzezba.gif",
     "collision": true,
     "dialog": {
@@ -159,8 +159,8 @@
   },
   {
     "name": "Kalante",
-    "x": "79",
-    "y": "28",
+    "x": 79,
+    "y": 28,
     "url": "/obrazki/npc/eve/jadwiga.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -205,8 +205,8 @@
   },
   {
     "name": "Kevan",
-    "x": "53",
-    "y": "28",
+    "x": 53,
+    "y": 28,
     "url": "/obrazki/npc/bur/npc232.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -274,8 +274,8 @@
   },
   {
     "name": "Ognisko",
-    "x": "28",
-    "y": "27",
+    "x": 28,
+    "y": 27,
     "url": "/obrazki/npc/map/stoss.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -298,8 +298,8 @@
   },
   {
     "name": "Pochodnie",
-    "x": "54",
-    "y": "21",
+    "x": 54,
+    "y": 21,
     "url": "#res/img/npc/pochodnia-haw04.gif",
     "dialog": {
       "0": [
@@ -310,21 +310,8 @@
   },
   {
     "name": "Pochodnie",
-    "x": "48",
-    "y": "25",
-    "url": "#res/img/npc/pochodnia-haw04.gif",
-    "time": "20-6",
-    "dialog": {
-      "0": [
-        "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
-        "Koniec ->END"
-      ]
-    }
-  },
-  {
-    "name": "Pochodnie",
-    "x": "68",
-    "y": "43",
+    "x": 48,
+    "y": 25,
     "url": "#res/img/npc/pochodnia-haw04.gif",
     "time": "20-6",
     "dialog": {
@@ -336,8 +323,21 @@
   },
   {
     "name": "Pochodnie",
-    "x": "59",
-    "y": "36",
+    "x": 68,
+    "y": 43,
+    "url": "#res/img/npc/pochodnia-haw04.gif",
+    "time": "20-6",
+    "dialog": {
+      "0": [
+        "[ Pochodnie roztaczaczają dookoła siebie ciepły, żółtawy blask. ]",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Pochodnie",
+    "x": 59,
+    "y": 36,
     "url": "#res/img/npc/pochodnia-haw04.gif",
     "time": "20-6",
     "dialog": {
@@ -349,8 +349,8 @@
   },
   {
     "name": "Pochodnia",
-    "x": "52",
-    "y": "21",
+    "x": 52,
+    "y": 21,
     "url": "#res/img/npc/pochodnia-haw03.gif",
     "dialog": {
       "0": [
@@ -361,21 +361,8 @@
   },
   {
     "name": "Pochodnia",
-    "x": "70",
-    "y": "37",
-    "url": "#res/img/npc/pochodnia-haw03.gif",
-    "time": "20-6",
-    "dialog": {
-      "0": [
-        "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
-        "Koniec ->END"
-      ]
-    }
-  },
-  {
-    "name": "Pochodnia",
-    "x": "50",
-    "y": "40",
+    "x": 70,
+    "y": 37,
     "url": "#res/img/npc/pochodnia-haw03.gif",
     "time": "20-6",
     "dialog": {
@@ -387,8 +374,21 @@
   },
   {
     "name": "Pochodnia",
-    "x": "40",
-    "y": "24",
+    "x": 50,
+    "y": 40,
+    "url": "#res/img/npc/pochodnia-haw03.gif",
+    "time": "20-6",
+    "dialog": {
+      "0": [
+        "[ Pochodnia roztaczacza dookoła siebie ciepły, żółtawy blask. ]",
+        "Koniec ->END"
+      ]
+    }
+  },
+  {
+    "name": "Pochodnia",
+    "x": 40,
+    "y": 24,
     "url": "#res/img/npc/pochodnia-haw03.gif",
     "time": "20-6",
     "dialog": {
@@ -400,8 +400,8 @@
   },
   {
     "name": "Lampion",
-    "x": "55",
-    "y": "30",
+    "x": 55,
+    "y": 30,
     "url": "/obrazki/itemy/kon/ark-lamp-zlo.gif",
     "date": "21.9-30.9",
     "dialog": {
@@ -410,8 +410,8 @@
   },
   {
     "name": "Lampion",
-    "x": "69",
-    "y": "46",
+    "x": 69,
+    "y": 46,
     "url": "/obrazki/itemy/kon/ark-lamp-zlo.gif",
     "date": "21.9-30.9",
     "dialog": {
@@ -420,8 +420,8 @@
   },
   {
     "name": "Lampion",
-    "x": "71",
-    "y": "34",
+    "x": 71,
+    "y": 34,
     "url": "/obrazki/itemy/kon/ark-lamp-zlo.gif",
     "date": "21.9-30.9",
     "dialog": {
@@ -430,8 +430,8 @@
   },
   {
     "name": "Stół z jedzeniem",
-    "x": "76",
-    "y": "33",
+    "x": 76,
+    "y": 33,
     "url": "#res/img/npc/table1.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -444,8 +444,8 @@
   },
   {
     "name": "Stół z napojami",
-    "x": "64",
-    "y": "39",
+    "x": 64,
+    "y": 39,
     "url": "#res/img/npc/table3.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -458,8 +458,8 @@
   },
   {
     "name": "Stół do gry",
-    "x": "67",
-    "y": "53",
+    "x": 67,
+    "y": 53,
     "url": "#res/img/npc/table2.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -472,8 +472,8 @@
   },
   {
     "name": "Tancerka",
-    "x": "58",
-    "y": "32",
+    "x": 58,
+    "y": 32,
     "url": "/obrazki/npc/kob/cyganka3.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -503,8 +503,8 @@
   },
   {
     "name": "Tanon",
-    "x": "65",
-    "y": "40",
+    "x": 65,
+    "y": 40,
     "url": "#res/img/npc/Tanon.gif",
     "collision": true,
     "dialog": {
@@ -595,8 +595,8 @@
   },
   {
     "name": "Tańcząca para",
-    "x": "56",
-    "y": "35",
+    "x": 56,
+    "y": 35,
     "url": "#res/img/npc/para1.gif",
     "collision": true,
     "date": "21.9-30.9",
@@ -609,8 +609,8 @@
   },
   {
     "name": "Tańcząca para",
-    "x": "61",
-    "y": "34",
+    "x": 61,
+    "y": 34,
     "url": "#res/img/npc/para2.gif",
     "collision": true,
     "date": "21.9-30.9",

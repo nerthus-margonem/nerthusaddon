@@ -1,8 +1,8 @@
 [
   {
     "name": "Cela z goblinem",
-    "x": "29",
-    "y": "25",
+    "x": 29,
+    "y": 25,
     "url": "/obrazki/npc/mas/nic64x64.gif",
     "collision": true,
     "dialog": {

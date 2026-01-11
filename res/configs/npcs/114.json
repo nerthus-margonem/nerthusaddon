@@ -283,8 +283,8 @@
   {
     "name": "drzewo zima",
     "tip": "",
-    "x": "10",
-    "y": "42",
+    "x": 10,
+    "y": 42,
     "url": "/obrazki/npc/map/zim-d-go2-1a.gif",
     "date": "22.11-20.03"
   },
@@ -396,8 +396,8 @@
   {
     "name": "thuzal roof",
     "tip": "",
-    "x": "77",
-    "y": "23",
+    "x": 77,
+    "y": 23,
     "url": "#res/img/npc/thuzal-roof.gif",
     "date": "22.11-20.03"
   },

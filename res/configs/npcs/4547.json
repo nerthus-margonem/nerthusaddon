@@ -1,8 +1,8 @@
 [
   {
     "name": "Szałas",
-    "x": "8",
-    "y": "68",
+    "x": 8,
+    "y": 68,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
     "dialog": {

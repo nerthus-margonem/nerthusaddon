@@ -2,15 +2,15 @@
   {
     "name": "Drzwi",
     "tip": "",
-    "x": "34",
-    "y": "6",
+    "x": 34,
+    "y": 6,
     "url": "#res/img/npc/drzwi.gif"
   },
   {
     "name": "Przejście",
     "tip": "Dawna Siedziba Leśnego Bractwa",
-    "x": "34",
-    "y": "6",
+    "x": 34,
+    "y": 6,
     "url": "https://nerthus.margonem.pl/img/exit.png"
   },
   {
@@ -161,71 +161,71 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "5",
-    "y": "42",
+    "x": 5,
+    "y": 42,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "6",
-    "y": "39",
+    "x": 6,
+    "y": 39,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "6",
-    "y": "38",
+    "x": 6,
+    "y": 38,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "6",
-    "y": "37",
+    "x": 6,
+    "y": 37,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "5",
-    "y": "37",
+    "x": 5,
+    "y": 37,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "4",
-    "y": "37",
+    "x": 4,
+    "y": 37,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "5",
-    "y": "38",
+    "x": 5,
+    "y": 38,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Drzewo w Bramie Północy 1",
     "tip": "",
-    "x": "6",
-    "y": "43",
+    "x": 6,
+    "y": 43,
     "url": "#res/img/npc/map-specific/brama-polnocy/1.gif"
   },
   {
     "name": "Dym",
     "tip": "",
-    "x": "0",
-    "y": "30",
+    "x": 0,
+    "y": 30,
     "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
   }
 ]

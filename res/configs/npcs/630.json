@@ -4,43 +4,43 @@
   {
     "name": "Beczka w wodzie",
     "tip": "",
-    "x": "78",
-    "y": "72",
+    "x": 78,
+    "y": 72,
     "url": "/obrazki/npc/map/bujana-beczka2.gif"
   },
   {
     "name": "Beczka w wodzie",
     "tip": "",
-    "x": "90",
-    "y": "65",
+    "x": 90,
+    "y": 65,
     "url": "/obrazki/npc/map/bujana-beczka-1.gif"
   },
   {
     "name": "Beczka w wodzie",
     "tip": "",
-    "x": "76",
-    "y": "65",
+    "x": 76,
+    "y": 65,
     "url": "/obrazki/npc/map/bujana-beczka-1.gif"
   },
   {
     "name": "Rybki",
     "tip": "",
-    "x": "84",
-    "y": "69",
+    "x": 84,
+    "y": 69,
     "url": "/obrazki/npc/map/rybki1.gif"
   },
   {
     "name": "Skała w wodzie",
     "tip": "",
-    "x": "80",
-    "y": "68",
+    "x": 80,
+    "y": 68,
     "url": "#res/img/npc/props/water-rock-5-2.gif"
   },
   {
     "name": "Skała w wodzie",
     "tip": "",
-    "x": "83",
-    "y": "66",
+    "x": 83,
+    "y": 66,
     "url": "#res/img/npc/props/water-rock-4-2.gif"
   }
 ]

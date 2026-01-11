@@ -7,48 +7,48 @@
   },
   {
     "name": "Rebeka",
-    "x": "34",
-    "y": "48",
+    "x": 34,
+    "y": 48,
     "url": "/obrazki/npc/dom/kon2-p.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "34",
-    "y": "54",
+    "x": 34,
+    "y": 54,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "35",
-    "y": "54",
+    "x": 35,
+    "y": 54,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "36",
-    "y": "54",
+    "x": 36,
+    "y": 54,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "37",
-    "y": "54",
+    "x": 37,
+    "y": 54,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Wóz",
     "tip": "",
-    "x": "36",
-    "y": "53",
+    "x": 36,
+    "y": 53,
     "url": "#res/img/npc/nizina-wieśniaków-caravan.gif"
   }
 ]

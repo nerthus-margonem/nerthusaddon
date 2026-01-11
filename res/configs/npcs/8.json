@@ -1,8 +1,8 @@
 [
   {
     "name": "Wisielec",
-    "x": "38",
-    "y": "25",
+    "x": 38,
+    "y": 25,
     "url": "/obrazki/npc/kob/tri2_witch_1a.gif",
     "collision": true,
     "dialog": {
@@ -36,8 +36,8 @@
   },
   {
     "name": "Duch wiedźmy",
-    "x": "4",
-    "y": "45",
+    "x": 4,
+    "y": 45,
     "url": "/obrazki/npc/tru/tri_ghost5.gif",
     "collision": true,
     "date": "30.10-4.11",

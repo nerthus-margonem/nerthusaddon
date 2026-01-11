@@ -2,15 +2,15 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "5",
-    "y": "49",
+    "x": 5,
+    "y": 49,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Nagrobek",
-    "x": "5",
-    "y": "50",
+    "x": 5,
+    "y": 50,
     "url": "#res/img/npc/grave.gif",
     "collision": true,
     "dialog": {

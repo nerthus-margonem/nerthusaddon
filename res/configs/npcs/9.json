@@ -392,16 +392,16 @@
   {
     "name": "Wieszak pomiędzy wozami",
     "tip": "",
-    "x": "21",
-    "y": "22",
+    "x": 21,
+    "y": 22,
     "url": "#res/img/npc/clothes-between-carts.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "26",
-    "y": "23",
+    "x": 26,
+    "y": 23,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
     "date": "21.03-21.11"
@@ -409,67 +409,67 @@
   {
     "name": "Suche drzewo",
     "tip": "",
-    "x": "35",
-    "y": "46",
+    "x": 35,
+    "y": 46,
     "url": "#res/img/npc/tree-dry2.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Drzewo okrągłe góra",
     "tip": "",
-    "x": "34",
-    "y": "47",
+    "x": 34,
+    "y": 47,
     "url": "/obrazki/npc/map/drzew-okrag-gora.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Stos kamieni",
     "tip": "",
-    "x": "38",
-    "y": "88",
+    "x": 38,
+    "y": 88,
     "url": "#res/img/npc/rock-pile.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Orczy trup",
-    "x": "33",
-    "y": "37",
+    "x": 33,
+    "y": 37,
     "url": "/obrazki/npc/map/tri-szkielet1b.gif"
   },
   {
     "name": "Orczy trup",
-    "x": "31",
-    "y": "37",
+    "x": 31,
+    "y": 37,
     "url": "/obrazki/npc/map/tri-kosci5b.gif"
   },
   {
     "name": "Orczy trup",
-    "x": "43",
-    "y": "37",
+    "x": 43,
+    "y": 37,
     "url": "/obrazki/npc/map/tri-kosci5a.gif"
   },
   {
     "name": "Orczy trup",
-    "x": "48",
-    "y": "41",
+    "x": 48,
+    "y": 41,
     "url": "/obrazki/npc/map/tri-kosci4a.gif"
   },
   {
     "name": "Orczy trup",
-    "x": "47",
-    "y": "41",
+    "x": 47,
+    "y": 41,
     "url": "/obrazki/npc/map/tri-szkielet1a.gif"
   },
   {
     "name": "Orczy trup",
-    "x": "50",
-    "y": "35",
+    "x": 50,
+    "y": 35,
     "url": "/obrazki/npc/map/tri-kosci4b.gif"
   },
   {
     "name": "Orczy trup",
-    "x": "32",
-    "y": "37",
+    "x": 32,
+    "y": 37,
     "url": "/obrazki/npc/map/tri-kosci4b.gif"
   },
   {
@@ -481,15 +481,15 @@
   {
     "name": "Dym",
     "tip": "",
-    "x": "59",
-    "y": "11",
+    "x": 59,
+    "y": 11,
     "url": "/obrazki/npc/map/dym-dlugi-praw.gif"
   },
   {
     "name": "Dym",
     "tip": "",
-    "x": "62",
-    "y": "38",
+    "x": 62,
+    "y": 38,
     "url": "/obrazki/npc/map/dym-dlugi-prost2.gif"
   },
   {

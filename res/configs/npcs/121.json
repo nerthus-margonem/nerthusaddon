@@ -2,8 +2,8 @@
   {
     "name": "Konie",
     "tip": "Konie",
-    "x": "6",
-    "y": "2",
+    "x": 6,
+    "y": 2,
     "collision": true,
     "url": "/obrazki/npc/dom/konie-woz2.gif"
   },

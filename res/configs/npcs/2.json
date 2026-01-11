@@ -1,22 +1,22 @@
 [
   {
     "name": "Duch",
-    "x": "53",
-    "y": "17",
+    "x": 53,
+    "y": 17,
     "url": "/obrazki/npc/tru/tri_ghost6.gif",
     "date": "30.10-4.11"
   },
   {
     "name": "Duch",
-    "x": "63",
-    "y": "53",
+    "x": 63,
+    "y": 53,
     "url": "/obrazki/npc/tru/tri_ghost5.gif",
     "date": "30.10-4.11"
   },
   {
     "name": "Duch",
-    "x": "53",
-    "y": "75",
+    "x": 53,
+    "y": 75,
     "url": "/obrazki/npc/tru/tri_ghost4.gif",
     "date": "30.10-4.11"
   },
@@ -29,16 +29,16 @@
   {
     "name": "Część szklarni",
     "tip": "",
-    "x": "35",
-    "y": "17",
+    "x": 35,
+    "y": 17,
     "url": "#res/img/npc/torneg-glasshouse.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "5",
-    "y": "20",
+    "x": 5,
+    "y": 20,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -46,8 +46,8 @@
   {
     "name": "Krzak góra",
     "tip": "",
-    "x": "4",
-    "y": "20",
+    "x": 4,
+    "y": 20,
     "url": "#res/img/npc/krzak-gora.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -55,8 +55,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "44",
-    "y": "62",
+    "x": 44,
+    "y": 62,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -64,8 +64,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "44",
-    "y": "63",
+    "x": 44,
+    "y": 63,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -79,24 +79,24 @@
   {
     "name": "Drzewo góra",
     "tip": "",
-    "x": "37",
-    "y": "63",
+    "x": 37,
+    "y": 63,
     "url": "/obrazki/npc/map/drzew1-gora3.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Choinka góra",
     "tip": "",
-    "x": "54",
-    "y": "61",
+    "x": 54,
+    "y": 61,
     "url": "/obrazki/npc/map/choinka-up.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "75",
-    "y": "62",
+    "x": 75,
+    "y": 62,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -104,8 +104,8 @@
   {
     "name": "Palisada południe",
     "tip": "",
-    "x": "85",
-    "y": "64",
+    "x": 85,
+    "y": 64,
     "url": "#res/img/npc/torneg-palisade-south.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -113,8 +113,8 @@
   {
     "name": "Palisada wschód",
     "tip": "",
-    "x": "93",
-    "y": "17",
+    "x": 93,
+    "y": 17,
     "url": "#res/img/npc/torneg-palisade-east.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -122,8 +122,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "94",
-    "y": "15",
+    "x": 94,
+    "y": 15,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -131,8 +131,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "95",
-    "y": "55",
+    "x": 95,
+    "y": 55,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -140,8 +140,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "95",
-    "y": "54",
+    "x": 95,
+    "y": 54,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -149,8 +149,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "95",
-    "y": "48",
+    "x": 95,
+    "y": 48,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -158,8 +158,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "94",
-    "y": "48",
+    "x": 94,
+    "y": 48,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -167,24 +167,24 @@
   {
     "name": "Wieżyczka góra",
     "tip": "",
-    "x": "51",
-    "y": "62",
+    "x": 51,
+    "y": 62,
     "url": "#res/img/npc/watchtower-top.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Wieżyczka dół",
     "tip": "",
-    "x": "51",
-    "y": "64",
+    "x": 51,
+    "y": 64,
     "url": "#res/img/npc/watchtower-bot.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "50",
-    "y": "63",
+    "x": 50,
+    "y": 63,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
@@ -192,16 +192,16 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "51",
-    "y": "63",
+    "x": 51,
+    "y": 63,
     "url": "/obrazki/npc/obj/cos.gif",
     "date": "21.03-21.11",
     "collision": true
   },
   {
     "name": "Stefan",
-    "x": "51",
-    "y": "44",
+    "x": 51,
+    "y": 44,
     "url": "#res/img/npc/wyslannik.gif",
     "collision": true,
     "dialog": {
@@ -417,8 +417,8 @@
   {
     "name": "sosna duża",
     "tip": "",
-    "x": "51",
-    "y": "11",
+    "x": 51,
+    "y": 11,
     "url": "/obrazki/npc/map/zim-sosn-duz2b.gif",
     "date": "22.11-20.03"
   },
@@ -437,8 +437,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "54",
-    "y": "7",
+    "x": 54,
+    "y": 7,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -458,8 +458,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "45",
-    "y": "6",
+    "x": 45,
+    "y": 6,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -480,8 +480,8 @@
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "33",
-    "y": "9",
+    "x": 33,
+    "y": 9,
     "url": "/obrazki/npc/map/zim-choin-sred1.gif",
     "date": "22.11-20.03"
   },
@@ -513,8 +513,8 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "9",
-    "y": "13",
+    "x": 9,
+    "y": 13,
     "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
     "date": "22.11-20.03"
   },
@@ -555,8 +555,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "12",
-    "y": "21",
+    "x": 12,
+    "y": 21,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -632,8 +632,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "4",
-    "y": "46",
+    "x": 4,
+    "y": 46,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -679,16 +679,16 @@
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "15",
-    "y": "56",
+    "x": 15,
+    "y": 56,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "szare lewe",
     "tip": "",
-    "x": "33",
-    "y": "63",
+    "x": 33,
+    "y": 63,
     "url": "/obrazki/npc/map/zim-szare3-lew2.gif",
     "date": "22.11-20.03"
   },
@@ -715,16 +715,16 @@
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "24",
-    "y": "48",
+    "x": 24,
+    "y": 48,
     "url": "/obrazki/npc/map/zim-sosn-mal2b.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "25",
-    "y": "47",
+    "x": 25,
+    "y": 47,
     "url": "/obrazki/npc/map/zim-sosn-mal2a.gif",
     "date": "22.11-20.03"
   },
@@ -751,8 +751,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "53",
-    "y": "39",
+    "x": 53,
+    "y": 39,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -765,24 +765,24 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "34",
-    "y": "62",
+    "x": 34,
+    "y": 62,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "szare lewe",
     "tip": "",
-    "x": "72",
-    "y": "62",
+    "x": 72,
+    "y": 62,
     "url": "/obrazki/npc/map/zim-szare3-lew3.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "78",
-    "y": "62",
+    "x": 78,
+    "y": 62,
     "url": "/obrazki/npc/map/zim-choin-duza3.gif",
     "date": "22.11-20.03"
   },
@@ -809,8 +809,8 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "58",
-    "y": "56",
+    "x": 58,
+    "y": 56,
     "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
     "date": "22.11-20.03"
   },
@@ -823,8 +823,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "66",
-    "y": "56",
+    "x": 66,
+    "y": 56,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -901,8 +901,8 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "72",
-    "y": "45",
+    "x": 72,
+    "y": 45,
     "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
     "date": "22.11-20.03"
   },
@@ -916,8 +916,8 @@
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "67",
-    "y": "40",
+    "x": 67,
+    "y": 40,
     "url": "/obrazki/npc/map/zim-choin-sred1.gif",
     "date": "22.11-20.03"
   },
@@ -957,8 +957,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "85",
-    "y": "31",
+    "x": 85,
+    "y": 31,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -1424,128 +1424,128 @@
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "67",
-    "y": "6",
+    "x": 67,
+    "y": 6,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "90",
-    "y": "7",
+    "x": 90,
+    "y": 7,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "69",
-    "y": "22",
+    "x": 69,
+    "y": 22,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "88",
-    "y": "59",
+    "x": 88,
+    "y": 59,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "61",
-    "y": "53",
+    "x": 61,
+    "y": 53,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "48",
-    "y": "58",
+    "x": 48,
+    "y": 58,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "36",
-    "y": "43",
+    "x": 36,
+    "y": 43,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "55",
-    "y": "27",
+    "x": 55,
+    "y": 27,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "52",
-    "y": "17",
+    "x": 52,
+    "y": 17,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "46",
-    "y": "8",
+    "x": 46,
+    "y": 8,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "51",
-    "y": "3",
+    "x": 51,
+    "y": 3,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "21",
-    "y": "14",
+    "x": 21,
+    "y": 14,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "28",
-    "y": "18",
+    "x": 28,
+    "y": 18,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "9",
-    "y": "41",
+    "x": 9,
+    "y": 41,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "28",
-    "y": "48",
+    "x": 28,
+    "y": 48,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   },
   {
     "name": "Pochodnia",
     "tip": "",
-    "x": "44",
-    "y": "35",
+    "x": 44,
+    "y": 35,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
   }

@@ -1,8 +1,8 @@
 [
   {
     "name": "Drzewo totemów",
-    "x": "24",
-    "y": "7",
+    "x": 24,
+    "y": 7,
     "url": "/obrazki/npc/map/tri-drzew-tot2.gif",
     "collision": true,
     "dialog": {

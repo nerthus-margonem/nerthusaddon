@@ -1,8 +1,8 @@
 [
   {
     "name": "Kot",
-    "x": "36",
-    "y": "52",
+    "x": 36,
+    "y": 52,
     "url": "/obrazki/npc/dom/staly-bywalec.gif",
     "collision": true,
     "dialog": {
@@ -24,22 +24,22 @@
   },
   {
     "name": "Duch",
-    "x": "38",
-    "y": "57",
+    "x": 38,
+    "y": 57,
     "url": "/obrazki/npc/tru/tri_ghost6.gif",
     "date": "30.10-4.11"
   },
   {
     "name": "Duch",
-    "x": "53",
-    "y": "75",
+    "x": 53,
+    "y": 75,
     "url": "/obrazki/npc/tru/tri_ghost4.gif",
     "date": "30.10-4.11"
   },
   {
     "name": "Kartka porwana przez wiatr",
-    "x": "49",
-    "y": "79",
+    "x": 49,
+    "y": 79,
     "url": "/obrazki/itemy/pap/pap40.gif",
     "collision": true,
     "time": "18-6",
@@ -178,24 +178,24 @@
   {
     "name": "choinka",
     "tip": "",
-    "x": "40",
-    "y": "63",
+    "x": 40,
+    "y": 63,
     "url": "/obrazki/npc/map/zim-sosn-mal2a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka",
     "tip": "",
-    "x": "42",
-    "y": "61",
+    "x": 42,
+    "y": 61,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "suche proste",
     "tip": "",
-    "x": "45",
-    "y": "25",
+    "x": 45,
+    "y": 25,
     "url": "/obrazki/npc/map/zim-prost4a.gif",
     "date": "22.11-20.03"
   },
@@ -285,8 +285,8 @@
   {
     "name": "dach ratusza",
     "tip": "",
-    "x": "34",
-    "y": "3",
+    "x": 34,
+    "y": 3,
     "url": "/obrazki/npc/map/zima-ratusz.gif",
     "date": "22.11-20.03"
   },
@@ -305,8 +305,8 @@
   {
     "name": "szare prawe",
     "tip": "",
-    "x": "32",
-    "y": "81",
+    "x": 32,
+    "y": 81,
     "url": "/obrazki/npc/map/zim-szare3-praw2.gif",
     "date": "22.11-20.03"
   },
@@ -319,8 +319,8 @@
   {
     "name": "sosna duża",
     "tip": "",
-    "x": "17",
-    "y": "83",
+    "x": 17,
+    "y": 83,
     "url": "/obrazki/npc/map/zim-sosn-duz3a.gif",
     "date": "22.11-20.03"
   },
@@ -333,8 +333,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "15",
-    "y": "81",
+    "x": 15,
+    "y": 81,
     "url": "/obrazki/npc/map/zim-choin-duza2.gif",
     "date": "22.11-20.03"
   },
@@ -347,8 +347,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "9",
-    "y": "81",
+    "x": 9,
+    "y": 81,
     "url": "/obrazki/npc/map/zim-szare1-lew1.gif",
     "date": "22.11-20.03"
   },
@@ -367,16 +367,16 @@
   {
     "name": "szare lewe",
     "tip": "",
-    "x": "5",
-    "y": "74",
+    "x": 5,
+    "y": 74,
     "url": "/obrazki/npc/map/zim-szare6-lew1.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "7",
-    "y": "74",
+    "x": 7,
+    "y": 74,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
@@ -408,8 +408,8 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "6",
-    "y": "39",
+    "x": 6,
+    "y": 39,
     "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
     "date": "22.11-20.03"
   },
@@ -422,8 +422,8 @@
   {
     "name": "szare lewe",
     "tip": "",
-    "x": "7",
-    "y": "31",
+    "x": 7,
+    "y": 31,
     "url": "/obrazki/npc/map/zim-szare17-lew1.gif",
     "date": "22.11-20.03"
   },
@@ -455,8 +455,8 @@
   {
     "name": "szare prawe",
     "tip": "",
-    "x": "4",
-    "y": "14",
+    "x": 4,
+    "y": 14,
     "url": "/obrazki/npc/map/zim-szare13-praw1.gif",
     "date": "22.11-20.03"
   },
@@ -469,8 +469,8 @@
   {
     "name": "szare lewe",
     "tip": "",
-    "x": "9",
-    "y": "10",
+    "x": 9,
+    "y": 10,
     "url": "/obrazki/npc/map/zim-szare17-lew1.gif",
     "date": "22.11-20.03"
   },
@@ -483,24 +483,24 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "9",
-    "y": "15",
+    "x": 9,
+    "y": 15,
     "url": "/obrazki/npc/map/zim-choin-mala2b.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "10",
-    "y": "15",
+    "x": 10,
+    "y": 15,
     "url": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "proste",
     "tip": "",
-    "x": "38",
-    "y": "85",
+    "x": 38,
+    "y": 85,
     "url": "/obrazki/npc/map/zim-prost2a.gif",
     "date": "22.11-20.03"
   },
@@ -513,24 +513,24 @@
   {
     "name": "sosna duża",
     "tip": "",
-    "x": "46",
-    "y": "82",
+    "x": 46,
+    "y": 82,
     "url": "/obrazki/npc/map/zim-sosn-duz3a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "48",
-    "y": "82",
+    "x": 48,
+    "y": 82,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "56",
-    "y": "82",
+    "x": 56,
+    "y": 82,
     "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
     "date": "22.11-20.03"
   },
@@ -543,16 +543,16 @@
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "59",
-    "y": "80",
+    "x": 59,
+    "y": 80,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "69",
-    "y": "77",
+    "x": 69,
+    "y": 77,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
@@ -571,8 +571,8 @@
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "68",
-    "y": "60",
+    "x": 68,
+    "y": 60,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
@@ -597,16 +597,16 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "75",
-    "y": "56",
+    "x": 75,
+    "y": 56,
     "url": "/obrazki/npc/map/zim-choin-duza2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "proste",
     "tip": "",
-    "x": "77",
-    "y": "56",
+    "x": 77,
+    "y": 56,
     "url": "/obrazki/npc/map/zim-prost2a.gif",
     "date": "22.11-20.03"
   },
@@ -633,8 +633,8 @@
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "79",
-    "y": "24",
+    "x": 79,
+    "y": 24,
     "url": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "date": "22.11-20.03"
   },
@@ -654,16 +654,16 @@
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "74",
-    "y": "78",
+    "x": 74,
+    "y": 78,
     "url": "/obrazki/npc/map/zim-sosn-mal1a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "proste",
     "tip": "",
-    "x": "82",
-    "y": "76",
+    "x": 82,
+    "y": 76,
     "url": "/obrazki/npc/map/zim-prost1a.gif",
     "date": "22.11-20.03"
   },
@@ -676,24 +676,24 @@
   {
     "name": "proste",
     "tip": "",
-    "x": "79",
-    "y": "80",
+    "x": 79,
+    "y": 80,
     "url": "/obrazki/npc/map/zim-prost3a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "78",
-    "y": "81",
+    "x": 78,
+    "y": 81,
     "url": "/obrazki/npc/map/zim-choin-duza2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "proste",
     "tip": "",
-    "x": "67",
-    "y": "82",
+    "x": 67,
+    "y": 82,
     "url": "/obrazki/npc/map/zim-prost1a.gif",
     "date": "22.11-20.03"
   },
@@ -747,8 +747,8 @@
   {
     "name": "proste",
     "tip": "",
-    "x": "40",
-    "y": "91",
+    "x": 40,
+    "y": 91,
     "url": "/obrazki/npc/map/zim-prost2a.gif",
     "date": "22.11-20.03"
   },
@@ -768,32 +768,32 @@
   {
     "name": "proste",
     "tip": "",
-    "x": "65",
-    "y": "95",
+    "x": 65,
+    "y": 95,
     "url": "/obrazki/npc/map/zim-prost2b.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "70",
-    "y": "95",
+    "x": 70,
+    "y": 95,
     "url": "/obrazki/npc/map/zim-choin-mala1b.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "szare prawe",
     "tip": "",
-    "x": "79",
-    "y": "95",
+    "x": 79,
+    "y": 95,
     "url": "/obrazki/npc/map/zim-szare13-praw1.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "88",
-    "y": "95",
+    "x": 88,
+    "y": 95,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -824,22 +824,22 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "94",
-    "y": "92",
+    "x": 94,
+    "y": 92,
     "url": "/obrazki/npc/map/zim-choin-mala1b.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "Wory do jeziora",
-    "x": "57",
-    "y": "73",
+    "x": 57,
+    "y": 73,
     "url": "#res/img/npc/graffiti1.gif",
     "collision": true
   },
   {
     "name": "Finezjusz Wielkim Poetą Był",
-    "x": "53",
-    "y": "73",
+    "x": 53,
+    "y": 73,
     "url": "#res/img/npc/graffiti2.gif",
     "collision": true
   },
@@ -882,16 +882,16 @@
   },
   {
     "name": "Demony Witamy",
-    "x": "44",
-    "y": "73",
+    "x": 44,
+    "y": 73,
     "url": "/obrazki/npc/mas/nic64x64.gif",
     "collision": false
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "57",
-    "y": "21",
+    "x": 57,
+    "y": 21,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
     "date": "22.11-20.03"
@@ -899,8 +899,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "56",
-    "y": "80",
+    "x": 56,
+    "y": 80,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
     "date": "22.11-20.03"
@@ -908,8 +908,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "56",
-    "y": "81",
+    "x": 56,
+    "y": 81,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
     "date": "22.11-20.03"
@@ -917,8 +917,8 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "52",
-    "y": "75",
+    "x": 52,
+    "y": 75,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true,
     "date": "22.11-20.03"
@@ -969,24 +969,24 @@
   {
     "name": "suche proste",
     "tip": "",
-    "x": "59",
-    "y": "75",
+    "x": 59,
+    "y": 75,
     "url": "/obrazki/npc/map/zim-prost4a.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "sosna duża",
     "tip": "",
-    "x": "60",
-    "y": "73",
+    "x": 60,
+    "y": 73,
     "url": "/obrazki/npc/map/zim-sosn-duz3b.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "52",
-    "y": "78",
+    "x": 52,
+    "y": 78,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },

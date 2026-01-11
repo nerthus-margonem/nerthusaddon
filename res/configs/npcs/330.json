@@ -1,8 +1,8 @@
 [
   {
     "name": "Zarośnięta mogiła",
-    "x": "89",
-    "y": "51",
+    "x": 89,
+    "y": 51,
     "url": "#res/img/npc/grob.gif",
     "dialog": {
       "0": [

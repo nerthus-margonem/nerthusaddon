@@ -1,8 +1,8 @@
 [
   {
     "name": "Mair",
-    "x": "4",
-    "y": "16",
+    "x": 4,
+    "y": 16,
     "url": "#res/img/npc/korano_mair.gif",
     "collision": true,
     "dialog": {

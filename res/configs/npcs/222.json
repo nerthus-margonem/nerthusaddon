@@ -2,16 +2,16 @@
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "14",
-    "y": "42",
+    "x": 14,
+    "y": 42,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "14",
-    "y": "43",
+    "x": 14,
+    "y": 43,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
@@ -33,8 +33,8 @@
   {
     "name": "Góra ławki",
     "tip": "",
-    "x": "28",
-    "y": "54",
+    "x": 28,
+    "y": 54,
     "url": "#res/img/npc/bench-top.gif",
     "collision": false
   },

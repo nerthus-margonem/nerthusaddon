@@ -1,8 +1,8 @@
 [
   {
     "name": "Gabinet Przemian Estetycznych",
-    "x": "70",
-    "y": "23",
+    "x": 70,
+    "y": 23,
     "url": "#res/img/npc/szyld.gif",
     "collision": false
   },
@@ -76,8 +76,8 @@
   {
     "name": "suche drzewo",
     "tip": "",
-    "x": "25",
-    "y": "23",
+    "x": 25,
+    "y": 23,
     "url": "/obrazki/npc/map/zim-szare4-praw2.gif",
     "date": "22.11-20.03"
   },
@@ -90,8 +90,8 @@
   {
     "name": "",
     "tip": "",
-    "x": "24",
-    "y": "24",
+    "x": 24,
+    "y": 24,
     "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
     "collision": false,
     "date": "22.11-20.03"
@@ -99,8 +99,8 @@
   {
     "name": "",
     "tip": "",
-    "x": "26",
-    "y": "26",
+    "x": 26,
+    "y": 26,
     "url": "/obrazki/npc/map/zim-choin-duza3.gif",
     "collision": false,
     "date": "22.11-20.03"
@@ -121,8 +121,8 @@
   {
     "name": "",
     "tip": "",
-    "x": "72",
-    "y": "57",
+    "x": 72,
+    "y": 57,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "collision": false,
     "date": "22.11-20.03"
@@ -130,8 +130,8 @@
   {
     "name": "",
     "tip": "",
-    "x": "79",
-    "y": "59",
+    "x": 79,
+    "y": 59,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "collision": false,
     "date": "22.11-20.03"
@@ -163,8 +163,8 @@
   {
     "name": "dach",
     "tip": "",
-    "x": "55",
-    "y": "34",
+    "x": 55,
+    "y": 34,
     "url": "/obrazki/npc/map/zim-dach-kh.gif",
     "date": "22.11-20.03"
   },
@@ -177,23 +177,23 @@
   {
     "name": "Przejście",
     "tip": "Sierociniec w Karka-han",
-    "x": "29",
-    "y": "38",
+    "x": 29,
+    "y": 38,
     "url": "https://nerthus.margonem.pl/img/exit.png",
     "collision": false
   },
   {
     "name": "Przejście",
     "tip": "Sierociniec w Karka-han",
-    "x": "30",
-    "y": "38",
+    "x": 30,
+    "y": 38,
     "url": "https://nerthus.margonem.pl/img/exit.png",
     "collision": false
   },
   {
     "name": "Ermosowiec",
-    "x": "37",
-    "y": "31",
+    "x": 37,
+    "y": 31,
     "url": "#res/img/npc/ermos-cultist.gif",
     "collision": true,
     "dialog": {

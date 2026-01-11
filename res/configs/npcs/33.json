@@ -1,8 +1,8 @@
 [
   {
     "name": "Statua mistrza areny",
-    "x": "35",
-    "y": "63",
+    "x": 35,
+    "y": 63,
     "url": "#res/img/npc/statue-of-ekikechi.gif",
     "collision": true,
     "dialog": {
@@ -18,8 +18,8 @@
   },
   {
     "name": "Statua mistrza areny",
-    "x": "36",
-    "y": "63",
+    "x": 36,
+    "y": 63,
     "url": "#res/img/npc/statue-of-chatelet-grass.gif",
     "collision": true,
     "date": "21.03-21.11",
@@ -36,8 +36,8 @@
   },
   {
     "name": "Statua mistrza areny",
-    "x": "36",
-    "y": "63",
+    "x": 36,
+    "y": 63,
     "url": "#res/img/npc/statue-of-chatelet.gif",
     "collision": true,
     "date": "22.11-20.03",
@@ -54,8 +54,8 @@
   },
   {
     "name": "Statua mistrza areny",
-    "x": "37",
-    "y": "63",
+    "x": 37,
+    "y": 63,
     "url": "#res/img/npc/statue-of-petronelia.gif",
     "collision": true,
     "dialog": {
@@ -86,8 +86,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "42",
-    "y": "50",
+    "x": 42,
+    "y": 50,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -167,8 +167,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "13",
-    "y": "22",
+    "x": 13,
+    "y": 22,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -201,8 +201,8 @@
   {
     "name": "suche proste",
     "tip": "",
-    "x": "13",
-    "y": "8",
+    "x": 13,
+    "y": 8,
     "url": "/obrazki/npc/map/zim-prost2a.gif",
     "date": "22.11-20.03"
   },
@@ -215,8 +215,8 @@
   {
     "name": "szare prawe",
     "tip": "",
-    "x": "11",
-    "y": "11",
+    "x": 11,
+    "y": 11,
     "url": "/obrazki/npc/map/zim-szare1-praw1.gif",
     "date": "22.11-20.03"
   },
@@ -236,8 +236,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "4",
-    "y": "15",
+    "x": 4,
+    "y": 15,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -303,16 +303,16 @@
   {
     "name": "choinka średnia",
     "tip": "",
-    "x": "32",
-    "y": "18",
+    "x": 32,
+    "y": 18,
     "url": "/obrazki/npc/map/zim-choin-sred2.gif",
     "date": "22.11-20.03"
   },
   {
     "name": "szare lewe",
     "tip": "",
-    "x": "32",
-    "y": "17",
+    "x": 32,
+    "y": 17,
     "url": "/obrazki/npc/map/zim-szare17-lew2.gif",
     "date": "22.11-20.03"
   },
@@ -388,8 +388,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "48",
-    "y": "65",
+    "x": 48,
+    "y": 65,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -402,8 +402,8 @@
   {
     "name": "sosna mała",
     "tip": "",
-    "x": "44",
-    "y": "68",
+    "x": 44,
+    "y": 68,
     "url": "/obrazki/npc/map/zim-sosn-mal2b.gif",
     "date": "22.11-20.03"
   },
@@ -478,8 +478,8 @@
   {
     "name": "choinka mała",
     "tip": "",
-    "x": "22",
-    "y": "74",
+    "x": 22,
+    "y": 74,
     "url": "/obrazki/npc/map/zim-choin-mala1a.gif",
     "date": "22.11-20.03"
   },
@@ -492,8 +492,8 @@
   {
     "name": "sosna duża",
     "tip": "",
-    "x": "25",
-    "y": "80",
+    "x": 25,
+    "y": 80,
     "url": "/obrazki/npc/map/zim-sosn-duz1a.gif",
     "date": "22.11-20.03"
   },
@@ -513,8 +513,8 @@
   {
     "name": "suche proste",
     "tip": "",
-    "x": "29",
-    "y": "70",
+    "x": 29,
+    "y": 70,
     "url": "/obrazki/npc/map/zim-prost1a.gif",
     "date": "22.11-20.03"
   },
@@ -569,8 +569,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "52",
-    "y": "83",
+    "x": 52,
+    "y": 83,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -590,8 +590,8 @@
   {
     "name": "suche proste",
     "tip": "",
-    "x": "60",
-    "y": "78",
+    "x": 60,
+    "y": 78,
     "url": "/obrazki/npc/map/zim-prost2a.gif",
     "date": "22.11-20.03"
   },
@@ -611,8 +611,8 @@
   {
     "name": "choinka duża",
     "tip": "",
-    "x": "36",
-    "y": "80",
+    "x": 36,
+    "y": 80,
     "url": "/obrazki/npc/map/zim-choin-duza1.gif",
     "date": "22.11-20.03"
   },
@@ -688,8 +688,8 @@
   {
     "name": "zima domek",
     "tip": "",
-    "x": "11",
-    "y": "61",
+    "x": 11,
+    "y": 61,
     "url": "/obrazki/npc/map/zima-domek.gif",
     "date": "22.11-20.03"
   },
@@ -702,8 +702,8 @@
   {
     "name": "zima domek",
     "tip": "",
-    "x": "35",
-    "y": "73",
+    "x": 35,
+    "y": 73,
     "url": "/obrazki/npc/map/zima-domek.gif",
     "date": "22.11-20.03"
   },
@@ -798,8 +798,8 @@
   },
   {
     "name": "Ermosowiec",
-    "x": "29",
-    "y": "47",
+    "x": 29,
+    "y": 47,
     "url": "#res/img/npc/ermos-cultist.gif",
     "collision": true,
     "dialog": {

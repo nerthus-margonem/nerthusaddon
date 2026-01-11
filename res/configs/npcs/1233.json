@@ -22,39 +22,39 @@
   {
     "name": "Skała w wodzie",
     "tip": "",
-    "x": "27",
-    "y": "68",
+    "x": 27,
+    "y": 68,
     "url": "#res/img/npc/props/water-rock.gif",
     "collision": false
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "26",
-    "y": "68",
+    "x": 26,
+    "y": 68,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Stocznia",
-    "x": "25",
-    "y": "62",
+    "x": 25,
+    "y": 62,
     "url": "#res/img/npc/props/shipyard.gif",
     "collision": false
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "23",
-    "y": "61",
+    "x": 23,
+    "y": 61,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
   {
     "name": "Kolizja",
     "tip": "",
-    "x": "24",
-    "y": "61",
+    "x": 24,
+    "y": 61,
     "url": "/obrazki/npc/obj/cos.gif",
     "collision": true
   },
@@ -88,20 +88,20 @@
   {
     "name": "Zatopiony żagiel",
     "tip": "",
-    "x": "66",
-    "y": "70",
+    "x": 66,
+    "y": 70,
     "url": "/obrazki/npc/oev/zatop-zagiel.gif"
   },
   {
     "name": "Carriera Barona",
-    "x": "66",
-    "y": "77",
+    "x": 66,
+    "y": 77,
     "url": "/obrazki/npc/mas/nic64x64.gif"
   },
   {
     "name": "Carriera Barona",
-    "x": "66",
-    "y": "62",
+    "x": 66,
+    "y": 62,
     "url": "/obrazki/npc/mas/cos.gif"
   }
 ]

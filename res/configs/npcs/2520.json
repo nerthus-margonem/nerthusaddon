@@ -1,8 +1,8 @@
 [
   {
     "name": "Sukienka",
-    "x": "43",
-    "y": "7",
+    "x": 43,
+    "y": 7,
     "url": "/obrazki/npc/mas/teatr05.gif",
     "collision": true,
     "dialog": {

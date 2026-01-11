@@ -21,12 +21,13 @@ function checkNpc(npc) {
       expect(npc.name).to.be.a("string");
 
       expect(npc).to.have.property("x");
-      expect(npc.x).to.match(/^\d+$/);
+      expect(npc.x).to.be.a("number");
 
       expect(npc).to.have.property("y");
-      expect(npc.y).to.match(/^\d+$/);
+      expect(npc.y).to.be.a("number");
 
       expect(npc).to.have.property("url");
+      expect(npc.url).to.be.a("string");
     }
 
     if (npc.time)

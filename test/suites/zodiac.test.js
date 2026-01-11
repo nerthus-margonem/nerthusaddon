@@ -1,4 +1,4 @@
-import * as zodiac from "src/app/zodiac.js";
+import * as zodiac from "../../src/app/zodiac.js";
 import { describe, expect, it } from "vitest";
 
 describe("zodiac", () => {

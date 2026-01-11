@@ -3,7 +3,7 @@ import { JSDOM } from "jsdom";
 
 export default {
   name: "jquery",
-  transformMode: "ssr",
+  viteEnvironment: "ssr",
   async setup() {
     const testHTML = `
         <!DOCTYPE html>

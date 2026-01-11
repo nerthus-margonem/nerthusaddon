@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "@tsconfig/recommended/tsconfig.json",
+    "@tsconfig/strictest/tsconfig.json"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "importHelpers": true,
+    "incremental": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noImplicitAny": true,
+    "outDir": "./dist/",
+    "removeComments": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "ES2024"
+  }
+}

@@ -1,5 +1,5 @@
-const sinon = require("sinon");
-const expect = require("expect.js");
+import expect from "expect.js";
+import sinon from "sinon";
 
 describe("maps", function () {
   let $mapImage;

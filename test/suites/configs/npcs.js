@@ -1,6 +1,6 @@
-const expect = require("expect.js");
-const path = require("path");
-const fs = require("fs");
+import expect from "expect.js";
+import fs from "node:fs";
+import path from "node:path";
 
 const NPC_DIR = "./res/configs/npcs";
 

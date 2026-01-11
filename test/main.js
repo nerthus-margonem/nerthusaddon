@@ -1,3 +1,6 @@
+import jQuery from "jquery";
+import { JSDOM } from "jsdom";
+
 function init() {
   const testHTML = `
         <!DOCTYPE html>
@@ -10,7 +13,6 @@ function init() {
         </body>
         </html>
     `;
-  const { JSDOM } = require("jsdom");
   const jsdom = new JSDOM(testHTML);
 
   // Set window and document from jsdom
@@ -21,7 +23,7 @@ function init() {
   global.window = window;
   global.document = document;
 
-  global.$ = global.jQuery = require("jquery");
+  global.$ = global.jQuery = jQuery;
 
   global.Image = function () {
     this.src = "";
@@ -31,5 +33,8 @@ function init() {
 
 init();
 
-const context = require.context("./suites/configs", true, /\.js$/);
+const context = import.meta.webpackContext("./suites/configs", {
+  recursive: true,
+  regExp: /\.js$/,
+});
 context.keys().forEach(context);

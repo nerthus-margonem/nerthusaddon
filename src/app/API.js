@@ -1,8 +1,4 @@
-import {
-  addToMapChangelist,
-  applyCurrentMapChange,
-  removeFromMapChangelist,
-} from "./maps";
+import { mapManager } from "./map-manager.ts";
 import { turnLightsOn } from "./night/lights";
 import { applyCurrentNight, changeLight } from "./night/night";
 import { customNpcs, loadNpcsFromFile } from "./npc/npc";
@@ -54,9 +50,9 @@ export function initAPI() {
       loadNpcsFromFile,
     },
     map: {
-      addToMapChangelist,
-      removeFromMapChangelist,
-      applyCurrentMapChange,
+      addToMapChangelist: mapManager.addToMapChangelist,
+      removeFromMapChangelist: mapManager.removeFromMapChangelist,
+      applyCurrentMapChange: mapManager.applyCurrentMapChange,
     },
   };
   window.nerthus.addCallbackToEvent("loaded", function () {

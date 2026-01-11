@@ -9,7 +9,7 @@ import {
 import { initTips } from "./app/game-integration/tips";
 import { addBasicStyles } from "./app/interface/css-manager";
 import { initPanel } from "./app/interface/panel";
-import { initMapsManager } from "./app/maps";
+import { mapManager } from "./app/map-manager.ts";
 import { initNightManager } from "./app/night/night";
 import { initNpcManager } from "./app/npc/npc";
 import { loadSettings } from "./app/settings";
@@ -37,7 +37,7 @@ function start() {
 
   initiateGameIntegrationLoaders();
 
-  initMapsManager();
+  mapManager.init();
   initWaterManager();
 
   initNpcManager();

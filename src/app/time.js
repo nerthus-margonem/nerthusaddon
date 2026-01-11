@@ -7,6 +7,9 @@ export const SEASON = Object.freeze({
 
 //TODO implement this file in other places
 
+/**
+ * @return {"spring"|"summer"|"autumn"|"winter"}
+ */
 export function getCurrentSeason() {
   function makeStartDate(day, month) {
     const date = new Date();

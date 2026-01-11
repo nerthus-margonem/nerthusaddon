@@ -1,8 +1,4 @@
-import {
-  addToMapChangelist,
-  applyCurrentMapChange,
-  removeFromMapChangelist,
-} from "../maps";
+import { mapManager } from "../map-manager.ts";
 import { applyCurrentNight, setForcedParameters } from "../night/night";
 import { Npc } from "../npc/npc";
 import { addNpcToList } from "../npc/npc-actions/add";
@@ -179,22 +175,22 @@ function map(msg) {
   const mapUrl = sanitizeText(cmd[0]);
   const mapId = parseInt(cmd[1]);
   if (mapId) {
-    addToMapChangelist(mapUrl, 2, mapId);
+    mapManager.addToMapChangelist(mapUrl, 2, mapId);
   } else if (BLOCKED_CHANNELS.includes(msg.channel)) {
     // Do not change everyone's map on global or trade
     return;
   } else {
-    addToMapChangelist(mapUrl, 1);
+    mapManager.addToMapChangelist(mapUrl, 1);
   }
-  applyCurrentMapChange();
+  mapManager.applyCurrentMapChange();
 }
 
 function resetMap(msg) {
   msg.style = "nerthus-command";
   const mapId = parseInt(msg.text.split(" ").slice(1).join(" "));
 
-  removeFromMapChangelist(2, mapId);
-  applyCurrentMapChange();
+  mapManager.removeFromMapChangelist(mapId, 2);
+  mapManager.applyCurrentMapChange();
 
   return false;
 }

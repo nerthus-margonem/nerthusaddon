@@ -7,7 +7,7 @@ export default {
   async setup() {
     const testHTML = `
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
         <head>
             <title></title>
         </head>
@@ -21,6 +21,9 @@ export default {
 
     globalThis.FILE_PREFIX = "";
     globalThis.INTERFACE = "SI";
+
+    /* SI global variables */
+    globalThis.map = { id: 1 };
 
     return {
       teardown() {

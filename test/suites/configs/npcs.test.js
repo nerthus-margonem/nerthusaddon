@@ -1,6 +1,6 @@
-import expect from "expect.js";
 import fs from "node:fs";
 import path from "node:path";
+import { describe, expect, it } from "vitest";
 
 const NPC_DIR = "./res/configs/npcs";
 
@@ -32,7 +32,7 @@ function checkNpc(npc) {
 
     if (npc.time)
       expect(npc.time).to.match(/^[0-9]+(:[0-9]+)?-[0-9]+(:[0-9]+)?$/);
-    if (npc.days) expect(npc.days).to.be.an(typeof []);
+    if (npc.days) expect(npc.days).to.be.an("array");
     if (npc.date)
       expect(npc.date).to.match(
         /^[0-9]+(\.[0-9]+){0,2}-[0-9]+(\.[0-9]+){0,2}$/,
@@ -46,7 +46,7 @@ function checkNpc(npc) {
 }
 
 function checkDialog(dialog) {
-  expect(dialog).to.be.a(typeof {});
+  expect(dialog).to.be.a("object");
   expect(dialog).to.have.property("0");
   for (const i in dialog) {
     checkDialogSet(dialog[i]);
@@ -54,7 +54,7 @@ function checkDialog(dialog) {
 }
 
 function checkDialogSet(dialog) {
-  expect(dialog).to.be.an(typeof []);
+  expect(dialog).to.be.an("array");
   expect(dialog.length).to.be.greaterThan(1);
   for (const i in dialog) {
     expect(dialog[i]).to.be.a(typeof "");
@@ -71,7 +71,7 @@ function checkDialogSet(dialog) {
 function checkFileWithNpcs(filename) {
   const file = fs.readFileSync(path.join(NPC_DIR, filename));
   const npcs = JSON.parse(file.toString());
-  expect(npcs).to.be.an(typeof []);
+  expect(npcs).to.be.an("array");
   npcs.forEach((npc) => checkNpc(npc));
 }
 

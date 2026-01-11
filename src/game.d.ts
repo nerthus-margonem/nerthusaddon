@@ -15,11 +15,13 @@
  * as only the parts used in the addon are described.
  */
 
+declare const INTERFACE: "NI" | "SI";
+
 /**
  * Interface that the game can take into Engine.renderer.add()
  * Used to render custom objects on the map.
  */
-export interface Drawable {
+declare interface Drawable {
   rx: number;
   ry: number;
 
@@ -35,16 +37,134 @@ export interface Drawable {
 /**
  * Engine global variable available in the new interface.
  */
-export const Engine: {
+declare const Engine: {
   apiData: {
     CALL_DRAW_ADD_TO_RENDERER: "call_draw_add_to_renderer";
   };
+  chatController: {
+    addMessage(data: {
+      authorBusinessCard: {
+        getNick(): unknown;
+      };
+      channel: unknown;
+      id: number | undefined;
+      receiverBusinessCard: unknown;
+      text: string;
+      town: boolean;
+      ts: number;
+      style: string | null;
+    }): void;
+  };
+  communication: {
+    dispatcher: {
+      on_d(): unknown;
+    };
+  };
+  dialogue: {
+    finish(): unknown;
+  };
+  emotions: {
+    removeAllFromSourceId(): unknown;
+  };
+  floatForegroundManager: {
+    updateData(): unknown;
+  };
+  globalAddons: {
+    setVisibleOfTurnOnOffAddonButton(): unknown;
+  };
+  hero: {
+    createStrTip(): unknown;
+    d: {
+      lvl: number;
+      nick: string;
+    };
+    updateCollider(): unknown;
+  };
+  interface: {
+    afterUnlock(): unknown;
+  };
+  interfaceStart: boolean;
+  items: {
+    getItemById(): unknown;
+  };
+  lock: {
+    add(): unknown;
+    remove(): unknown;
+  };
+  map: {
+    col: {
+      check(): unknown;
+      set(): unknown;
+      setStaticColsCache(): unknown;
+      unset(): unknown;
+    };
+    d: {
+      id: number;
+      x: unknown;
+      y: unknown;
+    };
+    drawImage(ctx: CanvasRenderingContext2D): unknown;
+    gateways: {
+      townnames: unknown;
+    };
+    height: number;
+    hideLoaderSplash(): unknown;
+    offset: [number, number];
+    water: unknown;
+    width: number;
+  };
+  miniMapController: {
+    handHeldMiniMapController: {
+      updateNpc(): unknown;
+    };
+  };
+  npcIconManager: {
+    updateData(): unknown;
+  };
+  npcTplManager: {
+    updateData(): unknown;
+  };
+  npcs: {
+    check(): unknown;
+    getById(): unknown;
+    getDrawableList(): unknown;
+    getTip(): unknown;
+    removeONe(): unknown;
+    updateData(): unknown;
+  };
+  others: {
+    getDrawableList(): unknown;
+  };
   renderer: {
     add(...drawable: Drawable[]): void;
+  };
+  serverStorage: {
+    get(): unknown;
+  };
+  weather: {
+    createObjects(): unknown;
+    mapSize: unknown;
+    onClear(): unknown;
+    setMapSize(): unknown;
+  };
+  widgetManager: {
+    addKeyToDefaultWidgetSet(): unknown;
+    createOneWidget(): unknown;
+    findPositionToWidgetsWithoutFreeSlot(): unknown;
+    getDefaultWidgetSet(): unknown;
+    getPathToHotWidgetVersion(): unknown;
+    setEnableDraggingButtonsWidget(): unknown;
   };
 };
 
 /**
  * Engine global variable available in the old interface.
  */
-export const g: {};
+declare const g: {
+  chatController: {
+    addMessage(): unknown;
+  };
+};
+declare const map: {
+  id: number;
+};

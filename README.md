@@ -54,7 +54,7 @@ you only need to type `npm run dev-start` and you will be all set.
 
 - Make sure you have installed dependencies (run `npm i`)
 - Type `npm run test` in project's root directory
-- Tests use [mocha](https://mochajs.org/) and [expect](https://github.com/Automattic/expect.js/)
+- Tests use [Vitest](https://vitest.dev/)
 
 ##### How to introduce changes to game?
 

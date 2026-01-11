@@ -1,4 +1,4 @@
-![Tests Status](https://github.com/nerthus-margonem/nerthusaddon/workflows/Tests/badge.svg?branch=main)
+[![Tests Status](https://github.com/nerthus-margonem/nerthusaddon/actions/workflows/tests.yml/badge.svg)](https://github.com/nerthus-margonem/nerthusaddon/actions/workflows/tests.yml)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 # Nerthus Addon
@@ -15,7 +15,9 @@ Addon for Nerthus server in game [Margonem](http://www.margonem.pl/) adding many
 ##### Both game interfaces (alternative):
 
 - Install [Tampermonkey](https://www.tampermonkey.net/) or similar browser extension that allows for external scripts.
-- Head to [install page](https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@production/dist/nerthus-addon.user.js) and click `install`.
+- Head
+  to [install page](https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@production/dist/nerthus-addon.user.js) and
+  click `install`.
 - Installation should work regardless of interface type.
 - If you're using this installation method with an old game interface on Nerthus server,
   type `gadblock on` in the game's console to disallow it from loading a basic version.
@@ -25,7 +27,8 @@ Addon for Nerthus server in game [Margonem](http://www.margonem.pl/) adding many
 
 ##### If you want to test addon outside of Nerthus server:
 
-- While in game, type in a console: `$.getScript('https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@production/dist/nerthus-addon.user.js')`
+- While in game, type in a console:
+  `$.getScript('https://cdn.jsdelivr.net/gh/nerthus-margonem/nerthusaddon@production/dist/nerthus-addon.user.js')`
 - Addon should now load and work until the page reload (new interface) or map change (old interface)
 
 ## FAQ
@@ -56,7 +59,8 @@ you only need to type `npm run dev-start` and you will be all set.
 ##### How to introduce changes to game?
 
 - Push source changes to `main` branch.
-- Create new release using [releases interface](https://github.com/nerthus-margonem/nerthusaddon/releases). Try to use semantic versioning.
+- Create new release using [releases interface](https://github.com/nerthus-margonem/nerthusaddon/releases). Try to use
+  semantic versioning.
 - GitHub Actions should now automatically update the production branch with your build.
 - Changes to [userscript](src/userscript.js) require manual update on [server command site](http://serwery.margonem.pl/)
 

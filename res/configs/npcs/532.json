@@ -1,0 +1,189 @@
+[
+  {
+    "type": "delete",
+    "id": 53494,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 53491,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 53486,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 53488,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 244088,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 244089,
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 56635,
+    "newUrl": "/obrazki/npc/obj/cos.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": "14",
+    "y": "6",
+    "url": "#res/img/npc/props/sofa-back-red-full.gif",
+    "collision": true
+  },
+  {
+    "name": "Krzak Doniczkowy",
+    "tip": "",
+    "x": "13",
+    "y": "12",
+    "url": "#res/img/npc/props/potted-bush-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Krzak Doniczkowy",
+    "tip": "",
+    "x": "18",
+    "y": "12",
+    "url": "#res/img/npc/props/potted-bush-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Drewniane Skrzynki",
+    "tip": "",
+    "x": "8",
+    "y": "13",
+    "url": "#res/img/npc/wooden-boxes-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Szafa",
+    "tip": "",
+    "x": "6",
+    "y": "13",
+    "url": "#res/img/npc/props/wardrobe-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Duża Szafka",
+    "tip": "",
+    "x": "22",
+    "y": "13",
+    "url": "#res/img/npc/props/large-cabinet-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Stojąca Lampa z Kloszem",
+    "tip": "",
+    "x": "12",
+    "y": "5",
+    "url": "#res/img/npc/props/standing-lamp-with-shade.gif",
+    "collision": true
+  },
+  {
+    "name": "Kwiaty na Szafce",
+    "tip": "",
+    "x": "5",
+    "y": "9",
+    "url": "#res/img/npc/props/flowers-on-cabinet.gif",
+    "collision": false
+  },
+  {
+    "name": "Skrzynia",
+    "tip": "",
+    "x": "7",
+    "y": "4",
+    "url": "#res/img/npc/props/chest-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Skrzynia",
+    "tip": "",
+    "x": "1",
+    "y": "12",
+    "url": "#res/img/npc/props/ornate-chest-side-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Kurtyny",
+    "tip": "",
+    "x": "2",
+    "y": "11",
+    "url": "#res/img/npc/map-specific/werbin-apartament-2/red-curtains.gif",
+    "collision": false
+  },
+  {
+    "name": "Cukrowy Ojciec",
+    "x": "2",
+    "y": "3",
+    "url": "/obrazki/npc/mas/nic64x64.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "5",
+    "y": "10",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "13",
+    "y": "13",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "18",
+    "y": "13",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "13",
+    "y": "6",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "14",
+    "y": "7",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "14",
+    "y": "8",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": "26",
+    "y": "3",
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  }
+]

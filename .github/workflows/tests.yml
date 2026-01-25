@@ -19,3 +19,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm clean-install
       - run: npm run test
+        env:
+          DIST_URL: ${{ vars.DIST_URL }}

@@ -1548,5 +1548,111 @@
     "y": 35,
     "url": "/obrazki/npc/map/pochodnia-ogien.gif",
     "date": "21.03-21.11"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": 30,
+    "y": 18,
+    "url": "/obrazki/npc/map/zim-choin-duza2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare lewe",
+    "tip": "",
+    "x": 41,
+    "y": 16,
+    "url": "/obrazki/npc/map/zim-szare3-lew3.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "choinka duża",
+    "tip": "",
+    "x": 39,
+    "y": 15,
+    "url": "/obrazki/npc/map/zim-choin-duza3.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "szare lewe",
+    "tip": "",
+    "x": 36,
+    "y": 15,
+    "url": "/obrazki/npc/map/zim-szare3-lew2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Góra szklarni",
+    "tip": "",
+    "x": 36,
+    "y": 16,
+    "url": "#res/img/npc/map-specific/torneg/greenhouse-top-sideways.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Zimowe drzewo w Torneg 1",
+    "tip": "",
+    "x": 32,
+    "y": 17,
+    "url": "#res/img/npc/map-specific/torneg/winter-1.gif",
+    "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 31,
+    "y": 17,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Góra szklarni",
+    "tip": "",
+    "x": 2,
+    "y": 20,
+    "url": "#res/img/npc/map-specific/torneg/greenhouse-top.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "Palisada",
+    "tip": "",
+    "x": 95,
+    "y": 54,
+    "url": "#res/img/npc/map-specific/torneg/winter-palisade.gif",
+    "collision": true,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 255147,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 255178,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 255179,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 255180,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 255150,
+    "newUrl": "/obrazki/npc/map/zim-choin-duza1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
   }
 ]

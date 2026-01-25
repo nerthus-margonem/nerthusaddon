@@ -1,4 +1,5 @@
 import permissions from "../../res/configs/permissions.yaml";
+
 /*
     0: normal player
     1: narrator

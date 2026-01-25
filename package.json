@@ -1,6 +1,6 @@
 {
   "name": "nerthusaddon",
-  "version": "11.2.0",
+  "version": "13.0.1",
   "description": "Addon for the Nerthus server in game [Margonem](https://www.margonem.pl/)",
   "main": "/src/main.js",
   "directories": {
@@ -21,7 +21,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@types/node": "^24.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/node": "^24.10.9",
     "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
@@ -47,6 +48,11 @@
     "test-code-quality": "eslint src/*",
     "test-coverage": "INTERFACE=SI vitest run --coverage",
     "update-version": "git rev-parse --short HEAD > version"
+  },
+  "prettier": {
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ]
   },
   "repository": {
     "type": "git",

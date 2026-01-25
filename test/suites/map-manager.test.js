@@ -1,7 +1,7 @@
-import sinon from "sinon";
-import { describe, expect, it, beforeEach } from "vitest";
 import { MapManager } from "../../src/app/map-manager.js";
 import { resolveUrl } from "../../src/app/utility-functions";
+import sinon from "sinon";
+import { describe, expect, it, beforeEach } from "vitest";
 
 describe("maps", function () {
   describe("applyCurrentMapChange()", function () {

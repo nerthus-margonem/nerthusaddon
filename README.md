@@ -39,20 +39,20 @@ Addon for Nerthus server in game [Margonem](http://www.margonem.pl/) adding many
 
 ##### How to set up a local environment for development?
 
-- Make sure you have the latest LTS NodeJS installed
+- Make sure you have the latest LTS Node.js installed
 - Clone the repository: `git clone https://github.com/nerthus-margonem/nerthusaddon.git`
 - Go inside the created directory: `cd nerthusaddon`
 - Install the dependencies: `npm clean-install`
-- Run setup: `npm run dev-setup`
-- Start development server: `npm run dev-start`
+- Run setup: `npm run setup`
+- Start development server: `npm run dev`
 - Install userscript by navigating the browser to http://localhost:8080/nerthus-addon.user.js and clicking install
 
 Next time you want to start the server and live reload,
-you only need to type `npm run dev-start` and you will be all set.
+you only need to type `npm run dev` and you will be all set.
 
 ##### How to run tests?
 
-- Make sure you have installed dependencies (run `npm i`)
+- Make sure you have installed dependencies (run `npm clean-install`)
 - Type `npm run test` in project's root directory
 - Tests use [Vitest](https://vitest.dev/)
 

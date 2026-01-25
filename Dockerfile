@@ -65,4 +65,4 @@ RUN --mount=type=bind,source=package.json,target=/app/package.json \
 COPY --chown=node:node . ./
 
 RUN echo 'local' > version
-CMD ["npm", "run", "dev-start"]
+CMD ["npm", "run", "dev"]

@@ -44,7 +44,7 @@ export function initZodiac() {
   $widget
     .children(".nerthus__widget-image")
     .css("cursor", "pointer")
-    .click(function () {
+    .on("click", function () {
       const $desc = $widget.children(".nerthus__widget-desc");
       if ($desc.text() === zodiacDescriptions[currentSign][0]) {
         $desc.text(zodiacDescriptions[currentSign][1]);

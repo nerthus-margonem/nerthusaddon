@@ -69,7 +69,7 @@ function startEditingLights() {
     ".nerthus__night-light {pointer-events: all !important}",
   );
 
-  $("#ground").dblclick(removeTargetLight);
+  $("#ground").on("dblclick", removeTargetLight);
   $(".nerthus__night-light").draggable();
 }
 
@@ -79,7 +79,7 @@ function stopEditingLights() {
   removeCustomStyle("light-pointer-events");
   applyCurrentNight();
 
-  $("#ground").unbind("dblclick", removeTargetLight);
+  $("#ground").off("dblclick", removeTargetLight);
   $(".nerthus__night-light").draggable("disable");
 }
 
@@ -169,7 +169,7 @@ export function initLightManager() {
   const $toggleLights = $lightManager.find(
     "#nerthus-light-manager-toggle-lights",
   );
-  $toggleLights.click(toggleLights);
+  $toggleLights.on("click", toggleLights);
   if (lightsOn) {
     $toggleLights.addClass("blue");
   }
@@ -177,14 +177,14 @@ export function initLightManager() {
   const $toggleMouseMove = $lightManager.find(
     "#nerthus-light-manager-toggle-mousemove",
   );
-  $toggleMouseMove.click(toggleMouseMove);
+  $toggleMouseMove.on("click", toggleMouseMove);
   if (g.settingsOptions.isMouseHeroWalkOn()) {
     $toggleMouseMove.addClass("blue");
   }
 
   $lightManager
     .find("#nerthus-light-manager-delete-all")
-    .click(deleteAllLights);
+    .on("click", deleteAllLights);
 
   addCustomStyle(
     "light-border",
@@ -193,27 +193,27 @@ export function initLightManager() {
   $lightManager
     .find("#nerthus-light-manager-toggle-border")
     .addClass("blue")
-    .click(toggleBorder);
+    .on("click", toggleBorder);
 
-  $lightManager.find("#nerthus-light-manager-save").click(downloadLog);
+  $lightManager.find("#nerthus-light-manager-save").on("click", downloadLog);
 
   $lightManager
     .find("#nerthus-light-manager-add-s")
-    .click(addLight.bind(null, "S"));
+    .on("click", addLight.bind(null, "S"));
   $lightManager
     .find("#nerthus-light-manager-add-m")
-    .click(addLight.bind(null, "M"));
+    .on("click", addLight.bind(null, "M"));
   $lightManager
     .find("#nerthus-light-manager-add-l")
-    .click(addLight.bind(null, "L"));
+    .on("click", addLight.bind(null, "L"));
   $lightManager
     .find("#nerthus-light-manager-add-xl")
-    .click(addLight.bind(null, "XL"));
+    .on("click", addLight.bind(null, "XL"));
 
   addDraggable($lightManager);
   $lightManager.appendTo("#centerbox2").css("position", "absolute");
 
-  $lightManager.find(".close-button").click(function () {
+  $lightManager.find(".close-button").on("click", function () {
     $lightManager.remove();
     stopEditingLights();
   });

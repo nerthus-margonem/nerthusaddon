@@ -166,7 +166,7 @@ function createPanel(data, hidden) {
 
   $elm
     .find("#settings-button")
-    .click(function () {
+    .on("click", function () {
       $defaultPanel.toggleClass("hidden");
       $settingsPanel.toggleClass("hidden");
       const $this = $(this);
@@ -197,18 +197,18 @@ function createPanel(data, hidden) {
     })
     .end()
     .find(".close-button, .cancel-button, .ok-button")
-    .click(function () {
+    .on("click", function () {
       closePanel($elm);
     })
     .end()
     .find(".save-button")
-    .click(function () {
+    .on("click", function () {
       saveSettings();
       closePanel($elm);
     })
     .end()
     .find("#light-manager-button")
-    .click(function () {
+    .on("click", function () {
       initLightManager();
       closePanel($elm);
     })
@@ -319,10 +319,10 @@ export function addSettingToPanel(settingName, translation, tip, callback) {
           </span>
       </label>
     `)
-    .change(function (e) {
+    .on("change", function (e) {
       saveSetting(settingName, e.target.checked);
     })
-    .change(callback);
+    .on("change", callback);
 
   settingsList.push($setting);
 }
@@ -368,8 +368,8 @@ export function initPanel() {
     };
   } else {
     $(constructElement.icon())
-      .hover(preloadPanel.bind(this))
-      .click(togglePanel.bind(this))
+      .on("mouseover", preloadPanel.bind(this))
+      .on("click", togglePanel.bind(this))
       .appendTo("#panel");
   }
 }

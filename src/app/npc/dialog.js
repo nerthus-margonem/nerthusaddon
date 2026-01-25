@@ -96,7 +96,7 @@ function parseInnerDialog(npcMessage, playerReplies) {
 
 function addEventToAnswer(answer, $dialWin, replies, index, id) {
   if (replies[index])
-    $(answer).click(function () {
+    $(answer).on("click", function () {
       if (replies[index].to === "END") {
         closeDialog();
       } else {
@@ -159,7 +159,7 @@ function composeReply(reply) {
     .addClass(reply.icon)
     .append('<div class="' + reply.icon + '">')
     .append(reply.text)
-    .click(reply.click);
+    .on("click", reply.click);
 }
 
 function checkDialog(command) {

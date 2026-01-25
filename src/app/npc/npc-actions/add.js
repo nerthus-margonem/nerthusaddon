@@ -138,7 +138,10 @@ export function addNpc(npc) {
 
     if (npc.dialog) {
       addDialogToDialogList(npc.id, npc.nick, npc.dialog);
-      $npc.click(createClickWrapper(npc, openDialog.bind(null, npc.id, 0)));
+      $npc.on(
+        "click",
+        createClickWrapper(npc, openDialog.bind(null, npc.id, 0)),
+      );
     }
 
     if (npc.collision) {

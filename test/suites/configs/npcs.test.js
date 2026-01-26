@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -68,15 +68,15 @@ function checkDialogSet(dialog) {
   }
 }
 
-function checkFileWithNpcs(filename) {
-  const file = fs.readFileSync(path.join(NPC_DIR, filename));
+async function checkFileWithNpcs(filename) {
+  const file = await fs.readFile(path.join(NPC_DIR, filename));
   const npcs = JSON.parse(file.toString());
   expect(npcs).to.be.an("array");
   npcs.forEach((npc) => checkNpc(npc));
 }
 
-describe("NPCs config files", function () {
-  const files = fs.readdirSync(NPC_DIR);
+describe.concurrent("NPCs config files", async function () {
+  const files = await fs.readdir(NPC_DIR);
   for (let i = 0; i < files.length; i++) {
     const filename = files[i];
     describe("File: " + filename, function () {

@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -17,19 +17,18 @@ function checkLight(light) {
   expect(light.type).to.be.a("string");
 }
 
-function checkFileWithLights(filename) {
-  const file = fs.readFileSync(path.join(LIGHTS_DIR, filename));
+async function checkFileWithLights(filename) {
+  const file = await fs.readFile(path.join(LIGHTS_DIR, filename));
   const lights = JSON.parse(file.toString());
   expect(lights).to.be.an("array");
   lights.forEach((light) => checkLight(light));
 }
 
-describe("Night lights config files", function () {
-  const files = fs.readdirSync(LIGHTS_DIR);
-  for (let i = 0; i < files.length; i++) {
-    const filename = files[i];
+describe.concurrent("Night lights config files", async function () {
+  const files = await fs.readdir(LIGHTS_DIR);
+  for (const filename of files) {
     describe("File: " + filename, function () {
-      it("should have correct structure", function () {
+      it("should have a correct structure", function () {
         checkFileWithLights(filename);
       });
     });

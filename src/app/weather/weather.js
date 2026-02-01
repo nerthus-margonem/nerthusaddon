@@ -94,7 +94,7 @@ function getClimateCloudiness(date, climate) {
     getClimateNoise(climate, CHARACTERISTIC.CLOUDINESS).getVal(pointInTime) *
     getClimateVariation(climates.characteristics.cloudiness, date, climate);
 
-  return ret > 1 ? 1 : ret;
+  return Math.min(ret, 1);
 }
 
 function getClimateHumidity(date, climate) {

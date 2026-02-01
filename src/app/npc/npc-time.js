@@ -24,8 +24,8 @@ function validateDays(npc) {
     return true;
   }
 
-  const day_of_week = new Date().getDay();
-  return npc.days.indexOf(day_of_week) > -1;
+  const dayOfWeek = new Date().getDay();
+  return npc.days.includes(dayOfWeek);
 }
 
 function parseStrToDate(date_str) {

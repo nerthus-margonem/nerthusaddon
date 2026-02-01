@@ -8,7 +8,7 @@ export function removeNpc(x, y, mapId) {
     delete customNpcs[mapId][coordsToId(x, y)];
   }
   if (INTERFACE === "NI") {
-    if (typeof mapId === "undefined" || mapId === Engine.map.d.id) {
+    if (mapId === undefined || mapId === Engine.map.d.id) {
       const id = coordsToId(x, y);
       const npc = Engine.npcs.getById(id);
       if (npc) {
@@ -20,7 +20,7 @@ export function removeNpc(x, y, mapId) {
       }
     }
   } else {
-    if (typeof mapId === "undefined" || parseInt(mapId) === map.id) {
+    if (mapId === undefined || parseInt(mapId) === map.id) {
       $("#npc" + coordsToId(x, y)).remove();
     }
   }

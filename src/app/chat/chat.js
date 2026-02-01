@@ -6,7 +6,7 @@ const commandsMap = {};
 const commandsPublicMap = {};
 
 function fixUrl(text) {
-  const url = RegExp(/(https?)\*Krzywi się\.\*(\S+)/);
+  const url = /(https?)\*Krzywi się\.\*(\S+)/;
   return text.replace(url, "$1:/$2");
 }
 

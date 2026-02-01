@@ -61,7 +61,7 @@ function getClimateNoise(climate, type) {
 
 function getMapsClimate(mapId) {
   for (const climateName in climates.maps) {
-    if (climates.maps[climateName].indexOf(mapId) >= 0) {
+    if (climates.maps[climateName].includes(mapId)) {
       return climateName;
     }
   }

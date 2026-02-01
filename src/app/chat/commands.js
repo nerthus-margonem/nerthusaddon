@@ -11,7 +11,7 @@ import { clearFog, createFog } from "../weather/fog";
 import { displayWeather, setForcedWeather } from "../weather/weather";
 import { registerChatCommand } from "./chat";
 
-const BLOCKED_CHANNELS = ["TRADE", "GLOBAL"];
+const BLOCKED_CHANNELS = new Set(["TRADE", "GLOBAL"]);
 
 function getAuthorBusinessCardProxy(businessCard, newAuthorNick) {
   return new Proxy(businessCard, {
@@ -176,7 +176,7 @@ function map(msg) {
   const mapId = parseInt(cmd[1]);
   if (mapId) {
     mapManager.addToMapChangelist(mapUrl, 2, mapId);
-  } else if (BLOCKED_CHANNELS.includes(msg.channel)) {
+  } else if (BLOCKED_CHANNELS.has(msg.channel)) {
     // Do not change everyone's map on global or trade
     return;
   } else {
@@ -200,10 +200,7 @@ function light(msg) {
   const arr = msg.text.split(" ");
   arr.shift();
   const argArr = arr.join(" ").split(",");
-  if (
-    BLOCKED_CHANNELS.includes(msg.channel) &&
-    (arr.length === 0 || !argArr[2])
-  ) {
+  if (BLOCKED_CHANNELS.has(msg.channel) && (arr.length === 0 || !argArr[2])) {
     // Do not change everyone's light on global or trade
     return;
   }
@@ -239,7 +236,7 @@ function addGraf(msg) {
   const isCol = parseInt(cmd[4]) > 0;
   const mapId = parseInt(cmd[5]);
 
-  if (BLOCKED_CHANNELS.includes(msg.channel) && !mapId) {
+  if (BLOCKED_CHANNELS.has(msg.channel) && !mapId) {
     // Do not add graphic on global or trade
     return;
   }
@@ -255,7 +252,7 @@ function delGraf(msg) {
   const y = parseInt(cmd[1]);
   const mapId = parseInt(cmd[2]);
 
-  if (BLOCKED_CHANNELS.includes(msg.channel) && !mapId) {
+  if (BLOCKED_CHANNELS.has(msg.channel) && !mapId) {
     // Do not add graphic on global or trade
     return;
   }
@@ -281,7 +278,7 @@ function weather(msg) {
     return false;
   }
 
-  if (BLOCKED_CHANNELS.includes(msg.channel)) {
+  if (BLOCKED_CHANNELS.has(msg.channel)) {
     // Do not change weather on global or trade
     return;
   }

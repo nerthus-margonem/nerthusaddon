@@ -142,7 +142,7 @@ function closePanel($elm) {
 }
 
 function createPanel(data, hidden) {
-  if ($elm.parent && $elm.parent(ELEMENT_TO_ATTACH_TO).length) {
+  if ($elm.parent?.(ELEMENT_TO_ATTACH_TO).length) {
     return;
   }
   const buttonGroupLeft = constructElement.buttonGroup(data.leftPanel);
@@ -233,7 +233,7 @@ function createPanel(data, hidden) {
 }
 
 function preloadPanel() {
-  if ($elm.parent && $elm.parent(ELEMENT_TO_ATTACH_TO).length) {
+  if ($elm.parent?.(ELEMENT_TO_ATTACH_TO).length) {
     return;
   }
   $.getJSON(FILE_PREFIX + "res/configs/panel-links.json", function (data) {
@@ -242,7 +242,7 @@ function preloadPanel() {
 }
 
 function togglePanel() {
-  if (!$elm.parent || !$elm.parent(ELEMENT_TO_ATTACH_TO).length) {
+  if (!$elm.parent?.(ELEMENT_TO_ATTACH_TO).length) {
     return $.getJSON(FILE_PREFIX + "res/configs/panel-links.json", (data) =>
       createPanel(data, false),
     );

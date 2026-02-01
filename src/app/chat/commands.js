@@ -173,7 +173,7 @@ function map(msg) {
   msg.style = "nerthus-command";
   const cmd = msg.text.split(" ").slice(1).join(" ").split(",");
   const mapUrl = sanitizeText(cmd[0]);
-  const mapId = parseInt(cmd[1]);
+  const mapId = Number.parseInt(cmd[1]);
   if (mapId) {
     mapManager.addToMapChangelist(mapUrl, 2, mapId);
   } else if (BLOCKED_CHANNELS.has(msg.channel)) {
@@ -187,7 +187,7 @@ function map(msg) {
 
 function resetMap(msg) {
   msg.style = "nerthus-command";
-  const mapId = parseInt(msg.text.split(" ").slice(1).join(" "));
+  const mapId = Number.parseInt(msg.text.split(" ").slice(1).join(" "));
 
   mapManager.removeFromMapChangelist(mapId, 2);
   mapManager.applyCurrentMapChange();
@@ -212,7 +212,7 @@ function light(msg) {
     let opacity = argArr[0].trim();
     const color = argArr[1] ? argArr[1].trim() : "#000";
     const mapId = argArr[2] ? argArr[2].trim() : "default";
-    opacity = parseFloat(opacity.replace(",", "."));
+    opacity = Number.parseFloat(opacity.replace(",", "."));
     setForcedParameters(1 - opacity, color, mapId);
   }
 
@@ -225,16 +225,16 @@ function addGraf(msg) {
   msg.style = "nerthus-command";
   //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
   const cmd = msg.text.split(" ").slice(1).join(" ").split(",");
-  const x = parseInt(cmd[0]);
-  const y = parseInt(cmd[1]);
+  const x = Number.parseInt(cmd[0]);
+  const y = Number.parseInt(cmd[1]);
   const url = sanitizeText(cmd[2]);
   const name = sanitizeText(cmd[3]);
   let nick = name ?? "";
   if (INTERFACE === "SI") {
     nick = `<b>${nick}</b>`;
   }
-  const isCol = parseInt(cmd[4]) > 0;
-  const mapId = parseInt(cmd[5]);
+  const isCol = Number.parseInt(cmd[4]) > 0;
+  const mapId = Number.parseInt(cmd[5]);
 
   if (BLOCKED_CHANNELS.has(msg.channel) && !mapId) {
     // Do not add graphic on global or trade
@@ -248,9 +248,9 @@ function addGraf(msg) {
 function delGraf(msg) {
   msg.style = "nerthus-command";
   const cmd = msg.text.split(" ")[1].split(",");
-  const x = parseInt(cmd[0]);
-  const y = parseInt(cmd[1]);
-  const mapId = parseInt(cmd[2]);
+  const x = Number.parseInt(cmd[0]);
+  const y = Number.parseInt(cmd[1]);
+  const mapId = Number.parseInt(cmd[2]);
 
   if (BLOCKED_CHANNELS.has(msg.channel) && !mapId) {
     // Do not add graphic on global or trade
@@ -264,7 +264,7 @@ function delGraf(msg) {
 function hide(msg) {
   msg.style = "nerthus-command";
   const cmd = msg.text.split(" ")[1];
-  const id = parseInt(cmd);
+  const id = Number.parseInt(cmd);
 
   hideGameNpc(id);
 
@@ -296,11 +296,11 @@ function fog(msg) {
   msg.style = "nerthus-command";
 
   const cmd = msg.text.split(" ")[1]?.split(",") ?? [];
-  const red = cmd[0] ? parseInt(cmd[0]) : 255;
-  const green = cmd[1] ? parseInt(cmd[1]) : 255;
-  const blue = cmd[2] ? parseInt(cmd[2]) : 255;
-  const alpha = cmd[3] ? parseFloat(cmd[3]) : 0.4;
-  const mapId = cmd[4] ? parseInt(cmd[4]) : undefined;
+  const red = cmd[0] ? Number.parseInt(cmd[0]) : 255;
+  const green = cmd[1] ? Number.parseInt(cmd[1]) : 255;
+  const blue = cmd[2] ? Number.parseInt(cmd[2]) : 255;
+  const alpha = cmd[3] ? Number.parseFloat(cmd[3]) : 0.4;
+  const mapId = cmd[4] ? Number.parseInt(cmd[4]) : undefined;
 
   createFog({ r: red, g: green, b: blue, a: alpha }, mapId);
 
@@ -311,7 +311,7 @@ function clearFogCommand(msg) {
   msg.style = "nerthus-command";
 
   const cmd = msg.text.split(" ")[1]?.split(",") ?? [];
-  const mapId = cmd[0] ? parseInt(cmd[0]) : undefined;
+  const mapId = cmd[0] ? Number.parseInt(cmd[0]) : undefined;
 
   clearFog(mapId);
 

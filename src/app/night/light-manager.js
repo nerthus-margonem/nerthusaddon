@@ -84,15 +84,15 @@ function stopEditingLights() {
 }
 
 function toggleLights() {
-  if (!lightsOn) {
-    turnLightsOn();
-    $("#nerthus-light-manager-toggle-lights").addClass("blue");
-  } else {
+  if (lightsOn) {
     toggleCustomStyle(
       "light-hider",
       "#ground > .nerthus__night-light {display: none !important}",
     );
     $("#nerthus-light-manager-toggle-lights").toggleClass("blue");
+  } else {
+    turnLightsOn();
+    $("#nerthus-light-manager-toggle-lights").addClass("blue");
   }
 }
 

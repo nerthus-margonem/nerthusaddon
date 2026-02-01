@@ -123,7 +123,7 @@ export function addNpc(npc) {
       }
       $npc.css({
         left: tmpLeft,
-        top: npc.y * 32 + 32 - height + (wat > 8 ? 0 : 0),
+        top: npc.y * 32 + 32 - height,
         width: tmpLeft + width > map.x * 32 ? map.x * 32 - tmpLeft : width,
         height: height - (wat > 8 ? (wat - 8) * 4 : 0),
       });

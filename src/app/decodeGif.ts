@@ -1,23 +1,31 @@
 import { GifReader } from "omggif";
 
-export const GIF_FRAME_DISPOSAL = {
-  NON_SPECIFIED: 0,
-  DO_NOT_DISPOSE: 1,
-  RESTORE_TO_BACKGROUND: 2,
-  RESTORE_TO_PREVIOUS: 3,
-};
-
-export function decodeGifFromUrl(url) {
-  return fetch(url)
-    .then((response) => response.arrayBuffer())
-    .then((buffer) => new Uint8Array(buffer))
-    .then((array) => decodeGif(array));
+enum GIF_FRAME_DISPOSAL {
+  NON_SPECIFIED = 0,
+  DO_NOT_DISPOSE = 1,
+  RESTORE_TO_BACKGROUND = 2,
+  RESTORE_TO_PREVIOUS = 3,
 }
 
-export function decodeGif(data) {
+export interface DecodedGif {
+  frameDelays: number[];
+  frameData: Uint8ClampedArray<ArrayBuffer>[];
+  frameDisposal: number[];
+  width: number;
+  height: number;
+}
+
+export async function decodeGifFromUrl(url: string): Promise<DecodedGif> {
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  const array = new Uint8Array(buffer);
+  return decodeGif(array);
+}
+
+export function decodeGif(data: Uint8Array): DecodedGif {
   const reader = new GifReader(data);
 
-  const decoded = {
+  const decoded: DecodedGif = {
     frameDelays: [],
     frameData: [],
     frameDisposal: [],
@@ -30,12 +38,12 @@ export function decodeGif(data) {
     decoded.frameDelays[i] = frameInfo.delay;
     decoded.frameDisposal[i] = frameInfo.disposal;
 
-    // Draw a frame on top of old frame
+    // Draw a frame on top of the old frame
     const frame = new Uint8ClampedArray(oldFrame);
     reader.decodeAndBlitFrameRGBA(i, frame);
     decoded.frameData[i] = frame;
 
-    // Dispose drawn frame for next draw
+    // Dispose drawn frame for the next draw
     switch (decoded.frameDisposal[i]) {
       case GIF_FRAME_DISPOSAL.NON_SPECIFIED:
       case GIF_FRAME_DISPOSAL.DO_NOT_DISPOSE: {

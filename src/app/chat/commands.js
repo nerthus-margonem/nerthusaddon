@@ -338,7 +338,7 @@ function lang(msg) {
   const cmd = msg.text.split(",");
 
   const notAllowed = /[^a-ząćęłńóśźż -]/gi;
-  const tip = cmd[0].toLowerCase().replace(notAllowed, "");
+  const tip = cmd[0].toLowerCase().replaceAll(notAllowed, "");
   cmd.shift(); // remove tip
 
   msg.text = `*${cmd.join(",").trim()}*`;

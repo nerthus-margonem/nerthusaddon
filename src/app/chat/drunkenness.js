@@ -15,12 +15,9 @@ function decayTimerHandler() {
   }
 }
 
-function shuffleArray(array, cc) {
+function shuffleArray(array, cc = 0) {
   let przestanek = 0;
-  if (typeof cc == "undefined") {
-    cc = 0;
-  }
-  if ([".", ",", "?", "!"].lastIndexOf(array[array.length - 1]) > -1) {
+  if ([".", ",", "?", "!"].includes(array[array.length - 1])) {
     przestanek = 1;
   }
   for (let i = array.length - 1 - cc - przestanek; i > cc; i--) {
@@ -33,7 +30,7 @@ function shuffleArray(array, cc) {
 }
 
 function shuffleMessage(msg) {
-  if (intoxicationLvl === 0 || ["*/@"].indexOf(msg[0]) >= 0) {
+  if (intoxicationLvl === 0 || "*/@".includes(msg[0])) {
     return msg;
   }
 
@@ -97,10 +94,10 @@ function shuffleMessage(msg) {
       msg = t.join(" ");
     // fallthrough
     case 1:
-      msg = msg.replace(/[.,:?!-]/g, " *hik*");
+      msg = msg.replaceAll(/[.,:?!-]/g, " *hik*");
       break;
     case 0:
-      msg = msg.replace(/[.,:?!-]/g, "");
+      msg = msg.replaceAll(/[.,:?!-]/g, "");
   }
   return msg;
 }
@@ -120,10 +117,9 @@ function commandContainsDrinkingAlcohol(command) {
   }
 
   if (
-    item &&
-    item.cl === 16 && // cl = 16 means it's consumable
+    item?.cl === 16 && // cl = 16 means it's consumable
     item.stat.search("lvl=") > -1 &&
-    parseInt(item.stat.match(/lvl=(\d+)/)[1]) === 18
+    Number.parseInt(item.stat.match(/lvl=(\d+)/)[1]) === 18
   ) {
     return true;
   }
@@ -148,7 +144,7 @@ export function initChatDrunkenness() {
 
   const savedIntoxicationLvl = localStorage.getItem("nerthus-intoxication-lvl");
   if (savedIntoxicationLvl) {
-    intoxicationLvl = parseInt(savedIntoxicationLvl);
+    intoxicationLvl = Number.parseInt(savedIntoxicationLvl);
   }
   if (intoxicationLvl) {
     decayTimerID = setInterval(decayTimerHandler, 10000);

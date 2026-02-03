@@ -150,7 +150,6 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       environment: "./test/vitest-environment-jquery.js",
-      globals: true,
     },
     plugins,
   };

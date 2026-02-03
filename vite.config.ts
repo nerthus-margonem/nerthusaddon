@@ -137,8 +137,8 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      AVAILABLE_MAP_FILES: JSON.stringify({ npc, lights, water }),
-      CURRENT_MAP_ID: JSON.stringify(CURRENT_MAP_ID),
+      AVAILABLE_MAP_FILES: { npc, lights, water },
+      CURRENT_MAP_ID: CURRENT_MAP_ID,
       FILE_PREFIX: JSON.stringify(filePrefix),
       INTERFACE: JSON.stringify(gameInterface),
       VERSION: JSON.stringify(getVersion()),

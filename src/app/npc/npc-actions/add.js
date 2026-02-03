@@ -19,11 +19,12 @@ export function addNpc(npc) {
   if (INTERFACE === "NI") {
     const data = {};
     const id = Number(npc.id);
+    const warriorType = npc.nick ? 0 : 1;
     data[npc.id] = { ...npc };
     data[npc.id].id = id;
     data[npc.id].icon = { id };
     data[npc.id].tpl = id;
-    data[npc.id].warrior_type = npc.nick ? 0 : 1;
+    data[npc.id].warrior_type = warriorType;
 
     const collisionBefore = Engine.map.col.check(npc.x, npc.y);
     const npcIcon = npc.icon;
@@ -92,6 +93,16 @@ export function addNpc(npc) {
     if (!collisionBefore) {
       if (npc.collision) setCollision(npc.x, npc.y);
       else removeCollision(npc.x, npc.y);
+    }
+
+    // Fix incorrect ordering for the character glow
+    if (warriorType === 1) {
+      const gameNpc = Engine.npcs.getById(npc.id);
+      // Make sure that the .getOrder() made the initial changes to .order
+      gameNpc.getOrder();
+      // Set the order so that it correctly displays above/below
+      // the character glow depending if the character is on the tile or one below it
+      gameNpc.order -= 0.11;
     }
 
     return data;

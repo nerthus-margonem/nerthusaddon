@@ -110,7 +110,12 @@ export default defineConfig(({ mode }) => {
     );
   }
 
-  const CURRENT_MAP_ID = gameInterface === "NI" ? "Engine.map.d.id" : "map.id";
+  let CURRENT_MAP_ID = gameInterface === "NI" ? "Engine.map.d.id" : "map.id";
+  if (mode === "test") {
+    // Vitest really wants to load the custom `define`s before the environment is set up,
+    // so a hardcoded test value needs to be explicitly set up here.
+    CURRENT_MAP_ID = "1";
+  }
 
   return {
     build: {

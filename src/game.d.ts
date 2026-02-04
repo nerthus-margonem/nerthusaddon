@@ -15,8 +15,6 @@
  * as only the parts used in the addon are described.
  */
 
-declare const INTERFACE: "NI" | "SI";
-
 /**
  * Interface that the game can take into Engine.renderer.add()
  * Used to render custom objects on the map.

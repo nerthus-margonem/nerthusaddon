@@ -86,8 +86,8 @@ declare const Engine: {
     getItemById(): unknown;
   };
   lock: {
-    add(): unknown;
-    remove(): unknown;
+    add(key: string): void;
+    remove(key: string): void;
   };
   map: {
     col: {
@@ -161,6 +161,10 @@ declare const Engine: {
 declare const g: {
   chatController: {
     addMessage(): unknown;
+  };
+  lock: {
+    add(key: string): void;
+    remove(key: string): void;
   };
 };
 declare const map: {

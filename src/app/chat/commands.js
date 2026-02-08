@@ -10,6 +10,7 @@ import { clearEffects } from "../weather/effects";
 import { clearFog, createFog } from "../weather/fog";
 import { displayWeather, setForcedWeather } from "../weather/weather";
 import { registerChatCommand } from "./chat";
+import { getRollHtml, getRollText, rollDice } from "./dice";
 
 const BLOCKED_CHANNELS = new Set(["TRADE", "GLOBAL"]);
 
@@ -359,6 +360,46 @@ function lang(msg) {
   return msg;
 }
 
+function dice(msg) {
+  msg.style = `nerthus-dice nerthus-dice-ts-${msg.ts}`;
+  msg.nick = msg.authorBusinessCard.getNick();
+  hideMessageIdentity(msg);
+
+  let amount = 1;
+  const amountMatch = msg.text.match(/\^*.+? (\d+)(?:d|$)/);
+  if (amountMatch?.[1]) {
+    amount = Math.min(Math.max(Number(amountMatch[1]), 1), 20);
+  }
+
+  let diceSides = 6;
+  const diceSidesMatch = msg.text.match(/\^*.+? \d*d(\d+)/);
+  if (diceSidesMatch?.[1]) {
+    diceSides = Math.min(Math.max(Number(diceSidesMatch[1]), 2), 10000);
+  }
+
+  const rolls = rollDice(amount, diceSides, msg.ts);
+  const rollText = getRollText(rolls);
+  const rollHtml = getRollHtml(rolls, diceSides);
+
+  if (amount === 1) {
+    msg.text = `${msg.nick} rzucił kostką o ${diceSides} ściankach i wypadła liczba ${rollText}`;
+  } else {
+    msg.text = `${msg.nick} rzucił ${amount} kośćmi o ${diceSides} ściankach i wypadły liczby: ${rollText}`;
+  }
+
+  // add highlights to low and high values
+  setTimeout(function () {
+    const elements = Array.from(
+      document.querySelectorAll(`.nerthus-dice-ts-${msg.ts} .message-part`),
+    );
+    for (const element of elements) {
+      element.innerHTML = element.innerHTML.replace(rollText, rollHtml);
+    }
+  }, 0);
+
+  return msg;
+}
+
 const narratorCommands = {
   nar: nar1,
   nar1,
@@ -386,6 +427,8 @@ const publicCommands = {
   lang,
   nar0,
   dial0,
+  dice,
+  roll: dice,
 };
 
 export function initBasicChatCommands() {

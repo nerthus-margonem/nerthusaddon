@@ -69,6 +69,16 @@
   display: none !important;
 }
 
+.nerthus-dice-max {
+  color: green;
+  font-weight: bold;
+}
+
+.nerthus-dice-min {
+  color: red;
+  font-weight: bold;
+}
+
 /* Disable clicking on dial Nick */
 .wrapper-special-style-nerthus-dial0 .author-section,
 .wrapper-special-style-nerthus-dial1 .author-section,

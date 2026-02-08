@@ -384,7 +384,7 @@ function dice(msg) {
   if (amount === 1) {
     msg.text = `${msg.nick} rzucił kostką o ${diceSides} ściankach i wypadła liczba ${rollText}`;
   } else {
-    msg.text = `${msg.nick} rzucił ${amount} kośćmi o ${diceSides} ściankach i wypadły liczby: ${rollText}`;
+    msg.text = `${msg.nick} rzucił ${amount} kostek o ${diceSides} ściankach i wypadły liczby: ${rollText}`;
   }
 
   // add highlights to low and high values

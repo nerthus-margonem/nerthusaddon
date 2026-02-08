@@ -4,6 +4,7 @@ import { callEvent } from "../API";
 import { loadOnEveryMap } from "../game-integration/loaders";
 import { addSettingToPanel } from "../interface/panel";
 import { setOpacityChange } from "../night/night";
+import { Simple1DNoise } from "../random";
 import { settings } from "../settings";
 import { isCurrentMapOutdoor } from "../utility-functions";
 import { addWidget } from "../widgets";
@@ -14,7 +15,6 @@ import {
   displaySnow,
 } from "./effects";
 import { displayLightnings } from "./lightnings";
-import { Simple1DNoise } from "../noise";
 
 const CHARACTERISTIC = Object.freeze({
   HUMIDITY: "humidity",

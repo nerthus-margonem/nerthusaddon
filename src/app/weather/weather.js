@@ -14,7 +14,7 @@ import {
   displaySnow,
 } from "./effects";
 import { displayLightnings } from "./lightnings";
-import { Simple1DNoise } from "./noise";
+import { Simple1DNoise } from "../noise";
 
 const CHARACTERISTIC = Object.freeze({
   HUMIDITY: "humidity",

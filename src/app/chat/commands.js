@@ -383,6 +383,8 @@ function dice(msg) {
 
   if (amount === 1) {
     msg.text = `${msg.nick} rzucił kostką o ${diceSides} ściankach i wypadła liczba ${rollText}`;
+  } else if (amount < 5) {
+    msg.text = `${msg.nick} rzucił ${amount} kostki o ${diceSides} ściankach i wypadły liczby: ${rollText}`;
   } else {
     msg.text = `${msg.nick} rzucił ${amount} kostek o ${diceSides} ściankach i wypadły liczby: ${rollText}`;
   }

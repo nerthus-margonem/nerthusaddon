@@ -1,0 +1,127 @@
+[
+  {
+    "type": "change",
+    "id": 56802,
+    "newUrl": "/obrazki/npc/map/swieczka01.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Świecznik Wiszący",
+    "tip": "",
+    "x": 5,
+    "y": 2,
+    "url": "/obrazki/npc/map/swiecznik-wisz2-p.gif",
+    "collision": false
+  },
+  {
+    "name": "Świecznik Stojący",
+    "tip": "",
+    "x": 13,
+    "y": 12,
+    "url": "#res/img/npc/candlestick-standing.gif",
+    "collision": true
+  },
+  {
+    "name": "Kominek",
+    "tip": "",
+    "x": 11,
+    "y": 4,
+    "url": "/obrazki/npc/map/kom_ogien06.gif",
+    "collision": true
+  },
+  {
+    "name": "Puszek",
+    "x": 13,
+    "y": 10,
+    "url": "/obrazki/npc/dom/kot03a.gif",
+    "collision": true
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": 4,
+    "y": 12,
+    "url": "#res/img/npc/sofa-back-green.gif",
+    "collision": false
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": 6,
+    "y": 6,
+    "url": "#res/img/npc/sofa-back-green.gif",
+    "collision": false
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": 2,
+    "y": 12,
+    "url": "/obrazki/npc/map/wieszak0.gif",
+    "collision": false
+  },
+  {
+    "name": "Zasłona",
+    "tip": "",
+    "x": 3,
+    "y": 8,
+    "url": "#res/img/npc/curtain-blue-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 6,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 10,
+    "y": 12,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 11,
+    "y": 12,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 12,
+    "y": 12,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 5,
+    "y": 12,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 10,
+    "y": 4,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  }
+]

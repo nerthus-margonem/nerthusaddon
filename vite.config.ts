@@ -128,17 +128,16 @@ export default defineConfig(({ mode }) => {
           passes: 4,
         },
       },
-      lib: {
-        entry: "src/main.js",
-        name: "main",
-        fileName: () =>
-          gameInterface === "NI"
-            ? "nerthus-addon-NI.js"
-            : "nerthus-addon-SI.js",
-        formats: ["iife"],
-      },
       rollupOptions: {
         treeshake: "smallest",
+        input: "src/main.js",
+        output: {
+          entryFileNames:
+            gameInterface === "NI"
+              ? "nerthus-addon-NI.js"
+              : "nerthus-addon-SI.js",
+          format: "iife",
+        },
       },
     },
     define: {

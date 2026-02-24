@@ -34,7 +34,7 @@ function shuffleMessage(msg) {
     return msg;
   }
 
-  let t = [];
+  let t;
   switch (Math.floor(intoxicationLvl / 10)) {
     case 10:
     case 9:

@@ -137,9 +137,9 @@ function getCurrentRegionCharacteristic(date) {
   if (!isCurrentMapOutdoor()) {
     return false;
   }
-  let humidity = 0;
-  let cloudiness = 0;
-  let temperature = 0;
+  let humidity;
+  let cloudiness;
+  let temperature;
   const adjacentClimates = [];
   const gatewaysIds = [];
   let currentMapClimate;

@@ -5,20 +5,36 @@ on:
     types:
       - published
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions: {}
+
 jobs:
   build:
+    name: Build and Push to production
     runs-on: ubuntu-latest
     environment: production
+
+    defaults:
+      run:
+        shell: sh
+
+    permissions:
+      contents: write # Needed to push changes to the repository
 
     strategy:
       matrix:
         node-version: [24.x]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: true
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -35,8 +51,10 @@ jobs:
 
       - name: Update version
         run: |
-          echo "${{ github.event.release.tag_name }}" > version
+          echo "${RELEASE_TAG_NAME}" > version
           git add -f version
+        env:
+          RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
 
       - name: Run build
         run: npm run-script build
@@ -52,21 +70,26 @@ jobs:
 
       - name: Commit files
         run: |
-          git commit -m "Release: ${{ github.event.release.tag_name }}" | echo
+          git commit -m "Release: ${RELEASE_TAG_NAME}" | echo
+        env:
+          RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
 
-      # We need to add a new tag, so that it points to the newest build.
+      # We need to add a new tag so that it points to the newest build.
       # Since that's how we do cache busting on cdn
       - name: Change tag
         run: |
-          RELEASE_TITLE=$(gh release view "${{ github.event.release.tag_name }}" --json name --template "{{.name}}")
-          RELEASE_DESC=$(gh release view "${{ github.event.release.tag_name }}" --json body --template "{{.body}}")
+          RELEASE_TITLE=$(gh release view "${RELEASE_TAG_NAME}" --json name --template "{{.name}}")
+          RELEASE_DESC=$(gh release view "${RELEASE_TAG_NAME}" --json body --template "{{.body}}")
 
-          git tag -f -a "releases/${{ github.event.release.tag_name }}" -m "$RELEASE_TITLE" -m "$RELEASE_DESC"
+          git tag -f -a "releases/${RELEASE_TAG_NAME}" -m "${RELEASE_TITLE}" -m "${RELEASE_DESC}"
         env:
           GITHUB_USER: <ORG>
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
 
       - name: Push changes
         run: |
           git push --set-upstream origin production --force
-          git push origin "releases/${{ github.event.release.tag_name }}" --force
+          git push origin "releases/${RELEASE_TAG_NAME}" --force
+        env:
+          RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}

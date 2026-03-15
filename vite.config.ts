@@ -80,8 +80,8 @@ export default defineConfig(({ mode }) => {
           "try { exports.GifWriter = GifWriter; exports.GifReader = GifReader } catch(e) {}",
           "exports.GifWriter = GifWriter; exports.GifReader = GifReader;",
         );
-      }
-    }
+      },
+    },
   ];
 
   // While SI also needs the copied resources directory,

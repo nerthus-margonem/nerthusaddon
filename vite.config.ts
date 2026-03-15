@@ -1,4 +1,3 @@
-import commonjs from "@rollup/plugin-commonjs";
 import yaml from "@rollup/plugin-yaml";
 import fs from "node:fs";
 import process from "node:process";
@@ -67,7 +66,22 @@ export default defineConfig(({ mode }) => {
 
   const plugins: PluginOption[] = [
     yaml() as PluginOption,
-    commonjs({ strictRequires: "auto" }) as PluginOption,
+    {
+      // omggif package wraps the exports with try {} catch {},
+      // and Rolldown cannot tree-shake it correctly.
+      // To fix that, we manually replace the exports.
+      // That way, the final bundle only contains the actually imported code.
+      name: "fix-omggif-exports",
+      transform(code, id) {
+        if (!id.endsWith("omggif.js")) {
+          return;
+        }
+        return code.replace(
+          "try { exports.GifWriter = GifWriter; exports.GifReader = GifReader } catch(e) {}",
+          "exports.GifWriter = GifWriter; exports.GifReader = GifReader;",
+        );
+      }
+    }
   ];
 
   // While SI also needs the copied resources directory,
@@ -128,8 +142,8 @@ export default defineConfig(({ mode }) => {
           passes: 4,
         },
       },
-      rollupOptions: {
-        treeshake: "smallest",
+      rolldownOptions: {
+        treeshake: true,
         input: "src/main.js",
         output: {
           entryFileNames:

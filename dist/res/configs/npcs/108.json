@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Pranie",
+    "tip": "",
+    "x": 10,
+    "y": 8,
+    "url": "#res/img/npc/laundry2.gif",
+    "collision": false
+  },
+  {
+    "name": "Pranie",
+    "tip": "",
+    "x": 10,
+    "y": 9,
+    "url": "#res/img/npc/laundry2.gif",
+    "collision": false
+  },
+  {
+    "name": "Pranie",
+    "tip": "",
+    "x": 10,
+    "y": 10,
+    "url": "#res/img/npc/laundry3.gif",
+    "collision": false
+  }
+]

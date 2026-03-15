@@ -33,8 +33,6 @@ export function changeGameNpc(npc) {
             updateNpcWithCustomGifImage(Engine.npcs.getById(npc.id), img.src);
           }
         } else {
-          const img = new Image();
-          img.src = resolveUrl(npc.newUrl);
           newNpc.sprite = img;
           Object.defineProperty(newNpc, "sprite", {
             get() {

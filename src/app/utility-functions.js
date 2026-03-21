@@ -24,9 +24,10 @@ export function pseudoRandom(seed) {
   return seed / 233280;
 }
 
+/** @return {boolean} */
 export function isMapOutdoor(map) {
-  return !!(
-    (map.mainid === 0 && !exceptionMaps.indoor.includes(map.id)) ||
+  return (
+    (map.mainid === map.id && !exceptionMaps.indoor.includes(map.id)) ||
     exceptionMaps.outdoor.includes(map.id)
   );
 }

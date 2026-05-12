@@ -102,7 +102,10 @@ export default defineConfig(({ mode }) => {
           {
             src: "src/userscript.js",
             dest: "../dist",
-            rename: () => env["USERSCRIPT_FILENAME"],
+            rename: () => ({
+              name: env["USERSCRIPT_FILENAME"],
+              stripBase: true,
+            }),
             transform: (content) =>
               content
                 .replace("$USERSCRIPT_NAME", env["USERSCRIPT_NAME"])

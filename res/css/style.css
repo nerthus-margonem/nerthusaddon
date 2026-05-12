@@ -213,6 +213,10 @@
   z-index: 110;
 }
 
+#centerbox2 .nerthus-panel {
+  z-index: 499;
+}
+
 .nerthus-panel > .background {
   background-color: #f1dca7;
 }

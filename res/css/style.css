@@ -210,7 +210,7 @@
   top: calc(50% - 150px);
   transition: opacity 0.35s ease-in-out;
   width: 380px;
-  z-index: 499;
+  z-index: 110;
 }
 
 .nerthus-panel > .background {

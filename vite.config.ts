@@ -92,8 +92,8 @@ export default defineConfig(({ mode }) => {
       ...viteStaticCopy({
         targets: [
           {
-            src: "res/*",
-            dest: "res",
+            src: "res",
+            dest: "",
           },
           {
             src: "LICENSE",

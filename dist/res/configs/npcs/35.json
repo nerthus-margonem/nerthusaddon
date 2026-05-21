@@ -1,0 +1,284 @@
+[
+  {
+    "name": "Gabinet Przemian Estetycznych",
+    "x": 70,
+    "y": 23,
+    "url": "#res/img/npc/szyld.gif",
+    "collision": false
+  },
+  {
+    "type": "change",
+    "id": 112480,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 112479,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 179007,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 179008,
+    "newUrl": "/obrazki/npc/map/zima-tuja1.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 142661,
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 142662,
+    "newUrl": "/obrazki/npc/map/zima-tuja2.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 130003,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 130008,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 130007,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 150129,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "suche drzewo",
+    "tip": "",
+    "x": 25,
+    "y": 23,
+    "url": "/obrazki/npc/map/zim-szare4-praw2.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 130010,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": 24,
+    "y": 24,
+    "url": "/obrazki/npc/map/zim-choin-mala2a.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": 26,
+    "y": 26,
+    "url": "/obrazki/npc/map/zim-choin-duza3.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 150128,
+    "newUrl": "/obrazki/npc/map/zim-sosn-mal2a.gif",
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 181977,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": 72,
+    "y": 57,
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "",
+    "tip": "",
+    "x": 79,
+    "y": 59,
+    "url": "/obrazki/npc/map/zim-choin-sred2.gif",
+    "collision": false,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142663,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142664,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142665,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "delete",
+    "id": 142666,
+    "lvl": 0,
+    "date": "22.11-20.03"
+  },
+  {
+    "name": "dach",
+    "tip": "",
+    "x": 55,
+    "y": 34,
+    "url": "/obrazki/npc/map/zim-dach-kh.gif",
+    "date": "22.11-20.03"
+  },
+  {
+    "type": "change",
+    "id": 16624,
+    "newUrl": "#res/img/npc/ghosts/ghost-hergat.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Przejście",
+    "tip": "Sierociniec w Karka-han",
+    "x": 29,
+    "y": 38,
+    "url": "https://nerthus.margonem.pl/img/exit.png",
+    "collision": false
+  },
+  {
+    "name": "Przejście",
+    "tip": "Sierociniec w Karka-han",
+    "x": 30,
+    "y": 38,
+    "url": "https://nerthus.margonem.pl/img/exit.png",
+    "collision": false
+  },
+  {
+    "name": "Ermosowiec",
+    "x": 37,
+    "y": 31,
+    "url": "#res/img/npc/ermos-cultist.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Słuchajcie, słuchajcie mieszkańcy Margonem! Powiedzcie, czy nie martwicie się o swój los? Czy wróg na pewno nie czyha u bram? Czy nie ma go wśród nas?! Czy potraficie się obronić?",
+        "Dalej ->1"
+      ],
+      "1": [
+        "Witaj człecze, widzę, żeś mądry skoro zatrzymałeś się słuchać. Zaprawdę, bliski jest dzień bitwy! Ermos, nasz najwyższy Pan szykuje nas na sądny dzień. Potwory atakują miasta, bandyci napadają na traktach, demony wzywane na ziemię stąpają po niej twardo jako fakt, a nie jakieś biadania babek, bo skisło im mleko. Zaprawdę, nie warto będzie walczyć pod innym sztandarem niż czerwony. Nie warto, skoro Bóg Wojny może być naszym zbrojnym ramieniem i tarczą! Ale czy Ty jesteś człowiekiem uduchowionym? Masz jakieś wątpliwości? Jeśli tak to jakie? Chętnie pouczę Cię jak żyć tak, aby przeżyć...",
+        "Koniec Świata? Nie no, chyba nie jest aż tak źle...? ->2",
+        "Nic tylko byście wojowali tymi swoimi mieczami i pałkami w pościgu za jakąś fiksacją. Wojna jest straszna! ->3",
+        "Przecież są strażnicy, wojownicy, paladyni. Oni nas nie uchronią? ->4",
+        "Panie, przecież ja to się zajmuję architekturą elancką w kontekście hermeneutycznym, co ja mam wierzyć w takiego brutala? ->5",
+        "Wojna to tylko jeden z aspektów życia, więc dlaczego mam podporządkować wszystko pod nią? ->6",
+        "Ja tam przecież nie wzywam demonów, a w świątyni w ogóle daję na tacę co niedzielę. Jaki ja mam interes w dołączeniu do Ermosa? ->7",
+        "Ja tam wiem swoje... Moi bogowie mnie poprowadzą. ->8",
+        "Nie musisz mnie nawracać. Chwała Ermosowi bracie. ->END",
+        "Eeeeee, zostawiłem bigos na ognisku, muszę iść! ->END",
+        "[ Ignorujesz i idziesz dalej przed siebie. ] ->END",
+        "Phf... Wariat. ->END",
+        "[ Spluwasz pod nogi i odchodzisz. ] ->END"
+      ],
+      "2": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Koniec Świata Nadchodzi!</strong><br><br>Miasta są atakowane, nękane i upadają! Na traktach panoszą się bandyci, co wygryzą Wam z trzewi ostatniego miedziaka. Rządcy nie przejmują się Wami i uciekają, lub pomiatają jak na własnych folwarkach. Demony stąpają po ziemi w biały dzień jak po czeluściach Otchłani. Koniec niewątpliwie jest bliski. Ostatnia Bitwa się zbliża.<br>*A kto Wam w niej nie pomoże najlepiej jak Bóg Wojny?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "3": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Ermos Was obroni.</strong><br><br> Ermos nie walczy tylko po to, by rozlewać krew. Ermos walczy po to, by wymierzona była sprawiedliwość. On podnosi swój miecz po to, by odciąć dłoń podniesioną na jego wyznawców. On wznosi tarczę, kiedy nieprzyjaciel zasłania słońce deszczem strzał. On wyprowadza kontrę, by wymierzyć sprawiedliwość.<br>*Bo któż Was nie obroni lepiej w walce, jak ten który nią rządzi?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "4": [
+        "Proszę, to powinno rozwiać Twe wątpliwości... <br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Czy potrafisz uchronić swoją rodzinę?</strong><br><br>Eder upadło! Zalane, zniszczone, rozgrabione i przejęte przez Armię Demonów. Już rycerz na niewiele się zdał w walce z armią. Nawet cały zastęp paladynów w zbrojach i z magią okupił walki krwią. A Ty w pojedynkę? Co będziesz w stanie zrobić? Co zrobisz kiedy paladynów nie będzie?<br>*Nie wolałbyś, żeby to Bóg Wojny poprowadził Ciebie i Twoich Braci przeciwko demonom?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "5": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Praca, ziemia, stabilność.</strong><br><br>Ermos nie tylko jest Bogiem Wojny, ale również mężem, ojcem. On staje do boju dla córki i żony. On je chroni własną piersią przed wrogiem, stając do walki z mieczem w dłoni. Ale jeśli nie musiałby walczyć, czy nie stanąłby również z kilofem, młotem lub siekierą, po to, by pracować dla swojej rodziny?<br>*Czerwony, ojcowski płaszcz będzie Was chronił, byście Wy mogli bezpiecznie żyć.*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "6": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Któż jak nie Ermos?</strong><br><br>Życie to wojna. Codzienne wstawanie, codzienna praca, codzienne zmienianie rzeczywistości to walka ze światem. Oranie ziemi, kruszenie skał, rąbanie drewna, czym to jest jeśli nie przemocą, jeśli nie pojedynkiem z materią?<br>*Więc skoro życie to wojna, to czyż największym bogiem nie jest Ermos?*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "7": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Ermos rozpozna SWOICH.</strong><br><br>Świat pogrążony jest w chaosie tak samo jak pole bitwy. Wróg miesza się z przyjacielem. Formacje załamują się. Szyki chyboczą. Linie obrony pękają pod naporem niekończących się rzeszy. Jednakże wyznawcy Boga Wojny nie lękają się, bo Ermos wygra. Ale w tym chaosie nie oszczędzi nikogo innego, jak tylko tych, którzy noszą jego barwy.<br>*Bo w chaosie bitwy trzeba być pewnym, kto jest przyjacielem, a kto wrogiem.*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ],
+      "8": [
+        "Proszę, to powinno rozwiać Twe wątpliwości...<br><br>[ Ermosowiec podaje Ci ulotkę o następującej treści: ]<br><br><i><strong>Nie ufajcie fałszywym prorokom!</strong><br><br>Z Chaosu pochodzi zło. Z Chaosu był też Główny Demon, który ze swoimi splugawionymi pomocnikami został strącony przez Ermosa jego Ognistym Mieczem.<br>Nie znaczy to jednak, że Chaos umarł wraz z nim. Wręcz przeciwnie, mnogość demonów wypełzła ze szczątków tamtego, jak szczury żywiące się na trupie.<br>Także demonów, które podszywają się pod bogów, które straszą sobą, jednak nie mówią nic o wybawieniu! Zastawiają na Was pułapkę, więc zastanówcie się, komu ufacie.<br>*Zaufajcie Ermosowi, który ma konkretny sposób na Wasze wybawienie.*<br><br>Przybądźcie do Werbin, Bastionu Ermosa w Margonem. Zacznijcie nowe, lepsze życie. Życie w bezpieczeństwie Czerwonego Płaszcza.<br><br>Radnerak Obrońca.</i>",
+        "[ Zafascynowujesz się treścią ulotki i zostajesz wyznawcą Ermosa. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją przestudiować później. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by o niej zapomnieć. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by ją wyrzucić za rogiem. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć „materiał” w wychodku. ] ->END",
+        "[ Chowasz ulotkę do kieszeni, by mieć dowód herezji. ] ->END"
+      ]
+    }
+  }
+]

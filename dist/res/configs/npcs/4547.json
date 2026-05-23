@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Szałas",
+    "x": 8,
+    "y": 68,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true,
+    "dialog": {
+      "0": [
+        "Na pierwszy rzut oka szałas jak szałas. Jest tu kilka takich zamieszkiwanych przez Wilcze Plemię. W tym jednak poza skórami, jedzeniem i bezwartościowymi przedmiotami pierwszej potrzeby znaleźć można kolorowe plecionki oraz różne, gorszej lub lepszej jakości maski o wilczych kształtach. Tylko garstka spotkanych przed chwilą wojowników w takich chodzi.",
+        "Hm. Ci członkowie plemienia są jacyś inni. Zresztą kojarzę te zbroje i zachowanie skądś indziej... Sam nie wiem. Może powinienem to opisać jakiemuś badaczowi z uniwersytetu? ->END",
+        "Dzikusy jak dzikusy. Wyrżnąć to wszystko w pień [Spluń]. ->END"
+      ]
+    }
+  },
+  {
+    "type": "change",
+    "id": 270632,
+    "newUrl": "#res/img/npc/savage3.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 262780,
+    "newUrl": "#res/img/npc/savage2.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 262781,
+    "newUrl": "#res/img/npc/savage5.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 262779,
+    "newUrl": "#res/img/npc/savage4.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 270630,
+    "newUrl": "#res/img/npc/savage6.gif",
+    "lvl": 0
+  },
+  {
+    "type": "change",
+    "id": 262778,
+    "newUrl": "#res/img/npc/savage1.gif",
+    "lvl": 0
+  }
+]

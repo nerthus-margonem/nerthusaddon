@@ -125,14 +125,13 @@ function displayDialog(npcId, npcNick, npcMessage, playerReplies) {
     const innerDial = parseInnerDialog(npcMessage, playerReplies);
     const $dialWin = $(".dialogue-window");
     $(".npc-message", $dialWin).html(npcMessage);
-    $(".content .inner.scroll-wrapper .scroll-pane", $dialWin).html(innerDial);
+    $(".content .answers-scroll .scroll-pane", $dialWin).html(innerDial);
 
-    $(
-      ".content .inner.scroll-wrapper .scroll-pane .answers .answer",
-      $dialWin,
-    ).each(function (index) {
-      addEventToAnswer(this, $dialWin, playerReplies, index, npcId);
-    });
+    $(".content .answers-scroll .scroll-pane .answers .answer", $dialWin).each(
+      function (index) {
+        addEventToAnswer(this, $dialWin, playerReplies, index, npcId);
+      },
+    );
   } else {
     $("#dlgin .message")
       .empty()

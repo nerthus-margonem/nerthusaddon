@@ -7,7 +7,7 @@ import {
   startRenderer,
 } from "./app/game-integration/loaders";
 import { initTips } from "./app/game-integration/tips";
-import { addBasicStyles } from "./app/interface/css-manager";
+import { addBasicStyles, initCssManager } from "./app/interface/css-manager.js";
 import { initPanel } from "./app/interface/panel";
 import { mapManager } from "./app/map-manager.ts";
 import { initNightManager } from "./app/night/night.js";
@@ -30,6 +30,7 @@ if (INTERFACE === "NI") {
 function start() {
   initAPI();
 
+  initCssManager();
   addBasicStyles();
   loadSettings();
 

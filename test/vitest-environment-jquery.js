@@ -16,6 +16,7 @@ export default {
         `;
     const jsdom = new JSDOM(testHTML);
     globalThis.window = jsdom.window;
+    globalThis.document = jsdom.window.document;
     globalThis.Image = jsdom.window.Image;
     globalThis.$ = globalThis.jQuery = jQuery(window);
 

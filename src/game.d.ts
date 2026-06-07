@@ -166,9 +166,24 @@ declare const g: {
     add(key: string): void;
     remove(key: string): void;
   };
+  settingsOptions: {
+    isMouseHeroWalkOn(): boolean;
+  };
+  settingsStorage: {
+    sendRequest(id: number, key: unknown, value: boolean): void;
+  };
 };
 declare const map: {
   id: number;
   x: number;
   y: number;
 };
+declare const hero: {
+  x: number;
+  y: number;
+};
+
+/**
+ * Global variables available on both interfaces.
+ */
+declare const log: (message: string) => void;

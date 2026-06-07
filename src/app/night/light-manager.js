@@ -5,7 +5,7 @@ import {
 } from "../interface/css-manager";
 import { addDraggable } from "../utility-functions";
 import { addSingleLight, lightsOn, resetLights, turnLightsOn } from "./lights";
-import { applyCurrentNight } from "./night";
+import { applyCurrentNight } from "./night.js";
 
 const lightManagerHtml = `
 <div id="nerthus-light-manager-wrapper">

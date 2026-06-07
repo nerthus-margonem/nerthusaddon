@@ -169,4 +169,6 @@ declare const g: {
 };
 declare const map: {
   id: number;
+  x: number;
+  y: number;
 };

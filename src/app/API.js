@@ -1,6 +1,6 @@
 import { mapManager } from "./map-manager.ts";
 import { turnLightsOn } from "./night/lights";
-import { applyCurrentNight, changeLight } from "./night/night";
+import { applyCurrentNight, changeLight } from "./night/night.js";
 import { customNpcs, loadNpcsFromFile } from "./npc/npc";
 import { addNpc, addNpcToList } from "./npc/npc-actions/add";
 import { hideGameNpc } from "./npc/npc-actions/hide";

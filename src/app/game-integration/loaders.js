@@ -9,8 +9,10 @@ const drawables = [];
  * @param fun - function that will be executed
  * @param args - arguments function will take
  */
-export function loadOnEveryMap(fun, args) {
-  if (currentLoadedMapId !== -1) fun(args);
+export function loadOnEveryMap(fun, args = undefined) {
+  if (currentLoadedMapId !== -1) {
+    fun(args);
+  }
   loadQueue.push([fun, args]);
 }
 

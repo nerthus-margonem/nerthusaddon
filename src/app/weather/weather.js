@@ -3,7 +3,7 @@ import weatherDescriptions from "../../../res/descriptions/weather.json" with { 
 import { callEvent } from "../API";
 import { loadOnEveryMap } from "../game-integration/loaders";
 import { addSettingToPanel } from "../interface/panel";
-import { setOpacityChange } from "../night/night";
+import { setOpacityChange } from "../night/night.js";
 import { Simple1DNoise } from "../random";
 import { settings } from "../settings";
 import { isCurrentMapOutdoor } from "../utility-functions";

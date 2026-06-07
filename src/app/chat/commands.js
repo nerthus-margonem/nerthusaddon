@@ -1,5 +1,5 @@
 import { mapManager } from "../map-manager.ts";
-import { applyCurrentNight, setForcedParameters } from "../night/night";
+import { applyCurrentNight, setForcedParameters } from "../night/night.js";
 import { Npc } from "../npc/npc";
 import { addNpcToList } from "../npc/npc-actions/add";
 import { hideGameNpc } from "../npc/npc-actions/hide";

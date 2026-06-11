@@ -32,6 +32,22 @@ declare interface Drawable {
   draw(ctx: CanvasRenderingContext2D): void;
 }
 
+declare interface ChatMessageData {
+  authorBusinessCard: {
+    getNick(): unknown;
+    getAcc(): unknown;
+  };
+  channel: unknown;
+  id: number | undefined;
+  receiverBusinessCard: {
+    getNick(): unknown;
+  };
+  text: string;
+  town: boolean;
+  ts: number;
+  style: string | null;
+}
+
 /**
  * Engine global variable available in the new interface.
  */
@@ -40,18 +56,7 @@ declare const Engine: {
     CALL_DRAW_ADD_TO_RENDERER: "call_draw_add_to_renderer";
   };
   chatController: {
-    addMessage(data: {
-      authorBusinessCard: {
-        getNick(): unknown;
-      };
-      channel: unknown;
-      id: number | undefined;
-      receiverBusinessCard: unknown;
-      text: string;
-      town: boolean;
-      ts: number;
-      style: string | null;
-    }): void;
+    addMessage(data: ChatMessageData): void;
   };
   communication: {
     dispatcher: {
@@ -160,7 +165,7 @@ declare const Engine: {
  */
 declare const g: {
   chatController: {
-    addMessage(): unknown;
+    addMessage(data: ChatMessageData): void;
   };
   lock: {
     add(key: string): void;

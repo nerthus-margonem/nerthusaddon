@@ -9,7 +9,7 @@ import { sanitizeText } from "../utility-functions";
 import { clearEffects } from "../weather/effects";
 import { clearFog, createFog } from "../weather/fog";
 import { displayWeather, setForcedWeather } from "../weather/weather";
-import { registerChatCommand } from "./chat";
+import { registerChatCommand } from "./chat.js";
 import { getRollHtml, getRollText, rollDice } from "./dice";
 
 const BLOCKED_CHANNELS = new Set(["TRADE", "GLOBAL"]);

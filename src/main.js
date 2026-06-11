@@ -1,6 +1,6 @@
 import { callEvent, initAPI } from "./app/API";
 import { initChatMgr } from "./app/chat/chat.js";
-import { initBasicChatCommands } from "./app/chat/commands";
+import { initBasicChatCommands } from "./app/chat/commands.js";
 import { initHideChatCommercials } from "./app/chat/hide-chat-commercials.js";
 import {
   initiateGameIntegrationLoaders,

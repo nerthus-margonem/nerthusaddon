@@ -67,3 +67,22 @@ export function debounce(func, timeout = 100) {
     timer = setTimeout(() => func.apply(this, args), timeout);
   };
 }
+
+export function setTip(object, tip, bold = false) {
+  switch (INTERFACE) {
+    case "SI":
+      if (bold) {
+        object.setAttribute("tip", `<b>${tip}</b>`);
+      } else {
+        object.setAttribute("tip", tip);
+      }
+      break;
+    case "NI":
+      if (bold) {
+        $(object).tip(`<strong>${tip}</strong>`);
+      } else {
+        $(object).tip(tip);
+      }
+      break;
+  }
+}

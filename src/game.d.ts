@@ -32,20 +32,34 @@ declare interface Drawable {
   draw(ctx: CanvasRenderingContext2D): void;
 }
 
+declare interface BusinessCard {
+  getNick(): string;
+  getAcc(): unknown;
+}
+
 declare interface ChatMessageData {
-  authorBusinessCard: {
-    getNick(): unknown;
-    getAcc(): unknown;
-  };
-  channel: unknown;
+  authorBusinessCard: BusinessCard;
+  channel:
+    | "GENERAL"
+    | "GLOBAL"
+    | "LOCAL"
+    | "TRADE"
+    | "GROUP"
+    | "CLAN"
+    | "SYSTEM"
+    | "PRIVATE"
+    | "COMMERCIAL";
   id: number | undefined;
-  receiverBusinessCard: {
-    getNick(): unknown;
-  };
+  receiverBusinessCard: BusinessCard;
   text: string;
   town: boolean;
   ts: number;
   style: string | null;
+
+  /** Nerthus-specific addition to track authors of messages without authorBusinessCard */
+  nick?: string;
+  /** Nerthus-specific addition to track a specific message tip */
+  tip?: string;
 }
 
 /**

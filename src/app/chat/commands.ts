@@ -1,231 +1,241 @@
-import { mapManager } from "../map-manager.ts";
+import { mapManager } from "../map-manager.js";
 import { applyCurrentNight, setForcedParameters } from "../night/night.js";
-import { Npc } from "../npc/npc";
-import { addNpcToList } from "../npc/npc-actions/add";
-import { hideGameNpc } from "../npc/npc-actions/hide";
-import { removeNpc } from "../npc/npc-actions/remove";
-import { settings } from "../settings";
-import { sanitizeText } from "../utility-functions";
-import { clearEffects } from "../weather/effects";
-import { clearFog, createFog } from "../weather/fog";
-import { displayWeather, setForcedWeather } from "../weather/weather";
+import { addNpcToList } from "../npc/npc-actions/add.js";
+import { hideGameNpc } from "../npc/npc-actions/hide.js";
+import { removeNpc } from "../npc/npc-actions/remove.js";
+import { Npc } from "../npc/npc.js";
+import { settings } from "../settings.js";
+import { sanitizeText, setTip } from "../utility-functions.js";
+import { clearEffects } from "../weather/effects.js";
+import { clearFog, createFog } from "../weather/fog.js";
+import { displayWeather, setForcedWeather } from "../weather/weather.js";
 import { registerChatCommand } from "./chat.js";
-import { getRollHtml, getRollText, rollDice } from "./dice";
+import { getRollHtml, getRollText, rollDice } from "./dice.js";
 
 const BLOCKED_CHANNELS = new Set(["TRADE", "GLOBAL"]);
 
-function getAuthorBusinessCardProxy(businessCard, newAuthorNick) {
+function getAuthorBusinessCardProxy(
+  businessCard: BusinessCard,
+  newAuthorNick: string,
+) {
   return new Proxy(businessCard, {
-    get(target, prop) {
+    get(target, prop, receiver) {
       if (prop === "getNick") {
         return () => newAuthorNick;
       }
-      return Reflect.get(...arguments);
+      return Reflect.get(target, prop, receiver);
     },
   });
 }
 
-function hideMessageIdentity(msg) {
-  msg.authorBusinessCard = new Proxy(
-    {},
-    {
-      get: () => () => "",
-    },
-  );
+function hideMessageIdentity(msg: ChatMessageData): void {
+  const emptyProxy = new Proxy({} as BusinessCard, {
+    get: () => () => "",
+  });
+
+  msg.authorBusinessCard = emptyProxy;
   if (msg.receiverBusinessCard) {
-    msg.receiverBusinessCard = new Proxy(
-      {},
-      {
-        get: () => () => "",
-      },
-    );
+    msg.receiverBusinessCard = emptyProxy;
   }
 }
 
-function nar0(msg) {
+function splitDialogueCommand(
+  command: string,
+): { author: string; message: string } | undefined {
+  const split = command.split(",");
+  const author = split[0];
+  if (!author) {
+    return;
+  }
+  const message = split.slice(1).join(",");
+
+  return {
+    author,
+    message,
+  };
+}
+
+function getCommandBody(msg: ChatMessageData): string {
+  return msg.text.split(" ").slice(1).join(" ");
+}
+
+function nar0(msg: ChatMessageData): void {
   msg.style = "nerthus-nar0";
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*nar0? /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function nar1(msg) {
+function nar1(msg: ChatMessageData): void {
   msg.style = "nerthus-nar1";
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*nar1? /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function nar2(msg) {
+function nar2(msg: ChatMessageData): void {
   msg.style = "nerthus-nar2";
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*nar2 /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function nar3(msg) {
+function nar3(msg: ChatMessageData): void {
   msg.style = "nerthus-nar3";
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*nar3 /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function nar6(msg) {
+function nar6(msg: ChatMessageData): void {
   msg.style = "nerthus-nar-rainbow";
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*nar6 /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function dial0(msg) {
+function dial0(msg: ChatMessageData): void {
+  const command = getCommandBody(msg);
+  const split = splitDialogueCommand(command);
+  if (!split) {
+    return;
+  }
   msg.style = "nerthus-dial0";
   msg.nick = msg.authorBusinessCard.getNick();
-  const [author, ...messageParts] = msg.text
-    .split(" ")
-    .slice(1)
-    .join(" ")
-    .split(",");
   msg.authorBusinessCard = getAuthorBusinessCardProxy(
     msg.authorBusinessCard,
-    author,
+    split.author,
   );
-  msg.text = messageParts.join(",");
-  return msg;
+  msg.text = split.message;
 }
 
-function dial1(msg) {
+function dial1(msg: ChatMessageData): void {
+  const command = getCommandBody(msg);
+  const split = splitDialogueCommand(command);
+  if (!split) {
+    return;
+  }
   msg.style = "nerthus-dial1";
   msg.nick = msg.authorBusinessCard.getNick();
-  const [author, ...messageParts] = msg.text
-    .split(" ")
-    .slice(1)
-    .join(" ")
-    .split(",");
   msg.authorBusinessCard = getAuthorBusinessCardProxy(
     msg.authorBusinessCard,
-    author,
+    split.author,
   );
-  msg.text = messageParts.join(",");
-  return msg;
+  msg.text = split.message;
 }
 
-function dial2(msg) {
+function dial2(msg: ChatMessageData): void {
+  const command = getCommandBody(msg);
+  const split = splitDialogueCommand(command);
+  if (!split) {
+    return;
+  }
   msg.style = "nerthus-dial2";
   msg.nick = msg.authorBusinessCard.getNick();
-  const [author, ...messageParts] = msg.text
-    .split(" ")
-    .slice(1)
-    .join(" ")
-    .split(",");
   msg.authorBusinessCard = getAuthorBusinessCardProxy(
     msg.authorBusinessCard,
-    author,
+    split.author,
   );
-  msg.text = messageParts.join(",");
-  return msg;
+  msg.text = split.message;
 }
 
-function dial3(msg) {
+function dial3(msg: ChatMessageData): void {
+  const command = getCommandBody(msg);
+  const split = splitDialogueCommand(command);
+  if (!split) {
+    return;
+  }
   msg.style = "nerthus-dial3";
   msg.nick = msg.authorBusinessCard.getNick();
-  const [author, ...messageParts] = msg.text
-    .split(" ")
-    .slice(1)
-    .join(" ")
-    .split(",");
   msg.authorBusinessCard = getAuthorBusinessCardProxy(
     msg.authorBusinessCard,
-    author,
+    split.author,
   );
-  msg.text = messageParts.join(",");
-  return msg;
+  msg.text = split.message;
 }
 
-function dial666(msg) {
+function dial666(msg: ChatMessageData): void {
+  const command = getCommandBody(msg);
+  const split = splitDialogueCommand(command);
+  if (!split) {
+    return;
+  }
   msg.style = "nerthus-dial666";
   msg.nick = msg.authorBusinessCard.getNick();
-  const [author, ...messageParts] = msg.text
-    .split(" ")
-    .slice(1)
-    .join(" ")
-    .split(",");
   msg.authorBusinessCard = getAuthorBusinessCardProxy(
     msg.authorBusinessCard,
-    author,
+    split.author,
   );
-  msg.text = messageParts.join(",");
-  return msg;
+  msg.text = split.message;
 }
 
-function sys(msg) {
+function sys(msg: ChatMessageData): void {
   msg.style = "nerthus-sys";
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*sys /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function map(msg) {
+function map(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
-  const cmd = msg.text.split(" ").slice(1).join(" ").split(",");
-  const mapUrl = sanitizeText(cmd[0]);
-  const mapId = Number.parseInt(cmd[1]);
-  if (mapId) {
-    mapManager.addToMapChangelist(mapUrl, 2, mapId);
-  } else if (BLOCKED_CHANNELS.has(msg.channel)) {
+  if (BLOCKED_CHANNELS.has(msg.channel)) {
     // Do not change everyone's map on global or trade
     return;
+  }
+
+  const cmd = getCommandBody(msg).split(",");
+  const mapUrl = sanitizeText(cmd[0]);
+  const mapId = cmd[1] ? Number.parseInt(cmd[1]) : undefined;
+  if (mapId) {
+    mapManager.addToMapChangelist(mapUrl, 2, mapId);
   } else {
     mapManager.addToMapChangelist(mapUrl, 1);
   }
   mapManager.applyCurrentMapChange();
 }
 
-function resetMap(msg) {
+function resetMap(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
-  const mapId = Number.parseInt(msg.text.split(" ").slice(1).join(" "));
+  const mapId = Number.parseInt(getCommandBody(msg));
+  if (Number.isNaN(mapId)) {
+    return;
+  }
 
   mapManager.removeFromMapChangelist(mapId, 2);
   mapManager.applyCurrentMapChange();
-
-  return false;
 }
 
-function light(msg) {
+function light(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
-  const arr = msg.text.split(" ");
-  arr.shift();
-  const argArr = arr.join(" ").split(",");
-  if (BLOCKED_CHANNELS.has(msg.channel) && (arr.length === 0 || !argArr[2])) {
+  const cmd = getCommandBody(msg).split(",");
+  if (BLOCKED_CHANNELS.has(msg.channel) && !cmd[2]) {
     // Do not change everyone's light on global or trade
     return;
   }
 
-  if (arr.length === 0) {
-    // if no arguments
+  if (cmd.length === 0 || cmd[0] === undefined) {
     setForcedParameters(-1, "#000");
   } else {
-    let opacity = argArr[0].trim();
-    const color = argArr[1] ? argArr[1].trim() : "#000";
-    const mapId = argArr[2] ? argArr[2].trim() : "default";
-    opacity = Number.parseFloat(opacity.replace(",", "."));
-    setForcedParameters(1 - opacity, color, mapId);
+    const opacity = Number.parseFloat(cmd[0].trim());
+    const color = cmd[1] ? cmd[1].trim() : "#000";
+    let mapId = cmd[2] ? Number.parseInt(cmd[2].trim()) : undefined;
+    if (Number.isNaN(mapId)) {
+      mapId = undefined;
+    }
+    setForcedParameters(1 - opacity, color, mapId ?? "default");
   }
 
   applyCurrentNight();
-
-  return false;
 }
 
-function addGraf(msg) {
+function addGraf(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
-  //cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
-  const cmd = msg.text.split(" ").slice(1).join(" ").split(",");
+
+  // cmd[0]=x, cmd[1]=y, cmd[2]=url, cmd[3]=tip_text, cmd[4]=isCol, cmd[5]=map_id
+  const cmd = getCommandBody(msg).split(",");
+  if (!cmd[0] || !cmd[1] || !cmd[2]) {
+    return;
+  }
   const x = Number.parseInt(cmd[0]);
   const y = Number.parseInt(cmd[1]);
   const url = sanitizeText(cmd[2]);
@@ -234,53 +244,56 @@ function addGraf(msg) {
   if (INTERFACE === "SI") {
     nick = `<b>${nick}</b>`;
   }
-  const isCol = Number.parseInt(cmd[4]) > 0;
-  const mapId = Number.parseInt(cmd[5]);
+  const isCol = cmd[4] ? Number.parseInt(cmd[4]) > 0 : false;
+  let mapId: number | undefined = cmd[5] ? Number.parseInt(cmd[5]) : undefined;
+  if (Number.isNaN(mapId)) {
+    mapId = undefined;
+  }
 
   if (BLOCKED_CHANNELS.has(msg.channel) && !mapId) {
     // Do not add graphic on global or trade
     return;
   }
 
-  addNpcToList(new Npc(x, y, url, nick, isCol), mapId);
-  return false;
+  addNpcToList(new Npc(x, y, url, nick, isCol), mapId ?? "default");
 }
 
-function delGraf(msg) {
+function delGraf(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
-  const cmd = msg.text.split(" ")[1].split(",");
+  const cmd = getCommandBody(msg).split(",");
+  if (!cmd[0] || !cmd[1]) {
+    return;
+  }
+
   const x = Number.parseInt(cmd[0]);
   const y = Number.parseInt(cmd[1]);
-  const mapId = Number.parseInt(cmd[2]);
-
+  const mapId = cmd[2] ? Number.parseInt(cmd[2]) : undefined;
   if (BLOCKED_CHANNELS.has(msg.channel) && !mapId) {
-    // Do not add graphic on global or trade
+    // Do not add global graphic on global or trade
     return;
   }
 
   removeNpc(x, y, mapId);
-  return false;
 }
 
-function hide(msg) {
+function hide(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
-  const cmd = msg.text.split(" ")[1];
-  const id = Number.parseInt(cmd);
-
-  hideGameNpc(id);
-
-  return false;
-}
-
-function weather(msg) {
-  msg.style = "nerthus-command";
-  const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(msg.text);
-  if (!weatherArr) {
-    return false;
+  const cmd = getCommandBody(msg);
+  if (cmd) {
+    const id = Number.parseInt(cmd);
+    hideGameNpc(id);
   }
+}
 
+function weather(msg: ChatMessageData): void {
+  msg.style = "nerthus-command";
   if (BLOCKED_CHANNELS.has(msg.channel)) {
     // Do not change weather on global or trade
+    return;
+  }
+
+  const weatherArr = /^\*weather(?: ([\w-]+)(?:, ?(\d+))?)?/g.exec(msg.text);
+  if (!weatherArr) {
     return;
   }
 
@@ -289,14 +302,12 @@ function weather(msg) {
     clearEffects(true);
   }
   displayWeather();
-
-  return false;
 }
 
-function fog(msg) {
+function fog(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
 
-  const cmd = msg.text.split(" ")[1]?.split(",") ?? [];
+  const cmd = getCommandBody(msg).split(",");
   const red = cmd[0] ? Number.parseInt(cmd[0]) : 255;
   const green = cmd[1] ? Number.parseInt(cmd[1]) : 255;
   const blue = cmd[2] ? Number.parseInt(cmd[2]) : 255;
@@ -304,45 +315,40 @@ function fog(msg) {
   const mapId = cmd[4] ? Number.parseInt(cmd[4]) : undefined;
 
   createFog({ r: red, g: green, b: blue, a: alpha }, mapId);
-
-  return false;
 }
 
-function clearFogCommand(msg) {
+function clearFogCommand(msg: ChatMessageData): void {
   msg.style = "nerthus-command";
 
-  const cmd = msg.text.split(" ")[1]?.split(",") ?? [];
+  const cmd = getCommandBody(msg).split(",");
   const mapId = cmd[0] ? Number.parseInt(cmd[0]) : undefined;
+  if (Number.isNaN(mapId)) {
+    return;
+  }
 
   clearFog(mapId);
-
-  return false;
 }
 
-function me(msg) {
-  msg.style = 2; // 2 is special style for regular `/me`
+function me(msg: ChatMessageData): void {
+  msg.style = "2"; // 2 is special style for regular `/me`
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
-  msg.text = msg.text.replace(/^\*me /, "");
-  return msg;
+  msg.text = getCommandBody(msg);
 }
 
-function lang(msg) {
-  console.log(msg);
-  if (msg.text.split(",").length < 2) {
+function lang(msg: ChatMessageData): void {
+  const cmd = getCommandBody(msg).split(",");
+  if (!cmd[0] || !cmd[1]) {
     // early return incorrect input
-    return msg;
+    return;
   }
 
   msg.style = `nerthus-lang nerthus-lang-ts-${msg.ts}`;
-  msg.text = msg.text.replace(/^\*lang /, ""); // remove *lang
-  const cmd = msg.text.split(",");
 
   const notAllowed = /[^a-ząćęłńóśźż -]/gi;
   const tip = cmd[0].toLowerCase().replaceAll(notAllowed, "");
-  cmd.shift(); // remove tip
 
-  msg.text = `*${cmd.join(",").trim()}*`;
+  msg.text = `*${cmd.slice(1).join(",").trim()}*`;
 
   // for external addon usage
   msg.tip = tip;
@@ -353,14 +359,12 @@ function lang(msg) {
       document.querySelectorAll(`.nerthus-lang-ts-${msg.ts} .message-part`),
     );
     for (const element of elements) {
-      $(element).tip(`Język wiadomości: ${tip}`);
+      setTip(element, `Język wiadomości: ${tip}`);
     }
   }, 0);
-
-  return msg;
 }
 
-function dice(msg) {
+function dice(msg: ChatMessageData): void {
   msg.style = `nerthus-dice nerthus-dice-ts-${msg.ts}`;
   msg.nick = msg.authorBusinessCard.getNick();
   hideMessageIdentity(msg);
@@ -398,8 +402,6 @@ function dice(msg) {
       element.innerHTML = element.innerHTML.replace(rollText, rollHtml);
     }
   }, 0);
-
-  return msg;
 }
 
 const narratorCommands = {
@@ -434,10 +436,10 @@ const publicCommands = {
 };
 
 export function initBasicChatCommands() {
-  for (const cmd in narratorCommands) {
-    registerChatCommand(cmd, narratorCommands[cmd], false);
+  for (const [cmd, callback] of Object.entries(narratorCommands)) {
+    registerChatCommand(cmd, callback, false);
   }
-  for (const cmd in publicCommands) {
-    registerChatCommand(cmd, publicCommands[cmd], true);
+  for (const [cmd, callback] of Object.entries(publicCommands)) {
+    registerChatCommand(cmd, callback, true);
   }
 }

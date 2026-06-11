@@ -165,8 +165,8 @@ export function addNpc(npc) {
 /**
  * Function adds new NPC to the list and displays him,
  * or replaces NPC on the same coordinates and same map
- * @param npc
- * @param mapId
+ * @param {Npc} npc
+ * @param {number | 'default'} mapId
  */
 export function addNpcToList(npc, mapId) {
   if (!customNpcs[mapId]) {
@@ -177,11 +177,11 @@ export function addNpcToList(npc, mapId) {
   }
   customNpcs[mapId][npc.id] = npc;
   if (INTERFACE === "NI") {
-    if (Engine.map.d.id === mapId) {
+    if (mapId === "default" || Engine.map.d.id === mapId) {
       addNpc(npc);
     }
   } else {
-    if (map.id === mapId) {
+    if (mapId === "default" || map.id === mapId) {
       addNpc(npc);
     }
   }

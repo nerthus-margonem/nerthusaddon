@@ -103,5 +103,45 @@
     "type": "delete",
     "id": 130404,
     "lvl": 0
+  },
+  {
+    "name": "Drogowskaz",
+    "tip": "",
+    "x": 18,
+    "y": 76,
+    "collision": true,
+    "url": "#res/img/npc/props/signpost.gif"
+  },
+  {
+    "name": "Dach",
+    "tip": "",
+    "x": 24,
+    "y": 67,
+    "collision": false,
+    "url": "#res/img/npc/map-specific/dolina-yss/1.gif"
+  },
+  {
+    "name": "Zadaszenie",
+    "tip": "",
+    "x": 25,
+    "y": 60,
+    "collision": false,
+    "url": "#res/img/npc/map-specific/dolina-yss/2.gif"
+  },
+  {
+    "name": "Koło wodne",
+    "tip": "",
+    "x": 31,
+    "y": 60,
+    "collision": false,
+    "url": "#res/img/npc/map-specific/dolina-yss/3.gif"
+  },
+  {
+    "name": "Drewniana konstrukcja",
+    "tip": "",
+    "x": 26,
+    "y": 51,
+    "collision": false,
+    "url": "#res/img/npc/map-specific/dolina-yss/4.gif"
   }
 ]

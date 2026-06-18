@@ -64,7 +64,7 @@ function deploy(npc) {
   }
 }
 
-export async function loadNpcsFromFile(url) {
+export async function loadNpcsFromUrl(url) {
   const npcs = await mapBoundAssetLoader.loadJsonAsset(url);
   if (!npcs) {
     return;
@@ -78,7 +78,7 @@ export async function loadNpcsFromFile(url) {
 function loadNpcs() {
   if (INTERFACE === "NI") {
     if (AVAILABLE_MAP_FILES.npc.includes(Engine.map.d.id))
-      loadNpcsFromFile(
+      loadNpcsFromUrl(
         FILE_PREFIX + "res/configs/npcs/" + Engine.map.d.id + ".json",
       );
 
@@ -87,7 +87,7 @@ function loadNpcs() {
     }
   } else {
     if (AVAILABLE_MAP_FILES.npc.includes(map.id)) {
-      loadNpcsFromFile(FILE_PREFIX + "res/configs/npcs/" + map.id + ".json");
+      loadNpcsFromUrl(FILE_PREFIX + "res/configs/npcs/" + map.id + ".json");
     }
 
     for (const npcId in customNpcs[map.id]) {

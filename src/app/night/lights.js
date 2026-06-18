@@ -1,3 +1,4 @@
+import { mapBoundAssetLoader } from "../assets/map-bound-asset-loader.js";
 import {
   addDrawableToRendering,
   removeDrawableFromRendering,
@@ -88,6 +89,15 @@ export function resetLights() {
   lightsOn = false;
 }
 
+export async function loadLightsFromUrl(url) {
+  const lights = await mapBoundAssetLoader.loadJsonAsset(url);
+  if (!lights) {
+    return;
+  }
+
+  addLights(lights);
+}
+
 export function turnLightsOn() {
   resetLights();
   if (INTERFACE === "NI" && typeof Engine.map.d.id === "undefined") {
@@ -96,9 +106,8 @@ export function turnLightsOn() {
   }
 
   if (AVAILABLE_MAP_FILES.lights.includes(CURRENT_MAP_ID)) {
-    $.getJSON(
+    void loadLightsFromUrl(
       FILE_PREFIX + "res/configs/night-lights/" + CURRENT_MAP_ID + ".json",
-      addLights,
     );
   } else {
     console.log("lights not loaded - no file");

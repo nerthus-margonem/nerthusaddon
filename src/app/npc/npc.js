@@ -1,3 +1,4 @@
+import { mapBoundAssetLoader } from "../assets/map-bound-asset-loader.js";
 import { loadOnEveryMap } from "../game-integration/loaders";
 import { addSettingToPanel } from "../interface/panel";
 import { coordsToId, resolveUrl } from "../utility-functions";
@@ -63,10 +64,15 @@ function deploy(npc) {
   }
 }
 
-export function loadNpcsFromFile(url) {
-  $.getJSON(url, function (npcs) {
-    if (npcs) npcs.forEach(deploy);
-  });
+export async function loadNpcsFromFile(url) {
+  const npcs = await mapBoundAssetLoader.loadJsonAsset(url);
+  if (!npcs) {
+    return;
+  }
+
+  for (const npc of npcs) {
+    deploy(npc);
+  }
 }
 
 function loadNpcs() {

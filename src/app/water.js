@@ -1,3 +1,4 @@
+import { mapBoundAssetLoader } from "./assets/map-bound-asset-loader.ts";
 import { loadOnEveryMap } from "./game-integration/loaders";
 
 function applySingleWaterChange(x, y, waterTopModify) {
@@ -8,20 +9,23 @@ function applySingleWaterChange(x, y, waterTopModify) {
   }
 }
 
+async function loadWaterFromUrl(url) {
+  const waterData = await mapBoundAssetLoader.loadJsonAsset(url);
+  if (!waterData) {
+    return;
+  }
+
+  for (const waterChange of waterData) {
+    applySingleWaterChange(waterChange.x, waterChange.y, waterChange.water);
+  }
+}
+
 export function applyWater(mapId) {
   if (!AVAILABLE_MAP_FILES.water.includes(mapId)) {
     return;
   }
-  fetch(FILE_PREFIX + "res/configs/water/" + CURRENT_MAP_ID + ".json")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((waterChange) => {
-        applySingleWaterChange(waterChange.x, waterChange.y, waterChange.water);
-      });
-    })
-    .catch((error) => {
-      console.error("Error loading Nerthus water data:", error);
-    });
+
+  void loadWaterFromUrl(FILE_PREFIX + "res/configs/water/" + mapId + ".json");
 }
 
 export function initWaterManager() {

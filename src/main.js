@@ -1,9 +1,11 @@
 import { callEvent, initAPI } from "./app/API";
+import { mapBoundAssetLoader } from "./app/assets/map-bound-asset-loader.js";
 import { initChatMgr } from "./app/chat/chat.js";
 import { initBasicChatCommands } from "./app/chat/commands.js";
 import { initHideChatCommercials } from "./app/chat/hide-chat-commercials.js";
 import {
   initiateGameIntegrationLoaders,
+  loadOnEveryMap,
   startRenderer,
 } from "./app/game-integration/loaders";
 import { initTips } from "./app/game-integration/tips";
@@ -37,6 +39,7 @@ function start() {
   initTips();
 
   initiateGameIntegrationLoaders();
+  loadOnEveryMap(() => mapBoundAssetLoader.reset());
 
   mapManager.init();
   initWaterManager();

@@ -296,7 +296,6 @@ export function initTips() {
         if (settings.changeNpcTips) {
           startChangingNpcTips(originalGetNpcTip);
         }
-        g.tips.npc = createNpcTip;
       },
     });
   }

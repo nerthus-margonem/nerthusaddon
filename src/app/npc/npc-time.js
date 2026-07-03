@@ -32,7 +32,7 @@ function parseStrToDate(date_str) {
   //DD.MM.YYYY
   date_str = date_str.split(".");
   const date = new Date();
-  const day = date_str[0] || date.getDay();
+  const day = date_str[0] || date.getDate();
   const month = date_str[1] ? parseInt(date_str[1]) - 1 : date.getMonth(); //month 0-11
   const year = date_str[2] || date.getFullYear();
   date.setFullYear(year, month, day);

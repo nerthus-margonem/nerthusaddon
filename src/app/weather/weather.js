@@ -73,12 +73,11 @@ function getClimateVariation(characteristic, date, climate) {
     climate = "default";
   }
 
-  const now = new Date();
-  const start = new Date(now.getFullYear(), 2, 20); // start of spring
-  if (start > now) {
-    start.setUTCFullYear(now.getFullYear() - 1);
+  const start = new Date(date.getFullYear(), 2, 20); // start of spring
+  if (start > date) {
+    start.setUTCFullYear(date.getFullYear() - 1);
   }
-  const day = Math.ceil((now - start) / (1000 * 60 * 60 * 24));
+  const day = Math.ceil((date - start) / (1000 * 60 * 60 * 24));
   const firstSeason = Math.floor(day / 90);
   const secondSeason = firstSeason === 3 ? 0 : firstSeason + 1;
   return (

@@ -78,11 +78,11 @@ function getClimateVariation(characteristic, date, climate) {
     start.setUTCFullYear(date.getFullYear() - 1);
   }
   const day = Math.ceil((date - start) / (1000 * 60 * 60 * 24));
-  const firstSeason = Math.floor(day / 90);
+  const firstSeason = Math.floor(day / 91.25);
   const secondSeason = firstSeason === 3 ? 0 : firstSeason + 1;
   return (
-    characteristic[climate][firstSeason] * (1 - (day / 90 - firstSeason)) +
-    characteristic[climate][secondSeason] * (day / 90 - firstSeason)
+    characteristic[climate][firstSeason] * (1 - (day / 91.25 - firstSeason)) +
+    characteristic[climate][secondSeason] * (day / 91.25 - firstSeason)
   );
 }
 

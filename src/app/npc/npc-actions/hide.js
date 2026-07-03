@@ -26,7 +26,7 @@ function startHidingNpcs() {
   };
 }
 
-export function hideGameNpc(id, always) {
+export function hideGameNpc(id, always = false) {
   if (INTERFACE === "NI") {
     if (!hidingStarted) {
       hidingStarted = true;

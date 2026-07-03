@@ -125,7 +125,9 @@ export function initNpcManager() {
       }
     }
     loadNpcs();
-    customHiddenNpcs.forEach(hideGameNpc);
+    for (const npcToHide of customHiddenNpcs) {
+      hideGameNpc(npcToHide);
+    }
   });
 
   addSettingToPanel(

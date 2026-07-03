@@ -19,7 +19,7 @@ import { sanitizeText } from "./app/utility-functions";
 import { initWaterManager } from "./app/water";
 import { initFog } from "./app/weather/fog";
 import { initWeather } from "./app/weather/weather";
-import { initWidgets } from "./app/widgets";
+import { initWidgets } from "./app/widgets.js";
 import { initZodiac } from "./app/zodiac";
 
 const logText = sanitizeText("Nerthus addon version: " + VERSION);
@@ -48,10 +48,10 @@ function start() {
 
   initNightManager();
 
-  initWidgets();
-  initWeather();
+  const widgetsContainer = initWidgets();
+  initWeather(widgetsContainer);
+  initZodiac(widgetsContainer);
   initFog();
-  initZodiac();
 
   initHideChatCommercials();
   initBasicChatCommands();

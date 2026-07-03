@@ -7,7 +7,7 @@ import { setOpacityChange } from "../night/night.js";
 import { Simple1DNoise } from "../random";
 import { settings } from "../settings";
 import { isCurrentMapOutdoor } from "../utility-functions";
-import { addWidget } from "../widgets";
+import { addWidget } from "../widgets.js";
 import {
   clearEffects,
   displayGameWeather,
@@ -441,8 +441,8 @@ function startChangeTimer() {
   }, timeout);
 }
 
-export function initWeather() {
-  $widget = addWidget("weather");
+export function initWeather(widgetsContainer) {
+  $widget = $(addWidget(widgetsContainer, "weather"));
   if (!settings.weather) {
     $widget.css("display", "none");
   }

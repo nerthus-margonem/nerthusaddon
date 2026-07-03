@@ -1,7 +1,7 @@
 import zodiacDescriptions from "../../res/descriptions/zodiac.json" with { type: "json" };
 import { addSettingToPanel } from "./interface/panel";
 import { settings } from "./settings";
-import { addWidget } from "./widgets";
+import { addWidget } from "./widgets.js";
 
 /**
  * Zodiac sign dates in format: month: [name, end day]
@@ -33,13 +33,16 @@ export function getZodiacSign(day, month) {
     : ZODIAC_SIGN_START_DAY[month][0];
 }
 
-export function initZodiac() {
+export function initZodiac(widgetsContainer) {
   const date = new Date();
   const currentSign = getZodiacSign(date.getUTCDate(), date.getUTCMonth());
-  const $widget = addWidget(
-    "zodiac",
-    FILE_PREFIX + "res/img/zodiac/" + currentSign + ".png",
-    zodiacDescriptions[currentSign][0],
+  const $widget = $(
+    addWidget(
+      widgetsContainer,
+      "zodiac",
+      FILE_PREFIX + "res/img/zodiac/" + currentSign + ".png",
+      zodiacDescriptions[currentSign][0],
+    ),
   );
   $widget
     .children(".nerthus__widget-image")

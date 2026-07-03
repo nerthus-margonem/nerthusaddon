@@ -127,7 +127,7 @@ export function addNpc(npc) {
         16 -
         Math.round(width / 2) +
         (npc.type > 3 && !(width % 64) ? -16 : 0);
-      const wpos = Math.round(this.x) + Math.round(this.y) * 256;
+      const wpos = Math.round(npc.x) + Math.round(npc.y) * 256;
       let wat;
       if (map.water && map.water[wpos]) {
         wat = map.water[wpos] / 4;

@@ -1,0 +1,207 @@
+[
+  {
+    "type": "delete",
+    "id": 56799,
+    "lvl": 0
+  },
+  {
+    "name": "Ściana",
+    "tip": "",
+    "x": 7,
+    "y": 13,
+    "url": "#res/img/npc/stone-wall-bottom.gif",
+    "collision": false
+  },
+  {
+    "name": "Ściana",
+    "tip": "",
+    "x": 8,
+    "y": 13,
+    "url": "#res/img/npc/stone-wall-bottom.gif",
+    "collision": false
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": 10,
+    "y": 12,
+    "url": "#res/img/npc/sofa-back-green.gif",
+    "collision": false
+  },
+  {
+    "name": "Drewniane Skrzynki",
+    "tip": "",
+    "x": 6,
+    "y": 6,
+    "url": "#res/img/npc/wooden-boxes-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Drewniane Skrzynki",
+    "tip": "",
+    "x": 4,
+    "y": 12,
+    "url": "#res/img/npc/wooden-boxes-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Drewniane Skrzynki",
+    "tip": "",
+    "x": 13,
+    "y": 12,
+    "url": "#res/img/npc/wooden-boxes-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Wiadro",
+    "tip": "",
+    "x": 6,
+    "y": 12,
+    "url": "#res/img/npc/bucket-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Stolik z Wodą",
+    "tip": "",
+    "x": 7,
+    "y": 12,
+    "url": "#res/img/npc/table-with-water-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Mikstury",
+    "tip": "",
+    "x": 8,
+    "y": 12,
+    "url": "#res/img/npc/potions-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Piwo",
+    "tip": "",
+    "x": 11,
+    "y": 12,
+    "url": "#res/img/npc/beer-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 2,
+    "y": 12,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 2,
+    "y": 11,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 2,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 2,
+    "y": 8,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 6,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 6,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 6,
+    "y": 4,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Świeczka",
+    "tip": "",
+    "x": 11,
+    "y": 9,
+    "url": "/obrazki/npc/map/swieczka01.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 10,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 11,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kominek",
+    "tip": "",
+    "x": 11,
+    "y": 4,
+    "url": "/obrazki/npc/map/kom_ogien06.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 10,
+    "y": 4,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  }
+]

@@ -16,7 +16,7 @@ import { initNightManager } from "./app/night/night.js";
 import { initNpcManager } from "./app/npc/npc";
 import { loadSettings } from "./app/settings";
 import { sanitizeText } from "./app/utility-functions";
-import { initWaterManager } from "./app/water";
+import { initWaterManager } from "./app/water.js";
 import { initFog } from "./app/weather/fog";
 import { initWeather } from "./app/weather/weather";
 import { initWidgets } from "./app/widgets.js";

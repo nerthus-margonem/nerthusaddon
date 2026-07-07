@@ -127,7 +127,7 @@ declare const Engine: {
     height: number;
     hideLoaderSplash(): unknown;
     offset: [number, number];
-    water: unknown;
+    water: Partial<Record<number, number>>;
     width: number;
   };
   miniMapController: {
@@ -191,11 +191,36 @@ declare const g: {
   settingsStorage: {
     sendRequest(id: number, key: unknown, value: boolean): void;
   };
+  npc: Partial<
+    Record<
+      number,
+      {
+        actions: number;
+        fh: number;
+        fw: number;
+        grp: 0;
+        icon: string;
+        id: number;
+        imgStatus: true;
+        imgload: () => void;
+        isIconInvisible: true;
+        lvl: number;
+        nick: string;
+        srajId: number;
+        tpl: number;
+        type: number;
+        wt: number;
+        x: number;
+        y: number;
+      }
+    >
+  >;
 };
 declare const map: {
   id: number;
   x: number;
   y: number;
+  water: Partial<Record<number, number>>;
 };
 declare const hero: {
   x: number;

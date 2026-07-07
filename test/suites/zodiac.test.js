@@ -6,8 +6,8 @@ describe("zodiac", () => {
     it("should exist", () => {
       expect(typeof zodiac.ZODIAC_SIGN_START_DAY === "undefined").to.be.false;
     });
-    it("should have 13 signs", () => {
-      expect(zodiac.ZODIAC_SIGN_START_DAY.length).to.be.equal(13);
+    it("should have 12 signs", () => {
+      expect(zodiac.ZODIAC_SIGN_START_DAY.length).to.be.equal(12);
     });
   });
 

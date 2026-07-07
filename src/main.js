@@ -20,7 +20,7 @@ import { initWaterManager } from "./app/water.js";
 import { initFog } from "./app/weather/fog";
 import { initWeather } from "./app/weather/weather";
 import { initWidgets } from "./app/widgets.js";
-import { initZodiac } from "./app/zodiac";
+import { initZodiac } from "./app/zodiac.js";
 
 const logText = sanitizeText("Nerthus addon version: " + VERSION);
 if (INTERFACE === "NI") {

@@ -29,9 +29,11 @@ function addToZone(x, y) {
   if (!npcZone[x + 1]) {
     npcZone[x + 1] = {};
   }
-  for (let i = -1; i < 1; i++) {
-    for (let j = -1; j < 1; j++) {
-      if (x + i >= 0) npcZone[x + i][y + j] = true;
+  for (let i = -1; i <= 1; i++) {
+    for (let j = -1; j <= 1; j++) {
+      if (x + i >= 0) {
+        npcZone[x + i][y + j] = true;
+      }
     }
   }
 }

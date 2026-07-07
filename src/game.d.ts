@@ -231,3 +231,4 @@ declare const hero: {
  * Global variables available on both interfaces.
  */
 declare const log: (message: string) => void;
+declare const _g: (task: string, callback?: unknown, payload?: unknown) => void;

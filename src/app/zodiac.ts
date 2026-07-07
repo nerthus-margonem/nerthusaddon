@@ -58,7 +58,13 @@ export function initZodiac(widgetsContainer: HTMLDivElement): void {
     ".nerthus__widget-desc",
   ) as HTMLDivElement;
 
-  image.style.cursor = "pointer";
+  if (INTERFACE === "NI") {
+    image.style.cursor =
+      "url(../img/gui/cursor/5n.png) 4 0,url(../img/gui/cursor/5n.cur) 4 0,pointer";
+  } else {
+    image.style.cursor = "";
+  }
+
   image.addEventListener("click", function () {
     if (description.textContent === baseDescription) {
       description.textContent = mechanicalDescription;

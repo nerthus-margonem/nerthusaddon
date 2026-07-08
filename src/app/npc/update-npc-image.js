@@ -76,7 +76,11 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
       if (npc.d.type !== 4) {
         npc.updateCollider();
       }
-      npc.beforeOnload = function () {}; // force not updating image anymore
+
+      // force not updating image anymore
+      npc.beforeOnload = function () {};
+      npc.updateIcon = function () {};
+
       npc.resetActiveFrame(); // reset active frame, so if basic graphic has more frames, it won't crash
     })
     .catch((err) =>
@@ -105,5 +109,7 @@ export function updateNpcWithGameImage(npc, imgUrl) {
       },
       set() {},
     });
+    // force not updating image anymore
+    npc.updateIcon = function () {};
   }, 1);
 }

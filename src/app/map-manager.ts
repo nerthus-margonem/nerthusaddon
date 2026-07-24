@@ -4,7 +4,7 @@ import {
   changeCustomStyle,
   removeCustomStyle,
 } from "./interface/css-manager.js";
-import { getCurrentSeason } from "./time.js";
+import { getCurrentSeason, type Season } from "./time.js";
 import { resolveUrl } from "./utility-functions.js";
 
 export const MAP_PRIORITY = { CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0 };
@@ -15,10 +15,7 @@ export class MapManager {
 
   #customMapNoIdUrl: string | undefined = undefined;
 
-  readonly #basicMapsUrls: Record<
-    "spring" | "summer" | "autumn" | "winter" | "default",
-    Record<number, string>
-  >;
+  readonly #basicMapsUrls: Record<Season | "default", Record<number, string>>;
   readonly #loadOnEveryMap: typeof loadOnEveryMap;
   readonly #changeCustomStyle: typeof changeCustomStyle;
   readonly #removeCustomStyle: typeof removeCustomStyle;
@@ -76,8 +73,7 @@ export class MapManager {
   }
 
   #getBasicMapUrl(mapId: number) {
-    const season: "spring" | "summer" | "autumn" | "winter" =
-      this.#getCurrentSeason();
+    const season = this.#getCurrentSeason();
     if (this.#basicMapsUrls[season][mapId]) {
       return this.#basicMapsUrls[season][mapId];
     }

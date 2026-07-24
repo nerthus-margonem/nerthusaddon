@@ -1,19 +1,14 @@
-export const SEASON = Object.freeze({
+export const SEASON = {
   SPRING: "spring",
   SUMMER: "summer",
   AUTUMN: "autumn",
   WINTER: "winter",
-});
+} as const;
 
-//TODO implement this file in other places
+export type Season = (typeof SEASON)[keyof typeof SEASON];
 
-/**
- * @return {"spring"|"summer"|"autumn"|"winter"}
- */
-export function getCurrentSeason() {
-  const now = new Date();
-
-  function makeStartDate(day, month) {
+export function getCurrentSeason(now = new Date()): Season {
+  function makeStartDate(day: number, month: number): Date {
     const date = new Date(now);
     date.setUTCMonth(month - 1, day);
     return date;

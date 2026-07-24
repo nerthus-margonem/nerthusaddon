@@ -44,11 +44,11 @@ export function addDraggable($elm, handle = false) {
   $elm.draggable({
     handle,
     start() {
-      const lock = window.g ? window.g.lock : window.Engine.lock;
+      const lock = INTERFACE === "NI" ? Engine.lock : g.lock;
       lock.add("nerthus-panel-drag");
     },
     stop() {
-      const lock = window.g ? window.g.lock : window.Engine.lock;
+      const lock = INTERFACE === "NI" ? Engine.lock : g.lock;
       lock.remove("nerthus-panel-drag");
     },
   });

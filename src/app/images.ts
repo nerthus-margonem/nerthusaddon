@@ -40,6 +40,10 @@ async function decodeImageWithImageDecoder(
   }
 
   const decoder = new ImageDecoder({ data: response.body, type });
+  // `completed` and `tracks.ready` reject independently of decode()
+  // Silence them to avoid unhandled rejections.
+  decoder.completed.catch(() => {});
+  decoder.tracks.ready.catch(() => {});
   try {
     const { image } = await decoder.decode();
     try {

@@ -25,17 +25,11 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
 
       const ctx = canvas.getContext("2d");
       for (let i = 0; i < decoded.frameData.length; i++) {
-        const frameCanvas = document.createElement("canvas");
-        frameCanvas.width = decoded.width;
-        frameCanvas.height = decoded.height;
-        const frameCtx = frameCanvas.getContext("2d");
-        const img = new ImageData(
-          decoded.frameData[i],
-          decoded.width,
-          decoded.height,
+        ctx.putImageData(
+          new ImageData(decoded.frameData[i], decoded.width, decoded.height),
+          0,
+          i * decoded.height,
         );
-        frameCtx.putImageData(img, 0, 0);
-        ctx.drawImage(frameCanvas, 0, i * decoded.height);
       }
 
       // Update everything by hand

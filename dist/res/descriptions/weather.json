@@ -1,0 +1,107 @@
+{
+  "clear-day": [
+    "Promienie słońca intensywnie rozświetlają horyzont. Czyste, błękitne niebo koi oczy, odrywa od szarej rzeczywistości.",
+    "Słońce zawieszone na bezchmurnym niebie świeci niezwykle jasno.",
+    "Po bezchmurnym niebie wędruje słońce, otulając wszystkich swoimi ciepłymi promieniami."
+  ],
+  "day-cloud-small": [
+    "Słońce pięknie świeci, po niebie wędrują małe obłoczki, rzucające na ziemię swe cienie. Słaby wiatr orzeźwia wędrowców.",
+    "Na niebie niewielka ilość chmurek. Promienie słoneczne bez trudu przebijają się przez nie, a cienie majestatycznie przesuwają się po ziemi.",
+    "Słońce, otuliwszy się pojedynczymi chmurkami, wypuszcza na świat swoje promienie, obdarzając go przyjemnym ciepłem."
+  ],
+  "day-cloud-big": [
+    "Słońce skryło się pod pierzyną białych chmur, przez którą tu i ówdzie przebijają się jasne promyki. Delikatny wiatr szeleści liśćmi.",
+    "Duże, przejrzyste chmury przesuwają się leniwie po sklepieniu. Promienie słoneczne przebijają się przez obłoki. ",
+    "Złociste promienie słońca przebijają się przez śnieżnobiałe chmury. Przyjemny wiatr roznosi cudowny zapach kwiatów."
+  ],
+  "day-rain": [
+    "Słońce częściowo skryło się za chmurami, które swoją szarością pokryły błękit nieba. Krople deszczu ociężale spadają na ziemię.",
+    "Słońce jest ledwie widoczne zza ciężkich, deszczowych chmur. Z nieba cieknie słaby deszcz.",
+    "Szare, deszczowe chmury starają się zasłonić słońce. Drobne krople deszczu rozpryskują się, opadając na zielone liście drzew."
+  ],
+  "day-storm": [
+    "Z nieba, jak szalone, spadają kolejne krople deszczu. Niebo przeszyła jasna smuga światła, której towarzyszył potężny grzmot.",
+    "Ciężkie burzowe chmury spowijają niebo. Dojrzenie słońca przez gęsto padający deszcz i chmury graniczy niemal z cudem.",
+    "Słońce usilnie stara się przebić przez gęste, burzowe chmury. Woda deszczowa w rynnach i beczkach się już przelewa, z oddali słychać serię grzmotów."
+  ],
+  "day-rain-with-snow": [
+    "Przez szare chmury dostrzec można jeszcze promyki słońca. Kolejnym kroplom deszczu towarzyszy śnieg. Wiatr wesoło kołysze gałęźmi drzew.",
+    "Spore zachmurzenie, rzęsiście padający deszcz, mieszający się z płatkami śniegu. Miasto oświetlane przez promienie słońca wygląda przepięknie...",
+    "Z szarych chmur zakrywających niebo wydobywa się deszcz ze śniegiem. Powietrze jest bardzo zimne, a wiatr porywisty."
+  ],
+  "day-snow": [
+    "Mimo kilku promyków słońca, nie jest łatwo odczuć ciepło. Śnieg sypiący z nieba przykrywa doliny i miasta warstwą puchu.",
+    "Zamieć śnieżna pokrywa świat białym puchem. Mimo świecącego słońca, panuje mróz, wieją bardzo silne wiatry. Dzikie szlaki i ulice miast opustoszały.",
+    "Lekkie chmurki gęsto ścielą niebo. Promienie słoneczne przebijają się przez nie, oświetlając padający w dużej ilości śnieg."
+  ],
+  "overcast": [
+    "Białe chmury pokrywają niebo. Wieje spokojny wiatr porywający opadłe listki drzew. Mimo braku słońca jest dość ciepło.",
+    "Błękitne niebo przyozdobiła chmara białych kłębków. Wiatr wesoło hula wśród liści i gałęzi drzew.",
+    "Na niebie brak słońca. Jedynie niewielkie chmurki szybko przemierzają sklepienie."
+  ],
+  "rain-light": [
+    "Niebo nad krainą zrobiło się szare. Z ciemnych chmur zaczął padać deszcz, a wszelaka zwierzyna schroniła się w jaskiniach, zaś ludzie ukryli się swych domostwach.",
+    "Z pozornie małych chmurek wesoło spadają ku ziemi kropelki wody. Wiatr porywa do tańca zarówno liście drzew jak i włosy, kapelusze, płaszcze oraz kaptury podróżników.",
+    "Lekkie zachmurzenie. Słońce chowa się już za horyzontem. Deszcz siąpi z nieba."
+  ],
+  "rain": [
+    "Istne oberwanie chmury. Szary, gęsty puch staje się przyczyną ulewnego deszczu. Porywisty wiatr kołysze drzewami.",
+    "Niebem zawładnęła szarość. Z większych i mniejszych chmur pędzą ku ziemi kolejne deszczowe krople.",
+    "Ciężkie chmury deszczowe. Z nieba gęsto spadają duże krople wody."
+  ],
+  "storm": [
+    "Rozpętała się prawdziwa burza. Z nieba seriami spadają strugi deszczu, horyzont rozświetlają błyskawice, a opadające krople zagłuszają grzmoty.",
+    "Coraz większa ilość chmur przypływa ze wschodu krainy. Ociężałe krople spadają na ziemię. Niebo przeszyła błyskawica, a grzmot jej towarzyszący, rozległ się po całej okolicy.",
+    "Burzowe chmury, w oddali słychać grzmoty, niebo rozświetlają błyskawice. Życie mieszkańcom utrudnia ponadto ciężki deszcz i silny wiatr."
+  ],
+  "rain-with-snow": [
+    "Z ciemnych chmur pada ulewny deszcz, któremu towarzyszą nieliczne płatki śniegu. Biały puch topnieje jeszcze przed opadnięciem na ziemię.",
+    "Z ciemnych chmur powoli opadają ku ziemi kolejne krople deszczu i płatki śniegu. Wiatr ugina drzewa, a te jakby składają pokłony, chyląc się aż do ziemi.",
+    "Wielkie, ciemne chmury zaścielają gęsto sklepienie. Z nieba leje się potężny deszcz, a gdzieniegdzie można dostrzec opadające płatki śniegu."
+  ],
+  "snow": [
+    "Powietrze staje się bardzo zimne, woda w kałużach zamarza. Obfite opady śniegu znacznie zmniejszają pole widzenia.",
+    "Białe, pierzaste chmurki suną po niebie. Płatki śniegu wesoło wirują na wietrze, opadając powoli na ziemię.",
+    "Lekko zachmurzone niebo. Słońce już niedługo schowa się za horyzontem. Z nieba gęsto spadają białe płatki śniegu."
+  ],
+  "snow-storm": [
+    "Burza śnieżna znęca się nad miejscową fauną i florą. Mróz, śnieg i pioruny zniechęcają ludzi do opuszczania swych ciepłych, bezpiecznych domów.",
+    "Z ciemnych chmur wariacko suną ku ziemi płatki śniegu. Jasna błyskawica od czasu do czasu przeszywa niebo. Wiatr pędzi jak szalony, choć sam nie wie dokąd. Grzmoty słychać w najgłębszych zakątkach krainy.",
+    "Ciężkie i ciemne chmury. W oddali słychać potężne grzmoty, którym towarzyszą oślepiające błyski. Brak jednak deszczu, jedynie gęsto sypiący śnieg daje się we znaki."
+  ],
+  "clear-night": [
+    "Nastała ciepła, bezwietrzna noc. Księżyc świeci jasno, a na czystym niebie ukazują się tysiące gwiazd.",
+    "Księżyc tej nocy postanowił pokazać swe lico. Towarzyszące mu gwiazdy iskrzą wesoło na bezchmurnym niebie.",
+    "Bezchmurne, gwieździste niebo. Wysoko zawieszony księżyc jasno oświetla całą krainę."
+  ],
+  "night-cloud-small": [
+    "Księżyc co jakiś czas ukrywa się za małymi, białymi chmurami, rozświetlając je. Wieje łagodny wiatr, który nikomu nie jest w stanie przerwać snu.",
+    "Księżyc nieśmiało wygląda zza chmurki. Ciemne niebo tu i ówdzie przyozdabiają jasne gwiazdy.",
+    "Niewielkie zachmurzenie. Księżyc jasno świeci z góry. W tle doskonale są widoczne, przy słabym zachmurzeniu, gwiazdy."
+  ],
+  "night-cloud-big": [
+    "Niebo nawiedziły jasne chmury, za którymi sprytnie schował się księżyc i większość gwiazd. Wiatr cicho zawodzi w najskrytszych zakątkach krainy.",
+    "Duże, jasne chmury, przez które światło księżyca przebija się bez problemu, nie pozwalają dojrzeć gwiazd.",
+    "Mimo przelotnych wiatrów, noc jest pogodna. Chmury skutecznie zakrywają księżyc i wszystkie gwiazdy."
+  ],
+  "night-rain": [
+    "Chmury zakrywają księżyc. Mocny wiatr kołysze drzewami i rzuca liśćmi. Krople deszczu bezwładnie opadają na ziemię.",
+    "Księżyc, podobnie jak gwiazdy, schował się pod pierzyną ciemnych chmur, z których spadają ku ziemi krople deszczu.",
+    "Spore zachmurzenie. Księżyc prawie niewidoczny, acz jego światło przebija się przez chmury. Siąpi deszcz."
+  ],
+  "night-storm": [
+    "Nastała burzliwa noc. Pioruny, szum wiatru i rozbijające się o okna oraz dachy krople, mało komu pozwalają zasnąć.",
+    "Ciemne chmury skryły granat nieba. Również księżyc i gwiazdy zawieruszyły się gdzieś wśród szarości. Błyskawice przyszywające niebo niosą ze sobą kolejne grzmoty i coraz większe krople deszczu.",
+    "Ciężkie burzowe chmury wyglądają przerażająco. Ani śladu księżyca, pada za to gęsty deszcz."
+  ],
+  "night-rain-with-snow": [
+    "Z pozornie małych chmurek spadają ku ziemi krople deszczu i śniegu. Księżyc wygląda zza przepływających białych chmur. Wiatr wesoło tańczy wśród gałęzi drzew.",
+    "Słabe zachmurzenie. Księżyc jest doskonale widoczny, gwiazdy zaś tylko w niektórych momentach. Niewielkie opady śniegu i deszczu.",
+    "Noc jest bardzo chłodna, pada ulewny deszcz ze śniegiem, tworząc wielkie kałuże."
+  ],
+  "night-snow": [
+    "Zamieć śnieżna i mróz towarzyszą tej nocy. Wieje bardzo silny wiatr, a biały puch pokrywa całą krainę.",
+    "Księżyc, otuliwszy się pierzynką chmur, skrył się wraz z gwiazdami. Płatki śniegu wesoło tańczą na wietrze, kolejno opadając na ziemię.",
+    "Duże ilości niewielkich, jasnych chmurek. Gwiazdy na przemian pojawiają się i znikają, a z nieba gęsto sypie śnieg."
+  ]
+}

@@ -36,7 +36,7 @@ export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
       npc.sprite = new Image();
 
       // set the icon so the game will cache this new image
-      // and won't try to display the olf one if there are multiple NPCs with the same icon
+      // and won't try to display the old one if there are multiple NPCs with the same icon
       npc.d.icon = `${npc.d.icon}?nerthus-icon=${encodeURI(gifIconUrl)}`;
 
       // From my testing, this is much faster than src = canvas.toDataURL(),

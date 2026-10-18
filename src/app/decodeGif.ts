@@ -53,17 +53,20 @@ export function decodeGif(data: Uint8Array): DecodedGif {
       case GIF_FRAME_DISPOSAL.RESTORE_TO_BACKGROUND: {
         // Copy the frame and clear the area it painted to transparency
         oldFrame = new Uint8ClampedArray(frame);
-        for (let i = frameInfo.x; i < frameInfo.x + frameInfo.width; i++) {
-          for (let j = frameInfo.y; j < frameInfo.y + frameInfo.height; j++) {
-            for (let k = 0; k < 4; k++) {
-              oldFrame[4 * i + 4 * (j * reader.width) + k] = 0;
-            }
-          }
+        const endY = Math.min(frameInfo.y + frameInfo.height, reader.height);
+        for (let y = frameInfo.y; y < endY; y++) {
+          const row = y * reader.width;
+          oldFrame.fill(
+            0,
+            4 * (row + frameInfo.x),
+            4 * (row + frameInfo.x + frameInfo.width),
+          );
         }
         break;
       }
       case GIF_FRAME_DISPOSAL.RESTORE_TO_PREVIOUS: {
-        oldFrame = new Uint8ClampedArray(oldFrame);
+        // Next oldFrame is the same as current oldFrame
+        break;
       }
     }
   }

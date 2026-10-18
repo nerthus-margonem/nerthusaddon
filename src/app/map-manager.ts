@@ -1,5 +1,6 @@
 import basicMapsUrls from "../../res/configs/maps.json" with { type: "json" };
 import { loadOnEveryMap } from "./game-integration/loaders.js";
+import { decodeImage } from "./images.js";
 import {
   changeCustomStyle,
   removeCustomStyle,
@@ -10,9 +11,11 @@ import { resolveUrl } from "./utility-functions.js";
 export const MAP_PRIORITY = { CUSTOM: 2, CUSTOM_NO_ID: 1, BASIC: 0 };
 
 export class MapManager {
-  readonly #currentMapImage = new Image();
   readonly #customMapsUrls = new Map();
 
+  #mapChangeId = 0;
+  #currentMapImage: CanvasImageSource | undefined = undefined;
+  #currentMapImageUrl: string = "";
   #customMapNoIdUrl: string | undefined = undefined;
 
   readonly #basicMapsUrls: Record<Season | "default", Record<number, string>>;
@@ -39,14 +42,14 @@ export class MapManager {
     if (INTERFACE === "NI") {
       this.#startMapChanging();
     }
-    this.#loadOnEveryMap(() => this.applyCurrentMapChange(), undefined);
+    this.#loadOnEveryMap(() => this.applyCurrentMapChange());
   }
 
-  applyCurrentMapChange() {
+  async applyCurrentMapChange() {
     if (INTERFACE === "NI") {
-      this.#applyMapChange(Engine.map.d.id);
+      await this.#applyMapChange(Engine.map.d.id);
     } else {
-      this.#applyMapChange(map.id);
+      await this.#applyMapChange(map.id);
     }
   }
 
@@ -83,33 +86,88 @@ export class MapManager {
     return false;
   }
 
-  #applyMapChange(mapId: number) {
-    const mapImage = new Image();
+  async #applyMapChange(mapId: number) {
+    const mapChangeId = ++this.#mapChangeId;
+
+    let mapImageUrl = "";
 
     const basicMapUrl = this.#getBasicMapUrl(mapId);
     if (this.#customMapsUrls.has(mapId)) {
-      mapImage.src = resolveUrl(this.#customMapsUrls.get(mapId));
+      mapImageUrl = resolveUrl(this.#customMapsUrls.get(mapId));
     } else if (this.#customMapNoIdUrl) {
-      mapImage.src = resolveUrl(this.#customMapNoIdUrl);
+      mapImageUrl = resolveUrl(this.#customMapNoIdUrl);
     } else if (basicMapUrl) {
-      mapImage.src = resolveUrl(basicMapUrl);
+      mapImageUrl = resolveUrl(basicMapUrl);
     }
 
-    this.#currentMapImage.src = mapImage.src;
+    // Prevent blinking when applying the same map
+    if (this.#mapIsAlreadyDisplayed(mapImageUrl)) {
+      return;
+    }
+    this.#discardMapImage(this.#currentMapImage);
+    this.#currentMapImage = undefined;
+    this.#currentMapImageUrl = "";
 
-    if (INTERFACE === "SI") {
-      // this way it's more robust than simply changing an elements style
-      if (mapImage.src) {
-        this.#changeCustomStyle(
-          "map-background-image",
-          `#ground {
-            background-image: url(${mapImage.src}) !important; 
-            background-color: transparent !important;
-        }`.replaceAll(" ", ""),
-        );
-      } else {
-        this.#removeCustomStyle("map-background-image");
-      }
+    if (INTERFACE === "NI") {
+      await this.#loadMapImageNi(mapImageUrl, mapChangeId);
+    } else {
+      this.#loadMapImageSi(mapImageUrl);
+    }
+  }
+
+  #mapIsAlreadyDisplayed(mapImageUrl: string): boolean {
+    return mapImageUrl !== "" && mapImageUrl === this.#currentMapImageUrl;
+  }
+
+  async #loadMapImageNi(
+    mapImageUrl: string,
+    mapChangeId: number,
+  ): Promise<void> {
+    if (INTERFACE !== "NI") {
+      return;
+    }
+
+    if (!mapImageUrl) {
+      return;
+    }
+
+    const decodedMapImage = await decodeImage(mapImageUrl);
+
+    if (!decodedMapImage || mapChangeId !== this.#mapChangeId) {
+      this.#discardMapImage(decodedMapImage);
+      return;
+    }
+    this.#currentMapImage = decodedMapImage;
+    this.#currentMapImageUrl = mapImageUrl;
+  }
+
+  #loadMapImageSi(mapImageUrl: string): void {
+    if (INTERFACE !== "SI") {
+      return;
+    }
+
+    if (!mapImageUrl) {
+      this.#removeCustomStyle("map-background-image");
+      return;
+    }
+
+    const mapImage = new Image();
+    mapImage.src = mapImageUrl;
+    this.#currentMapImage = mapImage;
+    this.#currentMapImageUrl = mapImageUrl;
+
+    this.#changeCustomStyle(
+      "map-background-image",
+      `#ground {
+          background-image: url(${mapImage.src}) !important; 
+          background-color: transparent !important;
+      }`.replaceAll(" ", ""),
+    );
+  }
+
+  #discardMapImage(image: CanvasImageSource | undefined): void {
+    if (image instanceof ImageBitmap) {
+      image.close();
     }
   }
 
@@ -120,10 +178,7 @@ export class MapManager {
       tmpMapDrawImage.apply(Engine.map, args);
 
       // draw new maps on top of the game map
-      if (
-        this.#currentMapImage.complete &&
-        this.#currentMapImage.naturalWidth !== 0
-      ) {
+      if (this.#currentMapImage) {
         args[0].drawImage(
           this.#currentMapImage,
           0 - Engine.map.offset[0],

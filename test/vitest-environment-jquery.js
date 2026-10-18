@@ -18,6 +18,9 @@ export default {
     globalThis.window = jsdom.window;
     globalThis.document = jsdom.window.document;
     globalThis.Image = jsdom.window.Image;
+    globalThis.ImageBitmap = class ImageBitmap {
+      close() {}
+    };
     globalThis.$ = globalThis.jQuery = jQuery(window);
 
     globalThis.FILE_PREFIX = "";

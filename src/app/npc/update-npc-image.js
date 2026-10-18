@@ -5,7 +5,7 @@ import { coordsToId } from "../utility-functions";
  *
  * @param npc reference to NPC used by game
  * @param gifIconUrl {string} url to .gif image
- * @returns {Promise<void | void>}
+ * @returns {Promise<void>}
  */
 export async function updateNpcWithCustomGifImage(npc, gifIconUrl) {
   return fetch(gifIconUrl)

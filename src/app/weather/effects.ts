@@ -1,4 +1,4 @@
-import { DecodedGif, decodeGifFromUrl } from "../decodeGif";
+import { decodeGifFromUrl } from "../decodeGif";
 import {
   addDrawableToRendering,
   removeDrawableFromRendering,
@@ -8,124 +8,102 @@ import { clearLightnings } from "./lightnings";
 
 interface WeatherEffect {
   url: string;
-  frames: DecodedGif;
+  patterns: CanvasPattern[];
   frameTime: number;
-  cache: HTMLCanvasElement[];
-  cacheMapId: number;
   opacity: number;
   drawable?: Drawable;
+  cached: boolean;
 }
 
 const rainEffect: WeatherEffect = {
   url: FILE_PREFIX + "res/img/weather/rain.gif",
-  frames: {
-    width: 0,
-    height: 0,
-    frameData: [],
-    frameDelays: [],
-    frameDisposal: [],
-  },
+  patterns: [],
   frameTime: 120,
-  cache: [],
-  cacheMapId: -1,
   opacity: 1,
+  cached: false,
 };
 const snowEffect: WeatherEffect = {
   url: FILE_PREFIX + "res/img/weather/snow.gif",
-  frames: {
-    width: 0,
-    height: 0,
-    frameData: [],
-    frameDelays: [],
-    frameDisposal: [],
-  },
+  patterns: [],
   frameTime: 400,
-  cache: [],
-  cacheMapId: -1,
   opacity: 1,
+  cached: false,
 };
 
 rainEffect.drawable = getWeatherDrawable(rainEffect);
 snowEffect.drawable = getWeatherDrawable(snowEffect);
 
-async function cacheWeatherCanvas(effect: WeatherEffect, force = false) {
+async function cacheWeather(effect: WeatherEffect): Promise<void> {
   if (INTERFACE === "SI") {
-    return true;
+    return;
   }
-  if (!force && effect.cacheMapId === Engine.map.d.id) {
-    return true;
+  if (effect.cached) {
+    return;
   }
+  effect.cached = true;
 
-  effect.cacheMapId = Engine.map.d.id;
-  effect.cache = [];
-
-  if (!effect.frames.frameData.length) {
-    try {
-      const decodedGif = await decodeGifFromUrl(effect.url);
-      if (!decodedGif.frameDelays[0]) {
-        console.error("Decoded GIF has 0 frames or 0 frame time");
-        return false;
-      }
-      effect.frames = decodedGif;
-
-      // Variable frame time is not supported yet.
-      // Frame delay value is 10 times lower than frame time ms
-      effect.frameTime = decodedGif.frameDelays[0] * 10;
-    } catch (err) {
-      console.error(
-        "Error decoding GIF from url while caching weather canvas: ",
-        err,
-      );
-      return false;
+  try {
+    const decodedGif = await decodeGifFromUrl(effect.url);
+    if (!decodedGif.frameDelays[0]) {
+      console.error("Decoded GIF has 0 frames or 0 frame time");
+      effect.cached = false;
+      return;
     }
-  }
-  for (const frameData of effect.frames.frameData) {
-    const canvas = document.createElement("canvas");
-    // Caching can happen before Engine.map.width and Engine.map.height are calculated,
-    // but Engine.map.d will always be present
-    canvas.width = Engine.map.d.x * 32;
-    canvas.height = Engine.map.d.y * 32;
-    const ctx = canvas.getContext("2d")!;
 
-    const imgData = new ImageData(
-      frameData,
-      effect.frames.width,
-      effect.frames.height,
-    );
+    // Variable frame time is not supported.
+    // Frame delay value is 10 times lower than frame time ms
+    effect.frameTime = decodedGif.frameDelays[0] * 10;
+
     const imgCanvas = document.createElement("canvas");
-    imgCanvas.width = effect.frames.width;
-    imgCanvas.height = effect.frames.height;
+    imgCanvas.width = decodedGif.width;
+    imgCanvas.height = decodedGif.height;
     const imgCtx = imgCanvas.getContext("2d")!;
-    imgCtx.putImageData(imgData, 0, 0);
+    for (const frameData of decodedGif.frameData) {
+      const imgData = new ImageData(
+        frameData,
+        decodedGif.width,
+        decodedGif.height,
+      );
+      imgCtx.putImageData(imgData, 0, 0);
 
-    ctx.fillStyle = ctx.createPattern(imgCanvas, "repeat")!;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    effect.cache.push(canvas);
+      const pattern = imgCtx.createPattern(imgCanvas, "repeat")!;
+
+      effect.patterns.push(pattern);
+    }
+  } catch (err) {
+    console.error("Error caching weather patterns: ", err);
+    effect.patterns = [];
+    effect.cached = false;
   }
-  return true;
 }
 
 function getWeatherDrawable(effect: WeatherEffect) {
   const drawable = new Drawable();
   drawable.alwaysDraw();
   drawable.setDrawOrder(930);
+
   drawable.setDrawFunction((ctx) => {
-    const cachedCanvas =
-      effect.cache[
-        Math.floor(Date.now() / effect.frameTime) %
-          effect.frames.frameData.length
-      ];
-    if (!cachedCanvas) {
+    if (!effect.patterns.length) {
       return;
     }
+    const frame =
+      Math.floor(Date.now() / effect.frameTime) % effect.patterns.length;
+    const pattern = effect.patterns[frame]!;
+
+    const x = Math.floor(-Engine.map.offset[0]);
+    const y = Math.floor(-Engine.map.offset[1]);
+    pattern.setTransform({
+      e: x,
+      f: y,
+    });
+
     const alpha = ctx.globalAlpha;
+    const fillStyle = ctx.fillStyle;
     ctx.globalAlpha = effect.opacity;
-    ctx.drawImage(
-      cachedCanvas,
-      Math.floor(-Engine.map.offset[0]),
-      Math.floor(-Engine.map.offset[1]),
-    );
+    ctx.fillStyle = pattern;
+    ctx.fillRect(x, y, Engine.map.width, Engine.map.height);
     ctx.globalAlpha = alpha;
+    ctx.fillStyle = fillStyle;
   });
 
   return drawable;
@@ -150,7 +128,7 @@ export function clearEffects(clearGameEffects = false) {
 export function displayRain(opacity = 1) {
   rainEffect.opacity = opacity;
   if (INTERFACE === "NI") {
-    void cacheWeatherCanvas(rainEffect);
+    void cacheWeather(rainEffect);
     // We can't wait for caching to add the object,
     // because it can be removed by the next chat command
     // parsed when entering the map with existing commands
@@ -169,7 +147,7 @@ export function displayRain(opacity = 1) {
 export function displaySnow(opacity = 1) {
   snowEffect.opacity = opacity;
   if (INTERFACE === "NI") {
-    void cacheWeatherCanvas(snowEffect);
+    void cacheWeather(snowEffect);
     // We can't wait for caching to add the object,
     // because it can be removed by the next chat command
     // parsed when entering the map with existing commands

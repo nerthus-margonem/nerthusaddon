@@ -1,4 +1,4 @@
-import { decodeGifFromUrl } from "../decodeGif";
+import { DecodedGif, decodeGifFromUrl } from "../decodeGif";
 import {
   addDrawableToRendering,
   removeDrawableFromRendering,
@@ -6,24 +6,38 @@ import {
 import { Drawable } from "../npc/Drawable";
 import { clearLightnings } from "./lightnings";
 
-const rainEffect = {
+interface WeatherEffect {
+  url: string;
+  frames: DecodedGif;
+  frameTime: number;
+  cache: HTMLCanvasElement[];
+  cacheMapId: number;
+  opacity: number;
+  drawable?: Drawable;
+}
+
+const rainEffect: WeatherEffect = {
   url: FILE_PREFIX + "res/img/weather/rain.gif",
   frames: {
     width: 0,
     height: 0,
     frameData: [],
+    frameDelays: [],
+    frameDisposal: [],
   },
   frameTime: 120,
   cache: [],
   cacheMapId: -1,
   opacity: 1,
 };
-const snowEffect = {
+const snowEffect: WeatherEffect = {
   url: FILE_PREFIX + "res/img/weather/snow.gif",
   frames: {
     width: 0,
     height: 0,
     frameData: [],
+    frameDelays: [],
+    frameDisposal: [],
   },
   frameTime: 400,
   cache: [],
@@ -34,7 +48,7 @@ const snowEffect = {
 rainEffect.drawable = getWeatherDrawable(rainEffect);
 snowEffect.drawable = getWeatherDrawable(snowEffect);
 
-async function cacheWeatherCanvas(effect, force = false) {
+async function cacheWeatherCanvas(effect: WeatherEffect, force = false) {
   if (INTERFACE === "SI") {
     return true;
   }
@@ -47,10 +61,16 @@ async function cacheWeatherCanvas(effect, force = false) {
 
   if (!effect.frames.frameData.length) {
     try {
-      effect.frames = await decodeGifFromUrl(effect.url);
+      const decodedGif = await decodeGifFromUrl(effect.url);
+      if (!decodedGif.frameDelays[0]) {
+        console.error("Decoded GIF has 0 frames or 0 frame time");
+        return false;
+      }
+      effect.frames = decodedGif;
+
       // Variable frame time is not supported yet.
       // Frame delay value is 10 times lower than frame time ms
-      effect.frameTime = effect.frames.frameDelays[0] * 10;
+      effect.frameTime = decodedGif.frameDelays[0] * 10;
     } catch (err) {
       console.error(
         "Error decoding GIF from url while caching weather canvas: ",
@@ -65,7 +85,7 @@ async function cacheWeatherCanvas(effect, force = false) {
     // but Engine.map.d will always be present
     canvas.width = Engine.map.d.x * 32;
     canvas.height = Engine.map.d.y * 32;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d")!;
 
     const imgData = new ImageData(
       frameData,
@@ -75,17 +95,17 @@ async function cacheWeatherCanvas(effect, force = false) {
     const imgCanvas = document.createElement("canvas");
     imgCanvas.width = effect.frames.width;
     imgCanvas.height = effect.frames.height;
-    const imgCtx = imgCanvas.getContext("2d");
+    const imgCtx = imgCanvas.getContext("2d")!;
     imgCtx.putImageData(imgData, 0, 0);
 
-    ctx.fillStyle = ctx.createPattern(imgCanvas, "repeat");
+    ctx.fillStyle = ctx.createPattern(imgCanvas, "repeat")!;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     effect.cache.push(canvas);
   }
   return true;
 }
 
-function getWeatherDrawable(effect) {
+function getWeatherDrawable(effect: WeatherEffect) {
   const drawable = new Drawable();
   drawable.alwaysDraw();
   drawable.setDrawOrder(930);
@@ -111,7 +131,7 @@ function getWeatherDrawable(effect) {
   return drawable;
 }
 
-export function clearEffects(clearGameEffects) {
+export function clearEffects(clearGameEffects = false) {
   if (INTERFACE === "NI") {
     removeDrawableFromRendering(rainEffect.drawable);
     removeDrawableFromRendering(snowEffect.drawable);
@@ -121,7 +141,7 @@ export function clearEffects(clearGameEffects) {
   } else {
     $(".nerthus-weather").remove();
     if (clearGameEffects) {
-      window.clearWeather();
+      clearWeather();
     }
   }
   clearLightnings();
@@ -130,7 +150,7 @@ export function clearEffects(clearGameEffects) {
 export function displayRain(opacity = 1) {
   rainEffect.opacity = opacity;
   if (INTERFACE === "NI") {
-    cacheWeatherCanvas(rainEffect);
+    void cacheWeatherCanvas(rainEffect);
     // We can't wait for caching to add the object,
     // because it can be removed by the next chat command
     // parsed when entering the map with existing commands
@@ -149,7 +169,7 @@ export function displayRain(opacity = 1) {
 export function displaySnow(opacity = 1) {
   snowEffect.opacity = opacity;
   if (INTERFACE === "NI") {
-    cacheWeatherCanvas(snowEffect);
+    void cacheWeatherCanvas(snowEffect);
     // We can't wait for caching to add the object,
     // because it can be removed by the next chat command
     // parsed when entering the map with existing commands
@@ -165,7 +185,7 @@ export function displaySnow(opacity = 1) {
   }
 }
 
-export function displayGameWeather(name) {
+export function displayGameWeather(name: string) {
   if (INTERFACE === "NI") {
     const uppercaseWeatherName = name.charAt(0).toUpperCase() + name.slice(1);
 
@@ -174,6 +194,6 @@ export function displayGameWeather(name) {
       Engine.weather.createObjects(uppercaseWeatherName, {});
     }
   } else {
-    window.changeWeather(name);
+    changeWeather(name);
   }
 }

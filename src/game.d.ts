@@ -117,8 +117,8 @@ declare const Engine: {
     };
     d: {
       id: number;
-      x: unknown;
-      y: unknown;
+      x: number;
+      y: number;
     };
     drawImage(ctx: CanvasRenderingContext2D): unknown;
     gateways: {
@@ -159,7 +159,7 @@ declare const Engine: {
     get(): unknown;
   };
   weather: {
-    createObjects(): unknown;
+    createObjects(objectName: string, data: object): void;
     mapSize: unknown;
     onClear(): unknown;
     setMapSize(): unknown;
@@ -226,6 +226,8 @@ declare const hero: {
   x: number;
   y: number;
 };
+declare const clearWeather: () => void;
+declare const changeWeather: (weatherName: string) => void;
 
 /**
  * Global variables available on both interfaces.

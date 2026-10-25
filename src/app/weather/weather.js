@@ -13,7 +13,7 @@ import {
   displayGameWeather,
   displayRain,
   displaySnow,
-} from "./effects";
+} from "./effects.js";
 import { displayLightnings } from "./lightnings";
 
 const CHARACTERISTIC = Object.freeze({

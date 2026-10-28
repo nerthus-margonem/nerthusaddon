@@ -237,6 +237,42 @@ function refreshTips() {
   }
 }
 
+function startChangingHeroPcTips() {
+  if (INTERFACE === "NI") {
+    Engine.hero.createStrTip = function () {
+      return parseTip(Engine.hero.d);
+    };
+  } else {
+    $("#hero").attr("tip", createPlayerTip(hero));
+  }
+}
+
+function stopChangingHeroPcTips(originalCreateStrTip) {
+  if (INTERFACE === "NI") {
+    Engine.hero.createStrTip = originalCreateStrTip;
+  } else {
+    $("#hero").attr("tip", originalCreateStrTip(hero));
+  }
+}
+
+function startChangingOthersPcTips() {
+  if (INTERFACE === "NI") {
+    Engine.others.createStrTip = function (othersTipObject) {
+      return parseTip(othersTipObject.object.d);
+    };
+  } else {
+    g.tips.other = createPlayerTip;
+  }
+}
+
+function stopChangingOthersPcTips(originalCreateStrTip) {
+  if (INTERFACE === "NI") {
+    Engine.others.createStrTip = originalCreateStrTip;
+  } else {
+    g.tips.other = originalCreateStrTip;
+  }
+}
+
 function startChangingNpcTips(originalGetNpcTip) {
   if (INTERFACE === "NI") {
     Engine.npcs.getTip = function (obj) {
@@ -262,27 +298,33 @@ export function initTips() {
   const originalGetNpcTip =
     INTERFACE === "NI" ? Engine.npcs.getTip : g.tips.npc;
 
+  const originalGetHeroTip =
+    INTERFACE === "NI"
+      ? Engine.hero.createStrTip
+      : () => _t("my_character", null, "map");
+
+  const originalGetOthersTip =
+    INTERFACE === "NI" ? Engine.others.createStrTip : g.tips.other;
+
   if (INTERFACE === "NI") {
-    Engine.others.createStrTip = function (othersTipObject) {
-      return parseTip(othersTipObject.object.d);
-    };
-    Engine.others.otherTipRefresh();
+    if (settings.changePcTips) {
+      startChangingOthersPcTips();
+      startChangingHeroPcTips();
 
-    Engine.hero.createStrTip = function () {
-      return parseTip(Engine.hero.d);
-    };
-    Engine.hero.tip[0] = Engine.hero.createStrTip();
-
+      Engine.others.otherTipRefresh();
+      Engine.hero.tip[0] = Engine.hero.createStrTip();
+    }
     if (settings.changeNpcTips) {
       startChangingNpcTips(originalGetNpcTip);
+      refreshTips();
     }
-    refreshTips();
   } else {
     g.loadQueue.push({
       fun: function () {
-        $("#hero").attr("tip", createPlayerTip(hero));
-
-        g.tips.other = createPlayerTip;
+        if (settings.changePcTips) {
+          startChangingOthersPcTips();
+          startChangingHeroPcTips();
+        }
         if (settings.changeNpcTips) {
           startChangingNpcTips(originalGetNpcTip);
         }
@@ -302,6 +344,29 @@ export function initTips() {
       }
 
       refreshTips();
+    },
+  );
+  addSettingToPanel(
+    "changePcTips",
+    "Zmienione tipy graczy",
+    "Zamienia okienko po najechaniu na gracza na bardziej tekstowy odpowiednik",
+    function () {
+      if (settings.changePcTips) {
+        startChangingHeroPcTips();
+        startChangingOthersPcTips();
+      } else {
+        stopChangingHeroPcTips(originalGetHeroTip);
+        stopChangingOthersPcTips(originalGetOthersTip);
+      }
+
+      if (INTERFACE === "NI") {
+        Engine.others.otherTipRefresh();
+        Engine.hero.tip[0] = Engine.hero.createStrTip();
+      } else {
+        for (const id in g.other) {
+          $("#other" + id).attr("tip", g.tips.other(g.other[id]));
+        }
+      }
     },
   );
 }

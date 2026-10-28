@@ -16,6 +16,7 @@ export const settings = {
    */
   hideChatCommercials: false,
   changeNpcTips: true,
+  changePcTips: true,
 };
 
 export function saveSetting(name, value) {

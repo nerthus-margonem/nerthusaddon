@@ -41,17 +41,27 @@ export function isCurrentMapOutdoor() {
 }
 
 export function addDraggable($elm, handle = false) {
-  $elm.draggable({
-    handle,
-    start() {
-      const lock = INTERFACE === "NI" ? Engine.lock : g.lock;
-      lock.add("nerthus-panel-drag");
-    },
-    stop() {
-      const lock = INTERFACE === "NI" ? Engine.lock : g.lock;
-      lock.remove("nerthus-panel-drag");
-    },
-  });
+  if (INTERFACE === "NI") {
+    $elm.pointerDraggable({
+      handle,
+      start() {
+        Engine.lock.add("nerthus-panel-drag");
+      },
+      stop() {
+        Engine.lock.remove("nerthus-panel-drag");
+      },
+    });
+  } else {
+    $elm.draggable({
+      handle,
+      start() {
+        g.lock.add("nerthus-panel-drag");
+      },
+      stop() {
+        g.lock.remove("nerthus-panel-drag");
+      },
+    });
+  }
 }
 
 export function sanitizeText(text) {

@@ -151,6 +151,7 @@ declare const Engine: {
   };
   others: {
     getDrawableList(): unknown;
+    otherTipRefresh(): unknown;
   };
   renderer: {
     add(...drawable: Drawable[]): void;

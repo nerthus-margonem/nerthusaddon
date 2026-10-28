@@ -95,14 +95,14 @@ function createPlayerTip(player) {
   return tip;
 }
 
-function getPlayerBuffSection(player) {
+function getPlayerBuffSection(playerData) {
   let buffs = "";
-  const bless = player.d.is_blessed ? '<div class="bless"></div>' : "";
-  const mute = player.d.attr & 1 ? '<div class="mute"></div>' : "";
-  const kB = player.d.vip === "1" ? '<div class="k-b"></div>' : "";
-  const warn = player.d.attr & 2 ? '<div class="warn"></div>' : "";
-  const line = player.d.clan ? '<div class="line"></div>' : "";
-  const wanted = player.d.wanted ? '<div class="wanted-i"></div>' : "";
+  const bless = playerData.is_blessed ? '<div class="bless"></div>' : "";
+  const mute = playerData.attr & 1 ? '<div class="mute"></div>' : "";
+  const kB = playerData.vip === "1" ? '<div class="k-b"></div>' : "";
+  const warn = playerData.attr & 2 ? '<div class="warn"></div>' : "";
+  const line = playerData.clan ? '<div class="line"></div>' : "";
+  const wanted = playerData.wanted ? '<div class="wanted-i"></div>' : "";
   if (
     bless !== "" ||
     mute !== "" ||
@@ -115,28 +115,29 @@ function getPlayerBuffSection(player) {
   return buffs;
 }
 
-function parseTip(player) {
+function parseTip(playerData) {
   if (INTERFACE === "NI") {
     let tip = "";
-    const rank = getRankNameOf(player.d);
+    const rank = getRankNameOf(playerData);
     if (rank) tip += '<div class="rank">' + rank + "</div>";
 
-    if (player.d.guest) tip += '<div class="rank">' + _t("deputy") + "</div>";
+    if (playerData.guest) tip += '<div class="rank">' + _t("deputy") + "</div>";
 
-    const nick = '<div class="nick">' + player.d.nick + "</div>";
-    const prof = player.d.prof
-      ? '<div class="profs-icon ' + player.d.prof + '"></div>'
+    const nick = '<div class="nick">' + playerData.nick + "</div>";
+    const prof = playerData.prof
+      ? '<div class="profs-icon ' + playerData.prof + '"></div>'
       : "";
     tip += '<div class="info-wrapper">' + nick + prof + "</div>";
 
-    if (parseInt(player.wanted) === 1) tip += "<div class=wanted></div>";
-    if (player.d.clan)
-      tip += '<div class="clan-in-tip">[' + player.d.clan.name + "]</div>";
+    if (Number.parseInt(playerData.wanted) === 1)
+      tip += "<div class=wanted></div>";
+    if (playerData.clan)
+      tip += '<div class="clan-in-tip">[' + playerData.clan.name + "]</div>";
 
-    const title = getTitle(player.d);
+    const title = getTitle(playerData);
     tip += '<div class="clan-in-tip">' + title + "</div>";
 
-    tip += getPlayerBuffSection(player);
+    tip += getPlayerBuffSection(playerData);
 
     return tip;
   }
@@ -257,29 +258,18 @@ function stopChangingNpcTips(originalGetNpcTip) {
   }
 }
 
-function createStrTipNi() {
-  return parseTip(this);
-}
-
 export function initTips() {
   const originalGetNpcTip =
     INTERFACE === "NI" ? Engine.npcs.getTip : g.tips.npc;
 
   if (INTERFACE === "NI") {
-    const othersDrawableList = Engine.others.getDrawableList;
-    Engine.others.getDrawableList = function () {
-      const list = othersDrawableList();
-      for (const other of list) {
-        if (other.isPlayer && other.createStrTip !== createStrTipNi) {
-          other.createStrTip = createStrTipNi;
-          other.tipUpdate();
-        }
-      }
-      return list;
+    Engine.others.createStrTip = function (othersTipObject) {
+      return parseTip(othersTipObject.object.d);
     };
+    Engine.others.otherTipRefresh();
 
     Engine.hero.createStrTip = function () {
-      return parseTip(Engine.hero);
+      return parseTip(Engine.hero.d);
     };
     Engine.hero.tip[0] = Engine.hero.createStrTip();
 

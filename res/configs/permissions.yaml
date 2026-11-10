@@ -1,8 +1,8 @@
 ---
-namiestnik: []
+namiestnik:
+  - 6621324 #  https://www.margonem.pl/profile/view,6621324 - Rothen
 radny:
   - 10023778 # https://www.margonem.pl/profile/view,10023778 - Aurelia Lesup
-  - 6621324 #  https://www.margonem.pl/profile/view,6621324  - Rothen
   - 9844239 #  https://www.margonem.pl/profile/view,9844239  - Achalen Vierde
 narrator:
   - 125880 #   https://www.margonem.pl/profile/view,125880   - Materios Dragonius
@@ -11,7 +11,6 @@ narrator:
   - 8450185 #  https://www.margonem.pl/profile/view,8450185  - Fredrick Flumiene
   - 6621324 #  https://www.margonem.pl/profile/view,6621324  - Rothen
   - 10005742 # https://www.margonem.pl/profile/view,10005742 - Soren Khayr
-  - 9891163 # https://www.margonem.pl/profile/view,9891163   - Calenhir
   - 9623692 # https://www.margonem.pl/profile/view,9623692   - Tyviss Padalec
 special:
   - 5623545 # https://www.margonem.pl/profile/view,5623545 - Kris Aphalon

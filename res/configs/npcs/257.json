@@ -81,7 +81,7 @@
       "6": [
         "Los łaskawie się ze mną obszedł, widzisz? Łuski mam na plecach i karku. Tu jestem wśród swoich więc nie muszę ukrywać mojego pochodzenia, a wśród obcych wystarczy unikać sukienek z wyciętymi plecami i rozpuścić włosy.",
         "Pewnie Felkissian musi ci bardzo zazdrościć. ->7",
-        "Masz ładną szyję... ->16",
+        "Masz ładną szyję... ->17",
         "Faktycznie, szczęście. ->END"
       ],
       "7": [
@@ -133,7 +133,7 @@
       ],
       "17": [
         "SŁUCHAM!? Masz czelność coś takiego sugerować?",
-        "Nie, nie, nie. Po prostu... Chciałem być uprzejmy... ->17",
+        "Nie, nie, nie. Po prostu... Chciałem być uprzejmy... ->18",
         "Powiedzieć komplement to jak obrazić. Idę szukać kogoś, kto je doceni. ->END"
       ],
       "18": ["To zachowaj te uprzejmości dla siebie.", "Przepraszam ->END"]
@@ -195,7 +195,7 @@
       "7": [
         "Co przyniesie jutro? Co przyniesie pojutrze? Czy pojutrze będzie w ogóle nam dane? A może już jutro obudzę się wtulona w chłodne truchła moich dzieci? Albo one wtulone w truchło swej styranej życiem matki próbującej zarobić dla nich na chleb?!Sakiewka twa widzę ciężka, pewnie żyjesz w luksusach.. Takim to tylko pozazdrościć życia.",
         "To straszne! Nie zdawałem sobie sprawy jak ciężkie może być twoje życie, jakie to brzemię niesiesz ze sobą dzień w dzień. Pokaż mi te mazidła, kupię wszystko co masz! ->8",
-        "[ Odchodzisz z grymasem na twarzy. Opowieść kobiety nie wydaje Ci się wiarygodna. ->END"
+        "[ Odchodzisz z grymasem na twarzy. Opowieść kobiety nie wydaje Ci się wiarygodna. ] ->END"
       ],
       "8": [
         "[ Zawartość siatek kobiety opróżnia się proporcjonalnie do zawartości twojej sakiewki. Odchodzisz spoglądając ze łzą w oku na handlarkę. Zza pleców słyszysz nagle głośne 'Ale go urob-...' co jednak zagłusza gwar harców przy jesiennym ognisku. Pora dołączyć do zabawy! ]",
@@ -479,7 +479,7 @@
     "date": "21.9-30.9",
     "dialog": {
       "0": [
-        "[ Ciemnowłosa dziewczyna tańczyła furkocząc zamaszyście kolorową spódnicą. Nie wyglądała na miejscową, miała ciemniejszą karnację i inny kształt oczu. Poruszała się wyjątkowo zgrabnie i energicznie podzwaniając przy każdym kroku bransoletką z dzwoneczkami zawieszoną przy kostce.",
+        "[ Ciemnowłosa dziewczyna tańczyła furkocząc zamaszyście kolorową spódnicą. Nie wyglądała na miejscową, miała ciemniejszą karnację i inny kształt oczu. Poruszała się wyjątkowo zgrabnie i energicznie podzwaniając przy każdym kroku bransoletką z dzwoneczkami zawieszoną przy kostce. ]",
         "[ Obserwujesz ją dalej. ] ->1",
         "Masz ochotę zatańczyć ze mną? ->2",
         "Obcy nie są tu milie widziani... ->END"
@@ -496,7 +496,7 @@
         "[ Zostawiasz ją. Kto wie kim była ta dziewczyna. ] ->END"
       ],
       "3": [
-        "[ Wykonuje kilka zachęcających gestów. Mruga zalotnie, przywołuje Cię gestem dłoni. W końcu jednak odwraca się ignorując cię zupełnie. Inny mężczyzna podchodzi do niej i razem idą w tan.",
+        "[ Wykonuje kilka zachęcających gestów. Mruga zalotnie, przywołuje Cię gestem dłoni. W końcu jednak odwraca się ignorując cię zupełnie. Inny mężczyzna podchodzi do niej i razem idą w tan. ]",
         "Koniec ->END"
       ]
     }

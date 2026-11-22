@@ -1,6 +1,6 @@
 import { callEvent } from "../../API";
 import { addDialogToDialogList, openDialog } from "../dialog";
-import { customNpcs } from "../npc";
+import { customNpcs } from "../npc.js";
 import { updateNpcWithCustomGifImage } from "../update-npc-image";
 import { removeCollision, setCollision } from "./collision";
 import { removeNpc } from "./remove";

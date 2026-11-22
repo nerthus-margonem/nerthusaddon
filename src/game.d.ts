@@ -63,6 +63,20 @@ declare interface ChatMessageData {
 }
 
 /**
+ * NPC type used by the game.
+ * - `0`: NPC with a tooltip and a collision
+ * - `1`: NPC you can fight
+ * - `2`: unknown
+ * - `3`: unknown
+ * - `4`: Background object without tooltip
+ * - `5`: Object with a tooltip, but possibly shifted by -16px if !(width % 64); tagged by game as a "machine"
+ * - `6`: unknown
+ * - `7`: Renewable resources on the map
+ * - `9`: unknown
+ */
+declare type NpcType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 9;
+
+/**
  * Engine global variable available in the new interface.
  */
 declare const Engine: {
@@ -174,6 +188,15 @@ declare const Engine: {
     setEnableDraggingButtonsWidget(): unknown;
   };
 };
+/**
+ * API global variable available in the new interface.
+ */
+declare const API: {
+  addCallbackToEvent(eventName: string, callback: () => unknown): unknown;
+  removeCallbackFromEvent(eventName: string, callback: () => unknown): unknown;
+  callEvent(eventName: string, data: unknown): unknown;
+};
+declare var createNpcIcon: (a: unknown, b: unknown, url: string) => string;
 
 /**
  * Engine global variable available in the old interface.
@@ -229,6 +252,12 @@ declare const hero: {
 };
 declare const clearWeather: () => void;
 declare const changeWeather: (weatherName: string) => void;
+
+/**
+ * There is a bug in the SI engine that leaves `groupId` as a global variable.
+ * it needs to be set to `null` if it's `undefined` before adding any NPCs to not cause problems.
+ */
+declare var groupId: number | null | undefined;
 
 /**
  * Global variables available on both interfaces.

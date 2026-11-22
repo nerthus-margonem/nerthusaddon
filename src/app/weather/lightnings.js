@@ -1,6 +1,6 @@
-import { customNpcs, Npc } from "../npc/npc";
 import { addNpc } from "../npc/npc-actions/add";
 import { removeNpc } from "../npc/npc-actions/remove";
+import { customNpcs, Npc } from "../npc/npc.js";
 import { pseudoRandom } from "../utility-functions";
 
 const lightningUrls = [
@@ -61,7 +61,7 @@ function fillNpcZone() {
     }
   }
 
-  for (const npc of customNpcs.default) {
+  for (const npc of Object.values(customNpcs.default)) {
     addToZone(npc.x, npc.y);
   }
 }

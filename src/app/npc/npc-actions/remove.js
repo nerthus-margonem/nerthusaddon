@@ -1,6 +1,6 @@
 import { callEvent } from "../../API";
 import { coordsToId } from "../../utility-functions";
-import { customNpcs } from "../npc";
+import { customNpcs } from "../npc.js";
 import { removeCollision } from "./collision";
 
 export function removeNpc(x, y, mapId) {

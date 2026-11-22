@@ -30,15 +30,26 @@ function checkNpc(npc) {
       expect(npc.url).to.be.a("string");
     }
 
-    if (npc.time)
+    if (npc.time) {
       expect(npc.time).to.match(/^[0-9]+(:[0-9]+)?-[0-9]+(:[0-9]+)?$/);
-    if (npc.days) expect(npc.days).to.be.an("array");
-    if (npc.date)
+    }
+
+    if (npc.days) {
+      expect(npc.days).to.be.an("array");
+    }
+    if (npc.date) {
       expect(npc.date).to.match(
         /^[0-9]+(\.[0-9]+){0,2}-[0-9]+(\.[0-9]+){0,2}$/,
       );
+    }
 
-    if (npc.dialog) checkDialog(npc.dialog);
+    if (npc.dialog) {
+      checkDialog(npc.dialog);
+    }
+
+    if (npc.npcType !== undefined) {
+      expect(npc.npcType).to.be.oneOf([0, 1, 2, 3, 4, 5, 6, 7, 9]);
+    }
   } catch (e) {
     e.message = "npc name " + npc.name + " : " + e.message;
     throw e;

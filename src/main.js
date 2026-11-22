@@ -13,7 +13,7 @@ import { addBasicStyles, initCssManager } from "./app/interface/css-manager.js";
 import { initPanel } from "./app/interface/panel";
 import { mapManager } from "./app/map-manager.ts";
 import { initNightManager } from "./app/night/night.js";
-import { initNpcManager } from "./app/npc/npc";
+import { initNpcManager } from "./app/npc/npc.js";
 import { loadSettings } from "./app/settings";
 import { sanitizeText } from "./app/utility-functions";
 import { initWaterManager } from "./app/water.js";

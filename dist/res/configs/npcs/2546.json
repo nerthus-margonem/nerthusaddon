@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Grobowiec Paladynów",
+    "x": 8,
+    "y": 7,
+    "url": "/obrazki/npc/mas/nic128x128.gif",
+    "collision": false,
+    "dialog": {
+      "0": [
+        "[ Widzisz stosunkowo prosty budynek, wyglądający prawie jak magazyn. Mury są grube, a okute drzwi wydają się jeszcze grubsze. Mała forteca bez okien i zdobień, w której środku prostą wartę pełnią zakonnicy Białej Róży. ]",
+        "[ Odchodzę. ] ->END"
+      ]
+    }
+  },
+  {
+    "name": "Grobowiec Regiusów",
+    "x": 54,
+    "y": 12,
+    "url": "/obrazki/npc/mas/nic128x128.gif",
+    "collision": false,
+    "dialog": {
+      "0": [
+        "[ Widzisz zwyczajny grobowiec, niewybijający się z architektonicznego gąszczu podobnych sobie. Jest całkiem prosty, lecz urokliwy. Plotka mówi, że ród otrzymał go od dłużnika, który krótko po darowiźnie zaginął. ]",
+        "[ Odchodzę. ] ->END"
+      ]
+    }
+  },
+  {
+    "name": "Grób Tywelta",
+    "x": 45,
+    "y": 20,
+    "url": "/obrazki/npc/mas/nic128x128.gif",
+    "collision": false,
+    "dialog": {
+      "0": [
+        "[ Na bardzo starej kamiennej płycie widać napis: „Pierwszemu budowniczemu serc i domostw, Mieszkańcy Miasta Karka-han składają swój hołd i kwiaty.” ]",
+        "[ Odchodzę. ] ->END"
+      ]
+    }
+  },
+  {
+    "name": "Kaplica",
+    "x": 44,
+    "y": 41,
+    "url": "/obrazki/npc/mas/nic128x128.gif",
+    "collision": false,
+    "dialog": {
+      "0": [
+        "[ Na kolumnach kaplicy dostrzegasz wyryte imiona różnych ludzi. Czasami daty, rzadziej jakieś cytaty lub motta. Na każdym kapitelu widnieje napis: „Tym których zabrała ziemia, wiatr, woda lub ogień. Niech Enizeasz wskaże wam drogę, a Gerdeth da światło”. ]",
+        "[ Odchodzę. ] ->END"
+      ]
+    }
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 10,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 11,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 12,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 13,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 14,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 15,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 16,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 17,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 18,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 19,
+    "y": 59,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 20,
+    "y": 59,
+    "url": "#res/img/npc/hedge-right.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 28,
+    "y": 53,
+    "url": "#res/img/npc/hedge-left.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 29,
+    "y": 53,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 31,
+    "y": 53,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 32,
+    "y": 53,
+    "url": "#res/img/npc/hedge-right.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 42,
+    "y": 57,
+    "url": "#res/img/npc/hedge-left.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 43,
+    "y": 57,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 44,
+    "y": 57,
+    "url": "#res/img/npc/hedge-mid.gif",
+    "collision": false
+  },
+  {
+    "name": "Żywopłot",
+    "tip": "",
+    "x": 45,
+    "y": 57,
+    "url": "#res/img/npc/hedge-right.gif",
+    "collision": false
+  },
+  {
+    "name": "Wodospad góra",
+    "tip": "",
+    "x": 58,
+    "y": 59,
+    "url": "/obrazki/npc/map/wodospad1-gora.gif",
+    "collision": false
+  },
+  {
+    "name": "Wodospad dół",
+    "tip": "",
+    "x": 58,
+    "y": 60,
+    "url": "/obrazki/npc/map/wodospad3-dol.gif",
+    "collision": false
+  }
+]

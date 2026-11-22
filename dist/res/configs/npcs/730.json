@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Pranie",
+    "tip": "",
+    "x": 29,
+    "y": 60,
+    "url": "#res/img/npc/laundry.gif",
+    "collision": false
+  },
+  {
+    "name": "Góra drewnianego dachu",
+    "tip": "",
+    "x": 39,
+    "y": 56,
+    "url": "#res/img/npc/wooden-roof-top.gif",
+    "collision": false
+  },
+  {
+    "name": "Drewniany dach",
+    "tip": "",
+    "x": 46,
+    "y": 61,
+    "url": "#res/img/npc/wooden-roof-zachodnia-rubiez.gif",
+    "collision": false
+  },
+  {
+    "name": "Dach studni prawo",
+    "tip": "",
+    "x": 40,
+    "y": 57,
+    "url": "#res/img/npc/well-top-right.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 40,
+    "y": 58,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 43,
+    "y": 62,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  }
+]

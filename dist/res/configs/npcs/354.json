@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Tablica nagrobna",
+    "x": 12,
+    "y": 23,
+    "url": "#res/img/npc/props/graveyard-plaque.gif",
+    "npcType": 5,
+    "dialog": {
+      "0": [
+        "[ Przed tobą wisi tablica upamiętniająca wielkie wygnanie i serię wyroków śmierci na mnogich bandytach krainy Margonem, oskarżonych o magię multilokacji, korzystanie z pomocy mechanicznych golemów oraz ogólny brak zasad moralnych. Miało to miejsce na jesień, pod koniec października, roku Pańskiego 1338.<br>Msza za ich dusze została odprawiona w tejże kaplicy 28 października tegoż samego roku. ]",
+        "Przeczytaj epitafium. ->1",
+        "Przyjrzyj się dokładniej. ->2",
+        "Odejdź. ->END"
+      ],
+      "1": [
+        "<div style=\"font-style: italic; text-align: center;\">Osobo, która przechodzisz!<br>Westchnij za nami, którzy polegli jak rażeni piorunem za karę, skazani na permanentne wygnanie. My, ale też nasi bracia i kuzyni, i kuzyni kuzynów, koledzy, a nawet i nasze psy. Sędziowie i Krystyna zwana Krwawą uznali nas winnych czarom multilokacji i tworzeniu golemów, ale nie karć nas osobo czytająca, bo i tak, jak zwykle, skazali nas za prawdę, a co złego to nie my!<br>Podpisani: \"Mechaniczni\"</div>",
+        "Przyszła kryska na Matyska... ->END"
+      ],
+      "2": [
+        "Przy dokładniejszym zbadaniu tablicy, znajdujesz na jej boku, na samym dole napis:<br>\"Z łaski pańskiej tablicę ufundował, na pamiątkę uciążliwych, acz poczciwych łotrów co to pisać nie potrafili ani się z kulturą i klimatem wysłowić.<br>- Moderator Karendar.\"",
+        "Phf, burżuj się znalazł. ->END"
+      ]
+    }
+  }
+]

@@ -1,0 +1,386 @@
+[
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 4,
+    "y": 9,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 5,
+    "y": 9,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 6,
+    "y": 9,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 7,
+    "y": 9,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 1,
+    "y": 10,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 12,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 11,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 10,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 9,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 9,
+    "y": 9,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 2,
+    "y": 8,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Przejście pod drewnem",
+    "tip": "",
+    "x": 2,
+    "y": 7,
+    "url": "/obrazki/npc/map/przej-drewno.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 1,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 12,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 11,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 10,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 9,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 7,
+    "y": 7,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Przejście pod drewnem",
+    "tip": "",
+    "x": 6,
+    "y": 7,
+    "url": "/obrazki/npc/map/przej-drewno.gif",
+    "collision": true
+  },
+  {
+    "name": "Przejście pod drewnem",
+    "tip": "",
+    "x": 5,
+    "y": 7,
+    "url": "/obrazki/npc/map/przej-drewno.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 5,
+    "y": 8,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 4,
+    "y": 8,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Przejście pod drewnem",
+    "tip": "",
+    "x": 4,
+    "y": 7,
+    "url": "/obrazki/npc/map/przej-drewno.gif",
+    "collision": false
+  },
+  {
+    "name": "Szafa",
+    "tip": "",
+    "x": 2,
+    "y": 6,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/1.gif",
+    "collision": false
+  },
+  {
+    "name": "Szafy",
+    "tip": "",
+    "x": 2,
+    "y": 4,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/2.gif",
+    "collision": false
+  },
+  {
+    "name": "Beczka",
+    "tip": "",
+    "x": 8,
+    "y": 13,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/3.gif",
+    "collision": false
+  },
+  {
+    "name": "Szafa",
+    "tip": "",
+    "x": 7,
+    "y": 13,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/4.gif",
+    "collision": false
+  },
+  {
+    "name": "Świecznik",
+    "tip": "",
+    "x": 5,
+    "y": 13,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/5.gif",
+    "collision": false
+  },
+  {
+    "name": "Przejście z drzwiami",
+    "tip": "",
+    "x": 3,
+    "y": 9,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/6.gif",
+    "collision": false
+  },
+  {
+    "name": "Szafa i kosz na włócznie",
+    "tip": "",
+    "x": 11,
+    "y": 6,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/7.gif",
+    "collision": false
+  },
+  {
+    "name": "Stojące graty",
+    "tip": "",
+    "x": 7,
+    "y": 6,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/8.gif",
+    "collision": false
+  },
+  {
+    "name": "Rząd ubrań",
+    "tip": "",
+    "x": 11,
+    "y": 4,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/9.gif",
+    "collision": false
+  },
+  {
+    "name": "Ściana",
+    "tip": "",
+    "x": 9,
+    "y": 14,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/10.gif",
+    "collision": false
+  },
+  {
+    "name": "Ściana",
+    "tip": "",
+    "x": 10,
+    "y": 14,
+    "url": "#res/img/npc/map-specific/torneg-apartament-106/10.gif",
+    "collision": false
+  },
+  {
+    "name": "Sofa",
+    "tip": "",
+    "x": 10,
+    "y": 13,
+    "url": "#res/img/npc/sofa-back-green.gif",
+    "collision": false
+  },
+  {
+    "type": "change",
+    "id": 56657,
+    "newUrl": "/obrazki/npc/obj/cos.gif",
+    "lvl": 0
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 10,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 11,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 12,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 13,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 6,
+    "y": 3,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Płomyk",
+    "tip": "",
+    "x": 4,
+    "y": 4,
+    "url": "#res/img/npc/props/skull-flame.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 4,
+    "y": 5,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 4,
+    "y": 6,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 8,
+    "y": 3,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "type": "delete",
+    "id": 60789,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 60790,
+    "lvl": 0
+  }
+]

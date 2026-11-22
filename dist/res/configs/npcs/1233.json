@@ -1,0 +1,107 @@
+[
+  {
+    "type": "delete",
+    "id": 38520,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 162910,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 162820,
+    "lvl": 0
+  },
+  {
+    "type": "delete",
+    "id": 26234,
+    "lvl": 0
+  },
+  {
+    "name": "Skała w wodzie",
+    "tip": "",
+    "x": 27,
+    "y": 68,
+    "url": "#res/img/npc/props/water-rock.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 26,
+    "y": 68,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Stocznia",
+    "x": 25,
+    "y": 62,
+    "url": "#res/img/npc/props/shipyard.gif",
+    "collision": false
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 23,
+    "y": 61,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  {
+    "name": "Kolizja",
+    "tip": "",
+    "x": 24,
+    "y": 61,
+    "url": "/obrazki/npc/obj/cos.gif",
+    "collision": true
+  },
+  { "type": "delete", "id": 162901, "lvl": 0 },
+  { "type": "delete", "id": 162898, "lvl": 0 },
+  { "type": "delete", "id": 162899, "lvl": 0 },
+  { "type": "delete", "id": 162900, "lvl": 0 },
+  { "type": "delete", "id": 162902, "lvl": 0 },
+  { "type": "delete", "id": 162892, "lvl": 0 },
+  { "type": "delete", "id": 162798, "lvl": 0 },
+  { "type": "delete", "id": 162799, "lvl": 0 },
+  { "type": "delete", "id": 163671, "lvl": 0 },
+  { "type": "delete", "id": 163666, "lvl": 0 },
+  { "type": "delete", "id": 163665, "lvl": 0 },
+  { "type": "delete", "id": 163664, "lvl": 0 },
+  { "type": "delete", "id": 163658, "lvl": 0 },
+  { "type": "delete", "id": 163659, "lvl": 0 },
+  { "type": "delete", "id": 163657, "lvl": 0 },
+  { "type": "delete", "id": 163667, "lvl": 0 },
+  { "type": "delete", "id": 163762, "lvl": 0 },
+  { "type": "delete", "id": 163763, "lvl": 0 },
+  { "type": "delete", "id": 163770, "lvl": 0 },
+  { "type": "delete", "id": 163761, "lvl": 0 },
+  { "type": "delete", "id": 163769, "lvl": 0 },
+  { "type": "delete", "id": 163768, "lvl": 0 },
+  { "type": "delete", "id": 163767, "lvl": 0 },
+  { "type": "delete", "id": 164006, "lvl": 0 },
+  { "type": "delete", "id": 163994, "lvl": 0 },
+  { "type": "delete", "id": 163999, "lvl": 0 },
+  { "type": "delete", "id": 164000, "lvl": 0 },
+  {
+    "name": "Zatopiony żagiel",
+    "tip": "",
+    "x": 66,
+    "y": 70,
+    "url": "/obrazki/npc/oev/zatop-zagiel.gif"
+  },
+  {
+    "name": "Carriera Barona",
+    "x": 66,
+    "y": 77,
+    "url": "/obrazki/npc/mas/nic64x64.gif"
+  },
+  {
+    "name": "Carriera Barona",
+    "x": 66,
+    "y": 62,
+    "url": "/obrazki/npc/mas/cos.gif"
+  }
+]

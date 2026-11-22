@@ -7,8 +7,13 @@ export function removeNpc(x, y, mapId) {
   if (customNpcs[mapId]?.[coordsToId(x, y)]) {
     delete customNpcs[mapId][coordsToId(x, y)];
   }
+
   if (INTERFACE === "NI") {
-    if (mapId === undefined || mapId === Engine.map.d.id) {
+    if (
+      mapId === undefined ||
+      mapId === "default" ||
+      mapId === Engine.map.d.id
+    ) {
       const id = coordsToId(x, y);
       const npc = Engine.npcs.getById(id);
       if (npc) {
@@ -20,8 +25,8 @@ export function removeNpc(x, y, mapId) {
       }
     }
   } else {
-    if (mapId === undefined || parseInt(mapId) === map.id) {
-      $("#npc" + coordsToId(x, y)).remove();
+    if (mapId === undefined || mapId === "default" || mapId === map.id) {
+      document.querySelector(`#npc${coordsToId(x, y)}`)?.remove();
     }
   }
   removeCollision(x, y);

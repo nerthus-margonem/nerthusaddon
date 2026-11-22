@@ -157,7 +157,7 @@ declare const Engine: {
   };
   npcs: {
     check(): unknown;
-    getById(): unknown;
+    getById(id: number): unknown;
     getDrawableList(): unknown;
     getTip(): unknown;
     removeONe(): unknown;

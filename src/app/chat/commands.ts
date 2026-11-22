@@ -273,7 +273,7 @@ function delGraf(msg: ChatMessageData): void {
     return;
   }
 
-  removeNpc(x, y, mapId);
+  removeNpc(x, y, mapId ?? "default");
 }
 
 function hide(msg: ChatMessageData): void {

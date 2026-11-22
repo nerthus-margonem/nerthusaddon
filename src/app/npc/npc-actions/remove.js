@@ -24,11 +24,16 @@ export function removeNpc(x, y, mapId) {
         Engine.map.col.setStaticColsCache();
       }
     }
+    if (mapId === "default" || mapId === Engine.map.d.id) {
+      removeCollision(x, y);
+    }
   } else {
     if (mapId === undefined || mapId === "default" || mapId === map.id) {
       document.querySelector(`#npc${coordsToId(x, y)}`)?.remove();
     }
+    if (mapId === "default" || mapId === map.id) {
+      removeCollision(x, y);
+    }
   }
-  removeCollision(x, y);
   callEvent("removeTemporaryNpc", { x: x, y: y, mapId: mapId });
 }
